@@ -4,7 +4,8 @@ on:
     branches:
       - main
 permissions:
-  contents: write
+  contents: read
+  pages: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
