@@ -29,6 +29,8 @@ theme:
   features:
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
     - toc.integrate
     - navigation.top
     - navigation.footer
@@ -40,8 +42,20 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/Wopee-io
 
+extra_css:
+  - assets/bootstrap-grid.min.css
+
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - About: /#who-we-are
+  - Solutions: /#solutions
+  - Team: /#team
+  - Contact: /#contact-us
+  - Book demo: book-demo.md
