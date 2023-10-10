@@ -1,7 +1,8 @@
 import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
 import { Helmet } from "react-helmet";
+
+import Layout from "@theme/Layout";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();

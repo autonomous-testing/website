@@ -34,6 +34,19 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 
   presets: [
     [
@@ -76,16 +89,16 @@ const config = {
         },
         items: [
           { to: "/", label: "Home", position: "left" },
-          { to: "/#about", label: "About", position: "left" },
-          { to: "/#services", label: "Services", position: "left" },
-          { to: "/#pricing", label: "Pricing", position: "left" },
-          { to: "/#team", label: "Team", position: "left" },
+          { to: "#about", label: "About", position: "left" },
+          { to: "#services", label: "Services", position: "left" },
+          { to: "#pricing", label: "Pricing", position: "left" },
+          { to: "#team", label: "Team", position: "left" },
           { to: "/contact", label: "Contact", position: "left" },
           {
             href: "/book-demo",
             label: "Book demo",
             position: "right",
-            className: "primary-button",
+            className: "primary-button margin-right--md",
           },
         ],
       },

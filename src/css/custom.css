@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Import the Rubik font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 
@@ -24,6 +28,8 @@ p {
 
 /* You can override the default Infima variables here. */
 :root {
+  --wopee-yellow: #ffcc00;
+  --wopee-purple: #7030a0;
   --ifm-color-primary: #ffcc00;
   --ifm-color-primary-dark: #ffb200;
   --ifm-color-primary-darker: #ffa000;
@@ -46,31 +52,30 @@ p {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #ffcc00;
-  --ifm-color-primary-dark: #ffb200;
-  --ifm-color-primary-darker: #ffa000;
-  --ifm-color-primary-darkest: #ff8800;
-  --ifm-color-primary-light: #ffdd33;
-  --ifm-color-primary-lighter: #ffe644;
-  --ifm-color-primary-lightest: #fff066;
+  --ifm-color-primary: #7030a0;
+  --ifm-color-primary-dark: #5c2986;
+  --ifm-color-primary-darker: #52257a;
+  --ifm-color-primary-darkest: #451f6b;
+  --ifm-color-primary-light: #803fbb;
+  --ifm-color-primary-lighter: #8c4ac4;
+  --ifm-color-primary-lightest: #9a57ce;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* Use the secondary color and its alternatives in dark mode */
-  --ifm-color-secondary: #7030a0;
-  --ifm-color-secondary-dark: #5c2986;
-  --ifm-color-secondary-darker: #52257a;
-  --ifm-color-secondary-darkest: #451f6b;
-  --ifm-color-secondary-light: #803fbb;
-  --ifm-color-secondary-lighter: #8c4ac4;
-  --ifm-color-secondary-lightest: #9a57ce;
+  --ifm-color-secondary: #ffcc00;
+  --ifm-color-secondary-dark: #ffb200;
+  --ifm-color-secondary-darker: #ffa000;
+  --ifm-color-secondary-darkest: #ff8800;
+  --ifm-color-secondary-light: #ffdd33;
+  --ifm-color-secondary-lighter: #ffe644;
+  --ifm-color-secondary-lightest: #fff066;
 }
 
 /* Define styles for the primary button */
 .primary-button {
   background-color: var(--ifm-color-secondary); /* Use secondary color */
   color: #fff; /* Text color for the button */
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: none; /* Remove the default button border */
+  padding: 10px 15px; /* Adjust padding as needed */
   border-radius: 5px; /* Add rounded corners */
   text-decoration: none; /* Remove underline for links */
   cursor: pointer; /* Show a pointer cursor on hover */
@@ -78,8 +83,11 @@ p {
 
 /* Style the button on hover */
 .primary-button:hover {
-  background-color: #ffcc00; /* Change color on hover */
-  color: #7030a0;
+  background-color: var(--ifm-color-secondary-light);
+  color: #fff;
+}
+[data-theme="dark"] .primary-button {
+  color: var(--wopee-purple);
 }
 
 .footer,
@@ -93,6 +101,49 @@ section {
   scroll-margin-top: 40px;
 }
 
+/* Text element colors */
+.hero__title,
+.hero__subtitle {
+  color: var(--ifm-navbar-link-color);
+}
+
+/* Buttons */
+#hero-button {
+  color: var(--ifm-color-primary);
+}
+
+#hero-button:hover {
+  background-color: var(--ifm-color-secondary-lighter);
+  color: var(--ifm-color-primary);
+}
+
+.navbar {
+  height: 80px;
+}
+
+[data-theme="dark"] .navbar__logo img {
+  filter: invert(1);
+}
+
+a.navbar__item:hover {
+  color: var(--ifm-color-secondary);
+}
+
+a.navbar__item.primary-button:hover {
+  color: #fff;
+}
+[data-theme="dark"] a.navbar__item.primary-button:hover {
+  color: var(--wopee-purple);
+}
+
+.navbar__link--active {
+  color: var(--wopee-purple);
+}
+
+[data-theme="dark"] .navbar__link--active {
+  color: var(--wopee-yellow);
+}
+
 .sectionAlt {
   background-color: var(--ifm-color-emphasis-100);
 }
@@ -102,17 +153,29 @@ section {
   color: #fff;
 }
 
+.navbar .primary-button:hover {
+  color: var(--wopee-purple);
+}
+
+/* Positioning adjustments */
+.hero-left-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .how-it-works-image {
   width: 100%; /* Set the width to 100% to ensure images fill their container */
   max-width: 100%; /* Limit the maximum width to the container width */
   height: auto; /* Maintain the image's aspect ratio */
 }
 
-.card-container {
+/*.card-container {
   display: flex;
-  justify-content: space-between; /* Adjust as needed for spacing between cards */
+  justify-content: space-between; 
 }
 
 .card {
-  flex: 1; /* Distribute available space equally */
+  flex: 1;
 }
+*/
