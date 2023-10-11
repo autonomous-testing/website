@@ -32,7 +32,7 @@ jobs:
 
       - name: If repo is website-prod replace text website.wopee.io to wopee.io
         if: github.repository == 'autonomous-testing/website-prod'
-        run:
+        run: |
           sed -i 's/website.wopee.io/wopee.io/g' ./CNAME
           sed -i 's/website.wopee.io/wopee.io/g' ./docusaurus.config.js
 
