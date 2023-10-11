@@ -29,7 +29,7 @@ function HomeHeader() {
               "col col--6 flex flex-col justify-center items-center gap-y-2"
             )}
           >
-            <h1 className="text-5xl dark:text-primary-wopee text-secondary-wopee">
+            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
               {siteConfig.title}
             </h1>
 
