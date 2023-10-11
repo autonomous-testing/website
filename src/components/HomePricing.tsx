@@ -1,6 +1,7 @@
 import React from "react";
+
 import Link from "@docusaurus/Link";
-import Heading from "@theme/Heading";
+import ButtonGradientOutline from "./buttons/ButtonGradientOutline";
 
 type PlanItem = {
   title: string;
@@ -67,32 +68,40 @@ const PlanItems: PlanItem[] = [
 
 function PlanItem({ title, img, price, features, featured }: PlanItem) {
   return (
-    <div className="col col--3">
-      <div className="card-demo">
-        <div className="card">
-          <div className="card__image">
-            <img src={img} alt="Image alt text" title="Logo Title Text 1" />
-          </div>
-          <div className="card__body">
-            <h3>{title}</h3>
-            <h4>
-              Price: {price} EUR <br />
-              <small>per user/month</small>
-            </h4>
-            <small>
-              {features.map((feature, idx) => (
-                <span key={idx}>
-                  {" "}
-                  {feature} <br />
-                </span>
-              ))}
-            </small>
-          </div>
-          <div className="card__footer">
-            <Link className="button button--primary" to="https://cmd.wopee.io">
-              Start free trial
-            </Link>
-          </div>
+    <div className="col col--3 hover:scale-105 transition duration-300 max-w-xl">
+      <div className="card flex flex-col items-center justify-center p-5 shadow-xl">
+        <div className="h-full w-full">
+          <img
+            src={img}
+            alt="Image alt text"
+            title="Logo Title Text 1"
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <div className="card__body">
+          <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
+            {title}
+          </h3>
+          <h4 className="text-md xl:text-xl font-bold">
+            Price: {price} EUR <br />
+            <small className="font-normal">per user/month</small>
+          </h4>
+          <small className="text-md md:text-lg">
+            {features.map((feature, idx) => (
+              <span key={idx}>
+                {" "}
+                {feature} <br />
+              </span>
+            ))}
+          </small>
+        </div>
+        <div className="card__footer">
+          <Link
+            className=""
+            to="https://cmd.wopee.io"
+          >
+            <ButtonGradientOutline />
+          </Link>
         </div>
       </div>
     </div>
@@ -102,12 +111,17 @@ function PlanItem({ title, img, price, features, featured }: PlanItem) {
 export default function HomepageTeam(): JSX.Element {
   return (
     <section id="pricing">
-      <div className="container text--center">
-        <Heading as="h2">Pricing</Heading>
+      <div className="container text-center">
+        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+          Pricing
+        </h2>
 
-        <div className="row">
+        <div className="row flex justify-center gap-y-10">
           {PlanItems.map((props, idx) => (
-            <PlanItem key={idx} {...props} />
+            <PlanItem
+              key={idx}
+              {...props}
+            />
           ))}
         </div>
       </div>

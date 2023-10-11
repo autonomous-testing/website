@@ -1,12 +1,17 @@
-/* Import the Rubik font from Google Fonts */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 
-/* Set Rubik as the primary font for the entire document */
 body {
   font-family: "Rubik", sans-serif;
 }
 
-/* Define font styles for headings */
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3,
@@ -14,34 +19,32 @@ h4,
 h5,
 h6 {
   font-family: "Rubik", sans-serif;
-  /* You can adjust font-weight and other styles as needed */
 }
 
-/* Customize other text elements as desired */
 p {
   font-family: "Rubik", sans-serif;
 }
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #ffcc00;
-  --ifm-color-primary-dark: #ffb200;
-  --ifm-color-primary-darker: #ffa000;
-  --ifm-color-primary-darkest: #ff8800;
-  --ifm-color-primary-light: #ffdd33;
-  --ifm-color-primary-lighter: #ffe644;
-  --ifm-color-primary-lightest: #fff066;
+  --ifm-color-primary: #7030a0;
+  --ifm-color-primary-dark: #5c2986;
+  --ifm-color-primary-darker: #52257a;
+  --ifm-color-primary-darkest: #451f6b;
+  --ifm-color-primary-light: #803fbb;
+  --ifm-color-primary-lighter: #8c4ac4;
+  --ifm-color-primary-lightest: #9a57ce;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-  /* Define secondary color and its alternatives */
-  --ifm-color-secondary: #7030a0;
-  --ifm-color-secondary-dark: #5c2986;
-  --ifm-color-secondary-darker: #52257a;
-  --ifm-color-secondary-darkest: #451f6b;
-  --ifm-color-secondary-light: #803fbb;
-  --ifm-color-secondary-lighter: #8c4ac4;
-  --ifm-color-secondary-lightest: #9a57ce;
+  /* Define primary color and its alternatives */
+  --ifm-color-secondary: #ffcc00;
+  --ifm-color-secondary-dark: #ffb200;
+  --ifm-color-secondary-darker: #ffa000;
+  --ifm-color-secondary-darkest: #ff8800;
+  --ifm-color-secondary-light: #ffdd33;
+  --ifm-color-secondary-lighter: #ffe644;
+  --ifm-color-secondary-lightest: #fff066;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -53,6 +56,7 @@ p {
   --ifm-color-primary-light: #ffdd33;
   --ifm-color-primary-lighter: #ffe644;
   --ifm-color-primary-lightest: #fff066;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* Use the secondary color and its alternatives in dark mode */
@@ -65,54 +69,78 @@ p {
   --ifm-color-secondary-lightest: #9a57ce;
 }
 
-/* Define styles for the primary button */
-.primary-button {
-  background-color: var(--ifm-color-secondary); /* Use secondary color */
-  color: #fff; /* Text color for the button */
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: none; /* Remove the default button border */
-  border-radius: 5px; /* Add rounded corners */
-  text-decoration: none; /* Remove underline for links */
-  cursor: pointer; /* Show a pointer cursor on hover */
-}
-
-/* Style the button on hover */
-.primary-button:hover {
-  background-color: #ffcc00; /* Change color on hover */
-  color: #7030a0;
-}
-
-.footer,
-.footer a {
-  background-color: var(--ifm-color-secondary);
-  color: #fff;
-}
-
 section {
   padding: 50px;
   scroll-margin-top: 40px;
 }
 
-.sectionAlt {
-  background-color: var(--ifm-color-emphasis-100);
+/* Navbar Button */
+#navbar-button {
+  background-color: var(--ifm-color-primary);
+  color: var(--ifm-color-secondary);
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.hero .button {
+#navbar-button:hover {
+  background-color: var(--ifm-color-primary-light);
+}
+
+/* Hero section */
+
+.hero__subtitle {
+  color: var(--ifm-navbar-link-color);
+}
+
+/* Navbar link settings */
+.navbar {
+  height: 80px;
+}
+
+.navbar__item.navbar__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+a.navbar__item:hover {
+  color: var(--ifm-color-secondary);
+}
+
+/* Mobile menu */
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: transparent;
+}
+/* This is done because active link will change color based on active, all #ids are on the same page - so all will be active at all times */
+.navbar__link--active {
+  color: var(--unexisting-color);
+}
+
+[data-theme="dark"] .navbar__link--active {
+  color: var(--unexisting-color);
+}
+
+/* Wopee logo invert on theme change */
+[data-theme="dark"] .navbar__logo img {
+  filter: invert(1);
+}
+
+/* Footer */
+
+.footer {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+[data-theme="dark"] .footer {
   background-color: var(--ifm-color-secondary);
   color: #fff;
 }
 
-.how-it-works-image {
-  width: 100%; /* Set the width to 100% to ensure images fill their container */
-  max-width: 100%; /* Limit the maximum width to the container width */
-  height: auto; /* Maintain the image's aspect ratio */
+.footer a {
+  color: white;
 }
 
-.card-container {
-  display: flex;
-  justify-content: space-between; /* Adjust as needed for spacing between cards */
-}
-
-.card {
-  flex: 1; /* Distribute available space equally */
+.footer a:hover {
+  color: white;
 }

@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Wopee.io, autonomous testing bots for web apps",
   tagline:
-    "Boots your testing team. Elevate your quality & speed up release pace.",
+    "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
@@ -34,6 +34,19 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 
   presets: [
     [
@@ -73,9 +86,14 @@ const config = {
         logo: {
           alt: "Autonomous Testing Bots",
           src: "img/logo.png",
+          className: "margin-left--md",
         },
         items: [
-          { to: "/", label: "Home", position: "left" },
+          {
+            to: "/",
+            label: "Home",
+            position: "left",
+          },
           { to: "/#about", label: "About", position: "left" },
           { to: "/#services", label: "Services", position: "left" },
           { to: "/#pricing", label: "Pricing", position: "left" },
@@ -85,7 +103,8 @@ const config = {
             href: "/book-demo",
             label: "Book demo",
             position: "right",
-            className: "primary-button",
+            className: "primary-button margin-right--md",
+            id: "navbar-button",
           },
         ],
       },
@@ -123,7 +142,7 @@ const config = {
             items: [
               {
                 label: "Terms and Conditions",
-                to: "/toc",
+                to: "/terms-and-conditions",
               },
               {
                 label: "GDPR",
