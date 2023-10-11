@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Wopee.io, autonomous testing bots for web apps",
   tagline:
-    "Boots your testing team. Elevate your quality & speed up release pace.",
+    "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
@@ -104,6 +104,7 @@ const config = {
             label: "Book demo",
             position: "right",
             className: "primary-button margin-right--md",
+            id: "navbar-button",
           },
         ],
       },

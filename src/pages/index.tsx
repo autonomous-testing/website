@@ -2,7 +2,6 @@ import clsx from "clsx";
 import React from "react";
 
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import HomeTeam from "@site/src/components/HomeTeam";
 import HomeAbout from "@site/src/components/HomeAbout";
 import HomePricing from "@site/src/components/HomePricing";
@@ -19,7 +18,7 @@ function HomeHeader() {
   return (
     <header
       className={clsx(
-        "hero hero--primary bg-primary-wopee dark:bg-secondary-wopee",
+        "bg-primary-wopee dark:bg-secondary-wopee",
         styles.heroBanner
       )}
     >
@@ -30,7 +29,9 @@ function HomeHeader() {
               "col col--6 flex flex-col justify-center items-center gap-y-2"
             )}
           >
-            <h1 className="hero__title">{siteConfig.title}</h1>
+            <h1 className="text-5xl dark:text-primary-wopee text-secondary-wopee">
+              {siteConfig.title}
+            </h1>
 
             <p className="hero__subtitle">{siteConfig.tagline}</p>
             <div className="max-w-fit self-center">
@@ -42,7 +43,7 @@ function HomeHeader() {
             <img
               src="/img/wopee_head_1_2023-10-10.png"
               alt="Wopee"
-              className="img-fluid"
+              className="object-contain"
               width="50%"
             />
           </div>

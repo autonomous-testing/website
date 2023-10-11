@@ -1,6 +1,7 @@
 import React from "react";
 
 import Link from "@docusaurus/Link";
+import ButtonGradientOutline from "./buttons/ButtonGradientOutline";
 
 type PlanItem = {
   title: string;
@@ -96,10 +97,10 @@ function PlanItem({ title, img, price, features, featured }: PlanItem) {
         </div>
         <div className="card__footer">
           <Link
-            className="button button--primary"
+            className=""
             to="https://cmd.wopee.io"
           >
-            Start free trial
+            <ButtonGradientOutline />
           </Link>
         </div>
       </div>
