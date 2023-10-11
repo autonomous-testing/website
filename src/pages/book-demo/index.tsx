@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
         ></script>
       </Helmet>
       <div
-        className="meetings-iframe-container"
+        className="meetings-iframe-container my-auto"
         data-src="https://meetings-eu1.hubspot.com/marcel-veselka?embed=true"
       ></div>
     </Layout>

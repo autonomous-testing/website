@@ -45,14 +45,16 @@ function TeamMember({ name, img, description, linkedIn }: TeamItem) {
       </div>
 
       <div className="flex flex-col flex-2 w-full">
-        <div className="font-bold text-xl text-[var(--ifm-color-secondary)]">
+        <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
           {name}
-        </div>
-        <p className="">{description}</p>
+        </h3>
+        <p className="text-md text-center md:text-left md:text-xl xl:text-2xl">
+          {description}
+        </p>
         <a
           href={linkedIn}
           target="_blank"
-          className="text-[var(--ifm-color-secondary)] hover:text-[var(--ifm-color-secondary)]"
+          className="text-secondary-wopee dark:text-primary-wopee"
         >
           LinkedIn
         </a>
@@ -65,7 +67,7 @@ export default function HomepageTeam(): JSX.Element {
   return (
     <section id="team">
       <div className="container text--center">
-        <h2 className="text-3xl font-bold text-[var(--ifm-color-secondary-dark)] mb-5">
+        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Our team
         </h2>
         <div className="flex flex-col items-center xl:flex-row gap-10 xl:gap-2">

@@ -10,6 +10,10 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Define font styles for headings */
 h1,
 h2,
@@ -30,7 +34,7 @@ p {
 :root {
   --wopee-yellow: #ffcc00;
   --wopee-purple: #7030a0;
-  --ifm-color-primary: #ffcc00;
+  --ifm-color-primary: #7030a0;
   --ifm-color-primary-dark: #ffb200;
   --ifm-color-primary-darker: #ffa000;
   --ifm-color-primary-darkest: #ff8800;
@@ -41,7 +45,7 @@ p {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* Define secondary color and its alternatives */
-  --ifm-color-secondary: #7030a0;
+  --ifm-color-secondary: #ffcc00;
   --ifm-color-secondary-dark: #5c2986;
   --ifm-color-secondary-darker: #52257a;
   --ifm-color-secondary-darkest: #451f6b;
@@ -52,7 +56,7 @@ p {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #7030a0;
+  --ifm-color-primary: #ffcc00;
   --ifm-color-primary-dark: #5c2986;
   --ifm-color-primary-darker: #52257a;
   --ifm-color-primary-darkest: #451f6b;
@@ -62,7 +66,7 @@ p {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* Use the secondary color and its alternatives in dark mode */
-  --ifm-color-secondary: #ffcc00;
+  --ifm-color-secondary: #7030a0;
   --ifm-color-secondary-dark: #ffb200;
   --ifm-color-secondary-darker: #ffa000;
   --ifm-color-secondary-darkest: #ff8800;
@@ -72,23 +76,30 @@ p {
 }
 
 /* Define styles for the primary button */
-.primary-button {
-  background-color: var(--ifm-color-secondary); /* Use secondary color */
-  color: #fff; /* Text color for the button */
-  padding: 10px 15px; /* Adjust padding as needed */
-  border-radius: 5px; /* Add rounded corners */
-  text-decoration: none; /* Remove underline for links */
-  cursor: pointer; /* Show a pointer cursor on hover */
+/* .primary-button {
+  background-color: var(--ifm-color-secondary);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Style the button on hover */
 .primary-button:hover {
   background-color: var(--ifm-color-secondary-light);
   color: #fff;
 }
+
 [data-theme="dark"] .primary-button {
   color: var(--wopee-purple);
 }
+
+a.navbar__item.primary-button:hover {
+  color: #fff;
+}
+[data-theme="dark"] a.navbar__item.primary-button:hover {
+  color: var(--wopee-purple);
+} */
 
 .footer,
 .footer a {
@@ -127,13 +138,6 @@ section {
 
 a.navbar__item:hover {
   color: var(--ifm-color-secondary);
-}
-
-a.navbar__item.primary-button:hover {
-  color: #fff;
-}
-[data-theme="dark"] a.navbar__item.primary-button:hover {
-  color: var(--wopee-purple);
 }
 
 .navbar__link--active {

@@ -86,13 +86,18 @@ const config = {
         logo: {
           alt: "Autonomous Testing Bots",
           src: "img/logo.png",
+          className: "margin-left--md",
         },
         items: [
-          { to: "/", label: "Home", position: "left" },
-          { to: "#about", label: "About", position: "left" },
-          { to: "#services", label: "Services", position: "left" },
-          { to: "#pricing", label: "Pricing", position: "left" },
-          { to: "#team", label: "Team", position: "left" },
+          {
+            to: "/",
+            label: "Home",
+            position: "left",
+          },
+          { to: "/#about", label: "About", position: "left" },
+          { to: "/#services", label: "Services", position: "left" },
+          { to: "/#pricing", label: "Pricing", position: "left" },
+          { to: "/#team", label: "Team", position: "left" },
           { to: "/contact", label: "Contact", position: "left" },
           {
             href: "/book-demo",
@@ -136,7 +141,7 @@ const config = {
             items: [
               {
                 label: "Terms and Conditions",
-                to: "/toc",
+                to: "/terms-and-conditions",
               },
               {
                 label: "GDPR",

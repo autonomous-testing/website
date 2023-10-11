@@ -78,12 +78,14 @@ function PlanItem({ title, img, price, features, featured }: PlanItem) {
           />
         </div>
         <div className="card__body">
-          <h3 className="text-2xl font-bold ">{title}</h3>
-          <h4 className="text-xl font-bold ">
+          <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
+            {title}
+          </h3>
+          <h4 className="text-md xl:text-xl font-bold">
             Price: {price} EUR <br />
             <small className="font-normal">per user/month</small>
           </h4>
-          <small className="text-lg">
+          <small className="text-md md:text-lg">
             {features.map((feature, idx) => (
               <span key={idx}>
                 {" "}
@@ -109,7 +111,7 @@ export default function HomepageTeam(): JSX.Element {
   return (
     <section id="pricing">
       <div className="container text-center">
-        <h2 className="text-3xl font-bold text-[var(--ifm-color-secondary-dark)] mb-5">
+        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Pricing
         </h2>
 
