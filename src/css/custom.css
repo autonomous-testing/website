@@ -107,6 +107,10 @@ a.navbar__item:hover {
   color: var(--ifm-color-secondary);
 }
 
+/* Mobile menu */
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: transparent;
+}
 /* This is done because active link will change color based on active, all #ids are on the same page - so all will be active at all times */
 .navbar__link--active {
   color: var(--unexisting-color);
@@ -134,5 +138,9 @@ a.navbar__item:hover {
 }
 
 .footer a {
+  color: white;
+}
+
+.footer a:hover {
   color: white;
 }
