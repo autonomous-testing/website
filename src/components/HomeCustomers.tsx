@@ -15,8 +15,8 @@ export default function HomepageHowItWorks(): JSX.Element {
           </h2>
         </header>
 
-        <div className="flex flex-col items-center xl:flex-row gap-5 ">
-          <div className="card h-[500px] col col--6 p-10">
+        <div className="flex flex-col items-center xl:flex-row gap-5">
+          <div className="card h-[500px] col col--6 p-10 drop-shadow-xl">
             <div className="w-full h-full">
               <img
                 src={multitudeImg}
@@ -40,7 +40,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             </div>
           </div>
 
-          <div className="card h-[500px] col col--6 p-10">
+          <div className="card h-[500px] col col--6 p-10 drop-shadow-xl">
             <div className="w-full h-full">
               <img
                 src={livesportImg}

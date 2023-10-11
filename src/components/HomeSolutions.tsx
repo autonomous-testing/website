@@ -15,7 +15,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-5 mt-5">
-          <div className="card flex flex-1 p-10 justify-center">
+          <div className="card flex flex-1 p-10 justify-center drop-shadow-lg">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               Testing Assistant
             </h3>
@@ -33,7 +33,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             </Link>
           </div>
 
-          <div className="card flex flex-1 p-10 justify-center">
+          <div className="card flex flex-1 p-10 justify-center drop-shadow-lg">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               Self-driving Bot
             </h3>

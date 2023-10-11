@@ -16,7 +16,7 @@ export default function HomepageAbout(): JSX.Element {
           What we do
         </h2>
         <div className="card-demo">
-          <div className="card shadow-xl ">
+          <div className="card drop-shadow-xl">
             <div className="row">
               <div className="col col--6 ">
                 <div className="w-full h-full">
