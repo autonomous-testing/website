@@ -7,11 +7,11 @@ export default function HomepageHowItWorks(): JSX.Element {
   return (
     <section id="services">
       <div className="container text--center">
-        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Solutions
         </h2>
         <p className="text-md text-center md:text-center md:text-xl xl:text-2xl">
-          Our solutions increase your efficiency and remove testing waste
+          Wopee.io increase your efficiency and remove testing waste.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-5 mt-5">
@@ -26,7 +26,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               We have simple plug &amp; play solution ready for your existing
               Selenium, Playwright, Cypress.io and Robot Framework testing
               projects. If you use some other tools we are ready to build some
-              special assistant also just for you ❤️!
+              special assistant also just for you! ❤️
             </p>
             <Link href="/book-demo">
               <ButtonGhost />
