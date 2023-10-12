@@ -26,7 +26,7 @@ export default function HomepageAbout(): JSX.Element {
             />
           </div>
 
-          <div className="flex flex-col flex-1 justify-between p-10">
+          <div className="flex flex-col flex-1 justify-between gap-5 p-5 md:p-10">
             <div className="flex flex-col gap-3">
               <p className="text-sm md:text-base xl:text-xl">
                 Traditional testing approaches are slowing down development and
