@@ -14,7 +14,6 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 
 function HomeHeader() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <header
       className={clsx(
@@ -30,10 +29,14 @@ function HomeHeader() {
             )}
           >
             <h1 className="mb-4 text-4xl leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
-              <div class="wopee-io">Wopee.io</div>, autonomous testing bots for web apps.
+              <span className="wopee-io">Wopee.io</span>, autonomous testing
+              bots for web apps.
             </h1>
 
-            <p className="hero__subtitle">Boost your testing team. <br /> Elevate quality & speed up release.</p>
+            <p className="hero__subtitle">
+              Boost your testing team. <br /> Elevate quality & speed up
+              release.
+            </p>
             <div className="max-w-fit self-center">
               <ButtonGradient />
             </div>
@@ -41,10 +44,9 @@ function HomeHeader() {
 
           <div className={clsx("col col--6 flex justify-center")}>
             <img
-              src="/img/wopee_head_1_2023-10-10.png"
               alt="Wopee"
-              className="object-contain"
-              width="50%"
+              className="object-contain w-1/2"
+              src="/img/wopee_head_1_2023-10-10.png"
             />
           </div>
         </div>

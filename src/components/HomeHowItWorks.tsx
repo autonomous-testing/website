@@ -7,7 +7,7 @@ const cmdImg = require("@site/static/img/how-it-works/commander.png").default;
 export default function HomepageHowItWorks(): JSX.Element {
   return (
     <section id="how-it-works">
-      <div className="container text--center">
+      <div className="container text-center">
         <header className="section-header mb-10">
           <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
             How it works
