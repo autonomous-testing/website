@@ -30,7 +30,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               1. Set up bot execution
             </h3>
-            <p className="text-sm md:text-lg xl:text-xl">
+            <p className="text-sm md:text-base xl:text-xl">
               Enabling all client's needs for autonomous testing. Easy to use
               interface.
             </p>
@@ -49,7 +49,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               2. Teach bot test
             </h3>
-            <p className="text-sm md:text-lg xl:text-xl">
+            <p className="text-sm md:text-base xl:text-xl">
               Gets more regression testing with same resources. Automatically
               validates application functionality.
             </p>
@@ -68,7 +68,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               3. Monitor testing results
             </h3>
-            <p className="text-sm md:text-lg xl:text-xl">
+            <p className="text-sm md:text-base xl:text-xl">
               Finds most relevant bugs always and quickly. No scripting required
               and mild learning curve.
             </p>
