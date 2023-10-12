@@ -21,6 +21,11 @@ h6 {
   font-family: "Rubik", sans-serif;
 }
 
+h2 {
+  font-family: "Gruppo", sans-serif;
+  text-align: center;
+}
+
 p {
   font-family: "Rubik", sans-serif;
 }
@@ -40,6 +45,8 @@ em {
   --ifm-color-primary-lightest: #9a57ce;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-heading-font-weight: 400;
+  --ifm-heading-margin-bottom: 1rem;
 
   /* Define primary color and its alternatives */
   --ifm-color-secondary: #ffcc00;

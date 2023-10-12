@@ -12,7 +12,7 @@ export default function HomepageAbout(): JSX.Element {
       className="mt-10"
     >
       <div className="container">
-        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee mb-2">
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
           What we do
         </h2>
         <div className="card-demo">

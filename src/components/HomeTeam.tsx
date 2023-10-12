@@ -75,8 +75,8 @@ export default function HomepageTeam(): JSX.Element {
   return (
     <section id="team">
       <div className="container text--center">
-        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
-          Our team
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+          Wopees
         </h2>
         <div className="flex flex-col items-center justify-center sm:flex-row gap-y-10 sm:flex-wrap gap-x-5">
           {FeatureList.map((props, idx) => (

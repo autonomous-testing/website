@@ -29,11 +29,11 @@ function HomeHeader() {
               "col col--6 flex flex-col justify-center items-center gap-y-2"
             )}
           >
-            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
-              <div class="wopee-io">Wopee.io</div>, autonomous testing bots for web apps
+            <h1 className="mb-4 text-4xl leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
+              <div class="wopee-io">Wopee.io</div>, autonomous testing bots for web apps.
             </h1>
 
-            <p className="hero__subtitle">{siteConfig.tagline}</p>
+            <p className="hero__subtitle">Boost your testing team. <br /> Elevate quality & speed up release.</p>
             <div className="max-w-fit self-center">
               <ButtonGradient />
             </div>
