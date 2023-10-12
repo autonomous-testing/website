@@ -5,8 +5,11 @@ import ButtonGhost from "./buttons/ButtonGhost";
 
 export default function HomepageHowItWorks(): JSX.Element {
   return (
-    <section id="services">
-      <div className="container text-center overflow-visible">
+    <section
+      id="services"
+      className="mt-16 md:mt-20"
+    >
+      <div className="text-center overflow-visible">
         <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Solutions
         </h2>
@@ -14,8 +17,8 @@ export default function HomepageHowItWorks(): JSX.Element {
           Wopee.io increase your efficiency and remove testing waste.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-5 mt-5 overflow-visible">
-          <div className="card flex flex-1 p-10 justify-center drop-shadow-lg overflow-visible">
+        <div className="flex flex-col sm:flex-row gap-5 mt-3 md:mt-5 overflow-visible">
+          <div className="card flex flex-1 p-5 md:p-10 gap-5 justify-center drop-shadow-lg overflow-visible">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               Testing Assistant
             </h3>
@@ -36,7 +39,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             </Link>
           </div>
 
-          <div className="card flex flex-1 p-10 justify-center drop-shadow-lg overflow-visible">
+          <div className="card flex flex-1 p-5 md:p-10 gap-5 justify-center drop-shadow-lg overflow-visible">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               Self-driving Bot
             </h3>

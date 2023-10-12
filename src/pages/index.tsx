@@ -63,7 +63,7 @@ export default function Home(): JSX.Element {
       description="Autonomous testing platform for web applications | Wopee.io"
     >
       <HomeHeader />
-      <main>
+      <main className="container">
         <HomeAbout />
         <HomeSolutions />
         <HomeHowItWorks />
