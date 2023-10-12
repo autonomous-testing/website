@@ -30,7 +30,7 @@ function HomeHeader() {
             )}
           >
             <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
-              {siteConfig.title}
+              <div class="wopee-io">Wopee.io</div>, autonomous testing bots for web apps
             </h1>
 
             <p className="hero__subtitle">{siteConfig.tagline}</p>
