@@ -33,7 +33,7 @@ const PlanItems: PlanItem[] = [
       "3 projects",
       "5 users",
       "10.000 test steps / month",
-      "1 dedicated bots",
+      "1 dedicated bot",
       "14 days data retention",
     ],
     featured: false,
@@ -43,7 +43,7 @@ const PlanItems: PlanItem[] = [
     img: require("@site/static/img/pricing/ultimate.png").default,
     price: "179 €",
     features: [
-      "unlimited project",
+      "unlimited projects",
       "unlimited users",
       "100.000 test steps / month",
       "3 dedicated bots",
@@ -57,7 +57,7 @@ const PlanItems: PlanItem[] = [
     price: "contact us",
     features: [
       "More test steps / month",
-      "More testing bots",
+      "More dedicated bots",
       "Longer data retention period",
       "",
       "On-call support",
@@ -112,7 +112,7 @@ export default function HomepageTeam(): JSX.Element {
   return (
     <section id="pricing">
       <div className="container text-center">
-        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Pricing
         </h2>
 

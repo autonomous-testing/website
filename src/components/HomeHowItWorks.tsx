@@ -9,7 +9,7 @@ export default function HomepageHowItWorks(): JSX.Element {
     <section id="how-it-works">
       <div className="container text--center">
         <header className="section-header mb-10">
-          <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+          <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
             How it works
           </h2>
           <p className="text-md text-center md:text-center md:text-xl xl:text-2xl">
