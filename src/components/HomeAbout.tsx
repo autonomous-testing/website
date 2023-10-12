@@ -15,8 +15,8 @@ export default function HomepageAbout(): JSX.Element {
         <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           What's the problem
         </h2>
-        <div className="card-demo">
-          <div className="card drop-shadow-xl">
+        <div className="card-demo overflow-visible">
+          <div className="card drop-shadow-xl overflow-visible">
             <div className="row">
               <div className="col col--6 ">
                 <div className="w-full h-full">

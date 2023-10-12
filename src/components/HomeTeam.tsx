@@ -36,7 +36,7 @@ const FeatureList: TeamItem[] = [
 
 function TeamMember({ name, img, description, linkedIn }: TeamItem) {
   return (
-    <div className="max-w-[328px] flex flex-col rounded-lg drop-shadow-lg">
+    <div className="max-w-[328px] flex flex-col rounded-lg drop-shadow-lg overflow-visible">
       <img
         className="rounded-t-lg object-cover h-[328px]"
         src={img}
