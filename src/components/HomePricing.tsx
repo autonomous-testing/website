@@ -68,7 +68,7 @@ const PlanItems: PlanItem[] = [
 
 function PlanItem({ title, img, price, features, featured }: PlanItem) {
   return (
-    <div className="card flex flex-col items-center justify-center gap-5 p-5 shadow-xl hover:scale-105 transition duration-300">
+    <div className="card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl hover:scale-105 transition duration-300 overflow-visible">
       <img
         src={img}
         alt="Image alt text"
@@ -114,7 +114,7 @@ export default function HomepageTeam(): JSX.Element {
         Pricing
       </h2>
 
-      <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-3 md:mt-5 justify-center gap-5">
+      <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-3 md:mt-5 justify-center gap-5 overflow-visible">
         {PlanItems.map((props, idx) => (
           <PlanItem
             key={idx}
