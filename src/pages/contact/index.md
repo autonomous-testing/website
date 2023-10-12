@@ -4,8 +4,7 @@ title: Contact
 
 # Contact us
 
-## Wopee Labs s.r.o.
-
+<em>wopee labs s.r.o.</em> <br/>
 Pujmanove 23/883 <br/>
 Prague, 140 00 <br/>
 Czech Republic <br/>

@@ -7,10 +7,10 @@ export default function HomepageHowItWorks(): JSX.Element {
   return (
     <section id="services">
       <div className="container text--center">
-        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Solutions
         </h2>
-        <p className="text-md text-center md:text-left md:text-xl xl:text-2xl">
+        <p className="text-md text-center md:text-center md:text-xl xl:text-2xl">
           Our solutions increase your efficiency and remove testing waste
         </p>
 

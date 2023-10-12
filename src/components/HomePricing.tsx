@@ -15,12 +15,12 @@ const PlanItems: PlanItem[] = [
   {
     title: "Free Trial",
     img: require("@site/static/img/pricing/free.png").default,
-    price: "0",
+    price: "0 €",
     features: [
       "1 project",
       "3 users",
-      "1.000 test steps",
-      "shared testing bots",
+      "10.000 test steps total",
+      "1 shared bot",
       "7 days data retention",
     ],
     featured: false,
@@ -28,39 +28,39 @@ const PlanItems: PlanItem[] = [
   {
     title: "Premium Plan",
     img: require("@site/static/img/pricing/premium.png").default,
-    price: "79",
+    price: "79 €",
     features: [
-      "1 project",
-      "3 users",
-      "1.000 test steps",
-      "shared testing bots",
-      "7 days data retention",
+      "3 projects",
+      "5 users",
+      "10.000 test steps / month",
+      "1 dedicated bots",
+      "14 days data retention",
     ],
     featured: false,
   },
   {
     title: "Ultimate Plan",
     img: require("@site/static/img/pricing/ultimate.png").default,
-    price: "179",
+    price: "179 €",
     features: [
-      "1 project",
-      "3 users",
-      "1.000 test steps",
-      "shared testing bots",
-      "7 days data retention",
+      "unlimited project",
+      "unlimited users",
+      "100.000 test steps / month",
+      "3 dedicated bots",
+      "30 days data retention",
     ],
     featured: false,
   },
   {
     title: "Add-ons",
     img: require("@site/static/img/pricing/addons.png").default,
-    price: "0",
+    price: "contact us",
     features: [
-      "1 project",
-      "3 users",
-      "1.000 test steps",
-      "shared testing bots",
-      "7 days data retention",
+      "More test steps / month",
+      "More testing bots",
+      "Longer data retention period",
+      "",
+      "On-call support",
     ],
     featured: false,
   },
@@ -83,7 +83,7 @@ function PlanItem({ title, img, price, features, featured }: PlanItem) {
             {title}
           </h3>
           <h4 className="text-md xl:text-xl font-bold">
-            Price: {price} EUR <br />
+            {price}<br />
             <small className="font-normal">per user/month</small>
           </h4>
           <small className="text-md md:text-lg">
@@ -112,7 +112,7 @@ export default function HomepageTeam(): JSX.Element {
   return (
     <section id="pricing">
       <div className="container text-center">
-        <h2 className="text-xl text-center md:text-left md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-3xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Pricing
         </h2>
 
