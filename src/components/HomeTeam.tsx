@@ -73,19 +73,20 @@ function TeamMember({ name, img, description, linkedIn }: TeamItem) {
 
 export default function HomepageTeam(): JSX.Element {
   return (
-    <section id="team">
-      <div className="container text--center">
-        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
-          Wopees
-        </h2>
-        <div className="flex flex-col items-center justify-center sm:flex-row gap-y-10 sm:flex-wrap gap-x-5">
-          {FeatureList.map((props, idx) => (
-            <TeamMember
-              key={idx}
-              {...props}
-            />
-          ))}
-        </div>
+    <section
+      id="team"
+      className="my-16 md:my-20 text-center overflow-visible"
+    >
+      <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        Wopees
+      </h2>
+      <div className="flex flex-col items-center justify-center mt-3 md:mt-5 sm:flex-row gap-5 sm:flex-wrap">
+        {FeatureList.map((props, idx) => (
+          <TeamMember
+            key={idx}
+            {...props}
+          />
+        ))}
       </div>
     </section>
   );
