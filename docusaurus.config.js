@@ -58,7 +58,7 @@ const config = {
                 tagName: "script",
                 attributes: {
                   type: "text/javascript",
-                  id: "hs-script-loader2",
+                  id: "hs-script-loader",
                   async: true,
                   defer: true,
                   src: "//js-eu1.hs-scripts.com/139620033.js",
