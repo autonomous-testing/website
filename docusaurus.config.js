@@ -46,13 +46,36 @@ const config = {
         },
       };
     },
+    function (context, options) {
+      return {
+        name: "custom-script-plugin",
+        injectHtmlTags() {
+          return {
+            bodyTags: [],
+            preBodyTags: [],
+            postBodyTags: [
+              {
+                tagName: "script",
+                attributes: {
+                  type: "text/javascript",
+                  id: "hs-script-loader2",
+                  async: true,
+                  defer: true,
+                  src: "//js-eu1.hs-scripts.com/139620033.js",
+                },
+              },
+            ],
+          };
+        },
+      };
+    },
   ],
 
   presets: [
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
@@ -69,7 +92,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: { trackingID: "G-PVTHWLV51B" },
-      }),
+      },
 
       // "@docusaurus/preset-classic",
       // { gtag: { trackingID: "G-PVTHWLV51B" } },
@@ -78,7 +101,7 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       // Replace with your project's social card
       image: "img/wopee-social-card.jpg",
       navbar: {
@@ -170,7 +193,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }),
+    },
 };
 
 module.exports = config;
