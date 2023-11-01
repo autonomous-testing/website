@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 
-import { useHistory } from "@docusaurus/router";
-
-const Bananas = () => {
-  const history = useHistory();
+const Billing = () => {
+  const [isMounted, setIsMounted] = React.useState(false);
 
   useEffect(() => {
-    history.push("https://billing.stripe.com/p/login/5kA4hV8Qw2Od71m4gg");
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!isMounted) {
+      return;
+    }
+    window.location.href =
+      "https://billing.stripe.com/p/login/5kA4hV8Qw2Od71m4gg";
+  }, [isMounted]);
 
   return <></>;
 };
-export default Bananas;
+export default Billing;
