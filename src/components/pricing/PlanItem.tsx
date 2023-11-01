@@ -1,8 +1,5 @@
 import React from "react";
 
-import Link from "@docusaurus/Link";
-import ButtonGradientOutline from "./buttons/ButtonGradientOutline";
-
 type PlanItem = {
   title: string;
   img: string;
@@ -11,7 +8,7 @@ type PlanItem = {
   featured: boolean;
 };
 
-const PlanItems: PlanItem[] = [
+export const PlanItems: PlanItem[] = [
   {
     title: "Free Trial",
     img: require("@site/static/img/pricing/free.png").default,
@@ -66,9 +63,15 @@ const PlanItems: PlanItem[] = [
   },
 ];
 
-function PlanItem({ title, img, price, features, featured }: PlanItem) {
+export default function PlanItem({
+  title,
+  img,
+  price,
+  features,
+  featured,
+}: PlanItem) {
   return (
-    <div className="card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl hover:scale-105 transition duration-300 overflow-visible">
+    <div className="card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl sm:hover:scale-105 transition duration-300 overflow-visible">
       <img
         src={img}
         alt="Image alt text"
@@ -93,35 +96,6 @@ function PlanItem({ title, img, price, features, featured }: PlanItem) {
           ))}
         </small>
       </div>
-
-      <Link
-        className=""
-        to="https://cmd.wopee.io"
-      >
-        <ButtonGradientOutline />
-      </Link>
     </div>
-  );
-}
-
-export default function HomepageTeam(): JSX.Element {
-  return (
-    <section
-      id="pricing"
-      className="mt-16 md:mt-20 text-center overflow-visible"
-    >
-      <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
-        Pricing
-      </h2>
-
-      <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-3 md:mt-5 justify-center gap-5 overflow-visible">
-        {PlanItems.map((props, idx) => (
-          <PlanItem
-            key={idx}
-            {...props}
-          />
-        ))}
-      </div>
-    </section>
   );
 }

@@ -10,4 +10,5 @@ Prague, 140 00 <br/>
 Czech Republic <br/>
 
 Company Registration No.: 17997224 <br/>
-VAT Tax ID: CZ17997224
+VAT Tax ID: CZ17997224 <br/>
+Email: help@wopee.io

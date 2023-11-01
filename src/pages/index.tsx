@@ -4,7 +4,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import HomeTeam from "@site/src/components/HomeTeam";
 import HomeAbout from "@site/src/components/HomeAbout";
-import HomePricing from "@site/src/components/HomePricing";
+import HomePricing from "@site/src/components/pricing/Pricing";
 import HomeCustomers from "@site/src/components/HomeCustomers";
 import HomeSolutions from "@site/src/components/HomeSolutions";
 import HomeHowItWorks from "@site/src/components/HomeHowItWorks";
@@ -61,7 +61,6 @@ export default function Home(): JSX.Element {
         <HomeSolutions />
         <HomeHowItWorks />
         <HomeCustomers />
-        <HomePricing />
         <HomeTeam />
       </main>
     </Layout>

@@ -119,7 +119,7 @@ const config = {
           },
           { to: "/#about", label: "About", position: "left" },
           { to: "/#services", label: "Services", position: "left" },
-          { to: "/#pricing", label: "Pricing", position: "left" },
+          { to: "/pricing", label: "Pricing", position: "left" },
           { to: "/#team", label: "Team", position: "left" },
           { to: "/contact", label: "Contact", position: "left" },
           {
