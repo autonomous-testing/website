@@ -22,7 +22,7 @@ export default function Pricing(): JSX.Element {
 
       <div className="mt-10">
         <Link to="https://cmd.wopee.io">
-          <ButtonGradientOutline />
+          <ButtonGradientOutline className="w-52" />
         </Link>
       </div>
     </main>

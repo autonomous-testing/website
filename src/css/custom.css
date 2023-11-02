@@ -157,7 +157,7 @@ a.navbar__item:hover {
 }
 
 [data-theme="dark"] .footer {
-  background-color: var(--ifm-color-secondary);
+  background-color: black;
   color: #fff;
 }
 
