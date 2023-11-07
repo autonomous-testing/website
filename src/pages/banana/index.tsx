@@ -6,7 +6,7 @@ const Banana = () => {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/testwarez");
+    history.push("/beer");
   }, []);
 
   return <></>;
