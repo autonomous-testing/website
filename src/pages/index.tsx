@@ -2,13 +2,12 @@ import clsx from "clsx";
 import React from "react";
 
 import Layout from "@theme/Layout";
-import HomeTeam from "@site/src/components/HomeTeam";
 import HomeAbout from "@site/src/components/HomeAbout";
-import HomePricing from "@site/src/components/HomePricing";
 import HomeCustomers from "@site/src/components/HomeCustomers";
 import HomeSolutions from "@site/src/components/HomeSolutions";
 import HomeHowItWorks from "@site/src/components/HomeHowItWorks";
 import ButtonGradient from "../components/buttons/ButtonGradient";
+import HomeConversionForm from "../components/HomeConversionForm";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./index.module.css";
@@ -61,9 +60,8 @@ export default function Home(): JSX.Element {
         <HomeSolutions />
         <HomeHowItWorks />
         <HomeCustomers />
-        <HomePricing />
-        <HomeTeam />
       </main>
+      <HomeConversionForm />
     </Layout>
   );
 }
