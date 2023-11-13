@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
           window.hbspt.forms.create({
             region: "eu1",
             portalId: "139620033",
-            formId: "d1c941f7-ed8f-4cf2-88ba-4df8a611d5aa",
+            formId: "c7892a1b-eccb-4079-88d0-594ce5e036c5",
             target: "#hubspot-form",
           });
         }
@@ -63,14 +63,14 @@ export default function Home(): JSX.Element {
           )}
           <div
             className="meetings-iframe-container w-full xl:w-2/3"
-            data-src="https://meetings-eu1.hubspot.com/marcel-veselka?embed=true"
+            data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
           />
         </div>
         <PartnersCarousel />
         <div className="flex justify-center">
           <img
             alt="qr"
-            src="/img/qr-codes/wopee-io-vc-qr-code.png"
+            src="/img/qr-codes/wopee-io-lisbon-qr-code.png"
             className="aspect-square max-w-[550px]"
           />
         </div>

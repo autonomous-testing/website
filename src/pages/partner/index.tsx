@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
           window.hbspt.forms.create({
             region: "eu1",
             portalId: "139620033",
-            formId: "d1c941f7-ed8f-4cf2-88ba-4df8a611d5aa",
+            formId: "2281a605-9dcf-4a90-b5f3-f5c18e6c8bc4",
             target: "#hubspot-form",
           });
         }
@@ -70,7 +70,7 @@ export default function Home(): JSX.Element {
         <div className="flex justify-center">
           <img
             alt="qr"
-            src="/img/qr-codes/wopee-io-vc-qr-code.png"
+            src="/img/qr-codes/wopee-io-partner-qr-code.png"
             className="aspect-square max-w-[550px]"
           />
         </div>
