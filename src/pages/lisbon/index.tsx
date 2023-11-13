@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
           <img
             alt="qr"
             src="/img/qr-codes/wopee-io-lisbon-qr-code.png"
-            className="aspect-square max-w-[550px]"
+            className="aspect-square max-w-[450px]"
           />
         </div>
       </div>
