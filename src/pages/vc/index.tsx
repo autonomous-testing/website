@@ -53,7 +53,7 @@ export default function Home(): JSX.Element {
       </Helmet>
       <div className="container">
         <GoBack />
-        <div className="flex flex-col items-center my-5 xl:items-start xl:flex-row gap-5 h-full">
+        <div className="flex flex-col items-center my-5 xl:items-start xl:flex-row gap-5">
           {isLoading ? (
             <Loader />
           ) : (

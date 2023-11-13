@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 
 const PartnersCarousel = () => {
   return (
-    <div>
+    <div className="mb-5">
       <h3 className="text-center opacity-70">Trusted by our partners</h3>
       <div className="flex justify-center gap-5 mt-10">
         <Link to="https://www.livesport.eu/en">
