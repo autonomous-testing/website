@@ -53,11 +53,11 @@ export default function Home(): JSX.Element {
       </Helmet>
       <div className="container">
         <GoBack />
-        <div className="flex flex-col items-center xl:flex-row gap-5 my-5">
+        <div className="flex flex-col items-center my-5 xl:items-start xl:flex-row gap-5 h-full">
           {isLoading ? (
             <Loader />
           ) : (
-            <div className="w-full xl:w-1/3">
+            <div className="w-full xl:w-1/3 py-4">
               <div id="hubspot-form" />
               <div className="flex justify-center">
                 <img
