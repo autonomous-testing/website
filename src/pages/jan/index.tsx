@@ -6,7 +6,7 @@ const Jan = () => {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/beer");
+    history.push("/Lisbon");
   }, []);
 
   return <></>;
