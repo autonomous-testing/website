@@ -1,26 +1,35 @@
 import React from "react";
 
-import Link from "@docusaurus/Link";
+import PartnersCarouselCard from "./PartnersCarouselCard";
+
+const partners = [
+  {
+    name: "Livesport",
+    logo: "/img/customers/livesport-logo.png",
+    url: "https://www.livesport.eu/en",
+    classes: "grayscale dark:invert",
+  },
+  {
+    name: "Multitude",
+    logo: "/img/customers/multitude-logo.png",
+    url: "https://www.multitude.com/",
+    classes: "grayscale dark:invert",
+  },
+];
 
 const PartnersCarousel = () => {
   return (
     <div className="mb-5">
       <h3 className="text-center opacity-70">Trusted by our partners</h3>
       <div className="flex justify-center gap-5 mt-10">
-        <Link to="https://www.livesport.eu/en">
-          <img
-            src="/img/customers/livesport-logo.png"
-            alt="livesport logo"
-            className="grayscale dark:invert"
+        {partners.map((partner) => (
+          <PartnersCarouselCard
+            url={partner.url}
+            key={partner.name}
+            logo={partner.logo}
+            classes={partner.classes}
           />
-        </Link>
-        <Link to="https://www.multitude.com/">
-          <img
-            src="/img/customers/multitude-logo.png"
-            alt="multitude logo"
-            className="grayscale dark:invert"
-          />
-        </Link>
+        ))}
       </div>
     </div>
   );

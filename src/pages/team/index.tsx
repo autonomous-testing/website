@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import Layout from "@theme/Layout";
-import Team from "@site/src/components/team/Team";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useHistory } from "@docusaurus/router";
 
 const TeamPage = () => {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description="Autonomous testing platform for web applications | Wopee.io"
-    >
-      <main className="container overflow-visible">
-        <Team />
-      </main>
-    </Layout>
-  );
+  const router = useHistory();
+
+  useEffect(() => {
+    router.push("/about-us");
+  }, []);
+
+  return <></>;
 };
 export default TeamPage;
