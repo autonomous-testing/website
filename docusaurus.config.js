@@ -153,8 +153,8 @@ const config = {
             title: "Solution",
             items: [
               { label: "Wopee Bot", to: "/wopee-bot" },
-              { label: "Wopee Copilot", to: "/wopee-copilot" },
-              { label: "Wopee Commander", to: "/wopee-commander" },
+              { label: "Wopee Copilot", to: "/wopee-bot" },
+              { label: "Wopee Commander", to: "/wopee-bot" },
             ],
           },
           {

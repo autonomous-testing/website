@@ -8,7 +8,6 @@ import HomeSolutions from "@site/src/components/HomeSolutions";
 import HomeHowItWorks from "@site/src/components/HomeHowItWorks";
 import ButtonGradient from "../components/buttons/ButtonGradient";
 import HomeConversionForm from "../components/HomeConversionForm";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./index.module.css";
 
@@ -48,12 +47,8 @@ function HomeHeader() {
 }
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description="Autonomous testing platform for web applications | Wopee.io"
-    >
+    <Layout>
       <HomeHeader />
       <main className="container overflow-visible">
         <HomeAbout />
