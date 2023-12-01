@@ -2,7 +2,6 @@ import React from "react";
 
 import Layout from "@theme/Layout";
 import Team from "@site/src/components/team/Team";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
 
 const investors = [
@@ -18,13 +17,9 @@ const investors = [
 ];
 
 const TeamPage = () => {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description="Autonomous testing platform for web applications | Wopee.io"
-    >
-      <main className="container overflow-visible">
+    <Layout>
+      <main className="container">
         <Team />
         <div className="mb-5">
           <h3 className="text-center opacity-70">Our Investors</h3>
