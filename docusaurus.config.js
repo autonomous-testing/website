@@ -126,6 +126,7 @@ const config = {
             items: [
               { to: "/wopee-bot", label: "Wopee Bot" },
               { to: "/wopee-commander", label: "Wopee Commander" },
+              { to: "/wopee-copilot", label: "Wopee Copilot" },
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
@@ -156,7 +157,7 @@ const config = {
             title: "Solution",
             items: [
               { label: "Wopee Bot", to: "/wopee-bot" },
-              { label: "Wopee Copilot", to: "/wopee-bot" },
+              { label: "Wopee Copilot", to: "/wopee-copilot" },
               { label: "Wopee Commander", to: "/wopee-commander" },
             ],
           },

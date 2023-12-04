@@ -73,7 +73,7 @@ const WopeeCommanderPage = () => {
             <p className="px-0 xl:px-12">
               From Wopee Commander we control two key components:{" "}
               <Link to="/wopee-bot">Wopee Bot </Link>
-              and Wopee Copilot.
+              and <Link to="/wopee-copilot">Wopee Copilot</Link>.
             </p>
           </div>
 
