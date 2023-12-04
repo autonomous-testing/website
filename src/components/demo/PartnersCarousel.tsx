@@ -6,13 +6,11 @@ const partners = [
   {
     name: "Livesport",
     logo: "/img/customers/livesport-logo.png",
-    url: "https://www.livesport.eu/en",
     classes: "grayscale dark:invert",
   },
   {
     name: "Multitude",
     logo: "/img/customers/multitude-logo.png",
-    url: "https://www.multitude.com/",
     classes: "grayscale dark:invert",
   },
 ];
@@ -24,7 +22,6 @@ const PartnersCarousel = () => {
       <div className="flex justify-center gap-5 mt-10">
         {partners.map((partner) => (
           <PartnersCarouselCard
-            url={partner.url}
             key={partner.name}
             logo={partner.logo}
             classes={partner.classes}
