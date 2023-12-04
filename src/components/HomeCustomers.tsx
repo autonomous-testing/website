@@ -15,7 +15,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         Join our early adopters
       </h2>
       <p className="text-md text-center md:text-center md:text-xl xl:text-2xl">
-        Trusted by the technology leaders, our early adopters
+        Trusted by the technology leaders, our early customers
       </p>
 
       <div className="flex flex-col mt-3 md:mt-5 gap-y-5 gap-x-5 items-center sm:flex-row overflow-visible">
