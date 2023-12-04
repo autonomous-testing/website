@@ -34,7 +34,7 @@ const WopeeBotPage = () => {
               </p>
             </div>
 
-            <div className="flex-1 flex justify-center">
+            <figure className="flex-1 flex flex-col items-center justify-center">
               <img
                 onClick={() => {
                   if (width < 640) return;
@@ -45,11 +45,14 @@ const WopeeBotPage = () => {
                 src="/img/cmd/dashboard.jpg"
                 alt="dashboard"
               />
-            </div>
+              <figcaption className="text-center italic">
+                Project summary
+              </figcaption>
+            </figure>
           </div>
 
           <div className="flex flex-col gap-10 xl:flex-row xl:gap-0 items-center">
-            <div className="flex-1 flex justify-center">
+            <figure className="flex-1 flex flex-col items-center justify-center">
               <img
                 onClick={() => {
                   if (width < 640) return;
@@ -60,7 +63,10 @@ const WopeeBotPage = () => {
                 src="/img/cmd/scenarios.jpg"
                 alt="scenarios"
               />
-            </div>
+              <figcaption className="text-center italic">
+                Testing Scenarios
+              </figcaption>
+            </figure>
             <div className="flex flex-1 flex-col gap-5 xl:text-xl">
               <p className="px-0 xl:px-12">
                 Unlike traditional testing methods, there's no need for manual
@@ -109,7 +115,7 @@ const WopeeBotPage = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex-1 flex justify-center">
+            <figure className="flex-1 flex flex-col items-center justify-center">
               <img
                 onClick={() => {
                   if (width < 640) return;
@@ -120,7 +126,10 @@ const WopeeBotPage = () => {
                 src="/img/cmd/vvd.jpg"
                 alt="vvdPopUp"
               />
-            </div>
+              <figcaption className="text-center italic">
+                Visual validation
+              </figcaption>
+            </figure>
           </div>
         </div>
 

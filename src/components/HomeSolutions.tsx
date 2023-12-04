@@ -43,7 +43,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         <div className="card flex flex-1 p-5 md:p-10 justify-between gap-5 drop-shadow-lg overflow-visible">
           <div className="flex flex-col gap-5">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              Self-driving Bot
+              <Link to="/wopee-bot">Self-driving Bot</Link>
             </h3>
             <p className="text-sm md:text-lg xl:text-xl">
               Independent testing bot, no automation required.
@@ -51,8 +51,8 @@ export default function HomepageHowItWorks(): JSX.Element {
             <p className="text-sm md:text-lg xl:text-xl">
               Our bots explore your Web App, learn how it works and it is ready
               for testing. Sometimes it is not human to ask humans to test
-              (runnnig regression testing ... especially several times a
-              week/day, runnig it on many configurations, etc.)
+              (running regression testing ... especially several times a
+              week/day, running it on many configurations, etc.)
             </p>
           </div>
           <Link
