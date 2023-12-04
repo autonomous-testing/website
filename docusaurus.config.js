@@ -123,7 +123,10 @@ const config = {
             to: "/#solution",
             label: "Solution",
             position: "left",
-            items: [{ to: "/wopee-bot", label: "Wopee Bot" }],
+            items: [
+              { to: "/wopee-bot", label: "Wopee Bot" },
+              { to: "/wopee-commander", label: "Wopee Commander" },
+            ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
           { to: "/about-us", label: "About us", position: "left" },
@@ -154,7 +157,7 @@ const config = {
             items: [
               { label: "Wopee Bot", to: "/wopee-bot" },
               { label: "Wopee Copilot", to: "/wopee-bot" },
-              { label: "Wopee Commander", to: "/wopee-bot" },
+              { label: "Wopee Commander", to: "/wopee-commander" },
             ],
           },
           {
