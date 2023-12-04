@@ -118,7 +118,13 @@ const config = {
             position: "left",
           },
           { to: "/#about", label: "About", position: "left" },
-          { to: "/#services", label: "Services", position: "left" },
+          {
+            type: "dropdown",
+            to: "/#solution",
+            label: "Solution",
+            position: "left",
+            items: [{ to: "/wopee-bot", label: "Wopee Bot" }],
+          },
           { to: "/pricing", label: "Pricing", position: "left" },
           { to: "/about-us", label: "About us", position: "left" },
           { to: "/contact", label: "Contact", position: "left" },
@@ -141,6 +147,14 @@ const config = {
                 label: "Getting started",
                 to: "https://docs.wopee.io/getting-started/",
               },
+            ],
+          },
+          {
+            title: "Solution",
+            items: [
+              { label: "Wopee Bot", to: "/wopee-bot" },
+              { label: "Wopee Copilot", to: "/wopee-bot" },
+              { label: "Wopee Commander", to: "/wopee-bot" },
             ],
           },
           {
