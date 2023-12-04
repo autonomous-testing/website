@@ -41,14 +41,17 @@ export default function Modal(props: ModalProps) {
   return (
     <dialog
       ref={ref}
-      className={clsx("group", className)}
+      className={clsx(
+        "group bg-transparent outline-none border-none",
+        className
+      )}
       {...rest}
     >
       <div
         className="fixed inset-0 px-4 xl:px-0 flex items-center justify-center bg-black/75 opacity-0 transition-all group-data-[open]:opacity-100"
         onClick={onClose}
       >
-        <div className="max-w-7xl flex overflow-hidden rounded-xl scale-75 bg-white opacity-0 transition-all group-data-[open]:scale-100 group-data-[open]:opacity-100">
+        <div className="max-w-7xl flex overflow-hidden rounded-xl scale-75 opacity-0 transition-all group-data-[open]:scale-100 group-data-[open]:opacity-100">
           {chosenImageSrc && (
             <img
               src={chosenImageSrc}
