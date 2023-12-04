@@ -39,10 +39,10 @@ const WopeeBotPage = () => {
                 onClick={() => {
                   if (width < 640) return;
                   setOpen(true);
-                  setChosenImageSrc("/img/cmd/dashboard.jpg");
+                  setChosenImageSrc("/img/cmd/dashboard.JPG");
                 }}
                 className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/cmd/dashboard.jpg"
+                src="/img/cmd/dashboard.JPG"
                 alt="dashboard"
               />
               <figcaption className="text-center italic">
@@ -57,10 +57,10 @@ const WopeeBotPage = () => {
                 onClick={() => {
                   if (width < 640) return;
                   setOpen(true);
-                  setChosenImageSrc("/img/cmd/scenarios.jpg");
+                  setChosenImageSrc("/img/cmd/scenarios.JPG");
                 }}
                 className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/cmd/scenarios.jpg"
+                src="/img/cmd/scenarios.JPG"
                 alt="scenarios"
               />
               <figcaption className="text-center italic">

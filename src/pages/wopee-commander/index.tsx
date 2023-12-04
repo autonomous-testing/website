@@ -108,12 +108,12 @@ const WopeeCommanderPage = () => {
                 <div className="w-[30rem] xl:w-[40rem]">
                   <img
                     className="object-cover object-center rounded-md shadow shadow-secondary hover:cursor-pointer"
-                    src="/img/cmd/dashboard.jpg"
+                    src="/img/cmd/dashboard.JPG"
                     alt="Wopee Commander"
                     onClick={() => {
                       if (width < 640) return;
                       setOpen(true);
-                      setChosenImageSrc("/img/cmd/dashboard.jpg");
+                      setChosenImageSrc("/img/cmd/dashboard.JPG");
                     }}
                   />
                 </div>
@@ -123,12 +123,12 @@ const WopeeCommanderPage = () => {
                 <div className="w-[30rem] xl:w-[40rem]">
                   <img
                     className="object-cover object-center rounded-md shadow shadow-secondary hover:cursor-pointer"
-                    src="/img/cmd/projects.jpg"
+                    src="/img/cmd/projects.JPG"
                     alt="Wopee Commander"
                     onClick={() => {
                       if (width < 640) return;
                       setOpen(true);
-                      setChosenImageSrc("/img/cmd/projects.jpg");
+                      setChosenImageSrc("/img/cmd/projects.JPG");
                     }}
                   />
                 </div>
@@ -143,7 +143,7 @@ const WopeeCommanderPage = () => {
                     onClick={() => {
                       if (width < 640) return;
                       setOpen(true);
-                      setChosenImageSrc("/img/cmd/scenarios.jpg");
+                      setChosenImageSrc("/img/cmd/scenarios.JPG");
                     }}
                   />
                 </div>
