@@ -138,7 +138,7 @@ const WopeeCommanderPage = () => {
                 <div className="w-[30rem] xl:w-[40rem]">
                   <img
                     className="object-cover object-center rounded-md shadow shadow-secondary hover:cursor-pointer"
-                    src="/img/cmd/scenarios.jpg"
+                    src="/img/cmd/scenarios.JPG"
                     alt="Wopee Commander"
                     onClick={() => {
                       if (width < 640) return;
