@@ -120,10 +120,10 @@ const WopeeBotPage = () => {
                 onClick={() => {
                   if (width < 640) return;
                   setOpen(true);
-                  setChosenImageSrc("/img/cmd/vvd.jpg");
+                  setChosenImageSrc("/img/cmd/vvd.PNG");
                 }}
                 className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/cmd/vvd.jpg"
+                src="/img/cmd/vvd.PNG"
                 alt="vvdPopUp"
               />
               <figcaption className="text-center italic">

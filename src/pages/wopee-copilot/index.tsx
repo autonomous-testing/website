@@ -77,10 +77,10 @@ const WopeeCopilotPage = () => {
                 onClick={() => {
                   if (width < 640) return;
                   setOpen(true);
-                  setChosenImageSrc("/img/assistant/vvd-assistant.jpg");
+                  setChosenImageSrc("/img/assistant/vvd-assistant.JPG");
                 }}
                 className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/assistant/vvd-assistant.jpg"
+                src="/img/assistant/vvd-assistant.JPG"
                 alt="scenarios"
               />
               <figcaption className="text-center italic">
@@ -93,10 +93,10 @@ const WopeeCopilotPage = () => {
                   onClick={() => {
                     if (width < 640) return;
                     setOpen(true);
-                    setChosenImageSrc("/img/assistant/validation.jpg");
+                    setChosenImageSrc("/img/assistant/validation.JPG");
                   }}
                   className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                  src="/img/assistant/validation.jpg"
+                  src="/img/assistant/validation.JPG"
                   alt="validation"
                 />
                 <figcaption className="text-center italic">
