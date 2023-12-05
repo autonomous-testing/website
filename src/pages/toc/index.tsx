@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useHistory } from "@docusaurus/router";
 
-const TeamPage = () => {
+const OldTermsPage = () => {
   const router = useHistory();
 
   useEffect(() => {
@@ -11,4 +11,4 @@ const TeamPage = () => {
 
   return <></>;
 };
-export default TeamPage;
+export default OldTermsPage;
