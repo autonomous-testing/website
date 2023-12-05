@@ -130,7 +130,7 @@ const WopeeCopilotPage = () => {
           <h3 className="xl:text-4xl text-center text-secondary-wopee dark:text-primary-wopee">
             Frequently Asked Questions
           </h3>
-          <div className="my-2 flex flex-col gap-5">
+          <div className="my-2 text-center flex flex-col gap-5">
             <div>
               <h4 className="text-lg font-semibold opacity-90">
                 Why should I choose Wopee Copilot over a DIY approach to build
@@ -159,9 +159,9 @@ const WopeeCopilotPage = () => {
                 Wopee Copilot seamlessly integrates with the following
                 frameworks for quick and straightforward implementation:
               </p>
-              <div className="flex gap-2 my-2">
+              <div className="flex justify-center gap-2 my-2">
                 {supportedTestingTools.map((tool) => (
-                  <div className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video w-36 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all">
+                  <div className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all">
                     <img
                       src={tool.src}
                       alt={tool.alt}
