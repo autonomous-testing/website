@@ -137,7 +137,7 @@ const WopeeBotPage = () => {
           <h3 className="xl:text-4xl text-center text-secondary-wopee dark:text-primary-wopee">
             Frequently Asked Questions
           </h3>
-          <div className="my-2 flex flex-col gap-5">
+          <div className="my-2 flex flex-col text-center gap-5">
             <div>
               <h4 className="text-lg font-semibold opacity-90">
                 Is Wopee just another automation tool?
