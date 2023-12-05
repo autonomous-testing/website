@@ -73,7 +73,7 @@ const WopeeCommanderPage = () => {
             <p className="px-0 xl:px-12">
               From Wopee Commander we control two key components:{" "}
               <Link to="/wopee-bot">Wopee Bot </Link>
-              and Wopee Copilot.
+              and <Link to="/wopee-copilot">Wopee Copilot</Link>.
             </p>
           </div>
 
@@ -153,12 +153,12 @@ const WopeeCommanderPage = () => {
                 <div className="w-[30rem] xl:w-[40rem]">
                   <img
                     className="object-cover object-center rounded-md shadow shadow-secondary hover:cursor-pointer"
-                    src="/img/cmd/vvd.jpg"
+                    src="/img/cmd/vvd.PNG"
                     alt="Wopee Commander"
                     onClick={() => {
                       if (width < 640) return;
                       setOpen(true);
-                      setChosenImageSrc("/img/cmd/vvd.jpg");
+                      setChosenImageSrc("/img/cmd/vvd.PNG");
                     }}
                   />
                 </div>

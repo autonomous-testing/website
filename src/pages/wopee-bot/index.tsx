@@ -120,10 +120,10 @@ const WopeeBotPage = () => {
                 onClick={() => {
                   if (width < 640) return;
                   setOpen(true);
-                  setChosenImageSrc("/img/cmd/vvd.jpg");
+                  setChosenImageSrc("/img/cmd/vvd.PNG");
                 }}
                 className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/cmd/vvd.jpg"
+                src="/img/cmd/vvd.PNG"
                 alt="vvdPopUp"
               />
               <figcaption className="text-center italic">
@@ -137,7 +137,7 @@ const WopeeBotPage = () => {
           <h3 className="xl:text-4xl text-center text-secondary-wopee dark:text-primary-wopee">
             Frequently Asked Questions
           </h3>
-          <div className="my-2 flex flex-col gap-5">
+          <div className="my-2 flex flex-col text-center gap-5">
             <div>
               <h4 className="text-lg font-semibold opacity-90">
                 Is Wopee just another automation tool?

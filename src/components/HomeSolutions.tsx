@@ -20,7 +20,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         <div className="card flex flex-1 p-5 md:p-10 justify-between gap-5 drop-shadow-lg overflow-visible">
           <div className="flex flex-col gap-5">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              Testing Assistant
+              <Link to="/wopee-copilot">Testing Copilot</Link>
             </h3>
             <p className="text-sm md:text-lg xl:text-xl">
               Use your existing automated tests and boost its efficiency.
