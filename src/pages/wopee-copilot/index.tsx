@@ -4,6 +4,25 @@ import { useWindowSize } from "usehooks-ts";
 import Layout from "@theme/Layout";
 import Modal from "@site/src/components/dialog/Modal";
 
+const supportedTestingTools = [
+  {
+    alt: "Cypress",
+    src: "/img/assistant/testing-tools/cy-logo.png",
+  },
+  {
+    alt: "Playwright",
+    src: "/img/assistant/testing-tools/pw-logo2.png",
+  },
+  {
+    alt: "Robot Framework",
+    src: "/img/assistant/testing-tools/rf-logo2.png",
+  },
+  {
+    alt: "webdriver.io",
+    src: "/img/assistant/testing-tools/wdio-logo.png",
+  },
+];
+
 const WopeeCopilotPage = () => {
   const [open, setOpen] = useState(false);
   const [chosenImageSrc, setChosenImageSrc] = useState(null);
@@ -140,7 +159,17 @@ const WopeeCopilotPage = () => {
                 Wopee Copilot seamlessly integrates with the following
                 frameworks for quick and straightforward implementation:
               </p>
-              {/* TODO: add compatible tool logos. example: https://reportportal.io/installation [STEP 3] */}
+              <div className="flex gap-2 my-2">
+                {supportedTestingTools.map((tool) => (
+                  <div className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video w-36 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all">
+                    <img
+                      src={tool.src}
+                      alt={tool.alt}
+                      className=""
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div>
