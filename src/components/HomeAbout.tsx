@@ -3,7 +3,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import ButtonGhost from "./buttons/ButtonGhost";
 
-const aboutImg = require("@site/static/img/about.jpg").default;
+const aboutImg = require("@site/static/img/problem.png").default;
 
 export default function HomepageAbout(): JSX.Element {
   return (
@@ -16,12 +16,12 @@ export default function HomepageAbout(): JSX.Element {
       </h2>
 
       <div className="card flex flex-col lg:flex-row drop-shadow-xl">
-        <div className="flex-1">
+        <div className="flex-1 p-5 md:p-10">
           <img
             src={aboutImg}
             title="group of engineers"
             alt="engineers brainstorming"
-            className="object-cover w-full h-full"
+            className="object-contain w-full h-full"
           />
         </div>
 
