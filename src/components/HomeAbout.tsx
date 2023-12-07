@@ -12,7 +12,7 @@ export default function HomepageAbout(): JSX.Element {
       className="mt-5 md:mt-10 overflow-visible"
     >
       <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee mb-3">
-        What's the problem
+        What's the problem?
       </h2>
 
       <div className="card flex flex-col lg:flex-row drop-shadow-xl">
@@ -33,15 +33,15 @@ export default function HomepageAbout(): JSX.Element {
               automation was the solution. This belief failed.
             </p>
             <p className="text-sm md:text-base xl:text-xl">
-              Almost everywhere these days test automation tools are utilised,
+              Almost everywhere these days test automation tools are utilized,
               but this testing approach is still too slow and requires strong
               technical skills that are hard to find and develop. Even if you do
-              succeed in automating our testing, you are then facing with
-              exhausting maintenance eache release.
+              succeed in automating your testing, you are then faced with
+              exhausting maintenance with each release.
             </p>
 
             <h4 className="text-sm md:text-base xl:text-xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              Here comes the autonomous testing bots to reduce this effort waste
+              Here come the autonomous testing bots to reduce this effort waste
               in software development and testing.
             </h4>
           </div>

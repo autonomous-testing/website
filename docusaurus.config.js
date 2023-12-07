@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Wopee.io, autonomous testing bots for web apps",
+  title: "Wopee.io, the autonomous testing bots for web apps",
   tagline:
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
@@ -120,8 +120,8 @@ const config = {
           { to: "/#about", label: "About", position: "left" },
           {
             type: "dropdown",
-            to: "/#solution",
-            label: "Solution",
+            to: "/#solutions",
+            label: "Solutions",
             position: "left",
             items: [
               { to: "/wopee-bot", label: "Wopee Bot" },
@@ -154,7 +154,7 @@ const config = {
             ],
           },
           {
-            title: "Solution",
+            title: "Solutions",
             items: [
               { label: "Wopee Bot", to: "/wopee-bot" },
               { label: "Wopee Copilot", to: "/wopee-copilot" },
@@ -205,7 +205,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Wopee Labs, s.r.o..`,
+        copyright: `Copyright © ${new Date().getFullYear()} wopee labs, s.r.o.`,
       },
       prism: {
         theme: lightCodeTheme,
