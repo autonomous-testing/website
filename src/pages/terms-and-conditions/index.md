@@ -715,35 +715,14 @@ customer machines or via platform test runners.
 
 2.1 Standard plans – paid per month
 
-- Free trial
+Our paid plans include Basic, Premium, and Ultimate, along with additional Free and Enterprise options. You can find more information about each plan on our [pricing page](pricing).
 
-  - 1 project
-  - 3 users
-  - 10,000 test steps in total (credit, no time limit)
-  - 1 shared testing bot
-  - Data retention period 7 days
+2.2 Add-ons
+According to the "Specification of Services" mentioned in the Contract, Provider may offer additional services to the Client which are not included in the Service Packages. These services may include:
 
-- Premium
-
-  - 10 projects
-  - 5 users
-  - 10,000 test steps
-  - 1 dedicated testing bot
-  - Data retention period 14 days
-
-- Ultimate
-
-  - Unlimited projects
-  - Unlimited users
-  - 100,000 test steps in total (credit, no time limit)
-  - 3 dedicated testing bots
-  - Data retention period 30 days
-
-    2.2 Add-ons
-
-- More transactions – paid as # per month
-- More test runners – paid as # per month
-- More data retention period – paid per project and month
+- More transactions, charged on a monthly basis
+- More test runners, charged on a monthly basis
+- Longer data retention period, charged per project and per month.
 
 ### 3. Prerequisites for usage
 
