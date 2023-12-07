@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
       </Helmet>
       <div className="container">
         <GoBack />
-        <div className="flex flex-col dark:bg-gray-200 px-5 rounded-md items-center justify-center my-5 xl:items-start xl:flex-row gap-5">
+        <div className="flex flex-col rounded-md items-center justify-center my-5 xl:items-start xl:flex-row gap-5">
           {isLoading ? (
             <Loader />
           ) : (
