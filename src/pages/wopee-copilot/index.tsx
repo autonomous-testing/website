@@ -3,6 +3,7 @@ import { useWindowSize } from "usehooks-ts";
 
 import Layout from "@theme/Layout";
 import Modal from "@site/src/components/dialog/Modal";
+import HomeConversionForm from "@site/src/components/HomeConversionForm";
 
 const supportedTestingTools = [
   {
@@ -210,6 +211,7 @@ const WopeeCopilotPage = () => {
           chosenImageSrc={chosenImageSrc}
         />
       </main>
+      <HomeConversionForm className="-mt-20" />
     </Layout>
   );
 };

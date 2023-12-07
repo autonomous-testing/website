@@ -117,7 +117,6 @@ const config = {
             label: "Home",
             position: "left",
           },
-          { to: "/#about", label: "About", position: "left" },
           {
             type: "dropdown",
             to: "/#solutions",

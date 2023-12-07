@@ -1,13 +1,18 @@
 import React from "react";
 
-import ButtonGhost from "./buttons/ButtonGhost";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "./buttons/ButtonPrimaryInverted";
+import clsx from "clsx";
 
-const HomeConversionForm = () => {
+const HomeConversionForm = ({ className }: { className?: string }) => {
   return (
-    <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee mt-16 ">
-      <div className="container mt-16 h-[50vh] flex flex-col justify-center gap-10">
+    <div
+      className={clsx(
+        "bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee mt-16",
+        className
+      )}
+    >
+      <div className="container my-16 h-[50vh] flex flex-col justify-center gap-10">
         <h2 className="text-4xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Immerse yourself in the autonomous testing experience with Wopee.io
         </h2>
