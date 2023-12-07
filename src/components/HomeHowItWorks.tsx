@@ -14,7 +14,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         How it works
       </h2>
       <p className="text-md md:text-xl xl:text-2xl">
-        Reduce the test automation complexity and keep its benefits 💪
+        Reduce test automation complexity and keep its benefits 💪
       </p>
 
       <div className="flex flex-col items-center gap-y-5 lg:flex-row mt-3 md:mt-5">
