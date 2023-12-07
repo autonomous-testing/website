@@ -1,7 +1,13 @@
 import clsx from "clsx";
 import React from "react";
 
-const ButtonGradientOutline = ({ className }: { className?: string }) => {
+const ButtonGradientOutline = ({
+  className,
+  label = "Start free trial",
+}: {
+  className?: string;
+  label?: string;
+}) => {
   return (
     <button
       className={clsx(
@@ -15,7 +21,7 @@ const ButtonGradientOutline = ({ className }: { className?: string }) => {
           className
         )}
       >
-        Start free trial
+        {label}
       </span>
     </button>
   );

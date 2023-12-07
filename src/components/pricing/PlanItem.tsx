@@ -1,34 +1,21 @@
 import React from "react";
 
 type PlanItem = {
-  title: string;
   img: string;
+  title: string;
   price: string;
   features: string[];
-  featured: boolean;
+  featured?: boolean;
 };
 
 export const PlanItems: PlanItem[] = [
   {
-    title: "Free Trial",
-    img: require("@site/static/img/pricing/free.png").default,
-    price: "0 €",
-    features: [
-      "1 project",
-      "3 users",
-      "10.000 test steps total",
-      "1 shared bot",
-      "7 days data retention",
-    ],
-    featured: false,
-  },
-  {
-    title: "Premium Plan",
+    title: "Basic",
     img: require("@site/static/img/pricing/premium.png").default,
     price: "79 €",
     features: [
-      "3 projects",
-      "5 users",
+      "1 project",
+      "3 users",
       "10.000 test steps / month",
       "1 dedicated bot",
       "14 days data retention",
@@ -36,12 +23,12 @@ export const PlanItems: PlanItem[] = [
     featured: false,
   },
   {
-    title: "Ultimate Plan",
+    title: "Premium",
     img: require("@site/static/img/pricing/ultimate.png").default,
     price: "179 €",
     features: [
-      "unlimited projects",
-      "unlimited users",
+      "3 projects",
+      "5 users",
       "100.000 test steps / month",
       "3 dedicated bots",
       "30 days data retention",
@@ -49,15 +36,16 @@ export const PlanItems: PlanItem[] = [
     featured: false,
   },
   {
-    title: "Add-ons",
+    title: "Ultimate",
     img: require("@site/static/img/pricing/addons.png").default,
     price: "contact us",
     features: [
-      "More test steps / month",
-      "More dedicated bots",
-      "Longer data retention period",
-      "",
-      "On-call support",
+      "unlimited projects",
+      "unlimited users",
+      "unlimited test steps / month ",
+      "on-prem bots",
+      "priority feature development",
+      "30 days data retention",
     ],
     featured: false,
   },
@@ -85,7 +73,9 @@ export default function PlanItem({
         <h4 className="text-md xl:text-xl font-bold">
           {price}
           <br />
-          <small className="font-normal">per user/month</small>
+          {title !== "Ultimate" && (
+            <small className="font-normal">per user/month</small>
+          )}
         </h4>
         <small className="text-md md:text-lg">
           {features.map((feature, idx) => (
