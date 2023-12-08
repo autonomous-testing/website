@@ -7,7 +7,13 @@ const GoBack = () => {
 
   return (
     <div
-      onClick={() => router.push("/")}
+      onClick={() => {
+        if (router.length > 1 && router.action !== "POP") {
+          router.goBack();
+        } else {
+          router.push("/");
+        }
+      }}
       className="flex items-center gap-1 mt-10 cursor-pointer"
     >
       <svg
