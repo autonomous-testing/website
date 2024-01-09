@@ -19,6 +19,10 @@ const supportedTestingTools = [
     src: "/img/assistant/testing-tools/rf-logo2.png",
   },
   {
+    alt: "Selenium",
+    src: "/img/assistant/testing-tools/se-logo.png",
+  },
+  {
     alt: "webdriver.io",
     src: "/img/assistant/testing-tools/wdio-logo.png",
   },
@@ -99,9 +103,9 @@ const WopeeCopilotPage = () => {
                   setOpen(true);
                   setChosenImageSrc("/img/assistant/vvd-assistant.JPG");
                 }}
-                className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
-                src="/img/assistant/vvd-assistant.JPG"
                 alt="scenarios"
+                src="/img/assistant/vvd-assistant.JPG"
+                className="rounded-lg object-contain h-auto w-full xl:w-auto xl:h-80 shadow-2xl sm:hover:cursor-pointer"
               />
               <figcaption className="text-center italic">
                 Visual validation using assistant
@@ -157,12 +161,18 @@ const WopeeCopilotPage = () => {
                 What frameworks does Wopee Copilot support?
               </h4>
               <p>
-                Wopee Copilot seamlessly integrates with the following
-                frameworks for quick and straightforward implementation:
+                Wopee Copilot seamlessly integrates with the modern web testing
+                frameworks for quick and straightforward implementation. Our
+                current support includes popular frameworks such as Cypress.io,
+                Playwright, Selenium, Robot Framework, Webdriver.io, with
+                additional compatibility for more frameworks in the pipeline.
               </p>
-              <div className="flex justify-center gap-2 my-2">
+              <div className="grid grid-cols-2 sm:flex justify-center gap-2 my-2">
                 {supportedTestingTools.map((tool) => (
-                  <div className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all">
+                  <div
+                    key={tool.src}
+                    className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video sm:w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all last:odd:col-span-2"
+                  >
                     <img
                       src={tool.src}
                       alt={tool.alt}
