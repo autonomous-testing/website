@@ -6,7 +6,7 @@ import Pricing from "@site/src/components/pricing/Pricing";
 const PricingPage = () => {
   return (
     <Layout>
-      <main className="container overflow-visible">
+      <main className="container">
         <Pricing />
       </main>
     </Layout>
