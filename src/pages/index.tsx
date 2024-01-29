@@ -50,7 +50,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <HomeHeader />
-      <main className="container overflow-visible">
+      <main className="container">
         <HomeAbout />
         <HomeSolutions />
         <HomeHowItWorks />

@@ -9,7 +9,7 @@ export default function HomepageHowItWorks(): JSX.Element {
   return (
     <section
       id="customers"
-      className="mt-16 md:mt-20 text-center overflow-visible"
+      className="mt-16 md:mt-20 text-center"
     >
       <h2 className="text-xl md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
         Join our early adopters
@@ -18,8 +18,8 @@ export default function HomepageHowItWorks(): JSX.Element {
         Trusted by the technology leaders, our early customers
       </p>
 
-      <div className="flex flex-col mt-3 md:mt-5 gap-y-5 gap-x-5 items-center sm:flex-row overflow-visible">
-        <div className="card flex md:h-[500px] xl:h-[450px] flex-col justify-center sm:w-1/2 p-10 gap-2 xl:gap-5 drop-shadow-xl overflow-visible">
+      <div className="flex flex-col mt-3 md:mt-5 gap-y-5 gap-x-5 items-center sm:flex-row">
+        <div className="card flex md:h-[500px] xl:h-[450px] flex-col justify-center sm:w-1/2 p-10 gap-2 xl:gap-5 shadow-xl">
           <div className="">
             <img
               src={multitudeImg}
@@ -55,7 +55,7 @@ export default function HomepageHowItWorks(): JSX.Element {
           </div>
         </div>
 
-        <div className="card flex md:h-[500px] xl:h-[450px] flex-col justify-center sm:w-1/2 p-10 gap-2 xl:gap-5 drop-shadow-xl overflow-visible">
+        <div className="card flex md:h-[500px] xl:h-[450px] flex-col justify-center sm:w-1/2 p-10 gap-2 xl:gap-5 shadow-xl">
           <div className="">
             <img
               src={livesportImg}

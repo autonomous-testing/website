@@ -19,12 +19,12 @@ export const freePlanCardItems = {
 
 export default function Pricing(): JSX.Element {
   return (
-    <main className="my-16 text-center overflow-visible">
+    <main className="my-16 text-center">
       <h2 className="text-3xl text-center md:text-center xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
         Pricing
       </h2>
 
-      <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-10 md:mt-10 justify-center gap-5 sm:gap-7 overflow-visible">
+      <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-10 md:mt-10 justify-center gap-5 sm:gap-7">
         {PlanItems.map((props, idx) => (
           <PlanItem
             key={idx}
@@ -40,7 +40,7 @@ export default function Pricing(): JSX.Element {
       </div>
 
       <div className="my-10 flex flex-col gap-3 items-center">
-        <div className="card flex sm:flex-row max-w-5xl sm:min-w-[800px] items-center sm:justify-between gap-5 p-10 drop-shadow-xl sm:hover:scale-105 transition duration-300">
+        <div className="card flex sm:flex-row max-w-5xl sm:min-w-[800px] items-center sm:justify-between gap-5 p-10 shadow-xl">
           <figure className="text-7xl m-0 w-1/3">🚀</figure>
 
           <div className="sm:w-1/3">
@@ -60,7 +60,7 @@ export default function Pricing(): JSX.Element {
           </Link>
         </div>
 
-        <div className="card flex sm:flex-row max-w-5xl sm:min-w-[800px] items-center sm:justify-between gap-5 p-10 drop-shadow-xl sm:hover:scale-105 transition duration-300">
+        <div className="card flex sm:flex-row max-w-5xl sm:min-w-[800px] items-center sm:justify-between gap-5 p-10 shadow-xl">
           <div className="w-[200px] sm:w-1/3">
             <img
               src={freePlanCardItems.img}

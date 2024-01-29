@@ -9,13 +9,13 @@ export default function HomepageAbout(): JSX.Element {
   return (
     <section
       id="about"
-      className="mt-5 md:mt-10 overflow-visible"
+      className="mt-5 md:mt-10"
     >
       <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee mb-3">
         What's the problem?
       </h2>
 
-      <div className="card flex flex-col lg:flex-row drop-shadow-xl">
+      <div className="card flex flex-col lg:flex-row shadow-xl">
         <div className="flex-1 p-5 md:p-10">
           <img
             src={aboutImg}
