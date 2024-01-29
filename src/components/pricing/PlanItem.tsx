@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 import Link from "@docusaurus/Link";
@@ -42,7 +43,7 @@ export const PlanItems: PlanItem[] = [
       "3 dedicated bots",
       "30 days data retention",
     ],
-    featured: false,
+    featured: true,
     button: (
       <Link to="https://cmd.wopee.io">
         <ButtonGradientOutline className="w-60" />
@@ -82,7 +83,12 @@ export default function PlanItem({
   button,
 }: PlanItem) {
   return (
-    <div className="card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl sm:hover:scale-105 transition duration-300 overflow-visible">
+    <div
+      className={clsx(
+        "card flex flex-col items-center justify-center gap-5 p-5 shadow-xl",
+        featured ? "scale-105" : ""
+      )}
+    >
       <img
         src={img}
         alt="Image alt text"

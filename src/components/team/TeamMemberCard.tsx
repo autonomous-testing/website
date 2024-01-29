@@ -9,7 +9,7 @@ export function TeamMemberCard({
   linkedIn,
 }: TeamMember) {
   return (
-    <div className="max-w-[328px] flex flex-col rounded-lg drop-shadow-lg overflow-visible">
+    <div className="max-w-[328px] flex flex-col rounded-lg shadow-lg">
       <img
         className="rounded-t-lg object-cover h-[328px]"
         src={img}
