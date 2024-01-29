@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import React from "react";
+import Ribbon from "./Ribbon";
 
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
@@ -86,9 +87,10 @@ export default function PlanItem({
     <div
       className={clsx(
         "card flex flex-col items-center justify-center gap-5 p-5 shadow-xl",
-        featured ? "scale-105" : ""
+        featured ? "relative overflow-hidden scale-105" : ""
       )}
     >
+      {featured && <Ribbon />}
       <img
         src={img}
         alt="Image alt text"
