@@ -278,7 +278,7 @@ const PlanComparison = () => {
         </div>
       </div>
       <Link to="https://cmd.wopee.io">
-        <ButtonGradientOutline className="w-52" />
+        <ButtonGradientOutline className="w-60" />
       </Link>
     </div>
   );

@@ -35,7 +35,7 @@ export default function Pricing(): JSX.Element {
 
       <div className="mt-10">
         <Link to="https://cmd.wopee.io">
-          <ButtonGradientOutline className="w-52" />
+          <ButtonGradientOutline className="w-60" />
         </Link>
       </div>
 
@@ -54,7 +54,7 @@ export default function Pricing(): JSX.Element {
 
           <Link to="/contact-us">
             <ButtonGradientOutline
-              className="w-52"
+              className="w-60"
               label="Contact us"
             />
           </Link>
@@ -78,7 +78,7 @@ export default function Pricing(): JSX.Element {
           </div>
 
           <Link to="https://cmd.wopee.io">
-            <ButtonGradientOutline className="w-52" />
+            <ButtonGradientOutline className="w-60" />
           </Link>
         </div>
 
