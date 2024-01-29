@@ -16,15 +16,15 @@ const HomeConversionForm = ({ className }: { className?: string }) => {
         <h2 className="text-4xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Immerse yourself in the autonomous testing experience with Wopee.io
         </h2>
-        <div className="flex justify-center items-center gap-5">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
           <ButtonPrimary
-            label="Free Trial"
+            label="Try free for 1 month"
             href="https://cmd.wopee.io"
-            className="w-36 h-[50px]"
+            className="w-60 h-[50px]"
           />
           <ButtonPrimaryInverted
             href="/book-demo"
-            className="w-36 h-[50px]"
+            className="w-60 h-[50px]"
           />
         </div>
       </div>
