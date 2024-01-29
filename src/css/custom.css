@@ -98,18 +98,61 @@ em {
   --ifm-color-secondary-lightest: #9a57ce;
 }
 
-/* Navbar Button */
-#navbar-button {
-  background-color: var(--ifm-color-primary);
+/* Navbar Buttons */
+#login-button {
+  width: 7rem;
+  cursor: pointer;
+  padding: 9px 14px;
+  border-radius: 5px;
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+  justify-content: center;
+  background-color: transparent;
+  transition: all 0.15s ease-out;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+#login-button:hover {
   color: var(--ifm-color-secondary);
+  background-color: var(--ifm-color-primary-light);
+}
+
+#navbar-button {
+  cursor: pointer;
   padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
-  cursor: pointer;
+  color: var(--ifm-color-secondary);
+  background-color: var(--ifm-color-primary);
 }
 
 #navbar-button:hover {
   background-color: var(--ifm-color-primary-light);
+}
+
+@media (min-width: 200px) and (max-width: 996px) {
+  #login-button {
+    width: 100%;
+  }
+
+  #navbar-button.menu__link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 350px) {
+  #login-button {
+    display: none;
+  }
+
+  #login-button.menu__link {
+    width: 100%;
+    display: inline-flex;
+  }
 }
 
 /* Hero section */
