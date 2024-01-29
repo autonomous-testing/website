@@ -2,12 +2,16 @@ import clsx from "clsx";
 import React from "react";
 import Ribbon from "./Ribbon";
 
+import Link from "@docusaurus/Link";
+import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+
 type PlanItem = {
   img: string;
   title: string;
   price: string;
   features: string[];
   featured?: boolean;
+  button?: JSX.Element;
 };
 
 export const PlanItems: PlanItem[] = [
@@ -23,6 +27,11 @@ export const PlanItems: PlanItem[] = [
       "14 days data retention",
     ],
     featured: false,
+    button: (
+      <Link to="https://cmd.wopee.io">
+        <ButtonGradientOutline className="w-60" />
+      </Link>
+    ),
   },
   {
     title: "Premium",
@@ -36,6 +45,11 @@ export const PlanItems: PlanItem[] = [
       "30 days data retention",
     ],
     featured: true,
+    button: (
+      <Link to="https://cmd.wopee.io">
+        <ButtonGradientOutline className="w-60" />
+      </Link>
+    ),
   },
   {
     title: "Ultimate",
@@ -50,6 +64,14 @@ export const PlanItems: PlanItem[] = [
       "30 days data retention",
     ],
     featured: false,
+    button: (
+      <Link to="/contact-us">
+        <ButtonGradientOutline
+          className="w-60"
+          label="Contact us"
+        />
+      </Link>
+    ),
   },
 ];
 
@@ -59,12 +81,13 @@ export default function PlanItem({
   price,
   features,
   featured,
+  button,
 }: PlanItem) {
   return (
     <div
       className={clsx(
-        "card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl sm:hover:scale-105 transition duration-300 ",
-        featured ? "relative overflow-hidden" : ""
+        "card flex flex-col items-center justify-center gap-5 p-5 shadow-xl",
+        featured ? "relative overflow-hidden scale-105" : ""
       )}
     >
       {featured && <Ribbon />}
@@ -94,6 +117,7 @@ export default function PlanItem({
           ))}
         </small>
       </div>
+      {button}
     </div>
   );
 }

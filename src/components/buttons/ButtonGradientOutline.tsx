@@ -3,7 +3,7 @@ import React from "react";
 
 const ButtonGradientOutline = ({
   className,
-  label = "Start free trial",
+  label = "Try free for 1 month",
 }: {
   className?: string;
   label?: string;
