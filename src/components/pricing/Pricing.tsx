@@ -33,12 +33,6 @@ export default function Pricing(): JSX.Element {
         ))}
       </div>
 
-      <div className="mt-10">
-        <Link to="https://cmd.wopee.io">
-          <ButtonGradientOutline className="w-60" />
-        </Link>
-      </div>
-
       <div className="my-10 flex flex-col gap-3 items-center">
         <div className="card flex sm:flex-row max-w-5xl sm:min-w-[800px] items-center sm:justify-between gap-5 p-10 shadow-xl">
           <figure className="text-7xl m-0 w-1/3">🚀</figure>
