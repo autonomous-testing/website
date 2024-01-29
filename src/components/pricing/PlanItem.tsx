@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import React from "react";
+import Ribbon from "./Ribbon";
 
 type PlanItem = {
   img: string;
@@ -33,7 +35,7 @@ export const PlanItems: PlanItem[] = [
       "3 dedicated bots",
       "30 days data retention",
     ],
-    featured: false,
+    featured: true,
   },
   {
     title: "Ultimate",
@@ -59,7 +61,13 @@ export default function PlanItem({
   featured,
 }: PlanItem) {
   return (
-    <div className="card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl sm:hover:scale-105 transition duration-300 overflow-visible">
+    <div
+      className={clsx(
+        "card flex flex-col items-center justify-center gap-5 p-5 drop-shadow-xl sm:hover:scale-105 transition duration-300 ",
+        featured ? "relative overflow-hidden" : ""
+      )}
+    >
+      {featured && <Ribbon />}
       <img
         src={img}
         alt="Image alt text"
