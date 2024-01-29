@@ -1,5 +1,6 @@
-import Link from "@docusaurus/Link";
 import React from "react";
+
+import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
 type PlanItem = {
