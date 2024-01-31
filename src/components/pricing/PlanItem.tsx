@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
-import Ribbon from "./Ribbon";
 
+import Ribbon from "./Ribbon";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
@@ -101,13 +101,13 @@ export const PlanItems: PlanItem[] = [
 ];
 
 export default function PlanItem({
-  title,
   img,
   icon,
+  title,
   price,
+  button,
   features,
   featured,
-  button,
 }: PlanItem) {
   return (
     <div

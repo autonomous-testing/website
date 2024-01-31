@@ -1,9 +1,7 @@
 import React from "react";
 
-import Link from "@docusaurus/Link";
 import PlanComparison from "./PlanComparison";
 import PlanItem, { PlanItems } from "./PlanItem";
-import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
 export default function Pricing(): JSX.Element {
   return (
