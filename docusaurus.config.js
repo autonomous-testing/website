@@ -140,8 +140,9 @@ const config = {
             id: "login-button",
           },
           {
-            href: "/book-demo",
-            label: "Book demo",
+            to: "https://cmd.wopee.io",
+            target: "_blank",
+            label: "Try free for 1 month",
             position: "right",
             className: "margin-right--md",
             id: "navbar-button",

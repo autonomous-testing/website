@@ -23,7 +23,7 @@ const ButtonPrimaryInverted = ({
         >
           <button
             className={clsx(
-              "dark:text-primary-wopee text-secondary-wopee border border-secondary-wopee dark:border-primary-wopee e font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-primary-wopee dark:group-hover:text-secondary-wopee dark:group-hover:bg-primary-wopee hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
+              "dark:text-primary-wopee text-secondary-wopee border border-secondary-wopee dark:border-primary-wopee e font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white dark:group-hover:text-secondary-wopee dark:group-hover:bg-primary-wopee hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
               className
             )}
           >
