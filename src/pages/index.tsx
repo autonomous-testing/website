@@ -6,10 +6,10 @@ import HomeAbout from "@site/src/components/HomeAbout";
 import HomeCustomers from "@site/src/components/HomeCustomers";
 import HomeSolutions from "@site/src/components/HomeSolutions";
 import HomeHowItWorks from "@site/src/components/HomeHowItWorks";
-import ButtonGradient from "../components/buttons/ButtonGradient";
 import HomeConversionForm from "../components/HomeConversionForm";
 
 import styles from "./index.module.css";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 
 function HomeHeader() {
   return (
@@ -30,7 +30,11 @@ function HomeHeader() {
             Boost your testing team. <br /> Elevate quality & speed up release.
           </p>
           <div className="max-w-fit self-center">
-            <ButtonGradient />
+            <ButtonPrimary
+              label="Try free for 1 month"
+              href="https://cmd.wopee.io"
+              className="w-60 h-[50px]"
+            />
           </div>
         </div>
 

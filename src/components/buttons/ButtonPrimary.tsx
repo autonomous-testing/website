@@ -23,7 +23,7 @@ const ButtonPrimary = ({
         >
           <button
             className={clsx(
-              "text-primary-wopee border border-secondary-wopee dark:border-primary-wopee dark:text-secondary-wopee font-semibold bg-secondary-wopee dark:bg-primary-wopee group-hover:bg-opacity-10 group-hover:text-secondary-wopee dark:group-hover:text-primary-wopee hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
+              "text-white border border-secondary-wopee dark:border-primary-wopee dark:text-secondary-wopee font-semibold bg-secondary-wopee dark:bg-primary-wopee group-hover:bg-opacity-10 group-hover:text-secondary-wopee dark:group-hover:text-primary-wopee hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
               className
             )}
           >

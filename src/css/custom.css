@@ -54,6 +54,7 @@ em {
 
 /* You can override the default Infima variables here. */
 :root {
+  --nav-button-text-color: #fff;
   --ifm-color-primary: #7030a0;
   --ifm-color-primary-dark: #5c2986;
   --ifm-color-primary-darker: #52257a;
@@ -78,6 +79,7 @@ em {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
+  --nav-button-text-color: var(--ifm-color-secondary);
   --ifm-color-primary: #ffcc00;
   --ifm-color-primary-dark: #ffb200;
   --ifm-color-primary-darker: #ffa000;
@@ -100,7 +102,7 @@ em {
 
 /* Navbar Buttons */
 #login-button {
-  width: 7rem;
+  width: 8.5rem;
   cursor: pointer;
   padding: 9px 14px;
   border-radius: 5px;
@@ -115,7 +117,7 @@ em {
 }
 
 #login-button:hover {
-  color: var(--ifm-color-secondary);
+  color: var(--nav-button-text-color);
   background-color: var(--ifm-color-primary-light);
 }
 
@@ -124,7 +126,7 @@ em {
   padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
-  color: var(--ifm-color-secondary);
+  color: var(--nav-button-text-color);
   background-color: var(--ifm-color-primary);
 }
 
