@@ -66,7 +66,7 @@ const PlanComparison = () => {
             className="aspect-square flex justify-center items-center
               "
           >
-            <figure className="text-7xl m-0">🚀</figure>
+            <figure className="text-7xl lg:text-8xl xl:text-9xl m-0">🚀</figure>
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Enterprise
