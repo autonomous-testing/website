@@ -9,6 +9,7 @@ import HomeHowItWorks from "@site/src/components/HomeHowItWorks";
 import HomeConversionForm from "../components/HomeConversionForm";
 
 import styles from "./index.module.css";
+import HomeComparison from "../components/HomeComparison";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
 
 function HomeHeader() {
@@ -22,12 +23,12 @@ function HomeHeader() {
       <div className="container flex flex-col lg:flex-row items-center align-items-center gap-y-10">
         <div className="flex flex-col justify-center items-center gap-y-5">
           <h1 className="mb-4 text-4xl leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
-            <span className="wopee-io">Wopee.io</span>, autonomous testing bots
-            for web apps.
+            The autonomous visual testing tool
           </h1>
 
           <p className="hero__subtitle">
-            Boost your testing team. <br /> Elevate quality & speed up release.
+            Testing doesn't have to be difficult or expensive, it can be simple
+            and autonomous.
           </p>
           <div className="max-w-fit self-center">
             <ButtonPrimary
@@ -55,6 +56,7 @@ export default function Home(): JSX.Element {
     <Layout>
       <HomeHeader />
       <main className="container">
+        <HomeComparison />
         <HomeAbout />
         <HomeSolutions />
         <HomeHowItWorks />
