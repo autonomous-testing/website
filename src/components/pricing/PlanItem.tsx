@@ -7,6 +7,7 @@ import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
 type PlanItem = {
   img: string;
+  icon?: string;
   title: string;
   price: string;
   features: string[];
@@ -59,9 +60,33 @@ export const PlanItems: PlanItem[] = [
       "unlimited projects",
       "unlimited users",
       "unlimited test steps / month ",
-      "on-prem bots",
+      "on-premise bots",
       "priority feature development",
       "30 days data retention",
+    ],
+    featured: false,
+    button: (
+      <Link to="/contact-us">
+        <ButtonGradientOutline
+          className="w-60"
+          label="Contact us"
+        />
+      </Link>
+    ),
+  },
+  {
+    title: "Enterprise",
+    img: null,
+    icon: "🚀",
+    price: "contact us",
+    features: [
+      "individual services",
+      "video traces from testing",
+      "unlimited projects and users",
+      "unlimited test steps / month ",
+      "on-premise bots",
+      "priority feature development",
+      "individual data retention",
     ],
     featured: false,
     button: (
@@ -78,6 +103,7 @@ export const PlanItems: PlanItem[] = [
 export default function PlanItem({
   title,
   img,
+  icon,
   price,
   features,
   featured,
@@ -86,17 +112,24 @@ export default function PlanItem({
   return (
     <div
       className={clsx(
-        "card flex flex-col items-center justify-center gap-5 p-5 shadow-xl",
-        featured ? "relative overflow-hidden scale-105" : ""
+        "card flex flex-col items-center h-[560px] w-[335px] justify-center gap-5 p-5 shadow-xl",
+        featured ? "relative overflow-hidden xl:scale-105" : ""
       )}
     >
       {featured && <Ribbon />}
-      <img
-        src={img}
-        alt="Image alt text"
-        title="Logo Title Text 1"
-        className="object-cover"
-      />
+      {img ? (
+        <img
+          src={img}
+          alt="Image alt text"
+          title="Logo Title Text 1"
+          className="object-cover"
+        />
+      ) : (
+        <figure className="text-9xl flex items-center m-0 h-[163px]">
+          {icon}
+        </figure>
+      )}
+
       <div className="">
         <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
           {title}
@@ -104,7 +137,9 @@ export default function PlanItem({
         <h4 className="text-md xl:text-xl font-bold">
           {price}
           <br />
-          {title !== "Ultimate" && (
+          {title === "Ultimate" || title === "Enterprise" ? (
+            ""
+          ) : (
             <small className="font-normal">per user/month</small>
           )}
         </h4>
