@@ -35,7 +35,7 @@ const config = {
     locales: ["en"],
   },
   plugins: [
-    async function myPlugin(context, options) {
+    async function myPlugin(_context, _options) {
       return {
         name: "docusaurus-tailwindcss",
         configurePostCss(postcssOptions) {
@@ -46,7 +46,7 @@ const config = {
         },
       };
     },
-    function (context, options) {
+    function (_context, _options) {
       return {
         name: "custom-script-plugin",
         injectHtmlTags() {
@@ -73,29 +73,21 @@ const config = {
 
   presets: [
     [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      "@docusaurus/preset-classic",
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/autonomous-testing/wopee.io/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/autonomous-testing/wopee.io/",
-        },
+        blog: {},
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: { trackingID: "G-PVTHWLV51B" },
+        googleTagManager: {
+          containerId: "GTM-T54MTRSZ",
+        },
       },
-
-      // "@docusaurus/preset-classic",
-      // { gtag: { trackingID: "G-PVTHWLV51B" } },
     ],
   ],
 

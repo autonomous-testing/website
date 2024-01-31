@@ -37,7 +37,7 @@ export default function HomeComparison(): JSX.Element {
         {comparisonItems.map((item, index) => (
           <div
             key={index}
-            className="border border-solid border-gray-300 dark:border-gray-700 flex flex-col justify-center items-center aspect-video w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee group transition-all"
+            className="card border border-solid border-gray-300 dark:border-gray-700 flex flex-col justify-center items-center aspect-video w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee group transition-all"
           >
             <p className="flex items-center justify-center">
               <span className="text-2xl">{item.stat}</span>
