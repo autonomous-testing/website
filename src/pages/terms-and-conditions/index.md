@@ -715,7 +715,7 @@ customer machines or via platform test runners.
 
 2.1 Standard plans – paid per month
 
-Our paid plans include Basic, Premium, and Ultimate, along with additional Free and Enterprise options. You can find more information about each plan on our [pricing page](pricing).
+Our paid plans include Basic, Premium, and Ultimate, along with additional Free and Enterprise options. You can find more information about each plan on our [pricing page](/pricing).
 
 2.2 Add-ons
 According to the "Specification of Services" mentioned in the Contract, Provider may offer additional services to the Client which are not included in the Service Packages. These services may include:
