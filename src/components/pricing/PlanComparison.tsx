@@ -105,7 +105,7 @@ const PlanComparison = () => {
 
         <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
-            Coopilots
+            Copilots
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
