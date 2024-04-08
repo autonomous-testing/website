@@ -74,30 +74,6 @@ export const PlanItems: PlanItem[] = [
       </Link>
     ),
   },
-  {
-    title: "Enterprise",
-    img: null,
-    icon: "🚀",
-    price: "contact us",
-    features: [
-      "individual services",
-      "video traces from testing",
-      "unlimited projects and users",
-      "unlimited test steps / month ",
-      "on-premise bots",
-      "priority feature development",
-      "individual data retention",
-    ],
-    featured: false,
-    button: (
-      <Link to="/contact-us">
-        <ButtonGradientOutline
-          className="w-60"
-          label="Contact us"
-        />
-      </Link>
-    ),
-  },
 ];
 
 export default function PlanItem({
