@@ -24,6 +24,7 @@ export function TeamMemberCard({
         <p className="mb-3 text-left">{description}</p>
         <a
           href={linkedIn}
+          target="_blank"
           className="max-w-fit inline-flex gap-1 items-center text-sm font-medium text-center  rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300  dark:focus:ring-blue-800"
         >
           LinkedIn

@@ -1,6 +1,7 @@
 import React from "react";
-import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+
 import Link from "@docusaurus/Link";
+import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
 const CheckIcon = () => (
   <svg
@@ -26,7 +27,7 @@ const PlanComparison = () => {
         Plan comparison
       </h4>
 
-      <div className="grid grid-cols-5 mb-5">
+      <div className="grid grid-cols-4 mb-5">
         <div className="col-span-1"></div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
@@ -61,49 +62,35 @@ const PlanComparison = () => {
             Ultimate
           </h5>
         </div>
-        <div className="col-span-1">
-          <div
-            className="aspect-square flex justify-center items-center
-              "
-          >
-            <figure className="text-7xl lg:text-8xl xl:text-9xl m-0">🚀</figure>
-          </div>
-          <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-            Enterprise
-          </h5>
-        </div>
 
-        <div className="col-span-5 grid grid-cols-5 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="text-left text-sm font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Projects
           </h5>
           <p>1</p>
           <p>3</p>
           <p>Unlimited</p>
-          <p>Unlimited</p>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Users
           </h5>
           <p>3</p>
           <p>5</p>
           <p>Unlimited</p>
-          <p>Unlimited</p>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5 ">
+        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5 ">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Data retention
           </h5>
           <p>14 days</p>
           <p>30 days</p>
-          <p>30 days</p>
           <p>Individual</p>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Copilots
           </h5>
@@ -116,72 +103,62 @@ const PlanComparison = () => {
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
-          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-            <CheckIcon />
-          </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7 underline">
             On-prem testing
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-            <CheckIcon />
-          </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             On-prem testing
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             CI/CD Integration
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Videos and traces from testing
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             On-boarding assistance
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Priority feature development
           </h5>
@@ -190,46 +167,40 @@ const PlanComparison = () => {
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
-          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-            <CheckIcon />
-          </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Custom feature development
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Custom integration
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7 underline">
             Support
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Email
           </h5>
@@ -242,12 +213,9 @@ const PlanComparison = () => {
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
-          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-            <CheckIcon />
-          </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             GH Discussions
           </h5>
@@ -260,16 +228,12 @@ const PlanComparison = () => {
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
           </span>
-          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-            <CheckIcon />
-          </span>
         </div>
 
-        <div className="col-span-5 grid grid-cols-5 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Workshops
           </h5>
-          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
