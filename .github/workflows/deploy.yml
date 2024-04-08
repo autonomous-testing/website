@@ -30,11 +30,12 @@ jobs:
           node-version: 18
           # cache: yarn
 
-      - name: If repo is website-prod replace text website.wopee.io to wopee.io
+      - name: If repo is website-prod replace text website.wopee.io to wopee.io and remove robots.txt
         if: github.repository == 'autonomous-testing/website-prod'
         run: |
           sed -i 's/website.wopee.io/wopee.io/g' ./CNAME
           sed -i 's/website.wopee.io/wopee.io/g' ./docusaurus.config.js
+          rm -rf ./static/robots.txt
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
