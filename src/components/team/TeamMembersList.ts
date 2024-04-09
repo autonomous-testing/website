@@ -34,7 +34,7 @@ export const TeamMemberList: TeamMember[] = [
     name: "Šota Giorgadze",
     img: require("@site/static/img/team/shota.jpg").default,
     description:
-      "World's fastest growing (self proclaimed title), full-stack developer",
+      "World's fastest growing (self proclaimed title) full-stack developer",
     linkedIn: "https://www.linkedin.com/in/sota-giorgadze/",
   },
 ];
