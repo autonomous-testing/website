@@ -105,19 +105,13 @@ const config = {
         },
         items: [
           {
-            to: "/",
-            label: "Home",
-            position: "left",
-          },
-          {
             type: "dropdown",
             to: "/#solutions",
             label: "Solutions",
             position: "left",
             items: [
-              { to: "/wopee-bot", label: "Wopee Bot" },
-              { to: "/wopee-commander", label: "Wopee Commander" },
-              { to: "/wopee-copilot", label: "Wopee Copilot" },
+              { to: "/bot", label: "Bot" },
+              { to: "/integrations", label: "Integrations" },
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
@@ -156,9 +150,8 @@ const config = {
           {
             title: "Solutions",
             items: [
-              { label: "Wopee Bot", to: "/wopee-bot" },
-              { label: "Wopee Copilot", to: "/wopee-copilot" },
-              { label: "Wopee Commander", to: "/wopee-commander" },
+              { label: "Bot", to: "/bot" },
+              { label: "Integrations", to: "/integrations" },
             ],
           },
           {
@@ -172,10 +165,10 @@ const config = {
                 label: "Meetup",
                 href: "https://www.meetup.com/wopee-io/",
               },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/Wopee_io",
-              },
+              // {
+              //   label: "Twitter",
+              //   href: "https://twitter.com/Wopee_io",
+              // },
             ],
           },
           {

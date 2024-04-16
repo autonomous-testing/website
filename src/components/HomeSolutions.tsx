@@ -2,6 +2,9 @@ import React from "react";
 
 import Link from "@docusaurus/Link";
 import ButtonGhost from "./buttons/ButtonGhost";
+import Icon from '@mdi/react';
+import { mdiRobotOutline } from '@mdi/js';
+import { mdiFileCodeOutline } from '@mdi/js';
 
 const LinkIcon = () => (
   <svg
@@ -24,78 +27,72 @@ export default function HomepageHowItWorks(): JSX.Element {
   return (
     <section
       id="solutions"
-      className="mt-16 md:mt-20 text-center"
+      className="mt-16 md:mt-20"
     >
       <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
-        Solutions
+        Solution: Autonomous testing
       </h2>
-      <p className="text-md text-center md:text-center md:text-xl xl:text-2xl">
-        Wopee.io increases your efficiency and removes testing waste.
-      </p>
 
       <div className="flex flex-col sm:flex-row gap-5 mt-3 md:mt-5">
         <div className="card flex flex-1 p-5 md:p-10 justify-between gap-5 shadow-lg">
           <div className="flex flex-col gap-5">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              <Link to="/wopee-copilot">
+              <Link to="/bot">
                 <span className="flex items-center justify-center gap-1">
-                  Visual Testing Copilot <LinkIcon />
+                  Bot <LinkIcon />
                 </span>
               </Link>
             </h3>
-            <p className="text-sm md:text-lg xl:text-xl">
-              Use your existing automated tests and boost its efficiency.
+            <p className="text-sm md:text-lg xl:text-xl text-center">
+              Provide just url of your Web App. Let the bot do the rest.
             </p>
-            <p className="text-sm md:text-lg xl:text-xl">
-              We have simple plug &amp; play solutions ready for your existing
-              Selenium, Playwright, Cypress.io and Robot Framework testing
-              projects. If you use some other tools, we are also ready to build
-              special assistants just for you! ❤️{" "}
-              <Link to="/wopee-copilot">
-                <small className="opacity-95 inline-flex items-center">
+            <div className="flex justify-center">
+              <Icon path={mdiRobotOutline} size={8} />
+            </div>
+            <ol className="text-sm md:text-lg xl:text-xl">
+              <li>Bot will <strong>learn</strong> your Web App.</li>
+              <li>Bot will <strong>generate</strong> the test scenarios.</li>
+              <li>Bot will <strong>execute</strong> the tests.</li>
+              <li>Wopee.io will <strong>identify</strong> an unexpected stuff.</li>
+            </ol>
+            <p className="text-sm md:text-lg xl:text-xl text-center">
+              That simple it is.&nbsp;&nbsp;
+              <Link to="/bot">
                   Read more..
-                </small>
               </Link>
             </p>
           </div>
-          <Link
-            to="/book-demo"
-            className="max-w-fit self-center"
-          >
-            <ButtonGhost />
-          </Link>
         </div>
 
         <div className="card flex flex-1 p-5 md:p-10 justify-between gap-5 shadow-lg">
           <div className="flex flex-col gap-5">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              <Link to="/wopee-bot">
+              <Link to="/integrations">
                 <span className="flex items-center justify-center gap-1">
-                  Autonomous Testing Bot <LinkIcon />
+                  Integrations<LinkIcon />
                 </span>
               </Link>
             </h3>
-            <p className="text-sm md:text-lg xl:text-xl">
-              Independent testing bot, no automation required.
+            <p className="text-sm md:text-lg xl:text-xl text-center">
+              Already have automated tests? <br/>
+              Cypress.io / Playwright / Robot&nbsp;Framework / WebDriverIO / Selenium?
             </p>
-            <p className="text-sm md:text-lg xl:text-xl">
-              Our bots explore your Web App, learn how it works and it is ready
-              for testing. Sometimes it is not human to ask humans to test
-              (running regression testing ... especially several times a
-              week/day, running it on many configurations, etc.){" "}
-              <Link to="/wopee-bot">
-                <small className="opacity-95 inline-flex items-center">
+            <div className="flex justify-center">
+              <Icon path={mdiFileCodeOutline} size={8} />
+            </div>
+            <ol className="text-sm md:text-lg xl:text-xl">
+              <li>Keep your existing tests as they are.</li>
+              <li>Add single library & simple config.</li>
+              <li>Run your tests as you do.</li>
+              <li>Wopee.io will <strong>identify</strong> an unexpected stuff.</li>
+            </ol>
+            <p className="text-sm md:text-lg xl:text-xl text-center">
+              Enable the integration.&nbsp;&nbsp;
+              <Link to="/integrations">
                   Read more..
-                </small>
               </Link>
             </p>
           </div>
-          <Link
-            to="/book-demo"
-            className="max-w-fit self-center"
-          >
-            <ButtonGhost />
-          </Link>
         </div>
       </div>
     </section>

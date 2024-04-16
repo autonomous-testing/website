@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,800;1,400;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap");
 
 /* Scroll setup and behavior */
 html {
@@ -25,6 +25,7 @@ h4,
 h5,
 h6 {
   font-family: "Rubik", sans-serif;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -39,7 +40,11 @@ p {
 }
 
 em {
-  font-weight: 800;
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 600;
 }
 
 .wopee-io::first-letter {

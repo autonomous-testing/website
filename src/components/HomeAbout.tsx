@@ -12,7 +12,7 @@ export default function HomepageAbout(): JSX.Element {
       className="mt-5 md:mt-10"
     >
       <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee mb-3">
-        What's the problem?
+        Problem: Regression testing
       </h2>
 
       <div className="card flex flex-col lg:flex-row shadow-xl">

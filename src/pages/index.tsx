@@ -23,20 +23,20 @@ function HomeHeader() {
       <div className="container flex flex-col lg:flex-row items-center align-items-center gap-y-10">
         <div className="flex flex-col justify-center items-center gap-y-5">
           <h1 className="mb-4 text-4xl leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-primary-wopee text-secondary-wopee">
-            The autonomous visual testing tool
+            » Boost your testing
           </h1>
 
           <p className="hero__subtitle">
-            Testing doesn't have to be difficult or expensive, it can be simple
-            and autonomous.
-          </p>
-          <div className="max-w-fit self-center">
-            <ButtonPrimary
+            Repetitive work is for bots. <br/>
+            Repetitive work is for bots. <br/>
+            Repetitive work is for bots. <br/>
+            ... <br/>
+            Unlock yourslef 🚀 and <ButtonPrimary
               label="Try free for 1 month"
               href="https://cmd.wopee.io"
               className="w-60 h-[50px]"
             />
-          </div>
+          </p>
         </div>
 
         <div className={clsx("flex justify-center")}>

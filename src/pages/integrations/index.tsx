@@ -28,7 +28,7 @@ const supportedTestingTools = [
   },
 ];
 
-const WopeeCopilotPage = () => {
+const WopeeIntegrationsPage = () => {
   const [open, setOpen] = useState(false);
   const [chosenImageSrc, setChosenImageSrc] = useState(null);
 
@@ -38,13 +38,13 @@ const WopeeCopilotPage = () => {
     <Layout>
       <main className="mt-8 mb-16 container">
         <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
-          Visual Testing Copilot
+          Visual Testing Integrations
         </h2>
 
         <div className="text-justify flex flex-col gap-5 xl:gap-20 my-10 mx-auto">
           <div className="flex flex-col gap-10 items-center">
             <p className="flex-1 xl:text-xl">
-              Elevate your automated testing with our Visual Testing Copilot –
+              Elevate your automated testing with our Visual Testing Integrations –
               the ultimate solution for seamless visual testing validation. With
               effortless integration that won't disrupt your current scenarios,
               our tool takes your testing strategy to new heights. Simply
@@ -55,7 +55,7 @@ const WopeeCopilotPage = () => {
 
             <div className="flex flex-1 flex-col gap-5">
               <h4 className="xl:text-2xl text-secondary-wopee dark:text-primary-wopee">
-                Benefits by incorporating our Visual Testing Copilot into your
+                Benefits by incorporating our Visual Testing Integrations into your
                 workflow:
               </h4>
               <div className="xl:text-xl">
@@ -70,7 +70,7 @@ const WopeeCopilotPage = () => {
                     <span className="font-bold">
                       Simplify Automation for Complexity:
                     </span>{" "}
-                    Tackle intricate features with ease. Our Copilot simplifies
+                    Tackle intricate features with ease. Our Integrations simplifies
                     the automation of even the most complex functionalities,
                     streamlining your testing process.
                   </li>
@@ -87,7 +87,7 @@ const WopeeCopilotPage = () => {
                       Boost Testing Team Efficiency:
                     </span>{" "}
                     Foster seamless collaboration among your team members. Our
-                    Visual Testing Copilot enhances teamwork, making it easier
+                    Visual Testing Integrations enhances teamwork, making it easier
                     for your testing team to work together efficiently.
                   </li>
                 </ul>
@@ -138,7 +138,7 @@ const WopeeCopilotPage = () => {
           <div className="my-2 text-center flex flex-col gap-5">
             <div>
               <h4 className="text-lg font-semibold opacity-90">
-                Why should I choose Wopee Copilot over a DIY approach to build
+                Why should I choose Wopee.io Integrations over a DIY approach to build
                 my visual testing solution?
               </h4>
               <p>
@@ -158,10 +158,10 @@ const WopeeCopilotPage = () => {
 
             <div>
               <h4 className="text-lg font-semibold opacity-90">
-                What frameworks does Wopee Copilot support?
+                What frameworks does Wopee.io Integrations support?
               </h4>
               <p>
-                Wopee Copilot seamlessly integrates with the modern web testing
+                Wopee.io Integrations seamlessly integrates with the modern web testing
                 frameworks for quick and straightforward implementation. Our
                 current support includes popular frameworks such as Cypress.io,
                 Playwright, Selenium, Robot Framework, Webdriver.io, with
@@ -199,7 +199,7 @@ const WopeeCopilotPage = () => {
                 How can I exclude specific areas in the image during the
                 comparison process?
               </h4>
-              <p>Wopee Copilot offers two options for excluding areas:</p>
+              <p>Wopee.io Integrations offers two options for excluding areas:</p>
               <p>
                 a. Low code: Utilize selectors from your framework to precisely
                 specify which areas should be ignored.
@@ -225,4 +225,4 @@ const WopeeCopilotPage = () => {
     </Layout>
   );
 };
-export default WopeeCopilotPage;
+export default WopeeIntegrationsPage;
