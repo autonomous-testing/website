@@ -28,11 +28,11 @@ export default function HomepageHowItWorks(): JSX.Element {
 
           <div>
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              1. Set up bot execution
+              1. Simple bot setup
             </h3>
             <p className="text-sm md:text-base xl:text-xl">
-              Enabling all client's needs for autonomous testing. Easy to use
-              interface.
+              Enabling all of your needs for autonomous testing with an easy to
+              use interface.
             </p>
           </div>
         </div>
@@ -47,11 +47,11 @@ export default function HomepageHowItWorks(): JSX.Element {
 
           <div>
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              2. Teach bot test
+              2. Bot studies, generates tests
             </h3>
             <p className="text-sm md:text-base xl:text-xl">
-              Gets more regression testing with same resources. Automatically
-              validates application functionality.
+              More regression testing using same resources. Automatic
+              application functionality validation.
             </p>
           </div>
         </div>
@@ -66,11 +66,12 @@ export default function HomepageHowItWorks(): JSX.Element {
 
           <div>
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              3. Monitor testing results
+              3. Monitor test results
             </h3>
             <p className="text-sm md:text-base xl:text-xl">
-              Finds most relevant bugs always and quickly. No scripting required
-              and mild learning curve.
+              Most relevant bugs are found in a reliable and quick manner. No
+              scripting is required, just a mild learning curve to get yourself
+              familiar with our tools.
             </p>
           </div>
         </div>
