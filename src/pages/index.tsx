@@ -27,14 +27,15 @@ function HomeHeader() {
           </h1>
 
           <p className="hero__subtitle">
-            Repetitive work is for bots. <br/>
-            Repetitive work is for bots. <br/>
-            Repetitive work is for bots. <br/>
-            ... <br/>
-            Unlock yourslef 🚀 and <ButtonPrimary
+            Repetitive work is for bots. <br />
+            Repetitive work is for bots. <br />
+            Repetitive work is for bots. <br />
+            ... <br />
+            Unleash your potential 🚀 and
+            <ButtonPrimary
               label="Try free for 1 month"
               href="https://cmd.wopee.io"
-              className="w-60 h-[50px]"
+              className="w-60 h-[50px] ml-3"
             />
           </p>
         </div>
