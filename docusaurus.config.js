@@ -79,7 +79,9 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/autonomous-testing/wopee.io/",
         },
-        blog: {},
+        blog: {
+          exclude: ["**/blog/2019*"],
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
