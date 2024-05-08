@@ -3,7 +3,7 @@ slug: what-is-automated-web-app-testing-and-how-to-do-it-right
 title: What is Automated Web App Testing and How to do it Right?
 authors: marcel
 tags: [basics, testing-tools, playwright, selenium, test-automation]
-image: https://i.imgur.com/mErPwqL.png
+image: ./web-app-testing.jpg
 ---
 
 In the fast-paced world of software development, ensuring the quality of web applications is essential. Manual testing, while valuable, often falls short in terms of speed, scalability, and repeatability. This is where automated web app testing comes into play. By leveraging automation tools and techniques, testers can streamline the testing process, enhance testing efficiency, and ensure the reliability of web applications.
