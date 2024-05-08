@@ -330,4 +330,4 @@ Moreover, Playwright's cross-browser compatibility and flexible visual testing s
 As you embark on your journey with Playwright visual testing, remember to leverage advanced techniques like visual testing with different viewports, layout inspections, and visual regression detection to ensure the highest level of quality for your web applications.
 
 What’s your experience?
-We would love to hear about your experience with Playwright visual testing and how you have scaled it up in your projects. Please share your insights with us on our Wopee.io discussion page! Your feedback and experiences are invaluable to the testing community.
+We would love to hear about your experience with Playwright visual testing and how you have scaled it up in your projects. Please share your insights with us on our [Wopee.io discussion page](https://github.com/orgs/Wopee-io/discussions)! Your feedback and experiences are invaluable to the testing community.
