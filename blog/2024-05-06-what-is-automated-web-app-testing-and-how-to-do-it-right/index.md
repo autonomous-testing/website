@@ -1,6 +1,6 @@
 ---
-slug: what-is-automated-web-app-testing-and-how-to-do-it-right
-title: What is Automated Web App Testing and How to do it Right?
+slug: automated-web-app-testing-and-how-to-do-it-right
+title: Automated Web App Testing and How to do it Right?
 authors: marcel
 tags: [basics, testing-tools, playwright, selenium, test-automation]
 image: ./web-app-testing.jpg
@@ -11,6 +11,7 @@ In the fast-paced world of software development, ensuring the quality of web app
 <!--truncate-->
 
 ![Web App Testing](./web-app-testing.jpg)
+_Source: pixabay.com._
 
 ## 1. Understanding Automated Web App Testing
 

@@ -11,6 +11,7 @@ Applications are continually developed and updated to meet market demands at eno
 <!--truncate-->
 
 ![9 Benefits of Automated Web App Testing](./web-app-test-automation-benefits.png)
+_Source: Wopee.io powered by Leonardo.ai._
 
 The efficiency of testing becomes critical to ensure the timely and reliable release of high-quality software. Manual testing methods, although reliable, struggle to keep up with the pace of development, leading to delays and potential quality issues. However, test automation offers a promising solution to this challenge, provided it's implemented correctly. In this article, we'll delve into the various benefits of automated web app testing:
 
