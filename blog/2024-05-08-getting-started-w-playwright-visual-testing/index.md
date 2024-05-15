@@ -11,6 +11,7 @@ Visual testing has become an essential component of modern web development. By e
 <!--truncate-->
 
 ![Getting Started with Playwright Visual Testing](./intro-to-pw-visual-testing.png)
+_Source: Wopee.io internal materials._
 
 ## 1. What is Playwright?
 
@@ -120,6 +121,7 @@ npx playwright show-report
 When a visual bug is detected, the Playwright standard report is automatically opened and provides various views to analyze identified difference:
 
 ![Playwright Standard Comparison Report Example](./report-example.png)
+_Source: Wopee.io._
 
 ### 6. Using More Advanced (still simple) Options
 
@@ -158,7 +160,7 @@ test("Gallery page - visual test", async ({ page }) => {
 
 ## 4. Advanced Playwright Visual Testing Opportunities
 
-The Playwright offers goes beyond basic visual testing, offering advanced opportunities for comprehensive visual coverage:
+Playwright offers goes beyond basic visual testing, offering advanced opportunities for comprehensive visual coverage:
 
 - **Visual Testing with Different Viewports:** Test your application's visual fidelity across various screen sizes and devices by simulating different viewports during test execution.
 - **Testing on Emulated Devices:** By leveraging Playwright's device emulation capabilities, you can simulate how your application renders and behaves on popular devices like iPhones, iPads, Android smartphones, and tablets. This allows you to identify any device-specific issues and ensure a consistent user experience across different platforms.
@@ -170,7 +172,7 @@ The Playwright offers goes beyond basic visual testing, offering advanced opport
 
 ## 5. Challenges While Scaling Up Visual Testing with Playwright
 
-As your success grows with your visual testing strategy, it becomes increasingly crucial to adhere to best practices and effectively address challenges. In the following section, I am briefly covering the most common one.
+As your success grows with your visual testing strategy, it becomes increasingly crucial to adhere to best practices and effectively address challenges. In the following section, I will briefly cover the most common one.
 
 ### 1. Baseline Management Overhead
 
@@ -229,10 +231,13 @@ By understanding these challenges and implementing appropriate strategies, you c
 
 Integrate your Playwright tests into your CI/CD pipeline to automate visual testing alongside other test types. Playwright also integrates seamlessly with various visual testing libraries like Applitools, Percy or Wopee.io.
 
-## 6. Where Wopee.io want to help
+## 6. Where Wopee.io will help
 
 To tackle the difficulties mentioned in the previous chapter, numerous teams chose to create their solution. However, developing and maintaining such solutions is a time-consuming task and they often become obsolete when their creator leaves the team.
 Our autonomous testing platform provides similar features to these homegrown solutions. To help you better understand the benefits of integrating your tests with Wopee.io, we have provided a simple comparison below.
+
+![Wopee.io vs. Homegrown Solution](./comparison-wopee-w-pw.png)
+_Source: Wopee.io._
 
 :::tip
 
@@ -242,9 +247,9 @@ Use our [ready-made repository](https://github.com/autonomous-testing/ws-getting
 
 ### 1. Installing Playwright and Wopee.io
 
-Install Playwright and Wopee.io by using npm. Here are steps to do so:
+Install Playwright and Wopee.io by using npm. Here are the steps below:
 
-- Create GitHub token: Our package to integrate Wopee.io with Playwright is published on GitHub. You’ll need to set up your GitHub user token first to be able to download it. To do so, navigate to GihHub > user avatar icon > Settings > Developer settings > Personal access token > Tokens (classic) > Generate new token, or just navigate to the following link: https://github.com/settings/tokens/new and create a new token with `read:packages` right allowed.
+- Create GitHub token: Our package to integrate Wopee.io with Playwright is published on GitHub. You’ll need to set up your GitHub user token first to be able to download it. To do so, navigate to GihHub > user avatar icon > Settings > Developer settings > Personal access token > Tokens (classic) > [Generate new token](https://github.com/settings/tokens/new) and create a new token with `read:packages` right allowed.
 - Set up environment variable: `export GITHUB_TOKEN=your_github_token`
 - Create `.npmrc` file with following content:
 
@@ -270,7 +275,7 @@ npm i @wopee-io/wopee.pw
 
 ### 2. Your first test
 
-To run your first test it is good to understand some basic concepts of how Wopee.io works. Use startSuite to create a suite where your test results from test execution will be stored. In case the test suite name already exists it will be used instead of creating a new. Use startScenario to create a new test where all your baselines will be created. To test against specific baseline use trackFullPageScreenshot.
+To run your first test, it is good to understand some basic concepts of how Wopee.io works. Use `startSuite` to create a suite where your test results from test execution will be stored. In case the test suite name already exists, it will be used instead of creating a new one. Use `startScenario` to create a new test where all your baselines will be created. To test against specific baseline use `trackFullPageScreenshot`.
 
 The entire simple test could look like this:
 
@@ -300,14 +305,14 @@ test.describe("Example w. Wopee.io", () => {
 
 ### 3. Running Tests and Baseline Management
 
-When you run your tests for the first time, they will NOT fail as in the case of running it with a basic Playwright setup however you will see warnings in the terminal with a link guiding you to the new baselines which should be reviewed and approved if there are visually correct.
-The same command as for basic Playwright visual testing can be used to run tests:
+When you run your tests for the first time, they will NOT fail as with a basic Playwright setup. However, you will see warnings in the terminal with a link guiding you to the new baselines. These baselines should be reviewed and approved if they are visually correct.
+The same command for basic Playwright visual testing can be used to run tests:
 
 ```bash
 npx playwright test
 ```
 
-All baselines are now stored and maintained (approved or rejected) in commander (cmd.wopee.io). This increases the efficiency of your visual testing by providing one single source of truth for the entire team. Tracking history and versions is now simpler and more efficient, with the added capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
+All baselines are now stored and maintained (approved or rejected) in Commander ([cmd.wopee.io](https://cmd.wopee.io/)). This enhances the efficiency of your visual testing by offering a single source of truth for the entire team. Tracking history and versions is now more straightforward and efficient, with the additional capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
 
 ### 4. Using More Advanced (still simple) Options
 
@@ -321,7 +326,7 @@ For a few more ideas explore [more examples](https://github.com/autonomous-testi
 
 ## 7. Conclusion
 
-In the fast-paced world of web development, visual testing has emerged as a critical component for ensuring the quality and consistency of web applications. However, traditional approaches to visual testing often fall short in terms of efficiency, speed, and simplicity, leading to increased testing overhead and maintenance efforts. This is where Playwright comes in, offering a helpfull solution that addresses these challenges head-on.
+In the fast-paced world of web development, visual testing has emerged as a critical component for ensuring the quality and consistency of web applications. However, traditional approaches to visual testing often fall short in terms of efficiency, speed, and simplicity, leading to increased testing overhead and maintenance efforts. This is where Playwright comes in, offering a helpful solution that addresses these challenges head-on.
 
 With Playwright, testers can automate the entire visual testing process, from capturing screenshots to comparing them against baselines, saving significant time and resources. Its unified framework combines functional, integration, and visual testing into a single toolset, streamlining test maintenance and reducing complexity.
 

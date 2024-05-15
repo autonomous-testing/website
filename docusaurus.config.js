@@ -190,6 +190,10 @@ const config = {
             title: "More",
             items: [
               {
+                label: "Blog",
+                href: "/blog",
+              },
+              {
                 label: "GitHub",
                 href: "https://github.com/Wopee-io",
               },
