@@ -114,7 +114,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               </Link>
 
               <ol className="text-sm md:text-lg xl:text-xl">
-                <li>Keep your existing tests as they are.</li>
+                <li>Keep your own <strong>existing</strong> automated tests as they are.</li>
                 <li>Add a single library & apply a simple configuration.</li>
                 <li>Run your tests as you usually do.</li>
                 <li>
