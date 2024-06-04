@@ -14,9 +14,7 @@ Two years ago, Gartner forecasted a **30% growth in adopting autonomous testing*
 
 In 1979, Glenford J. Myers introduced the concept of separating debugging from testing. He focused on breakage testing, stating, "A successful test case detects an as-yet undiscovered error." This highlighted the software engineering community's desire to separate essential development activities, such as debugging, from verification. Over the past few decades, our industry has been searching for new ways to enhance the efficiency of all testing activities. We have progressed from manual testing to automated testing, and more recently, there has been discussion about autonomous testing.
 
-import Cat from './testing-journey.png';
-
-<img src={Cat} alt="Journey into better testing" style={{width: "80%"}}/>
+![Journey into better testing](./testing-journey.png)
 
 _Source: Wopee.io._
 
@@ -50,7 +48,9 @@ Cypress.io is a comprehensive end-to-end (E2E) testing framework for web applica
 
 Playwright is a cutting-edge E2E testing framework developed by Microsoft. It supports multiple browsers (Chromium, Firefox, and WebKit) and is designed for modern web application testing. Playwright allows for seamless parallel testing, handles multiple contexts for efficient testing, and offers network interception and geolocation testing. Like Cypress, it provides an intuitive API and robust support for debugging and automation.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GGNPv-6stCU?si=aJugu7B-Tcp7hHal" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/GGNPv-6stCU?si=aJugu7B-Tcp7hHal" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ### Robot Framework
 
@@ -171,13 +171,19 @@ See the following example (both will pass with an assertion to validate the text
 
 a. Correct behavior – test passed
 
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+
 ![Check out - OK](./check-out-ok.png)
+
+</div>
 
 _Source: Wopee.io._
 
 b. Incorrect behavior – test passed
 
+<div style={{ display: 'flex', justifyContent: 'center' }}>
 ![Check out - NOK](./check-out-nok.png)
+</div>
 
 _Source: Wopee.io._
 
@@ -406,25 +412,27 @@ Console should not contain warnings
 
 **1. Increase Test Automation Coverage:** Visual validation extends your test coverage by ensuring that the UI renders correctly for users. This approach can catch visual defects that might be missed by functional tests alone. On the following picture, you can see a comparison of two check-out pages. The first one is the correct one, and the second one is incorrect. With traditional functional tests, both pages would pass the test, but with visual validation, the second page would fail.
 
-import CheckOutComparison from './check-out-comparison.png';
+<div style={{ display: 'flex', justifyContent: 'center' }}>
 
-<img src={CheckOutComparison} alt="Increase Test Automation Coverage" style={{width: "50%"}}/>
+![Increase Test Automation Coverage](./check-out-comparison.png)
 
-_Source: Wopee.io._
+</div>
+
+_Source: Wopee.io - stripe demo app._
 
 **2. Reduce Coding:** Automating visual checks reduces the amount of code needed for UI validations, streamlining your test suite and making it easier to maintain. Visual assertions can simplify complex validation scenarios, such as ensuring that a UI element appears correctly after a series of interactions. On the following picture, you can see an example of how visual validation can reduce coding.
 
-import LessCode from './less-code.png';
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+![Reduce Coding](./less-code.png)
+</div>
 
-<img src={LessCode} alt="Reduce Coding" style={{width: "80%"}}/>
-
-_Source: Wopee.io._
+_Source: Wopee.io - kvelektro.cz._
 
 **3. Simplify Complex Assertions:** Visual assertions can simplify complex validation scenarios, such as ensuring that a UI element appears correctly after a series of interactions. This simplification can improve test reliability and reduce maintenance overhead. On the following picture, there is an example of nice reach UI which can be easily validated with visual validation. Traditional functional tests would require a lot of code to validate this UI.
 
 ![Simplify Complex Assertions](./complex-ui.png)
 
-_Source: Wopee.io._
+_Source: tatrabanka.sk - internet banking demo ._
 
 ### When Visual Testing might NOT be ideal
 
@@ -655,7 +663,9 @@ We are using OpenAI model in our examples however this approach works with any L
 
 import HowTheMagicWorks from './how-the-magic-works.png';
 
+<div style={{ display: 'flex', justifyContent: 'center' }}>
 <img src={HowTheMagicWorks} alt="How the 'magic' works" style={{width: "60%"}}/>
+</div>
 
 ### Demo: Autonomous form filling
 
