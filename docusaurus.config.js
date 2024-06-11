@@ -141,6 +141,14 @@ const config = {
         style: "dark",
         links: [
           {
+            title: "Subscribe to our Newsletter",
+            items: [
+              {
+                html: `<div id="newsletter-form-container">Newsletter</div>`,
+              },
+            ],
+          },
+          {
             title: "Docs",
             items: [
               {
