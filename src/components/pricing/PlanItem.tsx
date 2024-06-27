@@ -20,13 +20,7 @@ export const PlanItems: PlanItem[] = [
     title: "Basic",
     img: require("@site/static/img/pricing/premium.png").default,
     price: "79 €",
-    features: [
-      "1 project",
-      "3 users",
-      "10.000 test steps / month",
-      "1 dedicated bot",
-      "14 days data retention",
-    ],
+    features: ["10.000 test steps / month"],
     featured: false,
     button: (
       <Link to="https://cmd.wopee.io">
@@ -38,13 +32,7 @@ export const PlanItems: PlanItem[] = [
     title: "Premium",
     img: require("@site/static/img/pricing/ultimate.png").default,
     price: "179 €",
-    features: [
-      "3 projects",
-      "5 users",
-      "100.000 test steps / month",
-      "3 dedicated bots",
-      "30 days data retention",
-    ],
+    features: ["100.000 test steps / month"],
     featured: true,
     button: (
       <Link to="https://cmd.wopee.io">
@@ -57,20 +45,13 @@ export const PlanItems: PlanItem[] = [
     img: require("@site/static/img/pricing/addons.png").default,
     price: "contact us",
     features: [
-      "unlimited projects",
-      "unlimited users",
-      "unlimited test steps / month ",
+      "unlimited test steps ",
       "on-premise bots",
-      "priority feature development",
-      "30 days data retention",
     ],
     featured: false,
     button: (
       <Link to="/contact-us">
-        <ButtonGradientOutline
-          className="w-60"
-          label="Contact us"
-        />
+        <ButtonGradientOutline className="w-60" label="Contact us" />
       </Link>
     ),
   },

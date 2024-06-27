@@ -31,10 +31,7 @@ const PlanComparison = () => {
         <div className="col-span-1"></div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/pricing/premium.png"
-              alt="Basic plan"
-            />
+            <img src="/img/pricing/premium.png" alt="Basic plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Basic
@@ -42,10 +39,7 @@ const PlanComparison = () => {
         </div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/pricing/ultimate.png"
-              alt="Premium plan"
-            />
+            <img src="/img/pricing/ultimate.png" alt="Premium plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Premium
@@ -53,10 +47,7 @@ const PlanComparison = () => {
         </div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/pricing/addons.png"
-              alt="Ultimate plan"
-            />
+            <img src="/img/pricing/addons.png" alt="Ultimate plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Ultimate
@@ -65,34 +56,70 @@ const PlanComparison = () => {
 
         <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
           <h5 className="text-left text-sm font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
-            Projects
+            Test steps
           </h5>
-          <p>1</p>
-          <p>3</p>
+          <p>10.000 / month</p>
+          <p>100.000 / month</p>
           <p>Unlimited</p>
-        </div>
-
-        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
-            Users
-          </h5>
-          <p>3</p>
-          <p>5</p>
-          <p>Unlimited</p>
-        </div>
-
-        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5 ">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
-            Data retention
-          </h5>
-          <p>14 days</p>
-          <p>30 days</p>
-          <p>Individual</p>
         </div>
 
         <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
           <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Integrations
+          </h5>
+          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
+          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
+          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20  bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+          <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            Cypress
+          </h5>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+          <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            Playwright
+          </h5>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20  bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
+          <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            Robot Framework
+          </h5>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+          <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
+            <CheckIcon />
+          </span>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+          <h5 className="pl-4 text-left text-sm text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            WebdriverIO
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
             <CheckIcon />
@@ -106,7 +133,7 @@ const PlanComparison = () => {
         </div>
 
         <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7 underline">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             On-prem testing
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
@@ -192,7 +219,7 @@ const PlanComparison = () => {
         </div>
 
         <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5">
-          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7 underline">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Support
           </h5>
           <span className="text-secondary-wopee dark:text-primary-wopee"></span>
