@@ -58,9 +58,29 @@ const PlanComparison = () => {
           <h5 className="text-left text-sm font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
             Test steps
           </h5>
-          <p>10.000 / month</p>
-          <p>100.000 / month</p>
+          <p>10.000 / month / user</p>
+          <p>100.000 / month / user</p>
           <p>Unlimited</p>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            Parallel test runs
+          </h5>
+          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
+          <span className="text-secondary-wopee dark:text-primary-wopee"></span>
+          <span className="text-secondary-wopee dark:text-primary-wopee">
+            <CheckIcon />
+          </span>
+        </div>
+
+        <div className="col-span-4 grid grid-cols-4 text-sm py-1 items-center rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20 bg-secondary-wopee bg-opacity-5 dark:bg-primary-wopee dark:bg-opacity-5 ">
+          <h5 className="text-left text-sm  font-bold text-secondary-wopee dark:text-primary-wopee text-opacity-90 dark:text-opacity-90 ml-7">
+            Data retention
+          </h5>
+          <p>30 days</p>
+          <p>30 days</p>
+          <p>Individual</p>
         </div>
 
         <div className="col-span-4 grid grid-cols-4 items-center py-1 rounded-md hover:bg-secondary-wopee hover:bg-opacity-20 hover:dark:bg-primary-wopee hover:dark:bg-opacity-20">
