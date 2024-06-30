@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-type PlanComparisonRowProps = {
+export type PlanComparisonRowProps = {
   feature: string;
   subFeature?: boolean;
   background?: boolean;
@@ -53,29 +53,38 @@ const PlanComparisonRow = ({
         {feature}
       </h5>
 
-      {basic === "Check" ? (
-        <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-          <CheckIcon />
-        </span>
-      ) : (
-        <p>{basic}</p>
-      )}
+      <span
+        className={clsx(
+          "",
+          basic === "Check"
+            ? "text-secondary-wopee dark:text-primary-wopee flex items-center justify-center"
+            : ""
+        )}
+      >
+        {basic === "Check" ? <CheckIcon /> : basic}
+      </span>
 
-      {premium === "Check" ? (
-        <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-          <CheckIcon />
-        </span>
-      ) : (
-        <p>{premium}</p>
-      )}
+      <span
+        className={clsx(
+          "",
+          premium === "Check"
+            ? "text-secondary-wopee dark:text-primary-wopee flex items-center justify-center"
+            : ""
+        )}
+      >
+        {premium === "Check" ? <CheckIcon /> : premium}
+      </span>
 
-      {ultimate === "Check" ? (
-        <span className="text-secondary-wopee dark:text-primary-wopee flex items-center justify-center">
-          <CheckIcon />
-        </span>
-      ) : (
-        <p>{ultimate}</p>
-      )}
+      <span
+        className={clsx(
+          "",
+          ultimate === "Check"
+            ? "text-secondary-wopee dark:text-primary-wopee flex items-center justify-center"
+            : ""
+        )}
+      >
+        {ultimate === "Check" ? <CheckIcon /> : ultimate}
+      </span>
     </div>
   );
 };

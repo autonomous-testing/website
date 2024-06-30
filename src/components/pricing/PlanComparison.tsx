@@ -1,8 +1,113 @@
 import React from "react";
 
 import Link from "@docusaurus/Link";
-import PlanComparisonRow from "./PlanComparisonRow";
+import PlanComparisonRow, { PlanComparisonRowProps } from "./PlanComparisonRow";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+
+const planFeatureArray: PlanComparisonRowProps[] = [
+  {
+    feature: "Test steps",
+    basic: "10.000 / month / user",
+    premium: "100.000 / month / user",
+    ultimate: "Unlimited",
+  },
+  {
+    feature: "Parallel test runs",
+    ultimate: "Check",
+  },
+  {
+    feature: "Data retention",
+    basic: "30 days",
+    premium: "30 days",
+    ultimate: "Individual",
+  },
+  {
+    feature: "Integrations",
+  },
+  {
+    feature: "Cypress",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "Playwright",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "Robot Framework",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "WebdriverIO",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "On-prem testing",
+  },
+  {
+    feature: "On-prem testing",
+    subFeature: true,
+    ultimate: "Check",
+  },
+  {
+    feature: "CI/CD Integration",
+    subFeature: true,
+    ultimate: "Check",
+  },
+  {
+    feature: "Videos and traces from testing",
+    ultimate: "Check",
+  },
+  {
+    feature: "On-boarding assistance",
+    ultimate: "Check",
+  },
+  {
+    feature: "Priority feature development",
+    ultimate: "Check",
+  },
+  {
+    feature: "Custom feature development",
+    ultimate: "Check",
+  },
+  {
+    feature: "Custom integration",
+    ultimate: "Check",
+  },
+  {
+    feature: "Support",
+  },
+  {
+    feature: "Email",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "GH Discussions",
+    subFeature: true,
+    basic: "Check",
+    premium: "Check",
+    ultimate: "Check",
+  },
+  {
+    feature: "Workshops",
+    subFeature: true,
+    ultimate: "Check",
+  },
+];
 
 const PlanComparison = () => {
   return (
@@ -47,135 +152,13 @@ const PlanComparison = () => {
           </h5>
         </div>
 
-        <PlanComparisonRow
-          feature="Test steps"
-          background
-          basic="10.000 / month / user"
-          premium="100.000 / month / user"
-          ultimate="Unlimited"
-        />
-
-        <PlanComparisonRow
-          feature="Parallel test runs"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Data retention"
-          background
-          basic="30 days"
-          premium="30 days"
-          ultimate="Individual"
-        />
-
-        <PlanComparisonRow feature="Integrations" />
-
-        <PlanComparisonRow
-          feature="Cypress"
-          subFeature
-          background
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Playwright"
-          subFeature
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Robot Framework"
-          subFeature
-          background
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="WebdriverIO"
-          subFeature
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="On-prem testing"
-          background
-        />
-
-        <PlanComparisonRow
-          feature="On-prem testing"
-          subFeature
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="CI/CD Integration"
-          subFeature
-          background
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Videos and traces from testing"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="On-boarding assistance"
-          background
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Priority feature development"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Custom feature development"
-          background
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Custom integration"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Support"
-          background
-        />
-
-        <PlanComparisonRow
-          feature="Email"
-          subFeature
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="GH Discussions"
-          subFeature
-          background
-          basic="Check"
-          premium="Check"
-          ultimate="Check"
-        />
-
-        <PlanComparisonRow
-          feature="Workshops"
-          subFeature
-          ultimate="Check"
-        />
+        {planFeatureArray.map((props, idx) => (
+          <PlanComparisonRow
+            key={idx}
+            background={!!((idx + 1) % 2)}
+            {...props}
+          />
+        ))}
       </div>
       <Link to="https://cmd.wopee.io">
         <ButtonGradientOutline className="w-60" />
