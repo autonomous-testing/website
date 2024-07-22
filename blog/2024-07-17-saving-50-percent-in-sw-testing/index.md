@@ -2,8 +2,8 @@
 slug: saving-50-percent-in-sw-testing
 title: Cut SW Testing Costs by 50%
 authors: marcel
-tags: [basics, automation, future, autonomous]
-# image: ./testing-journey.png
+tags: [Automation, Testing Strategies, Testing Efficiency]
+image: ./cut-50-percent-in-sw-testing.jpg
 ---
 
 What a ridiculous idea! … or, wait a minute.
