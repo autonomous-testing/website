@@ -2,8 +2,9 @@
 slug: saving-50-percent-in-sw-testing
 title: Cut SW Testing Costs by 50%
 authors: marcel
-tags: [basics, automation, future, autonomous]
-# image: ./testing-journey.png
+tags:
+  [cost-reduction, risk-based-testing, production-testing, ci-cd, test-strategy]
+image: ./cut-50-percent-in-sw-testing.jpg
 ---
 
 What a ridiculous idea! … or, wait a minute.
@@ -16,7 +17,6 @@ When I first heard about the idea of saving 50% in software testing costs, I tho
 <!--truncate-->
 
 ![Cut 50% costs in SW Testing](./cut-50-percent-in-sw-testing.jpg)
-
 _Source: Wopee.io & leonardo.ai._
 
 ## 1. Do NOT Test
