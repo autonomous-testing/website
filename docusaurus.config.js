@@ -75,10 +75,11 @@ const config = {
     [
       "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/autonomous-testing/wopee.io/",
-        },
+        docs: false,
+        // docs: {
+        //   sidebarPath: require.resolve("./sidebars.js"),
+        //   editUrl: "https://github.com/autonomous-testing/wopee.io/",
+        // },
         blog: {
           exclude: ["**/blog/2019*"],
         },
