@@ -118,6 +118,7 @@ const config = {
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
+          { to: "/blog", label: "Blog", position: "left" },
           { to: "/about-us", label: "About us", position: "left" },
           { to: "/contact", label: "Contact", position: "left" },
           {
