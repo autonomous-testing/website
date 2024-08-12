@@ -61,7 +61,7 @@ Enhancing existing automation involves augmenting software test automation pract
 
 #### Predictive Test Selection
 
-Predictive test selection uses AI and machine learning to analyze past test results, code changes, and other factors to predict which tests are likely to fail. This approach helps prioritize testing efforts, ensuring that the most critical and likely-to-fail areas of the code are tested first. By focusing on high-risk areas, teams can catch defects earlier, reduce testing time, and improve overall software quality.
+[Predictive test selection](/blog/predictive-test-selection/) uses AI and machine learning to analyze past test results, code changes, and other factors to predict which tests are likely to fail. This approach helps prioritize testing efforts, ensuring that the most critical and likely-to-fail areas of the code are tested first. By focusing on high-risk areas, teams can catch defects earlier, reduce testing time, and improve overall software quality.
 
 #### Test Script Generation
 
@@ -69,7 +69,7 @@ Automating the creation of test scripts can significantly speed up the authoring
 
 #### Self-Healed Locators
 
-Self-healing locators automatically update in test cases when the structure or attributes of the page change. Traditional test automation scripts often fail when the UI changes, as locators become outdated. Self-healing locators use machine learning algorithms to identify and adapt to changes in the UI, ensuring that tests remain functional and reducing the need for manual intervention.
+Self-healing locators automatically update in test cases when the structure or attributes of the page change. Traditional test automation scripts often fail when the UI changes, as locators become outdated. [Self-healing locators](/blog/self-healing-in-sw-test-automation/) use machine learning algorithms to identify and adapt to changes in the UI, ensuring that tests remain functional and reducing the need for manual intervention.
 
 #### Autonomous Navigation/Interaction
 
