@@ -1,6 +1,6 @@
 ---
-slug: how-livesport-boosting-testing-with-wopee-io
-title: "Transforming Livesport QA: How Wopee.io Powers Visual Testing"
+slug: livesport-visual-testing-w-wopee-io
+title: "Livesport Testing: How Wopee.io Powers Visual Testing"
 authors: marcel
 tags: [testing, quality assurance, automation, visual testing]
 ---
