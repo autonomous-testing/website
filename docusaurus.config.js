@@ -143,10 +143,12 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Subscribe to our Newsletter",
+            title: "Solutions",
             items: [
+              { label: "Regression Testing - Autonomous Bot 🤖", to: "/bot" },
               {
-                html: `<div id="newsletter-form-container">Newsletter</div>`,
+                label: "Regression Testing - Visual Testing",
+                to: "/integrations",
               },
             ],
           },
@@ -154,21 +156,42 @@ const config = {
             title: "Docs",
             items: [
               {
+                label: "Introduction",
+                to: "https://docs.wopee.io/",
+              },
+              {
                 label: "Getting started",
                 to: "https://docs.wopee.io/getting-started/",
               },
-            ],
-          },
-          {
-            title: "Solutions",
-            items: [
-              { label: "Bot", to: "/bot" },
-              { label: "Integrations", to: "/integrations" },
+              {
+                label: "Cypress Visual Regression Testing",
+                to: "https://docs.wopee.io/integrations/cypress/01-getting-started/",
+              },
+              {
+                label: "Playwright Visual Regression Testing",
+                to: "https://docs.wopee.io/integrations/playwright/01-getting-started/",
+              },
+              {
+                label: "Robot Framework Visual Regression Testing",
+                to: "https://docs.wopee.io/integrations/robot-framework/01-getting-started/",
+              },
+              {
+                label: "Webdriver.io Visual Regression Testing",
+                to: "https://docs.wopee.io/integrations/WebdriverIO/01-getting-started/",
+              },
             ],
           },
           {
             title: "Community",
             items: [
+              {
+                label: "Blog",
+                href: "/blog",
+              },
+              {
+                label: "Newsletter",
+                href: "/newsletter",
+              },
               {
                 label: "LinkedIn",
                 href: "https://www.linkedin.com/company/wopee",
@@ -177,10 +200,10 @@ const config = {
                 label: "Meetup",
                 href: "https://www.meetup.com/wopee-io/",
               },
-              // {
-              //   label: "Twitter",
-              //   href: "https://twitter.com/Wopee_io",
-              // },
+              {
+                label: "GitHub",
+                href: "https://github.com/Wopee-io",
+              },
             ],
           },
           {
@@ -193,19 +216,6 @@ const config = {
               {
                 label: "GDPR",
                 href: "/gdpr",
-              },
-            ],
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "Blog",
-                href: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/Wopee-io",
               },
             ],
           },
