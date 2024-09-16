@@ -72,8 +72,12 @@ Wopee.io is more than just a testing tool. It’s a fresh approach to automated 
 
 Want to learn more? Watch the full webinar above, or sign up for a free trial to experience Wopee.io firsthand.
 
-## Get Started Today
+:::tip Get Started Today 🔥
 
-Interested in trying out Wopee.io? Head over to [https://wopee.io](https://wopee.io) to sign up for a free trial or book a demo with us.
+Interested in trying out Wopee.io?
+
+Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo) with us.
+
+:::
 
 Stay tuned for more updates, tips, and best practices by subscribing to our newsletter or following us on social media!
