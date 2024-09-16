@@ -143,11 +143,11 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Solutions",
+            title: "Solutions: Regression Testing",
             items: [
-              { label: "Regression Testing - Autonomous Bot 🤖", to: "/bot" },
+              { label: "Autonomous Testing Bot 🤖", to: "/bot" },
               {
-                label: "Regression Testing - Visual Testing",
+                label: "Visual Regression Testing",
                 to: "/integrations",
               },
             ],
@@ -203,6 +203,10 @@ const config = {
               {
                 label: "GitHub",
                 href: "https://github.com/Wopee-io",
+              },
+              {
+                label: "YouTube",
+                href: "https://www.youtube.com/@wopee",
               },
             ],
           },
