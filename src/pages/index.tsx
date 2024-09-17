@@ -33,6 +33,7 @@ function HomeHeader() {
             ... <br />
             Unleash your potential 🚀 and
             <ButtonPrimary
+              id="hero-button"
               label="Try free for 1 month"
               href="https://cmd.wopee.io"
               className="w-60 h-[50px] ml-3"
