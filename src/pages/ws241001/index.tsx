@@ -57,6 +57,24 @@ export default function Home(): JSX.Element {
           {isLoading ? (
             <Loader />
           ) : (
+            <div class="hs-richtext hs-main-font-element">
+            <h1>Autonomous Testing Workshop</h1>
+            <h2>Core Principle &amp; Hands-On Experience</h2>
+            <p><strong>Workshop Highlights:</strong></p>
+            <ul>
+            <li><strong>Versatile Principles</strong>: Explore foundational concepts that will extend and enhance your approach to software testing.
+            <ul>
+            <li><strong>Core Principle of Autonomous Testing</strong>: Understand the fundamental principle behind autonomous testing.</li>
+            <li><strong>Visual Regression Testing</strong>: Learn the strengths and limitations of visual regression testing methods.</li>
+            </ul>
+            </li>
+            <li><strong>Autonomous Bot in Action</strong>: Watch as the autonomous bot uncovers critical issues in your app without the need for any scripting.</li>
+            <li><strong>Practical Experience</strong>: Participate in hands-on activities to determine where autonomous testing is most effective and when traditional methods are still necessary.</li>
+            </ul>
+            <p><strong>About Your Guide:</strong></p>
+            <ul>
+            <li><strong>Jan Honza Beránek</strong>: A seasoned software development and quality assurance professional with extensive experience in boosting efficiency and quality through agile methodologies and innovative solutions.</li>
+            </ul>
             <iframe
               src="https://hub.wopee.io/form/ws241001"
               width="100%"
@@ -65,6 +83,7 @@ export default function Home(): JSX.Element {
               scrolling="no"
               style={{ border: "none" }}
             ></iframe>
+            </div>
           )}
         </div>
       </div>
