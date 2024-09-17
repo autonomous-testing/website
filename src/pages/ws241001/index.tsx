@@ -53,13 +53,14 @@ export default function Home(): JSX.Element {
       </Helmet>
       <div className="container">
         <GoBack />
-        <div className="flex items-center justify-center my-5 xl:items-start xl:flex-row gap-5">
+        <div className="row flex items-center justify-center my-5 xl:items-start xl:flex-row gap-5">
+          <div class="col col--8">
           {isLoading ? (
             <Loader />
           ) : (
-            <div class="hs-richtext hs-main-font-element">
-            <h1>Autonomous Testing Workshop</h1>
-            <h2>Core Principle &amp; Hands-On Experience</h2>
+            <div className="">
+            <h1>Autonomous Testing Workshop:<br/> Core Principle &amp; Hands-On Experience</h1>
+            <p></p>
             <p><strong>Workshop Highlights:</strong></p>
             <ul>
             <li><strong>Versatile Principles</strong>: Explore foundational concepts that will extend and enhance your approach to software testing.
@@ -78,13 +79,14 @@ export default function Home(): JSX.Element {
             <iframe
               src="https://hub.wopee.io/form/ws241001"
               width="100%"
-              height="600"
+              height="500"
               frameBorder="0"
               scrolling="no"
               style={{ border: "none" }}
             ></iframe>
             </div>
           )}
+          </div>
         </div>
       </div>
     </React.Fragment>
