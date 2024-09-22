@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Head from "@docusaurus/Head";
 
 import GoBack from "@site/src/components/demo/GoBack";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -10,11 +11,13 @@ export default function Home(): JSX.Element {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>Book Demo - {siteConfig.title}</title>
+      </Head>
       <Helmet>
-        <title>{siteConfig.title}</title>
         <meta
           name="description"
-          content="Autonomous testing platform for web applications | Wopee.io"
+          content="Book Demo - Autonomous testing platform for web applications | Wopee.io"
         />
         <script
           type="text/javascript"

@@ -18,7 +18,7 @@ const investors = [
 
 const TeamPage = () => {
   return (
-    <Layout>
+    <Layout title="About Us">
       <main className="container">
         <Team />
         <div className="mb-5">

@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet";
 import React, { useLayoutEffect, useState } from "react";
+import Head from "@docusaurus/Head";
 
 import GoBack from "@site/src/components/demo/GoBack";
 import Loader from "@site/src/components/demo/Loader";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PartnersCarousel from "@site/src/components/demo/PartnersCarousel";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -40,6 +40,9 @@ export default function Home(): JSX.Element {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>Contact Us - {siteConfig.title}</title>
+      </Head>
       <Helmet>
         <title>{siteConfig.title}</title>
         <meta
