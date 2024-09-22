@@ -35,7 +35,7 @@ const WopeeIntegrationsPage = () => {
   const { width } = useWindowSize();
 
   return (
-    <Layout>
+    <Layout title="Visual Regression Testing">
       <main className="mt-8 mb-16 container">
         <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Visual Testing Integrations
@@ -44,19 +44,19 @@ const WopeeIntegrationsPage = () => {
         <div className="text-justify flex flex-col gap-5 xl:gap-20 my-10 mx-auto">
           <div className="flex flex-col gap-10 items-center">
             <p className="flex-1 xl:text-xl">
-              Elevate your automated testing with our Visual Testing Integrations –
-              the ultimate solution for seamless visual testing validation. With
-              effortless integration that won't disrupt your current scenarios,
-              our tool takes your testing strategy to new heights. Simply
-              install our library and add three lines of code to your
-              configuration, and you'll have a robust visual testing system up
-              and running in no time.
+              Elevate your automated testing with our Visual Testing
+              Integrations – the ultimate solution for seamless visual testing
+              validation. With effortless integration that won't disrupt your
+              current scenarios, our tool takes your testing strategy to new
+              heights. Simply install our library and add three lines of code to
+              your configuration, and you'll have a robust visual testing system
+              up and running in no time.
             </p>
 
             <div className="flex flex-1 flex-col gap-5">
               <h4 className="xl:text-2xl text-secondary-wopee dark:text-primary-wopee">
-                Benefits by incorporating our Visual Testing Integrations into your
-                workflow:
+                Benefits by incorporating our Visual Testing Integrations into
+                your workflow:
               </h4>
               <div className="xl:text-xl">
                 <ul>
@@ -70,9 +70,9 @@ const WopeeIntegrationsPage = () => {
                     <span className="font-bold">
                       Simplify Automation for Complexity:
                     </span>{" "}
-                    Tackle intricate features with ease. Our Integrations simplifies
-                    the automation of even the most complex functionalities,
-                    streamlining your testing process.
+                    Tackle intricate features with ease. Our Integrations
+                    simplifies the automation of even the most complex
+                    functionalities, streamlining your testing process.
                   </li>
                   <li>
                     <span className="font-bold">
@@ -87,8 +87,8 @@ const WopeeIntegrationsPage = () => {
                       Boost Testing Team Efficiency:
                     </span>{" "}
                     Foster seamless collaboration among your team members. Our
-                    Visual Testing Integrations enhances teamwork, making it easier
-                    for your testing team to work together efficiently.
+                    Visual Testing Integrations enhances teamwork, making it
+                    easier for your testing team to work together efficiently.
                   </li>
                 </ul>
               </div>
@@ -138,8 +138,8 @@ const WopeeIntegrationsPage = () => {
           <div className="my-2 text-center flex flex-col gap-5">
             <div>
               <h4 className="text-lg font-semibold opacity-90">
-                Why should I choose Wopee.io Integrations over a DIY approach to build
-                my visual testing solution?
+                Why should I choose Wopee.io Integrations over a DIY approach to
+                build my visual testing solution?
               </h4>
               <p>
                 The DIY (do-it-yourself) approach is a common choice for testing
@@ -161,11 +161,12 @@ const WopeeIntegrationsPage = () => {
                 What frameworks does Wopee.io Integrations support?
               </h4>
               <p>
-                Wopee.io Integrations seamlessly integrates with the modern web testing
-                frameworks for quick and straightforward implementation. Our
-                current support includes popular frameworks such as Cypress.io,
-                Playwright, Selenium, Robot Framework, Webdriver.io, with
-                additional compatibility for more frameworks in the pipeline.
+                Wopee.io Integrations seamlessly integrates with the modern web
+                testing frameworks for quick and straightforward implementation.
+                Our current support includes popular frameworks such as
+                Cypress.io, Playwright, Selenium, Robot Framework, Webdriver.io,
+                with additional compatibility for more frameworks in the
+                pipeline.
               </p>
               <div className="grid grid-cols-2 sm:flex justify-center gap-2 my-2">
                 {supportedTestingTools.map((tool) => (
@@ -173,11 +174,7 @@ const WopeeIntegrationsPage = () => {
                     key={tool.src}
                     className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video sm:w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all last:odd:col-span-2"
                   >
-                    <img
-                      src={tool.src}
-                      alt={tool.alt}
-                      className=""
-                    />
+                    <img src={tool.src} alt={tool.alt} className="" />
                   </div>
                 ))}
               </div>
@@ -199,7 +196,9 @@ const WopeeIntegrationsPage = () => {
                 How can I exclude specific areas in the image during the
                 comparison process?
               </h4>
-              <p>Wopee.io Integrations offers two options for excluding areas:</p>
+              <p>
+                Wopee.io Integrations offers two options for excluding areas:
+              </p>
               <p>
                 a. Low code: Utilize selectors from your framework to precisely
                 specify which areas should be ignored.

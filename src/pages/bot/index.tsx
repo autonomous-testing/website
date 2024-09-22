@@ -12,7 +12,7 @@ const WopeeBotPage = () => {
   const { width } = useWindowSize();
 
   return (
-    <Layout>
+    <Layout title="Autonomous Bot Web App Testing">
       <main className="mt-8 mb-16 container">
         <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Autonomous Testing Bot

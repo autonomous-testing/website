@@ -1,5 +1,5 @@
 ---
-title: Contact
+title: Data Processing Agreement
 ---
 
 # Data Processing Agreement

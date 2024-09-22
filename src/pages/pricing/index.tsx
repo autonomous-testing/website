@@ -5,7 +5,7 @@ import Pricing from "@site/src/components/pricing/Pricing";
 
 const PricingPage = () => {
   return (
-    <Layout>
+    <Layout title="Pricing">
       <main className="container">
         <Pricing />
       </main>
