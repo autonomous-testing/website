@@ -3,7 +3,7 @@ slug: getting-started-w-wopee-io-automation
 title: "Getting Started with Wopee.io: Automate Web App Testing; No Coding Required"
 authors: marcel
 tags: [playwright, automation, testing, AI]
-# image: ./pw-bot.png
+image: ./wopee-io-3-pillars.png
 ---
 
 > ## Automate Web App Testing -- No Coding Required
