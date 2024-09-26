@@ -3,7 +3,7 @@ slug: top-5-applitools-alternatives-for-visual-testing--2024
 title: "Top 5 Applitools Alternatives for Visual Testing (2024)"
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
-# image: ./pw-bot.png
+image: ./visual-bugs.png
 ---
 
 > ## What if you could save thousands by switching to a smarter, faster, and simpler solution for visual testing than Applitools?
