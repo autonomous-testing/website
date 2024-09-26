@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
         <GoBack />
         <div
           className="meetings-iframe-container"
-          data-src="https://meetings-eu1.hubspot.com/marcel-veselka/call?embed=true"
+          data-src="https://meetings-eu1.hubspot.com/marcel-veselka?embed=true"
         ></div>
       </div>
     </React.Fragment>
