@@ -18,7 +18,7 @@ const HomeConversionForm = ({ className }: { className?: string }) => {
         </h2>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
           <ButtonPrimary
-            label="Try free for 1 month"
+            label="Start free trial"
             href="https://cmd.wopee.io"
             className="w-60 h-[50px]"
           />
