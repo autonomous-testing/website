@@ -2,8 +2,8 @@ import React from "react";
 
 const ProblemGrid = () => {
   return (
-    <div className="flex flex-col gap-10 my-28">
-      <div className="text-3xl text-center text-balance font-bold">
+    <div className="flex flex-col gap-10 my-12 lg:my-28">
+      <div className="text-2xl lg:text-3xl text-center text-balance font-bold px-2 lg:px-0">
         Over 60% of companies struggle with visual quality due to inadequate
         testing tools. Is your company at risk?
       </div>

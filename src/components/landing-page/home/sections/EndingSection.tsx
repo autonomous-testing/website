@@ -4,15 +4,16 @@ import React from "react";
 
 const EndingSection = () => {
   return (
-    <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee mt-16">
-      <div className="container mb-16 h-[50vh] flex flex-col justify-center gap-10 text-center">
-        <div className="text-4xl font-bold text-balance">
+    <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
+      <div className="container my-12 lg:my-16 h-[50vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
+        <div className="lg:text-4xl text-3xl font-bold text-balance px-2 lg:px-0">
           <p>Optimize your visual testing process with Wopee.io</p>
           <p className=" text-secondary-wopee dark:text-primary-wopee">
             Set up in minutes, get results instantly, no coding needed.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
+
+        <div className="flex flex-col sm:flex-row justify-center items-center lg:gap-5">
           <div className="h-20">
             <ButtonPrimaryInverted
               href="/book-demo"

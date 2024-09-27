@@ -53,12 +53,12 @@ const features = [
 
 const HowItWorks = () => {
   return (
-    <div className="container flex flex-col gap-20">
-      <p className="text-5xl font-bold text-center">How it works</p>
+    <div className="container flex flex-col gap-12 lg:gap-20">
+      <p className="text-4xl lg:text-5xl font-bold text-center">How it works</p>
 
       {steps.map((step, index) => (
         <div
-          className="flex odd:flex-row-reverse items-center gap-10"
+          className="flex flex-col lg:flex-row lg:odd:flex-row-reverse items-center gap-10"
           key={index}
         >
           <div className="flex-1">
@@ -69,17 +69,17 @@ const HowItWorks = () => {
             />
           </div>
 
-          <div className="w-3/4">
+          <div className="w-full px-2 lg:px-0 lg:w-3/4">
             <div>
-              <p className="font-bold text-4xl">
+              <p className="font-bold text-3xl lg:text-4xl">
                 {index + 1}. {step.title}
               </p>
-              <p className="text-secondary-wopee dark:text-primary-wopee text-4xl font-bold">
+              <p className="text-secondary-wopee dark:text-primary-wopee text-3xl lg:text-4xl font-bold">
                 {step.subtitle}
               </p>
             </div>
 
-            <div className="text-3xl text-balance flex flex-col gap-5">
+            <div className="text-2xl lg:text-3xl text-balance flex flex-col gap-5">
               <p>{step.description}</p>
               <p>
                 <span className="italic">Benefit:</span> {step.benefit}
@@ -90,12 +90,14 @@ const HowItWorks = () => {
       ))}
 
       <div className="text-center flex flex-col gap-5">
-        <p className="text-4xl font-bold">...and there is much more!</p>
+        <p className="text-3xl lg:text-4xl font-bold">
+          ...and there is much more!
+        </p>
         <div className="flex flex-wrap gap-4 justify-center">
           {features.map((feature) => (
             <div
               key={feature}
-              className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center w-52 p-4 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-700 dark:bg-opacity-90 transition-colors text-balance"
+              className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center lg:w-52 p-4 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-700 dark:bg-opacity-90 transition-colors text-balance"
             >
               {feature}
             </div>

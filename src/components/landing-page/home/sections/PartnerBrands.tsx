@@ -27,8 +27,8 @@ const partners = [
 const PartnerBrands = () => {
   return (
     <div>
-      <div className="flex flex-col justify-center text-center">
-        <p className="text-4xl">
+      <div className="flex flex-col justify-center text-center text-balance px-2 lg:px-0">
+        <p className="lg:text-4xl text-3xl">
           Join{" "}
           <span className="text-secondary-wopee dark:text-primary-wopee">
             top engineering teams

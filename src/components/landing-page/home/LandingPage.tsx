@@ -7,7 +7,7 @@ import OurValueSection from "./sections/OurValueSection";
 import SupportedTestingTools from "./sections/SupportedTestingTools";
 import SolutionIntroSection from "./sections/SolutionIntroSection";
 import HowItWorks from "./sections/HowItWorks";
-import Testimonials from "./sections/Testimonials";
+import TestimonialCarousel from "./sections/TestimonialCarousel";
 import EndingSection from "./sections/EndingSection";
 
 const LandingPage = () => {
@@ -20,7 +20,7 @@ const LandingPage = () => {
       <SupportedTestingTools />
       <SolutionIntroSection />
       <HowItWorks />
-      <Testimonials />
+      <TestimonialCarousel />
       <EndingSection />
     </>
   );

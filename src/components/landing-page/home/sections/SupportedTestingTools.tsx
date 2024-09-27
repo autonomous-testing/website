@@ -25,7 +25,7 @@ const supportedTestingTools = [
 
 const SupportedTestingTools = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 text-balance px-2">
       <p className="text-4xl text-center font-bold text-secondary-wopee dark:text-primary-wopee">
         Easy integration with all modern testing frameworks
       </p>

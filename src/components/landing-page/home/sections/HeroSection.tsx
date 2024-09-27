@@ -3,7 +3,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-5 mt-10 h-[70vh] px-10">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-5 my-12 lg:mt-10 lg:mb-0 lg:h-[70vh] px-10">
       <div className="text-center flex flex-col gap-5 w-full lg:w-1/3">
         <div className="text-balance">
           <h1 className="text-6xl">
@@ -30,7 +30,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="flex-1">
+      <div className="lg:flex-1">
         <img
           className="rounded-lg object-contain h-auto w-full shadow-2xl"
           src="/img/landing/tests-page-new.png"

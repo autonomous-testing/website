@@ -25,7 +25,8 @@ const testimonials = [
   },
 ];
 
-const TestimonialCarousel = ({
+const Testimonial = ({
+  alt,
   logo,
   name,
   quote,
@@ -34,19 +35,18 @@ const TestimonialCarousel = ({
   position,
   itemIndex,
   activeItemIndex,
-  alt,
 }) => (
   <div
     className={`absolute top-1/2 -translate-y-1/2 left-0 w-full ${
       activeItemIndex === itemIndex ? "opacity-100" : "opacity-0"
-    } transition-opacity duration-500 flex gap-10 items-center`}
+    } transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
   >
-    <div className="w-1/2 text-3xl text-balance flex flex-col gap-5 px-20 text-center">
+    <div className="lg:w-1/2 lg:text-3xl text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
       <p>{quote}</p>
       <p className="text-secondary-wopee dark:text-primary-wopee">{about}</p>
     </div>
 
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col lg:flex-row gap-3 items-center">
       <div className="flex gap-2">
         <img
           className="avatar__photo avatar__photo--xl"
@@ -58,7 +58,9 @@ const TestimonialCarousel = ({
         </div>
       </div>
 
-      <div className="flex">
+      <div className="hidden lg:block h-20 w-0.5 opacity-30 rounded-3xl bg-secondary-wopee dark:bg-primary-wopee" />
+
+      <div className="flex justify-center items-center lg:justify-start">
         <img
           className="w-1/2 dark:invert dark:grayscale"
           src={logo}
@@ -69,7 +71,33 @@ const TestimonialCarousel = ({
   </div>
 );
 
-const Testimonials = () => {
+const TestimonialSwitcher = ({
+  activeItemIndex,
+  setActiveItemIndex,
+  activateInterval,
+}) => {
+  return (
+    <div className="flex justify-center gap-2">
+      {testimonials.map((_, index) => (
+        <div
+          key={index}
+          className={`w-5 h-5 ${
+            activeItemIndex === index
+              ? "bg-secondary-wopee dark:bg-primary-wopee"
+              : "bg-gray-300 opacity-75"
+          } rounded-full cursor-pointer`}
+          onClick={() => {
+            setActiveItemIndex(index);
+            activateInterval();
+          }}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+};
+
+const TestimonialCarousel = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
 
@@ -79,24 +107,19 @@ const Testimonials = () => {
     }
     const interval = setInterval(() => {
       setActiveItemIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 10000);
+    }, 8000);
 
     setIntervalId(interval);
-
-    return interval;
   };
 
   useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-    const interval = activateInterval();
-    return () => clearInterval(interval);
+    activateInterval();
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div className="my-28 flex flex-col gap-14">
-      <div className="text-4xl text-center font-bold">
+    <div className="my-16 lg:my-28 flex flex-col gap-5 lg:gap-14">
+      <div className="text-3xl lg:text-4xl text-center font-bold text-balance">
         <p>Join the visionaries shaping the future</p>
         <p className="text-secondary-wopee dark:text-primary-wopee">
           Trusted by the technology leaders & innovators
@@ -109,7 +132,7 @@ const Testimonials = () => {
       >
         {" "}
         {testimonials.map((testimonial, index) => (
-          <TestimonialCarousel
+          <Testimonial
             key={testimonial.name}
             itemIndex={index}
             activeItemIndex={activeItemIndex}
@@ -118,25 +141,13 @@ const Testimonials = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-2">
-        {testimonials.map((_, index) => (
-          <div
-            key={index + Date.now()}
-            className={`w-5 h-5 ${
-              activeItemIndex === index
-                ? "bg-secondary-wopee dark:bg-primary-wopee"
-                : "bg-gray-300 opacity-75"
-            } rounded-full cursor-pointer`}
-            onClick={() => {
-              setActiveItemIndex(index);
-              activateInterval();
-            }}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      <TestimonialSwitcher
+        activeItemIndex={activeItemIndex}
+        setActiveItemIndex={setActiveItemIndex}
+        activateInterval={activateInterval}
+      />
     </div>
   );
 };
 
-export default Testimonials;
+export default TestimonialCarousel;

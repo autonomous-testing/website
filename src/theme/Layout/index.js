@@ -14,7 +14,6 @@ import Footer from "@theme/Footer";
 import LayoutProvider from "@theme/Layout/Provider";
 import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
-import NewsletterForm from "@site/src/components/hub-spot/NewsletterForm";
 export default function Layout(props) {
   const {
     children,
@@ -49,7 +48,6 @@ export default function Layout(props) {
         <ErrorBoundary fallback={(params) => <ErrorPageContent {...params} />}>
           {children}
         </ErrorBoundary>
-        <NewsletterForm />
       </div>
 
       {!noFooter && <Footer />}
