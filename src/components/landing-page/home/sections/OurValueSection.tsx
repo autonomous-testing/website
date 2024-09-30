@@ -1,10 +1,10 @@
 import React from "react";
 import Icon from "@mdi/react";
-import { mdiSpeedometer, mdiCurrencyUsd, mdiWifi } from "@mdi/js";
+import { mdiCurrencyUsd, mdiRocket, mdiCheckboxMultipleOutline } from "@mdi/js";
 
 const values = [
   {
-    icon: mdiSpeedometer,
+    icon: mdiRocket,
     title: "10x",
     description: "Quicker setup compared to traditional tools",
   },
@@ -14,7 +14,7 @@ const values = [
     description: "Lower cost than our competitors",
   },
   {
-    icon: mdiWifi,
+    icon: mdiCheckboxMultipleOutline,
     title: "5x",
     description: "Higher test coverage with simple maintenance",
   },

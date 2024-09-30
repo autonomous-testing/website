@@ -4,8 +4,8 @@ const ProblemGrid = () => {
   return (
     <div className="flex flex-col gap-10 my-12 lg:my-28">
       <div className="text-2xl lg:text-3xl text-center text-balance font-bold px-2 lg:px-0">
-        Over 60% of companies struggle with visual quality due to inadequate
-        testing tools. Is your company at risk?
+        60% of companies are struggling to maintain visual consistency. What
+        about your product?
       </div>
 
       <div className="w-full px-5 container">

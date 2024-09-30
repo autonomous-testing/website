@@ -17,7 +17,7 @@ const LandingPage = () => {
       <PartnerBrands />
       <ProblemGrid />
       <OurValueSection />
-      <SupportedTestingTools />
+      <SupportedTestingTools spanLastOdd={false} />
       <SolutionIntroSection />
       <HowItWorks />
       <TestimonialCarousel />

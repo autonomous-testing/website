@@ -146,7 +146,7 @@ const WopeeIntegrationsPage = () => {
                 with additional compatibility for more frameworks in the
                 pipeline.
               </p>
-              <SupportedTestingTools />
+              <SupportedTestingTools spanLastOdd={true} />
             </div>
 
             <div>

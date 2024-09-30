@@ -4,7 +4,7 @@ import React from "react";
 const partners = [
   {
     name: "Multitude",
-    logo: "/img/customers/multitude-logo.png",
+    logo: "/img/customers/multitude-logo-2.png",
     classes: "grayscale dark:invert",
   },
   {
@@ -12,14 +12,14 @@ const partners = [
     logo: "/img/customers/flash-score-logo.png",
     classes: "grayscale dark:invert",
   },
-  {
-    name: "Kedros",
-    logo: "/img/customers/kedros-logo-2.png",
-    classes: "grayscale rounded-lg",
-  },
+  // {
+  //   name: "Kedros",
+  //   logo: "/img/customers/kedros-logo-2.png",
+  //   classes: "grayscale rounded-lg",
+  // },
   {
     name: "Inventi",
-    logo: "/img/customers/inventi-logo.png",
+    logo: "/img/customers/inventi-logo-2.png",
     classes: "grayscale dark:invert",
   },
 ];

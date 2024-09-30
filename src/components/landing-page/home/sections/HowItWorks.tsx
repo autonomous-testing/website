@@ -41,6 +41,7 @@ const features = [
   "Scheduled test runs",
   "Text execution video recording",
   "Bot analysis",
+  "Easy CI/CD integration",
   "Multi-version support",
   "Execution traces",
   "Autonomous visual testing",
