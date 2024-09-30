@@ -19,12 +19,6 @@ export const TeamMemberList: TeamMember[] = [
     linkedIn: "https://www.linkedin.com/in/marcelveselka/",
   },
   {
-    name: "Olena (Alenka) Nahorna",
-    img: require("@site/static/img/team/olena.jpg").default,
-    description: "Motivated quick learner, full-stack developer",
-    linkedIn: "https://www.linkedin.com/in/olena-nahorna/",
-  },
-  {
     name: "Ondřej (Ondra) Winter",
     img: require("@site/static/img/team/ondra.jpg").default,
     description: "Experienced test automation engineer, Ph.D. student",

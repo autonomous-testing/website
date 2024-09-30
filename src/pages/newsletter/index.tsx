@@ -1,6 +1,7 @@
 import React from "react";
 
 import Layout from "@theme/Layout";
+import NewsletterForm from "@site/src/components/hub-spot/NewsletterForm";
 
 const NewsletterPage = () => {
   return (
@@ -14,6 +15,7 @@ const NewsletterPage = () => {
             <div id="newsletter-form-container"></div>
           </div> */}
         </div>
+        <NewsletterForm />
       </main>
     </Layout>
   );

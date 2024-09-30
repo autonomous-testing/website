@@ -4,29 +4,7 @@ import { useWindowSize } from "usehooks-ts";
 import Layout from "@theme/Layout";
 import Modal from "@site/src/components/dialog/Modal";
 import HomeConversionForm from "@site/src/components/HomeConversionForm";
-
-const supportedTestingTools = [
-  {
-    alt: "Cypress",
-    src: "/img/assistant/testing-tools/cy-logo.png",
-  },
-  {
-    alt: "Playwright",
-    src: "/img/assistant/testing-tools/pw-logo2.png",
-  },
-  {
-    alt: "Robot Framework",
-    src: "/img/assistant/testing-tools/rf-logo2.png",
-  },
-  {
-    alt: "Selenium",
-    src: "/img/assistant/testing-tools/se-logo.png",
-  },
-  {
-    alt: "webdriver.io",
-    src: "/img/assistant/testing-tools/wdio-logo.png",
-  },
-];
+import SupportedTestingTools from "@site/src/components/landing-page/home/sections/SupportedTestingTools";
 
 const WopeeIntegrationsPage = () => {
   const [open, setOpen] = useState(false);
@@ -168,16 +146,7 @@ const WopeeIntegrationsPage = () => {
                 with additional compatibility for more frameworks in the
                 pipeline.
               </p>
-              <div className="grid grid-cols-2 sm:flex justify-center gap-2 my-2">
-                {supportedTestingTools.map((tool) => (
-                  <div
-                    key={tool.src}
-                    className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center aspect-video sm:w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-100 dark:bg-opacity-90 px-3 xl:hover:px-1 transition-all last:odd:col-span-2"
-                  >
-                    <img src={tool.src} alt={tool.alt} className="" />
-                  </div>
-                ))}
-              </div>
+              <SupportedTestingTools spanLastOdd={true} />
             </div>
 
             <div>
