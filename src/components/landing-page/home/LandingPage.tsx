@@ -9,6 +9,7 @@ import SolutionIntroSection from "./sections/SolutionIntroSection";
 import HowItWorks from "./sections/HowItWorks";
 import TestimonialCarousel from "./sections/TestimonialCarousel";
 import EndingSection from "./sections/EndingSection";
+import VisualBugCarousel from "./sections/VisualBugCarousel";
 
 const LandingPage = () => {
   return (
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <HeroSection />
       <PartnerBrands />
       <ProblemGrid />
+      <VisualBugCarousel />
       <OurValueSection />
       <SupportedTestingTools spanLastOdd={false} />
       <SolutionIntroSection />

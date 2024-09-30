@@ -2,7 +2,7 @@ import React from "react";
 
 const ProblemGrid = () => {
   return (
-    <div className="flex flex-col gap-10 my-12 lg:my-28">
+    <div className="flex flex-col gap-10 my-12 lg:mt-28 lg:mb-12">
       <div className="text-2xl lg:text-3xl text-center text-balance font-bold px-2 lg:px-0">
         60% of companies are struggling to maintain visual consistency. What
         about your product?
