@@ -23,10 +23,7 @@ const LinkIcon = () => (
 
 export default function HomepageHowItWorks(): JSX.Element {
   return (
-    <section
-      id="solutions"
-      className="mt-16 md:mt-20"
-    >
+    <section id="solutions" className="mt-16 md:mt-20">
       <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
         Solution: Autonomous testing
       </h2>
@@ -37,7 +34,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               <Link to="/bot">
                 <span className="flex items-center justify-center gap-1">
-                  Bot <LinkIcon />
+                  Autonomous Testing Bot <LinkIcon />
                 </span>
               </Link>
             </h3>
@@ -45,10 +42,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               Just provide a url of your web app and let our bot do the rest!
             </p>
             <div className="flex justify-center items-center">
-              <Link
-                to="/bot"
-                className="group"
-              >
+              <Link to="/bot" className="group">
                 <Icon
                   size={6}
                   path={mdiRobotOutline}
@@ -74,10 +68,7 @@ export default function HomepageHowItWorks(): JSX.Element {
 
             <p className="text-sm md:text-lg xl:text-xl text-center">
               It is just that simple!
-              <Link
-                to="/bot"
-                className="ml-2"
-              >
+              <Link to="/bot" className="ml-2">
                 Read more..
               </Link>
             </p>
@@ -89,7 +80,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
               <Link to="/integrations">
                 <span className="flex items-center justify-center gap-1">
-                  Integrations
+                  Visual Regression Testing
                   <LinkIcon />
                 </span>
               </Link>
@@ -102,10 +93,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               </span>
             </p>
             <div className="flex justify-center items-center">
-              <Link
-                to="/integrations"
-                className="group"
-              >
+              <Link to="/integrations" className="group">
                 <Icon
                   size={6}
                   path={mdiConnection}
@@ -114,7 +102,10 @@ export default function HomepageHowItWorks(): JSX.Element {
               </Link>
 
               <ol className="text-sm md:text-lg xl:text-xl">
-                <li>Keep your own <strong>existing</strong> automated tests as they are.</li>
+                <li>
+                  Keep your own <strong>existing</strong> automated tests as
+                  they are.
+                </li>
                 <li>Add a single library & apply a simple configuration.</li>
                 <li>Run your tests as you usually do.</li>
                 <li>
@@ -125,10 +116,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             </div>
             <p className="text-sm md:text-lg xl:text-xl text-center">
               Enable our integrations.
-              <Link
-                to="/integrations"
-                className="ml-2"
-              >
+              <Link to="/integrations" className="ml-2">
                 Read more..
               </Link>
             </p>

@@ -113,8 +113,8 @@ const config = {
             label: "Solutions",
             position: "left",
             items: [
-              { to: "/bot", label: "Bot" },
-              { to: "/integrations", label: "Integrations" },
+              { to: "/bot", label: "Autonomous Testing Bot" },
+              { to: "/integrations", label: "Visual Regression Testing" },
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
