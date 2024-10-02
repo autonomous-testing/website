@@ -22,7 +22,7 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     ultimate: "Individual",
   },
   {
-    feature: "Integrations",
+    feature: "Integrations / Visual Testing",
   },
   {
     feature: "Cypress",

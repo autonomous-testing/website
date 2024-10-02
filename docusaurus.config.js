@@ -114,7 +114,7 @@ const config = {
             position: "left",
             items: [
               { to: "/bot", label: "Autonomous Testing Bot" },
-              { to: "/integrations", label: "Visual Regression Testing" },
+              { to: "/visual-testing", label: "Visual Regression Testing" },
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
@@ -148,7 +148,7 @@ const config = {
               { label: "Autonomous Testing Bot 🤖", to: "/bot" },
               {
                 label: "Visual Regression Testing",
-                to: "/integrations",
+                to: "/visual-testing",
               },
             ],
           },

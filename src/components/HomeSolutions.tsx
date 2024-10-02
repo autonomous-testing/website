@@ -78,7 +78,7 @@ export default function HomepageHowItWorks(): JSX.Element {
         <div className="card flex flex-1 p-5 md:p-10 justify-between gap-5 shadow-lg">
           <div className="flex flex-col justify-between h-full gap-2">
             <h3 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-              <Link to="/integrations">
+              <Link to="/visual-testing">
                 <span className="flex items-center justify-center gap-1">
                   Visual Regression Testing
                   <LinkIcon />
@@ -93,7 +93,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               </span>
             </p>
             <div className="flex justify-center items-center">
-              <Link to="/integrations" className="group">
+              <Link to="/visual-testing" className="group">
                 <Icon
                   size={6}
                   path={mdiConnection}
@@ -116,7 +116,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             </div>
             <p className="text-sm md:text-lg xl:text-xl text-center">
               Enable our integrations.
-              <Link to="/integrations" className="ml-2">
+              <Link to="/visual-testing" className="ml-2">
                 Read more..
               </Link>
             </p>
