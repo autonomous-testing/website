@@ -31,12 +31,17 @@ const OurValueSection = () => {
         {values.map((value) => (
           <div key={value.title}>
             <Icon
-              size={6}
+              size={7}
               path={value.icon}
               className="text-secondary-wopee dark:text-primary-wopee group-hover:opacity-90 transition-opacity"
             />
-            <p className="text-2xl font-bold">{value.title}</p>
-            <p className="text-lg">{value.description}</p>
+            <p className="text-6xl font-bold">{value.title}</p>
+            <p className="text-lg">
+              <span className="text-secondary-wopee dark:text-primary-wopee font-bold">
+                {value.description.split(" ")[0]}{" "}
+              </span>
+              {value.description.split(" ").slice(1).join(" ")}
+            </p>
           </div>
         ))}
       </div>

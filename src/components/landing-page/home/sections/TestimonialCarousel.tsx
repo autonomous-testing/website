@@ -1,9 +1,11 @@
+import { mdiFormatQuoteClose, mdiFormatQuoteOpen } from "@mdi/js";
+import Icon from "@mdi/react";
 import React, { useState, useEffect } from "react";
 
 const testimonials = [
   {
     quote:
-      "Wopee showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application.",
+      "Wopee showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application",
     about:
       "Livesport, The fastest sports information and scores provider from 35+ sports to 100M people worldwide (60+ web and mobile apps)",
     avatar: "/img/customers/avatars/martin-livesport.jpg",
@@ -14,7 +16,7 @@ const testimonials = [
   },
   {
     quote:
-      "Wopee autonomous testing is extremely valuable in testing our marketing & customer account pages.",
+      "Wopee autonomous testing is extremely valuable in testing our marketing & customer account pages",
     about:
       "Multitude, European provider of Digital Financial Services 400k+ customers in 20 countries",
     avatar: "/img/customers/avatars/juraj-multitude.jpeg",
@@ -41,9 +43,23 @@ const Testimonial = ({
       activeItemIndex === itemIndex ? "opacity-100" : "opacity-0"
     } transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
   >
-    <div className="lg:w-1/2 lg:text-3xl text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
-      <p>{quote}</p>
-      <p className="text-secondary-wopee dark:text-primary-wopee">{about}</p>
+    <div className="lg:w-1/2 text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
+      <p className="text-xl lg:text-3xl">
+        <Icon
+          size={1}
+          path={mdiFormatQuoteOpen}
+          className="text-secondary-wopee dark:text-primary-wopee"
+        />
+        {quote}
+        <Icon
+          size={1}
+          path={mdiFormatQuoteClose}
+          className="text-secondary-wopee dark:text-primary-wopee"
+        />
+      </p>
+      <p className="text-secondary-wopee dark:text-primary-wopee lg:text-xl">
+        {about}
+      </p>
     </div>
 
     <div className="flex flex-col lg:flex-row gap-3 items-center">

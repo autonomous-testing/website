@@ -70,7 +70,7 @@ const HowItWorks = () => {
             />
           </div>
 
-          <div className="w-full px-2 lg:px-0 lg:w-3/4">
+          <div className="w-full px-2 lg:px-0 lg:w-3/4 flex flex-col gap-5">
             <div>
               <p className="font-bold text-3xl lg:text-4xl">
                 {index + 1}. {step.title}
@@ -80,7 +80,7 @@ const HowItWorks = () => {
               </p>
             </div>
 
-            <div className="text-2xl lg:text-3xl text-balance flex flex-col gap-5">
+            <div className="text-xl lg:text-2xl text-balance flex flex-col gap-5 opacity-70">
               <p>{step.description}</p>
               <p>
                 <span className="italic">Benefit:</span> {step.benefit}
@@ -98,7 +98,7 @@ const HowItWorks = () => {
           {features.map((feature) => (
             <div
               key={feature}
-              className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center lg:w-52 p-4 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-700 dark:bg-opacity-90 transition-colors text-balance"
+              className="border border-solid border-gray-300 dark:border-gray-700 flex justify-center items-center lg:w-52 text-lg p-4 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-zinc-700 dark:bg-opacity-90 transition-colors text-balance"
             >
               {feature}
             </div>
