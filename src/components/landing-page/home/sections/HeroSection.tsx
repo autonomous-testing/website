@@ -6,7 +6,7 @@ const HeroSection = () => {
     <div className="flex flex-col lg:flex-row justify-center items-center gap-5 my-12 lg:mt-10 lg:mb-0 lg:h-[70vh] px-10">
       <div className="text-center flex flex-col gap-5 w-full lg:w-1/3">
         <div className="text-balance">
-          <h1 className="text-6xl">
+          <h1 className="text-5xl sm:text-6xl">
             Simplify your{" "}
             <p className=" text-secondary-wopee dark:text-primary-wopee">
               Visual Testing
