@@ -1,7 +1,7 @@
 import React from "react";
 
 import Link from "@docusaurus/Link";
-import ButtonGhost from "./buttons/ButtonGhost";
+import ButtonGhost from "../buttons/ButtonGhost";
 
 const aboutImg = require("@site/static/img/problem.png").default;
 
