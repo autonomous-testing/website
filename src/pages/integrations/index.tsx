@@ -3,7 +3,7 @@ import { useWindowSize } from "usehooks-ts";
 
 import Layout from "@theme/Layout";
 import Modal from "@site/src/components/dialog/Modal";
-import HomeConversionForm from "@site/src/components/HomeConversionForm";
+import HomeConversionForm from "@site/src/components/legacy-home-page/HomeConversionForm";
 import SupportedTestingTools from "@site/src/components/landing-page/home/sections/SupportedTestingTools";
 
 const WopeeIntegrationsPage = () => {

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import Modal from "@site/src/components/dialog/Modal";
-import HomeConversionForm from "@site/src/components/HomeConversionForm";
+import HomeConversionForm from "@site/src/components/legacy-home-page/HomeConversionForm";
 
 const WopeeCommanderPage = () => {
   const [open, setOpen] = useState(false);
