@@ -5,10 +5,10 @@ const SolutionIntroSection = () => {
   return (
     <div className="flex flex-col justify-center text-center text-balance gap-10 lg:my-28 h-[50vh] lg:h-[80vh] bg-gradient-to-b from-transparent via-primary-wopee/60 dark:via-secondary-wopee/60 to-transparent">
       <div className="px-2 lg:px-0">
-        <p className="text-3xl lg:text-4xl font-bold">
+        <h2 className="text-3xl lg:text-4xl font-bold">
           Streamline Visual Testing with Wopee.io
-        </p>
-        <p className="text-2xl lg:text-3xl">
+        </h2>
+        <h3 className="text-2xl lg:text-3xl font-normal">
           <span className="text-secondary-wopee dark:text-primary-wopee font-bold">
             Simplify
           </span>
@@ -21,7 +21,7 @@ const SolutionIntroSection = () => {
             reduce costs
           </span>{" "}
           with our effortless visual regression testing.
-        </p>
+        </h3>
       </div>
 
       <div className="px-2 lg:px-0">

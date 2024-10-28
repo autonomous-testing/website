@@ -7,15 +7,17 @@ const HomeEndingSection = () => {
   return (
     <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
       <div className="container my-12 lg:my-16 h-[30vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
-        <div className="lg:text-4xl sm:text-3xl text-xl font-bold text-balance px-2 lg:px-0">
-          <p>Optimize your testing process with Wopee.io</p>
-          <p className=" text-secondary-wopee dark:text-primary-wopee">
+        <div className="text-balance px-2 lg:px-0">
+          <h2 className="lg:text-4xl sm:text-3xl text-xl font-bold">
+            Optimize your testing process with Wopee.io
+          </h2>
+          <h3 className=" text-secondary-wopee dark:text-primary-wopee lg:text-4xl sm:text-3xl text-xl font-bold">
             Set up in minutes, get results in seconds, no coding needed.
-          </p>
+          </h3>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center items-center lg:gap-5">
-          <div className="h-20">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 lg:gap-5">
+          <div className="sm:h-20">
             <ButtonPrimaryInverted
               href="/book-demo"
               className="w-60 h-[50px]"
