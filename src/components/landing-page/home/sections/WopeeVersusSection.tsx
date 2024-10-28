@@ -1,34 +1,25 @@
 import React from "react";
 import Icon from "@mdi/react";
-import { mdiCurrencyUsd, mdiRocket, mdiCheckboxMultipleOutline } from "@mdi/js";
 
-const values = [
-  {
-    icon: mdiRocket,
-    title: "10x",
-    description: "Quicker setup compared to traditional tools",
-  },
-  {
-    icon: mdiCurrencyUsd,
-    title: "30 - 40%",
-    description: "Lower cost than our competitors",
-  },
-  {
-    icon: mdiCheckboxMultipleOutline,
-    title: "5x",
-    description: "Higher test coverage with simple maintenance",
-  },
-];
-
-const OurValueSection = () => {
+const WopeeVersusSection = ({
+  bot,
+  VALUES,
+}: {
+  bot?: boolean;
+  VALUES: Array<{ title: string; description: string; icon: string }>;
+}) => {
   return (
-    <div className="flex flex-col gap-2 lg:gap-10 mb-16 lg:mb-36 px-2 lg:px-0 text-balance">
+    <div
+      className={`flex flex-col gap-2 lg:gap-10 lg:mb-36 px-2 lg:px-0 text-balance ${
+        bot ? "my-16" : "mb-16"
+      }`}
+    >
       <p className="text-3xl text-center font-bold">
-        Wopee.io vs Traditional Visual Testing
+        Wopee.io vs {bot ? "Manual testing" : "Traditional visual testing"}
       </p>
 
       <div className="flex flex-col lg:flex-row justify-around gap-5 text-center">
-        {values.map((value) => (
+        {VALUES.map((value) => (
           <div key={value.title}>
             <Icon
               size={7}
@@ -48,4 +39,4 @@ const OurValueSection = () => {
     </div>
   );
 };
-export default OurValueSection;
+export default WopeeVersusSection;

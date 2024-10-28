@@ -1,7 +1,7 @@
 import React from "react";
 
-import ButtonPrimary from "../buttons/ButtonPrimary";
-import ButtonPrimaryInverted from "../buttons/ButtonPrimaryInverted";
+import ButtonPrimary from "../../buttons/ButtonPrimary";
+import ButtonPrimaryInverted from "../../buttons/ButtonPrimaryInverted";
 import clsx from "clsx";
 
 const HomeConversionForm = ({ className }: { className?: string }) => {
