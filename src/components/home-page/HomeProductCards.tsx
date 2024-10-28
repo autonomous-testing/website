@@ -1,15 +1,22 @@
 import React from "react";
 import Link from "@docusaurus/Link";
+import { useHistory } from "@docusaurus/router";
 
 const SelfDrivingBotCard = () => {
+  const router = useHistory();
   return (
-    <div className="flex items-center justify-around w-[380px] sm:w-[530px] xl:w-[600px] h-[195px] py-4 rounded-lg border border-solid border-primary-wopee bg-gradient-to-br from-secondary-wopee to-white">
+    <div
+      onClick={() => router.push("/bot")}
+      className="flex items-center justify-around w-[380px] sm:w-[530px] xl:w-[600px] h-[195px] py-4 rounded-lg border hover:ring-2 hover:ring-primary-wopee border-solid border-primary-wopee bg-gradient-to-br from-secondary-wopee to-white hover:cursor-pointer transition-shadow ease-in-out"
+    >
       <div className="flex flex-col w-1/2 gap-4 items-center">
         <section className="text-center text-white">
-          <p className="text-xl">Self-Driving Bot</p>
-          <p className="text-xl text-primary-wopee">Only URL required</p>
-          <p className="text-sm">Automate like a pro, 1 minute</p>
-          <p className="text-sm">setup, no coding required</p>
+          <h2 className="text-2xl">Self-Driving Bot</h2>
+          <h3 className="font-normal text-xl text-primary-wopee">
+            Only URL required
+          </h3>
+          <h3 className="font-normal text-sm">Automate like a pro, 1 minute</h3>
+          <h3 className="font-normal text-sm">setup, no coding required</h3>
         </section>
 
         <Link
@@ -33,11 +40,15 @@ const SelfDrivingBotCard = () => {
 };
 
 const VisualTestingCard = () => {
+  const router = useHistory();
   return (
-    <div className="flex items-center justify-around w-[380px] sm:w-[530px] xl:w-[600px] h-[195px] py-4 rounded-lg border border-solid border-secondary-wopee bg-gradient-to-br from-primary-wopee to-white overflow-hidden">
+    <div
+      onClick={() => router.push("/visual-testing")}
+      className="flex items-center justify-around w-[380px] sm:w-[530px] xl:w-[600px] h-[195px] py-4 rounded-lg border hover:ring-2 hover:ring-secondary-wopee border-solid border-secondary-wopee bg-gradient-to-br from-primary-wopee to-white overflow-hidden hover:cursor-pointer transition-shadow ease-in-out"
+    >
       <div className="flex flex-col w-1/2 gap-4 items-center">
         <section className="text-center text-black">
-          <p className="text-xl">Visual Testing</p>
+          <h2 className="text-2xl">Visual Testing</h2>
           <div className="flex justify-center h-5 sm:h-8 gap-1">
             <img
               src="/img/assistant/testing-tools/pw-logo1.png"
@@ -56,7 +67,9 @@ const VisualTestingCard = () => {
               alt="robot framework"
             />
           </div>
-          <p className="text-sm">Increase coverage & reduce code</p>
+          <h3 className="font-normal text-sm">
+            Increase coverage & reduce code
+          </h3>
         </section>
 
         <Link
