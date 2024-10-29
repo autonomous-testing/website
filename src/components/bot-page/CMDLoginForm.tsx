@@ -37,6 +37,7 @@ export const CMDLoginForm = () => {
       <div className="flex justify-center gap-2">
         {LOGIN_BUTTONS.map(({ icon, provider }) => (
           <button
+            key={provider}
             onClick={() => handleLogin(provider)}
             className="flex justify-center items-center bg-white dark:bg-black rounded border p-2 sm:w-[120px] hover:cursor-pointer"
           >
