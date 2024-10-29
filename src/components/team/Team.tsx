@@ -6,9 +6,9 @@ import { TeamMemberCard } from "./TeamMemberCard";
 export default function Team(): JSX.Element {
   return (
     <section className="mt-8 mb-16 text-center">
-      <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
+      <h1 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
         Wopees
-      </h2>
+      </h1>
       <div className="flex flex-col items-center justify-center mt-3 md:mt-5 sm:flex-row gap-5 sm:flex-wrap">
         {TeamMemberList.map((props, idx) => (
           <TeamMemberCard
