@@ -2,14 +2,14 @@ import clsx from "clsx";
 import React from "react";
 
 import Layout from "@theme/Layout";
-import HomeAbout from "@site/src/components/legacy-home-page/HomeAbout";
-import HomeCustomers from "@site/src/components/legacy-home-page/HomeCustomers";
-import HomeSolutions from "@site/src/components/legacy-home-page/HomeSolutions";
-import HomeHowItWorks from "@site/src/components/legacy-home-page/HomeHowItWorks";
-import HomeConversionForm from "@site/src/components/legacy-home-page/HomeConversionForm";
+import HomeAbout from "@site/src/components/legacy/home-page/HomeAbout";
+import HomeCustomers from "@site/src/components/legacy/home-page/HomeCustomers";
+import HomeSolutions from "@site/src/components/legacy/home-page/HomeSolutions";
+import HomeHowItWorks from "@site/src/components/legacy/home-page/HomeHowItWorks";
+import HomeConversionForm from "@site/src/components/legacy/home-page/HomeConversionForm";
 
 import styles from "./index.module.css";
-import HomeComparison from "@site/src/components/legacy-home-page/HomeComparison";
+import HomeComparison from "@site/src/components/legacy/home-page/HomeComparison";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 
 function HomeHeader() {

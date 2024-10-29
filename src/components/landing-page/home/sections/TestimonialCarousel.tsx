@@ -44,7 +44,7 @@ const Testimonial = ({
     } transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
   >
     <div className="lg:w-1/2 text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
-      <p className="text-xl lg:text-3xl">
+      <p className="text-lg sm:text-xl lg:text-3xl">
         <Icon
           size={1}
           path={mdiFormatQuoteOpen}
@@ -135,7 +135,7 @@ const TestimonialCarousel = () => {
 
   return (
     <div className="my-16 lg:my-28 flex flex-col gap-5 lg:gap-14">
-      <div className="text-3xl lg:text-4xl text-center font-bold text-balance">
+      <div className="text-xl sm:text-3xl lg:text-4xl text-center font-bold text-balance">
         <p>Join the visionaries shaping the future</p>
         <p className="text-secondary-wopee dark:text-primary-wopee">
           Trusted by the technology leaders & innovators
