@@ -6,7 +6,7 @@ const SelfDrivingBotCard = () => {
   const router = useHistory();
   return (
     <div
-      onClick={() => router.push("/bot")}
+      onClick={() => router.push("/testing-bot")}
       className="flex items-center justify-around w-[355px] sm:w-[530px] xl:w-[600px] h-[195px] py-4 rounded-lg border hover:ring-2 hover:ring-primary-wopee border-solid border-primary-wopee bg-gradient-to-br from-secondary-wopee to-white hover:cursor-pointer transition-shadow ease-in-out"
     >
       <div className="flex flex-col w-1/2 gap-4 items-center">
@@ -24,7 +24,7 @@ const SelfDrivingBotCard = () => {
         </section>
 
         <Link
-          to="/bot"
+          to="/testing-bot"
           className="group"
         >
           <button className=" text-white border border-secondary-wopee font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-1 text-center transition ease-out">
