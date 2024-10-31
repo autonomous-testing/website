@@ -24,7 +24,7 @@ export default function Pricing(): JSX.Element {
 
         <div className="card p-5 shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee gap-5 flex-row items-center">
           <img
-            src="/img/wopee_head_1_2023-10-10.png"
+            src="/img/subscription-plans/enterprise.png"
             alt="enterprise-plan-card"
             className="aspect-square object-contain h-[300px]"
           />
