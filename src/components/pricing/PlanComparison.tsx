@@ -7,19 +7,21 @@ import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "Test steps",
+    starter: "1.000 / project / month / user",
     basic: "10.000 / month / user",
     premium: "100.000 / month / user",
-    ultimate: "Unlimited",
+    enterprise: "Unlimited",
   },
   {
     feature: "Parallel test runs",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Data retention",
+    starter: "30 days",
     basic: "30 days",
     premium: "30 days",
-    ultimate: "Individual",
+    enterprise: "Individual",
   },
   {
     feature: "Integrations / Visual Testing",
@@ -27,30 +29,34 @@ const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "Cypress",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Playwright",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Robot Framework",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "WebdriverIO",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "On-prem testing",
@@ -58,32 +64,32 @@ const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "On-prem testing",
     subFeature: true,
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "CI/CD Integration",
     subFeature: true,
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Videos and traces from testing",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "On-boarding assistance",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Priority feature development",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Custom feature development",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Custom integration",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Support",
@@ -91,21 +97,23 @@ const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "Email",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "GH Discussions",
     subFeature: true,
+    starter: "Check",
     basic: "Check",
     premium: "Check",
-    ultimate: "Check",
+    enterprise: "Check",
   },
   {
     feature: "Workshops",
     subFeature: true,
-    ultimate: "Check",
+    enterprise: "Check",
   },
 ];
 
@@ -116,12 +124,24 @@ const PlanComparison = () => {
         Plan comparison
       </h4>
 
-      <div className="grid grid-cols-4 mb-5">
+      <div className="grid grid-cols-5 mb-5">
         <div className="col-span-1"></div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
             <img
-              src="/img/pricing/premium.png"
+              src="/img/subscription-plans/starter.png"
+              alt="Starter plan"
+            />
+          </div>
+          <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
+            Starter
+          </h5>
+        </div>
+
+        <div className="col-span-1">
+          <div className="aspect-square flex justify-center items-center">
+            <img
+              src="/img/subscription-plans/basic.png"
               alt="Basic plan"
             />
           </div>
@@ -129,10 +149,11 @@ const PlanComparison = () => {
             Basic
           </h5>
         </div>
+
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
             <img
-              src="/img/pricing/ultimate.png"
+              src="/img/subscription-plans/premium.png"
               alt="Premium plan"
             />
           </div>
@@ -140,15 +161,17 @@ const PlanComparison = () => {
             Premium
           </h5>
         </div>
+
         <div className="col-span-1">
-          <div className="aspect-square flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <img
-              src="/img/pricing/addons.png"
-              alt="Ultimate plan"
+              src="/img/wopee_head_1_2023-10-10.png"
+              alt="Enterprise plan"
+              className="aspect-square object-contain"
             />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
-            Ultimate
+            Enterprise
           </h5>
         </div>
 
