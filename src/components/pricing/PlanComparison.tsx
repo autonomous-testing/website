@@ -163,11 +163,10 @@ const PlanComparison = () => {
         </div>
 
         <div className="col-span-1">
-          <div className="flex justify-center items-center">
+          <div className="aspect-square flex justify-center items-center">
             <img
-              src="/img/wopee_head_1_2023-10-10.png"
+              src="/img/subscription-plans/enterprise.png"
               alt="Enterprise plan"
-              className="aspect-square object-contain"
             />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
