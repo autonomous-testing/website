@@ -17,10 +17,10 @@ type PlanItem = {
 
 export const PlanItems: PlanItem[] = [
   {
-    title: "Basic",
-    img: require("@site/static/img/pricing/premium.png").default,
-    price: "79 €",
-    features: ["10.000 test steps / month"],
+    title: "Starter",
+    img: require("@site/static/img/subscription-plans/starter.png").default,
+    price: "starting from 9 €",
+    features: ["1.000 test steps per project/month"],
     featured: false,
     button: (
       <Link to="https://cmd.wopee.io">
@@ -29,10 +29,10 @@ export const PlanItems: PlanItem[] = [
     ),
   },
   {
-    title: "Premium",
-    img: require("@site/static/img/pricing/ultimate.png").default,
-    price: "179 €",
-    features: ["100.000 test steps / month"],
+    title: "Basic",
+    img: require("@site/static/img/subscription-plans/basic.png").default,
+    price: "79 €",
+    features: ["10.000 test steps/month"],
     featured: true,
     button: (
       <Link to="https://cmd.wopee.io">
@@ -41,17 +41,14 @@ export const PlanItems: PlanItem[] = [
     ),
   },
   {
-    title: "Ultimate",
-    img: require("@site/static/img/pricing/addons.png").default,
-    price: "contact us",
-    features: [
-      "unlimited test steps ",
-      "on-premise bots",
-    ],
+    title: "Premium",
+    img: require("@site/static/img/subscription-plans/premium.png").default,
+    price: "179 €",
+    features: ["100.000 test steps/month"],
     featured: false,
     button: (
-      <Link to="/contact-us">
-        <ButtonGradientOutline className="w-60" label="Contact us" />
+      <Link to="https://cmd.wopee.io">
+        <ButtonGradientOutline className="w-60" />
       </Link>
     ),
   },
@@ -70,15 +67,15 @@ export default function PlanItem({
     <div
       className={clsx(
         "card flex flex-col items-center h-[560px] w-[335px] justify-center gap-5 p-5 shadow-xl",
-        featured ? "relative overflow-hidden xl:scale-105" : ""
+        featured ? "relative overflow-hidden xl:scale-105 " : ""
       )}
     >
       {featured && <Ribbon />}
       {img ? (
         <img
           src={img}
-          alt="Image alt text"
-          title="Logo Title Text 1"
+          alt={`Subscription plan ${title}`}
+          title={`Subscription plan ${title}`}
           className="object-cover"
         />
       ) : (
@@ -97,7 +94,9 @@ export default function PlanItem({
           {title === "Ultimate" || title === "Enterprise" ? (
             ""
           ) : (
-            <small className="font-normal">per user/month</small>
+            <small className="font-normal">
+              per {title === "Starter" ? "project/" : ""}user/month
+            </small>
           )}
         </h4>
         <small className="text-md md:text-lg">
