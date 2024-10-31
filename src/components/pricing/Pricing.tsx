@@ -1,7 +1,7 @@
 import React from "react";
 
 import PlanComparison from "./PlanComparison";
-import PlanItem, { PlanItems } from "./PlanItem";
+import PlanCard, { PlanCards } from "./PlanCard";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
@@ -12,17 +12,17 @@ export default function Pricing(): JSX.Element {
         Pricing
       </h2>
 
-      <div className="flex flex-col items-center gap-16">
+      <div className="flex flex-col items-center gap-5 md:gap-16">
         <div className="flex flex-col sm:flex-wrap items-center sm:flex-row xl:flex-nowrap mt-10 md:mt-10 justify-center gap-5 sm:gap-7">
-          {PlanItems.map((props, idx) => (
-            <PlanItem
+          {PlanCards.map((props, idx) => (
+            <PlanCard
               key={idx}
               {...props}
             />
           ))}
         </div>
 
-        <div className="card p-5 shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee gap-5 flex-row items-center">
+        <div className="card p-5 shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee gap-5 h-[560px] w-[335px] md:w-auto md:h-auto md:flex-row items-center">
           <img
             src="/img/subscription-plans/enterprise.png"
             alt="enterprise-plan-card"

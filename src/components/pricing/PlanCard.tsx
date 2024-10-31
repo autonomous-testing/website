@@ -5,7 +5,7 @@ import Ribbon from "./Ribbon";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 
-type PlanItem = {
+type PlanCardT = {
   img: string;
   icon?: string;
   title: string;
@@ -15,7 +15,7 @@ type PlanItem = {
   button?: JSX.Element;
 };
 
-export const PlanItems: PlanItem[] = [
+export const PlanCards: PlanCardT[] = [
   {
     title: "Starter",
     img: require("@site/static/img/subscription-plans/starter.png").default,
@@ -54,7 +54,7 @@ export const PlanItems: PlanItem[] = [
   },
 ];
 
-export default function PlanItem({
+export default function PlanCard({
   img,
   icon,
   title,
@@ -62,7 +62,7 @@ export default function PlanItem({
   button,
   features,
   featured,
-}: PlanItem) {
+}: PlanCardT) {
   return (
     <div
       className={clsx(

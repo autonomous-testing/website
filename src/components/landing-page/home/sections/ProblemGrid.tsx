@@ -11,7 +11,7 @@ const ProblemGrid = () => {
       <div className="w-full px-5 container">
         <div className="flex flex-col w-full mb-10 sm:flex-row sm:gap-10">
           <div className="w-full mb-10 sm:mb-0 sm:w-1/2 ">
-            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-md shadow-secondary-wopee dark:shadow-primary-wopee">
+            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee">
               <h3 className="my-2 text-xl font-bold">
                 ⚙️Maintenance inefficiency
               </h3>
@@ -25,7 +25,7 @@ const ProblemGrid = () => {
           </div>
 
           <div className="w-full sm:w-1/2">
-            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-md shadow-secondary-wopee dark:shadow-primary-wopee">
+            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee">
               <h3 className="my-2 text-xl font-bold ">🪴Scaling challenges</h3>
 
               <p className="mb-2 text-lg">
@@ -38,7 +38,7 @@ const ProblemGrid = () => {
 
         <div className="flex flex-col w-full mb-5 sm:flex-row sm:gap-10">
           <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-md shadow-secondary-wopee dark:shadow-primary-wopee">
+            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee">
               <h3 className="my-2 text-xl font-bold">⛔Resource constraints</h3>
 
               <p className="mb-2 text-lg">
@@ -50,7 +50,7 @@ const ProblemGrid = () => {
           </div>
 
           <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-md shadow-secondary-wopee dark:shadow-primary-wopee">
+            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee">
               <h3 className="my-2 text-xl font-bold">
                 ♟️Advanced tech skill requirements
               </h3>
@@ -64,7 +64,7 @@ const ProblemGrid = () => {
           </div>
 
           <div className="w-full sm:w-1/2">
-            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-md shadow-secondary-wopee dark:shadow-primary-wopee">
+            <div className="h-full p-5 dark:bg-zinc-800 border-solid border-3 border-secondary-wopee dark:border-primary-wopee rounded-lg text-center text-balance shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee">
               <h3 className="my-2 text-xl font-bold">💰Budget limitations</h3>
 
               <p className="mb-2 text-lg">
