@@ -19,7 +19,7 @@ export const PlanCards: PlanCardT[] = [
   {
     title: "Starter",
     img: require("@site/static/img/subscription-plans/starter.png").default,
-    price: "starting from 9 €",
+    price: "9 €",
     features: ["1.000 test steps per project/month"],
     featured: false,
     button: (
