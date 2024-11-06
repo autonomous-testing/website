@@ -67,12 +67,13 @@ export default function Home(): JSX.Element {
 <li>Day 1: Tue, Nov-12 at <a href="https://map.websummit.com/lis24/?location=B126" target="_blank" rel="noopener">booth B126, Pavilion 1</a></li>
 <li>Day 2+3: Wed+Thu at entrance to Wine Summit</li>
 </ul>
-<p style={{ paddingLeft: "40px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "279px", width: "279px" }} alt="wopee-io_web-summit-2024_booth-location" width="279" height="383" loading="lazy" /></p>
-<h2>Join the workshop online:</h2>
+<p style={{ paddingLeft: "30px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "379px", width: "379px" }} alt="wopee-io_web-summit-2024_booth-location" width="379" height="520" loading="lazy" /></p>
+{/* <h2>Join the workshop online:</h2>
 <ul>
 <li>Friday, Nov 24: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7118328751297318914/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/295882149/" target="_blank" rel="noopener">via Meetup.com</a></li>
 <li>Friday, Dec 8: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7125116150606143488/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/296674152/" target="_blank" rel="noopener">via Meetup.com</a></li>
-</ul></div>
+</ul> */}
+</div>
             </div>
           )}
           <div
