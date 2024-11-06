@@ -77,9 +77,14 @@ export default function Home(): JSX.Element {
             </div>
           )}
           <div
-            className="meetings-iframe-container w-full xl:w-2/3"
-            data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
+            className="w-full xl:w-2/3"
           />
+            <h2>Talk soon:</h2>
+            <div
+              className="meetings-iframe-container"
+              data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
+            />
+            </div>
         </div>
         <PartnersCarousel />
         <div className="flex justify-center">
