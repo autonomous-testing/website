@@ -5,16 +5,14 @@ const HomeHeroSection = () => {
   return (
     <div className="flex flex-col items-center gap-10 my-32">
       <section className="text-balance">
-        <h1 className="font-bold text-center text-2xl sm:text-4xl md:text-6xl">
-          Streamline testing with Wopee.io
+        <h1 className="font-bold text-center text-5xl sm:text-4xl md:text-6xl">
+          Optimize Your Testing
         </h1>
-        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-2xl sm:text-4xl md:text-6xl ">
-          Advanced automation meets{" "}
-          <span className="font-bold">simplicity</span>,
+        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-3xl sm:text-3xl md:text-4xl ">
+          Set Up in Minutes, Results in Seconds.
         </h2>
-        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-2xl sm:text-4xl md:text-6xl ">
-          enhancing <span className="font-bold">efficiency</span> and{" "}
-          <span className="font-bold">ease</span> in your workflow.
+        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-3xl sm:text-3xl md:text-4xl ">
+          No Coding Needed.
         </h2>
       </section>
 
