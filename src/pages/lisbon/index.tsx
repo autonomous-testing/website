@@ -78,7 +78,7 @@ export default function Home(): JSX.Element {
           )}
           <div
             className="w-full xl:w-2/3"
-          />
+          >
             <h2>Talk soon:</h2>
             <div
               className="meetings-iframe-container"
