@@ -8,7 +8,7 @@ const HomeEndingSection = () => {
     <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
       <div className="container my-12 lg:my-16 h-[30vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
         <div className="text-balance px-2 lg:px-0">
-          <h2 className="lg:text-4xl sm:text-4xl text-4xl font-bold">
+          <h2 className="text-4xl font-bold">
             Streamline Your Web App Testing
           </h2>
           <h3 className="text-secondary-wopee dark:text-primary-wopee lg:text-3xl sm:text-2xl text-2xl">
