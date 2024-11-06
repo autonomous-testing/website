@@ -8,11 +8,12 @@ const HomeEndingSection = () => {
     <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
       <div className="container my-12 lg:my-16 h-[30vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
         <div className="text-balance px-2 lg:px-0">
-          <h2 className="lg:text-4xl sm:text-3xl text-xl font-bold">
-            Optimize your testing process with Wopee.io
+          <h2 className="lg:text-4xl sm:text-4xl text-4xl font-bold">
+            Streamline Your Web App Testing
           </h2>
-          <h3 className=" text-secondary-wopee dark:text-primary-wopee lg:text-4xl sm:text-3xl text-xl font-bold">
-            Set up in minutes, get results in seconds, no coding needed.
+          <h3 className="text-secondary-wopee dark:text-primary-wopee lg:text-3xl sm:text-2xl text-2xl">
+            Effortless <span className="font-bold">Regression Testing</span>{" "}
+            with Advanced Automation.
           </h3>
         </div>
 
