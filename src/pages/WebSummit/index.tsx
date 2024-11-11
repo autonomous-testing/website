@@ -59,34 +59,37 @@ export default function Home(): JSX.Element {
           ) : (
             <div className="w-full xl:w-1/3 py-4">
               <div className="hs-richtext hs-main-font-element">
-<h2>Meet us in Lisbon:</h2>
-<ul>
-<li>Day 1 (Tue, Nov-12) at <a href="https://map.websummit.com/lis24/?location=B126" target="_blank" rel="noopener">booth B126, Pavilion 1</a><br/></li>
-<li>Day 2 (Wed, Nov-13) around the entrance to Wine Summit during the Wednesday</li>
-<li>Day 2 (Wed, Nov-13) at <a href="https://www.linkedin.com/events/qa-testingmeetup7260689831461113856/" target="_blank" rel="noopener">QA and Testing Meetup</a> (Alameda, Lisboa) at 19:00<br/></li>
-<li>Day 3 (Thu, Nov-14) around the entrance to Wine Summit during the Thursday</li>
-</ul>
-<ul>
-<li>Send me a message: <a href="https://www.linkedin.com/in/janberanekcz/" target="_blank" rel="noopener">LinkedIn.com/in/JanBeranekCZ</a></li>
-</ul>
-{/* <h2>Join the workshop online:</h2>
-<ul>
-<li>Friday, Nov 24: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7118328751297318914/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/295882149/" target="_blank" rel="noopener">via Meetup.com</a></li>
-<li>Friday, Dec 8: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7125116150606143488/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/296674152/" target="_blank" rel="noopener">via Meetup.com</a></li>
-</ul> */}
-</div>
+                {/* <h2>Talk soon:</h2>
+                <div
+                  className="meetings-iframe-container"
+                  data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
+                /> */}
+                <p style={{ paddingLeft: "30px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "379px", width: "379px" }} alt="wopee-io_web-summit-2024_booth-location" width="379" height="520" loading="lazy" /></p>
             </div>
+          </div>
           )}
           <div
             className="w-full xl:w-2/3"
           >
-            {/* <h2>Talk soon:</h2>
-            <div
-              className="meetings-iframe-container"
-              data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
-            /> */}
-            <p style={{ paddingLeft: "30px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "379px", width: "379px" }} alt="wopee-io_web-summit-2024_booth-location" width="379" height="520" loading="lazy" /></p>
-
+            <h2>Meet us in Lisbon:</h2>
+                <ul>
+                  <li>Day 1 (Tue, Nov-12) at <a href="https://map.websummit.com/lis24/?location=B126" target="_blank" rel="noopener">booth B126, Pavilion 1</a></li>
+                </ul>
+                <ul>
+                  <li>Day 2 (Wed, Nov-13) around the entrance to Wine Summit during the Wednesday</li>
+                  <li>Day 2 (Wed, Nov-13) at <a href="https://www.linkedin.com/events/qa-testingmeetup7260689831461113856/" target="_blank" rel="noopener">QA and Testing Meetup</a> (Alameda, Lisboa) at 19:00</li>
+                </ul>
+                <ul>
+                  <li>Day 3 (Thu, Nov-14) around the entrance to Wine Summit during the Thursday</li>
+                </ul>
+                <ul>
+                  <li>Send me a message: <a href="https://www.linkedin.com/in/janberanekcz/" target="_blank" rel="noopener">LinkedIn.com/in/JanBeranekCZ</a></li>
+                </ul>
+                {/* <h2>Join the workshop online:</h2>
+                <ul>
+                <li>Friday, Nov 24: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7118328751297318914/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/295882149/" target="_blank" rel="noopener">via Meetup.com</a></li>
+                <li>Friday, Dec 8: <a href="https://www.linkedin.com/events/workshop-autonomoustestingforwe7125116150606143488/" target="_blank" rel="noopener">Register via LinkedIn</a> or <a href="https://www.meetup.com/wopee-io/events/296674152/" target="_blank" rel="noopener">via Meetup.com</a></li>
+                </ul> */}
             </div>
         </div>
         <PartnersCarousel />
