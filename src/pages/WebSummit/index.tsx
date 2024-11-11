@@ -61,12 +61,11 @@ export default function Home(): JSX.Element {
               <div className="hs-richtext hs-main-font-element">
 <h2>Meet us in Lisbon:</h2>
 <ul>
-<li>Day 1 (Tue, Nov-12) at <a href="https://map.websummit.com/lis24/?location=B126" target="_blank" rel="noopener">booth B126, Pavilion 1</a></li>
+<li>Day 1 (Tue, Nov-12) at <a href="https://map.websummit.com/lis24/?location=B126" target="_blank" rel="noopener">booth B126, Pavilion 1</a><br/></li>
 <li>Day 2 (Wed, Nov-13) around the entrance to Wine Summit during the Wednesday</li>
-<li>Day 2 (Wed, Nov-13) at <a href="https://www.linkedin.com/events/qa-testingmeetup7260689831461113856/" target="_blank" rel="noopener">QA and Testing Meetup</a> (Alameda, Lisboa) at 19:00</li>
+<li>Day 2 (Wed, Nov-13) at <a href="https://www.linkedin.com/events/qa-testingmeetup7260689831461113856/" target="_blank" rel="noopener">QA and Testing Meetup</a> (Alameda, Lisboa) at 19:00<br/></li>
 <li>Day 3 (Thu, Nov-14) around the entrance to Wine Summit during the Thursday</li>
 </ul>
-<p style={{ paddingLeft: "30px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "379px", width: "379px" }} alt="wopee-io_web-summit-2024_booth-location" width="379" height="520" loading="lazy" /></p>
 <ul>
 <li>Send me a message: <a href="https://www.linkedin.com/in/janberanekcz/" target="_blank" rel="noopener">LinkedIn.com/in/JanBeranekCZ</a></li>
 </ul>
@@ -78,15 +77,17 @@ export default function Home(): JSX.Element {
 </div>
             </div>
           )}
-          {/* <div
+          <div
             className="w-full xl:w-2/3"
           >
-            <h2>Talk soon:</h2>
+            {/* <h2>Talk soon:</h2>
             <div
               className="meetings-iframe-container"
               data-src="https://meetings-eu1.hubspot.com/jan-beranek?embed=true"
-            />
-            </div> */}
+            /> */}
+            <p style={{ paddingLeft: "30px" }}><img src="https://139620033.fs1.hubspotusercontent-eu1.net/hubfs/139620033/wopee-io_web-summit-2024_booth-location.png" style={{ height: "auto", maxWidth: "379px", width: "379px" }} alt="wopee-io_web-summit-2024_booth-location" width="379" height="520" loading="lazy" /></p>
+
+            </div>
         </div>
         <PartnersCarousel />
         {/* <div className="flex justify-center">
