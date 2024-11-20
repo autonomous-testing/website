@@ -21,6 +21,7 @@ export const CMDLoginForm = () => {
   const [projectUrl, setProjectUrl] = useState("");
 
   const handleLogin = (provider: string) => {
+    return;
     const url = `https://cmd.wopee.io/signup-embedded?url=${projectUrl}&provider=${provider}`;
     window.open(url, "_blank");
   };
@@ -29,6 +30,7 @@ export const CMDLoginForm = () => {
     <div className="flex flex-col items-center gap-3">
       <input
         type="text"
+        disabled
         placeholder="https://your-project-url.com"
         className="h-[40px] sm:w-[376px] rounded border px-4 py-2 bg-white dark:bg-slate-100 dark:text-black text-xl focus:outline-secondary-wopee dark:focus:outline-primary-wopee "
         onChange={(e) => setProjectUrl(e.target.value)}
@@ -38,9 +40,11 @@ export const CMDLoginForm = () => {
         {LOGIN_BUTTONS.map(({ icon, provider }) => (
           <button
             key={provider}
+            disabled
             onClick={() => handleLogin(provider)}
-            className="flex justify-center items-center bg-white dark:bg-black rounded border p-2 sm:w-[120px] hover:cursor-pointer"
+            className="flex justify-center items-center bg-white dark:bg-black rounded border p-2 sm:w-[120px] "
           >
+            {/* hover:cursor-pointer */}
             <Icon
               size={0.7}
               path={icon}
