@@ -23,10 +23,7 @@ const SelfDrivingBotCard = () => {
           </h3>
         </section>
 
-        <Link
-          to="/testing-bot"
-          className="group"
-        >
+        <Link to="/testing-bot" className="group">
           <button className=" text-white border border-secondary-wopee font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-1 text-center transition ease-out">
             Learn more
           </button>
@@ -34,10 +31,7 @@ const SelfDrivingBotCard = () => {
       </div>
 
       <div className="flex justify-center w-1/2">
-        <img
-          className="h-40"
-          src="/img/wopee_head_1_2023-10-10.png"
-        />
+        <img className="h-40" src="/img/wopee_head_1_2023-10-10.png" />
       </div>
     </div>
   );
@@ -58,10 +52,7 @@ const VisualTestingCard = () => {
               src="/img/assistant/testing-tools/pw-logo1.png"
               alt="playwright"
             />
-            <img
-              src="/img/assistant/testing-tools/cy-logo.png"
-              alt="cypress"
-            />
+            <img src="/img/assistant/testing-tools/cy-logo.png" alt="cypress" />
             <img
               src="/img/assistant/testing-tools/wdio-logo.png"
               alt="webdriver-io"
@@ -76,10 +67,7 @@ const VisualTestingCard = () => {
           </h3>
         </section>
 
-        <Link
-          to="/visual-testing"
-          className="group"
-        >
+        <Link to="/visual-testing" className="group">
           <button className="text-secondary-wopee border border-secondary-wopee font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-1 text-center transition ease-out">
             Learn more
           </button>
@@ -100,10 +88,13 @@ const VisualTestingCard = () => {
 
 const HomeProductCards = () => {
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-center gap-5 px-5">
-      <SelfDrivingBotCard />
+    <div className="flex flex-col gap-5 py-10">
+      <h2 className="text-center">Power Your Software Testing with AI</h2>
+      <div className="flex flex-col xl:flex-row items-center justify-center gap-5 px-5">
+        <SelfDrivingBotCard />
 
-      <VisualTestingCard />
+        <VisualTestingCard />
+      </div>
     </div>
   );
 };
