@@ -62,3 +62,21 @@ _Want to be part of the action?_ Join the Playwright Bot testing group and help 
 Playwright Bot is reshaping the landscape of automated testing, bringing AI-powered capabilities that streamline test creation and maintenance. Whether you need to save time, reduce errors, or scale your test suite, Playwright Bot offers a smart and practical solution for modern testing challenges.
 
 Watch the demo, try our autonomous testing bot for free, or explore more at [Wopee.io](https://wopee.io).
+
+:::tip
+
+## Try the Playwright AI Bot Today
+
+<br />
+
+With Playwright Bot, testing becomes less of a chore and more of a seamless, adaptive process. By automating test creation with AI, you’re not just saving time. You’re setting your testing strategy up for long-term success.
+
+<br />
+
+Don’t take our word for it. Try Playwright AI Bot for free and experience the future of test automation today.
+
+<br />
+
+👉 Explore [Playwright AI Bot Demo](https://github.com/Wopee-io/playwright-ai-bot-demo) repository.
+
+:::
