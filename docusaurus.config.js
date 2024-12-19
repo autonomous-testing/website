@@ -102,7 +102,7 @@ const config = {
       navbar: {
         title: "Wopee.io",
         logo: {
-          alt: "Autonomous Testing Bots",
+          alt: "AI-Powered Software Testing Bots",
           src: "img/logo.png",
           className: "margin-left--md",
         },
@@ -115,6 +115,10 @@ const config = {
             items: [
               { to: "/testing-bot", label: "Autonomous Testing Bot" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
+              {
+                to: "blog/playwright-bot-ai-powered-test-automation",
+                label: "Playwright AI Bot (preview)",
+              },
             ],
           },
           { to: "/pricing", label: "Pricing", position: "left" },
@@ -149,6 +153,10 @@ const config = {
               {
                 label: "Visual Regression Testing",
                 to: "/visual-testing",
+              },
+              {
+                label: "Playwright AI Bot (preview)",
+                to: "blog/playwright-bot-ai-powered-test-automation",
               },
             ],
           },
