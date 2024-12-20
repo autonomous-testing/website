@@ -13,10 +13,6 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "Unlimited",
   },
   {
-    feature: "Parallel test runs",
-    enterprise: "Check",
-  },
-  {
     feature: "Data retention",
     starter: "30 days",
     basic: "30 days",
@@ -24,7 +20,30 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "Individual",
   },
   {
-    feature: "Integrations / Visual Testing",
+    feature: "Autonomous Testing",
+    basic: "Check",
+    premium: "Check",
+    enterprise: "Check",
+  },
+  {
+    feature: "Testing Bot",
+    subFeature: true,
+    basic: "gen 2.0",
+    premium: "gen 2.0",
+    enterprise: "gen 3.0 (preview)",
+  },
+  {
+    feature: "Playwright Integration",
+    subFeature: true,
+    enterprise: "Early access",
+  },
+  {
+    feature: "Parallel test runs",
+    subFeature: true,
+    enterprise: "Check",
+  },
+  {
+    feature: "Visual Testing",
   },
   {
     feature: "Cypress",
@@ -88,7 +107,7 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "Check",
   },
   {
-    feature: "Custom integration",
+    feature: "Custom integrations",
     enterprise: "Check",
   },
   {
@@ -111,7 +130,7 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "Check",
   },
   {
-    feature: "Workshops",
+    feature: "Individual support",
     subFeature: true,
     enterprise: "Check",
   },
@@ -128,10 +147,7 @@ const PlanComparison = () => {
         <div className="col-span-1"></div>
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/subscription-plans/starter.png"
-              alt="Starter plan"
-            />
+            <img src="/img/subscription-plans/starter.png" alt="Starter plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Starter
@@ -140,10 +156,7 @@ const PlanComparison = () => {
 
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/subscription-plans/basic.png"
-              alt="Basic plan"
-            />
+            <img src="/img/subscription-plans/basic.png" alt="Basic plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Basic
@@ -152,10 +165,7 @@ const PlanComparison = () => {
 
         <div className="col-span-1">
           <div className="aspect-square flex justify-center items-center">
-            <img
-              src="/img/subscription-plans/premium.png"
-              alt="Premium plan"
-            />
+            <img src="/img/subscription-plans/premium.png" alt="Premium plan" />
           </div>
           <h5 className="text-lg md:text-xl xl:text-2xl font-bold text-secondary-wopee dark:text-primary-wopee">
             Premium
