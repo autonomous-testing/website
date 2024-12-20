@@ -33,6 +33,11 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "gen 3.0 (preview)",
   },
   {
+    feature: "Videos and traces from testing",
+    subFeature: true,
+    enterprise: "Check",
+  },
+  {
     feature: "Playwright Integration",
     subFeature: true,
     enterprise: "Early access",
@@ -43,7 +48,7 @@ const planFeatureArray: PlanComparisonRowProps[] = [
     enterprise: "Check",
   },
   {
-    feature: "Visual Testing",
+    feature: "Visual Testing (VT)",
   },
   {
     feature: "Cypress",
@@ -88,26 +93,19 @@ const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "CI/CD Integration",
     subFeature: true,
-    enterprise: "Check",
-  },
-  {
-    feature: "Videos and traces from testing",
+    starter: "VT only",
+    basic: "VT only",
+    premium: "VT only",
     enterprise: "Check",
   },
   {
     feature: "On-boarding assistance",
+    basic: "Check",
+    premium: "Check",
     enterprise: "Check",
   },
   {
-    feature: "Priority feature development",
-    enterprise: "Check",
-  },
-  {
-    feature: "Custom feature development",
-    enterprise: "Check",
-  },
-  {
-    feature: "Custom integrations",
+    feature: "Customizations & Integrations",
     enterprise: "Check",
   },
   {
@@ -132,6 +130,7 @@ const planFeatureArray: PlanComparisonRowProps[] = [
   {
     feature: "Individual support",
     subFeature: true,
+    premium: "Check",
     enterprise: "Check",
   },
 ];
