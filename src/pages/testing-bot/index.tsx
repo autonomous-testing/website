@@ -11,7 +11,7 @@ import HeroSection from "@site/src/components/bot-page/HeroSection";
 import PartnerBrands from "@site/src/components/landing-page/home/sections/PartnerBrands";
 import TestingBottlenecks from "@site/src/components/bot-page/TestingBottlenecks";
 import WopeeVersusSection from "@site/src/components/landing-page/home/sections/WopeeVersusSection";
-import StartTesting from "@site/src/components/bot-page/StartTesting";
+// import StartTesting from "@site/src/components/bot-page/StartTesting";
 import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
@@ -90,7 +90,7 @@ const TestingBotPage = () => {
         bot
         VALUES={VALUES}
       />
-      <StartTesting />
+      {/* <StartTesting /> */}
       <HowItWorksIntro />
       <HowItWorks
         STEPS={STEPS}
