@@ -18,6 +18,7 @@ const HomeHeroSection = () => {
 
       <section className="flex flex-col items-center">
         <ButtonPrimary
+          id="hero-button"
           label="Start free trial"
           href="https://cmd.wopee.io"
           className="w-60 h-[50px]"
