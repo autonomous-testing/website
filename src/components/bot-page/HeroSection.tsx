@@ -21,7 +21,7 @@ const HeroSection = () => {
 
         <div>
           <ButtonPrimary
-            label="Start free trial"
+            label="Get early access"
             href="https://cmd.wopee.io"
             className="w-60 h-[50px]"
           />
