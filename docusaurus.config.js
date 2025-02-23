@@ -173,19 +173,19 @@ const config = {
               },
               {
                 label: "Cypress Visual Regression Testing",
-                to: "https://docs.wopee.io/integrations/cypress/01-getting-started/",
+                to: "https://docs.wopee.io/cypress/01-getting-started/",
               },
               {
                 label: "Playwright Visual Regression Testing",
-                to: "https://docs.wopee.io/integrations/playwright/01-getting-started/",
+                to: "https://docs.wopee.io/playwright-visual-testing/",
               },
               {
                 label: "Robot Framework Visual Regression Testing",
-                to: "https://docs.wopee.io/integrations/robot-framework/01-getting-started/",
+                to: "https://docs.wopee.io/robot-framework/01-getting-started/",
               },
               {
                 label: "Webdriver.io Visual Regression Testing",
-                to: "https://docs.wopee.io/integrations/WebdriverIO/01-getting-started/",
+                to: "https://docs.wopee.io/webdriverio-visual-testing/",
               },
             ],
           },
