@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Wopee.io, the autonomous testing bots for web apps",
+  title: "Wopee.io, the AI Agents for Software Testing",
   tagline:
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
@@ -113,7 +113,7 @@ const config = {
             label: "Solutions",
             position: "left",
             items: [
-              { to: "/testing-bot", label: "Autonomous Testing Bot" },
+              { to: "/testing-bot", label: "AI Agents for Software Testing" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
               {
                 to: "blog/playwright-bot-ai-powered-test-automation",
