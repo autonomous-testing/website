@@ -7,10 +7,10 @@ const HeroSection = () => {
       <div className="text-center flex flex-col gap-5">
         <div className="text-balance flex flex-col gap-9">
           <h1 className="text-5xl sm:text-6xl">
-            Self-Driving Testing Bot{" "}
-            <p className=" text-secondary-wopee dark:text-primary-wopee">
-              Only URL required
-            </p>
+            <span className="text-secondary-wopee dark:text-primary-wopee">
+              Web Apps Testing
+            </span>{" "}
+            with AI Agents
           </h1>
 
           <p className="text-2xl">

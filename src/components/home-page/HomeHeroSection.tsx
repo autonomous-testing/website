@@ -6,7 +6,7 @@ const HomeHeroSection = () => {
     <div className="flex flex-col items-center gap-10 my-32">
       <section className="text-balance">
         <h1 className="font-bold text-center text-5xl sm:text-5xl md:text-6xl">
-          Optimize Your Testing
+          Test Better.
         </h1>
         <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-3xl sm:text-3xl md:text-4xl ">
           Set Up in Minutes, Results in Seconds.

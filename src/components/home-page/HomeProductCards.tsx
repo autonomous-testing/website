@@ -89,7 +89,7 @@ const VisualTestingCard = () => {
 const HomeProductCards = () => {
   return (
     <div className="flex flex-col gap-5 py-10">
-      <h2 className="text-center">Power Your Software Testing with AI</h2>
+      <h2 className="text-center">AI Agents for Software Testing</h2>
       <div className="flex flex-col xl:flex-row items-center justify-center gap-5 px-5">
         <SelfDrivingBotCard />
 
