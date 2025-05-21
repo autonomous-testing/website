@@ -1,21 +1,21 @@
-import React from 'react';
-import {composeProviders} from '@docusaurus/theme-common';
+import React from "react";
+import { composeProviders } from "@docusaurus/theme-common";
 import {
   ColorModeProvider,
   AnnouncementBarProvider,
-  DocsPreferredVersionContextProvider,
+  // DocsPreferredVersionContextProvider,
   ScrollControllerProvider,
   NavbarProvider,
   PluginHtmlClassNameProvider,
-} from '@docusaurus/theme-common/internal';
+} from "@docusaurus/theme-common/internal";
 const Provider = composeProviders([
   ColorModeProvider,
   AnnouncementBarProvider,
   ScrollControllerProvider,
-  DocsPreferredVersionContextProvider,
+  // DocsPreferredVersionContextProvider,
   PluginHtmlClassNameProvider,
   NavbarProvider,
 ]);
-export default function LayoutProvider({children}) {
+export default function LayoutProvider({ children }) {
   return <Provider>{children}</Provider>;
 }

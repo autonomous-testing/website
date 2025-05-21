@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -35,7 +36,22 @@ const config = {
     locales: ["en"],
   },
   plugins: [
-    async function myPlugin(_context, _options) {
+    function MyAliasPlugin(_context, _options) {
+      return {
+        name: "my-alias-plugin",
+        configureWebpack() {
+          return {
+            resolve: {
+              alias: {
+                "@": path.join(__dirname, "src"),
+              },
+            },
+          };
+        },
+      };
+    },
+
+    async function myTailwindPlugin(_context, _options) {
       return {
         name: "docusaurus-tailwindcss",
         configurePostCss(postcssOptions) {
