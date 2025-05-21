@@ -80,9 +80,9 @@ const HomeHeroVibe = () => {
     setAppUrl(e.target.value);
   };
   return (
-    <div className="min-h-[50vh] flex flex-col justify-center items-center gap-10 mx-5">
+    <div className="min-h-[50vh] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
       <section>
-        <h1 className="font-bold text-center text-5xl sm:text-5xl md:text-6xl text-pretty">
+        <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
           Which web app do you want to test?
         </h1>
         <h6 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
@@ -92,7 +92,7 @@ const HomeHeroVibe = () => {
       </section>
 
       <div className="border-2 border-solid border-secondary-wopee dark:border-primary-wopee rounded-md p-3 w-full max-w-6xl flex flex-col gap-3">
-        <div className="opacity-65 flex items-center text-xs">
+        <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
           Test environment URL:{" "}
           <div className="relative">
             <input
@@ -100,7 +100,7 @@ const HomeHeroVibe = () => {
               type="url"
               value={appUrl}
               size={parseSize}
-              className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md"
+              className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
               onChange={handleUrlChange}
             />
             {appType === AppType.YOUR_APPLICATION && <LockTooltip />}
