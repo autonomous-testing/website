@@ -41,16 +41,18 @@ const LoginDialog = ({
   setOpen: (open: boolean) => void;
 }) => {
   const handleLogin = (provider: string) => {
-    const baseUrl = "http://localhost:3000/signup-embedded";
+    // const baseUrl = "http://localhost:3000/signup-embedded";
     // const baseUrl = "https://cmd.wopee.io/signup-embedded";
+    const baseUrl = "https://cmd.dev.wopee.io/signup-embedded";
     const params = new URLSearchParams({
-      prompt,
-      appUrl,
-      appType,
-      provider,
+      prompt: encodeURIComponent(prompt),
+      appUrl: encodeURIComponent(appUrl),
+      appType: encodeURIComponent(appType),
+      provider: encodeURIComponent(provider),
     });
     const url = `${baseUrl}?${params.toString()}`;
     window.open(url, "_blank");
+    setOpen(false);
   };
 
   return (

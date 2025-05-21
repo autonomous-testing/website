@@ -12,15 +12,28 @@ import ApplicationTypeSwitch from "./vibe/ApplicationTypeSwitch";
 const appTemplates = {
   [AppType.WEBSITE]: {
     url: "https://dronjo.wopee.io",
-    instructions: "Test a basic login functionality.",
+    instructions: `Test that user can login to the app and navigate to the gallery page.
+- Navigate to the login page (by clicking on the Sign in button), login with any email with domain @tesena.com and any password.
+- Always use email with domain @tesena.com to be able to login to the app. Other domains are not allowed.
+- You can use any password to login to the app. Application does not check password correctness.
+- After successful login, user should be redirected to the home page with the Logout button visible on the top right corner.
+- Navigate to the gallery page by clicking on the Gallery button in the top navigation bar.`,
   },
   [AppType.E_COMMERCE]: {
     url: "https://www.saucedemo.com",
-    instructions: "Test adding an item to the cart.",
+    instructions: `Test login functionality and add an item to the cart.
+- You are on the login form, no need to navigate to the login page, just fill in the valid credentials and click on the Login button.
+- Always use standard_user as username and secret_sauce as password to login to the app.
+- After successful login, user should be redirected to the product listing page.
+- Add an item to the cart by clicking 'Add to cart' button.`,
   },
   [AppType.BANKING]: {
     url: "https://moja.tatrabanka.sk/html-tb/en/demo",
-    instructions: "Test accessing the account balance.",
+    instructions: `Test that user can login to the app.
+- Accept cookies (if visible) by clicking on the I agree button
+- Login by just submitting the form (PIN is already correctly filled in, as it is the demo account).
+- Page is a bit slow for initial load, so start by waiting for the page to load.
+- After successful login, user should be redirected to the dashboard page.`,
   },
   [AppType.YOUR_APPLICATION]: {
     url: "https://your-project-url.com",
@@ -45,13 +58,12 @@ const HomeHeroVibe = () => {
   useEffect(() => {
     if (appType === AppType.YOUR_APPLICATION) {
       urlInputRef.current?.focus();
-      urlInputRef.current?.select();
     }
   }, [appType]);
 
   const maxSize = 50;
   const minSize = 20;
-  const parseSize = Math.max(minSize, Math.min(maxSize, appUrl.length - 5));
+  const parseSize = Math.max(minSize, Math.min(maxSize, appUrl.length));
 
   const handleAppTypeChange = (type: AppType) => {
     setAppType(type);
@@ -88,7 +100,7 @@ const HomeHeroVibe = () => {
               type="url"
               value={appUrl}
               size={parseSize}
-              className="border-none ml-1 px-2 py-1 bg-gray-300 dark:bg-gray-700 rounded-md"
+              className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md"
               onChange={handleUrlChange}
             />
             {appType === AppType.YOUR_APPLICATION && <LockTooltip />}
@@ -96,7 +108,7 @@ const HomeHeroVibe = () => {
         </div>
 
         <textarea
-          rows={5}
+          rows={6}
           value={testingInstructions}
           placeholder="Testing instructions"
           className="w-full bg-transparent border-none focus:outline-none resize-none text-sm"

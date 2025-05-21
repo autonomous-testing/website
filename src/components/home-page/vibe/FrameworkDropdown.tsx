@@ -36,7 +36,7 @@ const FrameworkDropdown = () => {
   const [framework] = useState(frameworks[0]);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="bg-transparent border-none cursor-pointer">
+      <DropdownMenuTrigger className="bg-transparent border-none cursor-pointer hover:opacity-75">
         <p>{framework.label}</p>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-3 dark:bg-gray-800">
