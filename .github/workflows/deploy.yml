@@ -35,6 +35,7 @@ jobs:
         run: |
           sed -i 's/website.wopee.io/wopee.io/g' ./CNAME
           sed -i 's/website.wopee.io/wopee.io/g' ./docusaurus.config.js
+          sed -i 's/dev.wopee.io/wopee.io/g' ./cmdBaseUrl.js
           rm -rf ./static/robots.txt
 
       - name: Install dependencies
