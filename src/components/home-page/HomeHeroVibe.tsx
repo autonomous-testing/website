@@ -80,18 +80,17 @@ const HomeHeroVibe = () => {
     setAppUrl(e.target.value);
   };
   return (
-    <div className="min-h-[50vh] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
+    <div className="h-[calc(100vh-80px)] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
       <section>
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
-          Which web app do you want to test?
+          Test better. Ship faster.
         </h1>
         <h6 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
-          Start from scratch or upload existing documents, get automated tests,
-          execute regularly. (Fix found bugs). Sleep well.
+          Set Up in minutes, results in seconds. No coding needed.
         </h6>
       </section>
 
-      <div className="border-2 border-solid border-secondary-wopee dark:border-primary-wopee rounded-md p-3 w-full max-w-6xl flex flex-col gap-3">
+      <div className="border-2 border-solid border-secondary-wopee dark:border-primary-wopee rounded-md p-3 w-full max-w-3xl flex flex-col gap-3">
         <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
           Test environment URL:{" "}
           <div className="relative">
