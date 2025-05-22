@@ -12,28 +12,21 @@ import ApplicationTypeSwitch from "./vibe/ApplicationTypeSwitch";
 const appTemplates = {
   [AppType.WEBSITE]: {
     url: "https://dronjo.wopee.io",
-    instructions: `Test that user can login to the app and navigate to the gallery page.
-- Navigate to the login page (by clicking on the Sign in button), login with any email with domain @tesena.com and any password.
-- Always use email with domain @tesena.com to be able to login to the app. Other domains are not allowed.
-- You can use any password to login to the app. Application does not check password correctness.
-- After successful login, user should be redirected to the home page with the Logout button visible on the top right corner.
-- Navigate to the gallery page by clicking on the Gallery button in the top navigation bar.`,
+    instructions: `Test login procedure.
+Navigate to the login page (click on the Sign in button).
+Sign in with any @tesena.com email and any password.
+Verify you reach the home page and see the Logout button (top right).`,
   },
   [AppType.E_COMMERCE]: {
     url: "https://www.saucedemo.com",
-    instructions: `Test login functionality and add an item to the cart.
-- You are on the login form, no need to navigate to the login page, just fill in the valid credentials and click on the Login button.
-- Always use standard_user as username and secret_sauce as password to login to the app.
-- After successful login, user should be redirected to the product listing page.
-- Add an item to the cart by clicking 'Add to cart' button.`,
+    instructions: `Test purchase procedure.
+Login with: standard_user / secret_sauce and verify redirect to product listing, 
+Add an item to cart, complete the purchase, and verify 'Thank you for your order!' message displayed.`,
   },
   [AppType.BANKING]: {
     url: "https://moja.tatrabanka.sk/html-tb/en/demo",
-    instructions: `Test that user can login to the app.
-- Accept cookies (if visible) by clicking on the I agree button
-- Login by just submitting the form (PIN is already correctly filled in, as it is the demo account).
-- Page is a bit slow for initial load, so start by waiting for the page to load.
-- After successful login, user should be redirected to the dashboard page.`,
+    instructions: `Test login procedure.
+Wait for page load, accept cookies (if shown), submit form with pre-filled PIN.`,
   },
   [AppType.YOUR_APPLICATION]: {
     url: "https://your-project-url.com",
@@ -86,44 +79,49 @@ const HomeHeroVibe = () => {
           Test better. Ship faster.
         </h1>
         <h6 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
-          Set Up in minutes, results in seconds. No coding needed.
+          Map your app. Create tests. Automate instantly.{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-primary-wopee dark:from-secondary-wopee dark:to-blue-500 bg-clip-text text-transparent font-bold">
+            Try it now!
+          </span>
         </h6>
       </section>
 
-      <div className="border-2 border-solid border-secondary-wopee dark:border-primary-wopee rounded-md p-3 w-full max-w-3xl flex flex-col gap-3">
-        <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
-          Test environment URL:{" "}
-          <div className="relative">
-            <input
-              ref={urlInputRef}
-              type="url"
-              value={appUrl}
-              size={parseSize}
-              className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
-              onChange={handleUrlChange}
-            />
-            {appType === AppType.YOUR_APPLICATION && <LockTooltip />}
+      <div className="relative p-0.5 overflow-hidden rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee group-hover:from-purple-600 group-hover:to-blue-500">
+        <div className="bg-white dark:bg-gray-900 rounded-md p-3 flex flex-col gap-3">
+          <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
+            Test environment URL:{" "}
+            <div className="relative">
+              <input
+                ref={urlInputRef}
+                type="url"
+                value={appUrl}
+                size={parseSize}
+                className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
+                onChange={handleUrlChange}
+              />
+              {appType === AppType.YOUR_APPLICATION && <LockTooltip />}
+            </div>
           </div>
-        </div>
 
-        <textarea
-          rows={6}
-          value={testingInstructions}
-          placeholder="Testing instructions"
-          className="w-full bg-transparent border-none focus:outline-none resize-none text-sm"
-          onChange={(e) => setTestingInstructions(e.target.value)}
-        />
+          <textarea
+            rows={6}
+            value={testingInstructions}
+            placeholder="Testing instructions"
+            className="w-full bg-transparent border-none focus:outline-none resize-none text-sm"
+            onChange={(e) => setTestingInstructions(e.target.value)}
+          />
 
-        <div className="flex justify-end items-center gap-2">
-          <FrameworkDropdown />
-          <Button
-            size="icon"
-            variant="wopeeFlat"
-            disabled={testingInstructions.length === 0}
-            onClick={() => setLoginDialogIsOpen(true)}
-          >
-            <SendHorizontal />
-          </Button>
+          <div className="flex justify-end items-center gap-2">
+            <FrameworkDropdown />
+            <Button
+              size="icon"
+              variant="wopeeFlat"
+              disabled={testingInstructions.length === 0}
+              onClick={() => setLoginDialogIsOpen(true)}
+            >
+              <SendHorizontal />
+            </Button>
+          </div>
         </div>
       </div>
 
