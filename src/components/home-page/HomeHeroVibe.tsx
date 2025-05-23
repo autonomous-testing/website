@@ -118,8 +118,8 @@ const HomeHeroVibe = () => {
             >
               <SendHorizontal className="-rotate-45" />
               <span
-                className="bg-gradient-to-r from-blue-500 to-primary-wopee 
-                      dark:from-secondary-wopee dark:to-blue-500 
+                className="bg-gradient-to-r to-blue-500 from-white 
+                      dark:from-black dark:to-blue-500 
                       bg-clip-text text-transparent font-bold
                       hidden lg:block"
               >
