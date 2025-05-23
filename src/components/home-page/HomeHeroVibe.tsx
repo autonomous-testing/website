@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { SendHorizontal } from "lucide-react";
+import { Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -73,7 +73,7 @@ const HomeHeroVibe = () => {
     setAppUrl(e.target.value);
   };
   return (
-    <div className="my-10 md:h-[calc(100vh-180px)] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
+    <div className="mt-5 lg:mt-10 mx-5 lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10">
       <section>
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
           Test better. Ship faster.
@@ -82,7 +82,8 @@ const HomeHeroVibe = () => {
           Map your app. Create tests. Automate instantly.
         </h6>
       </section>
-      <div className="relative p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee group-hover:from-purple-600 group-hover:to-blue-500">
+
+      <div className="p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee">
         <div className="bg-white dark:bg-gray-900 rounded-md p-3 flex flex-col gap-3">
           <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
             Test environment URL:{" "}
@@ -114,11 +115,11 @@ const HomeHeroVibe = () => {
               variant="wopeeFlat"
               disabled={testingInstructions.length === 0}
               onClick={() => setLoginDialogIsOpen(true)}
-              className="flex items-center gap-2 px-3 py-2 font-bold rounded-md shadow-md transition-colors"
+              className="flex items-center gap-1 px-3 font-bold rounded-md shadow-md transition-colors"
             >
-              <SendHorizontal className="-rotate-45" />
+              <Send />
               <span
-                className="bg-gradient-to-r to-blue-500 from-white 
+                className="bg-gradient-to-r from-white to-blue-300  
                       dark:from-black dark:to-blue-500 
                       bg-clip-text text-transparent font-bold
                       hidden lg:block"
