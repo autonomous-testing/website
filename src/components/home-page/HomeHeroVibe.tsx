@@ -20,7 +20,7 @@ Verify you reach the home page and see the Logout button (top right).`,
   [AppType.E_COMMERCE]: {
     url: "https://www.saucedemo.com",
     instructions: `Test purchase procedure.
-Login with: standard_user / secret_sauce and verify redirect to product listing, 
+Login with: standard_user / secret_sauce and verify redirect to product listing.
 Add an item to cart, complete the purchase, and verify 'Thank you for your order!' message displayed.`,
   },
   [AppType.BANKING]: {
@@ -73,20 +73,16 @@ const HomeHeroVibe = () => {
     setAppUrl(e.target.value);
   };
   return (
-    <div className="h-[calc(100vh-80px)] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
+    <div className="my-10 md:h-[calc(100vh-180px)] flex flex-col justify-center items-center gap-5 md:gap-10 mx-5">
       <section>
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
           Test better. Ship faster.
         </h1>
         <h6 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
-          Map your app. Create tests. Automate instantly.{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-primary-wopee dark:from-secondary-wopee dark:to-blue-500 bg-clip-text text-transparent font-bold">
-            Try it now!
-          </span>
+          Map your app. Create tests. Automate instantly.
         </h6>
       </section>
-
-      <div className="relative p-0.5 overflow-hidden rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee group-hover:from-purple-600 group-hover:to-blue-500">
+      <div className="relative p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee group-hover:from-purple-600 group-hover:to-blue-500">
         <div className="bg-white dark:bg-gray-900 rounded-md p-3 flex flex-col gap-3">
           <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
             Test environment URL:{" "}
@@ -114,12 +110,21 @@ const HomeHeroVibe = () => {
           <div className="flex justify-end items-center gap-2">
             <FrameworkDropdown />
             <Button
-              size="icon"
+              size="lg"
               variant="wopeeFlat"
               disabled={testingInstructions.length === 0}
               onClick={() => setLoginDialogIsOpen(true)}
+              className="flex items-center gap-2 px-3 py-2 font-bold rounded-md shadow-md transition-colors"
             >
-              <SendHorizontal />
+              <SendHorizontal className="-rotate-45" />
+              <span
+                className="bg-gradient-to-r from-blue-500 to-primary-wopee 
+                      dark:from-secondary-wopee dark:to-blue-500 
+                      bg-clip-text text-transparent font-bold
+                      hidden lg:block"
+              >
+                Test now!
+              </span>
             </Button>
           </div>
         </div>
