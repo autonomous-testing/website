@@ -122,6 +122,7 @@ const HomeHeroVibe = () => {
               disabled={testingInstructions.length === 0}
               onClick={() => setLoginDialogIsOpen(true)}
               className="flex items-center gap-1 px-3 font-bold rounded-md shadow-md transition-colors"
+              id="vibe-testing"
             >
               <Send />
               <span

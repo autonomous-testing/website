@@ -54,10 +54,7 @@ const LoginDialog = ({
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={setOpen}
-    >
+    <Dialog open={isOpen} onOpenChange={setOpen}>
       <DialogContent className="dark:bg-gray-800">
         <DialogHeader>
           <DialogTitle className="text-4xl text-center">
@@ -76,11 +73,9 @@ const LoginDialog = ({
                 variant="outline"
                 onClick={() => handleLogin(provider)}
                 className="flex justify-center items-center bg-white dark:bg-black rounded border p-2 sm:w-[120px] hover:cursor-pointer"
+                id="login-button"
               >
-                <Icon
-                  size={0.7}
-                  path={icon}
-                />
+                <Icon size={0.7} path={icon} />
                 {provider.toUpperCase()}
               </Button>
             ))}
@@ -88,17 +83,11 @@ const LoginDialog = ({
 
           <p className="text-xs text-center text-balance">
             By submitting this form you agree to Wopee.io{" "}
-            <a
-              href="http://wopee.io/terms-and-conditions"
-              target="_blank"
-            >
+            <a href="http://wopee.io/terms-and-conditions" target="_blank">
               Terms and Conditions
             </a>{" "}
             and acknowledge the{" "}
-            <a
-              href="http://wopee.io/gdpr"
-              target="_blank"
-            >
+            <a href="http://wopee.io/gdpr" target="_blank">
               Privacy Policy
             </a>
             .

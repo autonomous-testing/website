@@ -7,7 +7,7 @@ import {
   Users,
   ClipboardList,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import ButtonPrimary from "../buttons/ButtonPrimary";
 
 const benefits = [
   {
@@ -112,13 +112,11 @@ const HomeBenefits = () => {
           </div>
         ))}
       </div>
-      <Button
-        size="lg"
-        variant="wopeeFlat"
-        className="text-lg px-8 py-4 font-bold rounded-md mb-10"
-      >
-        Start testing better
-      </Button>
+      <ButtonPrimary
+        label="Start testing better"
+        href="https://cmd.wopee.io"
+        className="w-60 h-[50px]"
+      />
     </section>
   );
 };
