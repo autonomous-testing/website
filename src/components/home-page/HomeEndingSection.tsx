@@ -26,7 +26,7 @@ const HomeEndingSection = () => {
           </div>
           <div className="h-20">
             <ButtonPrimary
-              label="Start free trial"
+              label="Start testing better"
               href="https://cmd.wopee.io"
               className="w-60 h-[50px]"
             />
