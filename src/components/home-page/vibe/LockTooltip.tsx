@@ -22,9 +22,11 @@ const tooltipMessages = [
 const LockTooltip = ({
   size = 4,
   className,
+  setIsOpenUpgrade,
 }: {
   size?: number;
   className?: string;
+  setIsOpenUpgrade: (isOpen: boolean) => void;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [currentMessage, setCurrentMessage] = useState(tooltipMessages[0]);
@@ -46,6 +48,7 @@ const LockTooltip = ({
             )}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={() => setIsOpenUpgrade(true)}
           >
             {isHovered ? (
               <LockOpen className={`w-${size} h-${size}`} />

@@ -26,9 +26,11 @@ const APP_TYPE_BUTTONS = [
 
 const ApplicationTypeSwitch = ({
   appType,
+  setIsOpenUpgrade,
   handleAppTypeChange,
 }: {
   appType: AppType;
+  setIsOpenUpgrade: (isOpen: boolean) => void;
   handleAppTypeChange: (appType: AppType) => void;
 }) => {
   return (
@@ -44,7 +46,12 @@ const ApplicationTypeSwitch = ({
           )}
           onClick={() => handleAppTypeChange(app.value)}
         >
-          {app.value === AppType.YOUR_APPLICATION && <LockTooltip size={4} />}
+          {app.value === AppType.YOUR_APPLICATION && (
+            <LockTooltip
+              size={4}
+              setIsOpenUpgrade={setIsOpenUpgrade}
+            />
+          )}
           {app.value === AppType.WEBSITE && <Globe size={16} />}
           {app.value === AppType.E_COMMERCE && <ShoppingCart size={16} />}
           {app.value === AppType.BANKING && <Landmark size={16} />}
