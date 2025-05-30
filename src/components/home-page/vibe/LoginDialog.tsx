@@ -58,7 +58,7 @@ const LoginDialog = ({
         provider: encodeURIComponent(provider),
       });
     }
-    const url = `${cmdBaseUrl}?${params.toString()}`;
+    const url = `${cmdBaseUrl}/signup-embedded/?${params.toString()}`;
     window.open(url, "_blank");
     setIsOpenVibe(false);
   };

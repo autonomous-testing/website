@@ -8,6 +8,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const benefits = [
   {
@@ -114,7 +115,7 @@ const HomeBenefits = () => {
       </div>
       <ButtonPrimary
         label="Start testing better"
-        href="https://cmd.wopee.io"
+        href={cmdBaseUrl}
         className="w-60 h-[50px]"
       />
     </section>
