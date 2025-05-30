@@ -1,1 +1,1 @@
-export const cmdBaseUrl = "https://cmd.dev.wopee.io/signup-embedded";
+export const cmdBaseUrl = "https://cmd.dev.wopee.io";

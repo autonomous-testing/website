@@ -85,8 +85,14 @@ const HomeHeroVibe = () => {
     setLoginDialogState({ isOpen, mode: "upgrade" });
   };
   return (
-    <div className="mt-5 lg:mt-10 mx-5 lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10">
-      <section>
+    <div className="relative lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10 overflow-hidden">
+      <img
+        src="/img/hero-bg-cta.png"
+        alt="Background gradient"
+        className="pointer-events-none select-none absolute inset-0 w-full h-full object-cover dark:opacity-15 opacity-0 z-0"
+        style={{ filter: "blur(0.5px)" }}
+      />
+      <section className="relative z-10">
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
           Test better. Ship faster.
         </h1>
@@ -95,7 +101,7 @@ const HomeHeroVibe = () => {
         </h6>
       </section>
 
-      <div className="p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee">
+      <div className="p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee z-10">
         <div className="bg-white dark:bg-gray-900 rounded-md p-3 flex flex-col gap-3">
           <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
             Test environment URL:{" "}
@@ -132,11 +138,12 @@ const HomeHeroVibe = () => {
                 setLoginDialogState({ isOpen: true, mode: "vibe" })
               }
               className="flex items-center gap-1 px-3 font-bold rounded-md shadow-md transition-colors"
+              id="vibe-testing"
             >
               <Send />
               <span
-                className="bg-gradient-to-r from-white to-blue-300  
-                      dark:from-black dark:to-blue-500 
+                className="bg-gradient-to-r text-white  
+                      dark:text-black
                       bg-clip-text text-transparent font-bold
                       hidden lg:block"
               >
