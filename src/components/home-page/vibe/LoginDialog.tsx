@@ -58,16 +58,13 @@ const LoginDialog = ({
         provider: encodeURIComponent(provider),
       });
     }
-    const url = `${cmdBaseUrl}/signup-embedded/?${params.toString()}`;
+    const url = `${cmdBaseUrl}/signup-embedded?${params.toString()}`;
     window.open(url, "_blank");
     setIsOpenVibe(false);
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={setIsOpenVibe}
-    >
+    <Dialog open={isOpen} onOpenChange={setIsOpenVibe}>
       <DialogContent className="dark:bg-gray-800">
         <DialogHeader>
           <DialogTitle className="text-4xl text-center">
