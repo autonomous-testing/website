@@ -45,7 +45,13 @@ const HomeHeroVibe = () => {
   const [testingInstructions, setTestingInstructions] = useState(
     appTemplates[defaultTemplate].instructions
   );
-  const [loginDialogIsOpen, setLoginDialogIsOpen] = useState(false);
+  const [loginDialogState, setLoginDialogState] = useState<{
+    isOpen: boolean;
+    mode: "vibe" | "upgrade";
+  }>({
+    isOpen: false,
+    mode: "vibe",
+  });
   const urlInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -72,6 +78,12 @@ const HomeHeroVibe = () => {
     }
     setAppUrl(e.target.value);
   };
+  const setIsOpenVibe = (isOpen: boolean) => {
+    setLoginDialogState({ isOpen, mode: "vibe" });
+  };
+  const setIsOpenUpgrade = (isOpen: boolean) => {
+    setLoginDialogState({ isOpen, mode: "upgrade" });
+  };
   return (
     <div className="mt-5 lg:mt-10 mx-5 lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10">
       <section>
@@ -96,7 +108,9 @@ const HomeHeroVibe = () => {
                 className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
                 onChange={handleUrlChange}
               />
-              {appType === AppType.YOUR_APPLICATION && <LockTooltip />}
+              {appType === AppType.YOUR_APPLICATION && (
+                <LockTooltip setIsOpenUpgrade={setIsOpenUpgrade} />
+              )}
             </div>
           </div>
 
@@ -114,7 +128,9 @@ const HomeHeroVibe = () => {
               size="lg"
               variant="wopeeFlat"
               disabled={testingInstructions.length === 0}
-              onClick={() => setLoginDialogIsOpen(true)}
+              onClick={() =>
+                setLoginDialogState({ isOpen: true, mode: "vibe" })
+              }
               className="flex items-center gap-1 px-3 font-bold rounded-md shadow-md transition-colors"
             >
               <Send />
@@ -133,15 +149,17 @@ const HomeHeroVibe = () => {
 
       <ApplicationTypeSwitch
         appType={appType}
+        setIsOpenUpgrade={setIsOpenUpgrade}
         handleAppTypeChange={handleAppTypeChange}
       />
 
       <LoginDialog
-        prompt={testingInstructions}
-        isOpen={loginDialogIsOpen}
-        setOpen={setLoginDialogIsOpen}
-        appType={appType}
         appUrl={appUrl}
+        appType={appType}
+        prompt={testingInstructions}
+        mode={loginDialogState.mode}
+        setIsOpenVibe={setIsOpenVibe}
+        isOpen={loginDialogState.isOpen}
       />
     </div>
   );

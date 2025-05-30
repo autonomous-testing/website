@@ -29,34 +29,44 @@ const LOGIN_BUTTONS = [
 ];
 
 const LoginDialog = ({
+  mode,
   prompt,
   isOpen,
-  setOpen,
-  appType,
   appUrl,
+  appType,
+  setIsOpenVibe,
 }: {
+  mode: "vibe" | "upgrade";
   prompt: string;
   isOpen: boolean;
   appUrl: string;
   appType: AppType;
-  setOpen: (open: boolean) => void;
+  setIsOpenVibe: (isOpen: boolean) => void;
 }) => {
   const handleLogin = (provider: string) => {
-    const params = new URLSearchParams({
-      prompt: encodeURIComponent(prompt),
-      appUrl: encodeURIComponent(appUrl),
-      appType: encodeURIComponent(appType),
-      provider: encodeURIComponent(provider),
-    });
+    let params;
+    if (mode === "upgrade") {
+      params = new URLSearchParams({
+        upgrade: encodeURIComponent(true),
+        provider: encodeURIComponent(provider),
+      });
+    } else {
+      params = new URLSearchParams({
+        prompt: encodeURIComponent(prompt),
+        appUrl: encodeURIComponent(appUrl),
+        appType: encodeURIComponent(appType),
+        provider: encodeURIComponent(provider),
+      });
+    }
     const url = `${cmdBaseUrl}?${params.toString()}`;
     window.open(url, "_blank");
-    setOpen(false);
+    setIsOpenVibe(false);
   };
 
   return (
     <Dialog
       open={isOpen}
-      onOpenChange={setOpen}
+      onOpenChange={setIsOpenVibe}
     >
       <DialogContent className="dark:bg-gray-800">
         <DialogHeader>
