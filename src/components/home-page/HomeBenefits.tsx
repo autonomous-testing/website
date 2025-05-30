@@ -77,7 +77,7 @@ const benefits = [
 
 const HomeBenefits = () => {
   return (
-    <section className="w-full flex flex-col items-center py-16 px-2 bg-transparent">
+    <section className="w-full flex flex-col items-center py-16 px-2">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary-wopee dark:text-yellow-400 mb-2">
         6 ways how Wopee.io makes testing better.
       </h2>
