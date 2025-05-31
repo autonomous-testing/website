@@ -41,8 +41,8 @@ const ApplicationTypeSwitch = ({
           className={cn(
             "p-2 bg-gray-300 rounded-md md:w-[150px] hover:cursor-pointer flex justify-center items-center gap-1 relative",
             app.value === appType
-              ? "bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-black"
-              : "dark:bg-gray-700 "
+              ? "text-white opacity-65 p-0.5 rounded-md bg-gradient-to-br from-blue-500 to-secondary-wopee"
+              : "dark:bg-gray-700"
           )}
           onClick={() => handleAppTypeChange(app.value)}
         >
