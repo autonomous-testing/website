@@ -115,6 +115,13 @@ const config = {
     {
       // Replace with your project's social card
       image: "img/wopee-social-card.jpg",
+      // https://docusaurus.io/docs/api/themes/configuration#color-mode---dark-mode
+      colorMode: {
+        defaultMode: "dark",
+        disableSwitch: false,
+        // Set dark mode as the default, but allow users switching to light mode.
+        // respectPrefersColorScheme: false,
+      },
       navbar: {
         title: "Wopee.io",
         logo: {
