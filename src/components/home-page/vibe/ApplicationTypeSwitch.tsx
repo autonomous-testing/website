@@ -41,16 +41,13 @@ const ApplicationTypeSwitch = ({
           className={cn(
             "p-2 bg-gray-300 rounded-md md:w-[150px] hover:cursor-pointer flex justify-center items-center gap-1 relative",
             app.value === appType
-              ? "text-white opacity-65 p-0.5 rounded-md bg-gradient-to-br from-blue-500 to-secondary-wopee"
+              ? "text-white opacity-65 bg-gradient-to-br from-blue-500 to-secondary-wopee"
               : "dark:bg-gray-700"
           )}
           onClick={() => handleAppTypeChange(app.value)}
         >
           {app.value === AppType.YOUR_APPLICATION && (
-            <LockTooltip
-              size={4}
-              setIsOpenUpgrade={setIsOpenUpgrade}
-            />
+            <LockTooltip size={4} setIsOpenUpgrade={setIsOpenUpgrade} />
           )}
           {app.value === AppType.WEBSITE && <Globe size={16} />}
           {app.value === AppType.E_COMMERCE && <ShoppingCart size={16} />}
