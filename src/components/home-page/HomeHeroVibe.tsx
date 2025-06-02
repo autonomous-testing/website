@@ -29,7 +29,7 @@ Add an item to cart, complete the purchase, and verify 'Thank you for your order
 Wait for page load, accept cookies (if shown), submit form with pre-filled PIN.`,
   },
   [AppType.YOUR_APPLICATION]: {
-    url: "https://your-project-url.com",
+    url: "",
     instructions: "Your testing instructions..",
   },
 };
@@ -38,6 +38,8 @@ const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   type: key as AppType,
 }));
 const defaultTemplate = AppType.E_COMMERCE;
+const URL_REGEX =
+  /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
 const HomeHeroVibe = () => {
   const [appUrl, setAppUrl] = useState(appTemplates[defaultTemplate].url);
@@ -111,6 +113,7 @@ const HomeHeroVibe = () => {
                 type="url"
                 value={appUrl}
                 size={parseSize}
+                placeholder="https://your-project-url.com"
                 className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
                 onChange={handleUrlChange}
               />
@@ -133,7 +136,9 @@ const HomeHeroVibe = () => {
             <Button
               size="lg"
               variant="wopeeFlat"
-              disabled={testingInstructions.length === 0}
+              disabled={
+                testingInstructions.length === 0 || !URL_REGEX.test(appUrl)
+              }
               onClick={() =>
                 setLoginDialogState({ isOpen: true, mode: "vibe" })
               }
