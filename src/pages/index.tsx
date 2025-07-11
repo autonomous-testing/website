@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 
 import HomeHeroVibe from "@/components/home-page/HomeHeroVibe";
+import HomeSocialProof from "@/components/home-page/HomeSocialProof";
 import HomeBenefits from "@/components/home-page/HomeBenefits";
 import HomeTrustedBy from "@/components/home-page/HomeTrustedBy";
 import HomeProductCards from "@/components/home-page/HomeProductCards";
@@ -12,6 +13,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <HomeHeroVibe />
+      <HomeSocialProof />
       <HomeBenefits />
       <HomeProductCards />
       <HomeTrustedBy />
