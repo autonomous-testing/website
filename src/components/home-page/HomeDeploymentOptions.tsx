@@ -27,13 +27,11 @@ const DeploymentCard = ({
         <p className="text-lg leading-relaxed opacity-90">{description}</p>
       </div>
 
-      <Link href={buttonHref} className="group mt-8">
-        <ButtonPrimary
-          className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee group-hover:!text-white group-hover:!bg-secondary-wopee group-hover:!border-primary-wopee"
-          label={buttonText}
-          href={buttonHref}
-        />
-      </Link>
+      <ButtonPrimary
+        className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee group-hover:!text-white group-hover:!bg-secondary-wopee group-hover:!border-primary-wopee"
+        label={buttonText}
+        href={buttonHref}
+      />
     </div>
   );
 };

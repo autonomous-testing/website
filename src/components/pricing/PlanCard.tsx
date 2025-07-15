@@ -20,7 +20,7 @@ export const PlanCards: PlanCardT[] = [
     title: "Starter",
     img: require("@site/static/img/subscription-plans/starter.png").default,
     price: "19 €",
-    features: ["1.000 test steps per project/month"],
+    features: ["1.000 test steps/month"],
     featured: false,
     button: (
       <Link to="https://cmd.wopee.io">
@@ -94,19 +94,9 @@ export default function PlanCard({
           {title === "Ultimate" || title === "Enterprise" ? (
             ""
           ) : (
-            <small className="font-normal">
-              per {title === "Starter" ? "project/" : ""}user/month
-            </small>
+            <small className="font-normal">per user/month</small>
           )}
         </h4>
-        <small className="text-md md:text-lg">
-          {features.map((feature, idx) => (
-            <span key={idx}>
-              {" "}
-              {feature} <br />
-            </span>
-          ))}
-        </small>
       </div>
       {button}
     </div>
