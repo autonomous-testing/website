@@ -228,10 +228,6 @@ const config = {
                 href: "https://www.linkedin.com/company/wopee",
               },
               {
-                label: "Meetup",
-                href: "https://www.meetup.com/wopee-io/",
-              },
-              {
                 label: "GitHub",
                 href: "https://github.com/Wopee-io",
               },
