@@ -2,6 +2,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import { Cloud, Server } from "lucide-react";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
+import ButtonPrimary from "../buttons/ButtonPrimary";
 
 const DeploymentCard = ({
   title,
@@ -17,7 +18,7 @@ const DeploymentCard = ({
   icon: React.ReactNode;
 }) => {
   return (
-    <div className="flex flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-secondary-wopee to-purple-800 text-white h-80 max-w-md hover:shadow-xl transition-shadow duration-300">
+    <div className="flex flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-secondary-wopee to-purple-800 text-white h-80 max-w-lg hover:shadow-xl transition-shadow duration-300">
       <div>
         <div className="flex items-center gap-3 mb-6">
           <div className="text-primary-wopee">{icon}</div>
@@ -27,9 +28,11 @@ const DeploymentCard = ({
       </div>
 
       <Link href={buttonHref} className="group mt-8">
-        <button className="w-full bg-white text-secondary-wopee font-semibold rounded-lg px-8 py-4 text-lg hover:bg-primary-wopee hover:text-secondary-wopee transition-all duration-200 hover:shadow-lg">
-          {buttonText}
-        </button>
+        <ButtonPrimary
+          className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee group-hover:!text-white group-hover:!bg-secondary-wopee group-hover:!border-primary-wopee dark:group-hover:!text-white dark:group-hover:!bg-secondary-wopee dark:group-hover:!border-primary-wopee"
+          label={buttonText}
+          href={buttonHref}
+        />
       </Link>
     </div>
   );
@@ -41,24 +44,24 @@ const HomeDeploymentOptions = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">
-            Flexible deployment options
+            Deploy on your terms
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 justify-center items-center max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-6 justify-center items-center max-w-6xl mx-auto">
           <DeploymentCard
-            title="Cloud"
-            description="One less thing to worry about – delegate the deployment to us"
+            title="Cloud (fully managed)"
+            description="Focus on shipping. We take care of the rest (host, scale & update everything)."
             buttonText="Start testing better now"
             buttonHref={cmdBaseUrl}
             icon={<Cloud size={40} />}
           />
 
           <DeploymentCard
-            title="On-Premises"
-            description="Maintain a tight grip on your CI/CD and get more control over security"
-            buttonText="Talk to founders"
-            buttonHref="/marcel"
+            title="On-Prem (self-hosted)"
+            description="Run Wopee.io inside your own CI/CD. Get more control over security."
+            buttonText="Book demo"
+            buttonHref="/book-demo"
             icon={<Server size={40} />}
           />
         </div>
