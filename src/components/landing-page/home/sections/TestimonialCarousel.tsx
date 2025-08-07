@@ -39,9 +39,11 @@ const Testimonial = ({
   activeItemIndex,
 }) => (
   <div
-    className={`absolute top-1/2 -translate-y-1/2 left-0 w-full ${
-      activeItemIndex === itemIndex ? "opacity-100" : "opacity-0"
-    } transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
+    className={`${
+      activeItemIndex === itemIndex
+        ? "block md:opacity-100"
+        : "hidden md:opacity-0"
+    } md:absolute md:top-1/2 md:-translate-y-1/2 md:left-0 md:w-full transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
   >
     <div className="lg:w-1/2 text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
       <p className="text-lg sm:text-xl lg:text-3xl">
@@ -64,10 +66,7 @@ const Testimonial = ({
 
     <div className="flex flex-col lg:flex-row gap-3 items-center">
       <div className="flex gap-2">
-        <img
-          className="avatar__photo avatar__photo--xl"
-          src={avatar}
-        />
+        <img className="avatar__photo avatar__photo--xl" src={avatar} />
         <div className="avatar__intro text-left">
           <div className="avatar__name">{name}</div>
           <small className="avatar__subtitle">{position}</small>
@@ -91,27 +90,25 @@ const TestimonialSwitcher = ({
   activeItemIndex,
   setActiveItemIndex,
   activateInterval,
-}) => {
-  return (
-    <div className="flex justify-center gap-2">
-      {testimonials.map((_, index) => (
-        <div
-          key={index}
-          className={`w-5 h-5 ${
-            activeItemIndex === index
-              ? "bg-secondary-wopee dark:bg-primary-wopee"
-              : "bg-gray-300 opacity-75"
-          } rounded-full cursor-pointer`}
-          onClick={() => {
-            setActiveItemIndex(index);
-            activateInterval();
-          }}
-          aria-label={`Go to slide ${index + 1}`}
-        />
-      ))}
-    </div>
-  );
-};
+}) => (
+  <div className="flex justify-center gap-2">
+    {testimonials.map((_, index) => (
+      <div
+        key={index}
+        className={`w-3 h-3 rounded-full cursor-pointer transition-opacity ${
+          activeItemIndex === index
+            ? "bg-secondary-wopee dark:bg-primary-wopee"
+            : "bg-gray-300 dark:bg-gray-600 opacity-50"
+        }`}
+        onClick={() => {
+          setActiveItemIndex(index);
+          activateInterval();
+        }}
+        aria-label={`Go to testimonial ${index + 1}`}
+      />
+    ))}
+  </div>
+);
 
 const TestimonialCarousel = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -142,11 +139,7 @@ const TestimonialCarousel = () => {
         </p>
       </div>
 
-      <div
-        className="relative flex items-center container"
-        style={{ height: "400px" }}
-      >
-        {" "}
+      <div className="relative flex items-center container md:h-[400px]">
         {testimonials.map((testimonial, index) => (
           <Testimonial
             key={testimonial.name}
