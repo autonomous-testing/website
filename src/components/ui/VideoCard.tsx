@@ -50,15 +50,21 @@ export default function VideoCard({
     return () => observer.disconnect();
   }, []);
 
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (videoLoading) {
+    if (videoLoading) {
+      timeoutRef.current = setTimeout(() => {
         setVideoError(true);
         setVideoLoading(false);
-      }
-    }, 10000); // 10 second timeout
+      }, 10000);
+    }
 
-    return () => clearTimeout(timeout);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [videoLoading]);
 
   return (
