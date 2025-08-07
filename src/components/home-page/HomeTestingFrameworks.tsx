@@ -25,17 +25,21 @@ const supportedTestingTools = [
 
 const HomeTestingFrameworks = () => {
   return (
-    <section className="w-full flex flex-col items-center py-16 px-2">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary-wopee dark:text-primary-wopee mb-8">
+    <section className="w-full flex flex-col items-center py-16 px-4">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-secondary-wopee dark:text-primary-wopee mb-8">
         Plug Wopee.io into your testing stack
       </h2>
-      <div className="grid grid-cols-2 sm:flex justify-center gap-2 my-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 my-2 max-w-6xl mx-auto w-full">
         {supportedTestingTools.map((tool) => (
           <div
             key={tool.src}
-            className="border border-solid border-gray-100 dark:border-gray-700 flex justify-center items-center aspect-video sm:w-56 rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-white px-3 xl:hover:px-1 transition-all"
+            className="border border-solid border-gray-100 dark:border-gray-700 flex justify-center items-center aspect-video rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-white px-2 md:px-3 transition-all"
           >
-            <img src={tool.src} alt={tool.alt} className="" />
+            <img
+              src={tool.src}
+              alt={tool.alt}
+              className="max-w-full max-h-full object-contain w-auto h-auto"
+            />
           </div>
         ))}
       </div>
