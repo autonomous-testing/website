@@ -90,12 +90,9 @@ const LandingPage = () => {
       <ProblemGrid />
       <VisualBugCarousel />
       <WopeeVersusSection VALUES={VALUES} />
-      <SupportedTestingTools spanLastOdd={false} />
+      <SupportedTestingTools />
       <SolutionIntroSection />
-      <HowItWorks
-        STEPS={STEPS}
-        FEATURES={FEATURES}
-      />
+      <HowItWorks STEPS={STEPS} FEATURES={FEATURES} />
       <TestimonialCarousel />
       <EndingSection />
     </>
