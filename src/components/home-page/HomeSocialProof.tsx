@@ -90,9 +90,11 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
 
   return (
     <div
-      className={`absolute inset-0 flex items-center justify-center ${
-        activeItemIndex === itemIndex ? "opacity-100" : "opacity-0"
-      } transition-opacity duration-500`}
+      className={`${
+        activeItemIndex === itemIndex
+          ? "block md:opacity-100"
+          : "hidden md:opacity-0"
+      } md:absolute md:inset-0 md:flex md:items-center md:justify-center transition-opacity duration-500`}
     >
       {isLivesport ? (
         <Link
@@ -166,7 +168,7 @@ const HomeSocialProof = () => {
       </div>
 
       <div className="max-w-4xl w-full px-4">
-        <div className="relative w-full" style={{ height: "350px" }}>
+        <div className="relative w-full md:h-[350px]">
           {testimonials.map((testimonial, idx) => (
             <TestimonialCard
               key={idx}
