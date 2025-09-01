@@ -88,11 +88,12 @@ const HomeHeroVibe = () => {
   };
   return (
     <div className="relative lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10 overflow-hidden">
-      <img
-        src="/img/hero-bg-cta.png"
-        alt="Background gradient"
-        className="pointer-events-none select-none absolute inset-0 w-full h-full object-cover dark:opacity-15 opacity-0 z-0"
-        style={{ filter: "blur(0.5px)" }}
+      <div
+        className="pointer-events-none select-none absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
+        }}
       />
       <section className="relative z-10">
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">

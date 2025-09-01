@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap");
+/* Remove blocking font import - now handled via preload in config */
+/* @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"); */
 
 /* Scroll setup and behavior */
 html {
@@ -15,7 +16,8 @@ section {
 
 /* Font setup */
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
 }
 
 h1,
@@ -24,7 +26,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik", sans-serif;
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
   font-weight: 600;
   margin: 0;
 }
@@ -35,7 +38,8 @@ h6 {
 } */
 
 p {
-  font-family: "Rubik", sans-serif;
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
   margin: 0;
 }
 
@@ -48,11 +52,12 @@ strong {
 }
 
 .wopee-io::first-letter {
-  font-family: Bungee;
+  font-family: Bungee, "Arial Black", sans-serif;
 }
 
 .wopee-io {
-  font-family: Rubik;
+  font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
   font-weight: 800;
   display: inline-block;
 }
