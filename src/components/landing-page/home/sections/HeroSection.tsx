@@ -1,5 +1,6 @@
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import React from "react";
+import OptimizedImage from "@site/src/components/ui/OptimizedImage";
 
 const HeroSection = () => {
   return (
@@ -31,10 +32,12 @@ const HeroSection = () => {
       </div>
 
       <div className="lg:flex-1">
-        <img
+        <OptimizedImage
           className="rounded-lg object-contain h-auto w-full shadow-2xl"
           src="/img/landing/tests-page-new.png"
-          alt="dashboard-image"
+          alt="Visual testing dashboard showing test results and comparisons"
+          loading="lazy"
+          sizes="(max-width: 1024px) 100vw, 66vw"
         />
       </div>
     </div>

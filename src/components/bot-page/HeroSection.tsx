@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import OptimizedImage from "@site/src/components/ui/OptimizedImage";
 
 const HeroSection = () => {
   return (
@@ -29,10 +30,12 @@ const HeroSection = () => {
         </div>
       </div>
       <div>
-        <img
+        <OptimizedImage
           className="object-contain w-full max-h-[500px] lg:max-h-[600px]"
           src="/img/wopee_head_1_2023-10-10.png"
-          alt="dashboard-image"
+          alt="AI Testing Agent Dashboard"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
     </div>

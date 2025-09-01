@@ -68,7 +68,17 @@ const config = {
         injectHtmlTags() {
           return {
             bodyTags: [],
-            preBodyTags: [],
+            preBodyTags: [
+              {
+                tagName: "link",
+                attributes: {
+                  rel: "preload",
+                  href: "https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap",
+                  as: "style",
+                  onload: "this.onload=null;this.rel='stylesheet'",
+                },
+              },
+            ],
             postBodyTags: [
               {
                 tagName: "script",
