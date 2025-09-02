@@ -16,10 +16,10 @@
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/plugin-google-gtag": "^3.7.0",
-    "@docusaurus/plugin-google-tag-manager": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/plugin-google-gtag": "^3.8.1",
+    "@docusaurus/plugin-google-tag-manager": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@mdi/js": "^7.4.47",
@@ -47,7 +47,7 @@
     "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/module-type-aliases": "^3.8.1",
     "@tsconfig/docusaurus": "^1.0.5",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^4.7.4"
