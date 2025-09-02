@@ -99,9 +99,9 @@ const HomeHeroVibe = () => {
         <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
           Test better. Ship faster.
         </h1>
-        <h6 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
-          Map your app. Create tests. Automate instantly.
-        </h6>
+        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
+          Map your app. Create tests. Automate instantly. With AI.
+        </h2>
       </section>
 
       <div className="p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee z-10">

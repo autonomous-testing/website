@@ -19,7 +19,7 @@ export default function HomeHowItWorks(): JSX.Element {
             🚀 AI-powered web-app testing
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            From a single URL to 80%+ regression coverage in less than 5 min.
+            From a single URL to 80%+ regression coverage in 5 minutes.
             <br />
             No scripts, no extra QA hires.
           </p>
