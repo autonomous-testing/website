@@ -14,13 +14,13 @@ const HomeTrustedBy = () => {
           <img
             className="h-full"
             src="/img/customers/flash-score-logo.png"
-            alt="multitude"
+            alt="livesport"
           />
 
           <img
             className="h-full"
             src="/img/customers/inventi-logo.png"
-            alt="multitude"
+            alt="inventi"
           />
         </div>
 

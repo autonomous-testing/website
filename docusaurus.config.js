@@ -7,7 +7,7 @@ const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Wopee.io, the AI Agents for Software Testing",
+  title: "Wopee.io, the AI Testing Agents for Web Apps",
   tagline:
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
