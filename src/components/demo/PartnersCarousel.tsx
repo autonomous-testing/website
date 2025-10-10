@@ -13,6 +13,11 @@ const partners = [
     logo: "/img/customers/multitude-logo.png",
     classes: "grayscale dark:invert",
   },
+  {
+    name: "SYNOT TECH",
+    logo: "/img/customers/synot-logo.png",
+    classes: "grayscale dark:invert",
+  },
 ];
 
 const PartnersCarousel = () => {

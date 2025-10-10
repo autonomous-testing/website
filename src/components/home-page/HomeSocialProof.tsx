@@ -6,7 +6,7 @@ import Link from "@docusaurus/Link";
 const testimonials = [
   {
     quote:
-      "Wopee.io showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application",
+      "Wopee.io showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application.",
     about:
       "Livesport, The fastest sports information and scores provider from 35+ sports to 100M people worldwide (60+ web and mobile apps)",
     avatar: "/img/customers/avatars/martin-livesport.jpg",
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      "Wopee.io autonomous testing is extremely valuable in testing our marketing & customer account pages",
+      "Wopee.io autonomous testing is extremely valuable in testing our marketing & customer account pages.",
     about:
       "Multitude, European provider of Digital Financial Services 400k+ customers in 20 countries",
     avatar: "/img/customers/avatars/juraj-multitude.jpeg",
@@ -26,10 +26,22 @@ const testimonials = [
     logo: "/img/customers/multitude-logo.png",
     alt: "Multitude logo",
   },
+  {
+    quote:
+      "Before implementing visual testing from Wopee.io, it wasn't possible to test some scenarios at all.",
+    about:
+      "SYNOT TECH, Full-stack iGaming solutions provider - lotteries, casino games, sports betting across regulated European markets.",
+    avatar: "/img/customers/avatars/jakub-synot.png",
+    name: "Jakub Miakyš",
+    position: "QA Automation specialist & lead",
+    logo: "/img/customers/synot-logo.png",
+    alt: "SYNOT TECH logo",
+  },
 ];
 
 const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
   const isLivesport = testimonial.name === "Martin Šimon";
+  const isSynot = testimonial.name === "Jakub Miakyš";
   const CardContent = (
     <div className="group relative rounded-xl transition-shadow h-full flex max-w-4xl w-full">
       <div className="absolute inset-0 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 bg-gradient-to-br from-blue-500 to-secondary-wopee p-0.5"></div>
@@ -76,7 +88,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
               </div>
               <div className="ml-6 flex-shrink-0">
                 <img
-                  className="h-16 w-auto dark:invert dark:grayscale opacity-90"
+                  className="h-16 max-w-[150px] object-contain dark:invert dark:grayscale opacity-90"
                   src={testimonial.logo}
                   alt={testimonial.alt}
                 />
@@ -99,6 +111,13 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
       {isLivesport ? (
         <Link
           to="/blog/livesport-visual-testing-w-wopee-io"
+          className="block w-full h-full hover:no-underline"
+        >
+          {CardContent}
+        </Link>
+      ) : isSynot ? (
+        <Link
+          to="/blog/synot-tech-test-automation-wopee"
           className="block w-full h-full hover:no-underline"
         >
           {CardContent}
