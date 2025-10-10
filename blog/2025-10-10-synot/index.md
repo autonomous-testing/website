@@ -1,5 +1,5 @@
 ---
-title: How Synot scaled test automation (& visual testing)
+title: How SYNOT TECH scaled test automation (& visual testing)
 description: A story of evolving QA maturity in a complex iGaming environment and how visual testing helped make automation more robust.
 slug: synot-tech-test-automation-wopee
 authors: [marcel]
@@ -7,7 +7,7 @@ tags: [case-study, visual-testing, autonomous-testing, wopee, qa, automation]
 # image: ./images/synot-cover.png
 ---
 
-How synot scaled test automation (and visual testing) using Wopee.io
+How SYNOT TECH scaled test automation (and visual testing) using Wopee.io
 
 > A story of evolving QA maturity in a complex iGaming environment and how visual testing helped make automation more robust.
 
@@ -91,7 +91,7 @@ Based on their evaluation process, Jirka and Jakub identified several key factor
 
 1. **Simple integration** - Both into their framework and individual tests
 2. **Web-based management** - Reference screenshot management through an intuitive web client
-3. **Device abstraction** - Wopee handles differences between devices intelligently
+3. **Device abstraction** - Wopee.io handles differences between devices intelligently
 4. **Low maintenance burden** - They wanted visual testing without heavy maintenance overhead
 5. **Vendor responsiveness** - Wopee.io team were able to respond quickly with fixes and workarounds
 
@@ -99,10 +99,10 @@ Based on their evaluation process, Jirka and Jakub identified several key factor
 
 Here's how Wopee.io integrates into their daily workflow:
 
-1. Testers work with Wopee through their test maintenance and pipeline monitoring
-2. Wopee's output is sent via GraphQL into their Azure DevOps pipeline reports
+1. Testers work with Wopee.io through their test maintenance and pipeline monitoring
+2. Wopee.io's output is sent via GraphQL into their Azure DevOps pipeline reports
 3. When there's a screenshot with differences or a new (unapproved) screenshot, the test is marked as failed
-4. Through a URL in the report, testers go directly to Wopee Commander to analyze differences or identify new reference screenshots
+4. Through a URL in the report, testers go directly to Wopee.io Commander to analyze differences or identify new reference screenshots
 5. The process supports custom tags to distinguish which part of the application, customer, or environment the screenshot was created for
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
@@ -225,8 +225,8 @@ Third, working with **ignored areas** is a major benefit. You simply mark the ar
 ### Key insights from their journey
 
 1. **Team-wide adoption works**: All testers involved in test maintenance and pipeline monitoring now work with Wopee
-2. **Speed matters**: Wopee's screenshot evaluation, reference creation, and visual test creation are significantly faster
-3. **Technology alignment is crucial**: Wopee's .NET SDK support was a deciding factor, avoiding the need for separate test suites
+2. **Speed matters**: Wopee.io's screenshot evaluation, reference creation, and visual test creation are significantly faster
+3. **Technology alignment is crucial**: Wopee.io's .NET SDK support was a deciding factor, avoiding the need for separate test suites
 4. **Customer support makes a difference**: Marcel and his team's quick response to issues was critical during their selection process
 
 ### Current challenges and improvement areas

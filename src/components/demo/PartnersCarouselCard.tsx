@@ -19,7 +19,7 @@ const PartnersCarouselCard = ({
         <img
           src={logo}
           alt="company logo"
-          className={classes}
+          className={`h-16 max-w-[200px] object-contain ${classes}`}
         />
       </Link>
     </>
