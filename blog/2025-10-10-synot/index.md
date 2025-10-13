@@ -1,5 +1,5 @@
 ---
-title: How Synot scaled test automation (& visual testing)
+title: How SYNOT TECH scaled test automation (& visual testing)
 description: A story of evolving QA maturity in a complex iGaming environment and how visual testing helped make automation more robust.
 slug: synot-tech-test-automation-wopee
 authors: [marcel]
@@ -7,7 +7,7 @@ tags: [case-study, visual-testing, autonomous-testing, wopee, qa, automation]
 # image: ./images/synot-cover.png
 ---
 
-How synot scaled test automation (and visual testing) using Wopee.io
+How SYNOT TECH scaled test automation (and visual testing) using Wopee.io
 
 > A story of evolving QA maturity in a complex iGaming environment and how visual testing helped make automation more robust.
 
@@ -15,7 +15,7 @@ How synot scaled test automation (and visual testing) using Wopee.io
 
 ## Complexity, scale & smarter QA
 
-Synot Tech is no small operation. As part of the SYNOT Group, they deliver full‑stack iGaming solutions. From lotteries and casino games to sports betting and omni‑channel platforms. They operate in regulated markets across Europe, integrate with numerous game providers (over 9,500 games across 80+ providers), and support modular, API‑based architectures. ￼
+SYNOT TECH (Synot) is no small operation. As part of the SYNOT Group, they deliver full‑stack iGaming solutions. From lotteries and casino games to sports betting and omni‑channel platforms. They operate in regulated markets across Europe, integrate with numerous game providers (over 9,500 games across 80+ providers), and support modular, API‑based architectures. ￼
 
 In such environments, every UI change, integration, data flow, and presentation variant can introduce risk. For Synot's QA leaders, Jiří Malý (Jirka) and Jakub Miakyš, automation was already essential. But scaling it wisely, reducing brittle tests, and weaving in visual verification became the next frontier. Enter Wopee.io.
 
