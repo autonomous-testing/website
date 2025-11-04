@@ -38,6 +38,13 @@ jobs:
           sed -i 's/dev.wopee.io/wopee.io/g' ./cmdBaseUrl.js
           rm -rf ./static/robots.txt
 
+      - name: If repo is website-prod replace text website.wopee.io to wopee.io and remove robots.txt
+        if: github.repository == 'autonomous-testing/website-demo'
+        run: |
+          sed -i 's/website.wopee.io/demo.wopee.io/g' ./CNAME
+          sed -i 's/website.wopee.io/demo.wopee.io/g' ./docusaurus.config.js
+          sed -i 's/test.wopee.io/wopee.io/g' ./cmdBaseUrl.js
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website
