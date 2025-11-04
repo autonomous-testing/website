@@ -43,7 +43,7 @@ jobs:
         run: |
           sed -i 's/website.wopee.io/demo.wopee.io/g' ./CNAME
           sed -i 's/website.wopee.io/demo.wopee.io/g' ./docusaurus.config.js
-          sed -i 's/test.wopee.io/wopee.io/g' ./cmdBaseUrl.js
+          sed -i 's/dev.wopee.io/test.wopee.io/g' ./cmdBaseUrl.js
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
