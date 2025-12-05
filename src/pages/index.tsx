@@ -10,6 +10,7 @@ import HomeTestingFrameworks from "@/components/home-page/HomeTestingFrameworks"
 import HomeTrustedBy from "@/components/home-page/HomeTrustedBy";
 import HomeDeploymentOptions from "@/components/home-page/HomeDeploymentOptions";
 import HomeEndingSection from "@/components/home-page/HomeEndingSection";
+import HomeFaqSection from "@/components/home-page/HomeFaqSection";
 
 export default function Home(): JSX.Element {
   return (
@@ -21,6 +22,7 @@ export default function Home(): JSX.Element {
       <HomeDeploymentOptions />
       <HomeSocialProof />
       <HomeTrustedBy />
+      <HomeFaqSection />
       <HomeEndingSection />
     </Layout>
   );
