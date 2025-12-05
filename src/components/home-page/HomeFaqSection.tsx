@@ -330,7 +330,13 @@ const FAQS = [
     question: "Do you offer onboarding, training or a pilot project?",
     answer: (
       <div className="space-y-4">
-        <p>Yes. The preferred way to start with larger teams is an 8-week pilot project.</p>
+        <p>Yes. The preferred way to start with larger teams is an <a 
+            href="https://docs.wopee.io/pilot-projects/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            8-week pilot project
+          </a>.</p>
         <p>In a typical pilot, we:</p>
         <ul className="list-disc pl-5">
           <li>Run an onboarding workshop and set up project context</li>
