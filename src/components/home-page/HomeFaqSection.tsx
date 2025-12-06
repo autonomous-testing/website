@@ -424,10 +424,10 @@ const HomeFaqSection = () => {
               className="border-b border-slate-200 dark:border-slate-800 last:border-b-0"
             >
               <button
-                className="bg-transparent border-none w-full flex justify-between items-center py-4 text-left focus:outline-none focus:ring-0 group"
+                className="bg-transparent border-none w-full flex justify-between items-center py-4 text-left focus:outline-none focus:ring-0 group text-slate-900 dark:text-white"
                 onClick={() => toggleFaq(index)}
               >
-                <span className="text-lg font-bold transition-colors">
+                <span className="text-lg font-bold">
                   {faq.question}
                 </span>
                 <Icon
