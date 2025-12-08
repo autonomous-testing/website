@@ -53,6 +53,7 @@ const FAQS = [
           <strong>LLM providers</strong>
           <ul className="list-disc pl-5 mt-2">
             <li>Microsoft Azure AI / Azure Foundry</li>
+            <li>OpenAI</li>
             <li>Google Cloud</li>
             <li>Anthropic</li>
             <li>Other providers on request for enterprise customers</li>
@@ -65,13 +66,6 @@ const FAQS = [
     question: "What ROI can be expected compared to traditional testing?",
     answer: (
       <div className="space-y-4">
-        <p>Expect improvements in key testing metrics such as:</p>
-        <ul className="list-disc pl-5">
-          <li>Time to design and update test cases</li>
-          <li>Time to execute regression suites</li>
-          <li>Coverage of critical user journeys</li>
-          <li>Effort required to maintain automated tests</li>
-        </ul>
         <p>
           Our <a
             href="https://docs.wopee.io/pilot-projects/"
@@ -81,6 +75,13 @@ const FAQS = [
             documentation
           </a> outlines the typical gains seen during pilot programs, including measurable improvements that teams can realistically achieve within an eight-week period. Explore real-world case metrics and recommendations for maximizing ROI.
         </p>
+        <p>Expect improvements in key testing metrics such as:</p>
+        <ul className="list-disc pl-5">
+          <li>Time to design and update test cases</li>
+          <li>Time to execute regression suites</li>
+          <li>Coverage of critical user journeys</li>
+          <li>Effort required to maintain automated tests</li>
+        </ul>
       </div>
     ),
   },
@@ -125,7 +126,7 @@ const FAQS = [
       <div className="space-y-4">
         <p>We follow modern security practices for handling secrets and sensitive data.</p>
         <ul className="list-disc pl-5">
-          <li>Credentials, tokens, and other secrets are stored in environment variables or secret stores, similar to standard development practices.</li>
+          <li>Credentials, tokens, and other secrets are provided via environment variables or secret stores, similar to standard development practices.</li>
           <li>When calling LLM models, we replace sensitive values with variables wherever possible so that raw secrets are not sent to LLM providers.</li>
           <li>For stricter security needs, LLM models can run in a dedicated cloud instance or fully on-premises, depending on your infrastructure strategy.</li>
         </ul>
@@ -312,7 +313,7 @@ const FAQS = [
         <p>Key parameters:</p>
         <ul className="list-disc pl-5">
           <li>Each active user requires a license.</li>
-          <li>Usage is measured by the number of AI steps and operations performed.</li>
+          <li>Usage is measured by the number of tests executed by AI agent and operations performed.</li>
         </ul>
         <p>
           For small and medium teams, standard user-based plans are usually sufficient. <br />
@@ -335,7 +336,7 @@ const FAQS = [
             target="_blank"
             rel="noopener noreferrer"
           >
-            8-week pilot project
+            1-2 month pilot project
           </a>.</p>
         <p>In a typical pilot, we:</p>
         <ul className="list-disc pl-5">
@@ -366,16 +367,17 @@ const FAQS = [
     answer: (
       <div className="space-y-4">
         <p>Yes.</p>
+        <p>Together with selected partners, we offer transformation, implementation and migration projects that do not always require a Wopee.io platform rollout.</p>
         <p>
           While building the platform, the team has accumulated unique knowledge in AI-powered testing on top of more than twenty years of experience with traditional testing at scale. <br />
           This knowledge is shared through:
         </p>
         <ul className="list-disc pl-5">
-          <li>Free webinars and public workshops</li>
-          <li>Conference talks and community events</li>
           <li>Mentoring and consulting projects through partners</li>
+          <li>On-site / online workshops and training sessions</li>
+          <li>Conference talks and community events</li>
+          <li>Free webinars and public workshops</li>
         </ul>
-        <p>Together with selected partners, we also offer transformation, implementation and migration projects that do not always require a full Wopee.io rollout from day one.</p>
       </div>
     ),
   },
