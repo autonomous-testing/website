@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import React, { useLayoutEffect, useState } from "react";
 import Head from "@docusaurus/Head";
 
@@ -9,6 +8,12 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   const [isLoading, setIsLoading] = useState(true);
+  const siteUrl = siteConfig.url ?? "https://website.wopee.io";
+  const baseUrl = new URL(siteConfig.baseUrl ?? "/", siteUrl).toString();
+  const pageUrl = new URL("contact-us/", baseUrl).toString();
+  const title = `Contact Us - ${siteConfig.title}`;
+  const description = "Talk to the Wopee.io team about autonomous testing.";
+  const socialImage = new URL("img/wopee-social-card.jpg", baseUrl).toString();
 
   useLayoutEffect(() => {
     const script = document.createElement("script");
@@ -41,15 +46,19 @@ export default function Home(): JSX.Element {
   return (
     <React.Fragment>
       <Head>
-        <title>Contact Us - {siteConfig.title}</title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={socialImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImage} />
       </Head>
-      <Helmet>
-        <title>{siteConfig.title}</title>
-        <meta
-          name="description"
-          content="Autonomous testing platform for web applications | Wopee.io"
-        />
-      </Helmet>
       <div className="container">
         <GoBack />
         <div className="flex flex-col rounded-md items-center justify-center my-5 xl:items-start xl:flex-row gap-5">

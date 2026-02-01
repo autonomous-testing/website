@@ -1,0 +1,34 @@
+Wopee.io — AI Testing Agents for Web Apps
+
+Summary
+Wopee.io provides autonomous AI testing agents that generate, execute, and maintain regression tests for web applications. The platform focuses on critical user journeys and high-risk areas by combining project context with large language model workflows.
+
+Key capabilities
+- Generate test suites from URLs, requirements, user stories, or existing test cases.
+- Execute regression suites with parallel runs.
+- Maintain and update tests with AI when the application changes.
+- Integrate into CI/CD pipelines for automated execution and reporting.
+
+Supported testing frameworks
+- Playwright
+- Cypress
+- Robot Framework
+- WebDriver-based frameworks
+- Custom frameworks via open interfaces
+
+Integrations
+- CI/CD: GitHub Actions (primary), Jenkins, GitLab, Bitbucket, custom pipelines
+- APIs: GraphQL API, Wopee MCP server
+- LLM providers: Azure AI, OpenAI, Google Cloud, Anthropic (others by request)
+
+Product links
+- Website: https://website.wopee.io/
+- Blog: https://website.wopee.io/blog
+- Docs: https://docs.wopee.io/
+- Contact: https://website.wopee.io/contact-us/
+
+Company
+Wopee.io (wopee labs, s.r.o.)
+LinkedIn: https://www.linkedin.com/company/wopee
+GitHub: https://github.com/Wopee-io
+YouTube: https://www.youtube.com/@wopee

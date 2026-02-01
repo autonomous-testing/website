@@ -95,6 +95,14 @@ const config = {
         },
       };
     },
+    [
+      "@docusaurus/plugin-sitemap",
+      {
+        changefreq: "weekly",
+        priority: 0.5,
+        ignorePatterns: ["/tags/**", "/blog/**/page/**"],
+      },
+    ],
   ],
 
   presets: [

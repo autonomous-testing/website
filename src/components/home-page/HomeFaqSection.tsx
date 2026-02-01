@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import Head from "@docusaurus/Head";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiMinus } from "@mdi/js";
 
 const FAQS = [
   {
     question: "How do the AI agents identify and prioritize critical test paths?",
+    answerText:
+      "Our agents use customer context and advanced LLM workflows. You provide a URL and optional requirements, user stories, or existing test cases. Proprietary workflows combine frontier LLM models with a test design methodology to generate a suite focused on critical user paths and high-risk areas. The process is flexible and customizable per project.",
     answer: (
       <div className="space-y-4">
         <p>Our agents use a combination of customer context and advanced LLM workflows.</p>
@@ -22,6 +25,8 @@ const FAQS = [
   },
   {
     question: "What integrations are supported?",
+    answerText:
+      "Wopee.io integrates with Playwright, Cypress, Robot Framework, WebDriver-based frameworks, and custom frameworks. CI/CD integrations include GitHub Actions and other servers like Jenkins, GitLab, Bitbucket, or custom pipelines. APIs include GraphQL and the Wopee MCP server. LLM providers include Azure AI, OpenAI, Google Cloud, Anthropic, and others by request.",
     answer: (
       <div className="space-y-4">
         <p>We support integrations with your existing tools on several levels.</p>
@@ -64,6 +69,8 @@ const FAQS = [
   },
   {
     question: "What ROI can be expected compared to traditional testing?",
+    answerText:
+      "Pilot programs typically show improvements in time to design and update test cases, time to execute regression suites, coverage of critical journeys, and effort to maintain automated tests. Documentation includes real-world metrics and recommendations for maximizing ROI within an eight-week pilot.",
     answer: (
       <div className="space-y-4">
         <p>
@@ -87,6 +94,8 @@ const FAQS = [
   },
   {
     question: "Is the process fully autonomous, or is human input required?",
+    answerText:
+      "Autonomy depends on the quality of project context, customer environment maturity, and domain requirements. Many steps run autonomously, but users still provide and maintain context, review and adjust tests, and decide on strategy and results. More mature inputs reduce manual intervention.",
     answer: (
       <div className="space-y-4">
         <p>The long-term goal is to deliver fully autonomous web testing. <br />
@@ -109,6 +118,8 @@ const FAQS = [
   },
   {
     question: "Do the agents support parallel test runs?",
+    answerText:
+      "Parallel test execution is supported with no hard technical limit. Practical limits depend on plan and infrastructure capacity. Cloud runners scale with usage, while enterprise deployments configure runners individually.",
     answer: (
       <div className="space-y-4">
         <p>Yes, parallel test execution is fully supported.</p>
@@ -122,6 +133,8 @@ const FAQS = [
   },
   {
     question: "How are secrets and sensitive test data handled?",
+    answerText:
+      "Secrets are provided via environment variables or secret stores. Sensitive values are replaced with variables before LLM calls. For stricter needs, LLMs can run in dedicated cloud instances or on-premises.",
     answer: (
       <div className="space-y-4">
         <p>We follow modern security practices for handling secrets and sensitive data.</p>
@@ -135,6 +148,8 @@ const FAQS = [
   },
   {
     question: "How does integration with CI/CD and version control work?",
+    answerText:
+      "CI/CD integrates with GitHub Actions by default and supports other platforms like Jenkins, GitLab, Bitbucket, or internal systems. Versioning includes internal LLM workflow versioning and Git-based version control for code and test artifacts.",
     answer: (
       <div className="space-y-4">
         <div>
@@ -161,6 +176,8 @@ const FAQS = [
   },
   {
     question: "Which business domains can be tested and how customizable are the agents?",
+    answerText:
+      "The agents are browser-based and domain agnostic. Domain-specific context like business processes, terminology, and compliance constraints improves relevance for industries such as banking, IAM, energy, or insurance.",
     answer: (
       <div className="space-y-4">
         <p>The agents are designed to test web applications running in a browser and are business-domain agnostic.</p>
@@ -179,6 +196,8 @@ const FAQS = [
   },
   {
     question: "What are the performance and capacity limits?",
+    answerText:
+      "Cloud infrastructure scales with customer demand. Requests are processed first-come, first-served with possible short queues during peaks. Enterprise deployments are sized to minimize waiting times and scale for performance and cost.",
     answer: (
       <div className="space-y-4">
         <p>For cloud usage, infrastructure is sized to handle current customer demand and scaled as the customer base grows.</p>
@@ -192,6 +211,8 @@ const FAQS = [
   },
   {
     question: "How are tests structured and maintained during long-term development?",
+    answerText:
+      "Tests are organized into analyses by product, features, journeys, or other groupings. Teams can generate tests from scratch, import JSON, or use the MCP server. When apps change, tests can be re-run, updated with AI, or regenerated as needed.",
     answer: (
       <div className="space-y-4">
         <p>Tests are organized into <strong>analyses</strong>, which are logical groups of tests. <br />
@@ -223,6 +244,8 @@ const FAQS = [
   },
   {
     question: "How are existing requirements and specifications used?",
+    answerText:
+      "The system can consume design files, requirements, user stories, acceptance criteria, and existing test suites to build context. This context drives test generation and validation of application behavior.",
     answer: (
       <div className="space-y-4">
         <p>During AI-powered test analysis and design, the system can consume various inputs to build a rich project context, for example:</p>
@@ -242,6 +265,8 @@ const FAQS = [
   },
   {
     question: "What is best practice for building context and editing AI generated outputs?",
+    answerText:
+      "Start with small, relevant context and avoid overload. Iterate on analyses, use targeted instructions, and edit outputs only where needed. Less but higher-quality context improves results.",
     answer: (
       <div className="space-y-4">
         <p>The platform is optimized for minimal but high-quality context.</p>
@@ -274,6 +299,8 @@ const FAQS = [
   },
   {
     question: "Who is the typical user within a project?",
+    answerText:
+      "Typical users include manual testers, QA analysts, test automation engineers, and product owners. The long-term vision is reducing repetitive testing while keeping humans focused on risk and quality strategy.",
     answer: (
       <div className="space-y-4">
         <p>The tool is designed to reduce manual testing effort and simplify the overall testing process. <br />
@@ -289,6 +316,8 @@ const FAQS = [
   },
   {
     question: "What reporting and dashboards are provided?",
+    answerText:
+      "In-product reporting includes execution status, run details, failed steps, and AI-generated summaries. For advanced dashboards, teams can integrate tools like ReportPortal, Kibana, or Grafana via GraphQL or MCP.",
     answer: (
       <div className="space-y-4">
         <p>Reporting is intentionally kept focused and minimal. It is not a full-scale test reporting platform.</p>
@@ -307,6 +336,8 @@ const FAQS = [
   },
   {
     question: "How does the licensing model work?",
+    answerText:
+      "Licensing is user-based with consumption pricing. Each active user requires a license, and usage is measured by tests executed and operations performed. Enterprise plans offer flexible terms, onboarding, and support.",
     answer: (
       <div className="space-y-4">
         <p>The licensing model is user-based with consumption-based pricing.</p>
@@ -329,6 +360,8 @@ const FAQS = [
   },
   {
     question: "Do you offer onboarding, training or a pilot project?",
+    answerText:
+      "Yes. Wopee offers 1–2 month pilots that include onboarding workshops, integration help, AI workflow tuning, and feedback-driven improvements. Coverage can extend to mobile, API, or desktop testing.",
     answer: (
       <div className="space-y-4">
         <p>Yes. The preferred way to start with larger teams is an <a 
@@ -352,6 +385,8 @@ const FAQS = [
   },
   {
     question: "What support do you provide and how fast do you respond?",
+    answerText:
+      "Support is available through in-app chat. Responses are typically within one business day, with custom response time SLAs available.",
     answer: (
       <div className="space-y-4">
         <p>All customers have access to support through the in-app chat.</p>
@@ -364,6 +399,8 @@ const FAQS = [
   },
   {
     question: "Can we benefit from your AI testing know how without purchasing licenses?",
+    answerText:
+      "Yes. Wopee offers transformation, implementation, and migration projects through partners, including mentoring, workshops, and conference knowledge sharing.",
     answer: (
       <div className="space-y-4">
         <p>Yes.</p>
@@ -383,6 +420,8 @@ const FAQS = [
   },
   {
     question: "What is the roadmap and long term vision?",
+    answerText:
+      "The mission is to make web testing work in an AI-driven world by transforming traditional testing into AI-augmented, largely autonomous workflows. Short-term goals focus on practical adoption, while long-term goals reduce repetitive testing and improve release confidence.",
     answer: (
       <div className="space-y-4">
         <p>The mission is simple: make web testing work in a modern, AI-driven world.</p>
@@ -403,6 +442,18 @@ const FAQS = [
 const HomeFaqSection = () => {
   const [openIndices, setOpenIndices] = useState<number[]>([]);
   const [showAll, setShowAll] = useState(false);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answerText,
+      },
+    })),
+  };
 
   const toggleFaq = (index: number) => {
     setOpenIndices((prev) =>
@@ -414,6 +465,11 @@ const HomeFaqSection = () => {
 
   return (
     <div className="py-16 lg:py-24 px-4 lg:px-8 text-slate-900 dark:text-white transition-colors duration-300">
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Head>
       <div className="max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold mb-12">
           Frequently asked questions
