@@ -95,6 +95,18 @@ const config = {
         },
       };
     },
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          { from: "/banana", to: "/lisbon" },
+          { from: "/bananas", to: "/lisbon" },
+          { from: "/beer", to: "/contact" },
+          { from: "/GetEarlyAccess", to: "/book-demo" },
+          { from: "/NoWork", to: "/about-us" },
+        ],
+      },
+    ],
   ],
 
   presets: [
@@ -111,6 +123,16 @@ const config = {
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
+        },
+        sitemap: {
+          ignorePatterns: [
+            "/tags/**",
+            "/blog/**/page/**",
+            "/billing/**",
+            "/blog/archive",
+            "/blog/authors",
+            "/blog/tags/**",
+          ],
         },
         gtag: { trackingID: "G-PVTHWLV51B" },
         googleTagManager: {
