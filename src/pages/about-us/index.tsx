@@ -1,15 +1,9 @@
 import React from "react";
 
 import Layout from "@theme/Layout";
-import Team from "@site/src/components/team/Team";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
 
 const INVESTORS = [
-  {
-    name: "Tesena",
-    logo: "/img/investors/tesena-logo.png",
-    classes: "dark:brightness-[1.2]",
-  },
   {
     name: "Nation1",
     logo: "/img/investors/nation1-logo.png",
@@ -25,65 +19,64 @@ const INVESTORS = [
 const TeamPage = () => {
   return (
     <Layout title="About Us">
-      <main className="container">
-        <Team />
-        <div className="mb-5">
-          <h2 className="text-center text-4xl opacity-90 text-secondary-wopee dark:text-primary-wopee">
-            Our Investors
-          </h2>
-          <span className="text-justify flex flex-col gap-5 mt-5 max-w-3xl items-center mx-auto">
-            <p>
-              Wopee Labs s.r.o. is currently powered by investments from three
-              key partners, each bringing not only financial backing but also
-              invaluable strategic and industry-specific support.
+      <main>
+        {/* Hero */}
+        <section className="py-20 px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold mb-8 text-secondary-wopee dark:text-primary-wopee">
+              About Wopee.io
+            </h1>
+            <p className="text-xl leading-relaxed opacity-90">
+              We started with a simple frustration: testing should not be the
+              bottleneck. So we built autonomous agents that let engineering
+              teams ship faster, break less, and sleep better.
             </p>
-            <p>
-              Our first partner,{" "}
-              <span className="font-bold text-secondary-wopee dark:text-primary-wopee">
-                Tesena s.r.o.
-              </span>
-              , is a recognized leader in software testing services, offering
-              professional consulting, training, and education in this domain.
-              Their investment goes beyond funding, granting us access to their
-              vast experience, deep industry knowledge, and critical
-              opportunities to implement and refine our solutions in real-world
-              scenarios.
-            </p>
-            <p>
-              Our second investor,{" "}
-              <span className="font-bold text-secondary-wopee dark:text-primary-wopee">
-                Nation 1
-              </span>
-              , specializes in early-stage investments in promising startups.
-              Their endorsement provides not only financial resources but also
-              comprehensive strategic guidance that supports our growth. Nation
-              1 plays a vital role in helping us prepare for future investment
-              rounds, positioning us for a successful transition from being a
-              leading player in Europe to expanding on the global stage.
-            </p>
-            <p>
-              Our latest partner,{" "}
-              <span className="font-bold text-secondary-wopee dark:text-primary-wopee">
-                StartupYard
-              </span>
-              , is Central Europe’s top seed accelerator for technology
-              startups, based in Prague. Since 2011, they have accelerated over
-              115 startups from more than 25 countries, helping them secure over
-              €105 million in funding and achieve significant growth. By
-              partnering with StartupYard, we benefit from their extensive
-              network, mentorship, and a wealth of experience in scaling
-              tech-driven businesses. Their portfolio includes notable successes
-              such as Rossum.ai, BrandEmbassy, and NeuronSoundware, showcasing
-              their deep expertise in nurturing high-potential startups.
-            </p>
-            <p>
-              With the combined support of these investors, we are
-              well-positioned to continue our rapid growth, innovate within the
-              autonomous software testing market, and enhance our global
-              competitiveness.
-            </p>
-          </span>
-          <div className="flex justify-center gap-10 mt-5">
+          </div>
+        </section>
+
+        {/* What We Do — cards */}
+        <section className="py-12 px-4">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div className="rounded-xl border border-solid border-gray-700 p-8 flex flex-col">
+              <h3 className="text-xl font-semibold mb-4 text-secondary-wopee dark:text-primary-wopee text-center">
+                Born from experience
+              </h3>
+              <p className="opacity-80 leading-relaxed text-center flex-1">
+                Decades of hands-on work in software testing, test automation,
+                and quality engineering. We know what works, what breaks at
+                scale, and what teams actually need to move fast without breaking
+                things.
+              </p>
+            </div>
+            <div className="rounded-xl border border-solid border-gray-700 p-8 flex flex-col">
+              <h3 className="text-xl font-semibold mb-4 text-secondary-wopee dark:text-primary-wopee text-center">
+                AI-powered testing
+              </h3>
+              <p className="opacity-80 leading-relaxed text-center flex-1">
+                AI-driven test creation, self-healing maintenance, and
+                actionable insights — so teams can focus on building value, not
+                babysitting fragile test suites.
+              </p>
+            </div>
+            <div className="rounded-xl border border-solid border-gray-700 p-8 flex flex-col">
+              <h3 className="text-xl font-semibold mb-4 text-secondary-wopee dark:text-primary-wopee text-center">
+                Real outcomes
+              </h3>
+              <p className="opacity-80 leading-relaxed text-center flex-1">
+                Fewer regressions, faster releases, and better user experiences.
+                Test automation that is accessible, reliable, and genuinely
+                useful in daily product delivery.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Backed by */}
+        <section className="pt-10 pb-16 px-4 text-center">
+          <p className="text-sm uppercase tracking-widest opacity-50 mb-6">
+            Backed by
+          </p>
+          <div className="flex justify-center items-center gap-14">
             {INVESTORS.map((investor) => (
               <PartnersCarouselCard
                 key={investor.name}
@@ -92,7 +85,29 @@ const TeamPage = () => {
               />
             ))}
           </div>
-        </div>
+        </section>
+
+        {/* Contact */}
+        <section className="py-10 px-4">
+          <div className="max-w-3xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+            <div>
+              <p className="text-lg opacity-90">
+                <a
+                  href="mailto:help@wopee.io"
+                  className="underline text-secondary-wopee dark:text-primary-wopee font-semibold"
+                >
+                  help@wopee.io
+                </a>
+              </p>
+            </div>
+            <div className="text-sm opacity-60 leading-7 md:text-right">
+              <p className="font-semibold">wopee labs s.r.o.</p>
+              <p>Pujmanove 883/23, Prague 140 00</p>
+              <p>Czech Republic</p>
+              <p>Reg. No.: 17997224 | VAT: CZ17997224</p>
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
