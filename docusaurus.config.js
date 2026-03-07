@@ -99,11 +99,14 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-          { from: "/banana", to: "/lisbon" },
-          { from: "/bananas", to: "/lisbon" },
+          { from: "/banana", to: "/contact" },
+          { from: "/bananas", to: "/contact" },
           { from: "/beer", to: "/contact" },
           { from: "/GetEarlyAccess", to: "/book-demo" },
           { from: "/NoWork", to: "/about-us" },
+          { from: "/lisbon", to: "/contact" },
+          { from: "/olena", to: "/contact" },
+          { from: "/jan", to: "/contact" },
         ],
       },
     ],
