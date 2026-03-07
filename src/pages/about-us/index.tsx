@@ -1,5 +1,6 @@
 import React from "react";
 
+import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
 
@@ -16,25 +17,71 @@ const INVESTORS = [
   },
 ];
 
+const JSONLD_ORG = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Wopee.io",
+  legalName: "wopee labs s.r.o.",
+  url: "https://wopee.io",
+  logo: "https://wopee.io/img/logo.png",
+  email: "help@wopee.io",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pujmanove 883/23",
+    addressLocality: "Prague",
+    postalCode: "140 00",
+    addressCountry: "CZ",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/wopee",
+    "https://github.com/Wopee-io",
+    "https://www.youtube.com/@wopee",
+  ],
+};
+
 const TeamPage = () => {
   return (
-    <Layout title="About Us">
+    <Layout title="Contact Wopee.io | AI Testing Agents for Web Apps">
+      <Head>
+        <meta
+          name="description"
+          content="Contact Wopee.io (wopee labs s.r.o.) for AI-powered test automation. Reach our team for support, product questions, and collaboration."
+        />
+        <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
+      </Head>
       <main>
-        {/* Hero */}
+        {/* Contact hero */}
         <section className="py-20 px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-5xl font-bold mb-8 text-secondary-wopee dark:text-primary-wopee">
-              About Wopee.io
+              Contact
             </h1>
-            <p className="text-xl leading-relaxed opacity-90">
-              We started with a simple frustration: testing should not be the
-              bottleneck. So we built autonomous agents that let engineering
-              teams ship faster, break less, and sleep better.
+            <p className="text-xl leading-relaxed opacity-90 mb-6">
+              Questions, partnerships, or just want to talk testing? We would
+              love to hear from you.
             </p>
+            <a
+              href="mailto:help@wopee.io"
+              className="text-2xl font-semibold underline text-secondary-wopee dark:text-primary-wopee"
+            >
+              help@wopee.io
+            </a>
           </div>
         </section>
 
-        {/* What We Do — cards */}
+        {/* Company info + legal */}
+        <section className="py-10 px-4">
+          <div className="max-w-3xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+            <div className="text-sm opacity-60 leading-7">
+              <p className="font-semibold">wopee labs s.r.o.</p>
+              <p>Pujmanove 883/23, Prague 140 00</p>
+              <p>Czech Republic</p>
+              <p>Reg. No.: 17997224 | VAT: CZ17997224</p>
+            </div>
+          </div>
+        </section>
+
+        {/* About — compact */}
         <section className="py-12 px-4">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             <div className="rounded-xl border border-solid border-gray-700 p-8 flex flex-col">
@@ -87,26 +134,16 @@ const TeamPage = () => {
           </div>
         </section>
 
-        {/* Contact */}
-        <section className="py-10 px-4">
-          <div className="max-w-3xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-            <div>
-              <p className="text-lg opacity-90">
-                <a
-                  href="mailto:help@wopee.io"
-                  className="underline text-secondary-wopee dark:text-primary-wopee font-semibold"
-                >
-                  help@wopee.io
-                </a>
-              </p>
-            </div>
-            <div className="text-sm opacity-60 leading-7 md:text-right">
-              <p className="font-semibold">wopee labs s.r.o.</p>
-              <p>Pujmanove 883/23, Prague 140 00</p>
-              <p>Czech Republic</p>
-              <p>Reg. No.: 17997224 | VAT: CZ17997224</p>
-            </div>
-          </div>
+        {/* CTA */}
+        <section className="pb-16 px-4 text-center">
+          <a
+            href="https://cmd.wopee.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 text-sm font-medium rounded-lg border border-solid border-gray-600 opacity-80 hover:opacity-100 transition-opacity"
+          >
+            Start free trial
+          </a>
         </section>
       </main>
     </Layout>
