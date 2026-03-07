@@ -1,5 +1,6 @@
 import React from "react";
 
+import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
 
@@ -16,9 +17,38 @@ const INVESTORS = [
   },
 ];
 
+const JSONLD_ORG = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Wopee.io",
+  legalName: "wopee labs s.r.o.",
+  url: "https://wopee.io",
+  logo: "https://wopee.io/img/logo.png",
+  email: "help@wopee.io",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pujmanove 883/23",
+    addressLocality: "Prague",
+    postalCode: "140 00",
+    addressCountry: "CZ",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/wopee",
+    "https://github.com/Wopee-io",
+    "https://www.youtube.com/@wopee",
+  ],
+};
+
 const TeamPage = () => {
   return (
-    <Layout title="About Us">
+    <Layout title="About Wopee.io | AI Testing Agents for Web Apps">
+      <Head>
+        <meta
+          name="description"
+          content="Learn about Wopee.io — autonomous AI testing agents for web apps. Contact wopee labs s.r.o. for support, product questions, and collaboration."
+        />
+        <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
+      </Head>
       <main>
         {/* Hero */}
         <section className="py-20 px-4 text-center">
@@ -107,6 +137,18 @@ const TeamPage = () => {
               <p>Reg. No.: 17997224 | VAT: CZ17997224</p>
             </div>
           </div>
+        </section>
+
+        {/* CTA */}
+        <section className="pb-16 px-4 text-center">
+          <a
+            href="https://cmd.wopee.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 text-sm font-medium rounded-lg border border-solid border-gray-600 opacity-80 hover:opacity-100 transition-opacity"
+          >
+            Start free trial
+          </a>
         </section>
       </main>
     </Layout>
