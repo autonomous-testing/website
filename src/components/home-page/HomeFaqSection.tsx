@@ -457,7 +457,7 @@ const HomeFaqSection = () => {
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
-              id="login-button"
+              id="faq-load-more"
               className="inline-flex items-center text-base font-medium transition-colors duration-300"
               style={{ width: "auto", paddingLeft: "2rem", paddingRight: "2rem" }}
             >

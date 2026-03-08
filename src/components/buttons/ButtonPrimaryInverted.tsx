@@ -7,12 +7,14 @@ type ButtonPrimaryInvertedProps = {
   href?: string;
   label?: string;
   className?: string;
+  id?: string;
 };
 
 const ButtonPrimaryInverted = ({
   href,
   className,
   label = "Book demo",
+  id,
 }: ButtonPrimaryInvertedProps) => {
   return (
     <>
@@ -20,6 +22,7 @@ const ButtonPrimaryInverted = ({
         <Link
           href={href}
           className="group"
+          id={id}
         >
           <button
             className={clsx(
@@ -36,6 +39,7 @@ const ButtonPrimaryInverted = ({
             "text-primary-wopee border border-secondary-wopee dark:border-primary-wopee dark:text-secondary-wopee font-semibold bg-transparent hover:bg-transparent hover:text-secondary-wopee dark:hover:text-primary-wopee hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
             className
           )}
+          id={id}
         >
           {label}
         </button>

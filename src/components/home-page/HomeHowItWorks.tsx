@@ -44,6 +44,7 @@ export default function HomeHowItWorks(): JSX.Element {
 
       <div className="text-center mt-16">
         <ButtonPrimary
+          id="cta-how-it-works-trial"
           label="Test better now"
           href={cmdBaseUrl}
           className="w-60 h-[50px]"
