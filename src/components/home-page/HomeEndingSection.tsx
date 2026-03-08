@@ -20,12 +20,14 @@ const HomeEndingSection = () => {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2 lg:gap-5">
           <div className="sm:h-20">
             <ButtonPrimaryInverted
+              id="cta-book-demo"
               href="/book-demo"
               className="w-60 h-[50px]"
             />
           </div>
           <div className="h-20">
             <ButtonPrimary
+              id="cta-start-testing"
               label="Start testing better"
               href="https://cmd.wopee.io"
               className="w-60 h-[50px]"
