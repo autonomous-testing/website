@@ -9,12 +9,14 @@ const DeploymentCard = ({
   description,
   buttonText,
   buttonHref,
+  buttonId,
   icon,
 }: {
   title: string;
   description: string;
   buttonText: string;
   buttonHref: string;
+  buttonId?: string;
   icon: React.ReactNode;
 }) => {
   return (
@@ -28,6 +30,7 @@ const DeploymentCard = ({
       </div>
 
       <ButtonPrimary
+        id={buttonId}
         className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee group-hover:!text-white group-hover:!bg-secondary-wopee group-hover:!border-primary-wopee"
         label={buttonText}
         href={buttonHref}
@@ -52,6 +55,7 @@ const HomeDeploymentOptions = () => {
             description="Focus on shipping. We take care of the rest (host, scale & update everything)."
             buttonText="Start testing better now"
             buttonHref={cmdBaseUrl}
+            buttonId="cta-deploy-cloud"
             icon={<Cloud size={40} />}
           />
 
@@ -60,6 +64,7 @@ const HomeDeploymentOptions = () => {
             description="Run Wopee.io inside your own CI/CD. Get more control over security."
             buttonText="Book demo"
             buttonHref="/book-demo"
+            buttonId="cta-deploy-onprem"
             icon={<Server size={40} />}
           />
         </div>
