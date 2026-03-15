@@ -166,6 +166,14 @@ const HomeHeroVibe = () => {
         handleAppTypeChange={handleAppTypeChange}
       />
 
+      <p className="relative z-10 max-w-2xl mx-auto text-center text-sm text-gray-500 dark:text-gray-400 px-6">
+        What are AI testing agents? They are AI agents that explore your web
+        application, create end-to-end tests, and self-heal when the UI changes.
+        Wopee.io delivers this on a Playwright foundation — no code, one-minute
+        setup, and continuous regression coverage that scales with your release
+        pace.
+      </p>
+
       <LoginDialog
         appUrl={appUrl}
         appType={appType}
