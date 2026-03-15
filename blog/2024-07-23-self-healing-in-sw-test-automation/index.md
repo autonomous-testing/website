@@ -1,14 +1,13 @@
 ---
 slug: self-healing-in-sw-test-automation
-title: Self-healing in SW Test Automation Explained
+title: "Self-Healing Test Automation: Fix Broken Tests Automatically"
+description: "What is self-healing in test automation? Tests that detect UI changes and repair their own selectors in real time. Complete guide with examples and tools."
 authors: marcel
 tags: [automation, self-healing, ai, machine-learning, ci-cd, reliability]
 image: ./self-healing-explained.jpg
 ---
 
-Self-Healing in Test Automation: The Future of Reliable Testing?
-
-Maintaining robust test automation can be a daunting challenge. As applications evolve rapidly, test scripts often break due to changes in the user interface (UI) or application structure. This leads to increased maintenance overhead, false test failures, and reduced confidence in the test suite.
+What is self-healing in test automation? It is a mechanism where tests automatically repair broken locators when the application UI changes. When a selector fails, the self-healing engine analyzes the DOM, identifies the intended element using alternative attributes, and updates the test in real time — turning brittle test suites into resilient ones without manual intervention.
 
 <!--truncate-->
 

@@ -1,12 +1,13 @@
 ---
 slug: bdd-with-robot-framework
-title: Getting Started with BDD in Robot Framework
+title: "BDD with Robot Framework: A Practical Guide with Examples"
+description: "Learn how to implement BDD in Robot Framework with Gherkin syntax, Example Mapping, and real automation examples. From user stories to executable test cases."
 authors: marcel
 tags: [bdd, robot-framework, example-mapping, gherkin, automation, testing]
 image: ./bdd-process.png
 ---
 
-Behavior-driven development (BDD) is an effective method for software teams to collaborate. By fostering communication between business and technical personnel, BDD ensures a shared understanding of the problems at hand and promotes the rapid, iterative development of solutions. This article will guide you through the essentials of BDD and demonstrate how to implement it using Robot Framework.
+What is BDD in Robot Framework? It is a testing approach where teams write test cases using Given-When-Then syntax that Robot Framework executes directly as automated tests. BDD bridges the gap between business requirements and test automation by making test scenarios readable by non-technical stakeholders while remaining fully executable. Robot Framework supports this through built-in Gherkin keywords and its keyword-driven architecture.
 
 <!--truncate-->
 
