@@ -180,6 +180,6 @@ Skip manual test case creation.
 
 ---
 
-Tip: Read more about [how to apply test design techniques](test-design-techniques-w-wopee) when you generate tests with [Wopee.io](https://wopee.io).
+Tip: Read more about [how to apply test design techniques](/blog/test-design-techniques-w-wopee/) when you generate tests with [Wopee.io](https://wopee.io).
 
 :::
