@@ -1,6 +1,7 @@
 ---
 slug: beyond-test-automation
 title: Beyond Test Automation - The Future of Testing
+description: "What comes after test automation? Explore the future of testing — autonomous agents, AI-driven insights, self-healing tests, and zero-maintenance testing pipelines."
 authors: marcel
 tags: [basics, automation, future, autonomous]
 image: ./testing-journey.png
@@ -91,7 +92,7 @@ Dynamic or magic Page Object Model (POM) techniques increase the maintenance eff
 
 Smarter reporting involves classifying test failures into different categories, such as environment issues, flaky tests, or actual bugs. By categorizing failures, teams can prioritize and focus on the most critical issues, improving the efficiency of the debugging process. Smarter reporting also provides better insights into the overall health of the application, helping teams identify recurring issues and trends that need to be addressed.
 
-![Testing Journey - tools](./journey-tools.png)
+![Testing Journey - tools](./journey-tools.webp)
 
 _Source: Wopee.io._
 

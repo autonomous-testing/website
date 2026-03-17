@@ -11,7 +11,7 @@ tags:
     "ai testing",
     "ai testing tools",
   ]
-image: ./testing-vibes.png
+image: ./testing-vibes.webp
 ---
 
 When we talk about the _vibe_ in software development, we’re talking about that almost-magical state where everything just _flows_: ideas turn into code effortlessly, tools feel like natural extensions of our creativity, teamwork clicks without friction, and we actually **enjoy** the process. This vibe-centric approach is giving rise to concepts like **Vibe Coding**, **Vibe Testing**, and **Vibe Engineering**. These aren’t just buzzwords; they represent a shift in how we build software—focusing on human creativity and happiness supported by powerful automation and AI. Before you dismiss it as hype, let’s explore what each of these concepts means and how together they can transform software development.
@@ -41,7 +41,7 @@ Vibe Coding is all about developer joy and rapid creation. It’s an approach to
 
 Of course, vibe coding doesn’t throw engineering rigor out the window. Think of it as speeding down the highway with an AI co-driver: you’ll get to your destination faster, but you still need to steer. Seasoned developers bring the “adult supervision” to guide AI-generated code (ensuring quality, security, and scalability) – a role sometimes nicknamed **vibe engineering** (more on that soon). For now, the takeaway is that vibe coding is about coding at the speed of thought, harnessing modern frameworks and AI to maximize developer happiness and output.
 
-![Testing Vibes](./testing-vibes.png)
+![Testing Vibes](./testing-vibes.webp)
 
 ## Vibe Testing: QA that flows with development
 

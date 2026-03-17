@@ -1,6 +1,7 @@
 ---
 slug: playwright-bot-ai-powered-test-automation
 title: "Effortless Test Creation with Playwright Bot: AI-Powered Test Automation"
+description: "Playwright Bot uses AI to generate, run, and maintain Playwright tests automatically. See how to eliminate manual test creation and script maintenance from your workflow."
 authors: marcel
 tags: [playwright, automation, testing, AI]
 image: ./pw-bot.png

@@ -15,13 +15,10 @@ import HomeFaqSection from "@/components/home-page/HomeFaqSection";
 
 export default function Home(): JSX.Element {
   return (
-    <Layout title="AI Testing Agents for Web Apps">
-      <Head>
-        <meta
-          name="description"
-          content="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
-        />
-      </Head>
+    <Layout
+      title="AI Testing Agents for Web Apps"
+      description="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
+    >
       <HomeHeroVibe />
       <HomeBenefits />
       <HomeHowItWorks />

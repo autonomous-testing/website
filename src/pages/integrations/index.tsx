@@ -13,11 +13,14 @@ const WopeeIntegrationsPage = () => {
   const { width } = useWindowSize();
 
   return (
-    <Layout title="Visual Regression Testing">
+    <Layout
+      title="Visual Testing Integrations | Wopee.io"
+      description="Wopee.io integrates with Playwright, Cypress, Robot Framework, and WebdriverIO. Add visual regression testing to your existing test framework in minutes."
+    >
       <main className="mt-8 mb-16 container">
-        <h2 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
+        <h1 className="text-xl text-center md:text-center md:text-2xl xl:text-5xl font-bold text-secondary-wopee dark:text-primary-wopee">
           Visual Testing Integrations
-        </h2>
+        </h1>
 
         <div className="text-justify flex flex-col gap-5 xl:gap-20 my-10 mx-auto">
           <div className="flex flex-col gap-10 items-center">

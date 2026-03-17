@@ -41,12 +41,11 @@ const JSONLD_ORG = {
 
 const TeamPage = () => {
   return (
-    <Layout title="About Wopee.io | AI Testing Agents for Web Apps">
+    <Layout
+      title="About Wopee.io | AI Testing Agents for Web Apps"
+      description="Learn about Wopee.io — autonomous AI testing agents for web apps. Contact wopee labs s.r.o. for support, product questions, and collaboration."
+    >
       <Head>
-        <meta
-          name="description"
-          content="Learn about Wopee.io — autonomous AI testing agents for web apps. Contact wopee labs s.r.o. for support, product questions, and collaboration."
-        />
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
       </Head>
       <main>

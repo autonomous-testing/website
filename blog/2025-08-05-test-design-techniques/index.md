@@ -105,7 +105,7 @@ Discount applies when **loyalty = gold** **and** **cart ≥ 100**.
 - concurrency: two tabs/users editing the same entity
 
 <img
-src={require('./prioritize-risks.png').default}
+src={require('./prioritize-risks.webp').default}
 alt="Prioritizing risks"
 style={{ width: '50%', height: 'auto', display: 'block', margin: '1rem auto' }}
 />

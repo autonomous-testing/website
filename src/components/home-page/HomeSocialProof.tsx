@@ -9,7 +9,7 @@ const testimonials = [
       "Wopee.io showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application.",
     about:
       "Livesport, The fastest sports information and scores provider from 35+ sports to 100M people worldwide (60+ web and mobile apps)",
-    avatar: "/img/customers/avatars/martin-livesport.jpg",
+    avatar: "/img/customers/avatars/martin-livesport.webp",
     name: "Martin Šimon",
     position: "Test Automation Lead",
     logo: "/img/customers/flash-score-logo.png",
@@ -31,7 +31,7 @@ const testimonials = [
       "Before implementing visual testing from Wopee.io, it wasn't possible to test some scenarios at all.",
     about:
       "SYNOT TECH, Full-stack iGaming solutions provider - lotteries, casino games, sports betting across regulated European markets.",
-    avatar: "/img/customers/avatars/jakub-synot.png",
+    avatar: "/img/customers/avatars/jakub-synot.webp",
     name: "Jakub Miakyš",
     position: "QA Automation specialist & lead",
     logo: "/img/customers/synot-logo.png",

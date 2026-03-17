@@ -1,9 +1,10 @@
 ---
 slug: top-5-applitools-alternatives-for-visual-testing--2024
 title: "Top 5 Applitools Alternatives for Visual Testing (2024)"
+description: "Looking for Applitools alternatives? Compare the top 5 visual testing tools — features, pricing, and ease of integration to help you choose the right fit for your team."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
-image: ./visual-bugs.png
+image: ./visual-bugs.webp
 ---
 
 > ## What if you could save thousands by switching to a smarter, faster, and simpler solution for visual testing than Applitools?
@@ -24,7 +25,7 @@ Luckily, there are several alternatives that provide robust visual testing witho
 
 Visual regression testing is the process of automatically detecting changes or bugs in the visual interface of an application after code updates. By comparing screenshots of the app in different states, visual regression tests can catch unintended changes before they reach production. This method ensures a consistent user experience across different devices and browsers, making it essential for modern software development.
 
-import VisualBug from './visual-bugs.png';
+import VisualBug from './visual-bugs.webp';
 
 <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', width: '100%', textAlign: 'center' }}>
   <img src={VisualBug} alt="Wopee.io" style={{ maxWidth: '50%' }} />
@@ -191,7 +192,7 @@ At Livesport, Wopee.io has significantly [streamlined the visual testing](/blog/
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
-    src={require('./martin.png').default}
+    src={require('./martin.webp').default}
     alt="Martin Šimon"
     style={{
       maxWidth: '50%',

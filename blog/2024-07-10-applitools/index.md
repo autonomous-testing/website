@@ -1,6 +1,7 @@
 ---
 slug: applitools
 title: "Visual Testing: Applitools vs. Wopee.io"
+description: "Applitools vs. Wopee.io: a side-by-side comparison of two visual testing platforms. Compare pricing, AI capabilities, ease of integration, and real-world performance."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
 image: ./wopee-io-easy.png

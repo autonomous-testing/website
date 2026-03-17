@@ -46,7 +46,7 @@ To foster a strong automation culture, Synot encourages all QA engineers: junior
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
-    src={require('./jirka.png').default}
+    src={require('./jirka.webp').default}
     alt="Jiří Malý"
     style={{
       maxWidth: '50%',
@@ -107,7 +107,7 @@ Here's how Wopee.io integrates into their daily workflow:
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
-    src={require('./jakub.png').default}
+    src={require('./jakub.webp').default}
     alt="Jakub Miakyš"
     style={{
       maxWidth: '50%',
@@ -149,7 +149,7 @@ These metrics show that visual validation scaled without breaking the process or
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '0 auto' }}>
   <img
-    src={require('./jirka-a-jakub.jpg').default}
+    src={require('./jirka-a-jakub.webp').default}
     alt="Jiří Malý and Jakub Miakyš"
     style={{
       maxWidth: '80%',
@@ -249,7 +249,7 @@ Third, working with **ignored areas** is a major benefit. You simply mark the ar
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
-    src={require('./jirka.png').default}
+    src={require('./jirka.webp').default}
     alt="Jiří Malý"
     style={{
       maxWidth: '50%',

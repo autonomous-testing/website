@@ -1,6 +1,7 @@
 ---
 slug: autopilot-your-sw-testing
 title: Autopilot Your Software Testing
+description: "Put your software testing on autopilot. Discover how AI-powered autonomous testing handles test creation, execution, and maintenance so your team can focus on what matters."
 authors: marcel
 tags: [basics, automation, business, efficiency]
 image: ./testing-journey.png

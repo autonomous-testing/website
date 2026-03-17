@@ -1,6 +1,7 @@
 ---
 slug: grow-your-business-with-automation
 title: Grow Your Business without Scaling Your Resources with Automation
+description: "Learn how to grow your business without scaling your QA team. See how test automation helps you ship faster, reduce costs, and maintain quality at scale."
 authors: marcel
 tags: [basics, automation, business, efficiency]
 image: ./grow-your-business-via-automation.jpg
