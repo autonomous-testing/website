@@ -1,1 +1,3 @@
-User-agent: * Disallow: /
+# Staging — block all crawlers (production robots.txt is written by deploy pipeline)
+User-agent: *
+Disallow: /
