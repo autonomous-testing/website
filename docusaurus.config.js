@@ -25,6 +25,8 @@ const config = {
   projectName: "website", // Usually your repo name.
   // projectName: "wopee.io", // Usually your repo name.
 
+  trailingSlash: true,
+
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
