@@ -1,9 +1,10 @@
 ---
 slug: ultimate-guide-to-visual-testing
 title: Ultimate Guide to Visual Testing
+description: "The complete guide to visual testing for web applications. Learn how visual regression testing works, when to use it, and which tools work best in modern CI/CD pipelines."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
-image: ./visual-bugs.png
+image: ./visual-bugs.webp
 ---
 
 > ## Quality isn't just about code working.
@@ -46,7 +47,7 @@ Visual testing strategies can be categorized as pixel-perfect or AI-driven. Pixe
 - **AI-Augmented Comparison**: AI-based tools can intelligently ignore minor changes but are not always perfect and may introduce flakiness or miss critical issues.
 - **AI-Augmented Querying**: This method allows questioning screenshots using AI/LLM models, such as asking, "How many products are in the cart?" or "What's the total amount?". It improves test stability while keeping it dynamic and works well when combined with other assertion types (often non-visual).
 
-import VisualBug from './visual-bugs.png';
+import VisualBug from './visual-bugs.webp';
 
 <div style={{ display: 'flex', justifyContent: 'center', padding: '10px', width: '100%', textAlign: 'center' }}>
   <img src={VisualBug} alt="Wopee.io" style={{ maxWidth: '50%' }} />

@@ -1,6 +1,7 @@
 ---
 slug: livesport-visual-testing-w-wopee-io
 title: "Livesport Testing: How Wopee.io Powers Visual Testing"
+description: "How Livesport uses Wopee.io for visual testing at scale. A real-world case study on maintaining UI quality across a high-traffic sports data platform."
 authors: marcel
 tags: [testing, quality assurance, automation, visual testing]
 ---
@@ -31,7 +32,7 @@ David and Martin are integral members of Livesport's testing team. Their experti
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '0 auto' }}>
   <img
-    src={require('./david-and-martin.png').default}
+    src={require('./david-and-martin.webp').default}
     alt="David and Martin"
     style={{
       maxWidth: '80%',
@@ -123,7 +124,7 @@ Livesport has been using Wopee.io for over a year, starting with Cypress in earl
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
-    src={require('./martin.png').default}
+    src={require('./martin.webp').default}
     alt="Martin Šimon"
     style={{
       maxWidth: '50%',

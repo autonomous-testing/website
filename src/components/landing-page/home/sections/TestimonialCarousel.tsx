@@ -8,7 +8,7 @@ const testimonials = [
       "Wopee showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application",
     about:
       "Livesport, The fastest sports information and scores provider from 35+ sports to 100M people worldwide (60+ web and mobile apps)",
-    avatar: "/img/customers/avatars/martin-livesport.jpg",
+    avatar: "/img/customers/avatars/martin-livesport.webp",
     name: "Martin Šimon",
     position: "Test Automation Lead",
     logo: "/img/customers/flash-score-logo.png",

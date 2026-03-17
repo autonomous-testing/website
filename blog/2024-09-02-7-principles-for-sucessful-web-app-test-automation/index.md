@@ -1,6 +1,7 @@
 ---
 slug: 7-principles-for-successful-web-app-test-automation
 title: "Web App Test Automation: 7 Key Principles for Long-Term Success"
+description: "Seven proven principles for building web app test automation that scales. From test design to CI integration — a practical guide for QA engineers building for the long term."
 authors: marcel
 tags: [test-automation, web-app-testing, quality-assurance, essentials]
 ---

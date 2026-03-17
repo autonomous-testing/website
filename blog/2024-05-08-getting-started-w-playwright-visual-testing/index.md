@@ -1,6 +1,7 @@
 ---
 slug: getting-started-with-playwright-visual-testing
 title: Getting Started with Playwright Visual Testing
+description: "Step-by-step guide to getting started with Playwright visual testing. Learn how to catch UI regressions automatically and integrate visual checks into your CI pipeline."
 authors: marcel
 tags: [basics, testing-tools, playwright, test-automation, visual-testing]
 image: ./intro-to-pw-visual-testing.png

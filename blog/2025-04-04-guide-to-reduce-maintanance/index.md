@@ -11,7 +11,7 @@ tags:
     "test automation engineer",
     "test automation maintenance",
   ]
-image: ./happy-tae.png
+image: ./happy-tae.webp
 ---
 
 ## Reclaim Your Time
@@ -24,7 +24,7 @@ You’re here to build smart things. Design systems. Improve quality in ways tha
 
 As a test automation engineer, you didn't sign up to spend most of your day updating broken selectors or fixing flaky tests. Your primary objective is to ensure quality through thoughtful test architecture and innovative approaches. This guide explores how Wopee.io can handle the routine aspects of testing, allowing you to focus on the more valuable technical challenges that actually require your expertise.
 
-![Test Automation - How to reduce maintenance](./happy-tae.png)
+![Test Automation - How to reduce maintenance](./happy-tae.webp)
 _source: chatgpt_
 
 ## 1. Common Challenges in Test Automation

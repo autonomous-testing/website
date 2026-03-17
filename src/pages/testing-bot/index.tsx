@@ -82,7 +82,10 @@ const VALUES = [
 
 const TestingBotPage = () => {
   return (
-    <Layout>
+    <Layout
+      title="AI Testing Agents | Wopee.io"
+      description="Autonomous AI testing bots that explore your web app, generate Playwright tests, and self-heal when your UI changes. Start testing in minutes — no coding required."
+    >
       <HeroSection />
       <PartnerBrands />
       <TestingBottlenecks />

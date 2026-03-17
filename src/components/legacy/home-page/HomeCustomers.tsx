@@ -78,7 +78,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <div className="avatar mx-auto">
               <img
                 className="avatar__photo avatar__photo--xl"
-                src="/img/customers/avatars/martin-livesport.jpg"
+                src="/img/customers/avatars/martin-livesport.webp"
               />
               <div className="avatar__intro text-left">
                 <div className="avatar__name">Martin Šimon</div>
