@@ -30,13 +30,43 @@ jobs:
           node-version: 18
           # cache: yarn
 
-      - name: If repo is website-prod replace text website.wopee.io to wopee.io and swap robots.txt
+      - name: If repo is website-prod replace text website.wopee.io to wopee.io and write production robots.txt
         if: github.repository == 'autonomous-testing/website-prod'
         run: |
           sed -i 's/website.wopee.io/wopee.io/g' ./CNAME
           sed -i 's/website.wopee.io/wopee.io/g' ./docusaurus.config.js
           sed -i 's/dev.wopee.io/wopee.io/g' ./cmdBaseUrl.js
-          sed -i 's/website.wopee.io/wopee.io/g' ./static/robots.txt
+          cat << 'EOF' | sed 's/^          //' > ./static/robots.txt
+          User-agent: *
+          Allow: /
+          Disallow: /billing/
+
+          User-agent: GPTBot
+          Allow: /
+
+          User-agent: ClaudeBot
+          Allow: /
+
+          User-agent: Google-Extended
+          Allow: /
+
+          User-agent: PerplexityBot
+          Allow: /
+
+          User-agent: Applebot-Extended
+          Allow: /
+
+          User-agent: Amazonbot
+          Allow: /
+
+          User-agent: YouBot
+          Allow: /
+
+          User-agent: cohere-ai
+          Allow: /
+
+          Sitemap: https://wopee.io/sitemap.xml
+          EOF
 
       - name: If repo is website-prod replace text website.wopee.io to wopee.io and remove robots.txt
         if: github.repository == 'autonomous-testing/website-demo'
