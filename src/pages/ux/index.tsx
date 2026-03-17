@@ -33,7 +33,11 @@ const UserTestingProgram = () => {
   }, []);
 
   return (
-    <Layout wrapperClassName="dark:bg-gray-100">
+    <Layout
+      title="User Testing Program | Wopee.io"
+      description="Join the Wopee.io user testing program. Help shape the future of AI-powered test automation and get early access to new features."
+      wrapperClassName="dark:bg-gray-100"
+    >
       <div className="container">
         {isLoading ? (
           <div className="flex justify-center items-center h-[50vh]">

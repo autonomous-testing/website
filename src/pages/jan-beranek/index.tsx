@@ -1,14 +1,12 @@
 import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { Helmet } from "react-helmet";
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Autonomous testing platform for web applications | Wopee.io"
+      title="Book a Meeting with Jan | Wopee.io"
+      description="Schedule a meeting with Jan Beránek from Wopee.io. Discuss AI test automation, onboarding, or product questions."
     >
       <Helmet>
         <script

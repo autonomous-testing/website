@@ -1,6 +1,13 @@
 ---
 title: Data Processing Agreement
+custom_edit_url: null
 ---
+
+import Head from '@docusaurus/Head';
+
+<Head>
+  <meta name="robots" content="noindex, nofollow" />
+</Head>
 
 # Data Processing Agreement
 
