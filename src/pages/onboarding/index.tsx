@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
+import Head from "@docusaurus/Head";
 
 import Layout from "@theme/Layout";
 
@@ -38,6 +39,9 @@ const TestWarez = () => {
       description="Set up your Wopee.io account and start testing your web app in minutes. AI-powered test generation — no coding required."
       wrapperClassName="dark:bg-gray-100"
     >
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <div className="container">
         {isLoading ? (
           <div className="flex justify-center items-center h-[50vh]">

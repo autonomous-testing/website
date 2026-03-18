@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Head from "@docusaurus/Head";
 
 import Layout from "@theme/Layout";
 import GoBack from "@site/src/components/demo/GoBack";
@@ -11,6 +12,9 @@ export default function Home(): JSX.Element {
       title="Book a Demo | Wopee.io"
       description="Book a live demo of Wopee.io AI testing agents. See how autonomous test generation and self-healing tests can cut your QA effort by 70%."
     >
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Helmet>
         <script
           type="text/javascript"
