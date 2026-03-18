@@ -55,7 +55,10 @@ function HomeHeader() {
 
 export default function Home(): JSX.Element {
   return (
-    <Layout>
+    <Layout
+      title="AI Testing Agents for Web Apps | Wopee.io"
+      description="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
+    >
       <HomeHeader />
       <main className="container">
         <HomeComparison />

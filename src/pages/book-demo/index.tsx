@@ -1,24 +1,17 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Head from "@docusaurus/Head";
 
+import Layout from "@theme/Layout";
 import GoBack from "@site/src/components/demo/GoBack";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import PartnersCarousel from "@site/src/components/demo/PartnersCarousel";
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-
   return (
-    <React.Fragment>
-      <Head>
-        <title>Book Demo - {siteConfig.title}</title>
-      </Head>
+    <Layout
+      title="Book a Demo | Wopee.io"
+      description="Book a live demo of Wopee.io AI testing agents. See how autonomous test generation and self-healing tests can cut your QA effort by 70%."
+    >
       <Helmet>
-        <meta
-          name="description"
-          content="Book Demo - Autonomous testing platform for web applications | Wopee.io"
-        />
         <script
           type="text/javascript"
           src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
@@ -32,6 +25,6 @@ export default function Home(): JSX.Element {
         ></div>
         <PartnersCarousel />
       </div>
-    </React.Fragment>
+    </Layout>
   );
 }
