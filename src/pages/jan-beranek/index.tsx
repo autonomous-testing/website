@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import { Helmet } from "react-helmet";
 
 export default function Home(): JSX.Element {
@@ -8,6 +9,9 @@ export default function Home(): JSX.Element {
       title="Book a Meeting with Jan | Wopee.io"
       description="Schedule a meeting with Jan Beránek from Wopee.io. Discuss AI test automation, onboarding, or product questions."
     >
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Helmet>
         <script
           type="text/javascript"
