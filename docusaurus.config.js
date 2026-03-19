@@ -130,6 +130,10 @@ const config = {
           { from: "/vc", to: "/" },
           { from: "/partner", to: "/" },
           { from: "/wopee-commander", to: "/" },
+          {
+            from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
+            to: "/blog/applitools-alternatives",
+          },
         ],
       },
     ],
