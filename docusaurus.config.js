@@ -199,7 +199,7 @@ const config = {
             label: "Solutions",
             position: "left",
             items: [
-              { to: "/testing-bot", label: "AI Agents for Software Testing" },
+              { to: "/ai-testing-agents", label: "AI Agents for Software Testing" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
               {
                 to: "blog/playwright-bot-ai-powered-test-automation",
@@ -232,15 +232,15 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Solutions: Regression Testing",
+            title: "Solutions: AI Testing",
             items: [
-              { label: "Autonomous Testing Bot 🤖", to: "/testing-bot" },
+              { label: "AI Testing Agents 🤖", to: "/ai-testing-agents" },
               {
                 label: "Visual Regression Testing",
                 to: "/visual-testing",
               },
               {
-                label: "Playwright AI Bot (preview)",
+                label: "Playwright AI Agent",
                 to: "blog/playwright-bot-ai-powered-test-automation",
               },
             ],

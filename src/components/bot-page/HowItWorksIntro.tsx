@@ -27,7 +27,7 @@ const HowItWorksIntro = () => {
 
       <div className="px-2 lg:px-0">
         <ButtonPrimary
-          label="Get early access"
+          label="Start free trial"
           href="https://cmd.wopee.io"
           className="w-60 h-[50px]"
         />
