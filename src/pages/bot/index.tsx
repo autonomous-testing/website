@@ -6,7 +6,7 @@ const BotPage = () => {
   const router = useHistory();
 
   useEffect(() => {
-    router.push("/testing-bot");
+    router.push("/ai-testing-agents");
   }, []);
 
   return <></>;

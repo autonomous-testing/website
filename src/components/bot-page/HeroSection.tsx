@@ -9,20 +9,20 @@ const HeroSection = () => {
         <div className="text-balance flex flex-col gap-9">
           <h1 className="text-5xl sm:text-6xl">
             <span className="text-secondary-wopee dark:text-primary-wopee">
-              Web Apps Testing
+              AI Testing Agents
             </span>{" "}
-            with AI Agents
+            for Web Apps
           </h1>
 
           <p className="text-2xl">
-            Automate like a pro, 1 minute{" "}
-            <span className="line-clamp-1">setup, no coding required.</span>
+            Autonomous agents that explore, test, and self-heal.{" "}
+            <span className="line-clamp-1">1 minute setup, no coding required.</span>
           </p>
         </div>
 
         <div>
           <ButtonPrimary
-            label="Get early access"
+            label="Start free trial"
             href="https://cmd.wopee.io"
             className="w-60 h-[50px]"
           />
