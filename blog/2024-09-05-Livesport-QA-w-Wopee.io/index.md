@@ -16,7 +16,7 @@ tags: [testing, quality assurance, automation, visual testing]
 
 There’s a running joke that a goal is spotted first in the Livesport app before it even happens on the field. But what if it’s more than just a joke?
 
-This is a story of partnership and progress. This is a story about Livesport's testing team, their journey, and how Wopee.io has helped them raise the bar in quality assurance.
+This is a story of partnership and progress. This is a story about Livesport's testing team, their journey, and how Wopee.io has helped them raise the bar in quality assurance. For a deeper dive into the concepts behind their approach, see our [ultimate guide to visual testing](/blog/ultimate-guide-to-visual-testing/).
 
 <!--truncate-->
 
@@ -120,7 +120,7 @@ Other area where Livesport is making strides is in accessibility. They’ve rece
 
 ### Why Wopee.io?
 
-Livesport has been using Wopee.io for over a year, starting with Cypress in early 2023 and going live by Q2 of the same year. Wopee.io was also integrated into Webdriver.io projects for mobile application testing in Q1 of this year. The decision to choose Wopee.io was driven by Livesport's focus on the visual aspect of applications. They needed a solution that could handle visual baseline comparisons with zero tolerance for deviations, and Wopee.io proved to be the best option.
+Livesport has been using Wopee.io for over a year, starting with Cypress in early 2023 and going live by Q2 of the same year. Wopee.io was also integrated into Webdriver.io projects for mobile application testing in Q1 of this year. The decision to choose Wopee.io was driven by Livesport's focus on the visual aspect of applications. They needed a solution that could handle [visual testing](/visual-testing/) baseline comparisons with zero tolerance for deviations, and Wopee.io proved to be the best option.
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
   <img
@@ -193,7 +193,7 @@ _Some interesting stats from Livesport's regression automation testing from rece
 As Livesport continues to innovate and expand its offerings, maintaining high standards in testing is more critical than ever. With Wopee.io as a trusted partner, Livesport’s testing team is not just keeping up with the pace of development—they’re setting new benchmarks in efficiency, accuracy, and scalability.
 
 **Join the Revolution in Testing:**
-If Livesport’s story resonates with you, it’s time to take action. Wopee.io offers a unique opportunity to revolutionize your testing processes. Whether you’re looking to streamline your test automation, reduce maintenance burdens, or simply ensure that your applications perform flawlessly, Wopee.io is the tool that can make it happen.
+If Livesport’s story resonates with you — much like [SYNOT’s success with Wopee.io](/blog/synot-tech-test-automation-wopee/) — it’s time to take action. Wopee.io offers a unique opportunity to revolutionize your testing processes. Whether you’re looking to streamline your test automation, reduce maintenance burdens, or simply ensure that your applications perform flawlessly, Wopee.io is the tool that can make it happen.
 
 **Start Your Journey with Wopee.io:**
 Don’t wait to transform your testing. Join Livesport and countless other forward-thinking companies in experiencing the power of Wopee.io. With a quick setup, minimal maintenance, and results in minutes, Wopee.io is the solution you’ve been searching for. **Get started today and take your testing to the next level.**

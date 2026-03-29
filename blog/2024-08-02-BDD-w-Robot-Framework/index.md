@@ -131,7 +131,7 @@ Scenario: User creates a new playlist
 5. **Focused**: Each scenario should test a single rule.
 6. **Brief**: Keep scenarios concise, ideally under five lines.
 
-By adhering to these principles, you can ensure your scenarios serve as clear, valuable documentation and maintain the flexibility to evolve with your product.
+By adhering to these principles — and applying solid [test design techniques](/blog/test-design-techniques/) — you can ensure your scenarios serve as clear, valuable documentation and maintain the flexibility to evolve with your product.
 
 ## Alternative Approaches to Example Mapping
 
@@ -155,7 +155,7 @@ Impact Mapping is a strategic planning technique that helps teams identify the g
 
 ## Robot Framework and BDD
 
-Robot Framework is a powerful open-source automation tool that supports BDD. It allows writing test cases in a natural language style, similar to Gherkin, making it accessible to all stakeholders.
+Robot Framework is a powerful open-source automation tool that supports BDD. If you also want to add visual regression checks, see how to set up [autonomous visual testing with Robot Framework](/blog/autonomous-visual-testing-with-robot-framework/). It allows writing test cases in a natural language style, similar to Gherkin, making it accessible to all stakeholders.
 
 ### Implementing BDD in Robot Framework
 
@@ -281,6 +281,6 @@ Getting started with BDD in Robot Framework is a powerful way to align developme
 
 - **Empower Your Team with BDD-Copilot**: Learn about our workshop on **Robot Framework BDD-Copilot** and how it can enhance your team's BDD practices. **[Contact us](mailto:help@wopee.io)** for more details.
 
-- **Experience Fully Autonomous Testing**: Sign up for a free trial of [Autonomous Testing](https://cmd.wopee.io) and see firsthand how fully autonomous testing can revolutionize your QA processes.
+- **Experience Fully Autonomous Testing**: Sign up for a free trial of [Autonomous Testing](https://cmd.wopee.io) and see firsthand how fully autonomous testing can revolutionize your QA processes. New to Wopee.io? Check out our [getting started guide](/blog/getting-started-w-wopee-io-automation/).
 
 :::

@@ -17,7 +17,7 @@ How SYNOT TECH scaled test automation (and visual testing) using Wopee.io
 
 SYNOT TECH (Synot) is no small operation. As part of the SYNOT Group, they deliver full‑stack iGaming solutions. From lotteries and casino games to sports betting and omni‑channel platforms. They operate in regulated markets across Europe, integrate with numerous game providers (over 9,500 games across 80+ providers), and support modular, API‑based architectures. ￼
 
-In such environments, every UI change, integration, data flow, and presentation variant can introduce risk. For Synot's QA leaders, Jiří Malý (Jirka) and Jakub Miakyš, automation was already essential. But scaling it wisely, reducing brittle tests, and weaving in visual verification became the next frontier. Enter Wopee.io.
+In such environments, every UI change, integration, data flow, and presentation variant can introduce risk. For Synot's QA leaders, Jiří Malý (Jirka) and Jakub Miakyš, automation was already essential. But scaling it wisely, reducing brittle tests, and weaving in [visual verification](/visual-testing/) became the next frontier. Enter Wopee.io.
 
 In this article, you'll get an inside look at:
 
@@ -89,10 +89,10 @@ In practice, Wopee.io is embedded into their CI pipelines. Any test run that inc
 
 Based on their evaluation process, Jirka and Jakub identified several key factors that made Wopee.io the right choice for Synot:
 
-1. **Simple integration** - Both into their framework and individual tests
+1. **Simple integration** - Both into their framework and individual tests, making [getting started](/blog/getting-started-w-wopee-io-automation/) straightforward
 2. **Web-based management** - Reference screenshot management through an intuitive web client
 3. **Device abstraction** - Wopee handles differences between devices intelligently
-4. **Low maintenance burden** - They wanted visual testing without heavy maintenance overhead
+4. **Low maintenance burden** - They wanted visual testing without heavy maintenance overhead — and at a [cost that made sense](/pricing/)
 5. **Vendor responsiveness** - Wopee.io team were able to respond quickly with fixes and workarounds
 
 ## How Wopee.io works inside Synot
@@ -143,7 +143,7 @@ Synot's team generously shared results which bring this transformation out of th
 - Visual test adoption is nearly universal among pipeline‑maintaining QA engineers
 - Maintenance burden (approving new baselines, triaging diffs) is significantly lower than prior visual tools or in-house screenshot frameworks
 
-These metrics show that visual validation scaled without breaking the process or blowing up maintenance costs.
+These metrics show that visual validation scaled without breaking the process or blowing up maintenance costs. For another example of how teams achieve similar results, see the [Livesport case study](/blog/livesport-visual-testing-w-wopee-io/).
 
 ## Q&A with Jiří Malý and Jakub Miakyš
 

@@ -19,7 +19,7 @@ Predictive test selection uses machine learning to decide which tests to run for
 
 ## 1. The Evolution: From Manual Prioritization to AI-Driven Predictions
 
-Historically, test case prioritization was a manual, often subjective process. Test leads would rely on intuition, experience, or basic heuristics to determine which tests to run first. While this method worked, it was time-consuming and prone to human error. As software systems grew in complexity, this approach became less viable. The advent of AI and machine learning has shifted this paradigm, allowing predictive models to analyze vast amounts of historical test data, code changes, and other factors to forecast the tests most likely to uncover defects. This evolution from manual to AI-driven selection marks a significant improvement in testing efficiency and accuracy.
+Historically, test case prioritization was a manual, often subjective process. Test leads would rely on intuition, experience, or basic heuristics to determine which tests to run first. While this method worked, it was time-consuming and prone to human error. As software systems grew in complexity, this approach became less viable. The advent of AI and machine learning has shifted this paradigm. Modern [AI testing agents](/ai-testing-agents/) and predictive models can analyze vast amounts of historical test data, code changes, and other factors to forecast the tests most likely to uncover defects. This evolution from manual to AI-driven selection marks a significant improvement in testing efficiency and accuracy.
 
 ![Predictive Test Selection Evolution](./test-selection.jpg)
 _Source: openai.com, DALL·E image generation_
@@ -72,7 +72,7 @@ The next step in the evolution was to enhance previous Tagging and Grouping Test
 - **Key Advantages**:
   - **Consistency and Accuracy**: By removing the subjectivity involved in manual prioritization, PTS provides consistent and accurate test selection.
   - **Scalability**: AI-driven test selection easily scales with the complexity and size of the project, making it suitable for large, evolving codebases.
-  - **Efficiency Gains**: By focusing on the areas of the code most likely to fail, PTS reduces the need to run unnecessary tests, saving time and resources.
+  - **Efficiency Gains**: By focusing on the areas of the code most likely to fail, PTS reduces the need to run unnecessary tests, saving time and resources — much like [self-healing tests](/blog/self-healing-in-sw-test-automation/) reduce manual fix-up effort.
 
 - **Challenges**:
   - **Data Quality**: The effectiveness of PTS depends on the quality and quantity of historical data. Poor data can lead to inaccurate predictions.
@@ -97,7 +97,7 @@ Implementing Predictive Test Selection offers numerous advantages:
 - **Earlier Defect Detection:** By focusing on the most vulnerable areas of the code, PTS allows teams to catch and fix defects early in the development cycle.
 - **Increased Testing Efficiency:** PTS reduces the need to run a full test suite every time, cutting down on unnecessary tests and saving valuable time and resources.
 - **Improved Software Quality:** With PTS, the most critical parts of the code are tested more thoroughly, leading to more reliable and robust software releases.
-- **Reduced Costs:** By streamlining the testing process, PTS lowers the overall cost of quality assurance, making it a cost-effective solution for companies of all sizes.
+- **Reduced Costs:** By streamlining the testing process, PTS lowers the overall cost of quality assurance, making it a cost-effective solution for companies of all sizes. See how teams are already [saving 50% in software testing](/blog/saving-50-percent-in-sw-testing/).
 
 ## 3. Predictive Testing Challenges
 
@@ -193,7 +193,7 @@ The journey of PTS is still unfolding, with continuous advancements in AI techno
 
 For organizations looking to stay ahead in a competitive landscape, embracing Predictive Test Selection is more than just an option—it's a strategic move towards smarter, more efficient testing. By integrating PTS into your workflow, you empower your team to focus on what truly matters, reducing the time spent on unnecessary tests and ensuring that critical areas of your code receive the attention they deserve.
 
-The future of software testing is undoubtedly data-driven and AI-enhanced. Predictive Test Selection represents the cutting edge of this evolution, guiding teams toward more intelligent, adaptive, and effective testing practices. As these technologies continue to mature, the potential for PTS to revolutionize testing processes will only grow, making it an indispensable tool in the toolkit of any forward-thinking software development team.
+The future of software testing is undoubtedly data-driven and AI-enhanced — a shift we explore further in [beyond test automation](/blog/beyond-test-automation/). Predictive Test Selection represents the cutting edge of this evolution, guiding teams toward more intelligent, adaptive, and effective testing practices. As these technologies continue to mature, the potential for PTS to revolutionize testing processes will only grow, making it an indispensable tool in the toolkit of any forward-thinking software development team.
 
 KEY TAKEAWAYS
 
