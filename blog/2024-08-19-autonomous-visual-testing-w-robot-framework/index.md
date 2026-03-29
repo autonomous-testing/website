@@ -16,7 +16,7 @@ _Source: Wopee.io_
 
 ### Understanding Visual Testing
 
-Visual testing, though not a new concept, remains underutilized or improperly implemented in many testing environments. The essence of visual testing lies in its ability to validate the visual elements of an application, ensuring that the user interface (UI) appears as expected across different environments. This approach is particularly beneficial in catching UI discrepancies that traditional automated tests might overlook, such as misaligned elements or missing components.
+[Visual testing](/visual-testing/), though not a new concept, remains underutilized or improperly implemented in many testing environments. The essence of visual testing lies in its ability to validate the visual elements of an application, ensuring that the user interface (UI) appears as expected across different environments. This approach is particularly beneficial in catching UI discrepancies that traditional automated tests might overlook, as outlined in our [ultimate guide to visual testing](/blog/ultimate-guide-to-visual-testing/), such as misaligned elements or missing components.
 
 ### Traditional vs. Autonomous Visual Testing
 
@@ -26,7 +26,7 @@ The conversation then shifts to autonomous visual testing, a more advanced appro
 
 ### Implementing Visual Testing in Robot Framework
 
-For those using Robot Framework, the webinar introduces two primary tools for integrating visual testing: **WatchUI** and **Wopee.io (an AI-driven tool)**.
+For those using [Robot Framework](/blog/bdd-with-robot-framework/), the webinar introduces two primary tools for integrating visual testing: **WatchUI** and **Wopee.io (an AI-driven tool)**.
 
 1. **WatchUI**: An open-source library that allows users to compare screenshots taken during test execution with predefined baselines. WatchUI is simple to set up and supports multiple UI platforms, making it a great starting point for those new to visual testing.
 
@@ -42,7 +42,7 @@ Additionally, the discussion touches on the possibility of using AI to perform v
 
 The webinar concludes by emphasizing the ongoing evolution of visual testing tools and methods. The combination of traditional testing frameworks with AI-powered tools like Wopee.io represents the future of test automation, where testers can achieve higher efficiency and coverage with less manual effort.
 
-For those interested in further exploring these tools and techniques, the webinar offers a wealth of resources and practical demonstrations. Whether you're a seasoned automation engineer or just beginning your journey into visual testing, there's something here for everyone to learn and implement in their testing practices.
+For those interested in further exploring these tools and techniques, the webinar offers a wealth of resources and practical demonstrations. Whether you're a seasoned automation engineer or just [getting started with Playwright visual testing](/blog/getting-started-with-playwright-visual-testing/), there's something here for everyone to learn and implement in their testing practices.
 
 ---
 

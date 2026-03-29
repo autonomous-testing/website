@@ -267,7 +267,7 @@ As technology continues to evolve, several exciting trends are emerging in the f
 
 ### 1. Enhanced AI and Machine Learning Capabilities
 
-Future self-healing systems will likely incorporate more sophisticated AI and machine learning models, capable of:
+Future self-healing systems will likely incorporate more sophisticated [AI and machine learning models](/ai-testing-agents/), capable of:
 
 - Predicting UI changes before they occur, allowing for proactive test adjustments
 - Self-training and continuous learning from new test data without manual intervention
@@ -300,7 +300,7 @@ The future of self-healing test automation will likely see:
 Emerging trends include:
 
 - AI-driven test case creation based on application behavior and user interactions
-- Dynamic adjustment of test coverage based on real-time data and application performance
+- Dynamic adjustment of test coverage based on real-time data and application performance, including [predictive test selection](/blog/predictive-test-selection/)
 - Automated optimization of test suites to focus on high-risk areas and critical user paths
 
 :::tip
@@ -311,9 +311,9 @@ Check out our experts with Playwright & LLMs: [BDD Copilot w. Playwright](https:
 
 ## Conclusion
 
-Self-healing test automation represents a significant advancement in making automated testing more robust, adaptable, and less maintenance-intensive. By implementing self-healing mechanisms and following best practices, teams can significantly improve the reliability and efficiency of their test suites, ultimately leading to faster development cycles and higher-quality software.
+Self-healing test automation represents a significant advancement in making automated testing more robust, adaptable, and [less maintenance-intensive](/blog/guide-to-reduce-maintanance/). By implementing self-healing mechanisms and following best practices, teams can significantly improve the reliability and efficiency of their test suites, ultimately leading to faster development cycles and higher-quality software.
 
-As we look to the future, the continued evolution of AI, machine learning, and visual recognition technologies promises to make self-healing test automation even more powerful and indispensable. The integration of these advanced capabilities with IoT testing and unified testing frameworks will further expand the scope and effectiveness of automated testing.
+As we look to the future, the continued evolution of AI, machine learning, and visual recognition technologies promises to make self-healing test automation even more powerful and indispensable, pushing us [beyond traditional test automation](/blog/beyond-test-automation/). The integration of these advanced capabilities with IoT testing and unified testing frameworks will further expand the scope and effectiveness of automated testing.
 
 To stay competitive in the rapidly changing landscape of software development, it's crucial for organizations to embrace self-healing test automation and continuously refine their testing strategies. By doing so, they can ensure that their testing processes remain efficient, reliable, and capable of keeping pace with the demands of modern software development.
 

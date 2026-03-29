@@ -7,7 +7,7 @@ tags: [basics, testing-tools, playwright, test-automation, visual-testing]
 image: ./intro-to-pw-visual-testing.png
 ---
 
-Visual testing has become an essential component of modern web development. By ensuring the visual fidelity of your application across different browsers and devices, you can guarantee a seamless user experience and minimize the risk of regressions. However, visual testing can be cumbersome, time-consuming, and require significant maintenance when it is not done properly. This is where Playwright could offer an efficient, fast, and simple approach to visual testing.
+[Visual testing](/visual-testing/) has become an essential component of modern web development. By ensuring the visual fidelity of your application across different browsers and devices, you can guarantee a seamless user experience and minimize the risk of regressions. However, visual testing can be cumbersome, time-consuming, and require significant maintenance when it is not done properly. This is where Playwright could offer an efficient, fast, and simple approach to visual testing.
 
 <!--truncate-->
 
@@ -16,7 +16,7 @@ _Source: Wopee.io internal materials._
 
 ## 1. What is Playwright?
 
-Playwright is a powerful end-to-end testing framework developed by Microsoft. It boasts a unique combination of features that streamline the entire testing process, including visual testing. Playwright leverages browser automation capabilities to capture screenshots and compare them against baselines, allowing you to identify any visual inconsistencies introduced by code changes. This approach offers several advantages over traditional methods:
+Playwright is a powerful end-to-end testing framework developed by Microsoft. It boasts a unique combination of features that streamline the entire testing process, including visual testing. Playwright leverages browser automation capabilities — and can be further enhanced with [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) for AI-driven test generation — to capture screenshots and compare them against baselines, allowing you to identify any visual inconsistencies introduced by code changes. This approach offers several advantages over traditional methods:
 
 - **Unified Framework:** Playwright combines functional, integration, and visual testing into a single toolset. This eliminates the need for separate tools and streamlines test maintenance.
 - **Cross-Browser Compatibility:** Playwright seamlessly executes tests across various browsers, such as Chromium, Firefox, and WebKit, ensuring comprehensive visual coverage.
@@ -333,7 +333,7 @@ With Playwright, testers can automate the entire visual testing process, from ca
 
 Moreover, Playwright's cross-browser compatibility and flexible visual testing strategies make it a versatile choice for testing teams of all sizes. Whether you're a CTO, SDET, Test Automation Engineer, or Test Manager, Playwright empowers you to achieve faster test execution, simplified maintenance, and comprehensive visual coverage.
 
-As you embark on your journey with Playwright visual testing, remember to leverage advanced techniques like visual testing with different viewports, layout inspections, and visual regression detection to ensure the highest level of quality for your web applications.
+For a comprehensive overview of visual testing concepts and strategies, check out our [ultimate guide to visual testing](/blog/ultimate-guide-to-visual-testing/). As you embark on your journey with Playwright visual testing, remember to leverage advanced techniques like visual testing with different viewports, layout inspections, and visual regression detection to ensure the highest level of quality for your web applications.
 
 What’s your experience?
 We would love to hear about your experience with Playwright visual testing and how you have scaled it up in your projects. Please share your insights with us on our [Wopee.io discussion page](https://github.com/orgs/Wopee-io/discussions)! Your feedback and experiences are invaluable to the testing community.
