@@ -1,5 +1,3 @@
-import { mdiFormatQuoteClose, mdiFormatQuoteOpen } from "@mdi/js";
-import Icon from "@mdi/react";
 import React, { useState, useEffect } from "react";
 
 const testimonials = [
@@ -43,41 +41,30 @@ const Testimonial = ({
       activeItemIndex === itemIndex
         ? "block md:opacity-100"
         : "hidden md:opacity-0"
-    } md:absolute md:top-1/2 md:-translate-y-1/2 md:left-0 md:w-full transition-opacity duration-500 flex flex-col lg:flex-row gap-5 lg:gap-10 items-center`}
+    } md:absolute md:inset-0 transition-opacity duration-500 flex items-center justify-center px-4`}
   >
-    <div className="lg:w-1/2 text-balance flex flex-col gap-5 px-2 lg:px-20 text-center">
-      <p className="text-lg sm:text-xl lg:text-3xl">
-        <Icon
-          size={1}
-          path={mdiFormatQuoteOpen}
-          className="text-secondary-wopee dark:text-primary-wopee"
-        />
+    <div className="w-full max-w-2xl mx-auto bg-gray-50 dark:bg-gray-800/60 rounded-2xl p-8 lg:p-10 flex flex-col gap-6 items-center border border-gray-200 dark:border-gray-600 shadow-lg text-center">
+      <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed">
+        <span className="text-secondary-wopee dark:text-primary-wopee font-bold text-3xl">&ldquo;</span>
         {quote}
-        <Icon
-          size={1}
-          path={mdiFormatQuoteClose}
-          className="text-secondary-wopee dark:text-primary-wopee"
-        />
+        <span className="text-secondary-wopee dark:text-primary-wopee font-bold text-3xl">&rdquo;</span>
       </p>
-      <p className="text-secondary-wopee dark:text-primary-wopee lg:text-xl">
+      <p className="text-secondary-wopee dark:text-primary-wopee text-sm lg:text-base">
         {about}
       </p>
-    </div>
-
-    <div className="flex flex-col lg:flex-row gap-3 items-center">
-      <div className="flex gap-2">
-        <img className="avatar__photo avatar__photo--xl" src={avatar} />
-        <div className="avatar__intro text-left">
-          <div className="avatar__name">{name}</div>
-          <small className="avatar__subtitle">{position}</small>
-        </div>
-      </div>
-
-      <div className="hidden lg:block h-20 w-0.5 opacity-30 rounded-3xl bg-secondary-wopee dark:bg-primary-wopee" />
-
-      <div className="flex justify-center items-center lg:justify-start">
+      <div className="flex items-center gap-4 pt-2">
         <img
-          className="w-1/2 dark:invert dark:grayscale"
+          className="w-14 h-14 rounded-full object-cover border-2 border-secondary-wopee/30 dark:border-primary-wopee/30 flex-shrink-0"
+          src={avatar}
+          alt={name}
+        />
+        <div className="text-left">
+          <p className="font-bold">{name}</p>
+          <p className="text-sm opacity-60">{position}</p>
+        </div>
+        <div className="h-10 w-px bg-gray-300 dark:bg-gray-600 mx-1" />
+        <img
+          className="h-8 w-auto max-w-[120px] dark:invert dark:grayscale object-contain"
           src={logo}
           alt={alt}
         />
@@ -139,7 +126,7 @@ const TestimonialCarousel = () => {
         </p>
       </div>
 
-      <div className="relative flex items-center container md:h-[400px]">
+      <div className="relative flex items-center justify-center w-full md:h-[350px]">
         {testimonials.map((testimonial, index) => (
           <Testimonial
             key={testimonial.name}

@@ -20,12 +20,12 @@ export default function Home(): JSX.Element {
       description="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
     >
       <HomeHeroVibe />
+      <HomeTrustedBy />
       <HomeBenefits />
+      <HomeSocialProof />
       <HomeHowItWorks />
       <HomeTestingFrameworks />
       <HomeDeploymentOptions />
-      <HomeSocialProof />
-      <HomeTrustedBy />
       <HomeFaqSection />
       <HomeEndingSection />
     </Layout>
