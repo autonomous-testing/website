@@ -130,6 +130,7 @@ const config = {
           { from: "/vc", to: "/" },
           { from: "/partner", to: "/" },
           { from: "/wopee-commander", to: "/" },
+          { from: "/guides/wopee-mcp", to: "/mcp" },
           {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
             to: "/blog/applitools-alternatives",
@@ -205,6 +206,7 @@ const config = {
             items: [
               { to: "/ai-testing-agents", label: "AI Agents for Software Testing" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
+              { to: "/mcp", label: "MCP Server" },
               {
                 to: "blog/playwright-bot-ai-powered-test-automation",
                 label: "Playwright AI Bot (preview)",
@@ -242,6 +244,10 @@ const config = {
               {
                 label: "Visual Regression Testing",
                 to: "/visual-testing",
+              },
+              {
+                label: "MCP Server",
+                to: "/mcp",
               },
               {
                 label: "Playwright AI Agent",
