@@ -18,6 +18,10 @@ concurrency:
 
 jobs:
   deploy:
+    env:
+      # upload-pages-artifact@v4 (latest) bundles Node 20 internally.
+      # Force Node 24 until the action releases a version with native support.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
