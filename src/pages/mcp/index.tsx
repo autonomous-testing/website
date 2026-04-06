@@ -7,6 +7,8 @@ import {
   mdiPuzzle,
   mdiGithub,
   mdiNpm,
+  mdiFormatListChecks,
+  mdiMagnifyScan,
 } from "@mdi/js";
 import Icon from "@mdi/react";
 import React, { useState, useEffect } from "react";
@@ -20,7 +22,7 @@ import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInv
 const CAPABILITIES = [
   {
     icon: mdiLightningBolt,
-    title: "Generate Test Content",
+    title: "Generate Test Artifacts",
     tool: "wopee_generate_artifact",
     description:
       "Generate user stories, test cases, test steps, and Playwright code from your app context.",
@@ -30,35 +32,49 @@ const CAPABILITIES = [
     title: "Dispatch Testing Agent",
     tool: "wopee_dispatch_agent",
     description:
-      "One prompt launches an AI agent that explores your app, tests interactions, and reports back.",
+      "Execute test cases with an autonomous AI agent that opens a real browser, follows test steps, and captures screenshots.",
   },
   {
-    icon: mdiEyeCheckOutline,
-    title: "Analyze & Create Suites",
+    icon: mdiMagnifyScan,
+    title: "Dispatch Analysis Crawl",
     tool: "wopee_dispatch_analysis",
     description:
-      "Create a new suite and auto-analyze it with custom variables and instructions.",
+      "Create a suite and dispatch a crawling agent to explore your web app, discover pages, and map the structure.",
   },
   {
     icon: mdiChartLine,
-    title: "Fetch Test Data",
+    title: "Fetch Test Artifacts",
     tool: "wopee_fetch_artifact",
     description:
-      "Get generated artifacts — user stories, test cases, screenshots, and reports — right in your conversation.",
+      "Retrieve generated artifacts — user stories, test cases, Playwright code, and app context.",
   },
   {
     icon: mdiCogSync,
-    title: "Refine Tests",
+    title: "Update Test Artifacts",
     tool: "wopee_update_artifact",
     description:
-      "Update test cases, user stories, and steps through conversation. Iterate on the fly.",
+      "Replace and refine user stories, test cases, or Playwright code after reviewing them.",
+  },
+  {
+    icon: mdiFormatListChecks,
+    title: "Fetch Execution Results",
+    tool: "wopee_fetch_executed_test_cases",
+    description:
+      "Retrieve pass/fail results, agent reports, and code reports for executed test cases.",
   },
   {
     icon: mdiPuzzle,
-    title: "Suite Management",
+    title: "Create Suite",
     tool: "wopee_create_blank_suite",
     description:
-      "Create and browse test suites without opening the dashboard.",
+      "Create a new empty analysis suite as the starting point for your testing workflow.",
+  },
+  {
+    icon: mdiEyeCheckOutline,
+    title: "List Suites",
+    tool: "wopee_fetch_analysis_suites",
+    description:
+      "List all analysis suites in your project with their UUIDs, types, and statuses.",
   },
 ];
 
@@ -232,7 +248,7 @@ const HeroSection = () => (
       <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm opacity-60">
         <span>npm package</span>
         <span>&#x2022;</span>
-        <span>7 MCP tools</span>
+        <span>8 MCP tools</span>
         <span>&#x2022;</span>
         <span>Node.js 18+</span>
       </div>
@@ -513,12 +529,13 @@ const OpenSourceSection = () => (
       <div className="flex-1 w-full">
         <div className="grid grid-cols-1 gap-3">
           {[
-            ["wopee_dispatch_agent", "Launch autonomous agent"],
-            ["wopee_dispatch_analysis", "Analyze test results"],
-            ["wopee_fetch_artifact", "Get screenshots & reports"],
-            ["wopee_generate_artifact", "Generate test content"],
-            ["wopee_update_artifact", "Refine tests"],
-            ["wopee_create_blank_suite", "Create test suite"],
+            ["wopee_generate_artifact", "Generate test artifacts"],
+            ["wopee_dispatch_agent", "Execute test cases"],
+            ["wopee_dispatch_analysis", "Crawl and analyze app"],
+            ["wopee_fetch_artifact", "Retrieve test artifacts"],
+            ["wopee_update_artifact", "Update test artifacts"],
+            ["wopee_fetch_executed_test_cases", "Get execution results"],
+            ["wopee_create_blank_suite", "Create new suite"],
             ["wopee_fetch_analysis_suites", "List all suites"],
           ].map(([tool, desc]) => (
             <div key={tool} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -536,7 +553,7 @@ const McpPage = () => {
   return (
     <Layout
       title="MCP Server for Autonomous Testing | Wopee.io"
-      description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch autonomous testing agents, generate test content, and manage test suites — all from natural conversation."
+      description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites — all from natural conversation."
     >
       <HeroSection />
       <ProblemSection />
