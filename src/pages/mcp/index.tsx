@@ -132,7 +132,7 @@ const STEPS = [
     step: "3",
     title: "Test",
     subtitle: "Natural language, real results",
-    code: '"Generate stories for login and test them"\n\n  wopee_generate_artifact  3 user stories created\n  wopee_dispatch_agent     running 5 test cases...\n\n  4 passed | 1 issue found',
+    code: '"Generate stories for login and test them"\n\n  wopee_generate_artifact           3 user stories\n  wopee_dispatch_agent              running 8 cases\n  wopee_fetch_executed_test_cases   7 passed, 1 failed',
     description:
       "Ask your AI to test any flow. It generates stories, dispatches agents, and explains findings — all in natural language.",
   },
@@ -142,9 +142,10 @@ const TERMINAL_LINES = [
   { type: "user", text: "Create user stories for the checkout flow and test them", delay: 0 },
   { type: "tool", name: "wopee_generate_artifact", text: "3 user stories with test cases", delay: 1200 },
   { type: "tool", name: "wopee_dispatch_agent", text: "running 8 test cases...", delay: 2200 },
-  { type: "claude", text: "7 of 8 test cases passed. Found 1 issue: the promo code field accepts empty submissions. Full report and traces attached.", delay: 3800 },
-  { type: "user", text: "Update the test case to validate non-empty input.", delay: 6000 },
-  { type: "tool", name: "wopee_update_artifact", text: "test case updated", delay: 7200 },
+  { type: "tool", name: "wopee_fetch_executed_test_cases", text: "7 passed, 1 failed", delay: 3500 },
+  { type: "claude", text: "7 of 8 test cases passed. The promo code field accepts empty submissions — screenshots and agent report attached.", delay: 4500 },
+  { type: "user", text: "Fix the test case to validate non-empty input.", delay: 6500 },
+  { type: "tool", name: "wopee_update_artifact", text: "test case updated", delay: 7700 },
 ];
 
 const TerminalAnimation = () => {
