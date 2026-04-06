@@ -28,7 +28,12 @@ const config = {
   trailingSlash: true,
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenAnchors: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -200,7 +205,7 @@ const config = {
         items: [
           {
             type: "dropdown",
-            to: "/#solutions",
+            to: "/ai-testing-agents",
             label: "Solutions",
             position: "left",
             items: [
