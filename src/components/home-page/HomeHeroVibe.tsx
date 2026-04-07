@@ -1,12 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Send } from "lucide-react";
+import { Send, Globe } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
 import { AppType } from "./vibe/enums";
-import LockTooltip from "./vibe/LockTooltip";
 import LoginDialog from "./vibe/LoginDialog";
-import FrameworkDropdown from "./vibe/FrameworkDropdown";
 import ApplicationTypeSwitch from "./vibe/ApplicationTypeSwitch";
 
 const appTemplates = {
@@ -83,44 +81,60 @@ const HomeHeroVibe = () => {
   const setIsOpenVibe = (isOpen: boolean) => {
     setLoginDialogState({ isOpen, mode: "vibe" });
   };
-  const setIsOpenUpgrade = (isOpen: boolean) => {
-    setLoginDialogState({ isOpen, mode: "upgrade" });
-  };
   return (
-    <div className="relative lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-5 lg:gap-10 overflow-hidden">
+    <div className="relative lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-6 lg:gap-8 overflow-hidden py-6 lg:py-8">
       <div
         className="pointer-events-none select-none absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
+            "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.15) 100%), radial-gradient(circle at 15% 75%, rgba(112, 48, 160, 0.32) 0%, transparent 55%), radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.12) 0%, transparent 55%), linear-gradient(rgba(128,128,128,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(128,128,128,0.08) 1px, transparent 1px)",
+          backgroundSize:
+            "100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px",
         }}
       />
-      <section className="relative z-10">
-        <h1 className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty">
-          Test better. Ship faster.
+      <section className="relative z-10 flex flex-col items-center gap-4 md:gap-6">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee animate-pulse" />
+          AI Testing Agents
+        </span>
+        <h1
+          className="font-bold text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pretty leading-[1] tracking-tighter"
+          style={{ textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
+        >
+          Your app, tested.
+          <br />
+          <span
+            className="text-amber-500 dark:text-primary-wopee"
+            style={{
+              textShadow:
+                "0 0 40px rgba(255,204,0,0.4), 0 4px 30px rgba(0,0,0,0.15)",
+            }}
+          >
+            Autonomously.
+          </span>
         </h1>
-        <h2 className="text-secondary-wopee dark:text-primary-wopee text-center text-md sm:text-lg md:text-xl text-pretty">
-          Map your app. Create tests. Automate instantly. With AI.
+        <h2 className="max-w-2xl text-center text-base sm:text-lg md:text-xl font-normal text-pretty text-gray-700 dark:text-gray-200 leading-relaxed px-4">
+          Wopee.io finds bugs before your users do. No test scripts, no
+          maintenance, no QA backlog. Just deploy and sleep well.
         </h2>
       </section>
 
-      <div className="p-0.5 rounded-md w-full max-w-3xl bg-gradient-to-br from-blue-500 to-secondary-wopee z-10">
-        <div className="bg-white dark:bg-gray-900 rounded-md p-3 flex flex-col gap-3">
-          <div className="opacity-65 flex flex-col md:flex-row items-center text-xs">
-            Test environment URL:{" "}
-            <div className="relative">
+      <div className="p-[1.5px] rounded-2xl w-full max-w-3xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee z-10 shadow-2xl shadow-purple-900/50">
+        <div className="bg-white dark:bg-gray-900 rounded-[14px] p-5 sm:p-6 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold pl-1">
+              Test environment URL
+            </label>
+            <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee dark:focus-within:border-primary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 dark:focus-within:ring-primary-wopee/20 transition-all">
+              <Globe className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee dark:group-focus-within:text-primary-wopee transition-colors flex-shrink-0" />
               <input
                 ref={urlInputRef}
                 type="url"
                 value={appUrl}
-                size={parseSize}
                 placeholder="https://your-project-url.com"
-                className="border-none ml-1 pl-2 pr-5 py-1 bg-gray-300 dark:bg-gray-700 rounded-md max-w-[300px] sm:max-w-none"
+                className="flex-1 w-full bg-transparent border-none focus:outline-none text-sm font-mono text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
                 onChange={handleUrlChange}
               />
-              {appType === AppType.YOUR_APPLICATION && (
-                <LockTooltip setIsOpenUpgrade={setIsOpenUpgrade} />
-              )}
             </div>
           </div>
 
@@ -133,7 +147,6 @@ const HomeHeroVibe = () => {
           />
 
           <div className="flex justify-end items-center gap-2">
-            <FrameworkDropdown />
             <Button
               size="lg"
               variant="wopeeFlat"
@@ -143,15 +156,12 @@ const HomeHeroVibe = () => {
               onClick={() =>
                 setLoginDialogState({ isOpen: true, mode: "vibe" })
               }
-              className="flex items-center gap-1 px-3 font-bold rounded-md shadow-md transition-colors"
+              className="flex items-center gap-2 px-5 py-2 font-bold rounded-lg shadow-lg shadow-purple-500/30 dark:shadow-yellow-500/30 hover:shadow-purple-500/50 dark:hover:shadow-yellow-500/50 hover:scale-105 transition-all"
               id="vibe-testing"
             >
               <Send />
               <span
-                className="bg-gradient-to-r text-white  
-                      dark:text-black
-                      bg-clip-text text-transparent font-bold
-                      hidden lg:block"
+                className="text-white dark:text-black font-bold hidden sm:block"
               >
                 Test now!
               </span>
@@ -160,18 +170,18 @@ const HomeHeroVibe = () => {
         </div>
       </div>
 
-      <ApplicationTypeSwitch
-        appType={appType}
-        setIsOpenUpgrade={setIsOpenUpgrade}
-        handleAppTypeChange={handleAppTypeChange}
-      />
+      <div className="relative z-10 flex flex-col items-center gap-3">
+        <span className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-medium">
+          Or pick a sample scenario
+        </span>
+        <ApplicationTypeSwitch
+          appType={appType}
+          handleAppTypeChange={handleAppTypeChange}
+        />
+      </div>
 
-      <p className="relative z-10 max-w-2xl mx-auto text-center text-sm text-gray-500 dark:text-gray-400 px-6">
-        What are AI testing agents? They are AI agents that explore your web
-        application, create end-to-end tests, and self-heal when the UI changes.
-        Wopee.io delivers this on a Playwright foundation — no code, one-minute
-        setup, and continuous regression coverage that scales with your release
-        pace.
+      <p className="relative z-10 mx-auto text-center text-xs text-gray-600 dark:text-gray-400 px-6 whitespace-nowrap">
+        No code, one-minute setup, continuous regression coverage that scales with your release pace.
       </p>
 
       <LoginDialog

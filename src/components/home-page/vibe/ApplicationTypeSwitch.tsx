@@ -2,7 +2,6 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 import { AppType } from "./enums";
-import LockTooltip from "./LockTooltip";
 import { AppWindow, Globe, Landmark, ShoppingCart } from "lucide-react";
 
 const APP_TYPE_BUTTONS = [
@@ -26,11 +25,9 @@ const APP_TYPE_BUTTONS = [
 
 const ApplicationTypeSwitch = ({
   appType,
-  setIsOpenUpgrade,
   handleAppTypeChange,
 }: {
   appType: AppType;
-  setIsOpenUpgrade: (isOpen: boolean) => void;
   handleAppTypeChange: (appType: AppType) => void;
 }) => {
   return (
@@ -39,16 +36,13 @@ const ApplicationTypeSwitch = ({
         <div
           key={app.label}
           className={cn(
-            "p-2 bg-gray-300 rounded-md md:w-[150px] hover:cursor-pointer flex justify-center items-center gap-1 relative",
+            "p-2 rounded-lg md:w-[150px] hover:cursor-pointer flex justify-center items-center gap-1.5 relative border transition-all",
             app.value === appType
-              ? "text-white opacity-65 bg-gradient-to-br from-blue-500 to-secondary-wopee"
-              : "dark:bg-gray-700"
+              ? "text-white border-transparent bg-gradient-to-br from-secondary-wopee to-purple-600 shadow-lg shadow-purple-900/40"
+              : "border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-white/5 text-gray-700 dark:text-gray-200 hover:border-secondary-wopee dark:hover:border-primary-wopee hover:bg-white dark:hover:bg-white/10"
           )}
           onClick={() => handleAppTypeChange(app.value)}
         >
-          {app.value === AppType.YOUR_APPLICATION && (
-            <LockTooltip size={4} setIsOpenUpgrade={setIsOpenUpgrade} />
-          )}
           {app.value === AppType.WEBSITE && <Globe size={16} />}
           {app.value === AppType.E_COMMERCE && <ShoppingCart size={16} />}
           {app.value === AppType.BANKING && <Landmark size={16} />}
