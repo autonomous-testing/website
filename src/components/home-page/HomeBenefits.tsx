@@ -8,6 +8,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
+import GradientCard from "@/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const benefits = [
@@ -87,30 +88,28 @@ const HomeBenefits = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mb-10">
         {benefits.map((benefit, idx) => (
-          <div
+          <GradientCard
             key={idx}
-            className="group relative rounded-xl transition-shadow min-h-[260px] h-full flex"
+            className="h-full"
+            innerClassName="flex flex-col justify-between min-h-[260px]"
           >
-            <div className="absolute inset-0 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 bg-gradient-to-br from-blue-500 to-secondary-wopee p-0.5"></div>
-            <div className="relative bg-white/70 dark:bg-black/40 border border-gray-200 dark:border-gray-800 rounded-xl p-6 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-shadow min-h-[260px] h-full w-full backdrop-blur z-10 group-hover:border-transparent">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                    {benefit.icon}
-                  </span>
-                  <span className="ml-auto px-3 py-1 text-xs rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 font-semibold">
-                    {benefit.badge}
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-1 min-h-[48px] flex items-center">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  {benefit.description}
-                </p>
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                  {benefit.icon}
+                </span>
+                <span className="ml-auto px-3 py-1 text-xs rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 font-semibold">
+                  {benefit.badge}
+                </span>
               </div>
+              <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-1 min-h-[48px] flex items-center">
+                {benefit.title}
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
+                {benefit.description}
+              </p>
             </div>
-          </div>
+          </GradientCard>
         ))}
       </div>
       <ButtonPrimary

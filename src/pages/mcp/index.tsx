@@ -18,6 +18,7 @@ import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import GradientCard from "@site/src/components/ui/GradientCard";
 
 const CAPABILITIES = [
   {
@@ -336,9 +337,9 @@ const CapabilitiesSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {CAPABILITIES.map((cap) => (
-        <div
+        <GradientCard
           key={cap.title}
-          className="group border border-solid border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-all hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-900/50"
+          className="group transition-transform hover:-translate-y-1"
         >
           <div className="w-14 h-14 rounded-xl bg-secondary-wopee/15 dark:bg-primary-wopee/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Icon
@@ -352,7 +353,7 @@ const CapabilitiesSection = () => (
             {cap.tool}
           </code>
           <p className="opacity-70 text-balance">{cap.description}</p>
-        </div>
+        </GradientCard>
       ))}
     </div>
 
@@ -411,8 +412,8 @@ const HowItWorksSection = () => (
                     : "conversation"}
                 </span>
               </div>
-              <pre className="p-5 text-sm sm:text-base text-gray-300 overflow-x-auto">
-                <code>{step.code}</code>
+              <pre className="!bg-transparent p-5 text-sm sm:text-base !text-gray-300 overflow-x-auto m-0">
+                <code className="!bg-transparent !text-gray-300">{step.code}</code>
               </pre>
             </div>
           </div>
@@ -493,13 +494,17 @@ const CompatibleToolsSection = () => (
 
 const OpenSourceSection = () => (
   <div className="container my-16 lg:my-24 px-5 lg:px-10">
-    <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8">
+    <GradientCard
+      variant="solid"
+      padding="roomy"
+      className="flex flex-col lg:flex-row items-center gap-8"
+    >
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-4">
           <Icon
             path={mdiGithub}
             size={1.5}
-            className="text-secondary-wopee dark:text-primary-wopee"
+            className="text-primary-wopee"
           />
         </div>
         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -539,14 +544,14 @@ const OpenSourceSection = () => (
             ["wopee_create_blank_suite", "Create new suite"],
             ["wopee_fetch_analysis_suites", "List all suites"],
           ].map(([tool, desc]) => (
-            <div key={tool} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-              <code className="text-sm text-secondary-wopee dark:text-primary-wopee font-semibold">{tool}</code>
-              <span className="text-sm opacity-60 hidden sm:inline">— {desc}</span>
+            <div key={tool} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-black/40 border border-white/10">
+              <code className="!bg-transparent !border-0 !p-0 text-sm !text-primary-wopee font-semibold">{tool}</code>
+              <span className="text-sm text-white/80 hidden sm:inline">— {desc}</span>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </GradientCard>
   </div>
 );
 

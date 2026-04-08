@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
+import GradientCard from "./GradientCard";
 
 interface VideoCardProps {
   videoSrc: string;
@@ -68,13 +69,14 @@ export default function VideoCard({
   }, [videoLoading]);
 
   return (
-    <div
+    <GradientCard
       ref={cardRef}
-      className={`bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1 shadow-2xl ${className}`}
+      padding="none"
+      className={className}
+      innerClassName="bg-[#1a1a2e] dark:bg-[#1a1a2e] p-1 relative group overflow-hidden"
     >
-      <div className="bg-[#1a1a2e] rounded-xl p-1 relative group overflow-hidden">
-        {/* Video or Fallback Image */}
-        {!videoError ? (
+      {/* Video or Fallback Image */}
+      {!videoError ? (
           <video
             ref={videoRef}
             autoPlay
@@ -136,8 +138,7 @@ export default function VideoCard({
               />
             </svg>
           </button>
-        )}
-      </div>
-    </div>
+      )}
+    </GradientCard>
   );
 }
