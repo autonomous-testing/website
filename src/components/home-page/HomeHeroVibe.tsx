@@ -104,10 +104,10 @@ const HomeHeroVibe = () => {
           Your app, tested.
           <br />
           <span
-            className="text-amber-500 dark:text-primary-wopee"
+            className="text-secondary-wopee dark:text-primary-wopee"
             style={{
               textShadow:
-                "0 0 40px rgba(255,204,0,0.4), 0 4px 30px rgba(0,0,0,0.15)",
+                "0 0 40px rgba(112,48,160,0.35), 0 4px 30px rgba(0,0,0,0.15)",
             }}
           >
             Autonomously.
