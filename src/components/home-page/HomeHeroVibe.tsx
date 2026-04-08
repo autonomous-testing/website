@@ -101,7 +101,7 @@ const HomeHeroVibe = () => {
           className="font-bold text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pretty leading-[1] tracking-tighter"
           style={{ textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
         >
-          Your app, tested.
+          <span className="whitespace-nowrap">Your app, tested.</span>
           <br />
           <span
             className="text-secondary-wopee dark:text-primary-wopee"
