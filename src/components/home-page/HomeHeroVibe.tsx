@@ -28,7 +28,7 @@ Wait for page load, accept cookies (if shown), submit form with pre-filled PIN.`
   },
   [AppType.YOUR_APPLICATION]: {
     url: "",
-    instructions: "Your testing instructions..",
+    instructions: "Open homepage, accept cookies if prompted, suggest what to test.",
   },
 };
 const urlList = Object.entries(appTemplates).map(([key, value]) => ({

@@ -1,9 +1,9 @@
-import clsx from "clsx";
 import React from "react";
 
 import Ribbon from "./Ribbon";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+import GradientCard from "@/components/ui/GradientCard";
 
 type PlanCardT = {
   img: string;
@@ -64,11 +64,10 @@ export default function PlanCard({
   featured,
 }: PlanCardT) {
   return (
-    <div
-      className={clsx(
-        "card flex flex-col items-center h-[560px] w-[335px] justify-center gap-5 p-5 shadow-xl",
-        featured ? "relative overflow-hidden xl:scale-105 " : ""
-      )}
+    <GradientCard
+      variant={featured ? "featured" : "default"}
+      className="h-[560px] w-[335px]"
+      innerClassName="flex flex-col items-center justify-center gap-5 relative overflow-hidden"
     >
       {featured && <Ribbon />}
       {img ? (
@@ -99,6 +98,6 @@ export default function PlanCard({
         </h4>
       </div>
       {button}
-    </div>
+    </GradientCard>
   );
 }

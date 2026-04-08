@@ -4,6 +4,7 @@ import PlanComparison from "./PlanComparison";
 import PlanCard, { PlanCards } from "./PlanCard";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+import GradientCard from "@/components/ui/GradientCard";
 
 export default function Pricing(): JSX.Element {
   return (
@@ -22,7 +23,10 @@ export default function Pricing(): JSX.Element {
           ))}
         </div>
 
-        <div className="card p-5 shadow-[0_0_10px_0] shadow-secondary-wopee dark:shadow-primary-wopee gap-5 h-[560px] w-[335px] md:w-auto md:h-auto md:flex-row items-center">
+        <GradientCard
+          className="w-[335px] md:w-auto"
+          innerClassName="flex flex-col md:flex-row gap-5 h-[560px] md:h-auto items-center"
+        >
           <img
             src="/img/subscription-plans/enterprise.png"
             alt="enterprise-plan-card"
@@ -54,7 +58,7 @@ export default function Pricing(): JSX.Element {
               />
             </Link>
           </div>
-        </div>
+        </GradientCard>
       </div>
 
       <div className="my-5">
