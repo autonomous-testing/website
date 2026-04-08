@@ -109,7 +109,6 @@ const HomeHeroVibe = () => {
               textShadow:
                 "0 0 40px rgba(112,48,160,0.35), 0 4px 30px rgba(0,0,0,0.15)",
             }}
-            }}
           >
             Autonomously.
           </span>
