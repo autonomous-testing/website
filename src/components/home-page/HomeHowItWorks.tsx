@@ -45,11 +45,11 @@ export default function HomeHowItWorks(): JSX.Element {
       <div className="text-center mt-16">
         <ButtonPrimary
           id="cta-how-it-works-trial"
-          label="Test better now"
+          label="Start for free"
           href={cmdBaseUrl}
           className="w-60 h-[50px]"
         />
-        <p className="text-sm italic">Start free trial</p>
+        <p className="text-sm italic">No credit card required</p>
       </div>
 
       {/* Fullscreen Video Modal */}

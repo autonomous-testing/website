@@ -232,7 +232,7 @@ const config = {
           {
             to: "https://cmd.wopee.io",
             target: "_blank",
-            label: "Start free trial",
+            label: "Start for free",
             position: "right",
             className: "margin-right--md",
             id: "navbar-button",
