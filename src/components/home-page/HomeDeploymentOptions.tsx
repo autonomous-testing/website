@@ -92,7 +92,7 @@ const HomeDeploymentOptions = () => {
               <ButtonPrimary
                 id="cta-deploy-cloud"
                 className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee"
-                label="Start testing better now"
+                label="Start for free"
                 href={cmdBaseUrl}
               />
             }

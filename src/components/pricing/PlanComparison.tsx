@@ -23,6 +23,13 @@ const rows: Row[] = [
     enterprise: "Unlimited",
   },
   {
+    feature: "Executed tests / session*",
+    starter: "15–30",
+    basic: "50–100",
+    premium: "100–200",
+    enterprise: "Unlimited",
+  },
+  {
     feature: "Active projects",
     starter: "10",
     basic: "100",
@@ -223,9 +230,15 @@ const PlanComparison = () => {
       </div>
 
       <p className="mt-6 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-        All plans include autonomous test generation, visual regression
-        testing, and Playwright + CI/CD integration. Step allowances reset
-        every 5 hours.
+        <span className="text-secondary-wopee dark:text-primary-wopee">*</span>{" "}
+        Estimated based on 5–10 steps per test. Actual numbers depend on test
+        complexity.
+      </p>
+      <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+        Each plan has a 5-hour rolling session window. Your usage resets
+        automatically once the window expires — no manual action needed, no
+        waiting until midnight. All plans include autonomous test generation,
+        visual regression testing, and Playwright + CI/CD integration.
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

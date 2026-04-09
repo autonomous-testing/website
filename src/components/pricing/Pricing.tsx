@@ -167,7 +167,7 @@ export default function Pricing(): JSX.Element {
           <span className="w-1.5 h-1.5 rounded-full bg-secondary-wopee dark:bg-primary-wopee animate-pulse" />
           Built for ambitious engineers
         </div>
-        <h1 className="text-4xl xl:text-6xl font-extrabold leading-[1.02] tracking-tight bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee dark:from-primary-wopee dark:via-yellow-200 dark:to-primary-wopee bg-clip-text text-transparent pb-1">
+        <h1 className="text-4xl xl:text-6xl font-extrabold leading-[1.02] tracking-tight bg-gradient-to-br from-secondary-wopee via-purple-600 to-purple-800 dark:from-primary-wopee dark:via-yellow-200 dark:to-primary-wopee bg-clip-text text-transparent pb-1">
           Replace your QA backlog with autonomous testing.
         </h1>
         <p className="mt-5 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -197,19 +197,6 @@ export default function Pricing(): JSX.Element {
               {benefit}
             </div>
           ))}
-        </div>
-
-        {/* HERO PRIMARY CTA */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="https://cmd.wopee.io" className="hover:no-underline">
-            <ButtonGradientOutline className="w-60" label="Start for free" />
-          </Link>
-          <a
-            href="#plans"
-            className="text-sm text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
-          >
-            Compare plans ↓
-          </a>
         </div>
 
       </header>

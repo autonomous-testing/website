@@ -114,7 +114,7 @@ const HomeBenefits = () => {
       </div>
       <ButtonPrimary
         id="cta-benefits-trial"
-        label="Start testing better"
+        label="Start for free"
         href={cmdBaseUrl}
         className="w-60 h-[50px]"
       />
