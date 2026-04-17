@@ -82,7 +82,7 @@ const HomeHeroVibe = () => {
     setLoginDialogState({ isOpen, mode: "vibe" });
   };
   return (
-    <div className="relative lg:h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-6 lg:gap-8 overflow-hidden py-6 lg:py-8">
+    <div className="relative lg:min-h-[calc(100vh-120px)] flex flex-col justify-center items-center gap-6 lg:gap-8 overflow-hidden py-6 lg:py-8">
       <div
         className="pointer-events-none select-none absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
         style={{
