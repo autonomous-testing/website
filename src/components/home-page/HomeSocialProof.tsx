@@ -110,14 +110,14 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
     >
       {isLivesport ? (
         <Link
-          to="/blog/livesport-visual-testing-w-wopee-io"
+          to="/blog/livesport-visual-testing-w-wopee-io/"
           className="block w-full h-full hover:no-underline"
         >
           {CardContent}
         </Link>
       ) : isSynot ? (
         <Link
-          to="/blog/synot-tech-test-automation-wopee"
+          to="/blog/synot-tech-test-automation-wopee/"
           className="block w-full h-full hover:no-underline"
         >
           {CardContent}

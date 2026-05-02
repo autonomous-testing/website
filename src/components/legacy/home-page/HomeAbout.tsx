@@ -47,7 +47,7 @@ export default function HomepageAbout(): JSX.Element {
           </div>
 
           <Link
-            to="/book-demo"
+            to="/book-demo/"
             className="self-center max-w-fit"
           >
             <ButtonGhost />

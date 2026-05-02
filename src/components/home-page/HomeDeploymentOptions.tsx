@@ -104,7 +104,7 @@ const HomeDeploymentOptions = () => {
             description="Run Wopee.io inside your own CI/CD. Get more control over security."
             icon={<Server size={40} />}
             cta={
-              <Link to="/book-demo" id="cta-deploy-onprem">
+              <Link to="/book-demo/" id="cta-deploy-onprem">
                 <ButtonGradientOutline className="w-full" label="Book demo" />
               </Link>
             }

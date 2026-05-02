@@ -23,7 +23,7 @@ const SelfDrivingBotCard = () => {
           </h3>
         </section>
 
-        <Link to="/ai-testing-agents" className="group">
+        <Link to="/ai-testing-agents/" className="group">
           <button className=" text-white border border-secondary-wopee font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-1 text-center transition ease-out">
             Learn more
           </button>
@@ -67,7 +67,7 @@ const VisualTestingCard = () => {
           </h3>
         </section>
 
-        <Link to="/visual-testing" className="group">
+        <Link to="/visual-testing/" className="group">
           <button className="text-secondary-wopee border border-secondary-wopee font-semibold bg-transparent group-hover:bg-secondary-wopee group-hover:text-white hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-1 text-center transition ease-out">
             Learn more
           </button>

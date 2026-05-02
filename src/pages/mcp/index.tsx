@@ -589,7 +589,7 @@ const McpPage = () => {
               <p className="text-center text-sm italic">No credit card required</p>
             </div>
             <div className="sm:h-20">
-              <ButtonPrimaryInverted href="/book-demo" className="w-60 h-[50px]" />
+              <ButtonPrimaryInverted href="/book-demo/" className="w-60 h-[50px]" />
             </div>
           </div>
         </div>

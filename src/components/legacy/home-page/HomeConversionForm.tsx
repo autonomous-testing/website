@@ -23,7 +23,7 @@ const HomeConversionForm = ({ className }: { className?: string }) => {
             className="w-60 h-[50px]"
           />
           <ButtonPrimaryInverted
-            href="/book-demo"
+            href="/book-demo/"
             className="w-60 h-[50px]"
           />
         </div>

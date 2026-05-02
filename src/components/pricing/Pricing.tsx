@@ -285,7 +285,7 @@ export default function Pricing(): JSX.Element {
             </ul>
           </div>
           <div className="md:flex-shrink-0 flex flex-col gap-2">
-            <Link to="/book-demo" className="hover:no-underline">
+            <Link to="/book-demo/" className="hover:no-underline">
               <ButtonGradientOutline
                 className="w-full md:w-56"
                 label="Talk to founders"
@@ -543,7 +543,7 @@ export default function Pricing(): JSX.Element {
                 <ButtonGradientOutline className="w-60" label="Start for free" />
               </Link>
               <Link
-                to="/book-demo"
+                to="/book-demo/"
                 className="text-white/90 hover:text-white underline-offset-4 hover:underline text-sm font-medium"
               >
                 or book a 30-min demo →
