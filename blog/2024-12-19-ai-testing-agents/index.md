@@ -74,8 +74,8 @@ AI Testing Agents are autonomous or semi-autonomous systems that leverage artifi
 
 ### Examples
 
-- **Visual Testing Agents**: Tools like Applitools, Percy, or Wopee.io that focus on pixel-perfect [visual verification](/visual-testing), ensuring a seamless user experience.
-- **Exploratory Testing Bots**: [AI-driven testing bots](/testing-bot) that mimic user behavior and uncover hidden defects, offering insights that scripted tests might miss.
+- **Visual Testing Agents**: Tools like Applitools, Percy, or Wopee.io that focus on pixel-perfect [visual verification](/visual-testing/), ensuring a seamless user experience.
+- **Exploratory Testing Bots**: [AI-driven testing bots](/testing-bot/) that mimic user behavior and uncover hidden defects, offering insights that scripted tests might miss.
 - **Scriptless Testing Tools**: Platforms for test creation without coding, leveraging AI to build robust scenarios with minimal user input.
 - **Code-Driven AI Bots**: Solutions like Wopee.io’s [Playwright AI Bot](/blog/playwright-bot-ai-powered-test-automation) that enhance traditional frameworks by automating repetitive tasks and delivering intelligent insights.
 

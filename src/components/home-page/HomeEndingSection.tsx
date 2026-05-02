@@ -21,7 +21,7 @@ const HomeEndingSection = () => {
           <div className="sm:h-20">
             <ButtonPrimaryInverted
               id="cta-book-demo"
-              href="/book-demo"
+              href="/book-demo/"
               className="w-60 h-[50px]"
             />
           </div>

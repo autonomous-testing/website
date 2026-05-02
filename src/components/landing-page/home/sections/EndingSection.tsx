@@ -19,7 +19,7 @@ const EndingSection = ({ bot }: { bot?: boolean }) => {
         <div className="flex flex-col sm:flex-row justify-center gap-2 items-center lg:gap-5">
           <div className="sm:h-20">
             <ButtonPrimaryInverted
-              href="/book-demo"
+              href="/book-demo/"
               className="w-60 h-[50px]"
             />
           </div>

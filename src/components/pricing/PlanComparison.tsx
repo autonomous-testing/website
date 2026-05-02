@@ -246,7 +246,7 @@ const PlanComparison = () => {
           <ButtonGradientOutline className="w-60" label="Start for free" />
         </Link>
         <Link
-          to="/book-demo"
+          to="/book-demo/"
           className="text-sm text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
         >
           or talk to founders →
