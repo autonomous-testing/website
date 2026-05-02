@@ -197,6 +197,9 @@ const config = {
     {
       // Replace with your project's social card
       image: "img/wopee-social-card.jpg",
+      // OG protocol requires og:type. Docusaurus's classic theme doesn't emit a default;
+      // the blog plugin overrides this with og:type=article on blog pages.
+      metadata: [{ property: "og:type", content: "website" }],
       // https://docusaurus.io/docs/api/themes/configuration#color-mode---dark-mode
       colorMode: {
         defaultMode: "dark",
