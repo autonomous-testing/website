@@ -13,6 +13,7 @@ import {
 import Icon from "@mdi/react";
 import React, { useState, useEffect } from "react";
 import Link from "@docusaurus/Link";
+import Head from "@docusaurus/Head";
 
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
@@ -555,12 +556,65 @@ const OpenSourceSection = () => (
   </div>
 );
 
+const JSONLD_MCP_APP = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Wopee.io MCP Server",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Test Automation",
+  operatingSystem: "Cross-platform (Node.js 18+)",
+  url: "https://wopee.io/mcp/",
+  description:
+    "Model Context Protocol server that connects Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and other MCP clients to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites from natural-language conversation.",
+  softwareRequirements: "Node.js 18+",
+  downloadUrl: "https://www.npmjs.com/package/wopee-mcp",
+  installUrl: "https://www.npmjs.com/package/wopee-mcp",
+  publisher: {
+    "@type": "Organization",
+    name: "Wopee.io",
+    url: "https://wopee.io",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description:
+      "Free and open source. Requires a Wopee.io account; free tier available.",
+    url: "https://wopee.io/pricing/",
+  },
+};
+
+const JSONLD_MCP_SOURCE = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  name: "wopee-mcp",
+  description:
+    "Wopee.io's Model Context Protocol server for agentic testing. Compatible with Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and any MCP client.",
+  codeRepository: "https://github.com/Wopee-io/wopee-mcp",
+  programmingLanguage: "TypeScript",
+  runtimePlatform: "Node.js",
+  url: "https://wopee.io/mcp/",
+  author: {
+    "@type": "Organization",
+    name: "Wopee.io",
+    url: "https://wopee.io",
+  },
+};
+
 const McpPage = () => {
   return (
     <Layout
       title="MCP Server for Autonomous Testing | Wopee.io"
       description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites — all from natural conversation."
     >
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(JSONLD_MCP_APP)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(JSONLD_MCP_SOURCE)}
+        </script>
+      </Head>
       <HeroSection />
       <ProblemSection />
       <CapabilitiesSection />

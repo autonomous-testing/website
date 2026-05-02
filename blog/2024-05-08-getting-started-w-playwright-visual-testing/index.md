@@ -7,9 +7,66 @@ tags: [basics, testing-tools, playwright, test-automation, visual-testing]
 image: ./intro-to-pw-visual-testing.png
 ---
 
+Playwright supports visual testing out of the box: install Playwright, write a test that calls `expect(page).toHaveScreenshot()`, run it once to create a baseline, then run it on every CI build to catch visual regressions. Baselines live in your repo, comparisons are pixel-based with a configurable threshold, and the whole workflow plugs into the same test runner you already use for functional tests. This guide walks through install, first screenshot test, baseline management, and CI wiring with the current Playwright API.
+
 [Visual testing](/visual-testing/) has become an essential component of modern web development. By ensuring the visual fidelity of your application across different browsers and devices, you can guarantee a seamless user experience and minimize the risk of regressions. However, visual testing can be cumbersome, time-consuming, and require significant maintenance when it is not done properly. This is where Playwright could offer an efficient, fast, and simple approach to visual testing.
 
 <!--truncate-->
+
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Playwright support visual testing out of the box?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Playwright ships with toHaveScreenshot() assertions that capture screenshots, store baselines in your repo, and compare against them on every run. No separate visual testing tool is required to get started."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I write my first Playwright visual test?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Playwright with npm init playwright@latest, navigate to the page you want to test in a test file, and call await expect(page).toHaveScreenshot(). The first run creates a baseline image; subsequent runs compare against it and fail on visual differences."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Playwright compare screenshots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playwright performs pixel-by-pixel comparison with a configurable maxDiffPixels and threshold value. You can also mask dynamic regions (timestamps, ads, animated elements) to keep tests stable across runs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are Playwright visual baselines stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Baseline screenshots are committed to your repo next to the test files, organized by browser and platform. When you intentionally change the UI, you regenerate baselines with the --update-snapshots flag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I integrate Playwright visual tests into CI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run npx playwright test in your CI pipeline like any other Playwright run. To avoid environment-specific rendering differences, pin the OS and browser version (use the official Playwright Docker image is the safest path) and treat baseline regeneration as a deliberate PR step."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the limits of Playwright visual testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pixel-based comparisons can be brittle on dynamic content, fonts, and rendering differences across machines. For larger suites, AI-powered visual testing tools that ignore irrelevant changes and self-heal on layout shifts (such as Wopee.io) reduce maintenance significantly."
+      }
+    }
+  ]
+}) }} />
 
 ![Getting Started with Playwright Visual Testing](./intro-to-pw-visual-testing.png)
 _Source: Wopee.io internal materials._
