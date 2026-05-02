@@ -1,7 +1,7 @@
 ---
 slug: saving-50-percent-in-sw-testing
 title: Cut SW Testing Costs by 50%
-description: "Learn how teams cut software testing costs by 50% with AI-powered automation. Practical strategies and real data on reducing QA overhead without sacrificing coverage."
+description: "How teams cut software testing costs by 50% with AI-powered automation. Practical strategies and real data on reducing QA overhead."
 authors: marcel
 tags:
   [cost-reduction, risk-based-testing, production-testing, ci-cd, test-strategy]

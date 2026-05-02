@@ -1,7 +1,7 @@
 ---
 slug: 9-benefits-of-automated-web-app-testing
 title: 9 Benefits of Automated Web App Testing
-description: "Discover 9 key benefits of automated web app testing — from faster releases and lower costs to better coverage and fewer regressions. Make the business case for automation."
+description: "9 key benefits of automated web app testing: faster releases, lower costs, better coverage, fewer regressions. Build the business case for automation."
 authors: marcel
 tags: [basics, test-automation]
 image: ./web-app-test-automation-benefits.webp

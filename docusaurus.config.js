@@ -182,6 +182,7 @@ const config = {
             "/l/**",
             "/bot/**",
             "/team/**",
+            "/testing-bot/**",
           ],
         },
         gtag: { trackingID: "G-PVTHWLV51B" },

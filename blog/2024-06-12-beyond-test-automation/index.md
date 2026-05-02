@@ -1,7 +1,7 @@
 ---
 slug: beyond-test-automation
 title: Beyond Test Automation - The Future of Testing
-description: "What comes after test automation? Explore the future of testing — autonomous agents, AI-driven insights, self-healing tests, and zero-maintenance testing pipelines."
+description: "What comes after test automation? Autonomous agents, AI-driven insights, self-healing tests, and zero-maintenance pipelines."
 authors: marcel
 tags: [basics, automation, future, autonomous]
 image: ./testing-journey.png

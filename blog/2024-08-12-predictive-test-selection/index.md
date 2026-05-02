@@ -1,7 +1,7 @@
 ---
 slug: predictive-test-selection
 title: "Predictive Test Selection Explained: Cut CI Time 50% with AI"
-description: "Predictive test selection uses AI to run only the tests most likely to fail for a given code change — cutting CI time by up to 50% without losing coverage. Learn how it works and how to roll it out."
+description: "Predictive test selection uses AI to run only the tests most likely to fail — cutting CI time up to 50% without losing coverage."
 authors: marcel
 tags:
   [
