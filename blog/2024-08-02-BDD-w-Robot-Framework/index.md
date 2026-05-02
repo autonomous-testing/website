@@ -249,10 +249,10 @@ Scenario: User creates a new playlist
 
 To enhance your BDD implementation in Robot Framework, consider the following tips:
 
-1. **Reuse Keywords**: Create reusable keywords for common actions, such as logging in or navigating to a specific page. This reduces duplication and makes your test cases easier to maintain.
+1. **Reuse Keywords**: Create reusable keywords for common actions, such as logging in or navigating to a specific page. This reduces duplication and makes your test cases easier to maintain — and pairs well with [self-healing test automation](/blog/self-healing-in-sw-test-automation/), which keeps those keywords stable when the UI shifts underneath them.
 2. **Data-Driven Testing**: Use data-driven tests to run the same scenario with different sets of data. This can be achieved using the `Examples` section in Gherkin or by defining variables in Robot Framework.
 3. **Organize Tests**: Structure your tests in a way that makes them easy to understand and navigate. Use meaningful names for test cases and keywords, and group related tests into suites.
-4. **Continuous Integration**: Integrate your Robot Framework tests into a continuous integration (CI) pipeline. This ensures that your tests are run automatically whenever changes are made, providing immediate feedback on the quality of your software.
+4. **Continuous Integration**: Integrate your Robot Framework tests into a continuous integration (CI) pipeline. This ensures that your tests are run automatically whenever changes are made, providing immediate feedback on the quality of your software. Once the suite grows past the point where everyone waits for it, layer [predictive test selection](/blog/predictive-test-selection/) on top so each pull request runs only the highest-risk subset.
 
 ### Example of Data-Driven Test in BDD
 
@@ -273,7 +273,7 @@ Feature: Login Functionality
 
 ## Conclusion
 
-Getting started with BDD in Robot Framework is a powerful way to align development efforts with business goals. By following a structured process and leveraging the collaborative nature of BDD, teams can build software that truly meets user needs while maintaining high quality through automated testing. Whether you're new to BDD or looking to refine your practices, Robot Framework offers the tools you need to succeed. Embrace techniques like Example Mapping and explore alternative approaches to continuously improve your BDD implementation.
+Getting started with BDD in Robot Framework is a powerful way to align development efforts with business goals. By following a structured process and leveraging the collaborative nature of BDD, teams can build software that truly meets user needs while maintaining high quality through automated testing — and as the suite matures, techniques like [self-healing](/blog/self-healing-in-sw-test-automation/) and [predictive test selection](/blog/predictive-test-selection/) keep the maintenance bill from outpacing the value. Whether you're new to BDD or looking to refine your practices, Robot Framework offers the tools you need to succeed. Embrace techniques like Example Mapping and explore alternative approaches to continuously improve your BDD implementation.
 
 :::tip **Next Steps 🚀**
 
