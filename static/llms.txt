@@ -1,0 +1,30 @@
+# Wopee.io
+
+> Wopee.io builds autonomous AI testing agents for web applications. It is for QA engineers, SDETs, and engineering teams who want to stop hand-writing and babysitting test scripts. The agents explore an app, generate Playwright test cases, run them across browsers, self-heal when the UI changes, and surface visual and functional regressions. Typical wins: 85% less test maintenance, fewer flaky tests, faster CI, and coverage on flows that were previously too costly to automate. Available as cloud SaaS, on-premise deployment, and a Model Context Protocol (MCP) server that plugs into Claude, ChatGPT, Cursor, and other AI coding agents.
+
+## Core pages
+- [Home](https://wopee.io/): What Wopee.io is, who uses it, headline benefits, and how it fits into a modern test stack.
+- [Pricing](https://wopee.io/pricing/): Starter (€19/user/mo), Basic (€79/user/mo), Premium (€179/user/mo), and Enterprise (on-prem, SSO, dedicated CSM). Free to start, no credit card required, 14-day money-back guarantee.
+- [AI Testing Agents](https://wopee.io/ai-testing-agents/): How the autonomous agents explore, generate, run, and maintain tests without manual scripting.
+- [MCP Server](https://wopee.io/mcp/): Wopee.io's Model Context Protocol server — connect Claude, Cursor, VS Code, Windsurf, or any MCP client and dispatch testing agents from natural-language conversation.
+- [About](https://wopee.io/about-us/): Team, mission, investors, and contact (help@wopee.io, wopee labs s.r.o., Prague).
+- [Book a demo](https://wopee.io/book-demo/): 30-minute call with the founders.
+
+## Documentation
+- [Docs home](https://docs.wopee.io/): Setup, concepts, integrations, and reference for the Wopee.io platform.
+- [MCP guide](https://docs.wopee.io/guides/wopee-mcp/): Step-by-step integration of the Wopee.io MCP server with Claude Code, Claude Desktop, Cursor, VS Code, and Windsurf.
+- [Tools and assertions](https://docs.wopee.io/concepts/tools-and-assertions/): The set of agent tools and assertion types used by autonomous tests.
+
+## Key blog posts
+- [Self-Healing Tests in 2026](https://wopee.io/blog/self-healing-in-sw-test-automation/): How auto-repairing locators cut test maintenance by up to 80%, with tool comparisons and CI integration tips.
+- [Predictive Test Selection Explained](https://wopee.io/blog/predictive-test-selection/): Using AI to run only the tests most likely to fail for a given change — cutting CI time by up to 50% without losing coverage.
+- [Playwright Bot: AI-Generated Playwright Tests, No Code](https://wopee.io/blog/playwright-bot-ai-powered-test-automation/): How AI generates, runs, and maintains Playwright tests automatically, and how it compares to Playwright codegen.
+- [Playwright Visual Testing: Complete Setup Guide (2026)](https://wopee.io/blog/getting-started-with-playwright-visual-testing/): Install Playwright, write your first screenshot test, manage baselines, and wire visual checks into CI.
+- [AI Testing Agents in 2026: Hype, Reality, and What Actually Works](https://wopee.io/blog/ai-testing-agents/): A grounded look at which AI testing capabilities are real today and where the field is heading.
+- [Top 5 Applitools Alternatives for Visual Testing](https://wopee.io/blog/applitools-alternatives/): Wopee.io, Percy, LambdaTest, Chromatic, and BackstopJS compared on pricing, setup complexity, and maintenance.
+
+## Optional
+- [Sitemap](https://wopee.io/sitemap.xml)
+- [Robots](https://wopee.io/robots.txt)
+- [GitHub: wopee-mcp](https://github.com/Wopee-io/wopee-mcp)
+- [npm: wopee-mcp](https://www.npmjs.com/package/wopee-mcp)

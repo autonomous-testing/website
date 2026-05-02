@@ -7,11 +7,68 @@ tags: [playwright, automation, testing, AI]
 image: ./pw-bot.png
 ---
 
+Playwright Bot is an AI agent that generates, runs, and maintains Playwright tests from a URL — no manual scripting required. It collects HTML and screenshots, uses an LLM to derive user flows, and emits adaptive Playwright code that handles cookie banners and shifting UI. Compared to Playwright codegen, which only records what you click, Playwright Bot decides what to test and rewrites scripts when your app changes.
+
+<!--truncate-->
+
 > ## Automating tests isn’t a luxury anymore. It’s a necessity.
 
 But here’s the catch: manual test creation is frustratingly slow, error-prone, and simply doesn’t scale for modern, rapidly evolving web applications.
 
-<!--truncate-->
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Playwright Bot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playwright Bot is an AI agent built on top of Playwright that generates end-to-end test cases automatically from a URL. It collects HTML and screenshots, uses a large language model to derive user flows, and outputs runnable Playwright test code without manual scripting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Playwright Bot different from Playwright codegen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playwright codegen records the actions you perform manually in a browser. Playwright Bot decides what to test on its own — it explores the app, identifies meaningful user flows, and generates assertions, then keeps tests up to date as the UI changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to write any code to use Playwright Bot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You point the bot at a URL and it generates Playwright test cases on its own. You can review and tweak the emitted code, but writing tests from scratch is not required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Playwright Bot handle cookie banners and dynamic content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Playwright Bot detects common patterns like cookie consent dialogs and dynamic widgets and handles them in the generated tests, so you do not need to special-case them by hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Playwright Bot self-heal tests when the UI changes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When a selector or flow breaks because of UI changes, Playwright Bot re-analyzes the page and updates the test rather than failing it outright, which is the main reason it scales beyond hand-written suites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Playwright Bot free to try?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can try Playwright Bot for free through Wopee.io — no credit card required. There is also an open Playwright AI Bot demo repository on GitHub."
+      }
+    }
+  ]
+}) }} />
 
 Playwright Bot changes that. It doesn’t just run your tests—it _creates_ them for you. Automatically. Using AI (LLMs). It’s part of a broader wave of [AI-powered testing agents](/ai-testing-agents/) transforming how teams approach quality. Forget about writing endless scripts or hunting down bugs caused by unstable locators. Playwright Bot does the heavy lifting so you don’t have to.
 
