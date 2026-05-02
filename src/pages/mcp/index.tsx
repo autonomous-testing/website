@@ -559,7 +559,7 @@ const McpPage = () => {
   return (
     <Layout
       title="MCP Server for Autonomous Testing | Wopee.io"
-      description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites — all from natural conversation."
+      description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch tests, generate artifacts, fetch results — all from natural conversation."
     >
       <HeroSection />
       <ProblemSection />

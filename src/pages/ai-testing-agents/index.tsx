@@ -83,7 +83,7 @@ const AiTestingAgentsPage = () => {
   return (
     <Layout
       title="AI Testing Agents | Wopee.io"
-      description="Autonomous AI testing agents that explore your web app, generate Playwright tests, and self-heal when your UI changes. Start testing in minutes, no coding required."
+      description="Autonomous AI testing agents that explore your web app, generate Playwright tests, and self-heal when UI changes. Start in minutes — no coding."
     >
       <HeroSection />
       <PartnerBrands />

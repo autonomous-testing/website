@@ -1,7 +1,7 @@
 ---
 slug: ultimate-guide-to-visual-testing
 title: Ultimate Guide to Visual Testing
-description: "The complete guide to visual testing for web applications. Learn how visual regression testing works, when to use it, and which tools work best in modern CI/CD pipelines."
+description: "Complete guide to visual testing for web apps. How visual regression testing works, when to use it, and which tools work best in modern CI/CD."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
 image: ./visual-bugs.webp
