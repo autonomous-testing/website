@@ -7,7 +7,11 @@ const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Wopee.io, the AI Testing Agents for Web Apps",
+  // Site title is appended to every page's <title> tag as "Page Title | <site title>".
+  // Kept short ("Wopee.io") so per-page titles can fit the descriptive context within
+  // Google's ~60-char SERP limit. Per-page Layout `title` props carry the keyword load
+  // (e.g. homepage: "AI Testing Agents for Web Apps").
+  title: "Wopee.io",
   tagline:
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
