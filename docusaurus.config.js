@@ -144,6 +144,8 @@ const config = {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
             to: "/blog/applitools-alternatives",
           },
+          // /integrations folded into /visual-testing
+          { from: "/integrations", to: "/visual-testing" },
         ],
       },
     ],
@@ -165,18 +167,21 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
+          // NOTE: with `trailingSlash: true`, generated URLs end in `/`.
+          // Bare-path patterns like "/l" do NOT match "/l/" — use "/l/**" or "/l/" instead.
+          // Ahrefs flagged 5 of these as orphan pages (May 2026) because the patterns silently failed.
           ignorePatterns: [
             "/tags/**",
             "/blog/**/page/**",
             "/billing/**",
-            "/blog/archive",
-            "/blog/authors",
+            "/blog/archive/**",
+            "/blog/authors/**",
             "/blog/tags/**",
-            "/marcel",
-            "/jan-beranek",
-            "/l",
-            "/bot",
-            "/team",
+            "/marcel/**",
+            "/jan-beranek/**",
+            "/l/**",
+            "/bot/**",
+            "/team/**",
           ],
         },
         gtag: { trackingID: "G-PVTHWLV51B" },
