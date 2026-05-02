@@ -57,14 +57,14 @@ export const CMDLoginForm = () => {
       <p className="text-xs text-center text-balance">
         By submitting this form you agree to Wopee.io{" "}
         <a
-          href="http://wopee.io/terms-and-conditions"
+          href="https://wopee.io/terms-and-conditions"
           target="_blank"
         >
           Terms and Conditions
         </a>{" "}
         and acknowledge the{" "}
         <a
-          href="http://wopee.io/gdpr"
+          href="https://wopee.io/gdpr"
           target="_blank"
         >
           Privacy Policy
