@@ -44,7 +44,7 @@ Why does this hit E2E suites hardest? Individual flake rates compound across sui
 
 The economic impact is measurable. A peer-reviewed industrial case study quantified the direct cost at 2.5% of total productive developer time: 1.1% investigating, 1.3% repairing (Source: [Kowalczyk et al., TUM](https://mediatum.ub.tum.de/doc/1730194/gbm0plj5hiwtahxthafyg16bl.cost-of-flaky-tests-in-ci.pdf), 2024). Atlassian reported over 150,000 developer hours per year consumed by flaky-test investigation in their Jira backend alone.
 
-The biggest cost shows up later, in trust. Once developers learn that red CI usually means "probably a flake," investigation stops happening at all. [INTERNAL_LINK: What the Data Says About the Real Cost of Flaky Tests]
+The biggest cost shows up later, in trust. Once developers learn that red CI usually means "probably a flake," investigation stops happening at all.
 
 ## What Causes E2E Test Flakiness?
 
@@ -62,8 +62,6 @@ The foundational taxonomy from Luo et al. (2014) analyzed 201 flaky-test fix com
 For E2E browser tests the picture shifts. Romano et al.'s ICSE 2021 study of 235 flaky UI test samples identified four additional E2E-specific categories: animation timing, platform/browser inconsistencies, test-runner API misuse, and DOM selector fragility (Source: [Romano et al., ICSE 2021](https://dl.acm.org/doi/10.1109/ICSE43902.2021.00139), 2021).
 
 What does that look like in practice? Your `click()` fires before the event listener attaches. Your assertion checks DOM state before a framework re-render completes. Your test passes locally and fails in CI because a third-party API responds 200ms slower under load.
-
-For each mechanism and its fix, see [INTERNAL_LINK: 7 Root Causes of Flaky E2E Tests (And How to Fix Each One)].
 
 ### Systemic flakiness clusters
 
@@ -113,7 +111,7 @@ Each test should run independently, in any order. Use fresh browser contexts per
 
 ### Mock external dependencies
 
-Real third-party API calls in CI are a category error. Use `page.route()` or an equivalent network-intercept layer to mock external services. Keep a small number of true end-to-end paths for critical journeys; stub everything else. [INTERNAL_LINK: Eliminating Flaky Tests in Playwright: Auto-Waiting, Isolation, and Network Mocking]
+Real third-party API calls in CI are a category error. Use `page.route()` or an equivalent network-intercept layer to mock external services. Keep a small number of true end-to-end paths for critical journeys; stub everything else.
 
 ### Use resilient locators
 
@@ -131,7 +129,7 @@ Practitioner reports back this up. Slack's CI failure rate dropped from 56.76% t
 
 <!-- BENCHMARK_DISCLAIMER: Results depend on workload, environment, and version. Reproduce on your own workload before drawing conclusions. -->
 
-Does that mean migrating frameworks eliminates all flakiness? No. Auto-waiting handles timing. It can't fix data pollution, external-dependency variance, or non-deterministic test logic. Think of it as removing the most common category from your flake budget, not zeroing the budget. [INTERNAL_LINK: Eliminating Flaky Tests in Playwright: Auto-Waiting, Isolation, and Network Mocking]
+Does that mean migrating frameworks eliminates all flakiness? No. Auto-waiting handles timing. It can't fix data pollution, external-dependency variance, or non-deterministic test logic. Think of it as removing the most common category from your flake budget, not zeroing the budget.
 
 ## How Should You Manage Flaky Tests at Scale?
 
@@ -159,8 +157,6 @@ The patterns that distinguish working quarantine programs from the failed ones s
 4. Quarantined tests keep running in non-blocking mode. You need the health signal to know when to reintroduce.
 5. Past-SLA tests get deleted, not re-quarantined indefinitely. Kent Beck's instinct (delete the non-deterministic test) is right for the long tail.
 
-For implementation details, see [INTERNAL_LINK: How to Build a Flaky Test Quarantine System That Doesn't Become Technical Debt].
-
 ## What's Next: AI, Systemic Flakiness, and the Research Frontier
 
 ### Pre-merge detection has the biggest payoff
@@ -176,15 +172,6 @@ Our honest read: AI can defensibly heal locator drift and trivial async patterns
 ### Systemic flakiness clusters
 
 Parry et al.'s 2025 finding (75% of flaky tests cluster by shared root cause) opens a different remediation playbook. Fix one underlying infrastructure issue and resolve 13+ tests at once. ML models trained on static test-case distance measures can identify these clusters without 10,000-rerun setups.
-
-## Other articles in this series
-
-This guide is the pillar of a four-post series on flaky tests in E2E suites.
-
-1. [INTERNAL_LINK: What the Data Says About the Real Cost of Flaky Tests]. Quantitative evidence for the business case behind flaky-test investment.
-2. [INTERNAL_LINK: 7 Root Causes of Flaky E2E Tests (And How to Fix Each One)]. Each root-cause category covered with code-level fixes.
-3. [INTERNAL_LINK: Eliminating Flaky Tests in Playwright: Auto-Waiting, Isolation, and Network Mocking]. Hands-on implementation guide for Playwright-based suites.
-4. [INTERNAL_LINK: How to Build a Flaky Test Quarantine System That Doesn't Become Technical Debt]. Quarantine lifecycle management for growing teams.
 
 <!-- AUTHOR_BIO_PLACEHOLDER
 Author: [Name]
@@ -239,7 +226,5 @@ Three concrete starting moves, in order of impact:
 1. If you're still on Selenium and writing new E2E tests, stop. Move new work to Playwright. The 45% async-wait category disappears as a budget line.
 2. Instrument flake telemetry before you try to fix anything. You can't manage what you can't see, and Spotify cut their flake rate 2 percentage points in two months through visibility alone, before deploying any enforcement.
 3. If you have a quarantine list, look at it today. Every entry without a named owner gets one this week, or it gets deleted. There is no third option that actually works.
-
-For implementation guidance, the [INTERNAL_LINK: Eliminating Flaky Tests in Playwright: Auto-Waiting, Isolation, and Network Mocking] guide is the next stop. If you need to build the business case first, [INTERNAL_LINK: What the Data Says About the Real Cost of Flaky Tests] has the quantitative framing.
 
 <!-- BENCHMARK_DISCLAIMER: Results depend on workload, environment, and version. Reproduce on your own workload before drawing conclusions. -->
