@@ -187,10 +187,19 @@ const config = {
             "/testing-bot/**",
           ],
         },
-        gtag: { trackingID: "G-PVTHWLV51B" },
-        googleTagManager: {
-          containerId: "GTM-T54MTRSZ",
-        },
+        // Only emit analytics in production builds. The gtag plugin's
+        // onRouteDidUpdate calls window.gtag() unguarded; in dev (and any
+        // browser with an ad/privacy blocker) window.gtag is undefined, so
+        // every internal navigation — including in-page anchor clicks like
+        // the blog post TOC — throws an "Uncaught runtime error" overlay.
+        gtag:
+          process.env.NODE_ENV === "production"
+            ? { trackingID: "G-PVTHWLV51B" }
+            : undefined,
+        googleTagManager:
+          process.env.NODE_ENV === "production"
+            ? { containerId: "GTM-T54MTRSZ" }
+            : undefined,
       },
     ],
   ],
