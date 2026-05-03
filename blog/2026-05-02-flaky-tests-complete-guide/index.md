@@ -3,11 +3,14 @@ slug: flaky-tests-complete-guide
 title: "Flaky Tests in E2E Test Suites: The Complete Guide to Detection, Root Causes, and Remediation"
 description: "Flaky tests affect 16% of tests at Google and erode CI trust. Learn root causes, detection methods, and proven remediation patterns for E2E test suites."
 tags: [flaky-tests, e2e-testing, test-automation, ci-cd, playwright, test-reliability, software-quality]
+image: ./ci-trust-erosion.png
 authors: marcel
 ---
 
 Flaky tests affect 16% of all tests at Google, and 84% of pass-to-fail CI transitions involve a flaky test (Source: [Google Testing Blog](https://testing.googleblog.com/2017/04/where-do-our-flaky-tests-come-from.html), 2017). In E2E suites specifically, async-wait issues drive roughly 45% of all flakiness, while the real cost isn't wasted developer time — it's the CI trust erosion that lets genuine regressions slip to production undetected.
 <!--truncate-->
+
+![Flaky tests erode CI trust: the four-stage progression from investigate, to rerun, to ignore, to regressions escaping into production](./ci-trust-erosion.png)
 
 If you're a test lead or engineering manager at a B2B SaaS company, you've probably watched your team default to "click rerun" instead of investigating failures. That behavioral shift is the inflection point where flaky tests stop being an annoyance and become a systemic threat. This guide synthesizes a decade of academic research and large-scale practitioner evidence from Google, Meta, Microsoft, Atlassian, Spotify, and Slack into a structured decision framework.
 
@@ -40,6 +43,8 @@ The data from large engineering organizations converges on a consistent picture:
 | GitHub Actions | 67.73% of rerun builds exhibited flaky behavior | Large-scale study, 2025 |
 
 Why does this hit E2E suites hardest? Individual per-test flake rates compound across suite size. For a suite of 300 tests each with a 0.5% individual failure rate, the probability of a clean suite run is 0.995^300 — roughly 22%. That means 78% of your suite runs will contain at least one flaky failure, even with individually "well-behaved" tests.
+
+![300-test grid visualization showing how a 0.5% per-test flake rate compounds to a 78% suite-failure probability — small per-test risks accumulate dramatically at suite scale](./flake-rate-suite-probability.png)
 
 The economic impact is measurable. A peer-reviewed industrial case study quantified the direct cost at 2.5% of total productive developer time — 1.1% investigating, 1.3% repairing (Source: [Kowalczyk et al., TUM](https://mediatum.ub.tum.de/doc/1730194/gbm0plj5hiwtahxthafyg16bl.cost-of-flaky-tests-in-ci.pdf), 2024). Atlassian reported over 150,000 developer hours per year consumed by flaky test investigation in their Jira backend alone.
 
@@ -135,6 +140,8 @@ Does this mean migrating frameworks eliminates all flakiness? No. Auto-waiting a
 ## How Should You Manage Flaky Tests at Scale?
 
 Quarantine — isolating known flaky tests from the CI gate while continuing to execute them for monitoring — is the dominant industry pattern. Every major engineering organization studied employs some variant. But without lifecycle management, quarantine becomes a permanent test graveyard.
+
+![The flaky-test quarantine lifecycle in five steps: detect the flaky test, move it out of the blocking CI path, assign a named owner with a deadline, monitor stability over time, and either reintroduce when health returns or delete past the SLA. Tests with no owner and no deadline become a test graveyard.](./quarantine-lifecycle.png)
 
 ### The Quarantine Trap
 
