@@ -3,7 +3,6 @@ slug: test-design-techniques
 title: "Essential test design techniques for web apps"
 description: "Proven test design techniques for web apps: boundary value analysis, equivalence partitioning, risk-based prioritization, and model-driven strategies."
 tags: [qa, test automation, test design techniques, user stories]
-image: /img/blog/test-design-techniques.png
 authors: marcel
 ---
 
