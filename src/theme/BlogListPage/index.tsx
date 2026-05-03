@@ -43,14 +43,14 @@ function BlogListPageContent(props: Props): ReactNode {
     <BlogLayout>
       <header className="mb-10 lg:mb-14">
         <p className="text-sm font-bold uppercase tracking-widest text-secondary-wopee dark:text-primary-wopee mb-3">
-          Wopee Blog
+          Wopee.io · Engineering Blog
         </p>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight m-0 text-gray-900 dark:text-white">
-          Notes on testing, AI agents &amp; quality
+          AI testing agents for web apps
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-          Practical playbooks from building and shipping autonomous testing
-          tooling at Wopee.io.
+          How AI testing agents work in production — from the engineers
+          building them at Wopee.io.
         </p>
       </header>
 
