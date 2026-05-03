@@ -283,3 +283,84 @@ a.navbar__item:hover {
 .footer a:hover {
   color: white;
 }
+
+/* ---------- Blog typography (post body inside .markdown) ---------- */
+.blog-post-page .markdown {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.blog-post-page .markdown > * + * {
+  margin-top: 1.25em;
+}
+
+.blog-post-page .markdown h2 {
+  font-size: 1.875rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.01em;
+}
+
+.blog-post-page .markdown h3 {
+  font-size: 1.375rem;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+}
+
+.blog-post-page .markdown blockquote {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: rgba(255, 204, 0, 0.06);
+  padding: 1em 1.25em;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme="light"] .blog-post-page .markdown blockquote {
+  background: rgba(112, 48, 160, 0.06);
+}
+
+.blog-post-page .markdown img {
+  display: block;
+  max-width: 100%;
+  max-height: 480px;
+  width: auto;
+  height: auto;
+  margin: 1.5em auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+}
+
+.blog-post-page .markdown img + em {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: -0.75em;
+}
+
+.blog-post-page .markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.blog-post-page .markdown a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Hide the default Docusaurus blog post header — our custom BlogPostHero
+   renders inside the swizzled BlogPostPage, but the MDX's own `BlogPostItem`
+   wrapper is bypassed. This rule remains as a safety net for any stray
+   default-theme markup. */
+.blog-post-page .markdown > h1:first-child {
+  display: none;
+}
+
+/* ---------- Blog list page ---------- */
+.blog-list-page .pagination-nav {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding-top: 1.5rem;
+}

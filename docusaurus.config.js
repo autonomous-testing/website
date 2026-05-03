@@ -106,6 +106,7 @@ const config = {
         },
       };
     },
+    require.resolve("./src/plugins/blog-related"),
     [
       "@docusaurus/plugin-client-redirects",
       {
@@ -162,6 +163,7 @@ const config = {
         // },
         blog: {
           exclude: ["**/blog/2019*"],
+          blogSidebarCount: 0,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
