@@ -74,19 +74,10 @@ const config = {
       };
     },
     function (_context, _options) {
-      const isDev = process.env.NODE_ENV !== "production";
       return {
         name: "custom-script-plugin",
         injectHtmlTags() {
           return {
-            headTags: isDev
-              ? [
-                  {
-                    tagName: "script",
-                    attributes: { src: "/js/dev-overlay-suppressor.js" },
-                  },
-                ]
-              : [],
             bodyTags: [],
             preBodyTags: [
               {
