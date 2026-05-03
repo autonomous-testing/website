@@ -78,6 +78,22 @@ const config = {
         name: "custom-script-plugin",
         injectHtmlTags() {
           return {
+            headTags: [
+              {
+                tagName: "script",
+                innerHTML: `(function(){
+  var BENIGN=/ResizeObserver loop/i;
+  var stop=function(e){if(e&&e.stopImmediatePropagation)e.stopImmediatePropagation();if(e&&e.preventDefault)e.preventDefault();return true;};
+  window.addEventListener('error',function(e){if(BENIGN.test((e&&e.message)||'')||BENIGN.test((e&&e.error&&e.error.message)||''))return stop(e);},true);
+  window.addEventListener('unhandledrejection',function(e){var m=e&&e.reason&&(e.reason.message||e.reason);if(BENIGN.test(typeof m==='string'?m:''))return stop(e);},true);
+  if(typeof window.ResizeObserver==='function'){
+    var R=window.ResizeObserver;
+    window.ResizeObserver=function(cb){return new R(function(entries,observer){window.requestAnimationFrame(function(){try{cb(entries,observer);}catch(_){}});});};
+    window.ResizeObserver.prototype=R.prototype;
+  }
+})();`,
+              },
+            ],
             bodyTags: [],
             preBodyTags: [
               {
@@ -106,6 +122,7 @@ const config = {
         },
       };
     },
+    require.resolve("./src/plugins/blog-related"),
     [
       "@docusaurus/plugin-client-redirects",
       {
@@ -162,6 +179,8 @@ const config = {
         // },
         blog: {
           exclude: ["**/blog/2019*"],
+          showReadingTime: true,
+          blogSidebarCount: 0,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

@@ -3,7 +3,7 @@ slug: test-design-techniques-w-wopee
 title: "Test design techniques with Wopee.io"
 description: "Follow-up to our test design guide: ready-to-use prompts for BVA/EP, decision tables, and risk-based testing — using examples with the Swag Labs demo project inside Wopee.io."
 tags: [qa, test automation, test design techniques, prompts]
-image: /blog/wopee-commander.png
+image: ./wopee-commander.png
 authors: marcel
 ---
 
