@@ -28,6 +28,15 @@ const LOGIN_BUTTONS = [
   },
 ];
 
+const buildProjectName = (appUrl: string): string => {
+  try {
+    const normalized = /^https?:\/\//i.test(appUrl) ? appUrl : `https://${appUrl}`;
+    return new URL(normalized).hostname.replace(/^www\./i, "");
+  } catch {
+    return appUrl;
+  }
+};
+
 const LoginDialog = ({
   mode,
   prompt,
@@ -55,6 +64,7 @@ const LoginDialog = ({
         prompt: encodeURIComponent(prompt),
         appUrl: encodeURIComponent(appUrl),
         appType: encodeURIComponent(appType),
+        projectName: encodeURIComponent(buildProjectName(appUrl)),
         provider: encodeURIComponent(provider),
       });
     }
