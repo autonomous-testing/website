@@ -95,7 +95,7 @@ const HomeHeroVibe = () => {
       <section className="relative z-10 flex flex-col items-center gap-4 md:gap-6">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200">
           <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee animate-pulse" />
-          AI Testing Agents
+          AI Testing Agents · The AI testing tool for your web app
         </span>
         <h1
           className="font-bold text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pretty leading-[1] tracking-tighter"
@@ -114,8 +114,8 @@ const HomeHeroVibe = () => {
           </span>
         </h1>
         <h2 className="max-w-2xl text-center text-base sm:text-lg md:text-xl font-normal text-pretty text-gray-700 dark:text-gray-200 leading-relaxed px-4">
-          Wopee.io finds bugs before your users do. No test scripts, no
-          maintenance, no QA backlog. Just deploy and sleep well.
+          The AI testing tool that finds bugs before your users do.
+          No scripts, no maintenance. Deploy and sleep well.
         </h2>
       </section>
 
