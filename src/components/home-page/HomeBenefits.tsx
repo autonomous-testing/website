@@ -81,10 +81,11 @@ const HomeBenefits = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-2">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary-wopee dark:text-yellow-400 mb-2">
-        6 ways Wopee.io makes testing better.
+        Why teams use Wopee as their AI testing tool.
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10">
-        AI-driven test automation that eliminates traditional testing barriers.
+        Automated web testing powered by AI — six ways Wopee removes traditional
+        testing barriers.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mb-10">
         {benefits.map((benefit, idx) => (
