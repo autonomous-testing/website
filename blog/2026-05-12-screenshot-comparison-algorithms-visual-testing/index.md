@@ -19,8 +19,6 @@ Most visual regression testing (VRT) advice stops at "use Playwright" or "buy Ap
 
 ## Why the diff algorithm matters more than the tool
 
-![Bold typographic stat card on near-black background. "40%" in large Wopee purple text dominates the center. Below reads "of teams abandon visual testing due to maintenance burden" in white. Left side shows a three-node causal chain in warning yellow: "False positives → Review fatigue → Abandonment." Source citation in neutral grey at bottom right.](./images/09-abandon-rate-stat.png)
-
 ![Taxonomy tree diagram. Root node "Screenshot Comparison" in Wopee purple branches into four class nodes: Pixel-Based, Structural, Fingerprint, AI-Assisted. Six leaf nodes show tool names and one-line characteristics: pixelmatch "28ms · Playwright default," ODiff "4ms · SIMD drop-in," SSIM/bezkrovny "85ms · patch-based," pHash "under 5ms · pre-filter only," Applitools Visual AI "cloud ensemble," Percy Visual Review Agent "AI triage on pixel diff."](./images/10-algorithm-family-tree.png)
 
 A test suite's signal-to-noise ratio is set by the comparison algorithm, not the vendor. Pick the wrong one and you'll either drown in anti-aliasing noise or miss a regression that shipped a 2-pixel button offset to production.
@@ -29,15 +27,11 @@ The empirical evidence here is unflattering. A 2025 ICST study of 94 open-source
 
 Here's the staked opinion. If you're paying $400+/month for a vendor's "99.9999% accuracy" claim while still running pixelmatch defaults in CI, you're buying review UX, not better diffing. The algorithm market is commoditized. The dashboards aren't. That's a fine reason to buy a tool. It's not a reason to skip understanding what the diff engine does.
 
-For broader framing on tool selection and baseline strategy, see [INTERNAL_LINK: Visual Regression Testing: The Complete Guide].
-
 <!-- BENCHMARK_DISCLAIMER: All performance numbers in this guide are reported by the linked sources and depend on workload, environment, and version. Reproduce on your own image corpus before drawing firm conclusions. -->
 
 ## How pixelmatch works under the hood
 
 ![Left-to-right process diagram showing five pixelmatch pipeline stages: screenshot pair in, YIQ color-space conversion, per-pixel distance check annotated "threshold: 0.2", anti-aliasing detection gate annotated "includeAA: false", diff count output annotated "maxDiffPixels".](./images/02-pixelmatch-yiq-pipeline.png)
-
-![Warning card split vertically. Left side shows a Playwright config snippet with "threshold: 0.2" highlighted in warning yellow. Right side shows a large red strikethrough over the text "20% of pixels can differ" and beneath it a white checkmark with "per-pixel YIQ color-distance tolerance." Warning banner at top reads "Most Common pixelmatch Misconfiguration."](./images/06-threshold-misread-antipattern.png)
 
 Pixelmatch is the de facto standard for open-source pixel diffing. It's roughly 150 lines of dependency-free JavaScript, used internally by Playwright's `toHaveScreenshot()`, jest-image-snapshot, BackstopJS, Lost Pixel (until ODiff), and many Cypress plugins ([mapbox/pixelmatch GitHub](https://github.com/mapbox/pixelmatch)). Knowing what it actually does is the first knob you should be able to turn.
 
@@ -67,8 +61,6 @@ export default defineConfig({
 **Benchmarked performance** (1440×900 desktop screenshot, reported by [dev.to/dennis-ddev (2025)](https://dev.to/dennis-ddev/screenshot-diffing-pixel-level-comparison-techniques-18k)): about 8 ms for a 375×812 mobile viewport, 28 ms for desktop, 140 ms for a 1440×5000 full-page capture. Fast enough that the algorithm is almost never the bottleneck. Screenshot capture and baseline I/O usually dominate.
 
 What pixelmatch is bad at: it doesn't reason about structure. If a navbar shifts down 4 pixels because a banner appears above it, pixelmatch will flag every pixel below the shift. The diff is technically correct and operationally useless.
-
-For configuration trade-offs in detail, see [INTERNAL_LINK: Visual Regression Testing with Playwright and Docker: A Practical Setup Guide].
 
 ## SSIM: structural similarity across patches
 
@@ -154,13 +146,9 @@ Process startup cost is non-trivial when you're diffing 5,000+ screenshots per C
 
 **When ODiff is the right call.** Large screenshot corpora (1,000+ snapshots per run), aggressive CI parallelism, or any pipeline where the diff step is measurably slowing PR turnaround. For a 50-screenshot Playwright suite, pixelmatch is fine and the simpler dependency story usually wins.
 
-**What it isn't.** ODiff is still a pixel diff. It doesn't help with structural noise, anti-aliasing across OSes, or dynamic content. The mitigations for those (Docker, font determinism, masking) apply identically. See [INTERNAL_LINK: Why Your Visual Regression Tests Keep Failing: 8 False Positive Causes and How to Fix Each] for the full list.
+**What it isn't.** ODiff is still a pixel diff. It doesn't help with structural noise, anti-aliasing across OSes, or dynamic content. The mitigations for those (Docker, font determinism, masking) apply identically.
 
 ## AI-assisted diffing: Applitools, Percy, and the LLM trap
-
-![Three-tier architecture stack. Bottom layer in Wopee purple reads "Pixel Diff — Deterministic Detection" with label "Cheap · Fast · Always runs." Middle layer reads "Vision-Language Model — Semantic Classification" showing cosmetic noise filtered out in grey. Top layer reads "Human Review Queue — ~40% fewer items to review."](./images/07-ai-vrt-layered-architecture.png)
-
-![Square typographic pull-out card on near-black background. Two large white lines read "The algorithm market" and "is commoditized." A third line in Wopee purple reads "The dashboards aren't." Below a thin white divider, smaller white text reads "Pay for review UX, cloud rendering, and audit trails." Tool names Argos, Chromatic, Percy, Applitools in neutral grey at the bottom.](./images/13-algorithm-market-quote.png)
 
 ![Split panel comparison. Left panel labeled "Large Language Models" shows two overlapping map schematics with a blank zone where a street is missing. Three stacked labels with red X marks read "Claude: no difference found," "Gemini: no difference found," "ChatGPT: no difference found." Right panel labeled "9×9-pixel patch CNN (Dirnstorfer, 2025)" shows the same maps with a white bounding box around the missing street and a green checkmark labeled "48K-param CNN: missing street detected."](./images/14-llm-vs-cnn-visual-diff.png)
 
@@ -184,8 +172,6 @@ If a tool's pitch is "we use GPT-4V to compare your screenshots," that should ra
 
 ![Decision flowchart starting at "How many screenshots per CI run?" branching through corpus size and false-positive questions to four terminal recommendation nodes: pixelmatch for small corpora, SSIM for persistent AA noise, ODiff for high-volume CI, and pHash plus ODiff pre-filter combo for very large corpora.](./images/05-algorithm-decision-tree.png)
 
-![Grouped bar chart with four algorithm clusters on the x-axis: pixelmatch, SSIM, pHash, ODiff. Two bars per cluster — failure red for false-positive rate and neutral grey for false-negative risk. pHash has a very tall false-negative bar labeled "unusable as primary." Y-axis labeled "Relative rate (directional)."](./images/12-fp-fn-tradeoff-chart.png)
-
 There isn't one right answer. The decision lives at the intersection of corpus size, environmental stability, and how much human review time you can absorb. Here's the working matrix:
 
 | Algorithm | Speed (1440×900) | False positive rate | False negative rate | Best for |
@@ -205,8 +191,6 @@ Don't pay for "AI accuracy" claims without a methodology disclosure. Pay for rev
 
 ![Side-by-side mockup of a nav bar UI component. Left panel labeled "macOS (local)" shows slightly lighter anti-aliased text edges. Center shows a pixel diff overlay strip with red markers on text edges. Right panel labeled "Docker (CI)" shows the same component with crisper Linux font rendering. Warning banner reads "No code changes. 847 differing pixels."](./images/08-environment-determinism-before-after.png)
 
-![Six-node horizontal causal chain progressing in color from neutral grey at left to failure red at right. Nodes read: "No Docker environment," "Rendering noise enters baselines," "pixelmatch flags AA as regressions," "Threshold raised to suppress noise," "Real regressions slip through," "Team loses confidence — suite abandoned." Arrows between nodes are labeled with failure mechanisms.](./images/11-threshold-debt-chain.png)
-
 Here's the part the algorithm comparison tends to obscure. **The single highest-leverage intervention is environmental determinism, not algorithm choice.**
 
 Playwright's own docs are explicit: "Browser rendering can vary based on the host OS, version, settings, hardware, power source, headless mode, and other factors. For consistent screenshots, run tests in the same environment where the baseline screenshots were generated" ([Playwright visual comparisons](https://playwright.dev/docs/test-snapshots)). Macros translate to:
@@ -218,8 +202,6 @@ Playwright's own docs are explicit: "Browser rendering can vary based on the hos
 5. **Pin browser versions.** Disable browser auto-updates in CI. Bundled Playwright browsers are pinned per Playwright release; that's the cheap way.
 
 Threshold tuning is the most common false-positive mitigation and the least effective one. The ShakaCode analysis is blunt: "increasing pixel-difference detection thresholds either masks genuine regressions or perpetuates false positives from minor rendering variations" ([ShakaCode, 2024](https://www.shakacode.com/blog/flaky-visual-regression-tests-and-what-to-do-about-them/)). Most teams turn the threshold up because it's easier than fixing Docker. That's a $50K-per-year mistake at scale, paid in undetected regressions.
-
-For the full taxonomy of false-positive causes and their mitigations, see [INTERNAL_LINK: Why Your Visual Regression Tests Keep Failing: 8 False Positive Causes and How to Fix Each].
 
 <!-- AUTHOR_BIO_PLACEHOLDER
 Author: [Name]
@@ -264,5 +246,3 @@ Probably not at first. Playwright's built-in `toHaveScreenshot()`, locked to a D
 Start by inspecting your current setup. Run `grep` for `threshold:` and `maxDiffPixels` in your Playwright or Vitest config and confirm you know which dimension each one controls. Capture a single page in Docker, then capture it again on macOS and diff the two. That delta is the magnitude of environment noise you're tolerating. If it's larger than the changes you'd be embarrassed to ship, your problem isn't the algorithm.
 
 If you're already containerized and still seeing noise, evaluate ODiff for raw speed before paying for a vendor. If you're past the point where reviewers can absorb the diff volume, look at Argos, Chromatic, or Percy, and treat the algorithm question as resolved.
-
-For the broader picture of how this fits into VRT strategy, return to [INTERNAL_LINK: Visual Regression Testing: The Complete Guide].
