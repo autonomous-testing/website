@@ -7,7 +7,7 @@ authors: marcel
 image: ./images/01-algorithm-speed-comparison.png
 ---
 
-Pixelmatch, the diff engine behind Playwright's `toHaveScreenshot()`, processes a 1440×900 desktop screenshot in roughly 28 ms using YIQ NTSC color-distance math from [Kotsarenko & Ramos (2010)](https://github.com/mapbox/pixelmatch). SSIM costs about 85 ms on the same image. ODiff finishes the same job 8× faster than pixelmatch ([Argos engineering, 2024](https://argos-ci.com/blog/odiff)). Choosing between them is what separates a useful visual suite from a noise machine.
+Pixelmatch, the diff engine behind Playwright's `toHaveScreenshot()`, processes a 1440×900 desktop screenshot in roughly 28 ms using YIQ NTSC color-distance math from [Kotsarenko & Ramos (2010)](https://github.com/mapbox/pixelmatch). SSIM costs about 85 ms on the same image. ODiff finishes the same job 8× faster than pixelmatch ([ODiff README](https://github.com/dmtrKovalenko/odiff)). Choosing between them is what separates a useful visual suite from a noise machine.
 
 <!--truncate-->
 
@@ -23,7 +23,7 @@ Most visual regression testing (VRT) advice stops at "use Playwright" or "buy Ap
 
 A test suite's signal-to-noise ratio is set by the comparison algorithm, not the vendor. Pick the wrong one and you'll either drown in anti-aliasing noise or miss a regression that shipped a 2-pixel button offset to production.
 
-The empirical evidence here is unflattering. A 2025 ICST study of 94 open-source developers found that flakiness and long execution times are the top obstacles to UI test adoption in CI, with most teams using ad-hoc trial-and-error instead of systematic mitigation ([Gan, Liang, Brown, ICST 2025](https://2025.icse-conferences.org/track/icst-2025-papers)). One credible practitioner survey reports that about 40% of teams abandon visual testing because of maintenance burden ([Yuri Kan, Senior QA Lead, 2024](https://yrkan.com/blog/visual-ai-testing/)). Most of that burden traces back to false positives that a different algorithm or threshold would have absorbed.
+The empirical evidence here is unflattering. A 2025 ICST study of 94 open-source developers found that flakiness and long execution times are the top obstacles to UI test adoption in CI, with most teams using ad-hoc trial-and-error instead of systematic mitigation ([Gan, Liang, Brown, ICST 2025](https://conf.researchr.org/details/icst-2025/icst-2025-papers/17/Challenges-Strategies-and-Impacts-A-Qualitative-Study-on-UI-Testing-in-CI-CD-Proce)). One credible practitioner survey reports that about 40% of teams abandon visual testing because of maintenance burden ([Yuri Kan, Senior QA Lead, 2024](https://yrkan.com/blog/visual-ai-testing/)). Most of that burden traces back to false positives that a different algorithm or threshold would have absorbed.
 
 Here's the staked opinion. If you're paying $400+/month for a vendor's "99.9999% accuracy" claim while still running pixelmatch defaults in CI, you're buying review UX, not better diffing. The algorithm market is commoditized. The dashboards aren't. That's a fine reason to buy a tool. It's not a reason to skip understanding what the diff engine does.
 
@@ -126,7 +126,7 @@ I haven't seen a major OSS VRT tool ship pHash pre-filtering by default. That ga
 
 ![Split diagram comparing pixelmatch and ODiff CPU processing. Left panel shows a narrow single-slot CPU register labeled "pixelmatch — 1 pixel per instruction, ~28ms." Right panel shows a wide 8-slot Wopee purple SIMD register labeled "ODiff — 8–16 pixels per instruction, ~4ms." SIMD variant chips SSE2 (4), AVX2 (8), AVX-512 (16) listed beside the right panel. Center annotation reads "8× speedup (Argos, 2024)."](./images/15-odiff-simd-vectorization.png)
 
-ODiff is what you reach for when pixelmatch becomes the bottleneck. Originally written in OCaml and now in Zig, it exposes SSE2, AVX2, AVX512, and NEON SIMD code paths to vectorize the per-pixel comparison loop. Argos, the open-source visual review platform, switched to ODiff from pixelmatch and reported an **8× speedup** on the same workload ([Argos engineering, 2024](https://argos-ci.com/blog/odiff)). Lost Pixel uses ODiff internally as well.
+ODiff is what you reach for when pixelmatch becomes the bottleneck. Originally written in OCaml and now in Zig, it exposes SSE2, AVX2, AVX512, and NEON SIMD code paths to vectorize the per-pixel comparison loop. Argos, the open-source visual review platform, switched to ODiff from pixelmatch and reported an **8× speedup** on the same workload ([ODiff README](https://github.com/dmtrKovalenko/odiff)). Lost Pixel uses ODiff internally as well.
 
 The algorithm is conceptually the same as pixelmatch (YIQ color distance, anti-aliasing-aware comparison). The difference is the implementation. SIMD instructions let one CPU instruction operate on 4, 8, or 16 pixels at once, which dramatically reduces the constant factor on the inner loop. Modern CPUs also have wider AVX-512 registers that the Zig codebase explicitly targets.
 
