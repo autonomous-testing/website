@@ -32,7 +32,7 @@ export default function FeaturedPostHero({ post, className }: FeaturedPostHeroPr
         <Link
           to={permalink}
           aria-label={title}
-          className="block aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden bg-gradient-to-br from-secondary-wopee/30 to-primary-wopee/30 no-underline group"
+          className="block aspect-[16/9] overflow-hidden bg-gradient-to-br from-secondary-wopee/30 to-primary-wopee/30 no-underline group"
         >
           {cover ? (
             <img
