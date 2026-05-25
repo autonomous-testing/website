@@ -98,7 +98,7 @@ The American Express team's [jest-image-snapshot](https://github.com/americanexp
 
 ## Perceptual hashing (pHash) as a pre-filter
 
-![Decision flow diagram: a screenshot pair enters pHash fingerprint generation at under 5ms, then a Hamming distance decision diamond. The "yes, distance under 3" branch exits to a green "Unchanged — skipped" node labeled "60–80% of screenshots exit here." The "no" branch continues to pixelmatch at 28ms or SSIM at 85ms.](./images/03-phash-prefilter-pipeline.png)
+![Decision flow diagram: a screenshot pair enters pHash fingerprint generation at under 5ms, then a Hamming distance decision diamond. The "yes, distance under 3" branch exits to a green "Unchanged — skipped" node labeled "60–80% of screenshots exit here." The "no" branch continues to pixelmatch at 28ms or SSIM at 85ms.](./images/03-phash-prefilter-pipeline.webp)
 
 Perceptual hashing converts an image to a compact 64-bit fingerprint via a 2D Discrete Cosine Transform on a heavily downsampled (typically 32×32) grayscale version. Two images are compared by computing the Hamming distance between their hashes. Hash generation costs about 4 ms, and the comparison itself is well under 0.01 ms ([dev.to benchmarks, 2025](https://dev.to/dennis-ddev/screenshot-diffing-pixel-level-comparison-techniques-18k)).
 
@@ -150,7 +150,7 @@ Process startup cost is non-trivial when you're diffing 5,000+ screenshots per C
 
 ## AI-assisted diffing: Applitools, Percy, and the LLM trap
 
-![Split panel comparison. Left panel labeled "Large Language Models" shows two overlapping map schematics with a blank zone where a street is missing. Three stacked labels with red X marks read "Claude: no difference found," "Gemini: no difference found," "ChatGPT: no difference found." Right panel labeled "9×9-pixel patch CNN (Dirnstorfer, 2025)" shows the same maps with a white bounding box around the missing street and a green checkmark labeled "48K-param CNN: missing street detected."](./images/14-llm-vs-cnn-visual-diff.png)
+![Split panel comparison. Left panel labeled "Large Language Models" shows two overlapping map schematics with a blank zone where a street is missing. Three stacked labels with red X marks read "Claude: no difference found," "Gemini: no difference found," "ChatGPT: no difference found." Right panel labeled "9×9-pixel patch CNN (Dirnstorfer, 2025)" shows the same maps with a white bounding box around the missing street and a green checkmark labeled "48K-param CNN: missing street detected."](./images/14-llm-vs-cnn-visual-diff.webp)
 
 The "AI in VRT" pitch needs careful disambiguation, because two genuinely different things sit under the same marketing language.
 
@@ -189,7 +189,7 @@ Don't pay for "AI accuracy" claims without a methodology disclosure. Pay for rev
 
 ## Production considerations: environment beats algorithm
 
-![Side-by-side mockup of a nav bar UI component. Left panel labeled "macOS (local)" shows slightly lighter anti-aliased text edges. Center shows a pixel diff overlay strip with red markers on text edges. Right panel labeled "Docker (CI)" shows the same component with crisper Linux font rendering. Warning banner reads "No code changes. 847 differing pixels."](./images/08-environment-determinism-before-after.png)
+![Side-by-side mockup of a nav bar UI component. Left panel labeled "macOS (local)" shows slightly lighter anti-aliased text edges. Center shows a pixel diff overlay strip with red markers on text edges. Right panel labeled "Docker (CI)" shows the same component with crisper Linux font rendering. Warning banner reads "No code changes. 847 differing pixels."](./images/08-environment-determinism-before-after.webp)
 
 Here's the part the algorithm comparison tends to obscure. **The single highest-leverage intervention is environmental determinism, not algorithm choice.**
 
