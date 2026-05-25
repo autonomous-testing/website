@@ -45,6 +45,7 @@ export default function HomepageHowItWorks(): JSX.Element {
                 <img
                   className="avatar__photo avatar__photo--xl"
                   src="/img/customers/avatars/juraj-multitude.jpeg"
+                  alt="Juraj Žabka, Engineering Lead at Multitude"
                 />
                 <div className="avatar__intro text-left">
                   <div className="avatar__name">Juraj Žabka</div>
@@ -79,6 +80,7 @@ export default function HomepageHowItWorks(): JSX.Element {
               <img
                 className="avatar__photo avatar__photo--xl"
                 src="/img/customers/avatars/martin-livesport.webp"
+                alt="Martin Šimon, Test Automation Lead at Livesport"
               />
               <div className="avatar__intro text-left">
                 <div className="avatar__name">Martin Šimon</div>

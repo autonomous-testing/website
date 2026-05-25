@@ -23,6 +23,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <img
               src={setupImg}
               className="object-contain"
+              alt="Simple bot setup interface for autonomous testing"
             />
           </div>
 
@@ -42,6 +43,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <img
               src={modelImg}
               className=" object-contain"
+              alt="Bot studies the app and generates regression tests"
             />
           </div>
 
@@ -61,6 +63,7 @@ export default function HomepageHowItWorks(): JSX.Element {
             <img
               src={cmdImg}
               className="object-contain"
+              alt="Wopee.io Commander dashboard for monitoring test results"
             />
           </div>
 
