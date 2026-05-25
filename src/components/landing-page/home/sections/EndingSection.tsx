@@ -26,7 +26,7 @@ const EndingSection = ({ bot }: { bot?: boolean }) => {
           <div className="h-20">
             <ButtonPrimary
               label={bot ? "Get early access" : "Start free trial"}
-              href="https://cmd.wopee.io"
+              href="https://cmd.wopee.io/login"
               className="w-60 h-[50px]"
             />
             <p className="text-center text-sm italic">

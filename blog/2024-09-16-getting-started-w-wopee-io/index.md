@@ -51,7 +51,7 @@ You can explore these features in detail by watching the video above.
 
 Here’s a quick guide (covered in more detail in the video) to setting up and running your first test using Wopee.io:
 
-1. **Create an Account:** Head over to [CMD.wopee.io](https://cmd.wopee.io/) and create your free account.
+1. **Create an Account:** Head over to [CMD.wopee.io](https://cmd.wopee.io/login) and create your free account.
 2. **Set Up a Project:** Once logged in, provide the URL of your web app. The autonomous testing bot will crawl the app and gather all necessary data to generate test cases.
 3. **Review Generated Test Scenarios:** Wopee.io will automatically generate test cases based on the app's structure and functionality.
 4. **Run Your First Test:** With just a few clicks, you can run the generated tests and review a detailed report covering any issues identified during the analysis.
@@ -77,7 +77,7 @@ Want to learn more? Watch the full webinar above, or sign up for a free trial to
 
 Interested in trying out Wopee.io?
 
-Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo/) with us.
+Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io/login) or [book a demo](https://wopee.io/book-demo/) with us.
 
 :::
 

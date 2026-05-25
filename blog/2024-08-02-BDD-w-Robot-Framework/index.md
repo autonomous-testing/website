@@ -281,6 +281,6 @@ Getting started with BDD in Robot Framework is a powerful way to align developme
 
 - **Empower Your Team with BDD-Copilot**: Learn about our workshop on **Robot Framework BDD-Copilot** and how it can enhance your team's BDD practices. **[Contact us](mailto:help@wopee.io)** for more details.
 
-- **Experience Fully Autonomous Testing**: Sign up for a free trial of [Autonomous Testing](https://cmd.wopee.io) and see firsthand how fully autonomous testing can revolutionize your QA processes. New to Wopee.io? Check out our [getting started guide](/blog/getting-started-w-wopee-io-automation/).
+- **Experience Fully Autonomous Testing**: Sign up for a free trial of [Autonomous Testing](https://cmd.wopee.io/login) and see firsthand how fully autonomous testing can revolutionize your QA processes. New to Wopee.io? Check out our [getting started guide](/blog/getting-started-w-wopee-io-automation/).
 
 :::

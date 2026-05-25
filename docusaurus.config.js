@@ -246,7 +246,7 @@ const config = {
           { to: "/blog", label: "Blog", position: "left" },
           { to: "/about-us", label: "About us", position: "left" },
           {
-            to: "https://cmd.wopee.io",
+            to: "https://cmd.wopee.io/login",
             target: "_blank",
             label: "Sign In",
             position: "right",
@@ -254,7 +254,7 @@ const config = {
             id: "login-button",
           },
           {
-            to: "https://cmd.wopee.io",
+            to: "https://cmd.wopee.io/login",
             target: "_blank",
             label: "Start for free",
             position: "right",

@@ -141,7 +141,7 @@ const TeamPage = () => {
         {/* CTA */}
         <section className="pb-16 px-4 text-center">
           <a
-            href="https://cmd.wopee.io"
+            href="https://cmd.wopee.io/login"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 text-sm font-medium rounded-lg border border-solid border-gray-600 opacity-80 hover:opacity-100 transition-opacity"

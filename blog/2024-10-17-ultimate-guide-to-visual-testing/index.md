@@ -315,6 +315,6 @@ Experience the ease and affordability of Wopee.io's Visual Regression Testing. S
 
 <br />
 
-👉 Start [Your Free Trial Now](https://cmd.wopee.io/) and see how effortless visual testing can be.
+👉 Start [Your Free Trial Now](https://cmd.wopee.io/login) and see how effortless visual testing can be.
 
 :::

@@ -28,7 +28,7 @@ const HowItWorksIntro = () => {
       <div className="px-2 lg:px-0">
         <ButtonPrimary
           label="Start free trial"
-          href="https://cmd.wopee.io"
+          href="https://cmd.wopee.io/login"
           className="w-60 h-[50px]"
         />
       </div>
