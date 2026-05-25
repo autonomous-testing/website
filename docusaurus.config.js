@@ -140,6 +140,7 @@ const config = {
           { from: "/vc", to: "/" },
           { from: "/partner", to: "/" },
           { from: "/wopee-commander", to: "/" },
+          { from: "/testing-bot", to: "/ai-testing-agents" },
           { from: "/guides/wopee-mcp", to: "/mcp" },
           {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
