@@ -1,0 +1,5 @@
+{
+  "theme.blog.tagTitle": {
+    "message": "Tag: {tagName}"
+  }
+}
