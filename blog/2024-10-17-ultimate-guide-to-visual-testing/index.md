@@ -156,7 +156,7 @@ Open-source tools are cost-effective but may need more manual setup. Commercial 
 ### Criteria for Tool Selection
 
 Consider your team's size, budget, and technical requirements.
-For more ideas about potential tools, check out our other blog post: [Top 5 Applitools Alternatives for Visual Testing (2024)](https://wopee.io/blog/top-5-applitools-alternatives-for-visual-testing--2024/). You can also explore our GitHub repository for [getting started with Playwright Visual Testing](https://github.com/autonomous-testing/ws-getting-started-w-playwright-visual-testing).
+For more ideas about potential tools, check out our other blog post: [Top 5 Applitools Alternatives for Visual Testing (2024)](https://wopee.io/blog/applitools-alternatives/). You can also explore our GitHub repository for [getting started with Playwright Visual Testing](https://github.com/autonomous-testing/ws-getting-started-w-playwright-visual-testing).
 
 ## 6. Implementation Strategies for Test Automation Engineers
 
