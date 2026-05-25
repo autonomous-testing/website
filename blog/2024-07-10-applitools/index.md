@@ -81,7 +81,7 @@ Wopee.io integrates seamlessly with frameworks like **Playwright, Cypress, WebDr
 
 :::tip Get Started Today 🔥
 
-**Ready to simplify your visual testing?** [Start your free trial with Wopee.io](https://cmd.wopee.io) today and see the difference in minutes.
+**Ready to simplify your visual testing?** [Start your free trial with Wopee.io](https://cmd.wopee.io/login) today and see the difference in minutes.
 
 :::
 
@@ -155,6 +155,6 @@ It offers transparent pricing, minimal setup, and effortless scalability—perfe
 
 :::tip Ready to make the switch? 🔥
 
-**Try Wopee.io [free for 1 month](https://cmd.wopee.io)** and experience the simplicity and power of visual regression testing without the high costs.
+**Try Wopee.io [free for 1 month](https://cmd.wopee.io/login)** and experience the simplicity and power of visual regression testing without the high costs.
 
 :::

@@ -29,7 +29,7 @@ const HomeEndingSection = () => {
             <ButtonPrimary
               id="cta-start-testing"
               label="Start for free"
-              href="https://cmd.wopee.io"
+              href="https://cmd.wopee.io/login"
               className="w-60 h-[50px]"
             />
             <p className="text-center text-sm italic">

@@ -131,4 +131,4 @@ By embracing vibe coding, testing, and engineering today, and using enabling too
 
 ## Ready to start your journey?
 
-Partner with us to explore AI Testing Agents and redefine your testing processes. [Work with us](https://wopee.io/marcel) to begin your journey toward autonomous and intelligent testing today.
+Partner with us to explore AI Testing Agents and redefine your testing processes. [Work with us](https://wopee.io/marcel/) to begin your journey toward autonomous and intelligent testing today.

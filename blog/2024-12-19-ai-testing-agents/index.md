@@ -167,4 +167,4 @@ As we advance, companies that embrace this shift will gain a competitive edge, l
 
 ### Ready to Start Your Journey?
 
-Partner with us to explore AI Testing Agents and redefine your testing processes. [Work with us](https://wopee.io/marcel) to begin your journey toward autonomous and intelligent testing today.
+Partner with us to explore AI Testing Agents and redefine your testing processes. [Work with us](https://wopee.io/marcel/) to begin your journey toward autonomous and intelligent testing today.

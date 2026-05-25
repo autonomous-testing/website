@@ -585,7 +585,7 @@ To run it properly often requires more advanced setup, like setting up a CI/CD p
 
 Try **Wopee visual testing** today and experience the benefits of comprehensive visual validation for your applications. Elevate your testing strategy and ensure the visual integrity of your software with Wopee.
 
-Sign up for a free trial at [cmd.wopee.io](https://cmd.wopee.io).
+Sign up for a free trial at [cmd.wopee.io](https://cmd.wopee.io/login).
 
 :::
 
@@ -858,4 +858,4 @@ The bot can generate test steps, reducing the need for manual script writing and
 
 At Wopee.io, we are committed to pioneering these advancements and providing cutting-edge solutions that empower your testing teams. Join us in embracing the future of testing and set your testing processes on autopilot today. With autonomous testing, you can achieve superior quality, faster release cycles, and a competitive edge in the ever-evolving tech landscape.
 
-For more information and to start your journey with autonomous testing, sign up for a free trial at [cmd.Wopee.io](https://cmd.wopee.io) and experience the transformative power of our comprehensive testing solutions.
+For more information and to start your journey with autonomous testing, sign up for a free trial at [cmd.Wopee.io](https://cmd.wopee.io/login) and experience the transformative power of our comprehensive testing solutions.

@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div>
           <ButtonPrimary
             label="Start free trial"
-            href="https://cmd.wopee.io"
+            href="https://cmd.wopee.io/login"
             className="w-60 h-[50px]"
           />
           <p className="text-sm italic">No credit card required</p>

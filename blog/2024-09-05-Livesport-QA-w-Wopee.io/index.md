@@ -207,6 +207,6 @@ Livesport has shown what’s possible with the right tools and a commitment to q
 
 <br />
 
-**[Start your free trial now](https://cmd.wopee.io)** and see how Wopee.io can help you achieve testing excellence with minimal effort. Don’t wait—join the future of testing today!
+**[Start your free trial now](https://cmd.wopee.io/login)** and see how Wopee.io can help you achieve testing excellence with minimal effort. Don’t wait—join the future of testing today!
 
 :::

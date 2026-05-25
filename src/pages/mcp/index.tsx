@@ -230,7 +230,7 @@ const HeroSection = () => (
         <div className="flex flex-col items-center gap-1.5">
           <ButtonPrimary
             label="Start free trial"
-            href="https://cmd.wopee.io"
+            href="https://cmd.wopee.io/login"
             className="w-64 h-[54px] text-lg"
             id="cta-mcp-hero"
           />
@@ -361,7 +361,7 @@ const CapabilitiesSection = () => (
     <div className="text-center mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
       <ButtonPrimary
         label="Start free trial"
-        href="https://cmd.wopee.io"
+        href="https://cmd.wopee.io/login"
         className="w-60 h-[50px]"
         id="cta-mcp-capabilities"
       />
@@ -485,7 +485,7 @@ const CompatibleToolsSection = () => (
     <div className="px-2 lg:px-0">
       <ButtonPrimary
         label="Try it with your AI tool"
-        href="https://cmd.wopee.io"
+        href="https://cmd.wopee.io/login"
         id="cta-mcp-tools"
         className="w-64 h-[50px]"
       />
@@ -636,7 +636,7 @@ const McpPage = () => {
             <div className="h-20">
               <ButtonPrimary
                 label="Start free trial"
-                href="https://cmd.wopee.io"
+                href="https://cmd.wopee.io/login"
                 className="w-60 h-[50px]"
                 id="cta-mcp-footer"
               />

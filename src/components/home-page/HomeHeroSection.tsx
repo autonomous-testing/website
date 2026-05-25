@@ -20,7 +20,7 @@ const HomeHeroSection = () => {
         <ButtonPrimary
           id="hero-button"
           label="Start for free"
-          href="https://cmd.wopee.io"
+          href="https://cmd.wopee.io/login"
           className="w-60 h-[50px]"
         />
         <span className="italic">No credit card required</span>

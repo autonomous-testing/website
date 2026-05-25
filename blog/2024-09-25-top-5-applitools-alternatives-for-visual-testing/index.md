@@ -284,6 +284,6 @@ For a detailed head-to-head comparison of pricing, features, and AI capabilities
 
 :::tip Get Started Today 🔥
 
-**Ready to simplify your visual testing?** [Start your free trial with Wopee.io](https://cmd.wopee.io) today and see the difference in minutes.
+**Ready to simplify your visual testing?** [Start your free trial with Wopee.io](https://cmd.wopee.io/login) today and see the difference in minutes.
 
 :::

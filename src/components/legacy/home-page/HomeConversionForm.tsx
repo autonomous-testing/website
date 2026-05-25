@@ -19,7 +19,7 @@ const HomeConversionForm = ({ className }: { className?: string }) => {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
           <ButtonPrimary
             label="Start free trial"
-            href="https://cmd.wopee.io"
+            href="https://cmd.wopee.io/login"
             className="w-60 h-[50px]"
           />
           <ButtonPrimaryInverted
