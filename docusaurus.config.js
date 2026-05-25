@@ -213,9 +213,15 @@ const config = {
     {
       // Replace with your project's social card
       image: "img/wopee-social-card.jpg",
-      // OG protocol requires og:type. Docusaurus's classic theme doesn't emit a default;
-      // the blog plugin overrides this with og:type=article on blog pages.
-      metadata: [{ property: "og:type", content: "website" }],
+      // Docusaurus's classic theme emits og:title, og:description, og:image, og:url,
+      // og:locale and twitter:card/twitter:image automatically. It does NOT emit
+      // og:type or og:site_name — both flagged by Ahrefs as "Open Graph tags
+      // incomplete" across the whole site. The blog plugin overrides og:type with
+      // "article" on individual blog posts.
+      metadata: [
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "Wopee.io" },
+      ],
       // https://docusaurus.io/docs/api/themes/configuration#color-mode---dark-mode
       colorMode: {
         defaultMode: "dark",
