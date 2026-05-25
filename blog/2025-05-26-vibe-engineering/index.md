@@ -1,6 +1,6 @@
 ---
 slug: vibe-testing-coding-engineering
-title: "New software era: Vibe Coding, Vibe Testing, and Vibe Engineering"
+title: "Vibe Coding, Vibe Testing, and Vibe Engineering"
 description: "Embracing the “Vibe” in Software: Vibe Coding, Vibe Testing, and Vibe Engineering."
 authors: marcel
 tags:
