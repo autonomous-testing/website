@@ -156,7 +156,7 @@ Open-source tools are cost-effective but may need more manual setup. Commercial 
 ### Criteria for Tool Selection
 
 Consider your team's size, budget, and technical requirements.
-For more ideas about potential tools, check out our other blog post: [Top 5 Applitools Alternatives for Visual Testing (2024)](https://wopee.io/blog/top-5-applitools-alternatives-for-visual-testing--2024). You can also explore our GitHub repository for [getting started with Playwright Visual Testing](https://github.com/autonomous-testing/ws-getting-started-w-playwright-visual-testing).
+For more ideas about potential tools, check out our other blog post: [Top 5 Applitools Alternatives for Visual Testing (2024)](https://wopee.io/blog/top-5-applitools-alternatives-for-visual-testing--2024/). You can also explore our GitHub repository for [getting started with Playwright Visual Testing](https://github.com/autonomous-testing/ws-getting-started-w-playwright-visual-testing).
 
 ## 6. Implementation Strategies for Test Automation Engineers
 
@@ -271,7 +271,7 @@ Achieve alignment across development, QA, and design teams by conducting trainin
 
 ### Livesport's Visual Testing Journey with Wopee.io
 
-Livesport, a leading provider of live sports data, adopted Wopee.io to implement visual regression testing across its suite of web applications. By leveraging [Wopee.io's advanced visual testing](https://wopee.io/blog/livesport-visual-testing-w-wopee-io) capabilities, Livesport was able to automate the validation of visual changes, ensuring consistent UI across different platforms. Wopee.io helped Livesport reduce visual regressions by 60%, decrease the time spent on manual UI checks, and significantly boost the confidence of their deployment process. Additionally, Livesport utilized Wopee.io's multi-environment support to manage different branches and versions, which was critical in maintaining quality across a highly dynamic and fast-paced development cycle. The collaboration allowed Livesport to save approximately 40% of the resources previously allocated for manual visual inspections, contributing to a more efficient testing process.
+Livesport, a leading provider of live sports data, adopted Wopee.io to implement visual regression testing across its suite of web applications. By leveraging [Wopee.io's advanced visual testing](https://wopee.io/blog/livesport-visual-testing-w-wopee-io/) capabilities, Livesport was able to automate the validation of visual changes, ensuring consistent UI across different platforms. Wopee.io helped Livesport reduce visual regressions by 60%, decrease the time spent on manual UI checks, and significantly boost the confidence of their deployment process. Additionally, Livesport utilized Wopee.io's multi-environment support to manage different branches and versions, which was critical in maintaining quality across a highly dynamic and fast-paced development cycle. The collaboration allowed Livesport to save approximately 40% of the resources previously allocated for manual visual inspections, contributing to a more efficient testing process.
 
 ### Pilot Project: Visual Testing with Wopee.io
 

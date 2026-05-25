@@ -77,7 +77,7 @@ Want to learn more? Watch the full webinar above, or sign up for a free trial to
 
 Interested in trying out Wopee.io?
 
-Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo) with us.
+Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo/) with us.
 
 :::
 
