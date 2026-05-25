@@ -1,6 +1,6 @@
 ---
 slug: flaky-tests-complete-guide
-title: "Flaky Tests in E2E Test Suites: The Complete Guide to Detection, Root Causes, and Remediation"
+title: "Flaky Tests in E2E Suites: Detection & Fixes"
 description: "Flaky tests affect 16% of tests at Google and erode CI trust. Learn root causes, detection methods, and proven remediation patterns for E2E test suites."
 tags: [flaky-tests, e2e-testing, test-automation, ci-cd, playwright, test-reliability, software-quality]
 image: ./ci-trust-erosion.webp

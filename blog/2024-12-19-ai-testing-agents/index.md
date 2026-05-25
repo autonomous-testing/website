@@ -1,6 +1,6 @@
 ---
 slug: ai-testing-agents
-title: "AI Testing Agents in 2026: Hype, Reality, and What Actually Works"
+title: "AI Testing Agents: Hype, Reality, and What Works"
 description: "AI testing agents promise to automate QA end-to-end — but which capabilities are real and which are hype? What works in 2026 and where to start."
 authors: marcel
 tags: [testing, automation, AI]
