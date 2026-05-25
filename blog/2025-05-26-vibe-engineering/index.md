@@ -1,7 +1,7 @@
 ---
 slug: vibe-testing-coding-engineering
 title: "Vibe Coding, Vibe Testing, and Vibe Engineering"
-description: "Embracing the “Vibe” in Software: Vibe Coding, Vibe Testing, and Vibe Engineering."
+description: "Vibe Coding, Vibe Testing, and Vibe Engineering: how AI-assisted tooling shifts developers into flow state and reshapes how modern software gets built."
 authors: marcel
 tags:
   [

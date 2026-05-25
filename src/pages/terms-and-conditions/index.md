@@ -1,5 +1,6 @@
 ---
 title: General Terms and Conditions for provision of testing services concerning Wopee platform
+description: General Terms and Conditions governing use of the Wopee platform, subscriptions, and the contractual relationship between wopee labs s.r.o. and its clients.
 ---
 
 # General Terms and Conditions for provision of testing services concerning Wopee platform

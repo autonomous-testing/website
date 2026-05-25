@@ -1,5 +1,6 @@
 ---
 title: Data Processing Agreement
+description: Data Processing Agreement between wopee labs s.r.o. and Wopee.io clients. GDPR-compliant terms covering personal data handling, subprocessors, and security.
 custom_edit_url: null
 ---
 
