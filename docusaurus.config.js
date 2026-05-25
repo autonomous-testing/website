@@ -141,6 +141,9 @@ const config = {
           { from: "/partner", to: "/" },
           { from: "/wopee-commander", to: "/" },
           { from: "/testing-bot", to: "/ai-testing-agents" },
+          { from: "/team", to: "/about-us" },
+          { from: "/bot", to: "/ai-testing-agents" },
+          { from: "/toc", to: "/terms-and-conditions" },
           { from: "/guides/wopee-mcp", to: "/mcp" },
           {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
