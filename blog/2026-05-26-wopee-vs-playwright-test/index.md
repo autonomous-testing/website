@@ -4,7 +4,7 @@ title: "Wopee.io vs Playwright: 2026 Honest Comparison"
 description: "Playwright is a free framework; Wopee.io is the autonomous platform built on top of it. Honest 2026 comparison of when each one is the right pick."
 tags: [playwright, comparison, visual-testing, autonomous-testing, qa, test-automation]
 authors: marcel
-image: ./hero.png
+image: ./hero.webp
 ---
 
 Playwright is Microsoft's free, open-source browser automation framework. Wopee.io is an autonomous testing platform built on top of Playwright that adds AI-assisted test generation, self-healing locators, AI visual diffing, and a managed dashboard. If you have engineering capacity to build and maintain a test suite yourself, Playwright alone is enough. If you want lower-maintenance coverage at QA-team scale, Wopee.io extends Playwright without locking you in.
@@ -135,6 +135,8 @@ If your reviewers all have access to GitHub Actions or your CI of choice, the Pl
 ### 5. Migration path: low-friction by design
 
 This is the underrated part of the comparison. Because Wopee.io runs Playwright underneath, the migration path in *either* direction is short.
+
+![Low-friction migration: an existing Playwright test suite (login.spec.ts, checkout.spec.ts, profile.spec.ts) sits as a foundation. Wopee.io layers on top with six feature cards — autonomous analysis, app mapping, additional coverage generation, orchestrate runs, visual checks, and reporting. Side callouts read "No rewrite needed" and "Keep current tests" — adoption is incremental and additive.](./migration-low-friction.webp)
 
 - **Playwright → Wopee.io:** point Wopee at your existing Playwright suite. The tests run as-is. You opt into self-healing and the hosted dashboard incrementally.
 - **Wopee.io → Playwright:** the test code is Playwright. You take the suite with you. The cost of leaving is rebuilding the dashboard and self-healing layer, not relearning a framework.
