@@ -23,7 +23,7 @@ export default function BlogPostHero({ className }: BlogPostHeroProps) {
           <img
             src={cover}
             alt=""
-            className="w-full h-[180px] sm:h-[220px] object-cover"
+            className="w-full aspect-video object-cover"
           />
         </div>
       )}
