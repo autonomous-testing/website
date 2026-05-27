@@ -62,10 +62,11 @@ const JSONLD_APP = {
 export default function Home(): JSX.Element {
   return (
     <Layout
-      title="AI Testing Agents for Web Apps"
-      description="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
+      title="AI Testing Tool for Web Apps"
+      description="Paste a URL — Wopee.io AI agents explore your web app, generate Playwright tests, run them across browsers, and catch regressions before your users do. Try free."
     >
       <Head>
+        <body className="is-home" />
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
       </Head>

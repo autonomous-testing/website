@@ -242,6 +242,7 @@ const config = {
             to: "/ai-testing-agents",
             label: "Solutions",
             position: "left",
+            className: "navbar-item--hide-on-home",
             items: [
               { to: "/ai-testing-agents", label: "AI Agents for Software Testing" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
@@ -252,9 +253,9 @@ const config = {
               },
             ],
           },
-          { to: "/pricing", label: "Pricing", position: "left" },
-          { to: "/blog", label: "Blog", position: "left" },
-          { to: "/about-us", label: "About us", position: "left" },
+          { to: "/pricing", label: "Pricing", position: "left", className: "navbar-item--hide-on-home" },
+          { to: "/blog", label: "Blog", position: "left", className: "navbar-item--hide-on-home" },
+          { to: "/about-us", label: "About us", position: "left", className: "navbar-item--hide-on-home" },
           {
             to: "https://cmd.wopee.io/login",
             target: "_blank",
