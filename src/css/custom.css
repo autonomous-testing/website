@@ -277,12 +277,48 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
   display: none !important;
 }
 
-/* Hero "Add testing instructions" toggle — bypass Infima's role=button color */
+/* Hero primary CTA — slow pulsing glow when enabled, invites the click
+   without ever animating loud enough to feel pushy. Disabled state stays
+   still. Pulse colour matches the button fill in each theme: purple in
+   light (secondary-wopee button), yellow in dark (primary-wopee button) —
+   so the shadow doesn't clash with the button colour. */
+@keyframes hero-cta-pulse-light {
+  0%, 100% { box-shadow: 0 4px 16px rgba(112, 48, 160, 0.35); }
+  50% { box-shadow: 0 6px 28px rgba(112, 48, 160, 0.55); }
+}
+@keyframes hero-cta-pulse-dark {
+  0%, 100% { box-shadow: 0 4px 16px rgba(255, 204, 0, 0.35); }
+  50% { box-shadow: 0 6px 28px rgba(255, 204, 0, 0.55); }
+}
+.hero-cta:not(:disabled) {
+  animation: hero-cta-pulse-light 3.2s ease-in-out infinite;
+}
+[data-theme="dark"] .hero-cta:not(:disabled) {
+  animation: hero-cta-pulse-dark 3.2s ease-in-out infinite;
+}
+.hero-cta:not(:disabled):hover {
+  animation: none;
+}
+/* Disabled CTA: keep light-mode contrast readable. Default Tailwind disabled
+   state is opacity-50 which makes the purple button nearly unreadable on
+   white. Lift it to 0.65 in light mode; dark mode (yellow on dark) is fine
+   at 0.5 so leave it. */
+.hero-cta:disabled {
+  opacity: 0.65;
+}
+[data-theme="dark"] .hero-cta:disabled {
+  opacity: 0.5;
+}
+
+/* Hero "Add testing instructions" toggle — bypass Infima's role=button color.
+   Kept muted to match other supporting labels in the form rather than read
+   as a primary action. Light mode uses a darker gray for adequate contrast
+   on the white form bg; dark mode stays unchanged. */
 .hero-add-instructions {
-  color: rgb(55 65 81); /* gray-700 */
+  color: rgb(75 85 99); /* gray-600 — light-mode contrast on white bg */
 }
 [data-theme="dark"] .hero-add-instructions {
-  color: rgb(209 213 219); /* gray-300 */
+  color: rgb(107 114 128); /* gray-500 */
 }
 /* Hover follows the H1 brand emphasis pattern: secondary-wopee in light,
    primary-wopee in dark — same colors used for "for Web Apps" highlight. */
@@ -291,6 +327,42 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
 }
 [data-theme="dark"] .hero-add-instructions:hover {
   color: #ffcc00; /* primary-wopee */
+}
+
+/* Hero Vibe form — inline scenario chips. Ghost-style by default so they sit
+   visually subordinate to the primary CTA; only the selected chip lights up. */
+.scenario-chip {
+  /* Pill bg + faint border give every chip a visible touch target on white
+     in light mode (where the previous 0.04 bg alone was invisible) while
+     staying subtle. Selected chip overrides both. Dark-mode unchanged. */
+  background-color: rgb(0 0 0 / 0.05);
+  color: rgb(75 85 99); /* gray-600 */
+  border: 1px solid rgb(0 0 0 / 0.08);
+}
+.scenario-chip:hover {
+  background-color: rgb(0 0 0 / 0.1);
+  border-color: rgb(0 0 0 / 0.15);
+  color: rgb(17 24 39); /* gray-900 */
+}
+.scenario-chip--selected {
+  color: rgb(17 24 39); /* gray-900 */
+  background-color: rgb(112 48 160 / 0.12);
+  border-color: rgb(112 48 160 / 0.5); /* secondary-wopee 50% */
+}
+[data-theme="dark"] .scenario-chip {
+  background-color: rgb(255 255 255 / 0.04);
+  color: rgb(156 163 175); /* gray-400 */
+  border-color: transparent; /* dark mode stays borderless */
+}
+[data-theme="dark"] .scenario-chip:hover {
+  background-color: rgb(255 255 255 / 0.08);
+  border-color: transparent;
+  color: rgb(229 231 235); /* gray-200 */
+}
+[data-theme="dark"] .scenario-chip--selected {
+  color: rgb(243 244 246);
+  background-color: rgb(255 204 0 / 0.12);
+  border-color: rgb(255 204 0 / 0.5); /* primary-wopee 50% */
 }
 
 /* Hero "Trusted by" marquee */

@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import {
-  Send,
   Globe,
-  ChevronDown,
   AppWindow,
   Landmark,
   ShoppingCart,
@@ -12,14 +10,6 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 
 import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
@@ -31,25 +21,25 @@ const appTemplates = {
     label: "Website",
     icon: Globe,
     url: "https://dronjo.wopee.io",
-    instructions: `Test login procedure.
-Navigate to the login page (click on the Sign in button).
-Sign in with any @tesena.com email and any password.
-Verify you reach the home page and see the Logout button (top right).`,
+    instructions: `Goal: sign in works.
+Click "Sign in", use any @tesena.com email and any password.
+Pass: home page loads and a "Logout" button is visible top-right.`,
   },
   [AppType.E_COMMERCE]: {
     label: "E-commerce",
     icon: ShoppingCart,
     url: "https://www.saucedemo.com",
-    instructions: `Test purchase procedure.
-Login with: standard_user / secret_sauce and verify redirect to product listing.
-Add an item to cart, complete the purchase, and verify 'Thank you for your order!' message displayed.`,
+    instructions: `Goal: checkout works.
+Sign in (standard_user / secret_sauce), add an item, complete checkout.
+Pass: "Thank you for your order!" appears.`,
   },
   [AppType.BANKING]: {
     label: "Banking",
     icon: Landmark,
     url: "https://moja.tatrabanka.sk/html-tb/en/demo",
-    instructions: `Test login procedure.
-Wait for page load, accept cookies (if shown), submit form with pre-filled PIN.`,
+    instructions: `Goal: PIN sign-in works.
+Accept the cookie banner if shown, then submit the pre-filled PIN form.
+Pass: the demo dashboard loads after submit.`,
   },
   [AppType.YOUR_APPLICATION]: {
     label: "Your app",
@@ -62,7 +52,19 @@ const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   url: value.url,
   type: key as AppType,
 }));
+// Default to the empty "Your app" state — keeps the hero quiet on landing
+// and lets visitors either paste their own URL or click a demo chip to
+// pre-fill URL + instructions in one step.
 const defaultTemplate = AppType.YOUR_APPLICATION;
+// Three demo scenarios visitors can one-click to load (URL + instructions
+// pre-filled). "Your app" isn't in this list — it's the implicit default
+// state, reachable by clicking an already-selected chip again or by typing
+// a custom URL in the input above.
+const DEMO_SCENARIOS: AppType[] = [
+  AppType.WEBSITE,
+  AppType.E_COMMERCE,
+  AppType.BANKING,
+];
 const URL_REGEX =
   /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
@@ -166,112 +168,144 @@ const HomeHeroVibe = () => {
         <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee shadow-2xl shadow-purple-900/40">
           <div className="bg-white dark:bg-gray-900 rounded-[14px] p-4 sm:p-5 flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold pl-1">
+              <label className="text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold pl-1">
                 Your web app URL
               </label>
-              <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 transition-all">
-                <SelectedIcon className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee transition-colors flex-shrink-0" />
+              <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 transition-all">
+                <SelectedIcon className="w-4 h-4 text-gray-500 dark:text-gray-500 group-focus-within:text-secondary-wopee transition-colors flex-shrink-0" />
                 <input
                   ref={urlInputRef}
                   type="url"
                   value={appUrl}
                   placeholder="https://your-project-url.com"
-                  className="flex-1 w-full bg-transparent border-none focus:outline-none text-sm font-mono text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                  className="flex-1 w-full bg-transparent border-none focus:outline-none text-sm font-mono text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   onChange={handleUrlChange}
                 />
               </div>
             </div>
 
-            {showInstructions || testingInstructions.length > 0 ? (
-              <textarea
-                rows={3}
-                autoFocus={showInstructions}
-                value={testingInstructions}
-                placeholder="What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
-                className="w-full bg-gray-50/80 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg px-3.5 py-2.5 focus:outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 transition-all"
-                onChange={(e) => setTestingInstructions(e.target.value)}
-              />
-            ) : (
-              <span
-                role="button"
-                tabIndex={0}
-                onClick={() => setShowInstructions(true)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setShowInstructions(true);
-                  }
-                }}
-                className="hero-add-instructions self-start inline-flex items-center gap-1.5 cursor-pointer text-sm transition-colors"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                Add testing instructions (optional)
-              </span>
-            )}
+            {/* Textarea always rendered so the form height stays constant.
+                In the collapsed state (no manual reveal + empty value) the
+                textarea sits quiet — no placeholder text, faint dashed
+                border — with a single "+ Add testing instructions" affordance
+                centered on top. Click reveals the full styled field. */}
+            <div className="relative">
+              {(() => {
+                const collapsed =
+                  !showInstructions && testingInstructions.length === 0;
+                return (
+                  <>
+                    <textarea
+                      rows={3}
+                      autoFocus={showInstructions}
+                      value={testingInstructions}
+                      placeholder={
+                        collapsed
+                          ? ""
+                          : "What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
+                      }
+                      className={`block w-full rounded-lg px-3 py-2 outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-y text-sm leading-snug text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-colors ${
+                        collapsed
+                          ? "bg-transparent border border-dashed border-gray-400/60 dark:border-gray-600/40 pointer-events-none"
+                          : "bg-gray-50/80 dark:bg-gray-800/60 border border-gray-300 dark:border-gray-700"
+                      }`}
+                      onChange={(e) => setTestingInstructions(e.target.value)}
+                    />
+                    {collapsed && (
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setShowInstructions(true)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setShowInstructions(true);
+                          }
+                        }}
+                        className="absolute inset-0 flex items-center justify-center rounded-lg cursor-pointer hover:bg-gray-100/40 dark:hover:bg-white/5 transition-colors"
+                      >
+                        <span className="hero-add-instructions inline-flex items-center gap-1.5 text-xs">
+                          <Plus className="w-3 h-3" />
+                          Add testing instructions
+                        </span>
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
 
-            <div className="flex justify-between items-center gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Pick a sample scenario"
-                    className="hero-scenario-trigger inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-solid border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 text-sm text-gray-700 dark:text-gray-200 hover:border-secondary-wopee transition-colors cursor-pointer select-none"
-                  >
-                    <SelectedIcon className="w-4 h-4" />
-                    <span className="font-medium">
-                      {appTemplates[appType].label}
-                    </span>
-                    <ChevronDown className="w-3.5 h-3.5 opacity-60" />
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="start"
-                  className="w-56 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
-                >
-                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
-                    Your application
-                  </DropdownMenuLabel>
-                  {([AppType.YOUR_APPLICATION] as AppType[]).map((type) => {
-                    const tpl = appTemplates[type];
-                    const Icon = tpl.icon;
-                    return (
-                      <DropdownMenuItem
-                        key={type}
-                        onSelect={() => handleAppTypeChange(type)}
-                        className="cursor-pointer flex items-center gap-2"
-                      >
-                        <Icon className="w-4 h-4" />
-                        <span>{tpl.label}</span>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
-                    Try a demo app
-                  </DropdownMenuLabel>
-                  {(
-                    [
-                      AppType.WEBSITE,
-                      AppType.E_COMMERCE,
-                      AppType.BANKING,
-                    ] as AppType[]
-                  ).map((type) => {
-                    const tpl = appTemplates[type];
-                    const Icon = tpl.icon;
-                    return (
-                      <DropdownMenuItem
-                        key={type}
-                        onSelect={() => handleAppTypeChange(type)}
-                        className="cursor-pointer flex items-center gap-2"
-                      >
-                        <Icon className="w-4 h-4" />
-                        <span>{tpl.label}</span>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
+            <div className="flex flex-wrap justify-between items-center gap-3">
+              {/* Your app chip on the left, then "or try a demo:" label,
+                  then the 3 demo chips. One click on a demo pre-fills URL +
+                  instructions; one click on "Your app" returns to the empty
+                  custom-URL state. */}
+              <div className="flex flex-wrap items-center gap-2">
+                {(() => {
+                  const tpl = appTemplates[AppType.YOUR_APPLICATION];
+                  const Icon = tpl.icon;
+                  // "Your app" is only visually selected once the visitor has
+                  // typed a URL in Your-app mode — otherwise the chip would
+                  // read as active on landing while the CTA is disabled.
+                  const selected =
+                    appType === AppType.YOUR_APPLICATION && appUrl.length > 0;
+                  return (
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={selected}
+                      onClick={() =>
+                        handleAppTypeChange(AppType.YOUR_APPLICATION)
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          handleAppTypeChange(AppType.YOUR_APPLICATION);
+                        }
+                      }}
+                      className={`scenario-chip ${selected ? "scenario-chip--selected" : ""} inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-normal cursor-pointer select-none transition-colors`}
+                      aria-label={tpl.label}
+                    >
+                      <Icon className="w-3 h-3" />
+                      <span className="hidden sm:inline">{tpl.label}</span>
+                    </div>
+                  );
+                })()}
+                <span className="hidden sm:inline text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold px-1">
+                  or try a demo:
+                </span>
+                {DEMO_SCENARIOS.map((type) => {
+                  const tpl = appTemplates[type];
+                  const Icon = tpl.icon;
+                  const selected = appType === type;
+                  return (
+                    <div
+                      key={type}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={selected}
+                      onClick={() =>
+                        handleAppTypeChange(
+                          selected ? AppType.YOUR_APPLICATION : type
+                        )
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          handleAppTypeChange(
+                            selected ? AppType.YOUR_APPLICATION : type
+                          );
+                        }
+                      }}
+                      className={`scenario-chip ${selected ? "scenario-chip--selected" : ""} inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-normal cursor-pointer select-none transition-colors`}
+                      aria-label={tpl.label}
+                    >
+                      <Icon className="w-3 h-3" />
+                      <span className="hidden sm:inline">{tpl.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
 
               <Button
                 size="lg"
@@ -280,10 +314,10 @@ const HomeHeroVibe = () => {
                 onClick={() =>
                   setLoginDialogState({ isOpen: true, mode: "vibe" })
                 }
-                className="flex items-center gap-2 px-5 py-2 font-bold rounded-lg shadow-lg shadow-purple-500/30 dark:shadow-yellow-500/30 hover:shadow-purple-500/50 dark:hover:shadow-yellow-500/50 hover:scale-105 transition-all"
+                className="hero-cta flex items-center gap-2 px-6 py-3 text-base font-bold rounded-lg shadow-lg shadow-purple-500/40 dark:shadow-yellow-500/40 hover:shadow-purple-500/60 dark:hover:shadow-yellow-500/60 hover:scale-105 transition-all"
                 id="vibe-testing"
               >
-                <Sparkles className="w-4 h-4" />
+                <Sparkles className="w-5 h-5" />
                 <span className="text-white dark:text-black font-bold">
                   Try it free
                 </span>
