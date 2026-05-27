@@ -1,5 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Send, Globe, ChevronDown, AppWindow, Landmark, ShoppingCart } from "lucide-react";
+import {
+  Send,
+  Globe,
+  ChevronDown,
+  AppWindow,
+  Landmark,
+  ShoppingCart,
+  Play,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +21,7 @@ import {
 
 import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
-import HeroSequenceVideo from "./HeroSequenceVideo";
+import HeroVideoModal from "./HeroVideoModal";
 import HeroTrustedByStrip from "./HeroTrustedByStrip";
 
 const appTemplates = {
@@ -75,6 +83,7 @@ const HomeHeroVibe = () => {
     isOpen: false,
     mode: "vibe",
   });
+  const [videoOpen, setVideoOpen] = useState(false);
   const urlInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -116,10 +125,20 @@ const HomeHeroVibe = () => {
       />
 
       <section className="relative z-10 flex flex-col items-center gap-3 md:gap-4 px-4">
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee animate-pulse" />
-          AI Testing Agents · No scripts. No maintenance.
-        </span>
+        <button
+          type="button"
+          onClick={() => setVideoOpen(true)}
+          aria-label="Watch the 60-second demo"
+          className="group inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-colors"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee" />
+          <span>AI Testing Agents · No scripts. No maintenance.</span>
+          <span className="opacity-30">·</span>
+          <span className="inline-flex items-center gap-1.5 text-secondary-wopee dark:text-primary-wopee group-hover:underline">
+            <Play className="w-3 h-3 fill-current" />
+            Watch demo
+          </span>
+        </button>
         <h1
           className="font-bold text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-pretty leading-[1] tracking-tighter"
           style={{ textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
@@ -142,15 +161,15 @@ const HomeHeroVibe = () => {
         </h2>
       </section>
 
-      <div className="relative z-10 w-full max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch">
-        <div className="lg:col-span-3 p-[1.5px] rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee shadow-2xl shadow-purple-900/40">
-          <div className="bg-white dark:bg-gray-900 rounded-[14px] p-4 sm:p-5 flex flex-col gap-3 h-full">
+      <div className="relative z-10 w-full max-w-3xl px-4">
+        <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee shadow-2xl shadow-purple-900/40">
+          <div className="bg-white dark:bg-gray-900 rounded-[14px] p-4 sm:p-5 flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold pl-1">
                 Test environment URL
               </label>
               <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee dark:focus-within:border-primary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 dark:focus-within:ring-primary-wopee/20 transition-all">
-                <Globe className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee dark:group-focus-within:text-primary-wopee transition-colors flex-shrink-0" />
+                <SelectedIcon className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee dark:group-focus-within:text-primary-wopee transition-colors flex-shrink-0" />
                 <input
                   ref={urlInputRef}
                   type="url"
@@ -251,13 +270,6 @@ const HomeHeroVibe = () => {
             </div>
           </div>
         </div>
-
-        <div className="lg:col-span-2 flex items-center">
-          <HeroSequenceVideo
-            sources={heroVideoSources}
-            poster="/how-it-works/step-1.png"
-          />
-        </div>
       </div>
 
       <HeroTrustedByStrip />
@@ -269,6 +281,12 @@ const HomeHeroVibe = () => {
         mode={loginDialogState.mode}
         setIsOpenVibe={setIsOpenVibe}
         isOpen={loginDialogState.isOpen}
+      />
+
+      <HeroVideoModal
+        sources={heroVideoSources}
+        isOpen={videoOpen}
+        onClose={() => setVideoOpen(false)}
       />
     </div>
   );
