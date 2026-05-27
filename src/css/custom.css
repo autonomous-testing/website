@@ -293,6 +293,35 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
   color: #ffcc00; /* primary-wopee */
 }
 
+/* Hero Vibe form — scenario chip strip (replaces the prior dropdown).
+   Rendered as <div role=button> so Infima's button selector can't override. */
+.scenario-chip {
+  background-color: rgb(249 250 251 / 0.8); /* matches form-field bg */
+  color: rgb(55 65 81); /* gray-700 */
+  border: 1px solid rgb(229 231 235); /* gray-200 */
+}
+.scenario-chip:hover {
+  border-color: rgb(112 48 160 / 0.6); /* secondary-wopee 60% */
+}
+.scenario-chip--selected {
+  border-color: rgb(112 48 160); /* secondary-wopee */
+  background-color: rgb(112 48 160 / 0.08);
+  color: rgb(17 24 39); /* gray-900 */
+}
+[data-theme="dark"] .scenario-chip {
+  background-color: rgb(31 41 55 / 0.6); /* gray-800/60 */
+  color: rgb(209 213 219); /* gray-300 */
+  border-color: rgb(55 65 81); /* gray-700 */
+}
+[data-theme="dark"] .scenario-chip:hover {
+  border-color: rgb(112 48 160 / 0.7);
+}
+[data-theme="dark"] .scenario-chip--selected {
+  border-color: rgb(255 204 0); /* primary-wopee — matches H1 highlight in dark */
+  background-color: rgb(255 204 0 / 0.08);
+  color: rgb(243 244 246); /* gray-100 */
+}
+
 /* Hero "Trusted by" marquee */
 @keyframes hero-marquee {
   0% { transform: translateX(0); }

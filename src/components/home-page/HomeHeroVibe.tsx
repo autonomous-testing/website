@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import {
-  Send,
   Globe,
-  ChevronDown,
   AppWindow,
   Landmark,
   ShoppingCart,
@@ -12,14 +10,6 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 
 import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
@@ -62,7 +52,17 @@ const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   url: value.url,
   type: key as AppType,
 }));
-const defaultTemplate = AppType.YOUR_APPLICATION;
+// Pre-fill the E-commerce demo (saucedemo.com) so the primary CTA is clickable
+// on landing. Visitors can still switch to a different scenario or paste their
+// own URL via the scenario chips below. Lowers the "do something first" barrier
+// that disabled-CTA states create.
+const defaultTemplate = AppType.E_COMMERCE;
+const SCENARIO_ORDER: AppType[] = [
+  AppType.E_COMMERCE,
+  AppType.WEBSITE,
+  AppType.BANKING,
+  AppType.YOUR_APPLICATION,
+];
 const URL_REGEX =
   /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
@@ -165,6 +165,35 @@ const HomeHeroVibe = () => {
       <div className="relative z-10 w-full max-w-3xl px-4">
         <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee shadow-2xl shadow-purple-900/40">
           <div className="bg-white dark:bg-gray-900 rounded-[14px] p-4 sm:p-5 flex flex-col gap-3">
+            {/* Visible scenario chips. One click to switch (was 2 via dropdown).
+                E-commerce is pre-selected so the CTA is clickable on landing. */}
+            <div className="grid grid-cols-4 gap-1.5">
+              {SCENARIO_ORDER.map((type) => {
+                const tpl = appTemplates[type];
+                const Icon = tpl.icon;
+                const selected = appType === type;
+                return (
+                  <div
+                    key={type}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={selected}
+                    onClick={() => handleAppTypeChange(type)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        handleAppTypeChange(type);
+                      }
+                    }}
+                    className={`scenario-chip ${selected ? "scenario-chip--selected" : ""} flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs sm:text-sm font-medium cursor-pointer select-none transition-colors`}
+                  >
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="truncate">{tpl.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+
             <div className="flex flex-col gap-1.5">
               <label className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold pl-1">
                 Your web app URL
@@ -209,70 +238,7 @@ const HomeHeroVibe = () => {
               </span>
             )}
 
-            <div className="flex justify-between items-center gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Pick a sample scenario"
-                    className="hero-scenario-trigger inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-solid border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 text-sm text-gray-700 dark:text-gray-200 hover:border-secondary-wopee transition-colors cursor-pointer select-none"
-                  >
-                    <SelectedIcon className="w-4 h-4" />
-                    <span className="font-medium">
-                      {appTemplates[appType].label}
-                    </span>
-                    <ChevronDown className="w-3.5 h-3.5 opacity-60" />
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="start"
-                  className="w-56 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
-                >
-                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
-                    Your application
-                  </DropdownMenuLabel>
-                  {([AppType.YOUR_APPLICATION] as AppType[]).map((type) => {
-                    const tpl = appTemplates[type];
-                    const Icon = tpl.icon;
-                    return (
-                      <DropdownMenuItem
-                        key={type}
-                        onSelect={() => handleAppTypeChange(type)}
-                        className="cursor-pointer flex items-center gap-2"
-                      >
-                        <Icon className="w-4 h-4" />
-                        <span>{tpl.label}</span>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
-                    Try a demo app
-                  </DropdownMenuLabel>
-                  {(
-                    [
-                      AppType.WEBSITE,
-                      AppType.E_COMMERCE,
-                      AppType.BANKING,
-                    ] as AppType[]
-                  ).map((type) => {
-                    const tpl = appTemplates[type];
-                    const Icon = tpl.icon;
-                    return (
-                      <DropdownMenuItem
-                        key={type}
-                        onSelect={() => handleAppTypeChange(type)}
-                        className="cursor-pointer flex items-center gap-2"
-                      >
-                        <Icon className="w-4 h-4" />
-                        <span>{tpl.label}</span>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
-
+            <div className="flex justify-end items-center gap-2">
               <Button
                 size="lg"
                 variant="wopeeFlat"
