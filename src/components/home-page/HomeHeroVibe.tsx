@@ -7,6 +7,8 @@ import {
   Landmark,
   ShoppingCart,
   Play,
+  Plus,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -84,6 +86,7 @@ const HomeHeroVibe = () => {
     mode: "vibe",
   });
   const [videoOpen, setVideoOpen] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
   const urlInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -155,10 +158,6 @@ const HomeHeroVibe = () => {
             for Web Apps
           </span>
         </h1>
-        <h2 className="max-w-2xl text-center text-base sm:text-lg font-normal text-pretty text-gray-700 dark:text-gray-200 leading-relaxed">
-          Paste a URL. Our agents explore your app, generate Playwright tests,
-          and catch regressions before your users do.
-        </h2>
       </section>
 
       <div className="relative z-10 w-full max-w-3xl px-4">
@@ -181,13 +180,25 @@ const HomeHeroVibe = () => {
               </div>
             </div>
 
-            <textarea
-              rows={4}
-              value={testingInstructions}
-              placeholder="Testing instructions (optional) — leave blank and our agent will suggest what to test."
-              className="w-full bg-transparent border-none focus:outline-none resize-none text-sm"
-              onChange={(e) => setTestingInstructions(e.target.value)}
-            />
+            {showInstructions ? (
+              <textarea
+                rows={3}
+                autoFocus
+                value={testingInstructions}
+                placeholder="What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
+                className="w-full bg-transparent border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:border-secondary-wopee dark:focus:border-primary-wopee resize-none text-sm"
+                onChange={(e) => setTestingInstructions(e.target.value)}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setShowInstructions(true)}
+                className="self-start inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add testing instructions (optional)
+              </button>
+            )}
 
             <div className="flex justify-between items-center gap-2">
               <DropdownMenu>
@@ -262,14 +273,17 @@ const HomeHeroVibe = () => {
                 className="flex items-center gap-2 px-5 py-2 font-bold rounded-lg shadow-lg shadow-purple-500/30 dark:shadow-yellow-500/30 hover:shadow-purple-500/50 dark:hover:shadow-yellow-500/50 hover:scale-105 transition-all"
                 id="vibe-testing"
               >
-                <Send />
-                <span className="text-white dark:text-black font-bold hidden sm:block">
-                  Test now!
+                <Sparkles className="w-4 h-4" />
+                <span className="text-white dark:text-black font-bold">
+                  Try it free
                 </span>
               </Button>
             </div>
           </div>
         </div>
+        <p className="mt-3 text-center text-xs text-gray-500 dark:text-gray-400">
+          No credit card · 60-second setup · Free trial
+        </p>
       </div>
 
       <HeroTrustedByStrip />
