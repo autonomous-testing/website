@@ -1,16 +1,23 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Send, Globe } from "lucide-react";
+import { Send, Globe, ChevronDown, AppWindow, Landmark, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
-import ApplicationTypeSwitch from "./vibe/ApplicationTypeSwitch";
 import HeroSequenceVideo from "./HeroSequenceVideo";
 import HeroTrustedByStrip from "./HeroTrustedByStrip";
 
 const appTemplates = {
   [AppType.WEBSITE]: {
+    label: "Website",
+    icon: Globe,
     url: "https://dronjo.wopee.io",
     instructions: `Test login procedure.
 Navigate to the login page (click on the Sign in button).
@@ -18,19 +25,25 @@ Sign in with any @tesena.com email and any password.
 Verify you reach the home page and see the Logout button (top right).`,
   },
   [AppType.E_COMMERCE]: {
+    label: "E-commerce",
+    icon: ShoppingCart,
     url: "https://www.saucedemo.com",
     instructions: `Test purchase procedure.
 Login with: standard_user / secret_sauce and verify redirect to product listing.
 Add an item to cart, complete the purchase, and verify 'Thank you for your order!' message displayed.`,
   },
   [AppType.BANKING]: {
+    label: "Banking",
+    icon: Landmark,
     url: "https://moja.tatrabanka.sk/html-tb/en/demo",
     instructions: `Test login procedure.
 Wait for page load, accept cookies (if shown), submit form with pre-filled PIN.`,
   },
   [AppType.YOUR_APPLICATION]: {
+    label: "Your app",
+    icon: AppWindow,
     url: "",
-    instructions: "Open homepage, accept cookies if prompted, suggest what to test.",
+    instructions: "",
   },
 };
 const urlList = Object.entries(appTemplates).map(([key, value]) => ({
@@ -85,6 +98,8 @@ const HomeHeroVibe = () => {
   const setIsOpenVibe = (isOpen: boolean) => {
     setLoginDialogState({ isOpen, mode: "vibe" });
   };
+
+  const SelectedIcon = appTemplates[appType].icon;
 
   return (
     <div className="relative lg:min-h-[calc(100vh-100px)] flex flex-col justify-center items-center gap-5 lg:gap-6 overflow-hidden py-5 lg:py-6">
@@ -148,18 +163,58 @@ const HomeHeroVibe = () => {
             <textarea
               rows={4}
               value={testingInstructions}
-              placeholder="Testing instructions"
+              placeholder="Testing instructions (optional) — leave blank and our agent will suggest what to test."
               className="w-full bg-transparent border-none focus:outline-none resize-none text-sm"
               onChange={(e) => setTestingInstructions(e.target.value)}
             />
 
-            <div className="flex justify-end items-center gap-2">
+            <div className="flex justify-between items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 text-sm text-gray-700 dark:text-gray-200 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-colors"
+                    aria-label="Pick a sample scenario"
+                  >
+                    <SelectedIcon className="w-4 h-4" />
+                    <span className="font-medium">
+                      {appTemplates[appType].label}
+                    </span>
+                    <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  className="w-52 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
+                >
+                  {(
+                    [
+                      AppType.YOUR_APPLICATION,
+                      AppType.WEBSITE,
+                      AppType.E_COMMERCE,
+                      AppType.BANKING,
+                    ] as AppType[]
+                  ).map((type) => {
+                    const tpl = appTemplates[type];
+                    const Icon = tpl.icon;
+                    return (
+                      <DropdownMenuItem
+                        key={type}
+                        onSelect={() => handleAppTypeChange(type)}
+                        className="cursor-pointer flex items-center gap-2"
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span>{tpl.label}</span>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <Button
                 size="lg"
                 variant="wopeeFlat"
-                disabled={
-                  testingInstructions.length === 0 || !URL_REGEX.test(appUrl)
-                }
+                disabled={!URL_REGEX.test(appUrl)}
                 onClick={() =>
                   setLoginDialogState({ isOpen: true, mode: "vibe" })
                 }
@@ -181,16 +236,6 @@ const HomeHeroVibe = () => {
             poster="/how-it-works/step-1.png"
           />
         </div>
-      </div>
-
-      <div className="relative z-10 flex flex-col items-center gap-2">
-        <span className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-medium">
-          Or pick a sample scenario
-        </span>
-        <ApplicationTypeSwitch
-          appType={appType}
-          handleAppTypeChange={handleAppTypeChange}
-        />
       </div>
 
       <HeroTrustedByStrip />

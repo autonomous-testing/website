@@ -1,16 +1,20 @@
 import React from "react";
 
 const customers = [
-  { name: "Multitude", logo: "/img/customers/multitude-logo-wordmark.svg", invertDark: true, size: "h-6 sm:h-7" },
-  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true, size: "h-8 sm:h-9" },
-  { name: "SYNOT", logo: "/img/customers/synot-logo-2.png", invertDark: true, size: "h-7 sm:h-8" },
-  { name: "Inventi", logo: "/img/customers/inventi-logo.png", invertDark: true, size: "h-6 sm:h-7" },
-  { name: "Tesena", logo: "/img/investors/tesena-logo.png", invertDark: true, size: "h-7 sm:h-8" },
-  { name: "Nice Project", logo: "/img/customers/niceproject-logo.svg", invertDark: true, size: "h-7 sm:h-8" },
-  { name: "Flashscore", logo: "/img/customers/flash-score-logo.png", invertDark: true, size: "h-7 sm:h-8" },
-  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true, size: "h-7 sm:h-8" },
-  { name: "Accenture", logo: "/img/customers/accenture-logo-gray.svg", noFilter: true, size: "h-6 sm:h-7" },
+  { name: "Multitude", logo: "/img/customers/multitude-logo-wordmark.svg", invertDark: true },
+  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true },
+  { name: "SYNOT", logo: "/img/customers/synot-logo-2.png", invertDark: true },
+  { name: "Inventi", logo: "/img/customers/inventi-logo.png", invertDark: true },
+  { name: "Tesena", logo: "/img/investors/tesena-logo.png", invertDark: true },
+  { name: "Nice Project", logo: "/img/customers/niceproject-logo.svg", invertDark: true },
+  { name: "Flashscore", logo: "/img/customers/flash-score-logo.png", invertDark: true },
+  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true },
+  { name: "Accenture", logo: "/img/customers/accenture-logo-gray.svg", noFilter: true },
 ];
+
+// Fixed slot dimensions keep optically uneven logos (squares vs wordmarks)
+// looking balanced in the marquee — each logo is centered in the same box.
+const SLOT = "h-9 w-[140px] sm:h-10 sm:w-[160px]";
 
 const HeroTrustedByStrip = () => {
   const items = [...customers, ...customers];
@@ -20,18 +24,22 @@ const HeroTrustedByStrip = () => {
         Trusted by leading engineering teams
       </p>
       <div className="relative overflow-hidden mask-fade-x">
-        <div className="flex items-center gap-10 sm:gap-14 animate-marquee whitespace-nowrap py-1">
+        <div className="flex items-center gap-8 sm:gap-10 animate-marquee whitespace-nowrap py-1">
           {items.map((customer, i) => (
-            <img
+            <div
               key={`${customer.name}-${i}`}
-              className={`${customer.size} w-auto object-contain shrink-0 transition-opacity ${
-                customer.noFilter
-                  ? "opacity-70 hover:opacity-100"
-                  : `grayscale opacity-70 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
-              }`}
-              src={customer.logo}
-              alt={customer.name}
-            />
+              className={`${SLOT} flex items-center justify-center shrink-0`}
+            >
+              <img
+                className={`max-h-full max-w-full object-contain transition-opacity ${
+                  customer.noFilter
+                    ? "opacity-70 hover:opacity-100"
+                    : `grayscale opacity-70 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
+                }`}
+                src={customer.logo}
+                alt={customer.name}
+              />
+            </div>
           ))}
         </div>
       </div>
