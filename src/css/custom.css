@@ -277,6 +277,20 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
   display: none !important;
 }
 
+/* Hero "Add testing instructions" toggle — bypass Infima's role=button color */
+.hero-add-instructions {
+  color: rgb(55 65 81); /* gray-700 */
+}
+[data-theme="dark"] .hero-add-instructions {
+  color: rgb(209 213 219); /* gray-300 */
+}
+.hero-add-instructions:hover {
+  color: var(--secondary-wopee);
+}
+[data-theme="dark"] .hero-add-instructions:hover {
+  color: var(--primary-wopee);
+}
+
 /* Hero "Trusted by" marquee */
 @keyframes hero-marquee {
   0% { transform: translateX(0); }

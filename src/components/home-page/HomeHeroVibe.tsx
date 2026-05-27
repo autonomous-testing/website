@@ -190,14 +190,21 @@ const HomeHeroVibe = () => {
                 onChange={(e) => setTestingInstructions(e.target.value)}
               />
             ) : (
-              <button
-                type="button"
+              <span
+                role="button"
+                tabIndex={0}
                 onClick={() => setShowInstructions(true)}
-                className="self-start inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setShowInstructions(true);
+                  }
+                }}
+                className="hero-add-instructions self-start inline-flex items-center gap-1.5 cursor-pointer text-sm transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add testing instructions (optional)
-              </button>
+              </span>
             )}
 
             <div className="flex justify-between items-center gap-2">
