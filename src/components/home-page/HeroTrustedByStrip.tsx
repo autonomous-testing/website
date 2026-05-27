@@ -1,20 +1,23 @@
 import React from "react";
 
+// Per-logo height (no fixed slot width) — different logos have different
+// optical weight: pure wordmarks read fine smaller, icon+name combos and
+// detail-heavy marks need extra height to read evenly. Tuned by eye.
 const customers = [
-  { name: "Multitude", logo: "/img/customers/multitude-logo-wordmark.svg", invertDark: true },
-  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true },
-  { name: "SYNOT", logo: "/img/customers/synot-logo-2.png", invertDark: true },
-  { name: "Inventi", logo: "/img/customers/inventi-logo.png", invertDark: true },
-  { name: "Tesena", logo: "/img/investors/tesena-logo.png", invertDark: true },
-  { name: "Nice Project", logo: "/img/customers/niceproject-logo.svg", invertDark: true },
-  { name: "Flashscore", logo: "/img/customers/flash-score-logo.png", invertDark: true },
-  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true },
-  { name: "Accenture", logo: "/img/customers/accenture-logo-gray.svg", noFilter: true },
+  { name: "Multitude", logo: "/img/customers/multitude-logo-wordmark.svg", invertDark: true, h: "h-6 sm:h-7" },
+  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true, h: "h-9 sm:h-11" },
+  // Livesport sits early; Flashscore sits late so the two same-group logos
+  // never end up adjacent (the marquee also duplicates the array, so the
+  // last item touches the first — Accenture → Multitude is fine).
+  { name: "Livesport", logo: "/img/customers/livesport-logo.png", invertDark: true, h: "h-9 sm:h-11" },
+  { name: "SYNOT", logo: "/img/customers/synot-logo-2.png", invertDark: true, h: "h-7 sm:h-9" },
+  { name: "Inventi", logo: "/img/customers/inventi-logo.png", invertDark: true, h: "h-6 sm:h-8" },
+  { name: "Tesena", logo: "/img/investors/tesena-logo.png", invertDark: true, h: "h-9 sm:h-11" },
+  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true, h: "h-8 sm:h-10" },
+  { name: "Flashscore", logo: "/img/customers/flash-score-logo.png", invertDark: true, h: "h-10 sm:h-12" },
+  { name: "Nice Project", logo: "/img/customers/niceproject-logo.svg", invertDark: true, h: "h-7 sm:h-9" },
+  { name: "Accenture", logo: "/img/customers/accenture-logo-gray.svg", noFilter: true, h: "h-6 sm:h-8" },
 ];
-
-// Fixed slot dimensions keep optically uneven logos (squares vs wordmarks)
-// looking balanced in the marquee — each logo is centered in the same box.
-const SLOT = "h-9 w-[140px] sm:h-10 sm:w-[160px]";
 
 const HeroTrustedByStrip = () => {
   const items = [...customers, ...customers];
@@ -24,22 +27,18 @@ const HeroTrustedByStrip = () => {
         Trusted by leading engineering teams
       </p>
       <div className="relative overflow-hidden mask-fade-x">
-        <div className="flex items-center gap-8 sm:gap-10 animate-marquee whitespace-nowrap py-1">
+        <div className="flex items-center gap-10 sm:gap-14 animate-marquee whitespace-nowrap py-1">
           {items.map((customer, i) => (
-            <div
+            <img
               key={`${customer.name}-${i}`}
-              className={`${SLOT} flex items-center justify-center shrink-0`}
-            >
-              <img
-                className={`max-h-full max-w-full object-contain transition-opacity ${
-                  customer.noFilter
-                    ? "opacity-70 hover:opacity-100"
-                    : `grayscale opacity-70 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
-                }`}
-                src={customer.logo}
-                alt={customer.name}
-              />
-            </div>
+              className={`${customer.h} w-auto object-contain shrink-0 transition-opacity ${
+                customer.noFilter
+                  ? "opacity-70 hover:opacity-100"
+                  : `grayscale opacity-70 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
+              }`}
+              src={customer.logo}
+              alt={customer.name}
+            />
           ))}
         </div>
       </div>
