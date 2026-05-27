@@ -18,12 +18,12 @@ const customers: Customer[] = [
   // Livesport sits early; Flashscore late so they're never adjacent (the
   // marquee duplicates and loops — Accenture → Multitude is the only seam).
   { name: "Multitude", logo: "/img/customers/multitude-logo.png", invertDark: true, h: "h-10 sm:h-12", w: "w-[130px] sm:w-[150px]", pad: "p-1" },
-  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true, h: "h-9 sm:h-10", w: "w-[170px] sm:w-[200px]", pad: "p-1" },
+  { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true, h: "h-7 sm:h-9", w: "w-[140px] sm:w-[160px]", pad: "p-1" },
   { name: "Livesport", logo: "/img/customers/livesport-logo.png", invertDark: true, h: "h-12 sm:h-14", w: "w-[140px] sm:w-[160px]", pad: "p-0" },
   { name: "SYNOT", logo: "/img/customers/synot-logo-2.png", invertDark: true, h: "h-10 sm:h-12", w: "w-[160px] sm:w-[180px]", pad: "p-1" },
   { name: "Inventi", logo: "/img/customers/inventi-logo.png", invertDark: true, h: "h-10 sm:h-12", w: "w-[130px] sm:w-[150px]", pad: "p-1" },
   { name: "Tesena", logo: "/img/investors/tesena-logo.png", invertDark: true, h: "h-12 sm:h-14", w: "w-[150px] sm:w-[170px]", pad: "p-0" },
-  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true, h: "h-10 sm:h-12", w: "w-[160px] sm:w-[180px]", pad: "p-1" },
+  { name: "Principal", logo: "/img/customers/principal-logo-gray.svg", noFilter: true, h: "h-9 sm:h-10", w: "w-[140px] sm:w-[160px]", pad: "p-1" },
   { name: "Flashscore", logo: "/img/customers/flash-score-logo.png", invertDark: true, h: "h-12 sm:h-14", w: "w-[150px] sm:w-[170px]", pad: "p-0" },
   { name: "Nice Project", logo: "/img/customers/niceproject-logo.svg", invertDark: true, h: "h-9 sm:h-10", w: "w-[140px] sm:w-[160px]", pad: "p-1" },
   { name: "Accenture", logo: "/img/customers/accenture-logo-gray.svg", noFilter: true, h: "h-9 sm:h-10", w: "w-[130px] sm:w-[150px]", pad: "p-1" },
