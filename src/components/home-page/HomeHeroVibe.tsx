@@ -167,8 +167,8 @@ const HomeHeroVibe = () => {
               <label className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold pl-1">
                 Test environment URL
               </label>
-              <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee dark:focus-within:border-primary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 dark:focus-within:ring-primary-wopee/20 transition-all">
-                <SelectedIcon className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee dark:group-focus-within:text-primary-wopee transition-colors flex-shrink-0" />
+              <div className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 focus-within:border-secondary-wopee focus-within:ring-2 focus-within:ring-secondary-wopee/20 transition-all">
+                <SelectedIcon className="w-4 h-4 text-gray-400 dark:text-gray-500 group-focus-within:text-secondary-wopee transition-colors flex-shrink-0" />
                 <input
                   ref={urlInputRef}
                   type="url"
@@ -186,7 +186,7 @@ const HomeHeroVibe = () => {
                 autoFocus
                 value={testingInstructions}
                 placeholder="What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
-                className="w-full bg-transparent border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:border-secondary-wopee dark:focus:border-primary-wopee resize-none text-sm"
+                className="w-full bg-gray-50/80 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg px-3.5 py-2.5 focus:outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 transition-all"
                 onChange={(e) => setTestingInstructions(e.target.value)}
               />
             ) : (
@@ -210,17 +210,18 @@ const HomeHeroVibe = () => {
             <div className="flex justify-between items-center gap-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button
-                    type="button"
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 text-sm text-gray-700 dark:text-gray-200 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-colors"
+                  <div
+                    role="button"
+                    tabIndex={0}
                     aria-label="Pick a sample scenario"
+                    className="hero-scenario-trigger inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-solid border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 text-sm text-gray-700 dark:text-gray-200 hover:border-secondary-wopee transition-colors cursor-pointer select-none"
                   >
                     <SelectedIcon className="w-4 h-4" />
                     <span className="font-medium">
                       {appTemplates[appType].label}
                     </span>
                     <ChevronDown className="w-3.5 h-3.5 opacity-60" />
-                  </button>
+                  </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"

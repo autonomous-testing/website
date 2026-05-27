@@ -285,10 +285,10 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
   color: rgb(209 213 219); /* gray-300 */
 }
 .hero-add-instructions:hover {
-  color: var(--secondary-wopee);
+  color: #7030a0; /* secondary-wopee — matches form focus rings */
 }
 [data-theme="dark"] .hero-add-instructions:hover {
-  color: var(--primary-wopee);
+  color: #a78bfa; /* lighter purple, visible on dark bg */
 }
 
 /* Hero "Trusted by" marquee */
