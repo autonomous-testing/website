@@ -264,6 +264,51 @@ a.navbar__item:hover {
   filter: invert(1);
 }
 
+/* Homepage: hide primary nav links (Solutions / Pricing / Blog / About us). */
+/* They remain available in the footer and on all subpages. */
+body.is-home .navbar-item--hide-on-home,
+body.is-home .navbar-sidebar .navbar-item--hide-on-home {
+  display: none !important;
+}
+/* Docusaurus strips `className` on dropdown navbar items, so hide the left-side
+   dropdown explicitly. There is no dropdown on the right (Sign In / Start for free). */
+body.is-home .theme-layout-navbar-left .navbar__item.dropdown,
+body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
+  display: none !important;
+}
+
+/* Hero "Add testing instructions" toggle — bypass Infima's role=button color */
+.hero-add-instructions {
+  color: rgb(55 65 81); /* gray-700 */
+}
+[data-theme="dark"] .hero-add-instructions {
+  color: rgb(209 213 219); /* gray-300 */
+}
+/* Hover follows the H1 brand emphasis pattern: secondary-wopee in light,
+   primary-wopee in dark — same colors used for "for Web Apps" highlight. */
+.hero-add-instructions:hover {
+  color: #7030a0; /* secondary-wopee */
+}
+[data-theme="dark"] .hero-add-instructions:hover {
+  color: #ffcc00; /* primary-wopee */
+}
+
+/* Hero "Trusted by" marquee */
+@keyframes hero-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: hero-marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+.mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
 /* Footer */
 
 .footer {
