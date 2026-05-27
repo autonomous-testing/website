@@ -63,9 +63,10 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title="AI Testing Agents for Web Apps"
-      description="Stop writing tests manually. Wopee.io AI agents explore your app, generate Playwright tests, and self-heal when your UI changes. Try free."
+      description="Paste a URL — Wopee.io AI testing agents explore your web app, generate Playwright tests, run them across browsers, and self-heal when your UI changes. Free to start."
     >
       <Head>
+        <body className="is-home" />
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
       </Head>
