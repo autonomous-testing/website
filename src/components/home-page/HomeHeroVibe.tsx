@@ -180,10 +180,10 @@ const HomeHeroVibe = () => {
               </div>
             </div>
 
-            {showInstructions ? (
+            {showInstructions || testingInstructions.length > 0 ? (
               <textarea
                 rows={3}
-                autoFocus
+                autoFocus={showInstructions}
                 value={testingInstructions}
                 placeholder="What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
                 className="w-full bg-gray-50/80 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg px-3.5 py-2.5 focus:outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 transition-all"

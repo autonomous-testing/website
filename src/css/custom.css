@@ -284,11 +284,13 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
 [data-theme="dark"] .hero-add-instructions {
   color: rgb(209 213 219); /* gray-300 */
 }
+/* Hover follows the H1 brand emphasis pattern: secondary-wopee in light,
+   primary-wopee in dark — same colors used for "for Web Apps" highlight. */
 .hero-add-instructions:hover {
-  color: #7030a0; /* secondary-wopee — matches form focus rings */
+  color: #7030a0; /* secondary-wopee */
 }
 [data-theme="dark"] .hero-add-instructions:hover {
-  color: #a78bfa; /* lighter purple, visible on dark bg */
+  color: #ffcc00; /* primary-wopee */
 }
 
 /* Hero "Trusted by" marquee */
