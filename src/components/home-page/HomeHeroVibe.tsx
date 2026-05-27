@@ -7,6 +7,8 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
 import { AppType } from "./vibe/enums";
@@ -185,11 +187,31 @@ const HomeHeroVibe = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
-                  className="w-52 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
+                  className="w-56 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
                 >
+                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
+                    Your application
+                  </DropdownMenuLabel>
+                  {([AppType.YOUR_APPLICATION] as AppType[]).map((type) => {
+                    const tpl = appTemplates[type];
+                    const Icon = tpl.icon;
+                    return (
+                      <DropdownMenuItem
+                        key={type}
+                        onSelect={() => handleAppTypeChange(type)}
+                        className="cursor-pointer flex items-center gap-2"
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span>{tpl.label}</span>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 font-semibold">
+                    Try a demo app
+                  </DropdownMenuLabel>
                   {(
                     [
-                      AppType.YOUR_APPLICATION,
                       AppType.WEBSITE,
                       AppType.E_COMMERCE,
                       AppType.BANKING,
