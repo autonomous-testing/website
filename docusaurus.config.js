@@ -108,6 +108,17 @@ const config = {
     },
     require.resolve("./src/plugins/blog-related"),
     [
+      // Programmatic SEO pages (#98). Files are generated into generated/pseo/
+      // by scripts/generate-pseo.js (run before build/start) and served at the
+      // site root, e.g. generated/pseo/ai-testing-react.mdx -> /ai-testing-react/.
+      "@docusaurus/plugin-content-pages",
+      {
+        id: "pseo",
+        path: "generated/pseo",
+        routeBasePath: "/",
+      },
+    ],
+    [
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
