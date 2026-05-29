@@ -103,7 +103,8 @@ In the video above, you’ll see exactly how to use Playwright Bot to automatica
 
 - **Speed and Efficiency:** Playwright Bot drastically reduces the time spent manually writing and maintaining tests.
 - **Scalability:** Effortlessly extend your test coverage for new features, without reinventing the wheel.
-- **Error Reduction:** By leveraging AI, the generated tests adapt to changes in the UI or code, reducing the likelihood of errors.
+- **Error Reduction:** By leveraging AI, the generated tests adapt to changes in the UI or code, reducing the likelihood of errors. This is the same [self-healing](/blog/self-healing-in-sw-test-automation/) principle applied at generation time — instead of patching a broken selector, the bot regenerates the flow.
+- **Visual coverage included:** Beyond functional flows, the generated suite can capture screenshots for [visual regression testing](/blog/getting-started-with-playwright-visual-testing/), so layout breaks get caught alongside logic errors.
 
 ## Upcoming Features
 

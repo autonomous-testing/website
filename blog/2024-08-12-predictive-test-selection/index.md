@@ -230,7 +230,7 @@ Test impact analysis (TIA) is deterministic: it maps code coverage to tests and 
 
 ### Which tools support predictive test selection?
 
-Launchable, Appsurify TestBrain, Sealights, and Orangebeard's Auto Test Pilot are the dedicated PTS vendors covered above. Bazel-based monorepos at Google, Meta, and Uber run in-house variants. For teams already on AI-driven test platforms, prioritization is increasingly a feature rather than a separate product — Wopee.io's [AI testing agents](/ai-testing-agents/) include risk-based execution alongside [self-healing](/blog/self-healing-in-sw-test-automation/), so you do not run two separate services.
+Launchable, Appsurify TestBrain, Sealights, and Orangebeard's Auto Test Pilot are the dedicated PTS vendors covered above. Bazel-based monorepos at Google, Meta, and Uber run in-house variants. For teams already on AI-driven test platforms, prioritization is increasingly a feature rather than a separate product — Wopee.io's [AI testing agents](/ai-testing-agents/) include risk-based execution alongside [self-healing](/blog/self-healing-in-sw-test-automation/) and AI test generation via [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/), so you do not run two separate services.
 
 ### When does predictive test selection actually pay off?
 

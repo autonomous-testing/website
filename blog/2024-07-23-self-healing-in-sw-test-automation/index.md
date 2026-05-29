@@ -18,6 +18,14 @@ Enter self-healing test automation - a game-changing approach that promises to r
 ![Self Healing in Test Automation](./self-healing-explained.jpg)
 _Source: Wopee.io & leonardo.ai._
 
+:::info 2026 update
+
+Two things changed since we first published this. First, the locator-fallback approach below (try ID, then name, then XPath) is now the floor, not the ceiling — most teams that care about maintenance have moved to LLM- or vision-based healing that resolves an element from intent ("the Submit button") rather than a fixed list of candidate selectors. Second, "self-healing" stopped being a standalone product and became a feature bundled into broader [AI testing agents](/ai-testing-agents/) that also generate and run the tests.
+
+So we have rewritten the comparison section below to reflect what the leading approaches actually do in 2026 — including a side-by-side table of Wopee.io, Healenium, Testim, and Mabl — and added an honest note on where each one breaks. The deterministic code samples further down still hold: they are the simplest way to understand the mechanics before you reach for an AI layer.
+
+:::
+
 ## Understanding Self-Healing Test Automation
 
 ### What is Self-Healing Test Automation?
@@ -135,23 +143,46 @@ Some teams implement even more advanced recovery mechanisms, such as moving test
 
 ## Tools and Frameworks for Self-Healing Automation
 
-There are numerous tools and frameworks offering self-healing capabilities in test automation. Below are a few examples, though many more options are available:
+There are numerous tools and frameworks offering self-healing capabilities. They fall into three rough camps, and the camp matters more than the brand name:
 
-### 1. Selenium with Self-Healing Extensions
+1. **Open-source libraries** that bolt healing onto an existing framework (Healenium for Selenium).
+2. **Commercial low-code platforms** that own the whole authoring + execution + healing loop (Testim, Mabl, Katalon, Ranorex).
+3. **AI agents** that generate the tests in the first place and heal them as a side effect (Wopee.io, and the broader category of [AI testing agents](/ai-testing-agents/)).
 
-Selenium, a popular open-source testing framework, can be enhanced with self-healing capabilities through various libraries and plugins like Selenium IDE (Google Chrome extension) or healenium.io. These extensions integrate with existing Selenium test suites, offering flexibility and customization. Playwright and Cypress users typically reach for AI-driven layers instead — for Playwright, our [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) regenerates failing locators on the fly so you do not maintain selectors manually.
+### Wopee.io vs Healenium vs Testim vs Mabl
 
-### 2. Testim
+The honest comparison most vendor pages skip: every tool here heals locators, so the differentiators are *how* it picks the replacement element, *how much* of your maintenance it actually removes, and whether it also covers **visual** regressions (which locator-healing does nothing for). Here is how the four most-asked-about options line up.
 
-Testim is an AI-driven test automation platform that incorporates self-healing to automatically adjust to changes in the application UI. It features an easy-to-use interface with low-code/no-code options and advanced machine learning algorithms for UI change prediction.
+| | **Wopee.io** | **Healenium** | **Testim** | **Mabl** |
+|---|---|---|---|---|
+| **Approach to locator self-healing** | LLM + vision: regenerates the locator from page intent and a visual snapshot, not a fixed fallback list | ML similarity scoring over a stored locator history; picks the closest DOM match above a threshold | Multi-attribute "Smart Locators" weighted by ML; learns which attributes are stable across runs | ML model scores candidate elements using DOM + context; auto-applies high-confidence matches |
+| **Framework / runtime** | Generates **Playwright** code you own and run in your own CI ([Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/)) | Selenium / Appium only; runs as a proxy + backend you host | Proprietary cloud runner; exports are limited | Proprietary cloud runner |
+| **Maintenance burden removed** | High — tests are regenerated, not just patched, so flow changes heal too, not only selectors | Medium — heals selectors well; new flows and assertions are still hand-authored | Medium-high — strong selector healing; logic changes need manual edits in the editor | Medium-high — strong selector healing; auto-suggests fixes for review |
+| **Visual testing** | Built-in autonomous [visual regression](/blog/getting-started-with-playwright-visual-testing/) with baseline review, not a separate tool | None — locator healing only; pair it with a visual tool | Add-on visual validation | Built-in visual testing |
+| **Hosting** | SaaS, free tier to try | Self-hosted (you run the backend) | SaaS | SaaS |
+| **Best fit** | Teams who want Playwright they control + self-healing + visual in one agent | Selenium shops wanting open-source healing without changing tools | Low-code teams standardizing on one commercial platform | Teams wanting an all-in-one cloud platform with strong reporting |
 
-### 3. Ranorex
+A few caveats worth stating plainly:
 
-Ranorex is a comprehensive test automation tool that includes self-healing features to handle dynamic UI changes. It is robust and feature-rich, supporting extensive platforms and integrating well with CI/CD tools.
+- **Locator healing and visual testing are different problems.** Healenium and most "self-healing" libraries heal *selectors* — they do nothing if a button moves, changes color, or overlaps another element. Catching that needs [visual regression testing](/blog/getting-started-with-playwright-visual-testing/) running alongside. Tools that bundle both (Wopee.io, Mabl, Testim's add-on) save you wiring two systems together.
+- **Self-hosted vs SaaS is a real cost.** Healenium is free but you run and maintain its backend and database. The commercial tools trade that for a subscription and a closed runner.
+- **"Heals the test" beats "heals the selector."** The further-down code samples patch a *locator*. An agent that regenerates the whole test (the flow plus assertions) absorbs a wider class of UI changes — which is why test *generation* and self-healing increasingly ship as one product rather than two.
 
-### 4. Katalon Studio
+### Healenium (open-source, Selenium)
 
-Katalon Studio is an integrated test automation tool with self-healing features. It is cost-effective, supports both web and mobile testing, and provides integrated test management and reporting.
+[Healenium](https://healenium.io/) is the reference open-source option. It stores a history of every locator it has seen and, when one breaks, uses ML similarity scoring to pick the closest current DOM element. It integrates cleanly with existing Selenium/Appium suites but runs as a proxy plus a backend you host yourself, and it heals selectors only — not visual or flow changes.
+
+### Testim
+
+Testim is an AI-driven low-code platform whose "Smart Locators" weight multiple element attributes and learn which ones stay stable across runs. Strong selector healing and an approachable editor; the trade-off is a proprietary cloud runner with limited export, so you do not own the test code the way you do with Playwright.
+
+### Mabl
+
+Mabl is an all-in-one cloud platform that combines ML-based locator healing with built-in visual testing and solid reporting. High-confidence repairs auto-apply; lower-confidence ones queue for review. Good fit if you want one managed product end-to-end and are comfortable with a closed runner.
+
+### Selenium with Healenium, and where Playwright/Cypress differ
+
+Selenium remains the framework with the deepest self-healing tooling (Healenium, Testim, Katalon, Ranorex all started there). Playwright and Cypress users typically reach for AI-driven layers instead — for Playwright, our [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) regenerates failing locators on the fly so you do not maintain selectors manually, and exports runnable Playwright you keep.
 
 ## Implementing Self-Healing in Your Test Suite
 
