@@ -24,7 +24,7 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -63,4 +63,18 @@ jobs:
           path: "./build"
       - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v5
+        # The Pages backend finalizes a deployment asynchronously after the
+        # action returns, so a deploy that closely follows another can hit
+        # "due to in progress deployment" (HTTP 400). Don't fail the job yet —
+        # wait for the previous deployment to clear and retry once.
+        continue-on-error: true
+
+      - name: Wait for the previous Pages deployment to clear
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
