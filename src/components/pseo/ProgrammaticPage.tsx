@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Check } from "lucide-react";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
@@ -149,55 +150,64 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         </section>
 
         {/* Comparison */}
-        <section className="mt-14">
+        <section id="approach-comparison" className="mt-16">
           <h2 className="text-2xl font-bold sm:text-3xl">{data.subject}: approach comparison</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <p className="mt-2 text-gray-500 dark:text-gray-400">How the common ways to test {data.subject} stack up.</p>
+          <div
+            className={clsx(
+              "mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2",
+              data.comparison.rows.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+            )}
+          >
             {data.comparison.rows.map((row, ri) => {
               const isWopee = /wopee/i.test(row[0]);
               return (
                 <div
                   key={ri}
                   className={clsx(
-                    "flex flex-col overflow-hidden rounded-xl border",
+                    "flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition dark:bg-gray-900",
                     isWopee
-                      ? "border-secondary-wopee/50 shadow-md dark:border-primary-wopee/50"
-                      : "border-gray-200 dark:border-gray-800"
+                      ? "border-secondary-wopee shadow-xl ring-2 ring-secondary-wopee/40 dark:border-primary-wopee dark:ring-primary-wopee/40 lg:-translate-y-1"
+                      : "border-gray-200 hover:-translate-y-0.5 hover:shadow-md dark:border-gray-800"
                   )}
                 >
                   <div
                     className={clsx(
-                      "h-1.5",
+                      "flex items-center gap-2.5 px-5 py-4",
                       isWopee
-                        ? "bg-gradient-to-r from-secondary-wopee to-primary-wopee"
-                        : "bg-gray-200 dark:bg-gray-800"
+                        ? "bg-gradient-to-br from-secondary-wopee to-[#451f6b] text-white"
+                        : "bg-gray-50 text-gray-900 dark:bg-white/5 dark:text-white"
                     )}
-                  />
-                  <div className="flex flex-1 flex-col p-5">
-                    <div className="flex items-center gap-2">
-                      {isWopee && <span aria-hidden>✅</span>}
-                      <h3
-                        className={clsx(
-                          "m-0 text-base font-bold",
-                          isWopee
-                            ? "text-secondary-wopee dark:text-primary-wopee"
-                            : "text-gray-900 dark:text-white"
-                        )}
-                      >
-                        {row[0]}
-                      </h3>
-                    </div>
-                    <dl className="mt-4 space-y-3">
-                      {data.comparison.header.slice(1).map((h, hi) => (
-                        <div
-                          key={hi}
-                          className="border-t border-gray-100 pt-3 first:border-0 first:pt-0 dark:border-gray-800"
-                        >
-                          <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">{h}</dt>
-                          <dd className="mt-0.5 text-sm text-gray-700 dark:text-gray-200">{row[hi + 1]}</dd>
-                        </div>
-                      ))}
-                    </dl>
+                  >
+                    {isWopee ? (
+                      <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-white text-secondary-wopee">
+                        <Check size={15} strokeWidth={3.5} />
+                      </span>
+                    ) : (
+                      <span className="h-2 w-2 flex-none rounded-full bg-gray-300 dark:bg-gray-600" />
+                    )}
+                    <h3 className="m-0 text-[15px] font-bold leading-tight">{row[0]}</h3>
                   </div>
+                  <dl
+                    className={clsx(
+                      "flex flex-1 flex-col divide-y divide-gray-100 px-5 dark:divide-gray-800",
+                      isWopee && "bg-secondary-wopee/[0.04] dark:bg-primary-wopee/[0.04]"
+                    )}
+                  >
+                    {data.comparison.header.slice(1).map((h, hi) => (
+                      <div key={hi} className="flex min-h-[3.25rem] flex-col justify-center py-3">
+                        <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">{h}</dt>
+                        <dd
+                          className={clsx(
+                            "m-0 mt-1 text-sm leading-snug",
+                            isWopee ? "font-semibold text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                          )}
+                        >
+                          {row[hi + 1]}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               );
             })}
