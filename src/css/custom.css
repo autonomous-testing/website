@@ -376,7 +376,7 @@ body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
   color: rgb(75 85 99); /* gray-600 — light-mode contrast on white bg */
 }
 [data-theme="dark"] .hero-add-instructions {
-  color: rgb(107 114 128); /* gray-500 */
+  color: rgb(156 163 175); /* gray-400 — 4.5:1+ on the gray-900 form bg */
 }
 /* Hover follows the H1 brand emphasis pattern: secondary-wopee in light,
    primary-wopee in dark — same colors used for "for Web Apps" highlight. */

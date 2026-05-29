@@ -133,7 +133,6 @@ const HomeHeroVibe = () => {
         <button
           type="button"
           onClick={() => setVideoOpen(true)}
-          aria-label="Watch the 60-second demo"
           className="group inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-colors"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee" />
@@ -197,6 +196,7 @@ const HomeHeroVibe = () => {
                   <>
                     <textarea
                       rows={3}
+                      aria-label="Testing instructions"
                       autoFocus={showInstructions}
                       value={testingInstructions}
                       placeholder={

@@ -137,9 +137,10 @@ const TestimonialSwitcher = ({
   return (
     <div className="flex justify-center gap-2 mt-8">
       {testimonials.map((_, index) => (
-        <div
+        <button
           key={index}
-          className={`w-3 h-3 ${
+          type="button"
+          className={`appearance-none border-0 p-0 w-3 h-3 ${
             activeItemIndex === index
               ? "bg-secondary-wopee dark:bg-primary-wopee"
               : "bg-gray-300 dark:bg-gray-600 opacity-50"
