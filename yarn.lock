@@ -2001,6 +2001,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@icons-pack/react-simple-icons@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-10.2.0.tgz#18bb0dfb6241de35e7412e7430eb8fb54013bdf0"
+  integrity sha512-QDUxup8D3GdIIzwGpxQs6bjeFV5mJes25qqf4aqP/PaBYQNCar7AiyD8C14636TosCG0A/QqAUwm/Hviep4d4g==
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz"
