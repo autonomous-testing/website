@@ -3,9 +3,9 @@ import clsx from "clsx";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoFaq from "@site/src/components/pseo/PseoFaq";
+import PseoCard from "@site/src/components/pseo/PseoCard";
 
 const APP_SIGNUP = "https://cmd.wopee.io/login";
 
@@ -22,7 +22,7 @@ export type PseoData = {
   steps: string[];
   comparison: { header: string[]; rows: string[][] };
   faqs: { q: string; a: string }[];
-  related: { slug: string; label: string }[];
+  related: { slug: string; label: string; category: "framework" | "industry" | "use-case"; description: string }[];
 };
 
 const eyebrowFor = (c: PseoData["category"]) =>
@@ -197,16 +197,16 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         {/* Related */}
         {data.related.length > 0 && (
           <section className="mt-16">
-            <h2 className="text-xl font-bold sm:text-2xl">Related</h2>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 className="text-2xl font-bold sm:text-3xl">Related</h2>
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
               {data.related.map((r) => (
-                <Link
+                <PseoCard
                   key={r.slug}
                   href={`/${r.slug}/`}
-                  className="rounded-xl border border-gray-200 p-4 font-semibold text-secondary-wopee no-underline transition hover:border-secondary-wopee hover:no-underline hover:shadow-sm dark:border-gray-700 dark:text-primary-wopee dark:hover:border-primary-wopee"
-                >
-                  {r.label} →
-                </Link>
+                  category={r.category}
+                  title={r.label}
+                  description={r.description}
+                />
               ))}
             </div>
           </section>

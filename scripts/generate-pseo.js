@@ -29,7 +29,12 @@ function renderPage(page, bySlug) {
   // ship broken internal links while a batch is partial.
   const related = (page.related || [])
     .filter((slug) => bySlug[slug])
-    .map((slug) => ({ slug, label: bySlug[slug].linkLabel }));
+    .map((slug) => ({
+      slug,
+      label: bySlug[slug].linkLabel,
+      category: bySlug[slug].category,
+      description: bySlug[slug].description,
+    }));
 
   const data = {
     slug: page.slug,
