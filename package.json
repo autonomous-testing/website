@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "generate:pseo": "node scripts/generate-pseo.js",
+    "start": "node scripts/generate-pseo.js && docusaurus start",
+    "build": "node scripts/generate-pseo.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
