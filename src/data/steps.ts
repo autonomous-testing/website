@@ -13,7 +13,7 @@ export const stepsData: StepData[] = [
   {
     number: 1,
     videoSrc: "/how-it-works/step-1.webm",
-    fallbackImageSrc: "/how-it-works/step-1.png",
+    fallbackImageSrc: "/how-it-works/step-1.webp",
     title: "Paste your project URL",
     subtitle: "That's all we need to begin testing your application.",
     bulletPointsTitle: "Takes 30 seconds:",
@@ -28,7 +28,7 @@ export const stepsData: StepData[] = [
   {
     number: 2,
     videoSrc: "/how-it-works/step-2.webm",
-    fallbackImageSrc: "/how-it-works/step-2.png",
+    fallbackImageSrc: "/how-it-works/step-2.webp",
     title: "Let our AI agents do the work",
     subtitle:
       "Our AI agents map your app, understand it, and create a test plan.",
@@ -44,7 +44,7 @@ export const stepsData: StepData[] = [
   {
     number: 3,
     videoSrc: "/how-it-works/step-3.webm",
-    fallbackImageSrc: "/how-it-works/step-3.png",
+    fallbackImageSrc: "/how-it-works/step-3.webp",
     title: "Ship with instant insights",
     subtitle:
       "Get detailed regression and visual testing results in minutes, not days.",
