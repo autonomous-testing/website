@@ -156,7 +156,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
           <div
             className={clsx(
               "mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2",
-              data.comparison.rows.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+              data.comparison.rows.length >= 4 ? "lg:grid-cols-2" : "lg:grid-cols-3"
             )}
           >
             {data.comparison.rows.map((row, ri) => {
@@ -189,7 +189,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
                     )}
                     <h3
                       className={clsx(
-                        "m-0 text-[15px] font-bold leading-tight",
+                        "m-0 min-w-0 break-words text-[15px] font-bold leading-tight",
                         isWopee ? "text-secondary-wopee dark:text-primary-wopee" : "text-gray-900 dark:text-white"
                       )}
                     >
