@@ -1,6 +1,23 @@
 import React from "react";
 import Link from "@docusaurus/Link";
-import { Building2, Cloud, Code2, Dices, Eye, Landmark, RefreshCw, Route, ShoppingCart, Target } from "lucide-react";
+import {
+  Accessibility,
+  Building2,
+  Cloud,
+  Code2,
+  Dices,
+  Eye,
+  Flame,
+  Landmark,
+  Newspaper,
+  RefreshCw,
+  Route,
+  ShieldCheck,
+  ShoppingCart,
+  Stethoscope,
+  Target,
+  Webhook,
+} from "lucide-react";
 import {
   SiReact,
   SiAngular,
@@ -9,6 +26,9 @@ import {
   SiSvelte,
   SiDjango,
   SiRubyonrails,
+  SiLaravel,
+  SiDotnet,
+  SiSpringboot,
 } from "@icons-pack/react-simple-icons";
 import TagPill from "@site/src/components/blog/TagPill";
 
@@ -39,6 +59,9 @@ const FRAMEWORK_LOGO: Record<string, IconCmp> = {
   "ai-testing-svelte": SiSvelte,
   "ai-testing-django": SiDjango,
   "ai-testing-rails": SiRubyonrails,
+  "ai-testing-laravel": SiLaravel,
+  "ai-testing-dotnet": SiDotnet,
+  "ai-testing-spring": SiSpringboot,
 };
 
 // Per-page icons for industries / use-cases; fall back to the category icon.
@@ -47,9 +70,15 @@ const ICON_BY_SLUG: Record<string, IconCmp> = {
   "ai-testing-ecommerce": ShoppingCart,
   "ai-testing-saas": Cloud,
   "ai-testing-igaming": Dices,
+  "ai-testing-healthcare": Stethoscope,
+  "ai-testing-insurance": ShieldCheck,
+  "ai-testing-media": Newspaper,
   "ai-regression-testing": RefreshCw,
   "ai-visual-testing": Eye,
   "ai-e2e-testing": Route,
+  "ai-smoke-testing": Flame,
+  "ai-api-testing": Webhook,
+  "ai-accessibility-testing": Accessibility,
 };
 
 export default function PseoCard({
