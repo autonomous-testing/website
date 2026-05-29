@@ -1,6 +1,4 @@
 import React from "react";
-import clsx from "clsx";
-import { Check } from "lucide-react";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
@@ -8,6 +6,7 @@ import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoFaq from "@site/src/components/pseo/PseoFaq";
 import PseoCard from "@site/src/components/pseo/PseoCard";
+import ComparisonJourney from "@site/src/components/pseo/ComparisonJourney";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 
 export type PseoData = {
@@ -150,72 +149,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         </section>
 
         {/* Comparison */}
-        <section id="approach-comparison" className="mt-16">
-          <h2 className="text-2xl font-bold sm:text-3xl">{data.subject}: approach comparison</h2>
-          <p className="mt-2 text-gray-500 dark:text-gray-400">How the common ways to test {data.subject} stack up.</p>
-          <div
-            className={clsx(
-              "mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2",
-              data.comparison.rows.length >= 4 ? "lg:grid-cols-2" : "lg:grid-cols-3"
-            )}
-          >
-            {data.comparison.rows.map((row, ri) => {
-              const isWopee = /wopee/i.test(row[0]);
-              return (
-                <div
-                  key={ri}
-                  className={clsx(
-                    "flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition dark:bg-gray-900",
-                    isWopee
-                      ? "border-secondary-wopee shadow-xl ring-2 ring-secondary-wopee/40 dark:border-primary-wopee dark:ring-primary-wopee/40 lg:-translate-y-1"
-                      : "border-gray-200 hover:-translate-y-0.5 hover:shadow-md dark:border-gray-800"
-                  )}
-                >
-                  <div
-                    className={clsx(
-                      "h-1.5 flex-none",
-                      isWopee
-                        ? "bg-gradient-to-r from-secondary-wopee to-primary-wopee"
-                        : "bg-gray-200 dark:bg-gray-700"
-                    )}
-                  />
-                  <div className="flex min-h-[4.25rem] items-center gap-2.5 px-5 pb-3 pt-4">
-                    {isWopee ? (
-                      <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-secondary-wopee text-white dark:bg-primary-wopee dark:text-black">
-                        <Check size={14} strokeWidth={3.5} />
-                      </span>
-                    ) : (
-                      <span className="h-2 w-2 flex-none rounded-full bg-gray-300 dark:bg-gray-600" />
-                    )}
-                    <h3
-                      className={clsx(
-                        "m-0 min-w-0 break-words text-[15px] font-bold leading-tight",
-                        isWopee ? "text-secondary-wopee dark:text-primary-wopee" : "text-gray-900 dark:text-white"
-                      )}
-                    >
-                      {row[0]}
-                    </h3>
-                  </div>
-                  <dl className="flex flex-1 flex-col divide-y divide-gray-100 border-t border-gray-100 px-5 dark:divide-gray-800 dark:border-gray-800">
-                    {data.comparison.header.slice(1).map((h, hi) => (
-                      <div key={hi} className="flex min-h-[3.25rem] flex-col justify-center py-3">
-                        <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{h}</dt>
-                        <dd
-                          className={clsx(
-                            "m-0 mt-1 text-sm leading-snug",
-                            isWopee ? "font-semibold text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
-                          )}
-                        >
-                          {row[hi + 1]}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <ComparisonJourney comparison={data.comparison} />
 
         {/* Mid CTA band */}
         <section className="mt-16 rounded-2xl bg-gradient-to-br from-secondary-wopee to-[#451f6b] px-6 py-10 text-center text-white">
