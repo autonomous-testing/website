@@ -5,6 +5,7 @@ import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import PseoFaq from "@site/src/components/pseo/PseoFaq";
 
 const APP_SIGNUP = "https://cmd.wopee.io/login";
 
@@ -46,19 +47,10 @@ function RichText({ children }: { children: string }) {
   );
 }
 
-function CtaButtons({ subject, inverted = false }: { subject: string; inverted?: boolean }) {
+function CtaButtons() {
   return (
-    <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+    <div className="flex justify-center">
       <ButtonPrimary href={APP_SIGNUP} label="Start for free" id="pseo-cta-primary" />
-      <Link
-        href="/book-demo/"
-        className={clsx(
-          "rounded-lg border px-5 py-2.5 text-sm font-semibold transition ease-out hover:bg-white/10 md:text-base xl:text-lg",
-          inverted ? "border-white/40 text-white" : "border-secondary-wopee text-secondary-wopee dark:border-white/30 dark:text-white"
-        )}
-      >
-        Book a demo
-      </Link>
     </div>
   );
 }
@@ -99,7 +91,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
             <RichText>{data.aioOpener}</RichText>
           </p>
           <div className="mt-8">
-            <CtaButtons subject={data.subject} />
+            <CtaButtons />
           </div>
         </header>
 
@@ -190,22 +182,15 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
             Generate your first autonomous tests in minutes — no brittle selectors, no manual baselines.
           </p>
           <div className="mt-7">
-            <CtaButtons subject={data.subject} inverted />
+            <CtaButtons />
           </div>
         </section>
 
         {/* FAQ */}
         <section className="mt-16">
           <h2 className="text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
-          <div className="mt-6 divide-y divide-gray-200 dark:divide-gray-700">
-            {data.faqs.map((f, i) => (
-              <details key={i} className="group py-4" {...(i === 0 ? { open: true } : {})}>
-                <summary className="cursor-pointer list-none text-lg font-semibold marker:hidden">
-                  <span className="text-secondary-wopee dark:text-primary-wopee">{f.q}</span>
-                </summary>
-                <p className="mt-3 text-base leading-relaxed text-gray-600 dark:text-gray-300">{f.a}</p>
-              </details>
-            ))}
+          <div className="mt-6">
+            <PseoFaq faqs={data.faqs} />
           </div>
         </section>
 
@@ -218,7 +203,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
                 <Link
                   key={r.slug}
                   href={`/${r.slug}/`}
-                  className="rounded-xl border border-gray-200 p-4 font-semibold text-secondary-wopee transition hover:border-secondary-wopee hover:shadow-sm dark:border-gray-700 dark:text-primary-wopee dark:hover:border-primary-wopee"
+                  className="rounded-xl border border-gray-200 p-4 font-semibold text-secondary-wopee no-underline transition hover:border-secondary-wopee hover:no-underline hover:shadow-sm dark:border-gray-700 dark:text-primary-wopee dark:hover:border-primary-wopee"
                 >
                   {r.label} →
                 </Link>
