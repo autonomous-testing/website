@@ -79,6 +79,29 @@ _Image Source: Generated using DALL·E by OpenAI.._
   ]
 }) }} />
 
+## What Actually Works in 2026 (and What Still Doesn't)
+
+:::info 2026 update
+
+This post originally framed AI testing agents as a "revolution vs. hype" debate. A year on, the debate is mostly settled in practice — some capabilities are now boring and dependable, others are still demo-ware. Here is the honest split, based on what we ship and what customers run in CI every day.
+
+:::
+
+**What works reliably today:**
+
+- **Autonomous test generation from a URL.** Point an agent at a page and it derives flows and emits runnable tests. Our [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) does exactly this and outputs Playwright you own.
+- **Self-healing of broken locators.** Regenerating a selector — or the whole flow — when the UI shifts is dependable enough to trust in CI. See our deep dive on [self-healing test automation](/blog/self-healing-in-sw-test-automation/) for how it works and how the tools compare.
+- **Visual regression with smart filtering.** Catching real visual diffs while ignoring anti-aliasing noise is a solved-enough problem. Start with the fundamentals in our [Playwright visual testing guide](/blog/getting-started-with-playwright-visual-testing/).
+- **Risk-based test prioritization.** Running the tests most likely to fail first — [predictive test selection](/blog/predictive-test-selection/) — is a feature inside most serious agents now, not a separate product.
+
+**What is still hype in 2026:**
+
+- **Full end-to-end QA replacement.** Agents do not own test strategy, acceptance criteria, or "is this actually correct" judgement.
+- **Reliable root-cause diagnosis.** Agents flag *what* changed well; *why* it broke still needs a human.
+- **Complex multi-step business logic without supervision.** Multi-actor flows, money movement, and stateful wizards still need human authoring and review.
+
+The practical takeaway: do not try to replace your whole suite. Replace its most brittle, most repetitive layer — usually visual regression or login/checkout coverage — let an agent own that, and expand only once you trust the results.
+
 ## What Are AI Agents?
 
 An AI agent is a software program that acts autonomously to achieve specific goals. These agents can take many forms and perform a wide range of tasks. The term "AI agent" often describes software that replaces human workers or teams by automating specific tasks or entire workflows. They’re seen as a critical evolution in software technology, redefining how businesses approach operational efficiency.
@@ -134,7 +157,9 @@ AI Testing Agents are autonomous or semi-autonomous systems that leverage artifi
 - **Visual Testing Agents**: Tools like Applitools, Percy, or Wopee.io that focus on pixel-perfect [visual verification](/visual-testing/), ensuring a seamless user experience.
 - **Exploratory Testing Bots**: [AI-driven testing bots](/testing-bot/) that mimic user behavior and uncover hidden defects, offering insights that scripted tests might miss.
 - **Scriptless Testing Tools**: Platforms for test creation without coding, leveraging AI to build robust scenarios with minimal user input.
-- **Code-Driven AI Bots**: Solutions like Wopee.io’s [Playwright AI Bot](/blog/playwright-bot-ai-powered-test-automation) that enhance traditional frameworks by automating repetitive tasks and delivering intelligent insights.
+- **Code-Driven AI Bots**: Solutions like Wopee.io’s [Playwright AI Bot](/blog/playwright-bot-ai-powered-test-automation/) that enhance traditional frameworks by automating repetitive tasks and delivering intelligent insights.
+- **Self-Healing Agents**: Agents that regenerate broken locators — or whole flows — when the UI changes, so suites stay green without manual selector fixes. See [self-healing test automation](/blog/self-healing-in-sw-test-automation/) for how the leading approaches compare.
+- **Predictive Selection Agents**: Agents that rank tests by failure risk and run the riskiest first, cutting CI time without losing coverage — see [predictive test selection](/blog/predictive-test-selection/).
 
 ## Future Trends in AI Testing Agents
 

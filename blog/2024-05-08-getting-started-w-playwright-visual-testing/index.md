@@ -244,7 +244,7 @@ Maintaining a large set of baseline screenshots can become cumbersome. As your a
 
 ### 2. Flaky Tests Due to Visual Inconsistencies
 
-Certain web application elements may exhibit slight visual inconsistencies due to factors like dynamic content loading, third-party library behavior, or browser rendering differences. These inconsistencies can trigger false positives in your visual tests, leading to flaky test results.
+Certain web application elements may exhibit slight visual inconsistencies due to factors like dynamic content loading, third-party library behavior, or browser rendering differences. These inconsistencies can trigger false positives in your visual tests, leading to flaky test results. The functional equivalent of this problem — selectors breaking on UI changes — is handled by [self-healing test automation](/blog/self-healing-in-sw-test-automation/), and the same teams usually want both.
 
 **Strategies for Handling Flaky Tests:**
 
