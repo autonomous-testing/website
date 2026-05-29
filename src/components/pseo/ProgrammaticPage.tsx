@@ -7,8 +7,7 @@ import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoFaq from "@site/src/components/pseo/PseoFaq";
 import PseoCard from "@site/src/components/pseo/PseoCard";
-
-const APP_SIGNUP = "https://cmd.wopee.io/login";
+import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 
 export type PseoData = {
   slug: string;
@@ -62,9 +61,10 @@ function RichText({ children }: { children: string }) {
 }
 
 function CtaButtons() {
+  const loginUrl = useCmdLoginUrl();
   return (
     <div className="flex justify-center">
-      <ButtonPrimary href={APP_SIGNUP} label="Start for free" id="pseo-cta-primary" />
+      <ButtonPrimary href={loginUrl} label="Start for free" id="pseo-cta-primary" />
     </div>
   );
 }
@@ -128,15 +128,21 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         {/* Steps */}
         <section className="mt-14">
           <h2 className="text-2xl font-bold sm:text-3xl">How to get started</h2>
-          <ol className="mt-6 space-y-4">
+          <ol className="mt-8 space-y-0">
             {data.steps.map((step, i) => (
-              <li key={i} className="flex gap-4">
-                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-secondary-wopee font-bold text-white dark:bg-primary-wopee dark:text-black">
+              <li key={i} className="relative flex gap-5 pb-8 last:pb-0">
+                {i < data.steps.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="absolute bottom-2 left-5 top-12 w-px -translate-x-1/2 bg-gradient-to-b from-secondary-wopee/50 to-secondary-wopee/0 dark:from-primary-wopee/50 dark:to-primary-wopee/0"
+                  />
+                )}
+                <span className="z-10 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-secondary-wopee text-base font-bold text-white shadow-sm dark:bg-primary-wopee dark:text-black">
                   {i + 1}
                 </span>
-                <span className="pt-1 text-base leading-relaxed text-gray-700 dark:text-gray-200">
+                <div className="flex-1 rounded-xl border border-gray-200 bg-gray-50/60 p-4 text-base leading-relaxed text-gray-700 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-200">
                   <RichText>{step}</RichText>
-                </span>
+                </div>
               </li>
             ))}
           </ol>
