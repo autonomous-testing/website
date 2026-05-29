@@ -256,6 +256,7 @@ const config = {
             className: "navbar-item--hide-on-home",
             items: [
               { to: "/ai-testing-agents", label: "AI Agents for Software Testing" },
+              { to: "/ai-testing", label: "AI Testing" },
               { to: "/visual-testing", label: "Visual Regression Testing" },
               { to: "/mcp", label: "MCP Server" },
               {
@@ -292,6 +293,7 @@ const config = {
             title: "Solutions: AI Testing",
             items: [
               { label: "AI Testing Agents 🤖", to: "/ai-testing-agents" },
+              { label: "AI Testing", to: "/ai-testing" },
               {
                 label: "Visual Regression Testing",
                 to: "/visual-testing",
