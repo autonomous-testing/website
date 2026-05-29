@@ -10,7 +10,7 @@ function iconFor(name: string): IconCmp {
   if (/wopee/.test(n)) return Sparkles;
   if (/manual/.test(n)) return User;
   if (/record|replay/.test(n)) return Disc3;
-  if (/pixel|visual/.test(n)) return Eye;
+  if (/pixel|visual|diff|chromatic|storybook|applitools|percy|snapshot/.test(n)) return Eye;
   return Code2; // scripted / framework tooling / default
 }
 
