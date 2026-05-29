@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
+import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoFaq from "@site/src/components/pseo/PseoFaq";
 import PseoCard from "@site/src/components/pseo/PseoCard";
@@ -28,21 +29,34 @@ export type PseoData = {
 const eyebrowFor = (c: PseoData["category"]) =>
   c === "framework" ? "AI Testing · Framework" : c === "industry" ? "AI Testing · Industry" : "AI Testing · Use case";
 
-// Render `inline code` spans inside otherwise-plain copy so the data file can
-// keep using markdown-style backticks (e.g. `css-1a2b3c`).
+// Render `inline code` and [markdown](/links) inside otherwise-plain copy, so the
+// data file can use backticks (e.g. `css-1a2b3c`) and in-body cross-links.
 function RichText({ children }: { children: string }) {
-  const parts = children.split(/(`[^`]+`)/g);
+  const parts = children.split(/(`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return (
     <>
-      {parts.map((part, i) =>
-        part.startsWith("`") && part.endsWith("`") ? (
-          <code key={i} className="rounded bg-white/10 px-1.5 py-0.5 text-[0.85em]">
-            {part.slice(1, -1)}
-          </code>
-        ) : (
-          <React.Fragment key={i}>{part}</React.Fragment>
-        )
-      )}
+      {parts.map((part, i) => {
+        if (part.startsWith("`") && part.endsWith("`")) {
+          return (
+            <code key={i} className="rounded bg-white/10 px-1.5 py-0.5 text-[0.85em]">
+              {part.slice(1, -1)}
+            </code>
+          );
+        }
+        const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (link) {
+          return (
+            <Link
+              key={i}
+              to={link[2]}
+              className="font-medium text-secondary-wopee underline-offset-2 hover:underline dark:text-primary-wopee"
+            >
+              {link[1]}
+            </Link>
+          );
+        }
+        return <React.Fragment key={i}>{part}</React.Fragment>;
+      })}
     </>
   );
 }
@@ -131,47 +145,56 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         {/* Comparison */}
         <section className="mt-14">
           <h2 className="text-2xl font-bold sm:text-3xl">{data.subject}: approach comparison</h2>
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr>
-                  {data.comparison.header.map((h, i) => (
-                    <th
-                      key={i}
-                      className="border-b border-gray-300 px-3 py-2.5 text-left font-semibold dark:border-gray-600"
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {data.comparison.rows.map((row, ri) => {
-                  const highlight = /wopee/i.test(row[0]);
-                  return (
-                    <tr
-                      key={ri}
-                      className={clsx(
-                        highlight && "bg-secondary-wopee/10 dark:bg-primary-wopee/10"
-                      )}
-                    >
-                      {row.map((cell, ci) => (
-                        <td
-                          key={ci}
-                          className={clsx(
-                            "border-b border-gray-200 px-3 py-2.5 align-top dark:border-gray-700",
-                            ci === 0 && "font-semibold",
-                            highlight && ci === 0 && "text-secondary-wopee dark:text-primary-wopee"
-                          )}
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {data.comparison.rows.map((row, ri) => {
+              const isWopee = /wopee/i.test(row[0]);
+              return (
+                <div
+                  key={ri}
+                  className={clsx(
+                    "flex flex-col overflow-hidden rounded-xl border",
+                    isWopee
+                      ? "border-secondary-wopee/50 shadow-md dark:border-primary-wopee/50"
+                      : "border-gray-200 dark:border-gray-800"
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      "h-1.5",
+                      isWopee
+                        ? "bg-gradient-to-r from-secondary-wopee to-primary-wopee"
+                        : "bg-gray-200 dark:bg-gray-800"
+                    )}
+                  />
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="flex items-center gap-2">
+                      {isWopee && <span aria-hidden>✅</span>}
+                      <h3
+                        className={clsx(
+                          "m-0 text-base font-bold",
+                          isWopee
+                            ? "text-secondary-wopee dark:text-primary-wopee"
+                            : "text-gray-900 dark:text-white"
+                        )}
+                      >
+                        {row[0]}
+                      </h3>
+                    </div>
+                    <dl className="mt-4 space-y-3">
+                      {data.comparison.header.slice(1).map((h, hi) => (
+                        <div
+                          key={hi}
+                          className="border-t border-gray-100 pt-3 first:border-0 first:pt-0 dark:border-gray-800"
                         >
-                          {cell}
-                        </td>
+                          <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">{h}</dt>
+                          <dd className="mt-0.5 text-sm text-gray-700 dark:text-gray-200">{row[hi + 1]}</dd>
+                        </div>
                       ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                    </dl>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
