@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { User, Code2, Disc3, Eye, Sparkles, ArrowRight, Check } from "lucide-react";
+import { User, Code2, Disc3, Eye, Sparkles, Check } from "lucide-react";
 
 type Comparison = { header: string[]; rows: string[][] };
 type IconCmp = React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
@@ -61,12 +61,6 @@ export default function ComparisonJourney({ comparison }: { comparison: Comparis
                 >
                   <Icon size={20} strokeWidth={2} />
                 </span>
-                {isWopee && (
-                  <ArrowRight
-                    size={22}
-                    className="absolute top-3 right-0 translate-x-7 text-primary-wopee"
-                  />
-                )}
               </div>
             );
           })}
