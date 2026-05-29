@@ -1,7 +1,7 @@
 ---
 slug: getting-started-w-wopee-io-automation
 title: "Getting Started with Wopee.io: No-Code Testing"
-description: "Get started with Wopee.io in minutes — no coding required. Learn how to automate web app testing with AI, from account setup to your first autonomous test run."
+description: "Get started with Wopee.io in minutes, no coding required. Automate web app testing with AI, from account setup to your first autonomous test run."
 authors: marcel
 tags: [playwright, automation, testing, AI]
 image: ./wopee-io-3-pillars.png

@@ -1,7 +1,7 @@
 ---
 slug: applitools
 title: "Applitools vs Wopee.io: Pricing, Features, and AI Compared"
-description: "Applitools vs Wopee.io: Applitools starts at $399/mo with complex setup. Wopee.io starts free with AI-powered autonomous testing and Playwright integration."
+description: "Applitools vs Wopee.io: Applitools starts at $399/mo with complex setup. Wopee.io starts free with AI-powered autonomous testing and Playwright support."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
 image: ./wopee-io-easy.png
