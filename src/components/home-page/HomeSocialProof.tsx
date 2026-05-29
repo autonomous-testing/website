@@ -135,22 +135,27 @@ const TestimonialSwitcher = ({
   activateInterval,
 }) => {
   return (
-    <div className="flex justify-center gap-2 mt-8">
+    <div className="flex justify-center mt-8">
       {testimonials.map((_, index) => (
         <button
           key={index}
           type="button"
-          className={`appearance-none border-0 p-0 w-3 h-3 ${
-            activeItemIndex === index
-              ? "bg-secondary-wopee dark:bg-primary-wopee"
-              : "bg-gray-300 dark:bg-gray-600 opacity-50"
-          } rounded-full cursor-pointer hover:opacity-75 transition-opacity`}
+          // 24x24 tap target (WCAG 2.5.8) wrapping a 12px visual dot.
+          className="appearance-none border-0 bg-transparent p-1.5 flex items-center justify-center cursor-pointer"
           onClick={() => {
             setActiveItemIndex(index);
             activateInterval();
           }}
           aria-label={`Go to testimonial ${index + 1}`}
-        />
+        >
+          <span
+            className={`block w-3 h-3 ${
+              activeItemIndex === index
+                ? "bg-secondary-wopee dark:bg-primary-wopee"
+                : "bg-gray-300 dark:bg-gray-600 opacity-50"
+            } rounded-full hover:opacity-75 transition-opacity`}
+          />
+        </button>
       ))}
     </div>
   );
