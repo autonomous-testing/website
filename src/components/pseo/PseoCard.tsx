@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import {
-  Atom,
-  Braces,
   Building2,
   Cloud,
   Code2,
@@ -32,10 +30,10 @@ const CATEGORY_ICON: Record<string, LucideIcon> = {
   "use-case": Target,
 };
 
-// Per-page overrides where a clearer icon exists; falls back to the category icon.
+// Per-page overrides where a clearer icon exists; falls back to the category icon
+// (frameworks have no distinct brand logos in lucide, so they all use the
+// framework category icon for a consistent look).
 const ICON_BY_SLUG: Record<string, LucideIcon> = {
-  "ai-testing-react": Atom,
-  "ai-testing-nextjs": Braces,
   "ai-testing-fintech": Landmark,
   "ai-testing-ecommerce": ShoppingCart,
   "ai-testing-saas": Cloud,
