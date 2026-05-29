@@ -25,7 +25,7 @@ export default function PseoCard({
   return (
     <Link
       to={href}
-      className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all hover:-translate-y-1 hover:border-secondary-wopee/40 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-primary-wopee/40"
+      className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all hover:-translate-y-1 hover:border-secondary-wopee/40 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-primary-wopee/40"
     >
       <div className="h-2 bg-gradient-to-r from-secondary-wopee to-primary-wopee" />
       <div className="flex flex-1 flex-col gap-3 p-5">
