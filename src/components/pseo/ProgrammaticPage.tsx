@@ -173,30 +173,33 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
                 >
                   <div
                     className={clsx(
-                      "flex items-center gap-2.5 px-5 py-4",
+                      "h-1.5 flex-none",
                       isWopee
-                        ? "bg-gradient-to-br from-secondary-wopee to-[#451f6b] text-white"
-                        : "bg-gray-50 text-gray-900 dark:bg-white/5 dark:text-white"
+                        ? "bg-gradient-to-r from-secondary-wopee to-primary-wopee"
+                        : "bg-gray-200 dark:bg-gray-700"
                     )}
-                  >
+                  />
+                  <div className="flex min-h-[4.25rem] items-center gap-2.5 px-5 pb-3 pt-4">
                     {isWopee ? (
-                      <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-white text-secondary-wopee">
-                        <Check size={15} strokeWidth={3.5} />
+                      <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-secondary-wopee text-white dark:bg-primary-wopee dark:text-black">
+                        <Check size={14} strokeWidth={3.5} />
                       </span>
                     ) : (
                       <span className="h-2 w-2 flex-none rounded-full bg-gray-300 dark:bg-gray-600" />
                     )}
-                    <h3 className="m-0 text-[15px] font-bold leading-tight">{row[0]}</h3>
+                    <h3
+                      className={clsx(
+                        "m-0 text-[15px] font-bold leading-tight",
+                        isWopee ? "text-secondary-wopee dark:text-primary-wopee" : "text-gray-900 dark:text-white"
+                      )}
+                    >
+                      {row[0]}
+                    </h3>
                   </div>
-                  <dl
-                    className={clsx(
-                      "flex flex-1 flex-col divide-y divide-gray-100 px-5 dark:divide-gray-800",
-                      isWopee && "bg-secondary-wopee/[0.04] dark:bg-primary-wopee/[0.04]"
-                    )}
-                  >
+                  <dl className="flex flex-1 flex-col divide-y divide-gray-100 border-t border-gray-100 px-5 dark:divide-gray-800 dark:border-gray-800">
                     {data.comparison.header.slice(1).map((h, hi) => (
                       <div key={hi} className="flex min-h-[3.25rem] flex-col justify-center py-3">
-                        <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">{h}</dt>
+                        <dt className="text-[11px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{h}</dt>
                         <dd
                           className={clsx(
                             "m-0 mt-1 text-sm leading-snug",
