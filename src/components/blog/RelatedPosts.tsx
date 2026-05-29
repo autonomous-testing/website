@@ -72,7 +72,7 @@ export default function RelatedPosts({
           <Link
             key={p.permalink}
             to={p.permalink}
-            className="group flex flex-col rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden no-underline hover:shadow-lg hover:-translate-y-1 hover:border-secondary-wopee/40 dark:hover:border-primary-wopee/40 transition-all"
+            className="group flex flex-col rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden no-underline hover:no-underline hover:shadow-lg hover:-translate-y-1 hover:border-secondary-wopee/40 dark:hover:border-primary-wopee/40 transition-all"
           >
             <div className="h-2 bg-gradient-to-r from-secondary-wopee to-primary-wopee" />
             <div className="flex flex-col flex-1 p-5 gap-3">

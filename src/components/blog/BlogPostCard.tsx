@@ -62,7 +62,7 @@ export default function BlogPostCard({ className }: BlogPostCardProps) {
         <h3 className="text-xl font-semibold leading-tight text-gray-900 dark:text-white m-0">
           <Link
             to={permalink}
-            className="no-underline text-inherit hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+            className="no-underline hover:no-underline text-inherit hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
           >
             {title}
           </Link>
