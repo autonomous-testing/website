@@ -1,7 +1,7 @@
 ---
 slug: ultimate-guide-to-visual-testing
 title: "Ultimate Guide to Visual Testing (2026)"
-description: "2026 guide to visual testing: how visual regression testing works, when to use it, and which tools (Playwright, Percy, Applitools, Wopee.io) fit modern CI/CD."
+description: "2026 guide to visual testing: how visual regression testing works, when to use it, and which tools (Playwright, Percy, Applitools, Wopee.io) fit CI/CD."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
 image: ./visual-bugs.webp

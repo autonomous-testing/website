@@ -63,7 +63,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title="AI Testing Agents for Web Apps"
-      description="Paste a URL — Wopee.io AI testing agents explore your web app, generate Playwright tests, run them across browsers, and self-heal when your UI changes. Free to start."
+      description="Paste a URL — Wopee.io AI agents explore your web app, generate Playwright tests, run them across browsers, and self-heal when the UI changes. Start free."
     >
       <Head>
         <body className="is-home" />
