@@ -183,7 +183,7 @@ const HomeHeroVibe = () => {
         </h1>
       </section>
 
-      <div className="relative z-10 w-full max-w-3xl px-4">
+      <div className="relative z-20 w-full max-w-3xl px-4">
         <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee shadow-2xl shadow-purple-900/40">
           <div className="bg-white dark:bg-gray-900 rounded-[14px] p-4 sm:p-5 flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
