@@ -8,6 +8,7 @@ import {
   Plus,
   Sparkles,
   ChevronDown,
+  Check,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -90,10 +91,9 @@ const HomeHeroVibe = () => {
   });
   const [videoOpen, setVideoOpen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
-  const [showDemoDetails, setShowDemoDetails] = useState(
-    DEMO_SCENARIOS.includes(defaultTemplate)
-  );
+  const [demoMenuOpen, setDemoMenuOpen] = useState(false);
   const urlInputRef = useRef<HTMLInputElement>(null);
+  const demoMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (appType === AppType.YOUR_APPLICATION) {
@@ -101,11 +101,22 @@ const HomeHeroVibe = () => {
     }
   }, [appType]);
 
+  useEffect(() => {
+    if (!demoMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (!demoMenuRef.current?.contains(e.target as Node)) {
+        setDemoMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [demoMenuOpen]);
+
   const handleAppTypeChange = (type: AppType) => {
     setAppType(type);
     setAppUrl(appTemplates[type].url);
     setTestingInstructions(appTemplates[type].instructions);
-    setShowDemoDetails(DEMO_SCENARIOS.includes(type));
+    setDemoMenuOpen(false);
   };
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const found = urlList.find((url) => url.url === e.target.value);
@@ -121,6 +132,10 @@ const HomeHeroVibe = () => {
   };
 
   const SelectedIcon = appTemplates[appType].icon;
+  const triggerDemo = DEMO_SCENARIOS.includes(appType)
+    ? appType
+    : AppType.E_COMMERCE;
+  const TriggerIcon = appTemplates[triggerDemo].icon;
 
   return (
     <div className="relative lg:min-h-[calc(100vh-100px)] flex flex-col justify-center items-center gap-5 lg:gap-6 overflow-hidden py-5 lg:py-6">
@@ -241,10 +256,11 @@ const HomeHeroVibe = () => {
             </div>
 
             <div className="flex flex-wrap justify-between items-center gap-3">
-              {/* Your app chip on the left, then "or try a demo:" label,
-                  then the 3 demo chips. One click on a demo pre-fills URL +
-                  instructions; one click on "Your app" returns to the empty
-                  custom-URL state. */}
+              {/* Your app chip on the left, then "or try a demos:" label,
+                  then a single expander showing the selected demo. Clicking
+                  it reveals the three demo options; picking one pre-fills URL
+                  + instructions and collapses the menu. One click on "Your
+                  app" returns to the empty custom-URL state. */}
               <div className="flex flex-wrap items-center gap-2">
                 {(() => {
                   const tpl = appTemplates[AppType.YOUR_APPLICATION];
@@ -279,52 +295,58 @@ const HomeHeroVibe = () => {
                 <span className="hidden sm:inline text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold px-1">
                   or try a demos:
                 </span>
-                {DEMO_SCENARIOS.map((type) => {
-                  const tpl = appTemplates[type];
-                  const Icon = tpl.icon;
-                  const selected = appType === type;
-                  return (
-                    <div
-                      key={type}
-                      role="button"
-                      tabIndex={0}
-                      aria-pressed={selected}
-                      onClick={() =>
-                        handleAppTypeChange(
-                          selected ? AppType.YOUR_APPLICATION : type
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          handleAppTypeChange(
-                            selected ? AppType.YOUR_APPLICATION : type
-                          );
-                        }
-                      }}
-                      className={`scenario-chip ${selected ? "scenario-chip--selected" : ""} inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-normal cursor-pointer select-none transition-colors`}
-                      aria-label={tpl.label}
-                    >
-                      <Icon className="w-3 h-3" />
-                      <span className="hidden sm:inline">{tpl.label}</span>
-                    </div>
-                  );
-                })}
-                {DEMO_SCENARIOS.includes(appType) && (
+                <div className="relative" ref={demoMenuRef}>
                   <button
                     type="button"
-                    aria-expanded={showDemoDetails}
-                    aria-label="Toggle demo details"
-                    onClick={() => setShowDemoDetails((open) => !open)}
-                    className="inline-flex items-center justify-center w-5 h-5 rounded text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+                    aria-haspopup="listbox"
+                    aria-expanded={demoMenuOpen}
+                    aria-label={`Selected demo: ${appTemplates[triggerDemo].label}`}
+                    onClick={() => setDemoMenuOpen((open) => !open)}
+                    className={`scenario-chip ${DEMO_SCENARIOS.includes(appType) ? "scenario-chip--selected" : ""} inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-normal cursor-pointer select-none transition-colors`}
                   >
+                    <TriggerIcon className="w-3 h-3" />
+                    <span className="hidden sm:inline">
+                      {appTemplates[triggerDemo].label}
+                    </span>
                     <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform ${
-                        showDemoDetails ? "rotate-180" : ""
-                      }`}
+                      className={`w-3 h-3 transition-transform ${demoMenuOpen ? "rotate-180" : ""}`}
                     />
                   </button>
-                )}
+                  {demoMenuOpen && (
+                    <div
+                      role="listbox"
+                      className="absolute left-0 top-full mt-1 z-20 min-w-[10rem] rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg shadow-purple-900/10 py-1"
+                    >
+                      {DEMO_SCENARIOS.map((type) => {
+                        const tpl = appTemplates[type];
+                        const Icon = tpl.icon;
+                        const selected = appType === type;
+                        return (
+                          <div
+                            key={type}
+                            role="option"
+                            tabIndex={0}
+                            aria-selected={selected}
+                            onClick={() => handleAppTypeChange(type)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                handleAppTypeChange(type);
+                              }
+                            }}
+                            className={`flex items-center gap-2 px-3 py-1.5 text-[11px] cursor-pointer select-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${selected ? "text-secondary-wopee dark:text-primary-wopee font-semibold" : "text-gray-700 dark:text-gray-300"}`}
+                          >
+                            <Icon className="w-3.5 h-3.5 flex-shrink-0" />
+                            <span className="flex-1">{tpl.label}</span>
+                            {selected && (
+                              <Check className="w-3.5 h-3.5 flex-shrink-0" />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <Button
@@ -344,19 +366,6 @@ const HomeHeroVibe = () => {
               </Button>
             </div>
 
-            {DEMO_SCENARIOS.includes(appType) && showDemoDetails && (
-              <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 px-3.5 py-3">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <SelectedIcon className="w-3.5 h-3.5 text-secondary-wopee dark:text-primary-wopee flex-shrink-0" />
-                  <span className="text-[11px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold">
-                    {appTemplates[appType].label} demo
-                  </span>
-                </div>
-                <pre className="whitespace-pre-wrap font-mono text-xs leading-snug text-gray-700 dark:text-gray-300 m-0 bg-transparent p-0">
-                  {appTemplates[appType].instructions}
-                </pre>
-              </div>
-            )}
           </div>
         </div>
       </div>
