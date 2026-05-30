@@ -23,25 +23,25 @@ const appTemplates = {
     label: "Website",
     icon: Globe,
     url: "https://dronjo.wopee.io",
-    instructions: `Goal: sign in works.
+    instructions: `Test sign in.
 Click "Sign in", use any @tesena.com email and any password.
-Pass: home page loads and a "Logout" button is visible top-right.`,
+Verify that home page loads and a "Logout" button is visible top-right.`,
   },
   [AppType.E_COMMERCE]: {
     label: "E-commerce",
     icon: ShoppingCart,
     url: "https://www.saucedemo.com",
-    instructions: `Goal: checkout works.
+    instructions: `Test check out.
 Sign in (standard_user / secret_sauce), add an item, complete checkout.
-Pass: "Thank you for your order!" appears.`,
+Verify that "Thank you for your order!" appears.`,
   },
   [AppType.BANKING]: {
     label: "Banking",
     icon: Landmark,
     url: "https://moja.tatrabanka.sk/html-tb/en/demo",
-    instructions: `Goal: PIN sign-in works.
+    instructions: `Test sign in.
 Accept the cookie banner if shown, then submit the pre-filled PIN form.
-Pass: the demo dashboard loads after submit.`,
+Verify that the dashboard loads after submit.`,
   },
   [AppType.YOUR_APPLICATION]: {
     label: "Your app",
