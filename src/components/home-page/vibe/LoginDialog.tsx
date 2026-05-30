@@ -154,21 +154,22 @@ const LoginDialog = ({
 
         {/* CTA BLOCK — primary + secondary OAuth, medium gap from header */}
         <div className="flex flex-col gap-3 mt-6">
-        {/* Primary: GitHub — full-width filled, the recommended path */}
+        {/* Primary: Google — full-width filled, the recommended path for
+            our QA/test audience (mostly Google accounts). */}
         <div
           role="button"
           tabIndex={0}
-          onClick={() => handleLogin("github")}
+          onClick={() => handleLogin("google")}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
-              handleLogin("github");
+              handleLogin("google");
             }
           }}
           className="oauth-btn-primary inline-flex items-center justify-center gap-2 h-12 rounded-md text-sm font-semibold cursor-pointer transition-colors w-full"
         >
-          <Icon size={0.95} path={mdiGithub} />
-          <span>Continue with GitHub</span>
+          <Icon size={0.95} path={mdiGoogle} />
+          <span>Continue with Google</span>
         </div>
 
         {/* "or continue with" divider */}
@@ -180,22 +181,22 @@ const LoginDialog = ({
           <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
         </div>
 
-        {/* Secondary: Google + GitLab side by side */}
+        {/* Secondary: GitHub + GitLab side by side */}
         <div className="grid grid-cols-2 gap-2">
           <div
             role="button"
             tabIndex={0}
-            onClick={() => handleLogin("google")}
+            onClick={() => handleLogin("github")}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                handleLogin("google");
+                handleLogin("github");
               }
             }}
             className="oauth-btn inline-flex items-center justify-center gap-1.5 h-10 rounded-md text-sm font-medium cursor-pointer transition-colors"
           >
-            <Icon size={0.75} path={mdiGoogle} color="#4285F4" />
-            <span>Google</span>
+            <Icon size={0.75} path={mdiGithub} />
+            <span>GitHub</span>
           </div>
           <div
             role="button"

@@ -281,7 +281,7 @@ const config = {
             target: "_blank",
             label: "Start for free",
             position: "right",
-            className: "margin-right--md navbar-item--hide-on-home",
+            className: "margin-right--md",
             id: "navbar-button",
           },
         ],
