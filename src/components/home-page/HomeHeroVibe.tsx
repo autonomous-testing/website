@@ -7,6 +7,7 @@ import {
   Play,
   Plus,
   Sparkles,
+  ChevronDown,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -52,10 +53,10 @@ const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   url: value.url,
   type: key as AppType,
 }));
-// Default to the empty "Your app" state — keeps the hero quiet on landing
-// and lets visitors either paste their own URL or click a demo chip to
-// pre-fill URL + instructions in one step.
-const defaultTemplate = AppType.YOUR_APPLICATION;
+// Default to the E-commerce demo on landing — the hero arrives with a
+// working URL + instructions pre-filled so the CTA is immediately usable,
+// while visitors can still paste their own URL or pick another demo chip.
+const defaultTemplate = AppType.E_COMMERCE;
 // Three demo scenarios visitors can one-click to load (URL + instructions
 // pre-filled). "Your app" isn't in this list — it's the implicit default
 // state, reachable by clicking an already-selected chip again or by typing
@@ -89,6 +90,9 @@ const HomeHeroVibe = () => {
   });
   const [videoOpen, setVideoOpen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showDemoDetails, setShowDemoDetails] = useState(
+    DEMO_SCENARIOS.includes(defaultTemplate)
+  );
   const urlInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -101,6 +105,7 @@ const HomeHeroVibe = () => {
     setAppType(type);
     setAppUrl(appTemplates[type].url);
     setTestingInstructions(appTemplates[type].instructions);
+    setShowDemoDetails(DEMO_SCENARIOS.includes(type));
   };
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const found = urlList.find((url) => url.url === e.target.value);
@@ -272,7 +277,7 @@ const HomeHeroVibe = () => {
                   );
                 })()}
                 <span className="hidden sm:inline text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold px-1">
-                  or try a demo:
+                  or try a demos:
                 </span>
                 {DEMO_SCENARIOS.map((type) => {
                   const tpl = appTemplates[type];
@@ -305,6 +310,21 @@ const HomeHeroVibe = () => {
                     </div>
                   );
                 })}
+                {DEMO_SCENARIOS.includes(appType) && (
+                  <button
+                    type="button"
+                    aria-expanded={showDemoDetails}
+                    aria-label="Toggle demo details"
+                    onClick={() => setShowDemoDetails((open) => !open)}
+                    className="inline-flex items-center justify-center w-5 h-5 rounded text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+                  >
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform ${
+                        showDemoDetails ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                )}
               </div>
 
               <Button
@@ -323,6 +343,20 @@ const HomeHeroVibe = () => {
                 </span>
               </Button>
             </div>
+
+            {DEMO_SCENARIOS.includes(appType) && showDemoDetails && (
+              <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/60 px-3.5 py-3">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <SelectedIcon className="w-3.5 h-3.5 text-secondary-wopee dark:text-primary-wopee flex-shrink-0" />
+                  <span className="text-[11px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold">
+                    {appTemplates[appType].label} demo
+                  </span>
+                </div>
+                <pre className="whitespace-pre-wrap font-mono text-xs leading-snug text-gray-700 dark:text-gray-300 m-0 bg-transparent p-0">
+                  {appTemplates[appType].instructions}
+                </pre>
+              </div>
+            )}
           </div>
         </div>
       </div>
