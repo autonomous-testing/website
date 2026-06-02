@@ -264,17 +264,18 @@ a.navbar__item:hover {
   filter: invert(1);
 }
 
-/* Homepage: hide primary nav links (Solutions / Pricing / Blog / About us). */
-/* They remain available in the footer and on all subpages. */
-body.is-home .navbar-item--hide-on-home,
-body.is-home .navbar-sidebar .navbar-item--hide-on-home {
-  display: none !important;
+/* Homepage: navbar hidden at top, slides in on scroll (toggled in index.tsx). */
+body.is-home .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
-/* Docusaurus strips `className` on dropdown navbar items, so hide the left-side
-   dropdown explicitly. There is no dropdown on the right (Sign In / Start for free). */
-body.is-home .theme-layout-navbar-left .navbar__item.dropdown,
-body.is-home .navbar-sidebar .menu__list-item .menu__list-item-collapsible {
-  display: none !important;
+body.is-home .navbar.navbar--revealed {
+  transform: translateY(0);
 }
 
 /* Hero primary CTA — slow pulsing glow when enabled, invites the click
