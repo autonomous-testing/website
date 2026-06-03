@@ -10,7 +10,6 @@ import {
   Sparkles,
   ChevronDown,
   Check,
-  CheckCircle2,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -375,21 +374,6 @@ const HomeHeroVibe = () => {
                   Generate my first test
                 </span>
               </Button>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                Free to start
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                No credit card required
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                Works with your Playwright setup
-              </span>
             </div>
 
           </div>
