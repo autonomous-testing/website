@@ -17,6 +17,7 @@ import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
 import HeroVideoModal from "./HeroVideoModal";
 import HeroTrustedByStrip from "./HeroTrustedByStrip";
+import { stepsData } from "../../data/steps";
 
 const appTemplates = {
   [AppType.WEBSITE]: {
@@ -70,11 +71,9 @@ const DEMO_SCENARIOS: AppType[] = [
 const URL_REGEX =
   /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
-const heroVideoSources = [
-  "/how-it-works/step-1.webm",
-  "/how-it-works/step-2.webm",
-  "/how-it-works/step-3.webm",
-];
+// Same clips (and order) as the "How it works" section, so the fullscreen
+// modal can label each fragment with its step title/subtitle.
+const heroVideoSources = stepsData.map((s) => s.videoSrc);
 
 const HomeHeroVibe = () => {
   const [appUrl, setAppUrl] = useState(appTemplates[defaultTemplate].url);
@@ -383,6 +382,7 @@ const HomeHeroVibe = () => {
 
       <HeroVideoModal
         sources={heroVideoSources}
+        steps={stepsData}
         isOpen={videoOpen}
         onClose={() => setVideoOpen(false)}
       />
