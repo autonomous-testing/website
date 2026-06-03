@@ -1,14 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
+interface HeroVideoStep {
+  number?: number;
+  title: string;
+  subtitle?: string;
+}
+
 interface HeroVideoModalProps {
   sources: string[];
+  steps?: HeroVideoStep[];
   isOpen: boolean;
   onClose: () => void;
 }
 
 const HeroVideoModal: React.FC<HeroVideoModalProps> = ({
   sources,
+  steps,
   isOpen,
   onClose,
 }) => {
@@ -46,6 +54,7 @@ const HeroVideoModal: React.FC<HeroVideoModalProps> = ({
   if (!isOpen) return null;
 
   const currentSrc = sources[index];
+  const hasSteps = !!steps && steps.length === sources.length;
 
   return (
     <div
@@ -55,7 +64,7 @@ const HeroVideoModal: React.FC<HeroVideoModalProps> = ({
       aria-label="Product walkthrough video"
     >
       <div
-        className="relative w-full max-w-6xl"
+        className="relative w-full max-w-5xl"
         onClick={(e) => e.stopPropagation()}
       >
         <video
@@ -65,7 +74,7 @@ const HeroVideoModal: React.FC<HeroVideoModalProps> = ({
           controls
           playsInline
           onEnded={handleEnded}
-          className="w-full h-auto rounded-lg shadow-2xl"
+          className="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl bg-black"
         >
           <source src={currentSrc} type="video/webm" />
           <source src={currentSrc.replace(".webm", ".mp4")} type="video/mp4" />
@@ -79,16 +88,60 @@ const HeroVideoModal: React.FC<HeroVideoModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 pointer-events-none">
-          {sources.map((_, i) => (
-            <span
-              key={i}
-              className={`h-1 flex-1 rounded-full ${
-                i === index ? "bg-primary-wopee" : "bg-white/30"
-              }`}
-            />
-          ))}
-        </div>
+        {hasSteps ? (
+          // Step cards double as the progress stepper — the playing clip's
+          // card is highlighted, and each card jumps to its clip. Titles +
+          // subtitles mirror the "How it works" section (same video fragments).
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+            {steps!.map((s, i) => {
+              const active = i === index;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-current={active}
+                  className={`text-left rounded-lg border p-3 transition-colors ${
+                    active
+                      ? "border-primary-wopee bg-primary-wopee/10"
+                      : "border-white/15 bg-white/5 hover:border-white/40"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold flex-shrink-0 ${
+                        active
+                          ? "bg-primary-wopee text-black"
+                          : "bg-white/15 text-white"
+                      }`}
+                    >
+                      {s.number ?? i + 1}
+                    </span>
+                    <span className="text-sm font-semibold text-white leading-tight">
+                      {s.title}
+                    </span>
+                  </div>
+                  {s.subtitle && (
+                    <p className="mt-1 text-xs text-gray-400 leading-snug">
+                      {s.subtitle}
+                    </p>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 pointer-events-none">
+            {sources.map((_, i) => (
+              <span
+                key={i}
+                className={`h-1 flex-1 rounded-full ${
+                  i === index ? "bg-primary-wopee" : "bg-white/30"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
