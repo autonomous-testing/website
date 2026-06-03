@@ -33,9 +33,6 @@ const HeroTrustedByStrip = () => {
   const items = [...customers, ...customers];
   return (
     <div className="relative z-10 w-full max-w-6xl px-4">
-      <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-gray-500 dark:text-gray-400 font-medium mb-3 text-center">
-        Trusted by leading engineering teams
-      </p>
       <div className="relative overflow-hidden mask-fade-x">
         <div className="flex items-center gap-6 sm:gap-8 animate-marquee whitespace-nowrap py-1">
           {items.map((customer, i) => (
