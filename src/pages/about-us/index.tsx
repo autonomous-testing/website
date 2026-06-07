@@ -116,6 +116,41 @@ const TeamPage = () => {
           </div>
         </section>
 
+        {/* Funded by — Technology Incubation programme (mandatory grant disclosure) */}
+        <section className="pb-16 px-4 text-center">
+          <p className="text-sm uppercase tracking-widest opacity-50 mb-6">
+            Supported by
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 mb-6">
+            {/* Technology Incubation — CzechInvest */}
+            <img
+              src="/img/funding/technology-incubation.png"
+              alt="Technology Incubation — CzechInvest"
+              className="h-[72px] object-contain block dark:hidden"
+            />
+            <img
+              src="/img/funding/technology-incubation-white.png"
+              alt="Technology Incubation — CzechInvest"
+              className="h-[72px] object-contain hidden dark:block"
+            />
+            {/* Czech Republic — The Country For The Future */}
+            <img
+              src="/img/funding/country-for-the-future.png"
+              alt="Czech Republic — The Country For The Future"
+              className="h-[84px] object-contain block dark:hidden"
+            />
+            <img
+              src="/img/funding/country-for-the-future-white.png"
+              alt="Czech Republic — The Country For The Future"
+              className="h-[84px] object-contain hidden dark:block"
+            />
+          </div>
+          <p className="text-sm opacity-60 max-w-2xl mx-auto leading-relaxed">
+            This project was implemented with funding from the Technology
+            Incubation programme.
+          </p>
+        </section>
+
         {/* Contact */}
         <section className="py-10 px-4">
           <div className="max-w-3xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
