@@ -264,6 +264,20 @@ a.navbar__item:hover {
   filter: invert(1);
 }
 
+/* Homepage: navbar hidden at top, slides in on scroll (toggled in index.tsx). */
+body.is-home .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+body.is-home .navbar.navbar--revealed {
+  transform: translateY(0);
+}
+
 /* Hero primary CTA — slow pulsing glow when enabled, invites the click
    without ever animating loud enough to feel pushy. Disabled state stays
    still. Pulse colour matches the button fill in each theme. */
