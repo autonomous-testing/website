@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "@mdi/react";
 import { mdiGithub, mdiGitlab, mdiGoogle } from "@mdi/js";
-import { Globe, Sparkles, ChevronRight } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { cmdBaseUrl } from "../../../../cmdBaseUrl";
 
 import {
@@ -12,19 +12,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { AppType } from "./enums";
-
-// Insert zero-width spaces after each dot so long hostnames can wrap at
-// segment boundaries instead of mid-character.
-const wrapHost = (host: string) => host.replace(/\./g, ".​");
-
-const cleanHost = (raw: string) => {
-  if (!raw) return "";
-  try {
-    return new URL(raw).hostname.replace(/^www\./, "");
-  } catch {
-    return raw.replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
-  }
-};
 
 // Real customer logos used elsewhere on the site (homepage trusted-by strip).
 // Each logo sits in a fixed slot with object-contain so wildly different source
@@ -71,15 +58,12 @@ const LoginDialog = ({
     setIsOpenVibe(false);
   };
 
-  const host = cleanHost(appUrl);
   const isVibe = mode === "vibe";
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpenVibe}>
       <DialogContent className="bg-white dark:bg-gray-900 border-secondary-wopee/30 shadow-2xl shadow-purple-900/40 sm:max-w-md p-6 gap-0">
-        {/* HEADER BLOCK — explicit margins between relationships so spacing
-            reflects meaning: logo → header (medium), subtitle → testing
-            (medium), testing → steps (tight). */}
+        {/* HEADER BLOCK — logo, then title + subtitle. */}
         <div className="flex flex-col items-center">
           <div className="relative mb-4">
             <img
@@ -120,36 +104,6 @@ const LoginDialog = ({
             </DialogDescription>
           </DialogHeader>
 
-          {/* Testing + steps grouped tight (both supporting context),
-              med-spaced from the header above. */}
-          {isVibe && (
-            <div className="flex flex-col items-center gap-1 mt-3">
-              {host && (
-                <p className="flex items-center justify-center gap-1.5 text-[11px] text-gray-500 dark:text-gray-400">
-                  <Globe className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-                  <span>
-                    Testing{" "}
-                    <span className="font-mono text-gray-700 dark:text-gray-300 break-words">
-                      {wrapHost(host)}
-                    </span>
-                  </span>
-                </p>
-              )}
-              <div className="flex items-center justify-center gap-2 text-[11px] text-gray-500 dark:text-gray-400">
-                <span>Sign in</span>
-                <ChevronRight
-                  className="w-3 h-3 text-gray-400/60 dark:text-gray-500/60 flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span>Agents test</span>
-                <ChevronRight
-                  className="w-3 h-3 text-gray-400/60 dark:text-gray-500/60 flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span>Get your report</span>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* CTA BLOCK — primary + secondary OAuth, medium gap from header */}
@@ -218,8 +172,7 @@ const LoginDialog = ({
 
         {isVibe && (
           <>
-          {/* SUPPORTING BLOCK — trust strip only. Steps moved up next to
-              the Testing-<host> line, where they share visual context. */}
+          {/* SUPPORTING BLOCK — trust strip. */}
           <div className="flex flex-col gap-3 mt-5">
             {/* "trusted by" divider — same line style as "or continue with"
                 so the modal has consistent section separators. */}

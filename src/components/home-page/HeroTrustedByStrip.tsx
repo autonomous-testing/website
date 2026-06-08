@@ -46,8 +46,8 @@ const HeroTrustedByStrip = () => {
               <img
                 className={`max-h-full max-w-full object-contain transition-opacity ${
                   customer.noFilter
-                    ? "opacity-70 hover:opacity-100"
-                    : `grayscale opacity-70 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
+                    ? "opacity-40 hover:opacity-100"
+                    : `grayscale opacity-40 hover:opacity-100 ${customer.invertDark ? "dark:invert" : ""}`
                 }`}
                 src={customer.logo}
                 alt={customer.name}
