@@ -248,28 +248,11 @@ const config = {
           className: "margin-left--md",
         },
         items: [
-          {
-            type: "dropdown",
-            to: "/ai-testing-agents",
-            label: "Solutions",
-            position: "left",
-            items: [
-              { to: "/ai-testing-agents", label: "AI Agents for Software Testing" },
-              { to: "/ai-testing", label: "AI Testing" },
-              { to: "/visual-testing", label: "Visual Regression Testing" },
-              { to: "/mcp", label: "MCP Server" },
-              {
-                to: "blog/playwright-bot-ai-powered-test-automation",
-                label: "Playwright AI Bot (preview)",
-              },
-            ],
-          },
           { to: "/pricing", label: "Pricing", position: "left" },
-          { to: "/blog", label: "Blog", position: "left" },
           {
             to: "https://cmd.wopee.io/login",
             target: "_blank",
-            label: "Sign In",
+            label: "Log in",
             position: "right",
             className: "margin-right--md",
             id: "login-button",
