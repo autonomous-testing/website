@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
@@ -60,27 +60,12 @@ const JSONLD_APP = {
 };
 
 export default function Home(): JSX.Element {
-  // Homepage navbar reveals on scroll; styles in custom.css.
-  useEffect(() => {
-    const navbar = document.querySelector(".navbar");
-    if (!navbar) return;
-    const sync = () =>
-      navbar.classList.toggle("navbar--revealed", window.scrollY > 8);
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", sync);
-      navbar.classList.remove("navbar--revealed");
-    };
-  }, []);
-
   return (
     <Layout
       title="AI Testing Agents for Web Apps"
       description="Paste a URL — Wopee.io AI agents explore your web app, generate Playwright tests, run them across browsers, and self-heal when the UI changes. Start free."
     >
       <Head>
-        <body className="is-home" />
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
       </Head>

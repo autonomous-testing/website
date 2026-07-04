@@ -136,7 +136,7 @@ const HomeHeroVibe = () => {
     : AppType.E_COMMERCE;
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-8 sm:py-10 lg:py-14">
+    <div className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-8 sm:py-10 lg:py-14">
       <div
         className="pointer-events-none select-none absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
         style={{
