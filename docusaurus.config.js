@@ -5,6 +5,11 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
 
+// The pathname the site is served under. Docusaurus prefixes the `favicon`
+// field with this automatically, but not `headTags` hrefs -- those are emitted
+// verbatim, so they have to interpolate it themselves.
+const baseUrl = "/";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // Site title is appended to every page's <title> tag as "Page Title | <site title>".
@@ -16,12 +21,32 @@ const config = {
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.png",
 
+  // Docusaurus `favicon` emits a single PNG link. Add the SVG (sharper at any
+  // size) and the apple-touch-icon alongside it; Safari falls back to the PNG.
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: `${baseUrl}img/favicon.svg`,
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        href: `${baseUrl}img/apple-touch-icon.png`,
+      },
+    },
+  ],
+
   // Set the production url of your site here
   url: "https://website.wopee.io",
   // url: "https://wopee.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
