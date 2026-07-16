@@ -278,18 +278,16 @@ const config = {
             label: "Product",
             position: "left",
             items: [
-              {
-                href: "/#how-it-works",
-                label: "How it works",
-                className: "navbar__item--no-external-icon",
-                target: "_self",
-              },
+              { to: "/how-it-works/", label: "How it works" },
               { to: "/ai-testing-agents/", label: "AI Testing Agents" },
               { to: "/visual-testing/", label: "Visual Testing" },
               { to: "/mcp/", label: "MCP Server" },
+              { to: "/security/", label: "Security & Trust" },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },
+          { to: "/enterprise/", label: "Enterprise", position: "left" },
+          { to: "/customers/", label: "Customers", position: "left" },
           { href: "https://docs.wopee.io/", label: "Docs", position: "left" },
           { to: "/blog/", label: "Blog", position: "left" },
           {
@@ -331,6 +329,10 @@ const config = {
           {
             title: "Company",
             items: [
+              { label: "Enterprise", to: "/enterprise/" },
+              { label: "Customers", to: "/customers/" },
+              { label: "How it works", to: "/how-it-works/" },
+              { label: "Security & Trust", to: "/security/" },
               { label: "Pricing", to: "/pricing" },
               { label: "About us", to: "/about-us" },
               { label: "Book a demo", to: "/book-demo" },
