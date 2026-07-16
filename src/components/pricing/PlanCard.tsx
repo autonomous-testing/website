@@ -4,6 +4,7 @@ import Ribbon from "./Ribbon";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 import GradientCard from "@/components/ui/GradientCard";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 export type PlanCardT = {
   title: string;
@@ -31,7 +32,7 @@ export const PlanCards: PlanCardT[] = [
       "Email & community support",
     ],
     featured: false,
-    href: "https://cmd.wopee.io/login",
+    href: `${cmdBaseUrl}/login`,
     ctaLabel: "Start for free",
     image: "/img/subscription-plans/starter.png",
   },
@@ -47,7 +48,7 @@ export const PlanCards: PlanCardT[] = [
       "Everything in Starter",
     ],
     featured: true,
-    href: "https://cmd.wopee.io/login",
+    href: `${cmdBaseUrl}/login`,
     ctaLabel: "Start for free",
     socialProof: "Most teams choose Basic",
     image: "/img/subscription-plans/basic.png",
@@ -64,7 +65,7 @@ export const PlanCards: PlanCardT[] = [
       "Everything in Basic",
     ],
     featured: false,
-    href: "https://cmd.wopee.io/login",
+    href: `${cmdBaseUrl}/login`,
     ctaLabel: "Start for free",
     image: "/img/subscription-plans/premium.png",
   },

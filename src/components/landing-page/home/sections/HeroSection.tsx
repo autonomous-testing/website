@@ -1,6 +1,7 @@
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import React from "react";
 import OptimizedImage from "@site/src/components/ui/OptimizedImage";
+import { cmdBaseUrl } from "../../../../../cmdBaseUrl";
 
 const HeroSection = () => {
   return (
@@ -21,8 +22,8 @@ const HeroSection = () => {
 
         <div>
           <ButtonPrimary
-            label="Start free trial"
-            href="https://cmd.wopee.io/login"
+            label="Start for free"
+            href={`${cmdBaseUrl}/login`}
             className="w-60 h-[50px]"
           />
           <p className="text-sm italic">

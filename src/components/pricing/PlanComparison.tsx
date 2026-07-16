@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 type Cell = string | boolean;
 
@@ -242,7 +243,7 @@ const PlanComparison = () => {
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Link to="https://cmd.wopee.io/login" className="hover:no-underline">
+        <Link to={`${cmdBaseUrl}/login`} className="hover:no-underline">
           <ButtonGradientOutline className="w-60" label="Start for free" />
         </Link>
         <Link
