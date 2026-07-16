@@ -273,7 +273,20 @@ const config = {
           className: "margin-left--md",
         },
         items: [
-          { to: "/pricing", label: "Pricing", position: "left" },
+          {
+            type: "dropdown",
+            label: "Product",
+            position: "left",
+            items: [
+              { to: "/#how-it-works", label: "How it works" },
+              { to: "/ai-testing-agents/", label: "AI Testing Agents" },
+              { to: "/visual-testing/", label: "Visual Testing" },
+              { to: "/mcp/", label: "MCP Server" },
+            ],
+          },
+          { to: "/pricing/", label: "Pricing", position: "left" },
+          { href: "https://docs.wopee.io/", label: "Docs", position: "left" },
+          { to: "/blog/", label: "Blog", position: "left" },
           {
             to: "https://cmd.wopee.io/login",
             target: "_blank",
@@ -308,10 +321,6 @@ const config = {
                 label: "MCP Server",
                 to: "/mcp",
               },
-              {
-                label: "Playwright AI Agent",
-                to: "blog/playwright-bot-ai-powered-test-automation",
-              },
             ],
           },
           {
@@ -334,20 +343,20 @@ const config = {
                 to: "https://docs.wopee.io/getting-started/",
               },
               {
-                label: "Cypress Visual Regression Testing",
-                to: "https://docs.wopee.io/cypress/01-getting-started/",
+                label: "AI Testing Agent",
+                to: "https://docs.wopee.io/ai-agent/",
               },
               {
-                label: "Playwright Visual Regression Testing",
+                label: "MCP Server",
+                to: "https://docs.wopee.io/guides/wopee-mcp/",
+              },
+              {
+                label: "Enterprise Connectivity",
+                to: "https://docs.wopee.io/security/enterprise-connectivity/",
+              },
+              {
+                label: "Visual Testing SDKs",
                 to: "https://docs.wopee.io/playwright-visual-testing/",
-              },
-              {
-                label: "Robot Framework Visual Regression Testing",
-                to: "https://docs.wopee.io/robot-framework/01-getting-started/",
-              },
-              {
-                label: "Webdriver.io Visual Regression Testing",
-                to: "https://docs.wopee.io/webdriverio-visual-testing/",
               },
             ],
           },
