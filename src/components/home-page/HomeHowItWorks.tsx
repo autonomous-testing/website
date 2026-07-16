@@ -11,7 +11,7 @@ export default function HomeHowItWorks(): JSX.Element {
     useFullscreenVideo();
 
   return (
-    <section className="bg-[#0A0A0B] py-20 px-4">
+    <section id="how-it-works" className="bg-[#0A0A0B] py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
