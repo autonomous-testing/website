@@ -604,7 +604,7 @@ const JSONLD_MCP_SOURCE = {
 const McpPage = () => {
   return (
     <Layout
-      title="MCP Server for Autonomous Testing | Wopee.io"
+      title="MCP Server for Autonomous Testing"
       description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch tests, generate artifacts, and fetch results in chat."
     >
       <Head>
