@@ -10,20 +10,21 @@ const HeroSection = () => {
           <h1 className="text-5xl sm:text-6xl">
             <span className="text-secondary-wopee dark:text-primary-wopee">
               AI Testing Agents
-            </span>{" "}
-            for Web Apps
+            </span>
+            : The Testing Bot for Web Apps
           </h1>
 
           <p className="text-2xl">
-            Autonomous agents that explore, test, and self-heal.{" "}
-            <span className="line-clamp-1">1 minute setup, no coding required.</span>
+            A testing bot that explores your web app, generates Playwright
+            tests, and self-heals when the UI changes. 1 minute setup, no
+            coding required.
           </p>
         </div>
 
         <div>
           <ButtonPrimary
-            label="Start free trial"
-            href="https://cmd.wopee.io/login"
+            label="Start for free"
+            href="/pricing/"
             className="w-60 h-[50px]"
           />
           <p className="text-sm italic">No credit card required</p>
@@ -33,7 +34,7 @@ const HeroSection = () => {
         <OptimizedImage
           className="object-contain w-full max-h-[500px] lg:max-h-[600px]"
           src="/img/wopee_head_1_2023-10-10.png"
-          alt="AI Testing Agent Dashboard"
+          alt="Wopee.io testing bot mascot representing the AI testing agents that explore web apps, generate Playwright tests, and self-heal them when the UI changes."
           loading="lazy"
           sizes="(max-width: 768px) 100vw, 50vw"
         />

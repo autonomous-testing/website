@@ -8,7 +8,8 @@ const EndingSection = ({ bot }: { bot?: boolean }) => {
       <div className="container my-12 lg:my-16 h-[50vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
         <div className="text-balance px-2 lg:px-0">
           <h2 className="lg:text-4xl text-3xl font-bold">
-            Optimize your {bot ? "" : "visual"} testing process with Wopee.io
+            Optimize your {bot ? "web app" : "visual"} testing process with
+            Wopee.io
           </h2>
           <h3 className=" text-secondary-wopee dark:text-primary-wopee lg:text-4xl text-3xl font-bold">
             Set up in minutes, get results {bot ? "in seconds" : "instantly"},
@@ -25,8 +26,8 @@ const EndingSection = ({ bot }: { bot?: boolean }) => {
           </div>
           <div className="h-20">
             <ButtonPrimary
-              label={bot ? "Get early access" : "Start free trial"}
-              href="https://cmd.wopee.io/login"
+              label={bot ? "Start for free" : "Start free trial"}
+              href={bot ? "/pricing/" : "https://cmd.wopee.io/login"}
               className="w-60 h-[50px]"
             />
             <p className="text-center text-sm italic">

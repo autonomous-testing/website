@@ -1,16 +1,13 @@
-import {
-  mdiRocket,
-  mdiRunFast,
-  mdiCurrencyUsd,
-  mdiCheckboxMultipleOutline,
-} from "@mdi/js";
 import React from "react";
 
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import HeroSection from "@site/src/components/bot-page/HeroSection";
+import DefinitionBlock from "@site/src/components/bot-page/DefinitionBlock";
+import FaqSection from "@site/src/components/bot-page/FaqSection";
 import PartnerBrands from "@site/src/components/landing-page/home/sections/PartnerBrands";
 import TestingBottlenecks from "@site/src/components/bot-page/TestingBottlenecks";
-import WopeeVersusSection from "@site/src/components/landing-page/home/sections/WopeeVersusSection";
+import VersusManual from "@site/src/components/bot-page/VersusManual";
 import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
@@ -21,11 +18,11 @@ const STEPS = [
     title: "Effortless setup:",
     subtitle: "Get started in 1 minute",
     description:
-      "Point your AI agent at any web app and it starts exploring immediately. No scripts, no selectors, no programming required. The agent autonomously crawls your application, discovers user flows, and generates Playwright test cases automatically.",
+      "Point the testing bot at any web app and it starts exploring immediately. No scripts, no selectors, no programming required. The agent autonomously crawls your application, discovers user flows, and generates Playwright test cases automatically.",
   },
   {
     image: "/img/landing/instant-results.png",
-    alt: "dashboard-testing-results",
+    alt: "Wopee.io results dashboard showing autonomous test runs with screenshots, traces, and video recordings after the testing bot executes generated Playwright tests across browsers.",
     title: "Autonomous testing:",
     subtitle: "Results ready in 2 minutes",
     description:
@@ -33,8 +30,8 @@ const STEPS = [
   },
   {
     image: "/img/landing/comparison-view.png",
-    alt: "comparison-view",
-    title: "Simplified Maintenance:",
+    alt: "Visual comparison view in Wopee.io where a reviewer approves a visual baseline update with a single click after the testing bot detects a UI change.",
+    title: "Simplified maintenance:",
     subtitle: "Adapt and optimize with ease",
     description:
       "Traditional test frameworks break with every UI change. Wopee.io agents adapt automatically. Approve visual baseline updates with a single click, or report bugs directly. Your team focuses on shipping, not fixing flaky tests.",
@@ -56,48 +53,52 @@ const FEATURES = [
   "Priority-based testing",
 ];
 
-const VALUES = [
-  {
-    icon: mdiRocket,
-    title: "10x",
-    description: "Quicker preparation",
+const JSONLD_APP = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Wopee.io",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Test Automation",
+  operatingSystem: "Web",
+  url: "https://wopee.io/ai-testing-agents/",
+  description:
+    "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate Playwright tests, run them across browsers, and self-heal when the UI changes.",
+  publisher: {
+    "@type": "Organization",
+    name: "Wopee.io",
+    url: "https://wopee.io",
   },
-  {
-    icon: mdiCurrencyUsd,
-    title: "30 - 40%",
-    description: "Cheaper maintenance",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description:
+      "Free to start, no credit card required. Paid plans from €19/user/mo.",
+    url: "https://wopee.io/pricing/",
   },
-  {
-    icon: mdiCheckboxMultipleOutline,
-    title: "5x",
-    description: "Higher coverage",
-  },
-  {
-    icon: mdiRunFast,
-    title: "50 - 70%",
-    description: "Quicker execution",
-  },
-];
+};
 
 const AiTestingAgentsPage = () => {
   return (
     <Layout
-      title="AI Testing Agents | Wopee.io"
-      description="Autonomous AI testing agents that explore your web app, generate Playwright tests, and self-heal when UI changes. Start in minutes — no coding."
+      title="Testing Bot for Web Apps: AI Testing Agents"
+      description="Testing bot for web apps: Wopee.io's AI testing agents explore your app, generate Playwright tests, and self-heal when the UI changes. Start in minutes."
     >
+      <Head>
+        <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
+      </Head>
       <HeroSection />
+      <DefinitionBlock />
       <PartnerBrands />
       <TestingBottlenecks />
-      <WopeeVersusSection
-        bot
-        VALUES={VALUES}
-      />
+      <VersusManual />
       <HowItWorksIntro />
       <HowItWorks
         STEPS={STEPS}
         FEATURES={FEATURES}
       />
       <TestimonialCarousel />
+      <FaqSection />
       <EndingSection bot />
     </Layout>
   );
