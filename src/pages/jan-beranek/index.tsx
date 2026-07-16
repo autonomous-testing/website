@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 export default function Home(): JSX.Element {
   return (
     <Layout
-      title="Book a Meeting with Jan | Wopee.io"
+      title="Book a Meeting with Jan"
       description="Schedule a meeting with Jan Beránek from Wopee.io. Discuss AI test automation, onboarding, or product questions."
     >
       <Head>

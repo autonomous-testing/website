@@ -6,7 +6,7 @@ import NewsletterForm from "@site/src/components/hub-spot/NewsletterForm";
 const NewsletterPage = () => {
   return (
     <Layout
-      title="Newsletter | Wopee.io"
+      title="Newsletter"
       description="Subscribe to the Wopee.io newsletter for QA trends, test automation tips, and product updates. Join thousands of software testing professionals."
     >
       <main className="container">

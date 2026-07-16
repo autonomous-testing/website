@@ -8,7 +8,7 @@ import GoBack from "@site/src/components/demo/GoBack";
 export default function Home(): JSX.Element {
   return (
     <Layout
-      title="Book a Meeting with Marcel | Wopee.io"
+      title="Book a Meeting with Marcel"
       description="Schedule a meeting with Marcel Veselka, co-founder of Wopee.io. Discuss AI test automation, partnerships, or product questions."
     >
       <Head>

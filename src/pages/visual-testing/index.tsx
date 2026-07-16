@@ -6,7 +6,7 @@ import LandingPage from "@site/src/components/landing-page/home/LandingPage";
 export default function LandingHome() {
   return (
     <Layout
-      title="Visual Regression Testing | Wopee.io"
+      title="Visual Regression Testing"
       description="Automated visual regression testing for web apps. Detect UI regressions across browsers and screen sizes with AI-powered pixel-by-pixel comparisons."
     >
       <LandingPage />
