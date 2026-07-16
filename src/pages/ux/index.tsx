@@ -35,7 +35,7 @@ const UserTestingProgram = () => {
 
   return (
     <Layout
-      title="User Testing Program | Wopee.io"
+      title="User Testing Program"
       description="Join the Wopee.io user testing program. Help shape the future of AI-powered test automation and get early access to new features."
       wrapperClassName="dark:bg-gray-100"
     >

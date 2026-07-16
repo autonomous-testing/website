@@ -9,7 +9,7 @@ import PartnersCarousel from "@site/src/components/demo/PartnersCarousel";
 export default function Home(): JSX.Element {
   return (
     <Layout
-      title="Book a Demo | Wopee.io"
+      title="Book a Demo"
       description="Book a live demo of Wopee.io AI testing agents. See how autonomous test generation and self-healing tests can cut your QA effort by 70%."
     >
       <Head>
