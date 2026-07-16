@@ -144,6 +144,25 @@ const config = {
       },
     ],
     [
+      // Second blog instance: the public changelog at /changelog/ (entries in
+      // changelog/). Separate from the main blog so posts stay short, dated
+      // release notes without authors/tags.
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "changelog",
+        path: "changelog",
+        routeBasePath: "/changelog",
+        blogTitle: "Changelog",
+        blogDescription:
+          "Wopee.io changelog: new autonomous testing features, integrations, and platform improvements — what shipped and when.",
+        blogSidebarTitle: "Recent updates",
+        blogSidebarCount: "ALL",
+        showReadingTime: false,
+        archiveBasePath: null,
+        onUntruncatedBlogPosts: "ignore",
+      },
+    ],
+    [
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
@@ -185,8 +204,6 @@ const config = {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
             to: "/blog/applitools-alternatives",
           },
-          // /integrations folded into /visual-testing
-          { from: "/integrations", to: "/visual-testing" },
         ],
       },
     ],
