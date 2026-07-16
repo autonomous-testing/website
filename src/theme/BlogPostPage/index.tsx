@@ -18,6 +18,7 @@ import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
 import BlogPostHero from "@/components/blog/BlogPostHero";
 import ShareButtons from "@/components/blog/ShareButtons";
 import InPostCTA from "@/components/blog/InPostCTA";
+import PostCta from "@/components/blog/PostCta";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 
 function BlogPostPageContent({ children }: { children: ReactNode }): ReactNode {
@@ -54,6 +55,8 @@ function BlogPostPageContent({ children }: { children: ReactNode }): ReactNode {
           <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
             <ShareButtons url={fullUrl} title={title} />
           </div>
+
+          <PostCta />
 
           <InPostCTA />
 

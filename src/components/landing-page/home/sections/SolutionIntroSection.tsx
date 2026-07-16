@@ -1,5 +1,6 @@
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import React from "react";
+import { cmdBaseUrl } from "../../../../../cmdBaseUrl";
 
 const SolutionIntroSection = () => {
   return (
@@ -26,8 +27,8 @@ const SolutionIntroSection = () => {
 
       <div className="px-2 lg:px-0">
         <ButtonPrimary
-          label="Start free trial"
-          href="https://cmd.wopee.io/login"
+          label="Start for free"
+          href={`${cmdBaseUrl}/login`}
           className="w-60 h-[50px]"
         />
       </div>

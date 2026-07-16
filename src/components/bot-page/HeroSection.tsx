@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import OptimizedImage from "@site/src/components/ui/OptimizedImage";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const HeroSection = () => {
   return (
@@ -24,7 +25,7 @@ const HeroSection = () => {
         <div>
           <ButtonPrimary
             label="Start for free"
-            href="/pricing/"
+            href={`${cmdBaseUrl}/login`}
             className="w-60 h-[50px]"
           />
           <p className="text-sm italic">No credit card required</p>

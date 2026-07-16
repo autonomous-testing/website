@@ -3,6 +3,7 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const INVESTORS = [
   {
@@ -176,12 +177,12 @@ const TeamPage = () => {
         {/* CTA */}
         <section className="pb-16 px-4 text-center">
           <a
-            href="https://cmd.wopee.io/login"
+            href={`${cmdBaseUrl}/login`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 text-sm font-medium rounded-lg border border-solid border-gray-600 opacity-80 hover:opacity-100 transition-opacity"
           >
-            Start free trial
+            Start for free
           </a>
         </section>
       </main>

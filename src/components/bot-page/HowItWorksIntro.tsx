@@ -1,5 +1,6 @@
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import React from "react";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const HowItWorksIntro = () => {
   return (
@@ -28,7 +29,7 @@ const HowItWorksIntro = () => {
       <div className="px-2 lg:px-0">
         <ButtonPrimary
           label="Start for free"
-          href="/pricing/"
+          href={`${cmdBaseUrl}/login`}
           className="w-60 h-[50px]"
         />
       </div>
