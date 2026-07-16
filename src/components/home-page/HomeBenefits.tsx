@@ -3,9 +3,9 @@ import {
   Bolt,
   CheckCircle,
   Shield,
-  DollarSign,
   Users,
-  ClipboardList,
+  GitBranch,
+  PencilLine,
 } from "lucide-react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
 import GradientCard from "@/components/ui/GradientCard";
@@ -15,9 +15,9 @@ const benefits = [
   {
     icon: (
       <Bolt className="text-secondary-wopee dark:text-yellow-400" size={32} />
-    ), // 10x speed
-    badge: "10x speed",
-    title: "Prepare tests 10x faster with AI",
+    ), // 70–90% faster test creation
+    badge: "70–90% faster",
+    title: "Prepare tests in minutes, not days",
     description:
       "Benefit from rapid authoring plus the execution speed of traditional automation, without the setup complexity.",
   },
@@ -27,27 +27,24 @@ const benefits = [
         className="text-secondary-wopee dark:text-yellow-400"
         size={32}
       />
-    ), // 5x higher coverage
-    badge: "5x higher coverage",
-    title: "Achieve 5x higher test coverage",
+    ), // 2–5x coverage
+    badge: "2–5x coverage",
+    title: "Cover the paths others miss",
     description:
-      "Mitigate risks with comprehensive coverage. AI automatically explores critical paths other testing methods miss.",
+      "Mitigate risks with comprehensive coverage. AI agents explore critical paths other testing methods miss.",
   },
   {
     icon: (
       <Shield className="text-secondary-wopee dark:text-yellow-400" size={32} />
-    ), // Zero maintenance
-    badge: "Zero maintenance",
+    ), // 60–90% less maintenance
+    badge: "60–90% less maintenance",
     title: "Eliminate tedious test maintenance",
     description:
       "Finding and fixing locators is yesterday's news. AI adapts tests to UI changes and updates scripts automatically.",
   },
   {
     icon: (
-      <DollarSign
-        className="text-secondary-wopee dark:text-yellow-400"
-        size={32}
-      />
+      <Users className="text-secondary-wopee dark:text-yellow-400" size={32} />
     ), // Team efficiency
     badge: "Team efficiency",
     title: "Scale testing without scaling teams",
@@ -56,24 +53,27 @@ const benefits = [
   },
   {
     icon: (
-      <Users className="text-secondary-wopee dark:text-yellow-400" size={32} />
-    ), // 5x faster analysis
-    badge: "5x faster analysis",
-    title: "Accelerate test analysis & design",
-    description:
-      "Reduce test analysis and design time while maximising efficiency. AI identifies optimal test scenarios automatically.",
-  },
-  {
-    icon: (
-      <ClipboardList
+      <GitBranch
         className="text-secondary-wopee dark:text-yellow-400"
         size={32}
       />
-    ), // No-code testing
-    badge: "No-code testing",
-    title: "From weeks to minutes, zero coding",
+    ), // No lock-in
+    badge: "No lock-in",
+    title: "Your tests stay yours",
     description:
-      "One-click to get your entire testing framework (including CI/CD) running. No specialised expertise required, just immediate results.",
+      "Every agent run emits deterministic Playwright code. Export it and run it in CI/CD without Wopee.io. Move away any time.",
+  },
+  {
+    icon: (
+      <PencilLine
+        className="text-secondary-wopee dark:text-yellow-400"
+        size={32}
+      />
+    ), // Edits preserved
+    badge: "No-code setup",
+    title: "From URL to tests, zero coding",
+    description:
+      "Enter your web app URL and agents start exploring immediately. No scripts, no selectors, no programming required.",
   },
 ];
 
@@ -81,13 +81,13 @@ const HomeBenefits = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-2">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary-wopee dark:text-yellow-400 mb-2">
-        Why teams use Wopee as their AI testing tool.
+        Why teams use Wopee.io as their AI testing tool.
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10">
-        Automated web testing powered by AI — six ways Wopee removes traditional
-        testing barriers.
+        Automated web testing powered by AI. Six ways Wopee.io removes
+        traditional testing barriers.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mb-4">
         {benefits.map((benefit, idx) => (
           <GradientCard
             key={idx}
