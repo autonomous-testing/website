@@ -2,6 +2,7 @@ import React from "react";
 
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const HomeEndingSection = () => {
   return (
@@ -29,7 +30,7 @@ const HomeEndingSection = () => {
             <ButtonPrimary
               id="cta-start-testing"
               label="Start for free"
-              href="https://cmd.wopee.io/login"
+              href={`${cmdBaseUrl}/login`}
               className="w-60 h-[50px]"
             />
             <p className="text-center text-sm italic">

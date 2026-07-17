@@ -1,6 +1,7 @@
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import React from "react";
+import { cmdBaseUrl } from "../../../../../cmdBaseUrl";
 
 const EndingSection = ({ bot }: { bot?: boolean }) => {
   return (
@@ -26,8 +27,8 @@ const EndingSection = ({ bot }: { bot?: boolean }) => {
           </div>
           <div className="h-20">
             <ButtonPrimary
-              label={bot ? "Start for free" : "Start free trial"}
-              href={bot ? "/pricing/" : "https://cmd.wopee.io/login"}
+              label="Start for free"
+              href={bot ? "/pricing/" : `${cmdBaseUrl}/login`}
               className="w-60 h-[50px]"
             />
             <p className="text-center text-sm italic">

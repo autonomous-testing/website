@@ -5,6 +5,7 @@ import PlanCard, { PlanCards } from "./PlanCard";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 import GradientCard from "@/components/ui/GradientCard";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const trustLogos = [
   "Multitude",
@@ -539,7 +540,7 @@ export default function Pricing(): JSX.Element {
               start, no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-              <Link to="https://cmd.wopee.io/login" className="hover:no-underline">
+              <Link to={`${cmdBaseUrl}/login`} className="hover:no-underline">
                 <ButtonGradientOutline className="w-60" label="Start for free" />
               </Link>
               <Link

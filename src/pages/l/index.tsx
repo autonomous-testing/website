@@ -11,6 +11,7 @@ import HomeConversionForm from "@site/src/components/legacy/home-page/HomeConver
 import styles from "./index.module.css";
 import HomeComparison from "@site/src/components/legacy/home-page/HomeComparison";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 function HomeHeader() {
   return (
@@ -34,8 +35,8 @@ function HomeHeader() {
             Unleash your potential 🚀 and
             <ButtonPrimary
               id="hero-button"
-              label="Start free trial"
-              href="https://cmd.wopee.io/login"
+              label="Start for free"
+              href={`${cmdBaseUrl}/login`}
               className="w-60 h-[50px] ml-3"
             />
           </p>
