@@ -8,6 +8,8 @@ import FaqSection from "@site/src/components/bot-page/FaqSection";
 import PartnerBrands from "@site/src/components/landing-page/home/sections/PartnerBrands";
 import TestingBottlenecks from "@site/src/components/bot-page/TestingBottlenecks";
 import VersusManual from "@site/src/components/bot-page/VersusManual";
+import SelfHealingMechanisms from "@site/src/components/bot-page/SelfHealingMechanisms";
+import EvidenceSection from "@site/src/components/bot-page/EvidenceSection";
 import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
@@ -97,6 +99,8 @@ const AiTestingAgentsPage = () => {
         STEPS={STEPS}
         FEATURES={FEATURES}
       />
+      <SelfHealingMechanisms />
+      <EvidenceSection />
       <TestimonialCarousel />
       <FaqSection />
       <EndingSection bot />
