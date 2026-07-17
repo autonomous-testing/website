@@ -93,7 +93,7 @@ const FAQS: {
   {
     question: "Is our code and test data safe?",
     answer:
-      "Wopee.io is SOC 2 ready and never trains models on your code or test data. Run agents in the fully managed cloud, or choose Enterprise for on-premise deployment, SSO, RBAC, audit logs, and a security review with DPA.",
+      "Wopee.io never trains models on your code or test data. SOC 2 and ISO 27001 are on our roadmap. Run agents in the fully managed cloud, or choose Enterprise for on-premise deployment, SSO, RBAC, audit logs, and a security review with DPA.",
   },
 ];
 
