@@ -1,22 +1,25 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
+import StepsExplainer from "./StepsExplainer";
 
 type Cell = string | boolean;
 
 type Row = {
   feature: string;
+  free: Cell;
   starter: Cell;
   basic: Cell;
   premium: Cell;
   enterprise: Cell;
 };
 
-const plans = ["Starter", "Basic", "Premium", "Enterprise"] as const;
+const plans = ["Free", "Starter", "Basic", "Premium", "Enterprise"] as const;
 
 const rows: Row[] = [
   {
     feature: "Test steps / session",
+    free: "50",
     starter: "150",
     basic: "500",
     premium: "1,000",
@@ -24,13 +27,15 @@ const rows: Row[] = [
   },
   {
     feature: "Executed tests / session*",
-    starter: "15–30",
-    basic: "50–100",
-    premium: "100–200",
+    free: "2–5",
+    starter: "7–15",
+    basic: "25–50",
+    premium: "50–100",
     enterprise: "Unlimited",
   },
   {
     feature: "Active projects",
+    free: "2",
     starter: "10",
     basic: "100",
     premium: "Unlimited",
@@ -38,6 +43,7 @@ const rows: Row[] = [
   },
   {
     feature: "Team user management",
+    free: false,
     starter: false,
     basic: "Basic",
     premium: "Advanced",
@@ -45,6 +51,7 @@ const rows: Row[] = [
   },
   {
     feature: "Onboarding assistance",
+    free: false,
     starter: false,
     basic: true,
     premium: true,
@@ -52,6 +59,7 @@ const rows: Row[] = [
   },
   {
     feature: "Priority individual support",
+    free: false,
     starter: false,
     basic: false,
     premium: true,
@@ -59,6 +67,7 @@ const rows: Row[] = [
   },
   {
     feature: "SSO, RBAC & audit logs",
+    free: false,
     starter: false,
     basic: false,
     premium: false,
@@ -66,6 +75,7 @@ const rows: Row[] = [
   },
   {
     feature: "On-premise deployment",
+    free: false,
     starter: false,
     basic: false,
     premium: false,
@@ -73,6 +83,7 @@ const rows: Row[] = [
   },
   {
     feature: "Dedicated CSM & SLA",
+    free: false,
     starter: false,
     basic: false,
     premium: false,
@@ -106,11 +117,11 @@ const renderCell = (cell: Cell) => {
 };
 
 const planKey = (plan: string) =>
-  plan.toLowerCase() as "starter" | "basic" | "premium" | "enterprise";
+  plan.toLowerCase() as "free" | "starter" | "basic" | "premium" | "enterprise";
 
 const PlanComparison = () => {
   return (
-    <section className="my-20 max-w-3xl mx-auto px-4">
+    <section className="my-20 max-w-4xl mx-auto px-4">
       <div className="text-center mb-10">
         <div className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">
           Full comparison
@@ -125,7 +136,7 @@ const PlanComparison = () => {
         <table className="w-full text-sm border-separate border-spacing-0 [&_td]:!border-0 [&_th]:!border-0 [&_tr]:!bg-transparent [&_thead]:!bg-transparent">
           <thead>
             <tr>
-              <th className="w-2/5" />
+              <th className="w-[30%]" />
               {plans.map((plan) => {
                 const isBasic = plan === "Basic";
                 return (
@@ -136,9 +147,14 @@ const PlanComparison = () => {
                         ? "text-secondary-wopee dark:text-primary-wopee bg-secondary-wopee/[0.04] dark:bg-primary-wopee/[0.04] rounded-t-2xl"
                         : "text-gray-700 dark:text-gray-200"
                     }`}
-                    style={{ width: "15%" }}
+                    style={{ width: "14%" }}
                   >
                     {plan}
+                    {plan === "Free" && (
+                      <div className="text-[10px] font-semibold tracking-wide text-gray-500 dark:text-gray-400 mt-0.5">
+                        No credit card
+                      </div>
+                    )}
                   </th>
                 );
               })}
@@ -198,6 +214,11 @@ const PlanComparison = () => {
               >
                 {plan}
               </div>
+              {plan === "Free" && (
+                <div className="-mt-3 mb-4 text-[11px] text-gray-500 dark:text-gray-400">
+                  No credit card required
+                </div>
+              )}
               <dl className="flex flex-col gap-3">
                 {rows.map((row) => {
                   const value = row[planKey(plan)];
@@ -231,8 +252,8 @@ const PlanComparison = () => {
 
       <p className="mt-6 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         <span className="text-secondary-wopee dark:text-primary-wopee">*</span>{" "}
-        Estimated based on 5–10 steps per test. Actual numbers depend on test
-        complexity.
+        Estimated based on roughly 10–20 steps per typical test. Actual numbers
+        depend on test complexity.
       </p>
       <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         Each plan has a 5-hour rolling session window. Your usage resets
@@ -240,6 +261,8 @@ const PlanComparison = () => {
         waiting until midnight. All plans include autonomous test generation,
         visual regression testing, and Playwright + CI/CD integration.
       </p>
+
+      <StepsExplainer />
 
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <Link to="https://cmd.wopee.io/login" className="hover:no-underline">
