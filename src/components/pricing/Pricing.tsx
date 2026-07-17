@@ -32,7 +32,7 @@ const heroBenefits = [
   "Zero scripts to maintain",
   "Set up in minutes",
   "Self-healing test suites",
-  "85% less test maintenance",
+  "60–90% less maintenance",
 ];
 
 const competitors = [
@@ -89,7 +89,8 @@ const testimonials = [
     role: "QA Automation Lead",
     company: "SYNOT TECH",
     avatar: "/img/customers/avatars/jakub-synot.webp",
-    metric: "New coverage unlocked",
+    metric:
+      "1,600+ regression tests across teams · largest suites ~30 min · visual verification by Wopee.io",
   },
 ];
 
@@ -100,6 +101,7 @@ const enterpriseFeatures = [
   "Dedicated CSM & SLA",
   "Custom integrations",
   "Security review & DPA",
+  "Bring your own LLM (Azure OpenAI, Google Vertex, Anthropic, OpenAI-compatible)",
 ];
 
 const faqs: { q: string; a: string }[] = [
@@ -174,6 +176,9 @@ export default function Pricing(): JSX.Element {
           AI agents that find bugs before your users do. No scripts, no
           maintenance, no QA backlog. Start free in 60 seconds.
         </p>
+        <p className="mt-3 text-sm font-semibold text-secondary-wopee dark:text-primary-wopee">
+          Prices on this page, not behind a demo call.
+        </p>
 
         {/* HERO BENEFITS */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
@@ -228,7 +233,8 @@ export default function Pricing(): JSX.Element {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-secondary-wopee dark:text-primary-wopee text-lg">✓</span>
-            SOC 2 ready
+            SOC 2 and ISO 27001 on our roadmap · EU data residency and DPA
+            today
           </div>
         </div>
 
@@ -438,10 +444,7 @@ export default function Pricing(): JSX.Element {
               >
                 "
               </div>
-              <div className="flex items-center justify-between relative">
-                <div className="text-secondary-wopee dark:text-primary-wopee text-lg tracking-widest">
-                  ★★★★★
-                </div>
+              <div className="flex items-center relative">
                 <div className="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee">
                   {t.metric}
                 </div>

@@ -36,6 +36,8 @@ const testimonials = [
     position: "QA Automation specialist & lead",
     logo: "/img/customers/synot-logo.png",
     alt: "SYNOT TECH logo",
+    metric:
+      "1,600+ regression tests across teams · largest suites ~30 min · visual verification by Wopee.io",
   },
 ];
 
@@ -61,6 +63,13 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
                 className="text-secondary-wopee dark:text-primary-wopee inline ml-2"
               />
             </p>
+            {testimonial.metric && (
+              <div className="flex justify-center mt-4">
+                <span className="text-xs uppercase tracking-wider font-bold px-3 py-1.5 rounded-full bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee text-center">
+                  {testimonial.metric}
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="flex-1 flex flex-col justify-end">
