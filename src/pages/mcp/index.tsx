@@ -9,6 +9,14 @@ import {
   mdiNpm,
   mdiFormatListChecks,
   mdiMagnifyScan,
+  mdiBugOutline,
+  mdiHistory,
+  mdiMessageTextOutline,
+  mdiForumOutline,
+  mdiContentCopy,
+  mdiCheck,
+  mdiVariable,
+  mdiTune,
 } from "@mdi/js";
 import Icon from "@mdi/react";
 import React, { useState, useEffect } from "react";
@@ -22,6 +30,13 @@ import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInv
 import GradientCard from "@site/src/components/ui/GradientCard";
 
 const CAPABILITIES = [
+  {
+    icon: mdiMagnifyScan,
+    title: "Dispatch Analysis Crawl",
+    tool: "wopee_dispatch_analysis",
+    description:
+      "Create a suite and dispatch a crawling agent to explore your web app, discover pages, and map the structure.",
+  },
   {
     icon: mdiLightningBolt,
     title: "Generate Test Artifacts",
@@ -37,11 +52,25 @@ const CAPABILITIES = [
       "Execute test cases with an autonomous AI agent that opens a real browser, follows test steps, and captures screenshots.",
   },
   {
-    icon: mdiMagnifyScan,
-    title: "Dispatch Analysis Crawl",
-    tool: "wopee_dispatch_analysis",
+    icon: mdiFormatListChecks,
+    title: "Fetch Execution Results",
+    tool: "wopee_fetch_executed_test_cases",
     description:
-      "Create a suite and dispatch a crawling agent to explore your web app, discover pages, and map the structure.",
+      "Retrieve pass/fail results, agent reports, and code reports for executed test cases.",
+  },
+  {
+    icon: mdiHistory,
+    title: "Check Recent Runs",
+    tool: "wopee_fetch_recent_executions",
+    description:
+      "Get the latest test executions for your project — status, reports, and pass/fail — without hunting for suite UUIDs.",
+  },
+  {
+    icon: mdiBugOutline,
+    title: "File GitHub Issues",
+    tool: "wopee_create_github_issue",
+    description:
+      "Turn test failures into GitHub issues in your connected repository — title, Markdown body, and labels.",
   },
   {
     icon: mdiChartLine,
@@ -58,13 +87,6 @@ const CAPABILITIES = [
       "Replace and refine user stories, test cases, or Playwright code after reviewing them.",
   },
   {
-    icon: mdiFormatListChecks,
-    title: "Fetch Execution Results",
-    tool: "wopee_fetch_executed_test_cases",
-    description:
-      "Retrieve pass/fail results, agent reports, and code reports for executed test cases.",
-  },
-  {
     icon: mdiPuzzle,
     title: "Create Suite",
     tool: "wopee_create_blank_suite",
@@ -77,6 +99,34 @@ const CAPABILITIES = [
     tool: "wopee_fetch_analysis_suites",
     description:
       "List all analysis suites in your project with their UUIDs, types, and statuses.",
+  },
+  {
+    icon: mdiVariable,
+    title: "Fetch Run-Time Variables",
+    tool: "wopee_fetch_variables",
+    description:
+      "Read the run-time variables that drive analysis and agent runs — at project level or per analysis suite.",
+  },
+  {
+    icon: mdiTune,
+    title: "Update Run-Time Variables",
+    tool: "wopee_update_variables",
+    description:
+      "Add or overwrite run-time variables at project or suite level — existing keys you don't list are preserved.",
+  },
+  {
+    icon: mdiMessageTextOutline,
+    title: "Post to Project Chat",
+    tool: "wopee_send_chat_message",
+    description:
+      "Post status updates and notes to your project's chat room so the whole team sees what the agent is doing.",
+  },
+  {
+    icon: mdiForumOutline,
+    title: "Read Chat History",
+    tool: "wopee_read_chat_history",
+    description:
+      "Pull recent messages from your project's chat room for context before the agent acts.",
   },
 ];
 
@@ -126,7 +176,7 @@ const STEPS = [
     step: "2",
     title: "Connect",
     subtitle: "Works with any MCP client",
-    code: '// Add to your MCP config:\n{\n  "wopee": {\n    "command": "npx",\n    "args": ["-y", "wopee-mcp"],\n    "env": {\n      "WOPEE_API_KEY": "your-key",\n      "WOPEE_PROJECT_UUID": "your-id"\n    }\n  }\n}',
+    code: "// Copy the mcp-config.json snippet from the top of this page\n// and paste it into your AI tool's MCP config.",
     description:
       "Two values from your Wopee.io dashboard. Paste into your AI tool's MCP config — that's all you need.",
   },
@@ -146,8 +196,9 @@ const TERMINAL_LINES = [
   { type: "tool", name: "wopee_dispatch_agent", text: "running 8 test cases...", delay: 2200 },
   { type: "tool", name: "wopee_fetch_executed_test_cases", text: "7 passed, 1 failed", delay: 3500 },
   { type: "claude", text: "7 of 8 test cases passed. The promo code field accepts empty submissions — screenshots and agent report attached.", delay: 4500 },
-  { type: "user", text: "Fix the test case to validate non-empty input.", delay: 6500 },
-  { type: "tool", name: "wopee_update_artifact", text: "test case updated", delay: 7700 },
+  { type: "user", text: "File that as a GitHub issue.", delay: 6500 },
+  { type: "tool", name: "wopee_create_github_issue", text: "issue created in your repo", delay: 7700 },
+  { type: "claude", text: "Bug filed — steps to reproduce, agent report, and screenshots included.", delay: 8700 },
 ];
 
 const TerminalAnimation = () => {
@@ -161,7 +212,7 @@ const TerminalAnimation = () => {
   }, []);
 
   return (
-    <div className="bg-gray-950 p-5 sm:p-6 text-left font-mono text-xs sm:text-sm leading-relaxed min-h-[220px]">
+    <div className="bg-gray-950 p-5 sm:p-6 text-left font-mono text-xs sm:text-sm leading-relaxed min-h-[260px]">
       {TERMINAL_LINES.slice(0, visibleLines).map((line, i) => {
         if (line.type === "user") {
           return (
@@ -201,6 +252,58 @@ const TerminalAnimation = () => {
   );
 };
 
+const MCP_CONFIG_SNIPPET = `{
+  "mcpServers": {
+    "wopee": {
+      "command": "npx wopee-mcp",
+      "env": {
+        "WOPEE_PROJECT_UUID": "your-project-uuid-here",
+        "WOPEE_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}`;
+
+const InstallSnippet = () => {
+  const [copied, setCopied] = useState(false);
+
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(MCP_CONFIG_SNIPPET);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
+  return (
+    <div className="w-full max-w-2xl mx-auto mt-4 rounded-xl overflow-hidden border border-gray-700 shadow-xl text-left">
+      <div className="bg-gray-800 px-4 py-2.5 flex items-center justify-between">
+        <span className="text-gray-400 text-xs font-mono">mcp-config.json</span>
+        <button
+          type="button"
+          onClick={onCopy}
+          aria-label={copied ? "Config copied" : "Copy config"}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent border-0 cursor-pointer p-0 transition-colors"
+        >
+          <Icon
+            path={copied ? mdiCheck : mdiContentCopy}
+            size={0.6}
+            className={copied ? "text-green-400" : ""}
+          />
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
+      <pre className="!bg-gray-900 !m-0 !rounded-none p-4 text-xs sm:text-sm overflow-x-auto">
+        <code className="!bg-transparent !text-gray-300">
+          {MCP_CONFIG_SNIPPET}
+        </code>
+      </pre>
+    </div>
+  );
+};
+
 const HeroSection = () => (
   <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center relative">
     <div className="flex flex-col gap-6 max-w-4xl">
@@ -222,8 +325,9 @@ const HeroSection = () => (
       </h1>
 
       <p className="text-xl sm:text-2xl opacity-80 max-w-2xl mx-auto text-balance">
-        Connect to Wopee.io and dispatch testing agents, generate tests,
-        and manage suites — without leaving your editor.
+        Your coding agent runs the tests and files the bugs — straight into
+        GitHub. Connect Wopee.io to generate tests, dispatch testing agents,
+        and check results without leaving your editor.
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-6">
@@ -251,10 +355,12 @@ const HeroSection = () => (
       <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm opacity-60">
         <span>npm package</span>
         <span>&#x2022;</span>
-        <span>8 MCP tools</span>
+        <span>14 MCP tools</span>
         <span>&#x2022;</span>
         <span>Node.js 18+</span>
       </div>
+
+      <InstallSnippet />
     </div>
 
     <div className="w-full max-w-3xl mt-4 rounded-xl overflow-hidden shadow-2xl shadow-secondary-wopee/20 dark:shadow-primary-wopee/20 border border-secondary-wopee/30 dark:border-primary-wopee/30">
@@ -332,7 +438,8 @@ const CapabilitiesSection = () => (
         Complete testing workflow
       </h2>
       <p className="text-xl opacity-70 max-w-2xl mx-auto">
-        From generating tests to dispatching autonomous agents — all through conversation
+        From crawling your app to filing GitHub issues — 14 tools, all through
+        conversation
       </p>
     </div>
 
@@ -536,14 +643,20 @@ const OpenSourceSection = () => (
       <div className="flex-1 w-full">
         <div className="grid grid-cols-1 gap-3">
           {[
+            ["wopee_dispatch_analysis", "Crawl and analyze app"],
             ["wopee_generate_artifact", "Generate test artifacts"],
             ["wopee_dispatch_agent", "Execute test cases"],
-            ["wopee_dispatch_analysis", "Crawl and analyze app"],
+            ["wopee_fetch_executed_test_cases", "Get execution results"],
+            ["wopee_fetch_recent_executions", "Check recent runs"],
+            ["wopee_create_github_issue", "File bugs on GitHub"],
             ["wopee_fetch_artifact", "Retrieve test artifacts"],
             ["wopee_update_artifact", "Update test artifacts"],
-            ["wopee_fetch_executed_test_cases", "Get execution results"],
             ["wopee_create_blank_suite", "Create new suite"],
             ["wopee_fetch_analysis_suites", "List all suites"],
+            ["wopee_fetch_variables", "Read run-time variables"],
+            ["wopee_update_variables", "Update run-time variables"],
+            ["wopee_send_chat_message", "Post to project chat"],
+            ["wopee_read_chat_history", "Read chat history"],
           ].map(([tool, desc]) => (
             <div key={tool} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-black/40 border border-white/10">
               <code className="!bg-transparent !border-0 !p-0 text-sm !text-primary-wopee font-semibold">{tool}</code>
