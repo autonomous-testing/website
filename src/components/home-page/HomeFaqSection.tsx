@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiMinus } from "@mdi/js";
 
+import ButtonPrimaryInverted from "../buttons/ButtonPrimaryInverted";
+
 const FAQS = [
   {
     question: "How do the AI agents identify and prioritize critical test paths?",
@@ -455,14 +457,11 @@ const HomeFaqSection = () => {
 
         {!showAll && (
           <div className="mt-8 text-center">
-            <button
-              onClick={() => setShowAll(true)}
+            <ButtonPrimaryInverted
               id="faq-load-more"
-              className="inline-flex items-center text-base font-medium transition-colors duration-300"
-              style={{ width: "auto", paddingLeft: "2rem", paddingRight: "2rem" }}
-            >
-              Load more questions
-            </button>
+              label="Load more questions"
+              onClick={() => setShowAll(true)}
+            />
           </div>
         )}
       </div>
