@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const HomeHeroSection = () => {
   return (
@@ -20,7 +21,7 @@ const HomeHeroSection = () => {
         <ButtonPrimary
           id="hero-button"
           label="Start for free"
-          href="https://cmd.wopee.io/login"
+          href={`${cmdBaseUrl}/login`}
           className="w-60 h-[50px]"
         />
         <span className="italic">No credit card required</span>

@@ -3,6 +3,7 @@ import React from "react";
 import ButtonPrimary from "../../buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "../../buttons/ButtonPrimaryInverted";
 import clsx from "clsx";
+import { cmdBaseUrl } from "../../../../cmdBaseUrl";
 
 const HomeConversionForm = ({ className }: { className?: string }) => {
   return (
@@ -18,8 +19,8 @@ const HomeConversionForm = ({ className }: { className?: string }) => {
         </h2>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
           <ButtonPrimary
-            label="Start free trial"
-            href="https://cmd.wopee.io/login"
+            label="Start for free"
+            href={`${cmdBaseUrl}/login`}
             className="w-60 h-[50px]"
           />
           <ButtonPrimaryInverted

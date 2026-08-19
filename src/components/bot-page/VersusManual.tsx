@@ -8,6 +8,7 @@ import {
 } from "@mdi/js";
 import { X, Check } from "lucide-react";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const ROWS = [
   {
@@ -110,7 +111,7 @@ const VersusManual = () => {
       <div className="mt-10 text-center">
         <ButtonPrimary
           label="Start for free"
-          href="/pricing/"
+          href={`${cmdBaseUrl}/login`}
           className="w-60 h-[50px]"
         />
         <p className="text-sm italic">No credit card required</p>
