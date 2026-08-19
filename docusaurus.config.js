@@ -278,7 +278,12 @@ const config = {
             label: "Product",
             position: "left",
             items: [
-              { to: "/#how-it-works", label: "How it works" },
+              {
+                href: "/#how-it-works",
+                label: "How it works",
+                className: "navbar__item--no-external-icon",
+                target: "_self",
+              },
               { to: "/ai-testing-agents/", label: "AI Testing Agents" },
               { to: "/visual-testing/", label: "Visual Testing" },
               { to: "/mcp/", label: "MCP Server" },
