@@ -4,6 +4,8 @@ import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 
 import HomeHeroVibe from "@/components/home-page/HomeHeroVibe";
+import HomeProblemSection from "@/components/home-page/HomeProblemSection";
+import HomeCockpitSection from "@/components/home-page/HomeCockpitSection";
 import HomeSocialProof from "@/components/home-page/HomeSocialProof";
 import HomeBenefits from "@/components/home-page/HomeBenefits";
 import HomeHowItWorks from "@/components/home-page/HomeHowItWorks";
@@ -70,10 +72,12 @@ export default function Home(): JSX.Element {
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
       </Head>
       <HomeHeroVibe />
+      <HomeProblemSection />
       <HomeTrustedBy />
       <HomeBenefits />
       <HomeSocialProof />
       <HomeHowItWorks />
+      <HomeCockpitSection />
       <HomeTestingFrameworks />
       <HomeDeploymentOptions />
       <HomeFaqSection />
