@@ -11,6 +11,7 @@ const {
   mdiConnection,
   mdiShieldCheckOutline,
   mdiScaleBalance,
+  mdiPuzzleOutline,
 } = require("@mdi/js");
 
 // Rich navbar dropdown rows: icon tile + title + one-line description.
@@ -157,6 +158,25 @@ const config = {
       },
     ],
     [
+      // Second blog instance: the public changelog at /changelog/ (entries in
+      // changelog/). Separate from the main blog so posts stay short, dated
+      // release notes without authors/tags.
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "changelog",
+        path: "changelog",
+        routeBasePath: "/changelog",
+        blogTitle: "Changelog",
+        blogDescription:
+          "Wopee.io changelog: new autonomous testing features, integrations, and platform improvements, what shipped and when.",
+        blogSidebarTitle: "Recent updates",
+        blogSidebarCount: "ALL",
+        showReadingTime: false,
+        archiveBasePath: null,
+        onUntruncatedBlogPosts: "ignore",
+      },
+    ],
+    [
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
@@ -198,8 +218,6 @@ const config = {
             from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
             to: "/blog/applitools-alternatives",
           },
-          // /integrations folded into /visual-testing
-          { from: "/integrations", to: "/visual-testing" },
         ],
       },
     ],
@@ -295,6 +313,7 @@ const config = {
               { to: "/ai-testing-agents/", html: navRichItem("AI Testing Agents", "Autonomous agents that test your web app", mdiRobotOutline) },
               { to: "/visual-testing/", html: navRichItem("Visual Testing", "Catch visual regressions on every run", mdiEyeCheckOutline) },
               { to: "/mcp/", html: navRichItem("MCP Server", "Test from Claude, Cursor, and other AI tools", mdiConnection) },
+              { to: "/integrations/", html: navRichItem("Integrations", "Slack, GitHub, CI, MCP, and your stack", mdiPuzzleOutline) },
               { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
               { to: "/compare/", html: navRichItem("Compare tools", "Honest comparisons with the alternatives", mdiScaleBalance) },
             ],
@@ -346,6 +365,7 @@ const config = {
               { label: "Enterprise", to: "/enterprise/" },
               { label: "Customers", to: "/customers/" },
               { label: "How it works", to: "/how-it-works/" },
+              { label: "Changelog", to: "/changelog/" },
               { label: "Security & Trust", to: "/security/" },
               { label: "Pricing", to: "/pricing" },
               { label: "About us", to: "/about-us" },
