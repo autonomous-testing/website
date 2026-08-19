@@ -64,21 +64,21 @@ const CAPABILITIES = [
     title: "Check Recent Runs",
     tool: "wopee_fetch_recent_executions",
     description:
-      "Get the latest test executions for your project — status, reports, and pass/fail — without hunting for suite UUIDs.",
+      "Get the latest test executions for your project (status, reports, and pass/fail) without hunting for suite UUIDs.",
   },
   {
     icon: mdiBugOutline,
     title: "File GitHub Issues",
     tool: "wopee_create_github_issue",
     description:
-      "Turn test failures into GitHub issues in your connected repository — title, Markdown body, and labels.",
+      "Turn test failures into GitHub issues in your connected repository, title, Markdown body, and labels.",
   },
   {
     icon: mdiChartLine,
     title: "Fetch Test Artifacts",
     tool: "wopee_fetch_artifact",
     description:
-      "Retrieve generated artifacts — user stories, test cases, Playwright code, and app context.",
+      "Retrieve generated artifacts, user stories, test cases, Playwright code, and app context.",
   },
   {
     icon: mdiCogSync,
@@ -106,14 +106,14 @@ const CAPABILITIES = [
     title: "Fetch Run-Time Variables",
     tool: "wopee_fetch_variables",
     description:
-      "Read the run-time variables that drive analysis and agent runs — at project level or per analysis suite.",
+      "Read the run-time variables that drive analysis and agent runs, at project level or per analysis suite.",
   },
   {
     icon: mdiTune,
     title: "Update Run-Time Variables",
     tool: "wopee_update_variables",
     description:
-      "Add or overwrite run-time variables at project or suite level — existing keys you don't list are preserved.",
+      "Add or overwrite run-time variables at project or suite level, existing keys you don't list are preserved.",
   },
   {
     icon: mdiFormatListChecks,
@@ -138,35 +138,51 @@ const CAPABILITIES = [
   },
 ];
 
+// Real brand marks (single-path SVGs; simple-icons: claude/cursor/windsurf
+// current set, visualstudiocode from v12.4.0 pre-trademark-purge). Rendered
+// white on the existing brand-gradient tiles.
+const BRAND_PATHS: Record<string, string> = {
+  claude: "m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z",
+  cursor: "M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23",
+  windsurf: "M23.55 5.067c-1.2038-.002-2.1806.973-2.1806 2.1765v4.8676c0 .972-.8035 1.7594-1.7597 1.7594-.568 0-1.1352-.286-1.4718-.7659l-4.9713-7.1003c-.4125-.5896-1.0837-.941-1.8103-.941-1.1334 0-2.1533.9635-2.1533 2.153v4.8957c0 .972-.7969 1.7594-1.7596 1.7594-.57 0-1.1363-.286-1.4728-.7658L.4076 5.1598C.2822 4.9798 0 5.0688 0 5.2882v4.2452c0 .2147.0656.4228.1884.599l5.4748 7.8183c.3234.462.8006.8052 1.3509.9298 1.3771.313 2.6446-.747 2.6446-2.0977v-4.893c0-.972.7875-1.7593 1.7596-1.7593h.003a1.798 1.798 0 0 1 1.4718.7658l4.9723 7.0994c.4135.5905 1.05.941 1.8093.941 1.1587 0 2.1515-.9645 2.1515-2.153v-4.8948c0-.972.7875-1.7594 1.7596-1.7594h.194a.22.22 0 0 0 .2204-.2202v-4.622a.22.22 0 0 0-.2203-.2203Z",
+  vscode: "M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z",
+};
+
+const BrandMark = ({ id }: { id: string }) => (
+  <svg viewBox="0 0 24 24" width={26} height={26} fill="currentColor" aria-hidden="true">
+    <path d={BRAND_PATHS[id]} />
+  </svg>
+);
+
 const COMPATIBLE_TOOLS = [
   {
     name: "Claude Code",
     description: "CLI agent by Anthropic",
-    icon: "CC",
+    icon: <BrandMark id="claude" />,
     gradient: "from-orange-500 to-amber-500",
   },
   {
     name: "Claude Desktop",
     description: "AI agent by Anthropic",
-    icon: "CD",
+    icon: <BrandMark id="claude" />,
     gradient: "from-orange-400 to-yellow-500",
   },
   {
     name: "Cursor",
     description: "AI-first code editor",
-    icon: "Cu",
+    icon: <BrandMark id="cursor" />,
     gradient: "from-blue-500 to-indigo-500",
   },
   {
     name: "VS Code",
     description: "With Copilot or extensions",
-    icon: "VS",
+    icon: <BrandMark id="vscode" />,
     gradient: "from-sky-500 to-blue-600",
   },
   {
     name: "Windsurf",
     description: "AI-powered IDE",
-    icon: "Ws",
+    icon: <BrandMark id="windsurf" />,
     gradient: "from-teal-400 to-emerald-500",
   },
 ];
@@ -178,7 +194,7 @@ const STEPS = [
     subtitle: "One npm package, instant setup",
     code: "npm install -g wopee-mcp\n# or run directly\nnpx wopee-mcp",
     description:
-      "Run instantly with npx — the server starts in seconds. No global install needed.",
+      "Run instantly with npx, the server starts in seconds. No global install needed.",
   },
   {
     step: "2",
@@ -186,7 +202,7 @@ const STEPS = [
     subtitle: "Works with any MCP client",
     code: "// Copy the mcp-config.json snippet from the top of this page\n// and paste it into your AI tool's MCP config.",
     description:
-      "Two values from your Wopee.io dashboard. Paste into your AI tool's MCP config — that's all you need.",
+      "Two values from your Wopee.io dashboard. Paste into your AI tool's MCP config, that's all you need.",
   },
   {
     step: "3",
@@ -194,7 +210,7 @@ const STEPS = [
     subtitle: "Natural language, real results",
     code: '"Generate stories for login and test them"\n\n  wopee_generate_artifact           3 user stories\n  wopee_dispatch_agent              running 8 cases\n  wopee_fetch_executed_test_cases   7 passed, 1 failed',
     description:
-      "Ask your AI to test any flow. It generates stories, dispatches agents, and explains findings — all in natural language.",
+      "Ask your AI to test any flow. It generates stories, dispatches agents, and explains findings, all in natural language.",
   },
 ];
 
@@ -203,10 +219,10 @@ const TERMINAL_LINES = [
   { type: "tool", name: "wopee_generate_artifact", text: "3 user stories with test cases", delay: 1200 },
   { type: "tool", name: "wopee_dispatch_agent", text: "running 8 test cases...", delay: 2200 },
   { type: "tool", name: "wopee_fetch_executed_test_cases", text: "7 passed, 1 failed", delay: 3500 },
-  { type: "claude", text: "7 of 8 test cases passed. The promo code field accepts empty submissions — screenshots and agent report attached.", delay: 4500 },
+  { type: "claude", text: "7 of 8 test cases passed. The promo code field accepts empty submissions, screenshots and agent report attached.", delay: 4500 },
   { type: "user", text: "File that as a GitHub issue.", delay: 6500 },
   { type: "tool", name: "wopee_create_github_issue", text: "issue created in your repo", delay: 7700 },
-  { type: "claude", text: "Bug filed — steps to reproduce, agent report, and screenshots included.", delay: 8700 },
+  { type: "claude", text: "Bug filed, steps to reproduce, agent report, and screenshots included.", delay: 8700 },
 ];
 
 const TerminalAnimation = () => {
@@ -333,7 +349,7 @@ const HeroSection = () => (
       </h1>
 
       <p className="text-xl sm:text-2xl opacity-80 max-w-2xl mx-auto text-balance">
-        Your coding agent runs the tests and files the bugs — straight into
+        Your coding agent runs the tests and files the bugs, straight into
         GitHub. Connect Wopee.io to generate tests, dispatch testing agents,
         and check results without leaving your editor.
       </p>
@@ -446,7 +462,7 @@ const CapabilitiesSection = () => (
         Complete testing workflow
       </h2>
       <p className="text-xl opacity-70 max-w-2xl mx-auto">
-        From crawling your app to filing GitHub issues — 15 tools, all through
+        From crawling your app to filing GitHub issues, 15 tools, all through
         conversation
       </p>
     </div>
@@ -608,6 +624,44 @@ const CompatibleToolsSection = () => (
   </div>
 );
 
+const TOOL_GROUPS = [
+  {
+    label: "Analyze & generate",
+    tools: [
+      ["wopee_dispatch_analysis", "Crawl and analyze your app"],
+      ["wopee_generate_artifact", "Generate test artifacts"],
+      ["wopee_create_blank_suite", "Create a new suite"],
+    ],
+  },
+  {
+    label: "Run tests",
+    tools: [
+      ["wopee_dispatch_agent", "Execute test cases"],
+      ["wopee_fetch_executed_test_cases", "Get execution results"],
+      ["wopee_fetch_recent_executions", "Check recent runs"],
+    ],
+  },
+  {
+    label: "Suites, artifacts & variables",
+    tools: [
+      ["wopee_fetch_analysis_suites", "List all suites"],
+      ["wopee_fetch_test_inventory", "Complete test inventory"],
+      ["wopee_fetch_artifact", "Retrieve test artifacts"],
+      ["wopee_update_artifact", "Update test artifacts"],
+      ["wopee_fetch_variables", "Read run-time variables"],
+      ["wopee_update_variables", "Update run-time variables"],
+    ],
+  },
+  {
+    label: "Collaborate & report",
+    tools: [
+      ["wopee_create_github_issue", "File bugs on GitHub"],
+      ["wopee_send_chat_message", "Post to project chat"],
+      ["wopee_read_chat_history", "Read chat history"],
+    ],
+  },
+];
+
 const OpenSourceSection = () => (
   <div className="container my-16 lg:my-24 px-5 lg:px-10">
     <GradientCard
@@ -649,29 +703,47 @@ const OpenSourceSection = () => (
         </div>
       </div>
       <div className="flex-1 w-full">
-        <div className="grid grid-cols-1 gap-3">
-          {[
-            ["wopee_dispatch_analysis", "Crawl and analyze app"],
-            ["wopee_generate_artifact", "Generate test artifacts"],
-            ["wopee_dispatch_agent", "Execute test cases"],
-            ["wopee_fetch_executed_test_cases", "Get execution results"],
-            ["wopee_fetch_recent_executions", "Check recent runs"],
-            ["wopee_create_github_issue", "File bugs on GitHub"],
-            ["wopee_fetch_artifact", "Retrieve test artifacts"],
-            ["wopee_update_artifact", "Update test artifacts"],
-            ["wopee_create_blank_suite", "Create new suite"],
-            ["wopee_fetch_analysis_suites", "List all suites"],
-            ["wopee_fetch_variables", "Read run-time variables"],
-            ["wopee_update_variables", "Update run-time variables"],
-            ["wopee_fetch_test_inventory", "Complete test inventory"],
-            ["wopee_send_chat_message", "Post to project chat"],
-            ["wopee_read_chat_history", "Read chat history"],
-          ].map(([tool, desc]) => (
-            <div key={tool} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-black/40 border border-white/10">
-              <code className="!bg-transparent !border-0 !p-0 text-sm !text-primary-wopee font-semibold">{tool}</code>
-              <span className="text-sm text-white/80 hidden sm:inline">— {desc}</span>
+        <div className="rounded-xl overflow-hidden shadow-2xl shadow-black/30 border border-white/15">
+          <div className="bg-gray-900 px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <span className="text-gray-400 text-sm ml-2 font-mono">
+                wopee-mcp
+              </span>
             </div>
-          ))}
+            <span className="text-xs text-green-500 font-mono flex items-center gap-1">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+              15 tools
+            </span>
+          </div>
+          <div className="bg-gray-950 px-5 py-4 font-mono text-sm leading-relaxed">
+            {TOOL_GROUPS.map((group) => (
+              <div key={group.label} className="mb-4 last:mb-0">
+                <p className="text-purple-300/80 text-xs mb-1.5 select-none">
+                  # {group.label.toLowerCase()}
+                </p>
+                <div>
+                  {group.tools.map(([tool, desc]) => (
+                    <div
+                      key={tool}
+                      className="grid grid-cols-1 md:grid-cols-[minmax(0,16rem)_1fr] gap-x-4 px-2 py-1 -mx-2 rounded-md hover:bg-white/5 transition-colors"
+                    >
+                      <code className="!bg-transparent !border-0 !p-0 text-primary-wopee">
+                        {tool}
+                      </code>
+                      <span className="text-gray-400 text-xs md:text-sm self-center">
+                        {desc}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </GradientCard>
