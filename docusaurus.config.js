@@ -4,6 +4,18 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
+const {
+  mdiRoutes,
+  mdiRobotOutline,
+  mdiEyeCheckOutline,
+  mdiConnection,
+  mdiShieldCheckOutline,
+} = require("@mdi/js");
+
+// Rich navbar dropdown rows: icon tile + title + one-line description.
+const navRichItem = (title, desc, icon) =>
+  `<span class="nav-rich"><span class="nav-rich-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg></span><span class="nav-rich-text"><span class="nav-rich-title">${title}</span><span class="nav-rich-desc">${desc}</span></span></span>`;
+
 
 // The pathname the site is served under. Docusaurus prefixes the `favicon`
 // field with this automatically, but not `headTags` hrefs -- those are emitted
@@ -278,11 +290,11 @@ const config = {
             label: "Product",
             position: "left",
             items: [
-              { to: "/how-it-works/", label: "How it works" },
-              { to: "/ai-testing-agents/", label: "AI Testing Agents" },
-              { to: "/visual-testing/", label: "Visual Testing" },
-              { to: "/mcp/", label: "MCP Server" },
-              { to: "/security/", label: "Security & Trust" },
+              { to: "/how-it-works/", html: navRichItem("How it works", "From URL to reviewed tests, step by step", mdiRoutes) },
+              { to: "/ai-testing-agents/", html: navRichItem("AI Testing Agents", "Autonomous agents that test your web app", mdiRobotOutline) },
+              { to: "/visual-testing/", html: navRichItem("Visual Testing", "Catch visual regressions on every run", mdiEyeCheckOutline) },
+              { to: "/mcp/", html: navRichItem("MCP Server", "Test from Claude, Cursor, and other AI tools", mdiConnection) },
+              { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },
