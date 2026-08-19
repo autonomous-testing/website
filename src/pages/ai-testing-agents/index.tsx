@@ -8,6 +8,8 @@ import FaqSection from "@site/src/components/bot-page/FaqSection";
 import PartnerBrands from "@site/src/components/landing-page/home/sections/PartnerBrands";
 import TestingBottlenecks from "@site/src/components/bot-page/TestingBottlenecks";
 import VersusManual from "@site/src/components/bot-page/VersusManual";
+import SelfHealingMechanisms from "@site/src/components/bot-page/SelfHealingMechanisms";
+import EvidenceSection from "@site/src/components/bot-page/EvidenceSection";
 import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
@@ -18,7 +20,7 @@ const STEPS = [
     title: "Effortless setup:",
     subtitle: "Get started in 1 minute",
     description:
-      "Point the testing bot at any web app and it starts exploring immediately. No scripts, no selectors, no programming required. The agent autonomously crawls your application, discovers user flows, and generates Playwright test cases automatically.",
+      "Point the testing bot at any web app. It starts exploring immediately, with no scripts, selectors, or programming required. The agent autonomously crawls your application, discovers user flows, and generates Playwright test cases.",
   },
   {
     image: "/img/landing/instant-results.png",
@@ -26,7 +28,7 @@ const STEPS = [
     title: "Autonomous testing:",
     subtitle: "Results ready in 2 minutes",
     description:
-      "Your AI agent runs generated tests across browsers, performing visual and functional validations. When your UI changes, tests self-heal instead of breaking. Within minutes, you get detailed results with screenshots, traces, and video recordings.",
+      "Your AI agent runs generated tests across browsers, with visual and functional validations. When your UI changes, tests self-heal instead of breaking. Within minutes, you get detailed results with screenshots, traces, and video recordings.",
   },
   {
     image: "/img/landing/comparison-view.png",
@@ -34,7 +36,7 @@ const STEPS = [
     title: "Simplified maintenance:",
     subtitle: "Adapt and optimize with ease",
     description:
-      "Traditional test frameworks break with every UI change. Wopee.io agents adapt automatically. Approve visual baseline updates with a single click, or report bugs directly. Your team focuses on shipping, not fixing flaky tests.",
+      "Traditional test frameworks break with every UI change. Wopee.io agents adapt automatically. Approve visual baseline updates with a single click or report bugs directly. Your team focuses on shipping, not fixing flaky tests.",
   },
 ];
 
@@ -87,19 +89,38 @@ const AiTestingAgentsPage = () => {
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
       </Head>
-      <HeroSection />
-      <DefinitionBlock />
-      <PartnerBrands />
-      <TestingBottlenecks />
-      <VersusManual />
-      <HowItWorksIntro />
-      <HowItWorks
-        STEPS={STEPS}
-        FEATURES={FEATURES}
-      />
-      <TestimonialCarousel />
-      <FaqSection />
-      <EndingSection bot />
+      <div className="overflow-hidden text-slate-900 dark:text-slate-100">
+        <HeroSection />
+        <DefinitionBlock />
+
+        <div className="[&>div]:!py-12 sm:[&>div]:!py-16 lg:[&>div]:!py-20">
+          <PartnerBrands />
+        </div>
+
+        <TestingBottlenecks />
+        <VersusManual />
+        <HowItWorksIntro />
+
+        <section className="py-12 sm:py-16 lg:py-24 [&>.container]:!gap-12 lg:[&>.container]:!gap-16 [&>.container>p:first-child]:!m-0 [&>.container>p:first-child]:!text-3xl sm:[&>.container>p:first-child]:!text-4xl lg:[&>.container>p:first-child]:!text-5xl [&>.container>div:not(:last-child)]:!gap-8 [&>.container>div:not(:last-child)]:rounded-xl [&>.container>div:not(:last-child)]:border [&>.container>div:not(:last-child)]:border-slate-200 [&>.container>div:not(:last-child)]:border-t-2 [&>.container>div:not(:last-child)]:border-t-secondary-wopee/70 [&>.container>div:not(:last-child)]:bg-white [&>.container>div:not(:last-child)]:p-5 [&>.container>div:not(:last-child)]:shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] sm:[&>.container>div:not(:last-child)]:p-7 dark:[&>.container>div:not(:last-child)]:border-white/10 dark:[&>.container>div:not(:last-child)]:border-t-primary-wopee/70 dark:[&>.container>div:not(:last-child)]:bg-white/[0.035] dark:[&>.container>div:not(:last-child)]:shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)] [&>.container>div:not(:last-child)_p]:!m-0 [&>.container>div:not(:last-child)>div:last-child>div:first-child>p]:!text-2xl lg:[&>.container>div:not(:last-child)>div:last-child>div:first-child>p]:!text-3xl [&>.container>div:not(:last-child)>div:last-child>div:last-child]:!text-base [&>.container>div:not(:last-child)>div:last-child>div:last-child]:!leading-7 [&>.container>div:not(:last-child)>div:last-child>div:last-child]:!text-slate-600 [&>.container>div:not(:last-child)>div:last-child>div:last-child]:!opacity-100 sm:[&>.container>div:not(:last-child)>div:last-child>div:last-child]:!text-lg dark:[&>.container>div:not(:last-child)>div:last-child>div:last-child]:!text-slate-300 [&>.container>div:last-child>p]:!m-0 [&>.container>div:last-child>p]:!text-2xl sm:[&>.container>div:last-child>p]:!text-3xl [&>.container>div:last-child>div>div]:!rounded-xl [&>.container>div:last-child>div>div]:!border-slate-200 [&>.container>div:last-child>div>div]:!border-t-2 [&>.container>div:last-child>div>div]:!border-t-secondary-wopee/70 [&>.container>div:last-child>div>div]:!bg-white [&>.container>div:last-child>div>div]:!p-3 [&>.container>div:last-child>div>div]:!text-base [&>.container>div:last-child>div>div]:!shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] dark:[&>.container>div:last-child>div>div]:!border-white/10 dark:[&>.container>div:last-child>div>div]:!border-t-primary-wopee/70 dark:[&>.container>div:last-child>div>div]:!bg-white/[0.035] dark:[&>.container>div:last-child>div>div]:!shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)] [&_img]:!shadow-[0_18px_50px_-30px_rgba(15,23,42,0.4)] dark:[&_img]:!shadow-[0_22px_55px_-30px_rgba(0,0,0,0.9)]">
+          <HowItWorks
+            STEPS={STEPS}
+            FEATURES={FEATURES}
+          />
+        </section>
+
+        <SelfHealingMechanisms />
+        <EvidenceSection />
+
+        <section className="py-12 sm:py-16 lg:py-20 [&>div]:!my-0 [&>div>div:first-child]:!text-3xl sm:[&>div>div:first-child]:!text-4xl [&>div>div:nth-child(2)>div>div]:!rounded-xl [&>div>div:nth-child(2)>div>div]:!border-slate-200 [&>div>div:nth-child(2)>div>div]:!border-t-2 [&>div>div:nth-child(2)>div>div]:!border-t-secondary-wopee/70 [&>div>div:nth-child(2)>div>div]:!bg-white [&>div>div:nth-child(2)>div>div]:!shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] dark:[&>div>div:nth-child(2)>div>div]:!border-white/10 dark:[&>div>div:nth-child(2)>div>div]:!border-t-primary-wopee/70 dark:[&>div>div:nth-child(2)>div>div]:!bg-white/[0.035] dark:[&>div>div:nth-child(2)>div>div]:!shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)]">
+          <TestimonialCarousel />
+        </section>
+
+        <FaqSection />
+
+        <div className="border-t border-slate-200 bg-secondary-wopee/[0.05] dark:border-white/10 dark:bg-primary-wopee/[0.04] [&>div]:!bg-none [&>div>div]:!my-0 [&>div>div]:!h-auto [&>div>div]:!py-16 lg:[&>div>div]:!py-20">
+          <EndingSection bot />
+        </div>
+      </div>
     </Layout>
   );
 };
