@@ -170,6 +170,10 @@ const HomeHeroVibe = () => {
             for Web Apps
           </span>
         </h1>
+        <p className="max-w-2xl text-center text-base sm:text-lg text-gray-700 dark:text-gray-300 text-balance leading-snug mt-1">
+          Wopee.io agents run the whole pipeline: explore, generate, execute,
+          validate, maintain. You review.
+        </p>
       </section>
 
       <div className="relative z-20 w-full max-w-6xl px-4 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">

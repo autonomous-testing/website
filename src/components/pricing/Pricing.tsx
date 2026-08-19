@@ -32,7 +32,7 @@ const heroBenefits = [
   "Zero scripts to maintain",
   "Set up in minutes",
   "Self-healing test suites",
-  "85% less test maintenance",
+  "60–90% less maintenance",
 ];
 
 const competitors = [
@@ -89,7 +89,8 @@ const testimonials = [
     role: "QA Automation Lead",
     company: "SYNOT TECH",
     avatar: "/img/customers/avatars/jakub-synot.webp",
-    metric: "New coverage unlocked",
+    metric:
+      "1,600+ regression tests · visual verification by Wopee.io",
   },
 ];
 
@@ -100,6 +101,7 @@ const enterpriseFeatures = [
   "Dedicated CSM & SLA",
   "Custom integrations",
   "Security review & DPA",
+  "Bring your own LLM",
 ];
 
 const faqs: { q: string; a: string }[] = [
@@ -125,7 +127,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Is my data and source code safe?",
-    a: "Yes. We never train models on your code or test data. Enterprise customers can run Wopee.io fully on-premise. We're happy to walk you through our security posture.",
+    a: "Yes. We never train models on your code or test data, and EU data residency with a DPA is standard. SOC 2 and ISO 27001 are on our roadmap. Enterprise customers can run Wopee.io fully on-premise.",
   },
 ];
 
@@ -173,6 +175,9 @@ export default function Pricing(): JSX.Element {
         <p className="mt-5 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
           AI agents that find bugs before your users do. No scripts, no
           maintenance, no QA backlog. Start free in 60 seconds.
+        </p>
+        <p className="mt-3 text-sm font-semibold text-secondary-wopee dark:text-primary-wopee">
+          Prices on this page, not behind a demo call.
         </p>
 
         {/* HERO BENEFITS */}
@@ -228,7 +233,7 @@ export default function Pricing(): JSX.Element {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-secondary-wopee dark:text-primary-wopee text-lg">✓</span>
-            SOC 2 ready
+            EU data residency & DPA today
           </div>
         </div>
 
@@ -283,6 +288,10 @@ export default function Pricing(): JSX.Element {
                 </li>
               ))}
             </ul>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 mb-0">
+              LLM providers: Azure OpenAI · Google Vertex · Anthropic ·
+              OpenAI-compatible
+            </p>
           </div>
           <div className="md:flex-shrink-0 flex flex-col gap-2">
             <Link to="/book-demo/" className="hover:no-underline">
@@ -438,10 +447,7 @@ export default function Pricing(): JSX.Element {
               >
                 "
               </div>
-              <div className="flex items-center justify-between relative">
-                <div className="text-secondary-wopee dark:text-primary-wopee text-lg tracking-widest">
-                  ★★★★★
-                </div>
+              <div className="flex items-center relative">
                 <div className="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee">
                   {t.metric}
                 </div>
