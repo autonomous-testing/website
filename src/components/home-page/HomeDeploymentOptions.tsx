@@ -76,7 +76,7 @@ const HomeDeploymentOptions = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Deploy on your terms</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            Most teams start in the cloud — switch to self-hosted whenever you
+            Most teams start in the cloud, switch to self-hosted whenever you
             need to.
           </p>
         </div>

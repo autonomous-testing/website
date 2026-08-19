@@ -7,23 +7,23 @@ tags: [bdd, robot-framework, example-mapping, gherkin, automation, testing]
 image: ./bdd-process.png
 ---
 
-Behavior-Driven Development (BDD) with Robot Framework combines Gherkin-style `Given/When/Then` syntax with Robot Framework's keyword-driven engine. You write scenarios in business-readable plain English, then map each step to a reusable Robot keyword that drives the system under test. The result: tests that product managers can read and engineers can maintain. This guide covers the setup, syntax, Example Mapping, and 2026 patterns — including AI-assisted scenario generation — with working examples you can copy.
+Behavior-Driven Development (BDD) with Robot Framework combines Gherkin-style `Given/When/Then` syntax with Robot Framework's keyword-driven engine. You write scenarios in business-readable plain English, then map each step to a reusable Robot keyword that drives the system under test. The result: tests that product managers can read and engineers can maintain. This guide covers the setup, syntax, Example Mapping, and 2026 patterns (including AI-assisted scenario generation) with working examples you can copy.
 
 <!--truncate-->
 
 ## Key Takeaways
 
-- Robot Framework supports Gherkin (`Given`, `When`, `Then`, `And`, `But`) natively — no extra plugin, no separate runner. The keywords are simply ignored prefixes that bind to your keyword definitions.
+- Robot Framework supports Gherkin (`Given`, `When`, `Then`, `And`, `But`) natively, no extra plugin, no separate runner. The keywords are simply ignored prefixes that bind to your keyword definitions.
 - BDD lives or dies in the **Discovery** step, not the syntax. Use **Example Mapping** with the 3 Amigos (business, dev, test) before you write a single feature file.
 - Keep scenarios **business-language, focused, and brief** (≤5 lines). One rule per scenario. Push the implementation detail down into reusable Robot keywords.
-- In 2026, use AI assistants (Copilot, Claude, ChatGPT) to draft Gherkin from acceptance criteria — but always review with the 3 Amigos before automating. AI accelerates Formulation; it does not replace Discovery.
+- In 2026, use AI assistants (Copilot, Claude, ChatGPT) to draft Gherkin from acceptance criteria, but always review with the 3 Amigos before automating. AI accelerates Formulation; it does not replace Discovery.
 - Pair BDD with [self-healing locators](/blog/self-healing-in-sw-test-automation/) and [predictive test selection](/blog/predictive-test-selection/) once the suite grows, so maintenance scales sublinearly with test count.
 
 ## Introduction to BDD
 
 ### BDD Fundamentals
 
-Behavior-Driven Development is a collaborative approach that emphasizes communication between developers, testers, and business stakeholders. The goal is to define clear, understandable requirements that serve as the foundation for development and testing. Two years into AI-assisted authoring, the value of BDD is the same as it was in 2010 — it's the **shared understanding** produced during conversation, not the Gherkin file itself. BDD focuses on three main activities:
+Behavior-Driven Development is a collaborative approach that emphasizes communication between developers, testers, and business stakeholders. The goal is to define clear, understandable requirements that serve as the foundation for development and testing. Two years into AI-assisted authoring, the value of BDD is the same as it was in 2010, it's the **shared understanding** produced during conversation, not the Gherkin file itself. BDD focuses on three main activities:
 
 - Discovery,
 - Formulation, and
@@ -139,7 +139,7 @@ Scenario: User creates a new playlist
 5. **Focused**: Each scenario should test a single rule.
 6. **Brief**: Keep scenarios concise, ideally under five lines.
 
-By adhering to these principles — and applying solid [test design techniques](/blog/test-design-techniques/) — you can ensure your scenarios serve as clear, valuable documentation and maintain the flexibility to evolve with your product.
+By adhering to these principles (and applying solid [test design techniques](/blog/test-design-techniques/)) you can ensure your scenarios serve as clear, valuable documentation and maintain the flexibility to evolve with your product.
 
 ## Alternative Approaches to Example Mapping
 
@@ -181,7 +181,7 @@ Finally, the feature files are automated using Robot Framework. This involves wr
 
 ### Robot Framework Basics
 
-Robot Framework uses a keyword-driven approach to testing, which makes tests readable and easy to maintain. For new projects in 2026 we recommend [Browser Library](https://robotframework-browser.org/) (Playwright-backed) over the older SeleniumLibrary — it's faster, has built-in auto-waiting, and handles modern SPAs without sprinkled `Sleep` calls. Here's a minimal test case using Browser Library:
+Robot Framework uses a keyword-driven approach to testing, which makes tests readable and easy to maintain. For new projects in 2026 we recommend [Browser Library](https://robotframework-browser.org/) (Playwright-backed) over the older SeleniumLibrary, it's faster, has built-in auto-waiting, and handles modern SPAs without sprinkled `Sleep` calls. Here's a minimal test case using Browser Library:
 
 ```robot
 *** Settings ***
@@ -199,13 +199,13 @@ Example Test
     Close Browser
 ```
 
-If you're maintaining an existing SeleniumLibrary suite, the BDD patterns below apply identically — only the keyword names change.
+If you're maintaining an existing SeleniumLibrary suite, the BDD patterns below apply identically, only the keyword names change.
 
 ### Writing BDD Scenarios in Robot Framework
 
 To implement BDD scenarios, Robot Framework supports Gherkin syntax out of the box. The pattern is two-step: write the Gherkin scenario in `.robot` syntax, then implement each step as a keyword. Robot Framework strips the `Given`/`When`/`Then` prefix at parse time, so the keyword definitions don't need to repeat them.
 
-**Step 1 — Define the scenario in feature-file style:**
+**Step 1. Define the scenario in feature-file style:**
 
 ```gherkin
 Feature: User creates a new playlist
@@ -217,7 +217,7 @@ Scenario: User creates a new playlist
     And it should be private by default
 ```
 
-**Step 2 — Implement the scenario and its step keywords in Robot Framework:**
+**Step 2. Implement the scenario and its step keywords in Robot Framework:**
 
 ```robot
 *** Settings ***
@@ -259,7 +259,7 @@ It should be private by default
 
 ### AI-Assisted Gherkin in 2026
 
-The 2026 reality: most teams now draft their first cut of Gherkin scenarios with a coding-grade LLM (Claude, GPT-5, or Copilot Chat) before the 3 Amigos meeting, then refine collaboratively. Used well, this collapses the **Formulation** step from hours to minutes. Used badly, it produces shallow scenarios that miss the edge cases — the part of BDD that actually pays back.
+The 2026 reality: most teams now draft their first cut of Gherkin scenarios with a coding-grade LLM (Claude, GPT-5, or Copilot Chat) before the 3 Amigos meeting, then refine collaboratively. Used well, this collapses the **Formulation** step from hours to minutes. Used badly, it produces shallow scenarios that miss the edge cases, the part of BDD that actually pays back.
 
 A working prompt pattern that consistently produces usable Robot-Framework-compatible Gherkin:
 
@@ -286,7 +286,7 @@ Rules of thumb for AI-assisted BDD:
 
 To enhance your BDD implementation in Robot Framework, consider the following tips:
 
-1. **Reuse Keywords**: Create reusable keywords for common actions, such as logging in or navigating to a specific page. This reduces duplication and makes your test cases easier to maintain — and pairs well with [self-healing test automation](/blog/self-healing-in-sw-test-automation/), which keeps those keywords stable when the UI shifts underneath them.
+1. **Reuse Keywords**: Create reusable keywords for common actions, such as logging in or navigating to a specific page. This reduces duplication and makes your test cases easier to maintain, and pairs well with [self-healing test automation](/blog/self-healing-in-sw-test-automation/), which keeps those keywords stable when the UI shifts underneath them.
 2. **Data-Driven Testing**: Use data-driven tests to run the same scenario with different sets of data. This can be achieved using the `Examples` section in Gherkin or by defining variables in Robot Framework.
 3. **Organize Tests**: Structure your tests in a way that makes them easy to understand and navigate. Use meaningful names for test cases and keywords, and group related tests into suites.
 4. **Continuous Integration**: Integrate your Robot Framework tests into a continuous integration (CI) pipeline. This ensures that your tests are run automatically whenever changes are made, providing immediate feedback on the quality of your software. Once the suite grows past the point where everyone waits for it, layer [predictive test selection](/blog/predictive-test-selection/) on top so each pull request runs only the highest-risk subset.
@@ -310,7 +310,7 @@ Feature: Login Functionality
 
 ## Conclusion
 
-Getting started with BDD in Robot Framework is a powerful way to align development efforts with business goals. By following a structured process and leveraging the collaborative nature of BDD, teams can build software that truly meets user needs while maintaining high quality through automated testing — and as the suite matures, techniques like [self-healing](/blog/self-healing-in-sw-test-automation/) and [predictive test selection](/blog/predictive-test-selection/) keep the maintenance bill from outpacing the value. Whether you're new to BDD or looking to refine your practices, Robot Framework — paired with [AI testing agents](/ai-testing-agents/) for the higher-level autonomy layer — gives you the tools to succeed. Embrace Example Mapping, lean on AI for Formulation, and keep Discovery firmly in human hands.
+Getting started with BDD in Robot Framework is a powerful way to align development efforts with business goals. By following a structured process and leveraging the collaborative nature of BDD, teams can build software that truly meets user needs while maintaining high quality through automated testing, and as the suite matures, techniques like [self-healing](/blog/self-healing-in-sw-test-automation/) and [predictive test selection](/blog/predictive-test-selection/) keep the maintenance bill from outpacing the value. Whether you're new to BDD or looking to refine your practices, Robot Framework, paired with [AI testing agents](/ai-testing-agents/) for the higher-level autonomy layer, gives you the tools to succeed. Embrace Example Mapping, lean on AI for Formulation, and keep Discovery firmly in human hands.
 
 :::tip **Next Steps**
 

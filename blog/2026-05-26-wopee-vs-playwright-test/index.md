@@ -20,7 +20,7 @@ Playwright is Microsoft's free, open-source browser automation framework. Wopee.
       "name": "Is Wopee.io a Playwright alternative or built on Playwright?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wopee.io is built on top of Playwright. It is not a replacement framework — it uses Playwright as the underlying engine and adds autonomous test generation, self-healing locators, AI-assisted visual diffing, and a managed dashboard (Wopee Commander) on top."
+        "text": "Wopee.io is built on top of Playwright. It is not a replacement framework, it uses Playwright as the underlying engine and adds autonomous test generation, self-healing locators, AI-assisted visual diffing, and a managed dashboard (Wopee Commander) on top."
       }
     },
     {
@@ -44,7 +44,7 @@ Playwright is Microsoft's free, open-source browser automation framework. Wopee.
       "name": "Does Wopee.io lock me in if I want to leave?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Low lock-in. Wopee.io runs Playwright underneath, so the test concepts, locators, and ecosystem you learn transfer directly back to vanilla Playwright. You leave with skills and patterns that still work — the cost of leaving is rebuilding the managed dashboard and self-healing layer, not relearning a framework."
+        "text": "Low lock-in. Wopee.io runs Playwright underneath, so the test concepts, locators, and ecosystem you learn transfer directly back to vanilla Playwright. You leave with skills and patterns that still work, the cost of leaving is rebuilding the managed dashboard and self-healing layer, not relearning a framework."
       }
     },
     {
@@ -52,19 +52,19 @@ Playwright is Microsoft's free, open-source browser automation framework. Wopee.
       "name": "How much does Wopee.io cost compared to Playwright?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Playwright is free under the Apache 2.0 license — you pay only for the CI compute you run it on. Wopee.io has a free tier with no credit card and paid plans start at €19 per user per month (Starter) with team plans from €79 per user per month. See /pricing/ for the current published plans."
+        "text": "Playwright is free under the Apache 2.0 license, you pay only for the CI compute you run it on. Wopee.io has a free tier with no credit card and paid plans start at €19 per user per month (Starter) with team plans from €79 per user per month. See /pricing/ for the current published plans."
       }
     }
   ]
 }) }} />
 
-## TL;DR — Playwright alone vs Playwright + Wopee.io
+## TL;DR: Playwright alone vs Playwright + Wopee.io
 
 |                       | Playwright (alone)                       | Wopee.io (on Playwright)                       |
 | --------------------- | ---------------------------------------- | ---------------------------------------------- |
 | **Test creation**     | Write code in JS/TS, Python, Java, .NET  | Generate autonomously *or* write code          |
 | **Maintenance**       | You maintain selectors + assertions      | Self-healing locators on UI changes            |
-| **Visual diffs**      | `toHaveScreenshot()` — pixelmatch        | AI-assisted diff + managed baselines           |
+| **Visual diffs**      | `toHaveScreenshot()`, pixelmatch        | AI-assisted diff + managed baselines           |
 | **Dashboard**         | None (HTML report in CI artefacts)       | Wopee Commander (hosted, web UI)               |
 | **Pricing**           | Free (Apache 2.0)                        | Free tier, paid from **€19/user/mo**           |
 | **Best for**          | Engineering-heavy teams                  | QA-team scale + lower maintenance              |
@@ -76,27 +76,27 @@ For the short answer: if your bottleneck is engineering capacity to *write* test
 | Feature                       | Playwright (alone)                              | **Wopee.io** (on Playwright)                       |
 | ----------------------------- | ----------------------------------------------- | -------------------------------------------------- |
 | **Languages**                 | JavaScript, TypeScript, Python, Java, .NET      | JavaScript / TypeScript (Playwright SDK), .NET SDK |
-| **Browsers**                  | Chromium, Firefox, WebKit, Edge, Chrome         | Same — uses Playwright engines                     |
+| **Browsers**                  | Chromium, Firefox, WebKit, Edge, Chrome         | Same, uses Playwright engines                     |
 | **Test authoring**            | Code-only + `codegen` recorder                  | AI-generated, ChatOps, recorder, or code           |
-| **Self-healing locators**     | No                                              | Yes — locators re-resolve on UI change             |
+| **Self-healing locators**     | No                                              | Yes, locators re-resolve on UI change             |
 | **Visual diff algorithm**     | Pixelmatch (YIQ pixel diff)                     | AI-assisted diff with managed baselines            |
 | **Baseline management**       | Filesystem (in git)                             | Hosted dashboard (Wopee Commander)                 |
-| **Review UI for non-devs**    | No (HTML report only)                           | Yes — web UI with one-click baseline updates       |
+| **Review UI for non-devs**    | No (HTML report only)                           | Yes, web UI with one-click baseline updates       |
 | **CI integration**            | Any CI (GH Actions, GitLab, Jenkins, Circle)    | Same + dashboard webhooks                          |
-| **Parallel execution**        | Yes (workers, shards)                           | Yes — uses Playwright's runner                     |
+| **Parallel execution**        | Yes (workers, shards)                           | Yes, uses Playwright's runner                     |
 | **Mobile testing**            | Emulated devices + WebKit                       | Same as Playwright + device-difference handling    |
 | **Open source / hosted**      | Open source (Apache 2.0)                        | Hosted SaaS, OSS underneath                        |
 | **Pricing**                   | Free                                            | Free tier, from **€19/user/mo**                    |
 
-> **Why this matters:** Wopee.io is not a different framework — it is the same Playwright runtime your team would already use, plus a platform layer. The honest trade-off is not "framework A vs framework B" — it is "do I want to own the maintenance and dashboard layer myself, or buy it?"
+> **Why this matters:** Wopee.io is not a different framework (it is the same Playwright runtime your team would already use, plus a platform layer. The honest trade-off is not "framework A vs framework B") it is "do I want to own the maintenance and dashboard layer myself, or buy it?"
 
 ## Head-to-head: where the trade-offs actually live
 
 ### 1. Test creation: code-first vs autonomous
 
-**Playwright** is code-first. You write tests in JS/TS, Python, Java or .NET, use the [Playwright `codegen` recorder](https://playwright.dev/docs/codegen) to bootstrap a flow, then edit by hand. This is the right model when you have engineers on the team who treat tests as code — versioned, reviewed, refactored.
+**Playwright** is code-first. You write tests in JS/TS, Python, Java or .NET, use the [Playwright `codegen` recorder](https://playwright.dev/docs/codegen) to bootstrap a flow, then edit by hand. This is the right model when you have engineers on the team who treat tests as code, versioned, reviewed, refactored.
 
-**Wopee.io** adds an autonomous path on top. You can still write Playwright code by hand, but you can also generate tests by describing the flow, pointing the agent at a URL, or using ChatOps in the dashboard. The generated artefact is Playwright underneath — there is no proprietary DSL.
+**Wopee.io** adds an autonomous path on top. You can still write Playwright code by hand, but you can also generate tests by describing the flow, pointing the agent at a URL, or using ChatOps in the dashboard. The generated artefact is Playwright underneath, there is no proprietary DSL.
 
 **When NOT to pick Wopee.io here:** if your team is engineering-heavy, your tests live next to your application code, and your reviewers want every test in a pull request, the autonomous-creation value is small. You already have the workflow that Wopee.io is replicating.
 
@@ -106,9 +106,9 @@ For the short answer: if your bottleneck is engineering capacity to *write* test
 
 Selector churn is the silent cost of any large Playwright suite. The UI ships a new build, a button moves into a different container, and 12 tests fail with `locator.click: Timeout`. Someone has to chase each one down.
 
-**Playwright** does not solve this for you. It gives you robust [locator strategies](https://playwright.dev/docs/locators) — role, label, test-id — and trace-viewer for debugging, but a broken locator is your team's problem.
+**Playwright** does not solve this for you. It gives you robust [locator strategies](https://playwright.dev/docs/locators) (role, label, test-id) and trace-viewer for debugging, but a broken locator is your team's problem.
 
-**Wopee.io** adds self-healing on top. When the underlying DOM changes, the locator re-resolves against the new structure instead of failing the run. The healed locator gets recorded for review, so a human still confirms the change is intentional — you do not lose the audit trail.
+**Wopee.io** adds self-healing on top. When the underlying DOM changes, the locator re-resolves against the new structure instead of failing the run. The healed locator gets recorded for review, so a human still confirms the change is intentional, you do not lose the audit trail.
 
 **The honest trade-off:** self-healing is not a silver bullet. It works best on layout-level churn (an element moves, a class renames) and worst on semantic changes (the button does something different now). Wopee.io shifts maintenance from "fix every broken selector" to "review the small number of changes that actually matter." Whether that's worth €19/user/mo depends on how much time your QA team currently spends on selector fixes. See our [guide to reducing test maintenance](/blog/guide-to-reduce-maintanance/) for the framing.
 
@@ -122,11 +122,11 @@ The two diff philosophies have different failure modes. Pixel diffing produces f
 
 **When NOT to pick Wopee.io here:** if your visual suite is small (under ~50 baselines), pixel diffing in Playwright is genuinely enough. The hosted dashboard is overhead you do not need.
 
-**When NOT to pick Playwright alone here:** once you have non-engineers reviewing baselines, or a baseline library in the hundreds, the filesystem-in-git approach becomes painful. Git diffs do not show you the visual delta — they show you a binary changed.
+**When NOT to pick Playwright alone here:** once you have non-engineers reviewing baselines, or a baseline library in the hundreds, the filesystem-in-git approach becomes painful. Git diffs do not show you the visual delta, they show you a binary changed.
 
 ### 4. Dashboard, reporting and collaboration
 
-**Playwright** produces an HTML report as a CI artefact. It is well-built — Trace Viewer, network log, video, console output — but it lives in your CI's artefact storage and is intended for engineers debugging a failed run.
+**Playwright** produces an HTML report as a CI artefact. It is well-built (Trace Viewer, network log, video, console output) but it lives in your CI's artefact storage and is intended for engineers debugging a failed run.
 
 **Wopee.io** adds Wopee Commander: a hosted web UI where QA leads, product owners and stakeholders can browse runs, approve baselines, and trigger reruns without touching CI. It is the "people who do not have CI access" layer.
 
@@ -136,29 +136,29 @@ If your reviewers all have access to GitHub Actions or your CI of choice, the Pl
 
 This is the underrated part of the comparison. Because Wopee.io runs Playwright underneath, the migration path in *either* direction is short.
 
-![Low-friction migration: an existing Playwright test suite (login.spec.ts, checkout.spec.ts, profile.spec.ts) sits as a foundation. Wopee.io layers on top with six feature cards — autonomous analysis, app mapping, additional coverage generation, orchestrate runs, visual checks, and reporting. Side callouts read "No rewrite needed" and "Keep current tests" — adoption is incremental and additive.](./migration-low-friction.webp)
+![Low-friction migration: an existing Playwright test suite (login.spec.ts, checkout.spec.ts, profile.spec.ts) sits as a foundation. Wopee.io layers on top with six feature cards (autonomous analysis, app mapping, additional coverage generation, orchestrate runs, visual checks, and reporting. Side callouts read "No rewrite needed" and "Keep current tests") adoption is incremental and additive.](./migration-low-friction.webp)
 
 - **Playwright → Wopee.io:** point Wopee at your existing Playwright suite. The tests run as-is. You opt into self-healing and the hosted dashboard incrementally.
 - **Wopee.io → Playwright:** the test code is Playwright. You take the suite with you. The cost of leaving is rebuilding the dashboard and self-healing layer, not relearning a framework.
 
-That low-lock-in story is the strategic reason "Wopee vs Playwright" is the wrong framing in the first place. They are not competing for the same buying decision — Wopee.io is the platform decision *after* you already chose Playwright.
+That low-lock-in story is the strategic reason "Wopee vs Playwright" is the wrong framing in the first place. They are not competing for the same buying decision. Wopee.io is the platform decision *after* you already chose Playwright.
 
 ## Pricing side-by-side
 
 | Tier            | Playwright (alone)         | Wopee.io (on Playwright)        |
 | --------------- | -------------------------- | ------------------------------- |
-| **Free**        | Free (Apache 2.0)          | Free tier — no credit card      |
+| **Free**        | Free (Apache 2.0)          | Free tier, no credit card      |
 | **Starter**     | Free                       | **€19/user/mo**                 |
 | **Team**        | Free (your CI cost only)   | **€79/user/mo** (Basic)         |
-| **Enterprise**  | Free + your time           | Custom — [book a demo](/book-demo/) |
+| **Enterprise**  | Free + your time           | Custom, [book a demo](/book-demo/) |
 
-Playwright itself is free under Apache 2.0 — you pay only for the CI compute it runs on and the engineering time to build and maintain the suite. Wopee.io's published pricing is on the [/pricing/](/pricing/) page; the maths is usually "Wopee.io seat cost vs the QA hours per month currently spent on selector and baseline churn."
+Playwright itself is free under Apache 2.0, you pay only for the CI compute it runs on and the engineering time to build and maintain the suite. Wopee.io's published pricing is on the [/pricing/](/pricing/) page; the maths is usually "Wopee.io seat cost vs the QA hours per month currently spent on selector and baseline churn."
 
 ## What our customers say
 
-Both customers below run Playwright underneath and Wopee.io on top — the literal "Playwright + Wopee.io" pattern.
+Both customers below run Playwright underneath and Wopee.io on top, the literal "Playwright + Wopee.io" pattern.
 
-### Livesport — 40,000+ visual checks/month, Playwright-based suite
+### Livesport: 40,000+ visual checks/month, Playwright-based suite
 
 [Streamlined visual testing](/blog/livesport-visual-testing-w-wopee-io/) across 1,000+ baselines; even manual testers maintain baselines with a single click.
 
@@ -182,9 +182,9 @@ Both customers below run Playwright underneath and Wopee.io on top — the liter
 
 </div>
 
-> "A proof of concept with Wopee.io and other tools that handle visual testing evaluation and management — or even a potential in-house solution — clearly showed that **Wopee.io was the only tool capable of delivering the required functionalities** at a reasonable cost."
+> "A proof of concept with Wopee.io and other tools that handle visual testing evaluation and management (or even a potential in-house solution) clearly showed that **Wopee.io was the only tool capable of delivering the required functionalities** at a reasonable cost."
 
-### SYNOT TECH — 1,600+ tests, Playwright + .NET SDK
+### SYNOT TECH: 1,600+ tests, Playwright + .NET SDK
 
 In a [complex iGaming environment](/blog/synot-tech-test-automation-wopee/) covering 9,500+ games across 80+ providers, SYNOT picked Wopee.io for its simple SDK integration, web-based baseline management, and intelligent device-difference handling. Every pipeline-maintaining QA engineer uses it.
 
@@ -216,8 +216,8 @@ Be honest about who should *not* buy Wopee.io:
 
 - **Pure engineering teams** where tests live next to application code, every test goes through code review, and the suite is owned end-to-end by developers.
 - **Small suites** (under ~100 tests, under ~50 visual baselines) where the maintenance tax has not yet become a problem.
-- **Zero-budget projects** — OSS libraries, hobby projects, personal sites — where the [Playwright getting-started guide](/blog/getting-started-with-playwright-visual-testing/) plus a CI pipeline is all you need.
-- **Strict no-SaaS policies** — air-gapped or sovereignty-constrained environments where a hosted dashboard is not permitted.
+- **Zero-budget projects** (OSS libraries, hobby projects, personal sites) where the [Playwright getting-started guide](/blog/getting-started-with-playwright-visual-testing/) plus a CI pipeline is all you need.
+- **Strict no-SaaS policies**, air-gapped or sovereignty-constrained environments where a hosted dashboard is not permitted.
 
 For these teams, Playwright alone is genuinely the right answer. There is no reason to pay for a platform when the framework already does the job.
 
@@ -252,10 +252,10 @@ Wopee.io is also a younger platform than Microsoft's Playwright. Playwright has 
 
 :::tip Get started
 
-**Self-serve, no credit card:** [Compare Wopee.io plans on /pricing/](/pricing/) and start in the free tier — your existing Playwright tests run as-is.
+**Self-serve, no credit card:** [Compare Wopee.io plans on /pricing/](/pricing/) and start in the free tier, your existing Playwright tests run as-is.
 
-**Team or enterprise evaluation:** [Book a demo](/book-demo/) — we will walk through a Playwright suite of yours and show what self-healing and the managed dashboard change in practice.
+**Team or enterprise evaluation:** [Book a demo](/book-demo/), we will walk through a Playwright suite of yours and show what self-healing and the managed dashboard change in practice.
 
 :::
 
-Want monthly visual-testing intelligence — what is changing in Playwright, where AI diffing actually helps vs hurts, and tactical playbooks from teams running real test suites? Subscribe to [The Wopee Newsletter](/newsletter/).
+Want monthly visual-testing intelligence, what is changing in Playwright, where AI diffing actually helps vs hurts, and tactical playbooks from teams running real test suites? Subscribe to [The Wopee Newsletter](/newsletter/).

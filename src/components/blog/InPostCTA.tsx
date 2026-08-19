@@ -11,7 +11,7 @@ type InPostCTAProps = {
 export default function InPostCTA({
   className,
   heading = "Ship AI agents that actually test your web app",
-  body = "Monthly playbooks from teams replacing brittle E2E suites with AI testing agents — with visual testing tactics when pixels matter.",
+  body = "Monthly playbooks from teams replacing brittle E2E suites with AI testing agents, with visual testing tactics when pixels matter.",
 }: InPostCTAProps) {
   return (
     <aside

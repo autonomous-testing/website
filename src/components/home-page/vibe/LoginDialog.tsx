@@ -18,7 +18,7 @@ import { AppType } from "./enums";
 // aspect ratios (Generali wordmark, Multitude monogram, Synot text mark) all
 // occupy the same optical area. Per-logo inner padding compensates for marks
 // that fill their canvas vs ones with built-in whitespace.
-// Text-only customer names — same pattern as the /pricing/ trust strip.
+// Text-only customer names, same pattern as the /pricing/ trust strip.
 // Sidesteps every "logo X is bigger/smaller than logo Y" balance issue,
 // and renders identically in both themes via a single text colour.
 const TRUST_NAMES = ["Accenture", "Synot Tech", "Livesport", "Multitude"];
@@ -63,7 +63,7 @@ const LoginDialog = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpenVibe}>
       <DialogContent className="bg-white dark:bg-gray-900 border-secondary-wopee/30 shadow-2xl shadow-purple-900/40 sm:max-w-md p-6 gap-0">
-        {/* HEADER BLOCK — logo, then title + subtitle. */}
+        {/* HEADER BLOCK, logo, then title + subtitle. */}
         <div className="flex flex-col items-center">
           <div className="relative mb-4">
             <img
@@ -106,9 +106,9 @@ const LoginDialog = ({
 
         </div>
 
-        {/* CTA BLOCK — primary + secondary OAuth, medium gap from header */}
+        {/* CTA BLOCK, primary + secondary OAuth, medium gap from header */}
         <div className="flex flex-col gap-3 mt-6">
-        {/* Primary: Google — full-width filled, the recommended path for
+        {/* Primary: Google, full-width filled, the recommended path for
             our QA/test audience (mostly Google accounts). */}
         <div
           role="button"
@@ -172,9 +172,9 @@ const LoginDialog = ({
 
         {isVibe && (
           <>
-          {/* SUPPORTING BLOCK — trust strip. */}
+          {/* SUPPORTING BLOCK, trust strip. */}
           <div className="flex flex-col gap-3 mt-5">
-            {/* "trusted by" divider — same line style as "or continue with"
+            {/* "trusted by" divider, same line style as "or continue with"
                 so the modal has consistent section separators. */}
             <div className="flex items-center gap-3">
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
@@ -184,7 +184,7 @@ const LoginDialog = ({
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
             </div>
 
-            {/* Trust names — text-only, audience-recognised brand list. */}
+            {/* Trust names, text-only, audience-recognised brand list. */}
             <div className="flex flex-wrap items-center justify-center gap-y-1">
               {TRUST_NAMES.map((name, idx) => (
                 <React.Fragment key={name}>

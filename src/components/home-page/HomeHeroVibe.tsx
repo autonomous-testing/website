@@ -55,12 +55,12 @@ const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   url: value.url,
   type: key as AppType,
 }));
-// Default to the E-commerce demo on landing — the hero arrives with a
+// Default to the E-commerce demo on landing, the hero arrives with a
 // working URL + instructions pre-filled so the CTA is immediately usable,
 // while visitors can still paste their own URL or pick another demo chip.
 const defaultTemplate = AppType.E_COMMERCE;
 // Three demo scenarios visitors can one-click to load (URL + instructions
-// pre-filled). "Your app" isn't in this list — it's the implicit default
+// pre-filled). "Your app" isn't in this list, it's the implicit default
 // state, reachable by clicking an already-selected chip again or by typing
 // a custom URL in the input above.
 const DEMO_SCENARIOS: AppType[] = [
@@ -180,7 +180,7 @@ const HomeHeroVibe = () => {
         {/* Left: the "start testing" form. */}
         <div className="w-full lg:w-[560px] flex-shrink-0 flex flex-col items-center gap-2">
           <div className="relative w-full rounded-2xl shadow-2xl shadow-purple-900/40">
-            {/* Gradient border layer — animates out when the demo video is
+            {/* Gradient border layer, animates out when the demo video is
                 hovered, mirroring the video's frame animating in. */}
             <span
               aria-hidden="true"
@@ -194,7 +194,7 @@ const HomeHeroVibe = () => {
                 <label className="text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold pl-1">
                   Your web app URL
                 </label>
-                {/* App selector — segmented "Your app" / "Demo app" toggle.
+                {/* App selector, segmented "Your app" / "Demo app" toggle.
                     "Demo app" switches to a demo and opens the picker so a
                     specific demo (Website / E-commerce / Banking) stays
                     selectable. */}
@@ -305,8 +305,8 @@ const HomeHeroVibe = () => {
 
             {/* Textarea always rendered so the form height stays constant.
                 In the collapsed state (no manual reveal + empty value) the
-                textarea sits quiet — no placeholder text, faint dashed
-                border — with a single "+ Add testing instructions" affordance
+                textarea sits quiet, no placeholder text, faint dashed
+                border, with a single "+ Add testing instructions" affordance
                 centered on top. Click reveals the full styled field. */}
             <div className="relative">
               {(() => {

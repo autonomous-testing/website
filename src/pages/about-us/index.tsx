@@ -44,7 +44,7 @@ const TeamPage = () => {
   return (
     <Layout
       title="About Wopee.io | AI Testing Agents for Web Apps"
-      description="Learn about Wopee.io — autonomous AI testing agents for web apps. Contact wopee labs s.r.o. for support, product questions, and collaboration."
+      description="Learn about Wopee.io, autonomous AI testing agents for web apps. Contact wopee labs s.r.o. for support, product questions, and collaboration."
     >
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
@@ -64,7 +64,7 @@ const TeamPage = () => {
           </div>
         </section>
 
-        {/* What We Do — cards */}
+        {/* What We Do, cards */}
         <section className="py-12 px-4">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             <div className="rounded-xl border border-solid border-gray-700 p-8 flex flex-col">
@@ -84,7 +84,7 @@ const TeamPage = () => {
               </h3>
               <p className="opacity-80 leading-relaxed text-center flex-1">
                 AI-driven test creation, self-healing maintenance, and
-                actionable insights — so teams can focus on building value, not
+                actionable insights, so teams can focus on building value, not
                 babysitting fragile test suites.
               </p>
             </div>
@@ -117,32 +117,32 @@ const TeamPage = () => {
           </div>
         </section>
 
-        {/* Funded by — Technology Incubation programme (mandatory grant disclosure) */}
+        {/* Funded by. Technology Incubation programme (mandatory grant disclosure) */}
         <section className="pb-16 px-4 text-center">
           <p className="text-sm uppercase tracking-widest opacity-50 mb-6">
             Supported by
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 mb-6">
-            {/* Technology Incubation — CzechInvest */}
+            {/* Technology Incubation. CzechInvest */}
             <img
               src="/img/funding/technology-incubation.png"
-              alt="Technology Incubation — CzechInvest"
+              alt="Technology Incubation. CzechInvest"
               className="h-[72px] object-contain block dark:hidden"
             />
             <img
               src="/img/funding/technology-incubation-white.png"
-              alt="Technology Incubation — CzechInvest"
+              alt="Technology Incubation. CzechInvest"
               className="h-[72px] object-contain hidden dark:block"
             />
-            {/* Czech Republic — The Country For The Future */}
+            {/* Czech Republic. The Country For The Future */}
             <img
               src="/img/funding/country-for-the-future.png"
-              alt="Czech Republic — The Country For The Future"
+              alt="Czech Republic. The Country For The Future"
               className="h-[84px] object-contain block dark:hidden"
             />
             <img
               src="/img/funding/country-for-the-future-white.png"
-              alt="Czech Republic — The Country For The Future"
+              alt="Czech Republic. The Country For The Future"
               className="h-[84px] object-contain hidden dark:block"
             />
           </div>

@@ -155,7 +155,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         <section className="mt-16 rounded-2xl bg-gradient-to-br from-secondary-wopee to-[#451f6b] px-6 py-10 text-center text-white">
           <h2 className="text-2xl font-bold sm:text-3xl">{ctaHeading}</h2>
           <p className="mx-auto mt-3 max-w-2xl text-white/80">
-            Generate your first autonomous tests in minutes — no brittle selectors, no manual baselines.
+            Generate your first autonomous tests in minutes, no brittle selectors, no manual baselines.
           </p>
           <div className="mt-7">
             <CtaButtons />

@@ -16,7 +16,7 @@ type Customer = {
 
 const customers: Customer[] = [
   // Livesport sits early; Flashscore late so they're never adjacent (the
-  // marquee duplicates and loops — Accenture → Multitude is the only seam).
+  // marquee duplicates and loops. Accenture → Multitude is the only seam).
   { name: "Multitude", logo: "/img/customers/multitude-logo.png", invertDark: true, h: "h-10 sm:h-12", w: "w-[130px] sm:w-[150px]", pad: "p-1" },
   { name: "Generali", logo: "/img/customers/generali-logo-small.svg", invertDark: true, h: "h-7 sm:h-9", w: "w-[140px] sm:w-[160px]", pad: "p-1" },
   { name: "Livesport", logo: "/img/customers/livesport-logo.png", invertDark: true, h: "h-12 sm:h-14", w: "w-[140px] sm:w-[160px]", pad: "p-0" },

@@ -150,7 +150,7 @@ Feature: Password reset
 
 ## Implementation tips
 
-- **Start each feature** with EP + BVA for inputs—keep it tiny and repeatable.
+- **Start each feature** with EP + BVA for inputs, keep it tiny and repeatable.
 - **Re-score risks each sprint**; prune or elevate tests based on change and incident data.
 - **Schedule exploratory charters** for top-risk areas every release.
 - **Automate from models**: generate cases from state charts/decision tables where feasible.
