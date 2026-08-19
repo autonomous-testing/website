@@ -10,6 +10,7 @@ const {
   mdiEyeCheckOutline,
   mdiConnection,
   mdiShieldCheckOutline,
+  mdiScaleBalance,
 } = require("@mdi/js");
 
 // Rich navbar dropdown rows: icon tile + title + one-line description.
@@ -295,6 +296,7 @@ const config = {
               { to: "/visual-testing/", html: navRichItem("Visual Testing", "Catch visual regressions on every run", mdiEyeCheckOutline) },
               { to: "/mcp/", html: navRichItem("MCP Server", "Test from Claude, Cursor, and other AI tools", mdiConnection) },
               { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
+              { to: "/compare/", html: navRichItem("Compare tools", "Honest comparisons with the alternatives", mdiScaleBalance) },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },
