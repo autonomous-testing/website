@@ -1,48 +1,56 @@
 import React from "react";
+import {
+  SiCypress,
+  SiRobotframework,
+  SiSelenium,
+  SiWebdriverio,
+} from "@icons-pack/react-simple-icons";
 
-const supportedTestingTools = [
-  {
-    alt: "Cypress",
-    src: "/img/assistant/testing-tools/cy-logo.png",
-  },
-  {
-    alt: "Playwright",
-    src: "/img/assistant/testing-tools/pw-logo2.png",
-  },
-  {
-    alt: "Robot Framework",
-    src: "/img/assistant/testing-tools/rf-logo2.png",
-  },
-  {
-    alt: "Selenium",
-    src: "/img/assistant/testing-tools/se-logo.png",
-  },
-  {
-    alt: "webdriver.io",
-    src: "/img/assistant/testing-tools/wdio-logo.png",
-  },
+// Single-path Playwright mark (simple-icons v8, CC0). The current
+// @icons-pack/react-simple-icons no longer ships it.
+const PlaywrightIcon = ({ size = 40 }: { size?: number }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M23.996 7.462c-.056.837-.257 2.135-.716 3.85-.995 3.715-4.27 10.874-10.42 9.227-6.15-1.65-5.407-9.487-4.412-13.201.46-1.716.934-2.94 1.305-3.694.42-.853.846-.289 1.815.523.684.573 2.41 1.791 5.011 2.488 2.601.697 4.706.506 5.583.352 1.245-.219 1.897-.494 1.834.455Zm-9.807 3.863s-.127-1.819-1.773-2.286c-1.644-.467-2.613 1.04-2.613 1.04Zm4.058 4.539-7.769-2.172s.446 2.306 3.338 3.153c2.862.836 4.43-.98 4.43-.981Zm2.701-2.51s-.13-1.818-1.773-2.286c-1.644-.469-2.612 1.038-2.612 1.038ZM8.57 18.23c-4.749 1.279-7.261-4.224-8.021-7.08C.197 9.831.044 8.832.003 8.188c-.047-.73.455-.52 1.415-.354.677.118 2.3.261 4.308-.28a11.28 11.28 0 0 0 2.41-.956c-.058.197-.114.4-.17.61-.433 1.618-.827 4.055-.632 6.426-1.976.732-2.267 2.423-2.267 2.423l2.524-.715c.227 1.002.6 1.987 1.15 2.838a5.914 5.914 0 0 1-.171.049Zm-4.188-6.298c1.265-.333 1.363-1.631 1.363-1.631l-3.374.888s.745 1.076 2.01.743Z" />
+  </svg>
+);
+
+const TOOLS: { name: string; icon: React.ReactNode }[] = [
+  { name: "Playwright", icon: <PlaywrightIcon /> },
+  { name: "Cypress", icon: <SiCypress size={40} /> },
+  { name: "Robot Framework", icon: <SiRobotframework size={40} /> },
+  { name: "Selenium", icon: <SiSelenium size={40} /> },
+  { name: "WebdriverIO", icon: <SiWebdriverio size={40} /> },
 ];
 
 const HomeTestingFrameworks = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-4">
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-secondary-wopee dark:text-primary-wopee mb-8">
-        Plug Wopee.io into your testing stack
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-12 text-balance">
+        Plug Wopee.io into your{" "}
+        <span className="text-secondary-wopee dark:text-primary-wopee">
+          testing stack
+        </span>
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 my-2 max-w-6xl mx-auto w-full">
-        {supportedTestingTools.map((tool) => (
-          <div
-            key={tool.src}
-            className="border border-solid border-gray-100 dark:border-gray-700 flex justify-center items-center aspect-video rounded-lg dark:hover:border-primary-wopee hover:border-secondary-wopee dark:bg-white px-2 md:px-3 transition-all"
+      <ul className="m-0 p-0 list-none flex flex-wrap items-center justify-center gap-x-12 gap-y-8 w-full max-w-6xl lg:flex-nowrap lg:justify-between lg:gap-x-6">
+        {TOOLS.map(({ name, icon }) => (
+          <li
+            key={name}
+            className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
           >
-            <img
-              src={tool.src}
-              alt={tool.alt}
-              className="max-w-full max-h-full object-contain w-auto h-auto"
-            />
-          </div>
+            {icon}
+            <span className="text-lg md:text-xl font-semibold whitespace-nowrap">
+              {name}
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
