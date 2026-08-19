@@ -22,7 +22,7 @@ export type PlanCardT = {
 export const PlanCards: PlanCardT[] = [
   {
     title: "Starter",
-    tagline: "Catch bugs before users do — without writing test scripts.",
+    tagline: "Catch bugs before users do, without writing test scripts.",
     monthlyPrice: 19,
     bestFor: "Solo devs & side projects",
     features: [
@@ -111,7 +111,7 @@ export default function PlanCard({
     >
       {featured && <Ribbon />}
 
-      {/* Decorative plan image — bottom-right watermark */}
+      {/* Decorative plan image, bottom-right watermark */}
       <img
         src={image}
         alt=""

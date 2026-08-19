@@ -122,7 +122,7 @@ function BlogListPageContent(props: Props): ReactNode {
           AI testing agents for web apps
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-          How AI testing agents work in production — from the engineers
+          How AI testing agents work in production, from the engineers
           building them at Wopee.io.
         </p>
       </header>

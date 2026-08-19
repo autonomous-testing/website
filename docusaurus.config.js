@@ -241,7 +241,7 @@ const config = {
         },
         sitemap: {
           // NOTE: with `trailingSlash: true`, generated URLs end in `/`.
-          // Bare-path patterns like "/l" do NOT match "/l/" — use "/l/**" or "/l/" instead.
+          // Bare-path patterns like "/l" do NOT match "/l/", use "/l/**" or "/l/" instead.
           // Ahrefs flagged 5 of these as orphan pages (May 2026) because the patterns silently failed.
           ignorePatterns: [
             "/tags/**",
@@ -261,8 +261,8 @@ const config = {
         // Only emit analytics in production builds. The gtag plugin's
         // onRouteDidUpdate calls window.gtag() unguarded; in dev (and any
         // browser with an ad/privacy blocker) window.gtag is undefined, so
-        // every internal navigation — including in-page anchor clicks like
-        // the blog post TOC — throws an "Uncaught runtime error" overlay.
+        // every internal navigation, including in-page anchor clicks like
+        // the blog post TOC, throws an "Uncaught runtime error" overlay.
         gtag:
           process.env.NODE_ENV === "production"
             ? { trackingID: "G-PVTHWLV51B" }
@@ -282,7 +282,7 @@ const config = {
       image: "img/wopee-social-card.jpg",
       // Docusaurus's classic theme emits og:title, og:description, og:image, og:url,
       // og:locale and twitter:card/twitter:image automatically. It does NOT emit
-      // og:type or og:site_name — both flagged by Ahrefs as "Open Graph tags
+      // og:type or og:site_name, both flagged by Ahrefs as "Open Graph tags
       // incomplete" across the whole site. The blog plugin overrides og:type with
       // "article" on individual blog posts.
       metadata: [

@@ -1,7 +1,7 @@
 ---
 slug: test-design-techniques-w-wopee
 title: "Test design techniques with Wopee.io"
-description: "Ready-to-use prompts for BVA/EP, decision tables, and risk-based testing — using examples with the Swag Labs demo project inside Wopee.io."
+description: "Ready-to-use prompts for BVA/EP, decision tables, and risk-based testing, using examples with the Swag Labs demo project inside Wopee.io."
 tags: [qa, test automation, test design techniques, prompts]
 image: ./wopee-commander.png
 authors: marcel
@@ -119,20 +119,20 @@ Goal:
 
 Risk model (Impact × Likelihood)
 
-High (prio-H) — must-have paths and hard blockers:
+High (prio-H), must-have paths and hard blockers:
 - prio-H - cannot continue with empty firstName
 - prio-H - cannot continue with empty lastName
 - prio-H - cannot continue with empty postalCode
 - prio-H - rejects invalid postalCode format (e.g., "ABC", "12-3")
 - prio-H - can continue when all fields are valid and reaches Overview page
 
-Medium (prio-M) — common edge behaviors:
+Medium (prio-M), common edge behaviors:
 - prio-M - trims leading/trailing spaces before validation ("  John  " → "John")
 - prio-M - all-whitespace is treated as empty and blocks progression
 - prio-M - field length boundaries: 0, 1, typical (10), long (100+) with expected outcomes
 - prio-M - values persist when navigating back from Overview to Info and then forward again
 
-Low (prio-L) — nice-to-have quality checks:
+Low (prio-L), nice-to-have quality checks:
 - prio-L - handles special characters without crashing (names with hyphen/accents)
 - prio-L - focus moves to the first invalid field when Continue fails
 - prio-L - accepts non-Latin letters if supported; otherwise shows a clear validation error

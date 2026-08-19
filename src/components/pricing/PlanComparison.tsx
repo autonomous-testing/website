@@ -108,7 +108,7 @@ const Check = () => (
 );
 
 const Dash = () => (
-  <span className="text-gray-400 dark:text-gray-600">—</span>
+  <span className="text-gray-400 dark:text-gray-600">, </span>
 );
 
 const renderCell = (cell: Cell) => {
@@ -140,7 +140,7 @@ const PlanComparison = () => {
         </h2>
       </div>
 
-      {/* DESKTOP — borderless table */}
+      {/* DESKTOP, borderless table */}
       <div className="hidden md:block">
         <table className="w-full text-sm border-separate border-spacing-0 [&_td]:!border-0 [&_th]:!border-0 [&_tr]:!bg-transparent [&_thead]:!bg-transparent">
           <thead>
@@ -205,7 +205,7 @@ const PlanComparison = () => {
         </table>
       </div>
 
-      {/* MOBILE — stacked plan cards */}
+      {/* MOBILE, stacked plan cards */}
       <div className="md:hidden flex flex-col gap-4">
         {plans.map((plan) => {
           const isFeatured = plan === "Basic";
@@ -248,7 +248,7 @@ const PlanComparison = () => {
                           <Check />
                         ) : value === false ? (
                           <span className="text-gray-300 dark:text-gray-700">
-                            —
+.
                           </span>
                         ) : (
                           value
@@ -270,7 +270,7 @@ const PlanComparison = () => {
       </p>
       <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         Each plan has a 5-hour rolling session window. Your usage resets
-        automatically once the window expires — no manual action needed, no
+        automatically once the window expires, no manual action needed, no
         waiting until midnight. All plans include autonomous test generation,
         visual regression testing, and Playwright + CI/CD integration.
       </p>

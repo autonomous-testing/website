@@ -36,7 +36,7 @@ const TestWarez = () => {
   return (
     <Layout
       title="Get Started with Wopee.io | Onboarding"
-      description="Set up your Wopee.io account and start testing your web app in minutes. AI-powered test generation — no coding required."
+      description="Set up your Wopee.io account and start testing your web app in minutes. AI-powered test generation, no coding required."
       wrapperClassName="dark:bg-gray-100"
     >
       <Head>

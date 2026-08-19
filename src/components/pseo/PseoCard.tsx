@@ -33,7 +33,7 @@ import {
 import TagPill from "@site/src/components/blog/TagPill";
 
 // Same card visual as the blog "Keep reading" cards (src/components/blog/RelatedPosts.tsx):
-// gradient top bar, category pill, title, description — plus a per-page icon badge.
+// gradient top bar, category pill, title, description, plus a per-page icon badge.
 // Used for the programmatic pages' Related section and the /ai-testing hub.
 type IconCmp = React.ComponentType<{ size?: number; color?: string }>;
 

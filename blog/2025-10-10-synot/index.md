@@ -92,7 +92,7 @@ Based on their evaluation process, Jirka and Jakub identified several key factor
 1. **Simple integration** - Both into their framework and individual tests, making [getting started](/blog/getting-started-w-wopee-io-automation/) straightforward
 2. **Web-based management** - Reference screenshot management through an intuitive web client
 3. **Device abstraction** - Wopee handles differences between devices intelligently
-4. **Low maintenance burden** - They wanted visual testing without heavy maintenance overhead — and at a [cost that made sense](/pricing/)
+4. **Low maintenance burden** - They wanted visual testing without heavy maintenance overhead, and at a [cost that made sense](/pricing/)
 5. **Vendor responsiveness** - Wopee.io team were able to respond quickly with fixes and workarounds
 
 ## How Wopee.io works inside Synot
@@ -271,8 +271,8 @@ Third, working with **ignored areas** is a major benefit. You simply mark the ar
 
 ## Conclusion
 
-Synot's journey is a powerful example: in a domain marked by complexity, change, regulatory constraints, and multiple product lines, they chose not just to scale automation — but to evolve it into a more intelligent, maintainable, and visually aware practice.
+Synot's journey is a powerful example: in a domain marked by complexity, change, regulatory constraints, and multiple product lines, they chose not just to scale automation, but to evolve it into a more intelligent, maintainable, and visually aware practice.
 
-Wopee.io wasn't merely a tool — it was a catalyst for maturing QA culture. The team transformed visual testing from "nice to have" into an integrated, reliable pillar of their pipeline.
+Wopee.io wasn't merely a tool, it was a catalyst for maturing QA culture. The team transformed visual testing from "nice to have" into an integrated, reliable pillar of their pipeline.
 
 If your team maintains UI layers, cares about consistent user experience, or struggles with brittle screenshot tests it's worth seeing how Wopee.io (or a modern visual test platform) might help you evolve forward.

@@ -264,7 +264,7 @@ a.navbar__item:hover {
   filter: invert(1);
 }
 
-/* Hero primary CTA — slow pulsing glow when enabled, invites the click
+/* Hero primary CTA, slow pulsing glow when enabled, invites the click
    without ever animating loud enough to feel pushy. Disabled state stays
    still. Pulse colour matches the button fill in each theme. */
 @keyframes hero-cta-pulse-light {
@@ -291,7 +291,7 @@ a.navbar__item:hover {
   opacity: 0.5;
 }
 
-/* Sign-in modal OAuth buttons — rendered as <div role=button> so Infima's
+/* Sign-in modal OAuth buttons, rendered as <div role=button> so Infima's
    button selector can't override. Primary = GitHub (full-width, filled
    dark), secondary = Google + GitLab (outline chips). */
 .oauth-btn-primary {
@@ -339,7 +339,7 @@ a.navbar__item:hover {
   border-color: rgb(112 48 160 / 0.7);
 }
 
-/* Sign-in modal legal disclaimer — muted text + muted underlined links */
+/* Sign-in modal legal disclaimer, muted text + muted underlined links */
 .login-legal {
   color: rgb(156 163 175);
 }
@@ -358,15 +358,15 @@ a.navbar__item:hover {
   color: rgb(209 213 219);
 }
 
-/* Hero "Add testing instructions" toggle — bypass Infima's role=button color */
+/* Hero "Add testing instructions" toggle, bypass Infima's role=button color */
 .hero-add-instructions {
-  color: rgb(75 85 99); /* gray-600 — light-mode contrast on white bg */
+  color: rgb(75 85 99); /* gray-600, light-mode contrast on white bg */
 }
 [data-theme="dark"] .hero-add-instructions {
-  color: rgb(156 163 175); /* gray-400 — 4.5:1+ on the gray-900 form bg */
+  color: rgb(156 163 175); /* gray-400, 4.5:1+ on the gray-900 form bg */
 }
 /* Hover follows the H1 brand emphasis pattern: secondary-wopee in light,
-   primary-wopee in dark — same colors used for "for Web Apps" highlight. */
+   primary-wopee in dark, same colors used for "for Web Apps" highlight. */
 .hero-add-instructions:hover {
   color: #7030a0; /* secondary-wopee */
 }
@@ -374,7 +374,7 @@ a.navbar__item:hover {
   color: #ffcc00; /* primary-wopee */
 }
 
-/* Hero Vibe form — inline scenario chips. Ghost-style by default so they sit
+/* Hero Vibe form, inline scenario chips. Ghost-style by default so they sit
    visually subordinate to the primary CTA; only the selected chip lights up. */
 .scenario-chip {
   /* Pill bg + faint border give every chip a visible touch target on white
@@ -513,7 +513,7 @@ a.navbar__item:hover {
   text-decoration-thickness: 2px;
 }
 
-/* Hide the default Docusaurus blog post header — our custom BlogPostHero
+/* Hide the default Docusaurus blog post header, our custom BlogPostHero
    renders inside the swizzled BlogPostPage, but the MDX's own `BlogPostItem`
    wrapper is bypassed. This rule remains as a safety net for any stray
    default-theme markup. */

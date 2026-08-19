@@ -65,7 +65,7 @@ Now, as the team continues to expand and innovate, they have started incorporati
 
 For mobile application testing, **Webdriver.io** has been the go-to solution. Its integration with Wopee.io has enabled Livesport to perform comprehensive visual and functional tests on their mobile apps, ensuring a seamless user experience on mobile devices.
 
-By leveraging these powerful tools—Cypress for initial automation, Playwright for cutting-edge web testing, and Webdriver.io for mobile testing—Livesport continues to enhance its quality assurance processes, ensuring exceptional performance across all platforms.
+By leveraging these powerful tools (Cypress for initial automation, Playwright for cutting-edge web testing, and Webdriver.io for mobile testing) Livesport continues to enhance its quality assurance processes, ensuring exceptional performance across all platforms.
 
 ## Proud Achievements in Livesport Testing
 
@@ -142,7 +142,7 @@ Livesport has been using Wopee.io for over a year, starting with Cypress in earl
 
 </div>
 
-> "Testing at Livesport has always been heavily focused on the visual aspects of our applications because we aim to offer our users a product that excels in every area—functionality, visuals, and data. This required us to compare baseline images with the current state, with zero tolerance for deviations. A proof of concept with Wopee.io and other tools (like Applitools, Percy) that handle visual testing evaluation and management—or even a potential in-house solution—clearly showed that **Wopee.io was the only tool capable of delivering the required functionalities** at a reasonable cost. Given Wopee's startup nature, we also had the opportunity to contribute to the product's development with our suggestions and requests. These would have been much harder to negotiate with other solutions, or their implementation would have taken much longer."
+> "Testing at Livesport has always been heavily focused on the visual aspects of our applications because we aim to offer our users a product that excels in every area, functionality, visuals, and data. This required us to compare baseline images with the current state, with zero tolerance for deviations. A proof of concept with Wopee.io and other tools (like Applitools, Percy) that handle visual testing evaluation and management, or even a potential in-house solution, clearly showed that **Wopee.io was the only tool capable of delivering the required functionalities** at a reasonable cost. Given Wopee's startup nature, we also had the opportunity to contribute to the product's development with our suggestions and requests. These would have been much harder to negotiate with other solutions, or their implementation would have taken much longer."
 
 ### Team-wide Adoption of Wopee.io
 
@@ -160,7 +160,7 @@ All 18 members of the testing team actively use Wopee.io, making it an essential
 
 > ### Entire maintenance process has been streamlined to a simple click of the button directly in Wopee.io
 
-> "The most significant improvement has been the reduction in the complexity of maintaining visual tests. When we had baseline images stored directly in the repository, any change required technical knowledge of the project and code. The image had to be regenerated, pushed to GitLab, approved, and merged. Since visual changes—whether due to bugs, new features, or test data changes—occur daily, this was a very time-consuming task that could only be handled by members of the automation team. **Now, the entire maintenance process has been streamlined to a simple click of the ‘Approve’ button directly in Wopee.io**, and the entire image database **can be managed by manual testers**, who also run the tests and evaluate the results. Currently, we have around 1,000 baseline screenshots, a volume that would have been unsustainable for us in the past." -- Martin Šimon, Test Automation Team Leader
+> "The most significant improvement has been the reduction in the complexity of maintaining visual tests. When we had baseline images stored directly in the repository, any change required technical knowledge of the project and code. The image had to be regenerated, pushed to GitLab, approved, and merged. Since visual changes (whether due to bugs, new features, or test data changes) occur daily, this was a very time-consuming task that could only be handled by members of the automation team. **Now, the entire maintenance process has been streamlined to a simple click of the ‘Approve’ button directly in Wopee.io**, and the entire image database **can be managed by manual testers**, who also run the tests and evaluate the results. Currently, we have around 1,000 baseline screenshots, a volume that would have been unsustainable for us in the past." -- Martin Šimon, Test Automation Team Leader
 
 ## Interesting Statistics from Testing Team
 
@@ -190,16 +190,16 @@ _Some interesting stats from Livesport's regression automation testing from rece
 
 ## Looking Ahead with Wopee.io: The Future of Testing Excellence
 
-As Livesport continues to innovate and expand its offerings, maintaining high standards in testing is more critical than ever. With Wopee.io as a trusted partner, Livesport’s testing team is not just keeping up with the pace of development—they’re setting new benchmarks in efficiency, accuracy, and scalability.
+As Livesport continues to innovate and expand its offerings, maintaining high standards in testing is more critical than ever. With Wopee.io as a trusted partner, Livesport’s testing team is not just keeping up with the pace of development, they’re setting new benchmarks in efficiency, accuracy, and scalability.
 
 **Join the Revolution in Testing:**
-If Livesport’s story resonates with you — much like [SYNOT’s success with Wopee.io](/blog/synot-tech-test-automation-wopee/) — it’s time to take action. Wopee.io offers a unique opportunity to revolutionize your testing processes. Whether you’re looking to streamline your test automation, reduce maintenance burdens, or simply ensure that your applications perform flawlessly, Wopee.io is the tool that can make it happen.
+If Livesport’s story resonates with you (much like [SYNOT’s success with Wopee.io](/blog/synot-tech-test-automation-wopee/)) it’s time to take action. Wopee.io offers a unique opportunity to revolutionize your testing processes. Whether you’re looking to streamline your test automation, reduce maintenance burdens, or simply ensure that your applications perform flawlessly, Wopee.io is the tool that can make it happen.
 
 **Start Your Journey with Wopee.io:**
 Don’t wait to transform your testing. Join Livesport and countless other forward-thinking companies in experiencing the power of Wopee.io. With a quick setup, minimal maintenance, and results in minutes, Wopee.io is the solution you’ve been searching for. **Get started today and take your testing to the next level.**
 
 **Experience Testing Excellence:**
-Livesport has shown what’s possible with the right tools and a commitment to quality. Now, it’s your turn. Embrace the future of web app testing with Wopee.io—because excellence isn’t just a goal; it’s a journey.
+Livesport has shown what’s possible with the right tools and a commitment to quality. Now, it’s your turn. Embrace the future of web app testing with Wopee.io, because excellence isn’t just a goal; it’s a journey.
 
 :::tip
 
@@ -207,6 +207,6 @@ Livesport has shown what’s possible with the right tools and a commitment to q
 
 <br />
 
-**[Start your free trial now](https://cmd.wopee.io/login)** and see how Wopee.io can help you achieve testing excellence with minimal effort. Don’t wait—join the future of testing today!
+**[Start your free trial now](https://cmd.wopee.io/login)** and see how Wopee.io can help you achieve testing excellence with minimal effort. Don’t wait, join the future of testing today!
 
 :::

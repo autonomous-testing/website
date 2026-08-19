@@ -22,7 +22,7 @@ function splitTitle(name: string): [string, string | null] {
 
 // A "journey" comparison: a milestone rail rising toward the glowing Wopee.io
 // node, with one card per approach (Wopee.io highlighted). Replaces the plain
-// comparison grid. Generic across pages — approaches are ordered manual → AI.
+// comparison grid. Generic across pages, approaches are ordered manual → AI.
 export default function ComparisonJourney({ comparison }: { comparison: Comparison }) {
   const rows = comparison.rows;
   const metrics = comparison.header.slice(1);

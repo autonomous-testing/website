@@ -26,7 +26,7 @@ Over the past two decades, testing has evolved significantly. Manual testing can
 - Struggling to keep pace with frequent application updates
 - High costs and complexity of traditional test automation tools
 
-If any of these challenges resonate with you, Wopee.io’s autonomous testing bots are designed to tackle them—making testing faster, easier, and more accessible to teams with limited technical resources.
+If any of these challenges resonate with you, Wopee.io’s autonomous testing bots are designed to tackle them, making testing faster, easier, and more accessible to teams with limited technical resources.
 
 Watch the webinar below to get started:
 

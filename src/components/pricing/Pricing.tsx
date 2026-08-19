@@ -44,7 +44,7 @@ const competitors = [
   },
   {
     feature: "Test scripts to write",
-    wopee: "Zero — AI generates them",
+    wopee: "Zero. AI generates them",
     others: "Hundreds, manually",
   },
   {
@@ -108,11 +108,11 @@ const enterpriseFeatures = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "Do I need a credit card to start?",
-    a: "No. You can start using Wopee.io completely free — no credit card, no commitment. Upgrade only when you're ready.",
+    a: "No. You can start using Wopee.io completely free, no credit card, no commitment. Upgrade only when you're ready.",
   },
   {
     q: "What counts as a 'test step'?",
-    a: "A test step is a single interaction the AI agent performs — clicking a button, filling a field, asserting a result. A typical autonomous test consumes around 15 steps; a visual check around 3.",
+    a: "A test step is a single interaction the AI agent performs, clicking a button, filling a field, asserting a result. A typical autonomous test consumes around 15 steps; a visual check around 3.",
   },
   {
     q: "What happens when I hit my limit?",
@@ -124,7 +124,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do you offer discounts for startups, students, or open source?",
-    a: "Yes — early-stage startups, students, and OSS maintainers can apply for a discounted plan. Just talk to our founders.",
+    a: "Yes, early-stage startups, students, and OSS maintainers can apply for a discounted plan. Just talk to our founders.",
   },
   {
     q: "Is my data and source code safe?",
@@ -135,7 +135,7 @@ const faqs: { q: string; a: string }[] = [
 export default function Pricing(): JSX.Element {
   return (
     <main className="relative pt-16 mb-12 px-4">
-      {/* HERO GLOW BACKDROP — full-bleed, breaks out of the container */}
+      {/* HERO GLOW BACKDROP, full-bleed, breaks out of the container */}
       <div
         aria-hidden="true"
         className="absolute left-1/2 -translate-x-1/2 -top-32 w-screen h-[800px] -z-10 pointer-events-none hidden dark:block"
@@ -336,7 +336,7 @@ export default function Pricing(): JSX.Element {
           </h2>
           <p className="mt-3 text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             One Premium seat replaces hundreds of hours of manual regression
-            work — at a fraction of the cost.
+            work, at a fraction of the cost.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -378,7 +378,7 @@ export default function Pricing(): JSX.Element {
 
       <PlanComparison />
 
-      {/* WHY WOPEE — competitor comparison */}
+      {/* WHY WOPEE, competitor comparison */}
       <section className="my-20 max-w-3xl mx-auto px-4">
         <div className="text-center mb-10">
           <div className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">

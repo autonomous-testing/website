@@ -98,7 +98,7 @@ The American Express team's [jest-image-snapshot](https://github.com/americanexp
 
 ## Perceptual hashing (pHash) as a pre-filter
 
-![Decision flow diagram: a screenshot pair enters pHash fingerprint generation at under 5ms, then a Hamming distance decision diamond. The "yes, distance under 3" branch exits to a green "Unchanged — skipped" node labeled "60–80% of screenshots exit here." The "no" branch continues to pixelmatch at 28ms or SSIM at 85ms.](./images/03-phash-prefilter-pipeline.webp)
+![Decision flow diagram: a screenshot pair enters pHash fingerprint generation at under 5ms, then a Hamming distance decision diamond. The "yes, distance under 3" branch exits to a green "Unchanged, skipped" node labeled "60–80% of screenshots exit here." The "no" branch continues to pixelmatch at 28ms or SSIM at 85ms.](./images/03-phash-prefilter-pipeline.webp)
 
 Perceptual hashing converts an image to a compact 64-bit fingerprint via a 2D Discrete Cosine Transform on a heavily downsampled (typically 32×32) grayscale version. Two images are compared by computing the Hamming distance between their hashes. Hash generation costs about 4 ms, and the comparison itself is well under 0.01 ms ([dev.to benchmarks, 2025](https://dev.to/dennis-ddev/screenshot-diffing-pixel-level-comparison-techniques-18k)).
 
@@ -124,7 +124,7 @@ I haven't seen a major OSS VRT tool ship pHash pre-filtering by default. That ga
 
 ## ODiff: SIMD-accelerated pixel diffing
 
-![Split diagram comparing pixelmatch and ODiff CPU processing. Left panel shows a narrow single-slot CPU register labeled "pixelmatch — 1 pixel per instruction, ~28ms." Right panel shows a wide 8-slot Wopee purple SIMD register labeled "ODiff — 8–16 pixels per instruction, ~4ms." SIMD variant chips SSE2 (4), AVX2 (8), AVX-512 (16) listed beside the right panel. Center annotation reads "8× speedup (Argos, 2024)."](./images/15-odiff-simd-vectorization.png)
+![Split diagram comparing pixelmatch and ODiff CPU processing. Left panel shows a narrow single-slot CPU register labeled "pixelmatch (1 pixel per instruction, ~28ms." Right panel shows a wide 8-slot Wopee purple SIMD register labeled "ODiff) 8–16 pixels per instruction, ~4ms." SIMD variant chips SSE2 (4), AVX2 (8), AVX-512 (16) listed beside the right panel. Center annotation reads "8× speedup (Argos, 2024)."](./images/15-odiff-simd-vectorization.png)
 
 ODiff is what you reach for when pixelmatch becomes the bottleneck. Originally written in OCaml and now in Zig, it exposes SSE2, AVX2, AVX512, and NEON SIMD code paths to vectorize the per-pixel comparison loop. Argos, the open-source visual review platform, switched to ODiff from pixelmatch and reported an **8× speedup** on the same workload ([ODiff README](https://github.com/dmtrKovalenko/odiff)). Lost Pixel uses ODiff internally as well.
 

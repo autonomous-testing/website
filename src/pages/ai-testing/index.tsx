@@ -17,7 +17,7 @@ const labelFor = (p: Page) =>
   p.category === "use-case" ? `AI ${p.subject}` : `AI Testing for ${p.subject}`;
 
 const GROUPS: { key: Page["category"]; title: string; blurb: string }[] = [
-  { key: "use-case", title: "By use case", blurb: "Pick the testing job — Wopee.io generates and self-heals the coverage." },
+  { key: "use-case", title: "By use case", blurb: "Pick the testing job. Wopee.io generates and self-heals the coverage." },
   { key: "industry", title: "By industry", blurb: "Coverage shaped around your domain's risk, dynamic data, and compliance." },
   { key: "framework", title: "By framework", blurb: "Autonomous testing tuned to how your stack actually renders and changes." },
 ];
@@ -41,7 +41,7 @@ export default function AiTestingHub() {
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg">
             Wopee.io generates, runs, and self-heals end-to-end and visual tests from your running
-            app — no brittle selectors, no manual baselines. Pick your framework, industry, or the
+            app, no brittle selectors, no manual baselines. Pick your framework, industry, or the
             testing job you need below.
           </p>
           <div className="mt-8 flex justify-center">
