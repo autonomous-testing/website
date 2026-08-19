@@ -557,3 +557,9 @@ a.navbar__item:hover {
   border-top: 1px solid var(--ifm-color-emphasis-200);
   padding-top: 1.5rem;
 }
+
+/* Navbar hash-links use href (skips Docusaurus anchor checker, which cannot
+   see ids inside custom React pages) - hide the external-link icon they get. */
+.navbar__item--no-external-icon svg {
+  display: none;
+}
