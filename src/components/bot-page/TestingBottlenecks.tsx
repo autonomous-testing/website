@@ -8,16 +8,17 @@ import {
   Timer,
 } from "lucide-react";
 
-const ICON_CLASS = "text-primary-wopee dark:text-secondary-wopee";
+const ICON_CLASS = "text-secondary-wopee dark:text-primary-wopee";
 
 const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
   {
     icon: <Clock className={ICON_CLASS} size={28} />,
     text: (
       <>
-        Testers face{" "}
-        <span className="font-bold">delays due to complex tools</span> and
-        manual testing.
+        Complex tools and manual testing{" "}
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          delay testers.
+        </span>
       </>
     ),
   },
@@ -25,8 +26,11 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
     icon: <Bug className={ICON_CLASS} size={28} />,
     text: (
       <>
-        Manual methods <span className="font-bold">miss bugs</span> and lead to
-        inconsistent results.
+        Manual methods{" "}
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          miss bugs
+        </span>{" "}
+        and produce inconsistent results.
       </>
     ),
   },
@@ -34,8 +38,10 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
     icon: <Code className={ICON_CLASS} size={28} />,
     text: (
       <>
-        Existing solutions{" "}
-        <span className="font-bold">require coding and complicated setup.</span>
+        Existing solutions demand{" "}
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          coding and complicated setup.
+        </span>
       </>
     ),
   },
@@ -43,8 +49,10 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
     icon: <Wrench className={ICON_CLASS} size={28} />,
     text: (
       <>
-        <span className="font-bold">High maintenance</span> and lack of support
-        increase human error rate.
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          High maintenance
+        </span>{" "}
+        and lack of support increase the human error rate.
       </>
     ),
   },
@@ -58,8 +66,11 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
         >
           Flaky tests
         </a>{" "}
-        erode trust — engineers{" "}
-        <span className="font-bold">babysit brittle suites</span> instead of
+        erode trust. Engineers{" "}
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          babysit brittle suites
+        </span>{" "}
+        instead of
         shipping.
       </>
     ),
@@ -68,8 +79,11 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
     icon: <Timer className={ICON_CLASS} size={28} />,
     text: (
       <>
-        Maintaining traditional test frameworks is{" "}
-        <span className="font-bold">time consuming</span> and frustrating.
+        Traditional test frameworks are{" "}
+        <span className="font-bold text-slate-900 dark:text-slate-100">
+          time-consuming and frustrating
+        </span>{" "}
+        to maintain.
       </>
     ),
   },
@@ -77,24 +91,32 @@ const BOTTLENECKS: { icon: React.ReactNode; text: React.ReactNode }[] = [
 
 const TestingBottlenecks = () => {
   return (
-    <div className="bg-gradient-to-br from-secondary-wopee via-purple-600 to-secondary-wopee dark:from-primary-wopee dark:to-white text-balance flex flex-col gap-10 px-4 lg:px-10 py-16">
-      <h2 className="text-3xl md:text-4xl text-white dark:text-secondary-wopee font-bold text-center">
-        The bottlenecks a testing bot removes
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl w-full mx-auto text-primary-wopee dark:text-secondary-wopee">
-        {BOTTLENECKS.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex items-start gap-4 rounded-xl bg-white/10 dark:bg-black/10 backdrop-blur-sm p-5"
-          >
-            <span className="inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg bg-white/15 dark:bg-black/10">
-              {item.icon}
-            </span>
-            <p className="text-base lg:text-lg m-0">{item.text}</p>
-          </div>
-        ))}
+    <section className="border-y border-slate-200/80 bg-slate-50/70 py-12 sm:py-16 lg:py-20 dark:border-white/10 dark:bg-white/[0.025]">
+      <div className="container px-5 lg:px-10">
+        <h2 className="m-0 text-center text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+          The bottlenecks a{" "}
+          <span className="text-secondary-wopee dark:text-primary-wopee">
+            testing bot removes
+          </span>
+        </h2>
+
+        <div className="mx-auto mt-10 grid w-full max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {BOTTLENECKS.map((item, idx) => (
+            <article
+              key={idx}
+              className="flex items-start gap-4 rounded-xl border border-slate-200 border-t-2 border-t-secondary-wopee/70 bg-white p-5 shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] sm:p-6 dark:border-white/10 dark:border-t-primary-wopee/70 dark:bg-white/[0.035] dark:shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)]"
+            >
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900">
+                {item.icon}
+              </span>
+              <p className="m-0 leading-7 text-slate-600 dark:text-slate-300">
+                {item.text}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
