@@ -1,6 +1,6 @@
 ---
 slug: bdd-with-robot-framework
-title: "BDD with Robot Framework: Gherkin Guide (2026)"
+title: "BDD with Robot Framework: Gherkin + Examples"
 description: "Practical 2026 guide to BDD with Robot Framework: Gherkin Given/When/Then syntax, Example Mapping, AI-assisted scenario generation, and working examples."
 authors: marcel
 tags: [bdd, robot-framework, example-mapping, gherkin, automation, testing]
