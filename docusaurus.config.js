@@ -176,49 +176,6 @@ const config = {
         onUntruncatedBlogPosts: "ignore",
       },
     ],
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          { from: "/banana", to: "/about-us" },
-          { from: "/bananas", to: "/about-us" },
-          { from: "/beer", to: "/about-us" },
-          { from: "/GetEarlyAccess", to: "/book-demo" },
-          { from: "/NoWork", to: "/about-us" },
-          { from: "/lisbon", to: "/about-us" },
-          { from: "/olena", to: "/about-us" },
-          { from: "/jan", to: "/about-us" },
-          { from: "/contact", to: "/about-us" },
-          { from: "/contact-us", to: "/about-us" },
-          { from: "/Web-Summit-Hacks", to: "/" },
-          { from: "/WebSummit", to: "/" },
-          { from: "/WebSummit-Follow-Up", to: "/" },
-          { from: "/QA-and-Testing-Meetup-Lisboa-2024-Nov-13", to: "/" },
-          { from: "/testwarez", to: "/" },
-          { from: "/brno", to: "/" },
-          { from: "/ws240618", to: "/" },
-          { from: "/ws240709", to: "/" },
-          { from: "/ws240820", to: "/" },
-          { from: "/ws240917", to: "/" },
-          { from: "/ws241001", to: "/" },
-          { from: "/workshops", to: "/" },
-          { from: "/protest", to: "/" },
-          { from: "/sy-mentoring", to: "/" },
-          { from: "/early-access", to: "/" },
-          { from: "/like", to: "/" },
-          { from: "/vc", to: "/" },
-          { from: "/partner", to: "/" },
-          { from: "/wopee-commander", to: "/" },
-          { from: "/team", to: "/about-us" },
-          { from: "/toc", to: "/terms-and-conditions" },
-          { from: "/guides/wopee-mcp", to: "/mcp" },
-          {
-            from: "/blog/top-5-applitools-alternatives-for-visual-testing--2024",
-            to: "/blog/applitools-alternatives",
-          },
-        ],
-      },
-    ],
   ],
 
   presets: [
@@ -237,6 +194,12 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        // URL redirects are NOT handled here. plugin-client-redirects emitted
+        // HTML pages with a window.location hop, which Google reads as HTTP 200
+        // with a self-canonical, so retired URLs kept ranking and competing with
+        // their replacements. Redirects are now real 301s at the edge
+        // (Cloudflare Bulk Redirects, list "wopee_retired_urls").
+        // redirects.csv in this repo is the version-controlled copy of that list.
         sitemap: {
           // Generated pSEO routes live in a gitignored folder, so Docusaurus finds
           // no git date for them and emits no <lastmod>. Fill those in from the
