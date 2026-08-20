@@ -20,7 +20,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || steps.deployment_final.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -68,9 +68,23 @@ jobs:
 
       - name: Wait for the previous Pages deployment to clear
         if: steps.deployment.outcome == 'failure'
-        run: sleep 60
+        run: sleep 120
 
       - name: Deploy to GitHub Pages (retry)
         id: deployment_retry
         if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        # A fork sync lands several commits at once, so two deploys can queue
+        # and the second still finds the first finalizing server-side. 60s was
+        # not enough (run 32371407962); back off further and try once more
+        # before failing the job.
+        continue-on-error: true
+
+      - name: Wait longer before the final attempt
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
+        run: sleep 180
+
+      - name: Deploy to GitHub Pages (final attempt)
+        id: deployment_final
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
         uses: actions/deploy-pages@v5
