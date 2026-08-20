@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import StackLinks from "@site/src/components/pseo/StackLinks";
 
 const STAGES = [
   {
@@ -184,6 +185,8 @@ const HowItWorksPage = () => {
       <PipelineSection />
       <SupervisedAutonomySection />
       <GitRepoClosing />
+      <StackLinks heading="Guides for your stack" />
+
     </Layout>
   );
 };

@@ -173,7 +173,15 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         {/* Related */}
         {data.related.length > 0 && (
           <section className="mt-16">
-            <h2 className="text-2xl font-bold sm:text-3xl">Related</h2>
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h2 className="m-0 text-2xl font-bold sm:text-3xl">Related</h2>
+              <Link
+                href="/ai-testing/"
+                className="font-semibold text-secondary-wopee hover:no-underline dark:text-primary-wopee"
+              >
+                All AI testing guides &rarr;
+              </Link>
+            </div>
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               {data.related.map((r) => (
                 <PseoCard

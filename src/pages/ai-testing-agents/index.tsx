@@ -2,6 +2,7 @@ import React from "react";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
+import StackLinks from "@site/src/components/pseo/StackLinks";
 import HeroSection from "@site/src/components/bot-page/HeroSection";
 import DefinitionBlock from "@site/src/components/bot-page/DefinitionBlock";
 import FaqSection from "@site/src/components/bot-page/FaqSection";
@@ -114,6 +115,8 @@ const AiTestingAgentsPage = () => {
         <section className="py-12 sm:py-16 lg:py-20 [&>div]:!my-0 [&>div>div:first-child]:!text-3xl sm:[&>div>div:first-child]:!text-4xl [&>div>div:nth-child(2)>div>div]:!rounded-xl [&>div>div:nth-child(2)>div>div]:!border-slate-200 [&>div>div:nth-child(2)>div>div]:!border-t-2 [&>div>div:nth-child(2)>div>div]:!border-t-secondary-wopee/70 [&>div>div:nth-child(2)>div>div]:!bg-white [&>div>div:nth-child(2)>div>div]:!shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] dark:[&>div>div:nth-child(2)>div>div]:!border-white/10 dark:[&>div>div:nth-child(2)>div>div]:!border-t-primary-wopee/70 dark:[&>div>div:nth-child(2)>div>div]:!bg-white/[0.035] dark:[&>div>div:nth-child(2)>div>div]:!shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)]">
           <TestimonialCarousel />
         </section>
+
+        <StackLinks />
 
         <FaqSection />
 
