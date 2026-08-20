@@ -240,6 +240,37 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
+          // Generated pSEO routes live in a gitignored folder, so Docusaurus finds
+          // no git date for them and emits no <lastmod>. Fill those in from the
+          // date of the data file they are generated from, and give the blog and
+          // changelog index pages the date of their newest entry.
+          createSitemapItems: async ({ defaultCreateSitemapItems, ...rest }) => {
+            const items = await defaultCreateSitemapItems(rest);
+            const pseoDate = require("child_process")
+              .execSync("git log -1 --format=%cs -- data/pseo-pages.json")
+              .toString()
+              .trim();
+            const newestUnder = (prefix) =>
+              items
+                .filter((i) => i.url.includes(prefix) && i.lastmod)
+                .map((i) => i.lastmod)
+                .sort()
+                .pop();
+            return items.map((item) => {
+              if (item.lastmod) return item;
+              const path = new URL(item.url).pathname;
+              if (path.startsWith("/ai-") && pseoDate) {
+                return { ...item, lastmod: pseoDate };
+              }
+              const parent = path.startsWith("/changelog") ? "/changelog/" : "/blog/";
+              const fallback = newestUnder(parent);
+              return fallback ? { ...item, lastmod: fallback } : item;
+            });
+          },
+          // Emit <lastmod> so Google has a freshness signal to schedule recrawls.
+          // Without it the sitemap looks unchanged and pages published after the
+          // last processing date (2026-05-29) stayed unknown to Google.
+          lastmod: "date",
           // NOTE: with `trailingSlash: true`, generated URLs end in `/`.
           // Bare-path patterns like "/l" do NOT match "/l/", use "/l/**" or "/l/" instead.
           // Ahrefs flagged 5 of these as orphan pages (May 2026) because the patterns silently failed.
@@ -253,6 +284,8 @@ const config = {
             "/marcel/**",
             "/jan-beranek/**",
             "/l/**",
+            "/ux/**",
+            "/onboarding/**",
             "/bot/**",
             "/team/**",
             "/testing-bot/**",
