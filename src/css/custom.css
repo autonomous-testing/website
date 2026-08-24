@@ -576,6 +576,19 @@ a.navbar__item:hover {
     0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
+/* The 0.5rem margin-top above is a hover dead-zone: Infima keeps the menu open
+   only while the pointer stays inside .dropdown, so crossing the gap closes it.
+   Bridge the gap with an invisible hover extension below the trigger, on the li
+   itself — a ::before on the menu gets clipped by its overflow: auto. */
+.navbar__item.dropdown:hover::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 21rem; /* span the menu (min-width above), not just the narrow trigger */
+  height: 1.25rem;
+}
+
 [data-theme="dark"] .navbar__item.dropdown .dropdown__menu {
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow:
