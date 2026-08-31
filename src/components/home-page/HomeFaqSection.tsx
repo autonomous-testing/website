@@ -69,13 +69,7 @@ const FAQS = [
     answer: (
       <div className="space-y-4">
         <p>
-          Our <a
-            href="https://docs.wopee.io/pilot-projects/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            documentation
-          </a> outlines the typical gains seen during pilot programs, including measurable improvements that teams can realistically achieve within an eight-week period. Explore real-world case metrics and recommendations for maximizing ROI.
+          Every <a href="/pilot/">pilot project</a> measures your own baseline in Sprint 1 and compares against it in Sprint 8, so the return is reported against your numbers rather than someone else's. We do not quote percentages from other customers as your expected result, because every application and team is different.
         </p>
         <p>Expect improvements in key testing metrics such as:</p>
         <ul className="list-disc pl-5">
@@ -333,13 +327,7 @@ const FAQS = [
     question: "Do you offer onboarding, training or a pilot project?",
     answer: (
       <div className="space-y-4">
-        <p>Yes. The preferred way to start with larger teams is an <a 
-            href="https://docs.wopee.io/pilot-projects/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            1-2 month pilot project
-          </a>.</p>
+        <p>Yes. The preferred way to start with larger teams is an <a href="/pilot/">8-week pilot project</a>: up to 10 critical flows of one web application, a baseline measured in Sprint 1, and a go or no-go decision at the end of Sprint 8.</p>
         <p>In a typical pilot, we:</p>
         <ul className="list-disc pl-5">
           <li>Run an onboarding workshop and set up project context</li>
