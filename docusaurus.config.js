@@ -356,6 +356,7 @@ const config = {
             title: "Company",
             items: [
               { label: "Enterprise", to: "/enterprise/" },
+              { label: "Pilot projects", to: "/pilot/" },
               { label: "Customers", to: "/customers/" },
               { label: "How it works", to: "/how-it-works/" },
               { label: "Changelog", to: "/changelog/" },
