@@ -11,6 +11,9 @@ import {
   mdiServer,
   mdiEyeCheckOutline,
   mdiChartLine,
+  mdiScaleBalance,
+  mdiRobotOutline,
+  mdiKeyOutline,
 } from "@mdi/js";
 import Icon from "@mdi/react";
 import React from "react";
@@ -157,6 +160,27 @@ const OVERSIGHT = [
     title: "Reject",
     description:
       "Reject any output that does not meet your quality standards.",
+  },
+];
+
+const AI_GOVERNANCE = [
+  {
+    icon: mdiScaleBalance,
+    title: "Provider and deployer",
+    description:
+      "Under the EU AI Act, Wopee.io is the provider of the AI system and your organisation is the deployer. We supply the provider-side facts your own assessment needs.",
+  },
+  {
+    icon: mdiRobotOutline,
+    title: "No self-learning",
+    description:
+      "The system does not self-learn or modify model weights from your inputs. Behaviour changes when we ship a release, not quietly between two runs.",
+  },
+  {
+    icon: mdiKeyOutline,
+    title: "Bring your own LLM account",
+    description:
+      "Run on your own Azure OpenAI, Google Vertex AI, Anthropic, or OpenAI account, so model usage stays inside your contract and your data-processing terms.",
   },
 ];
 
@@ -487,6 +511,49 @@ const OversightSection = () => (
   </div>
 );
 
+const AiGovernanceSection = () => (
+  <div className="container my-12 px-5 sm:my-16 lg:my-24 lg:px-10">
+    <div className="text-center mb-12 lg:mb-16">
+      <h2 className="mb-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+        AI governance, answered up front
+      </h2>
+      <p className="mx-auto max-w-3xl text-slate-600 sm:text-lg dark:text-slate-300">
+        Risk and procurement teams ask the same questions about any AI system
+        entering the estate. These are our answers in writing, before you have
+        to ask for them.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {AI_GOVERNANCE.map((item) => (
+        <article
+          key={item.title}
+          className="rounded-xl border border-slate-200 border-t-2 border-t-secondary-wopee/70 bg-white p-5 shadow-sm sm:p-6 dark:border-white/10 dark:border-t-primary-wopee/70 dark:bg-white/[0.035]"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <Icon
+              path={item.icon}
+              size={0.9}
+              className="text-secondary-wopee dark:text-primary-wopee"
+            />
+            <h3 className="text-lg font-bold m-0">{item.title}</h3>
+          </div>
+          <p className="m-0 text-slate-600 dark:text-slate-300">
+            {item.description}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <p className="mx-auto max-w-3xl text-center mt-10 m-0 text-lg text-slate-600 dark:text-slate-300">
+      A <Link to="/pilot/">pilot project</Link> is the usual place to run this
+      review end to end: we complete your supplier security questionnaire before
+      Sprint 1, and your data is deleted within 30 days of the pilot ending
+      whichever way the decision goes.
+    </p>
+  </div>
+);
+
 const CertificationSection = () => (
   <div className="container my-12 px-5 sm:my-16 lg:my-24 lg:px-10">
     <div className="mx-auto max-w-4xl rounded-2xl border border-slate-200 border-t-4 border-t-secondary-wopee bg-white p-6 shadow-sm sm:p-8 lg:p-10 dark:border-white/10 dark:border-t-primary-wopee dark:bg-white/[0.03]">
@@ -551,7 +618,7 @@ const SecurityPage = () => {
   return (
     <Layout
       title="Security & Data Protection"
-      description="Wopee.io security: EU data residency by default, encryption in transit and at rest, no training on your data, 30-day deletion, and on-prem options."
+      description="Wopee.io security and AI governance: EU data residency by default, encryption in transit and at rest, no training on your data, no self-learning, bring your own LLM account, EU AI Act provider and deployer roles, 30-day deletion, and on-prem options."
     >
       <HeroSection />
       <KeyFactsSection />
@@ -559,6 +626,7 @@ const SecurityPage = () => {
       <ConnectivitySection />
       <DataHandlingSection />
       <OversightSection />
+      <AiGovernanceSection />
       <CertificationSection />
       <FinalCta />
     </Layout>
