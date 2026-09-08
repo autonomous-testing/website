@@ -369,3 +369,340 @@ export function Verdict({ real, buzz }: { real: string; buzz: string }) {
     </div>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Takeaway (one-line section lead)                                     */
+/* ------------------------------------------------------------------ */
+
+export function Takeaway({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={s.takeaway}>
+      <span className={s.takeawayLabel}>In short</span>
+      <div>{children}</div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Cycle: perceive, reason, act, evaluate (SVG, list fallback)          */
+/* ------------------------------------------------------------------ */
+
+export function Cycle() {
+  const bw = 250;
+  const bh = 84;
+  const stages = [
+    { k: "Perceive", d: "read the DOM, the last run, kept state", x: 30, y: 30 },
+    { k: "Reason", d: "plan the next action with the model", x: 620, y: 30 },
+    { k: "Act", d: "run it: Playwright, API client, CLI", x: 620, y: 226 },
+    { k: "Evaluate", d: "compare with the expectation, write down what was learned", x: 30, y: 226 },
+  ];
+  const flows = [
+    { d: "M 286 72 H 614", label: "current state", lx: 450, ly: 60, anchor: "middle" as const },
+    { d: "M 745 120 V 220", label: "chosen action", lx: 760, ly: 174, anchor: "start" as const },
+    { d: "M 614 268 H 286", label: "observed outcome", lx: 450, ly: 292, anchor: "middle" as const },
+    { d: "M 155 220 V 120", label: "what it learned", lx: 140, ly: 174, anchor: "end" as const },
+  ];
+  return (
+    <figure className={`${s.figure} ${s.figurePlain}`}>
+      <div className={s.cycleList}>
+        {stages.map((st, i) => (
+          <div className={s.cycleStep} key={st.k}>
+            <span className={s.cycleN}>{i + 1}</span>
+            <div>
+              <strong>{st.k}</strong>
+              <span>{st.d}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <svg className={s.cycleSvg} viewBox="0 0 900 340" role="img" aria-label="The agentic testing loop: perceive, reason, act, evaluate, and back to perceive">
+        <defs>
+          <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill={T.line} />
+          </marker>
+        </defs>
+        {flows.map((f) => (
+          <g key={f.label}>
+            <path d={f.d} fill="none" stroke={T.line} strokeWidth={2} markerEnd="url(#arr2)" />
+            <text x={f.lx} y={f.ly} textAnchor={f.anchor} fontSize={12} fill={T.muted}>
+              {f.label}
+            </text>
+          </g>
+        ))}
+        {stages.map((st, i) => (
+          <g key={st.k}>
+            <rect x={st.x} y={st.y} width={bw} height={bh} rx={12} fill={T.surface} stroke={T.primary} strokeWidth={2} />
+            <circle cx={st.x + 20} cy={st.y + 20} r={12} fill={T.primary} />
+            <text x={st.x + 20} y={st.y + 24.5} textAnchor="middle" fontSize={12} fontWeight={800} fill="var(--ifm-background-surface-color)">
+              {i + 1}
+            </text>
+            <text x={st.x + bw / 2} y={st.y + 40} textAnchor="middle" fontSize={18} fontWeight={800} fill={T.text}>
+              {st.k}
+            </text>
+            <foreignObject x={st.x + 12} y={st.y + 48} width={bw - 24} height={32}>
+              <div style={{ fontSize: 11.5, lineHeight: 1.25, color: "var(--ifm-color-emphasis-700)", textAlign: "center", fontFamily: "inherit" }}>
+                {st.d}
+              </div>
+            </foreignObject>
+          </g>
+        ))}
+        <text x={450} y={162} textAnchor="middle" fontSize={13} fontWeight={800} fill={T.muted} letterSpacing="0.08em">
+          CLOSED LOOP
+        </text>
+        <text x={450} y={184} textAnchor="middle" fontSize={12} fill={T.muted}>
+          what run N evaluates, run N+1 perceives
+        </text>
+      </svg>
+      <figcaption className={s.figCaption}>
+        The four stages of an agentic testing loop. Take away Evaluate and it stops being a loop.
+      </figcaption>
+    </figure>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Tiles (small card grid)                                              */
+/* ------------------------------------------------------------------ */
+
+export function Tiles({
+  items,
+  cols = 3,
+}: {
+  items: { tag?: string; title: string; text: string }[];
+  cols?: 2 | 3;
+}) {
+  return (
+    <div className={s.tiles} data-cols={cols}>
+      {items.map((it) => (
+        <div className={s.tile} key={it.title}>
+          {it.tag && <div className={s.tileTag}>{it.tag}</div>}
+          <div className={s.tileTitle}>{it.title}</div>
+          <div>{it.text}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Pairs (two-column comparison rows)                                   */
+/* ------------------------------------------------------------------ */
+
+export function Pairs({
+  left,
+  right,
+  rows,
+  tone = "contrast",
+}: {
+  left: string;
+  right: string;
+  rows: { a: string; b: string }[];
+  tone?: "contrast" | "neutral";
+}) {
+  return (
+    <div className={`${s.pairs} ${tone === "contrast" ? s.pairsContrast : ""}`}>
+      <div className={s.pairsHead}>
+        <span>{left}</span>
+        <span>{right}</span>
+      </div>
+      {rows.map((r, i) => (
+        <div className={s.pairRow} key={i}>
+          <div className={s.pairA}>
+            <span className={s.pairLabel}>{left}</span>
+            {r.a}
+          </div>
+          <div className={s.pairB}>
+            <span className={s.pairLabel}>{right}</span>
+            {r.b}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Memory tiers                                                         */
+/* ------------------------------------------------------------------ */
+
+export function Tiers({
+  groups,
+}: {
+  groups: {
+    label: string;
+    sub: string;
+    tone: "soft" | "strong";
+    tiers: { n: number; name: string; scope: string; example: string; lives: string }[];
+  }[];
+}) {
+  return (
+    <div className={s.tiers}>
+      {groups.map((g) => (
+        <div className={`${s.tierGroup} ${g.tone === "strong" ? s.tierStrong : s.tierSoft}`} key={g.label}>
+          <div className={s.tierGroupLabel}>
+            <strong>{g.label}</strong>
+            <span>{g.sub}</span>
+          </div>
+          <div className={s.tierStack}>
+            {g.tiers.map((t) => (
+              <div className={s.tier} key={t.n} data-depth={t.n}>
+                <span className={s.tierN}>{t.n}</span>
+                <div>
+                  <div className={s.tierName}>
+                    {t.name}
+                    <span className={s.tierScope}>{t.scope}</span>
+                  </div>
+                  <div className={s.tierExample}>{t.example}</div>
+                </div>
+                <span className={s.tierLives}>{t.lives}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Ladder (adoption rungs, top rung drawn last)                         */
+/* ------------------------------------------------------------------ */
+
+export function Ladder({ rungs }: { rungs: { title: string; example: string; note: string }[] }) {
+  return (
+    <ol className={s.ladder}>
+      {rungs.map((r, i) => ({ ...r, i })).reverse().map((r) => (
+        <li className={s.rung} key={r.title} data-i={r.i}>
+          <div className={s.rungN}>Rung {r.i + 1}</div>
+          <div className={s.rungTitle}>{r.title}</div>
+          <div className={s.rungExample}>{r.example}</div>
+          <div className={s.rungNote}>{r.note}</div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Gates (numbered requirement rows)                                    */
+/* ------------------------------------------------------------------ */
+
+export function Gates({ items }: { items: { title: string; text: string }[] }) {
+  return (
+    <ol className={s.gates}>
+      {items.map((it, i) => (
+        <li className={s.gate} key={it.title}>
+          <span className={s.gateN}>{i + 1}</span>
+          <div>
+            <div className={s.gateTitle}>{it.title}</div>
+            <div className={s.gateText}>{it.text}</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Milestones (regulatory dates)                                        */
+/* ------------------------------------------------------------------ */
+
+type MsStatus = "done" | "next" | "moved";
+
+export function Milestones({
+  items,
+}: {
+  items: { when: string; title: string; note?: string; status: MsStatus }[];
+}) {
+  const cls: Record<MsStatus, string> = { done: s.msDone, next: s.msNext, moved: s.msMoved };
+  return (
+    <div className={s.msWrap}>
+      <ol className={s.ms}>
+        {items.map((it) => (
+          <li className={`${s.msItem} ${cls[it.status]}`} key={it.when}>
+            <span className={s.msDot} />
+            <div className={s.msWhen}>
+              <time>{it.when}</time>
+            </div>
+            <div className={s.msTitle}>{it.title}</div>
+            {it.note && <div className={s.msNote}>{it.note}</div>}
+          </li>
+        ))}
+      </ol>
+      <div className={s.msLegend}>
+        <span>
+          <i className={`${s.msKey} ${s.msDone}`} /> in force
+        </span>
+        <span>
+          <i className={`${s.msKey} ${s.msNext}`} /> upcoming
+        </span>
+        <span>
+          <i className={`${s.msKey} ${s.msMoved}`} /> moved by the July 2026 Omnibus
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Checklist (grouped, continuously numbered)                           */
+/* ------------------------------------------------------------------ */
+
+export function Checklist({
+  groups,
+}: {
+  groups: { title: string; sub: string; items: { q: string; good: string }[] }[];
+}) {
+  let n = 0;
+  return (
+    <div className={s.checklist}>
+      {groups.map((g) => (
+        <section className={s.clGroup} key={g.title}>
+          <header className={s.clHead}>
+            <strong>{g.title}</strong>
+            <span>{g.sub}</span>
+          </header>
+          <ol className={s.clList}>
+            {g.items.map((it) => {
+              n += 1;
+              return (
+                <li className={s.clItem} key={it.q}>
+                  <span className={s.clN}>{n}</span>
+                  <div>
+                    <div className={s.clQ}>{it.q}</div>
+                    <div className={s.clGood}>
+                      <span>Good answer</span>
+                      {it.good}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Objections (claim and rebuttal)                                      */
+/* ------------------------------------------------------------------ */
+
+export function Objections({ items }: { items: { claim: string; answer: string }[] }) {
+  return (
+    <div className={s.objections}>
+      {items.map((it) => (
+        <div className={s.objection} key={it.claim}>
+          <div className={s.objClaim}>
+            <span>The objection</span>
+            {"“"}
+            {it.claim}
+            {"”"}
+          </div>
+          <div className={s.objAnswer}>{it.answer}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
