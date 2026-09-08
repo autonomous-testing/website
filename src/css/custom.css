@@ -426,26 +426,6 @@ a.navbar__item:hover {
   mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
 }
 
-/* Footer */
-
-.footer {
-  background-color: var(--ifm-color-primary);
-  color: #fff;
-}
-
-[data-theme="dark"] .footer {
-  background-color: black;
-  color: #fff;
-}
-
-.footer a {
-  color: white;
-}
-
-.footer a:hover {
-  color: white;
-}
-
 /* ---------- Blog typography (post body inside .markdown) ---------- */
 .blog-post-page .markdown {
   font-size: 1.0625rem;
