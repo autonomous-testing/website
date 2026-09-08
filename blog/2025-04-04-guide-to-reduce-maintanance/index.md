@@ -75,7 +75,7 @@ Integrating Wopee.io into your current process is straightforward:
 - **Seamless API Control:** Utilize provided APIs to integrate smoothly with CI/CD pipelines like GitHub, GitLab, Jenkins, or Azure DevOps.
 - **Strategic Focus:** Shift your attention toward designing comprehensive testing strategies, exploratory tests, and performance validations, leveraging your technical skills effectively.
 
-While we are actively developing a fully self-service experience, our current customers typically engage with us through Pilot projects. These projects last around 8 weeks, during which we collaborate closely to configure and customize our solution, ensuring it precisely meets their specific requirements and integrates smoothly into their existing workflows.
+While we are actively developing a fully self-service experience, many teams start with a [pilot project](https://wopee.io/pilot/): 8 weeks, run as 8 weekly sprints, during which we configure the solution around your application and coach your team to run it themselves.
 
 ## 6. Is Wopee.io Right for Your Workflow?
 
