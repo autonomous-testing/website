@@ -289,15 +289,25 @@ export function ToolCards({
 /* Fit panel                                                            */
 /* ------------------------------------------------------------------ */
 
-export function Fit({ best, notFor }: { best: string; notFor: string }) {
+export function Fit({
+  best,
+  notFor,
+  bestLabel = "Best for",
+  notForLabel = "Not for",
+}: {
+  best: string;
+  notFor: string;
+  bestLabel?: string;
+  notForLabel?: string;
+}) {
   return (
     <div className={s.fit}>
       <div className={`${s.fitBox} ${s.fitYes}`}>
-        <strong>Best for</strong>
+        <strong>{bestLabel}</strong>
         {best}
       </div>
       <div className={`${s.fitBox} ${s.fitNo}`}>
-        <strong>Not for</strong>
+        <strong>{notForLabel}</strong>
         {notFor}
       </div>
     </div>
@@ -374,10 +384,10 @@ export function Verdict({ real, buzz }: { real: string; buzz: string }) {
 /* Takeaway (one-line section lead)                                     */
 /* ------------------------------------------------------------------ */
 
-export function Takeaway({ children }: { children: React.ReactNode }) {
+export function Takeaway({ children, label = "In short" }: { children: React.ReactNode; label?: string }) {
   return (
     <div className={s.takeaway}>
-      <span className={s.takeawayLabel}>In short</span>
+      <span className={s.takeawayLabel}>{label}</span>
       <div>{children}</div>
     </div>
   );
@@ -704,5 +714,77 @@ export function Objections({ items }: { items: { claim: string; answer: string }
         </div>
       ))}
     </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Myth card (claim, verdict, one-line why)                             */
+/* ------------------------------------------------------------------ */
+
+export function Myth({ n, claim, verdict, why }: { n: number; claim: string; verdict: string; why: string }) {
+  return (
+    <div className={s.myth}>
+      <div className={s.mythHead}>
+        <span className={s.mythN}>Myth {n}</span>
+        <span className={s.mythVerdict}>{verdict}</span>
+      </div>
+      <div className={s.mythClaim}>
+        {"“"}
+        {claim}
+        {"”"}
+      </div>
+      <div className={s.mythWhy}>{why}</div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Bars (horizontal, one value per row)                                 */
+/* ------------------------------------------------------------------ */
+
+type BarTone = "primary" | "muted" | "warn" | "ok";
+
+export function Bars({
+  items,
+  max = 100,
+  unit = "%",
+  caption,
+}: {
+  items: { label: string; value: number; note?: string; tone?: BarTone }[];
+  max?: number;
+  unit?: string;
+  caption?: string;
+}) {
+  return (
+    <figure className={`${s.figure} ${s.figurePlain}`}>
+      <div className={s.bars}>
+        {items.map((it) => (
+          <div className={s.bar} key={it.label} data-tone={it.tone ?? "primary"}>
+            <div className={s.barLabel}>
+              {it.label}
+              {it.note && <span className={s.barNote}>{it.note}</span>}
+            </div>
+            <div className={s.barTrack}>
+              <div className={s.barFill} style={{ width: `${Math.min(100, (it.value / max) * 100)}%` }} />
+            </div>
+            <div className={s.barValue}>
+              {it.value}
+              {unit}
+            </div>
+          </div>
+        ))}
+        {unit === "%" && max === 100 && (
+          <div className={s.barAxis} aria-hidden="true">
+            <span />
+            <span>
+              <span>0</span>
+              <span>100%</span>
+            </span>
+            <span />
+          </div>
+        )}
+      </div>
+      {caption && <figcaption className={s.figCaption}>{caption}</figcaption>}
+    </figure>
   );
 }
