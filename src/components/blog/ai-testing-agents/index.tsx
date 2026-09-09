@@ -572,7 +572,7 @@ export function Ladder({ rungs }: { rungs: { title: string; example: string; not
   return (
     <ol className={s.ladder}>
       {rungs.map((r, i) => ({ ...r, i })).reverse().map((r) => (
-        <li className={s.rung} key={r.title} data-i={r.i}>
+        <li className={s.rung} key={r.title} data-i={r.i} style={{ "--i": r.i } as React.CSSProperties}>
           <div className={s.rungN}>Rung {r.i + 1}</div>
           <div className={s.rungTitle}>{r.title}</div>
           <div className={s.rungExample}>{r.example}</div>

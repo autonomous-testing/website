@@ -1,0 +1,142 @@
+/* Loop figure */
+.loopFig {
+  margin: 1.5rem 0 2.6rem;
+}
+.loopSvg {
+  display: block;
+  width: 100%;
+  min-width: 820px;
+  height: auto;
+  overflow: visible;
+}
+.loopList {
+  display: none;
+}
+@media (max-width: 800px) {
+  .loopSvg {
+    display: none;
+  }
+  .loopList {
+    display: grid;
+    gap: 0.6rem;
+  }
+}
+.loopStep {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.loopStep strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.loopStep > div > span {
+  display: block;
+  color: var(--ifm-color-emphasis-700);
+}
+.loopN {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--ifm-background-surface-color);
+  background: var(--ifm-color-primary);
+}
+.loopCaption {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.45;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Terminal card: what the tester types, what the agent returns */
+.term {
+  margin: 1rem 0 1.6rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+.termBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-color-emphasis-100);
+}
+.termLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--ifm-color-emphasis-800);
+}
+.termCmd {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary-darkest);
+}
+[data-theme="dark"] .termCmd {
+  color: var(--ifm-color-primary-lightest);
+}
+.termCmd::before {
+  content: "$ ";
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 400;
+}
+.termOut {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  background: transparent;
+  border-radius: 0;
+  color: var(--ifm-font-color-base);
+}
+.termFoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 0.9rem 0.85rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+.termChip {
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.5;
+  min-height: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-800);
+  background: var(--ifm-background-color);
+}
+.termChip[data-kind="human"] {
+  order: -1;
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-darkest);
+  background: var(--ifm-color-primary-contrast-background);
+}
+[data-theme="dark"] .termChip[data-kind="human"] {
+  color: var(--ifm-color-primary-lightest);
+}
