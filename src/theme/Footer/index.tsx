@@ -84,7 +84,7 @@ export default function Footer(): JSX.Element {
             >
               <img
                 src={logo}
-                alt=""
+                alt="Wopee.io logo"
                 width={32}
                 height={32}
                 className="h-8 w-8 dark:invert"

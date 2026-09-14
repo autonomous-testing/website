@@ -13,7 +13,7 @@ export function TeamMemberCard({
       <img
         className="rounded-t-lg object-cover h-[328px]"
         src={img}
-        alt=""
+        alt={name}
       />
 
       <div className="p-5 card rounded-t-none">

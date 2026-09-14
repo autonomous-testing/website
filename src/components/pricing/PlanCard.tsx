@@ -114,7 +114,7 @@ export default function PlanCard({
       {/* Decorative plan image, bottom-right watermark */}
       <img
         src={image}
-        alt=""
+        alt={`${title} plan`}
         aria-hidden="true"
         className="absolute -bottom-2 -right-2 w-28 h-28 object-contain opacity-50 dark:opacity-30 pointer-events-none select-none rotate-[8deg]"
       />

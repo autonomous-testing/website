@@ -268,7 +268,7 @@ export default function Pricing(): JSX.Element {
         >
           <img
             src="/img/subscription-plans/enterprise.png"
-            alt=""
+            alt="Enterprise plan"
             aria-hidden="true"
             className="absolute -bottom-4 -right-4 w-32 h-32 object-contain opacity-50 dark:opacity-30 pointer-events-none select-none rotate-[8deg]"
           />
