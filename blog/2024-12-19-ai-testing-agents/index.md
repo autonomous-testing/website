@@ -2,7 +2,8 @@
 slug: ai-testing-agents
 date: 2026-09-08
 title: "AI Testing Agents in 2026: Hype, Reality, and 5 Tools Compared"
-description: "What AI testing agents actually do in 2026: the agentic loop, agent memory, ChatOps for QA, enterprise readiness, 12 questions for vendors, and an honest comparison of Wopee.io, Shiplight, Momentic, mabl and Midscene.js with verified pricing."
+title_meta: "AI Testing Agents 2026: 5 Tools Compared"
+description: "What AI testing agents really do in 2026: the agentic loop, memory, enterprise readiness, and an honest comparison of 5 tools with verified pricing."
 authors: marcel
 tags: [testing, automation, AI]
 image: ./ai-testing-agents.webp

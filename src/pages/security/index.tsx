@@ -618,7 +618,7 @@ const SecurityPage = () => {
   return (
     <Layout
       title="Security & Data Protection"
-      description="Wopee.io security and AI governance: EU data residency by default, encryption in transit and at rest, no training on your data, no self-learning, bring your own LLM account, EU AI Act provider and deployer roles, 30-day deletion, and on-prem options."
+      description="Wopee.io security and AI governance: EU data residency, encryption in transit and at rest, no training on your data, EU AI Act roles, and on-prem options."
     >
       <HeroSection />
       <KeyFactsSection />

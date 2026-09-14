@@ -28,7 +28,7 @@ export default function AiTestingHub() {
 
   return (
     <Layout
-      title="AI Testing for Every Framework, Industry & Use Case"
+      title="AI Testing by Framework, Industry & Use Case"
       description="Browse Wopee.io's AI testing guides by framework (React, Angular, Vue…), industry (fintech, SaaS, e-commerce…), and use case (regression, visual, E2E)."
     >
       <main className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16">

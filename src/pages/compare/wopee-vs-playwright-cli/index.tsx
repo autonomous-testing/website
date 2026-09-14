@@ -111,7 +111,7 @@ const WopeeVsPlaywrightCli = () => {
   return (
     <Layout
       title="Wopee.io vs Playwright CLI"
-      description="Wopee.io vs the Playwright CLI and Test Agents: free DIY toolkit with your own LLM and orchestration, or a managed autonomous testing platform on the same foundation."
+      description="Wopee.io vs Playwright CLI and Test Agents: a free DIY toolkit with your own LLM and orchestration, or a managed autonomous testing platform on top."
     >
       <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center">
         <div className="flex flex-col gap-6 max-w-4xl">

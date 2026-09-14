@@ -270,8 +270,8 @@ function LeadCard({ lead, detail }: { lead: string; detail: string }) {
 export default function PilotPage() {
   return (
     <Layout
-      title="Pilot Projects: prove autonomous testing in 8 weeks"
-      description="An 8-week, fixed-scope pilot on your own application. Up to 10 critical flows, a baseline measured in Sprint 1, and a go or no-go decision at the end. From €12,000, credited in full against year one."
+      title="Pilot: prove autonomous testing in 8 weeks"
+      description="An 8-week, fixed-scope pilot on your own app: up to 10 critical flows, a Sprint 1 baseline, and a go/no-go decision. From €12,000, credited against year one."
     >
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSON_LD)}</script>

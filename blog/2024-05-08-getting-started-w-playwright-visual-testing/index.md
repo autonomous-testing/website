@@ -1,6 +1,7 @@
 ---
 slug: getting-started-with-playwright-visual-testing
 title: "Playwright Visual Testing: Complete Setup Guide (2026)"
+title_meta: "Playwright Visual Testing: Setup Guide (2026)"
 description: "2026 guide to Playwright visual testing: install, write screenshot tests, manage baselines, integrate visual checks into CI. Working code samples."
 authors: marcel
 tags: [basics, testing-tools, playwright, test-automation, visual-testing]

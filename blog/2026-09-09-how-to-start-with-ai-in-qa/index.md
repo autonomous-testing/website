@@ -1,6 +1,7 @@
 ---
 slug: how-to-start-with-ai-in-qa
 title: "How to Start with AI in QA: The 4 Questions Every Team Asks"
+title_meta: "How to Start with AI in QA: 4 Key Questions"
 description: "Four questions QA teams ask about AI, answered as one loop: validate docs, derive scenarios, generate tests, draft bugs. A person presses the last button."
 tags: [ai-testing, qa-process, test-automation, coding-agents, mcp, getting-started]
 image: ./hero.webp
