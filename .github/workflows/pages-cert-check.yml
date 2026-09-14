@@ -1,0 +1,44 @@
+name: Pages certificate check
+
+# GitHub Pages renews the custom-domain certificate itself, but renewal fails while the apex is
+# proxied through Cloudflare (state "bad_authz"). Under Cloudflare's Full (strict) mode an expired
+# origin cert is an outage, so this run fails loudly, which emails the workflow's committer,
+# when the certificate is not approved or has under 35 days left. Re-issue procedure:
+# vem-agents skills/Engineering/reference/cloudflare-and-pages.md.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read the Pages certificate state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          json=$(gh api "repos/${GITHUB_REPOSITORY}/pages")
+          cname=$(jq -r '.cname // "(no custom domain)"' <<<"$json")
+          state=$(jq -r '.https_certificate.state // "none"' <<<"$json")
+          expires=$(jq -r '.https_certificate.expires_at // empty' <<<"$json")
+          if [ -n "$expires" ]; then
+            days=$(( ( $(date -d "$expires" +%s) - $(date +%s) ) / 86400 ))
+          else
+            days=0
+          fi
+          {
+            echo "## Pages certificate for $cname"
+            echo "- state: \`$state\`"
+            echo "- expires: ${expires:-unknown} ($days days)"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "$cname: state=$state expires=${expires:-unknown} days=$days"
+          if [ "$state" != "approved" ] || [ "$days" -lt 35 ]; then
+            echo "::error::Certificate for $cname needs attention: state=$state, $days days left. Follow the re-issue procedure in vem-agents skills/Engineering/reference/cloudflare-and-pages.md."
+            exit 1
+          fi
