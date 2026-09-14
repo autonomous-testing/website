@@ -189,6 +189,8 @@ const config = {
         // },
         blog: {
           exclude: ["**/blog/2019*"],
+          blogDescription:
+            "Guides, research and case studies on AI-driven autonomous testing: test generation, self-healing, visual testing and Playwright in CI.",
           blogSidebarCount: 0,
         },
         theme: {

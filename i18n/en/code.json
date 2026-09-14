@@ -1,4 +1,8 @@
 {
+  "theme.blog.archive.description": {
+    "message": "Every Wopee.io blog post on AI-driven autonomous testing, visual testing and test automation, listed by publication date.",
+    "description": "The page & hero description of the blog archive page"
+  },
   "theme.blog.tagTitle": {
     "message": "Tag: {tagName}"
   }
