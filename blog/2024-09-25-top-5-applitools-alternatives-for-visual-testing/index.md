@@ -148,7 +148,7 @@ For a deeper look at how visual diff engines actually work (pixel, SSIM, pHash, 
 
 **Best for:** Small teams, OSS projects, or any codebase already on Playwright that wants visual checks without a vendor. **Not for:** Teams that need a visual review UI for non-engineers, or large baseline libraries (1,000+ snapshots).
 
-If you want the Playwright foundation *plus* a managed dashboard and AI-assisted maintenance, that's the Wopee.io trade-off: same underlying framework, hosted experience on top. See our [getting started with Playwright visual testing](/blog/getting-started-with-playwright-visual-testing) guide for the DIY path.
+If you want the Playwright foundation *plus* a managed dashboard and AI-assisted maintenance, that's the Wopee.io trade-off: same underlying framework, hosted experience on top. See our [getting started with Playwright visual testing](/blog/getting-started-with-playwright-visual-testing/) guide for the DIY path.
 
 ## Pricing side-by-side (2026)
 
@@ -254,7 +254,7 @@ import VisualBug from './visual-bugs.webp';
 There is no single best Applitools alternative, there's a best one *for your team* given budget, stack, and what you're trying to consolidate:
 
 - **Need functional + visual in one platform with self-healing?** → [**Wopee.io**](/pricing/).
-- **Already on Playwright and want zero new vendors?** → [Playwright's built-in `toHaveScreenshot`](/blog/getting-started-with-playwright-visual-testing).
+- **Already on Playwright and want zero new vendors?** → [Playwright's built-in `toHaveScreenshot`](/blog/getting-started-with-playwright-visual-testing/).
 - **Storybook-first frontend team?** → Chromatic.
 - **Need an OSS license and willing to wire it yourself?** → BackstopJS.
 - **Already in the BrowserStack ecosystem?** → Percy.

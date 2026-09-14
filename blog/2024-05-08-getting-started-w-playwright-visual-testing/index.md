@@ -371,7 +371,7 @@ The same command for basic Playwright visual testing can be used to run tests:
 npx playwright test
 ```
 
-All baselines are now stored and maintained (approved or rejected) in Commander ([cmd.wopee.io](https://cmd.wopee.io/)). This enhances the efficiency of your visual testing by offering a single source of truth for the entire team. Tracking history and versions is now more straightforward and efficient, with the additional capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
+All baselines are now stored and maintained (approved or rejected) in Commander ([cmd.wopee.io](https://cmd.wopee.io/login)). This enhances the efficiency of your visual testing by offering a single source of truth for the entire team. Tracking history and versions is now more straightforward and efficient, with the additional capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
 
 ### 4. Using More Advanced (still simple) Options
 
