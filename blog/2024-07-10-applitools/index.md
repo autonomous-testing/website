@@ -1,6 +1,7 @@
 ---
 slug: applitools
 title: "Applitools vs Wopee.io: Pricing, Features, and AI Compared"
+title_meta: "Applitools vs Wopee.io: Pricing & AI Compared"
 description: "Applitools vs Wopee.io: Applitools starts at $399/mo with complex setup. Wopee.io starts free with AI-powered autonomous testing and Playwright support."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
@@ -103,7 +104,7 @@ _The fastest sports information and scores provider from 35+ sports to 100M peop
 
 , **Martin Šimon**, Test Automation Lead
 
-For more details on how Livesport leverages Wopee.io for visual testing, check out the full case study [here](/blog/livesport-visual-testing-w-wopee-io).
+For more details on how Livesport leverages Wopee.io for visual testing, check out the full case study [here](/blog/livesport-visual-testing-w-wopee-io/).
 
 ## Pricing Comparison: Applitools vs. Wopee.io
 
@@ -147,7 +148,7 @@ Teams frustrated with the **high costs** and **complex maintenance** of Applitoo
 
 ## Conclusion: Wopee.io – The Smart Choice for Visual Regression Testing
 
-Looking at more options? See our [Top 5 Applitools Alternatives](/blog/applitools-alternatives) comparison for a broader view including Percy, LambdaTest, Chromatic, and BackstopJS.
+Looking at more options? See our [Top 5 Applitools Alternatives](/blog/applitools-alternatives/) comparison for a broader view including Percy, LambdaTest, Chromatic, and BackstopJS.
 
 If you’re looking for a fast, affordable, and **easy-to-use visual regression testing tool**, **Wopee.io** is the clear winner.
 

@@ -1,6 +1,7 @@
 ---
 slug: livesport-visual-testing-w-wopee-io
 title: "Livesport Testing: How Wopee.io Powers Visual Testing"
+title_meta: "Livesport: Visual Testing with Wopee.io"
 description: "How Livesport uses Wopee.io for visual testing at scale. A real-world case study on maintaining UI quality across a high-traffic sports data platform."
 authors: marcel
 tags: [testing, quality assurance, automation, visual testing]

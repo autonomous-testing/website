@@ -1,6 +1,7 @@
 ---
 slug: guide-to-reduce-maintanance
 title: "A Test Automation Engineer's Guide to Reducing Maintenance"
+title_meta: "Reducing Test Automation Maintenance: A Guide"
 description: "Test automation engineers shouldn't spend their days fixing broken selectors. How Wopee.io handles routine test maintenance so you focus on architecture."
 authors: marcel
 tags:

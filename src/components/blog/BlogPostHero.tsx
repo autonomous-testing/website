@@ -22,7 +22,7 @@ export default function BlogPostHero({ className }: BlogPostHeroProps) {
         <div className="mb-8 overflow-hidden rounded-xl">
           <img
             src={cover}
-            alt=""
+            alt={title}
             className="w-full aspect-video object-cover"
           />
         </div>

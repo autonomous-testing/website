@@ -17,7 +17,7 @@ Here are a few examples with the Swag Labs demo project inside Wopee.io Commande
 
 <!--truncate-->
 
-[Test design techniques](/blog/test-design-techniques) are important to achieve comprehensive test coverage and assure effective testing.
+[Test design techniques](/blog/test-design-techniques/) are important to achieve comprehensive test coverage and assure effective testing.
 
 ## Example prompts you can use
 

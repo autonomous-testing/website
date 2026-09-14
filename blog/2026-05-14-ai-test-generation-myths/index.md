@@ -1,6 +1,7 @@
 ---
 slug: ai-test-generation-myths
 title: "5 AI Test Generation Myths QA Teams Still Believe in 2026"
+title_meta: "5 AI Test Generation Myths QA Teams Believe"
 description: "Five AI test automation myths examined against 2024-2026 benchmark evidence: coverage scores, agentic execution, self-healing, model choice, and human review."
 tags: [ai-testing, test-automation, qa-strategy, llm-testing, listicle]
 authors: marcel

@@ -22,3 +22,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
+      - name: Check SEO meta (titles, descriptions, alt text)
+        run: node scripts/check-seo-meta.js

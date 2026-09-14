@@ -37,7 +37,7 @@ export default function FeaturedPostHero({ post, className }: FeaturedPostHeroPr
           {cover ? (
             <img
               src={cover}
-              alt=""
+              alt={title}
               loading="eager"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />

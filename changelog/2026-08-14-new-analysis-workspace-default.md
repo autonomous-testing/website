@@ -1,6 +1,7 @@
 ---
 slug: new-analysis-workspace-default
 title: "The redesigned Analysis workspace is now the default"
+title_meta: "Redesigned Analysis workspace is now default"
 description: "The three-column Analysis workspace, with a live agent view, scenario board, run tabs, and a Steps-to-Code view, is now the default for all organizations."
 ---
 

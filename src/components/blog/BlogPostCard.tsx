@@ -37,7 +37,7 @@ export default function BlogPostCard({ className }: BlogPostCardProps) {
         {cover ? (
           <img
             src={cover}
-            alt=""
+            alt={title}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />

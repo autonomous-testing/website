@@ -1,6 +1,7 @@
 ---
 slug: getting-started-with-playwright-visual-testing
 title: "Playwright Visual Testing: Complete Setup Guide (2026)"
+title_meta: "Playwright Visual Testing: Setup Guide (2026)"
 description: "2026 guide to Playwright visual testing: install, write screenshot tests, manage baselines, integrate visual checks into CI. Working code samples."
 authors: marcel
 tags: [basics, testing-tools, playwright, test-automation, visual-testing]
@@ -370,7 +371,7 @@ The same command for basic Playwright visual testing can be used to run tests:
 npx playwright test
 ```
 
-All baselines are now stored and maintained (approved or rejected) in Commander ([cmd.wopee.io](https://cmd.wopee.io/)). This enhances the efficiency of your visual testing by offering a single source of truth for the entire team. Tracking history and versions is now more straightforward and efficient, with the additional capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
+All baselines are now stored and maintained (approved or rejected) in Commander ([cmd.wopee.io](https://cmd.wopee.io/login)). This enhances the efficiency of your visual testing by offering a single source of truth for the entire team. Tracking history and versions is now more straightforward and efficient, with the additional capability to monitor across various configurations, browsers, operating systems, branches, and testing environments.
 
 ### 4. Using More Advanced (still simple) Options
 

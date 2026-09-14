@@ -444,7 +444,7 @@ _Source: tatrabanka.sk - internet banking demo ._
 **3. Unnecessary automation:** In some cases, visual testing might be overkill, especially if most of your tests are manual. It's important to evaluate whether the benefits of visual validation justify the additional complexity.
 
 :::tip
-If you are interested in more information about visual testing, you can read our article [Getting Started with Playwright Visual Testing](/blog/getting-started-with-playwright-visual-testing).
+If you are interested in more information about visual testing, you can read our article [Getting Started with Playwright Visual Testing](/blog/getting-started-with-playwright-visual-testing/).
 :::
 
 ### Demo: Visual Assertions with Wopee Library

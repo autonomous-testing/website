@@ -1,7 +1,10 @@
 import React from "react";
+import Link from "@docusaurus/Link";
+import { useLocation } from "@docusaurus/router";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
+import { COMPARISONS } from "./comparisons";
 
 type CompareCtaProps = {
   heading: string;
@@ -11,6 +14,11 @@ type CompareCtaProps = {
 
 const CompareCta = ({ heading, subheading, ctaId }: CompareCtaProps) => {
   const loginUrl = useCmdLoginUrl();
+  const { pathname } = useLocation();
+  const related =
+    pathname.replace(/\/?$/, "/") === "/compare/"
+      ? []
+      : COMPARISONS.filter((c) => !pathname.startsWith(c.href.slice(0, -1)));
   return (
     <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
       <div className="container my-12 lg:my-16 py-16 lg:py-24 flex flex-col justify-center gap-5 lg:gap-10 text-center">
@@ -39,6 +47,23 @@ const CompareCta = ({ heading, subheading, ctaId }: CompareCtaProps) => {
             />
           </div>
         </div>
+        {related.length > 0 && (
+          <nav
+            aria-label="More comparisons"
+            className="flex flex-wrap justify-center gap-x-5 gap-y-2 px-2 text-sm"
+          >
+            <span className="font-semibold">More comparisons:</span>
+            {related.map((c) => (
+              <Link
+                key={c.href}
+                to={c.href}
+                className="text-secondary-wopee dark:text-primary-wopee underline"
+              >
+                {c.title}
+              </Link>
+            ))}
+          </nav>
+        )}
       </div>
     </div>
   );

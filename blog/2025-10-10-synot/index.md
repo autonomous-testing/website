@@ -1,5 +1,6 @@
 ---
 title: How SYNOT TECH scaled test automation (& visual testing)
+title_meta: "How SYNOT TECH Scaled Test Automation"
 description: A story of evolving QA maturity in a complex iGaming environment and how visual testing helped make automation more robust.
 slug: synot-tech-test-automation-wopee
 authors: [marcel]
