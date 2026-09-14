@@ -14,6 +14,7 @@ const JSONLD_PRODUCT = {
     "@type": "Brand",
     name: "Wopee.io",
   },
+  image: "https://wopee.io/img/wopee-social-card.jpg",
   url: "https://wopee.io/pricing/",
   offers: [
     {
