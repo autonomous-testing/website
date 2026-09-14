@@ -1,5 +1,5 @@
 // Post-build SEO guard: fails when an indexable page ships a <title> over 60
-// characters, a meta description over 160, or an <img> with empty alt text.
+// characters, a meta description under 110 or over 160, or an <img> with empty alt text.
 // Runs against build/ after `docusaurus build` (see .github/workflows/test-deploy.yml).
 
 const fs = require("fs");
@@ -7,6 +7,7 @@ const path = require("path");
 
 const BUILD = path.join(__dirname, "..", "build");
 const MAX_TITLE = 60;
+const MIN_DESCRIPTION = 110;
 const MAX_DESCRIPTION = 160;
 
 const decode = (s) =>
@@ -40,6 +41,7 @@ for (const file of htmlFiles(BUILD)) {
 
   const desc = decode((html.match(/<meta[^>]+name="description"[^>]+content="([^"]*)"/i) || [, ""])[1]);
   if (desc.length > MAX_DESCRIPTION) problems.push(`${route}  description ${desc.length} > ${MAX_DESCRIPTION}`);
+  if (desc.length > 0 && desc.length < MIN_DESCRIPTION) problems.push(`${route}  description ${desc.length} < ${MIN_DESCRIPTION}`);
 
   const emptyAlt = (html.match(/<img\b[^>]*>/gi) || []).filter((tag) => /\balt=""/.test(tag) || !/\balt=/.test(tag));
   if (emptyAlt.length) problems.push(`${route}  ${emptyAlt.length} <img> without alt text`);
