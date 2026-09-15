@@ -182,7 +182,7 @@ Mabl is an all-in-one cloud platform that combines ML-based locator healing with
 
 ### Selenium with Healenium, and where Playwright/Cypress differ
 
-Selenium remains the framework with the deepest self-healing tooling (Healenium, Testim, Katalon, Ranorex all started there). Playwright and Cypress users typically reach for AI-driven layers instead, for Playwright, our [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) regenerates failing locators on the fly so you do not maintain selectors manually, and exports runnable Playwright you keep.
+Selenium remains the framework with the deepest self-healing tooling (Healenium, Testim, Katalon, Ranorex all started there). Playwright and Cypress users typically reach for AI-driven layers instead, for Playwright, our [Playwright Bot](/blog/playwright-bot-ai-powered-test-automation/) regenerates failing locators on the fly so you do not maintain selectors manually, and exports runnable Playwright you keep. For a side-by-side view, see [Wopee.io vs Selenium](/compare/wopee-vs-selenium/) and [Wopee.io vs Cypress](/compare/wopee-vs-cypress/).
 
 ## Implementing Self-Healing in Your Test Suite
 

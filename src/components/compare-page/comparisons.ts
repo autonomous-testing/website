@@ -1,5 +1,19 @@
 export const COMPARISONS = [
   {
+    title: "Wopee.io vs Cypress",
+    href: "/compare/wopee-vs-cypress/",
+    tagline: "Hand-written specs vs generated tests",
+    description:
+      "Cypress is a well-loved framework, with parallel runs tied to Cypress Cloud and one tab per test. Wopee.io agents generate Playwright tests from your app, and you can keep Cypress while you switch.",
+  },
+  {
+    title: "Wopee.io vs Selenium",
+    href: "/compare/wopee-vs-selenium/",
+    tagline: "WebDriver library vs AI agents",
+    description:
+      "Selenium is the W3C standard with five languages, real Safari, and Appium. Wopee.io generates and maintains Playwright tests for web apps, with no drivers or grid to run. Honest about where Selenium wins.",
+  },
+  {
     title: "Wopee.io vs Playwright MCP",
     href: "/compare/wopee-vs-playwright-mcp/",
     tagline: "Browser automation vs a testing system",
