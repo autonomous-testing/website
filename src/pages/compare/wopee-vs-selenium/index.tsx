@@ -16,7 +16,7 @@ const TLDR_ROWS = [
     aspect: "Approach",
     left: "Open-source library implementing W3C WebDriver; you build the framework, reporting, and waits around it",
     right:
-      "AI testing agents that generate, run, and maintain Playwright tests from your running web app",
+      "AI agents generate, run, and maintain Playwright tests from your running web app",
   },
   {
     aspect: "Languages",
@@ -26,31 +26,31 @@ const TLDR_ROWS = [
   },
   {
     aspect: "Waits and flakiness",
-    left: "Explicit waits are written by hand, and Selenium's docs warn that mixing implicit and explicit waits causes unpredictable timeouts",
+    left: "Explicit waits are written by hand; Selenium's docs warn against mixing implicit and explicit waits",
     right:
-      "Playwright auto-waiting, plus an agent that waits for unsettled pages and reads back filled values",
+      "Playwright auto-waiting, plus an agent that waits for unsettled pages",
   },
   {
     aspect: "Locator maintenance",
-    left: "Stale elements and broken XPath or CSS selectors are fixed in code; healing needs add-ons such as Healenium",
+    left: "Stale elements and broken selectors are fixed in code, or with add-ons such as Healenium",
     right:
-      "Elements resolve by role and accessible name with fallbacks; a Troubleshoot sub-agent handles steps that keep failing",
+      "Accessible-name locators with fallbacks; an agent investigates steps that keep failing",
   },
   {
-    aspect: "Infrastructure",
-    left: "Browser drivers plus a self-hosted Grid, or a cloud grid at $29 to $225 per parallel session per month (list prices)",
+    aspect: "Execution",
+    left: "Runs locally or in CI; Selenium Manager sets up drivers; distributed runs use Selenium Grid or a hosted grid",
     right:
       "Agent runs execute as CI jobs managed by Wopee.io; self-hosted runners and on-premise for Enterprise",
   },
   {
     aspect: "Browsers and devices",
-    left: "Real Chrome, Firefox, Edge, and Safari; native mobile apps through Appium",
+    left: "Chrome, Firefox, Edge, and real Safari; native mobile apps through Appium, a separate WebDriver-based project",
     right: "Web apps in the browser; native mobile apps are out of scope",
   },
   {
     aspect: "Cost",
-    left: "Free library; you pay for infrastructure and the engineering time to maintain the suite",
-    right: "Published: start free, then 19 to 179 € per user per month",
+    left: "Free library; you pay for infrastructure, hosted grid sessions if you use them, and maintenance time",
+    right: "Start free, then 19 to 179 € per user per month",
   },
 ];
 
@@ -79,12 +79,12 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Is Selenium still relevant in 2026?",
     answer:
-      "Yes. Selenium 4.49 shipped in September 2026, releases arrive roughly monthly, and the project is moving its implementation to WebDriver BiDi. It remains the W3C standard with the broadest language and real-browser coverage. What has changed is where new web test suites start: many teams now pick Playwright or AI testing agents instead.",
+      "Yes. Selenium 4.49 shipped in September 2026, releases arrive roughly monthly, and the project is moving its implementation to WebDriver BiDi. Selenium implements the W3C WebDriver standard and has official bindings for more languages than any other major browser automation tool.",
   },
   {
     question: "What is the best AI alternative to Selenium?",
     answer:
-      "For web apps, look for a tool that generates tests from your running application and lets you export them as standard code, so your tests are not locked into a vendor. Wopee.io agents generate, run, and maintain Playwright tests you can export and run without Wopee.io. For native mobile apps or real Safari, Selenium with Appium is still the stronger fit.",
+      "For web apps, look for a tool that generates tests from your running application and lets you export them as standard code, so your tests are not locked into a vendor. Wopee.io agents generate, run, and maintain Playwright tests you can export and run without Wopee.io. For native mobile apps or real Safari, Selenium and Appium are still the stronger fit.",
   },
   {
     question: "Can Wopee.io import or convert Selenium tests?",
@@ -102,48 +102,48 @@ const FAQS: CompareFaqItem[] = [
       "Not natively. Teams add open-source libraries such as Healenium, which swaps a broken locator for the closest matching element, or commercial layers on top. Wopee.io resolves elements by role and accessible name, falls back to other locator strategies, and never heals a failed assertion into a pass.",
     render: (
       <>
-        Not natively. Teams add open-source libraries such as Healenium, which
-        swaps a broken locator for the closest matching element, or commercial
-        layers on top. Wopee.io resolves elements by role and accessible name,
-        falls back to other locator strategies, and never heals a failed
-        assertion into a pass. More in our{" "}
+        Not natively. Teams add{" "}
         <Link href="/blog/self-healing-in-sw-test-automation/">
-          guide to self-healing test automation
+          open-source libraries such as Healenium
         </Link>
-        .
+        , which swaps a broken locator for the closest matching element, or
+        commercial layers on top. Wopee.io resolves elements by role and
+        accessible name, falls back to other locator strategies, and never
+        heals a failed assertion into a pass.
       </>
     ),
   },
   {
     question: "Can Wopee.io test Safari or native mobile apps?",
     answer:
-      "Wopee.io tests web applications in the browser; native mobile apps are out of scope. If you need real Safari on macOS or native apps through Appium, Selenium is the better tool for those suites.",
+      "Wopee.io tests web applications in the browser; native mobile apps are out of scope. For real Safari, Selenium with safaridriver is the better fit, and for native mobile apps, Appium.",
   },
 ];
 
-const CostOfFree = () => (
+const WhatItCosts = () => (
   <section className="w-full flex flex-col items-center py-16 px-4">
     <div className="max-w-3xl mx-auto text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-secondary-wopee dark:text-yellow-400 mb-6">
-        The real cost of free Selenium
+        What Selenium actually costs
       </h2>
       <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-        Selenium itself costs nothing. The bill arrives elsewhere: a
-        self-hosted Grid to operate or a cloud grid subscription (BrowserStack,
-        Sauce Labs, and TestMu AI, formerly LambdaTest, list $29 to $225 per
-        parallel session per month), plus the hours spent on waits, stale
-        elements, and broken locators. Selenium Manager now handles most
-        driver downloads, which removed one classic chore, but not the rest.
+        The Selenium library is free. The costs sit around it: machines or a
+        hosted grid for parallel runs (BrowserStack, Sauce Labs, and TestMu
+        AI, formerly LambdaTest, start at $29 per parallel session per month at
+        list price, with higher tiers for more browsers and real devices), plus
+        the engineering hours spent on waits, stale elements, and broken
+        locators. Selenium Manager now automates driver setup, which removed
+        one classic chore.
       </p>
       <p className="text-lg text-slate-600 dark:text-slate-400 m-0">
-        Wopee.io puts execution and the maintenance agent behind one
-        published price:{" "}
+        Wopee.io is priced per user, with agent execution included:{" "}
         <Link href="/pricing/">
           start free, then 19 to 179 € per user per month
         </Link>
-        . If{" "}
-        <Link href="/blog/flaky-tests-complete-guide/">flaky tests</Link> are
-        what your team spends its week on, that is the cost to compare.
+        . The units differ, so compare the time your team spends on{" "}
+        <Link href="/blog/flaky-tests-complete-guide/">flaky tests</Link> and
+        repairs. That is the work Wopee.io's agents are built to reduce, while
+        your team still reviews the tests.
       </p>
     </div>
   </section>
@@ -202,14 +202,12 @@ const WopeeVsSelenium = () => {
             Selenium
           </h1>
           <p className="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-left sm:text-center">
-            Selenium is the open-source standard for browser automation: the
-            W3C WebDriver protocol, official bindings for five languages, and
-            Grid for running at scale. It is a library, so your team builds and
-            maintains the framework, the waits, and the infrastructure around
-            it. Wopee.io is an AI alternative to Selenium for web test
-            automation: agents explore your app, generate Playwright tests, run
-            them, and maintain them as the UI changes, with no drivers or grid
-            to operate.
+            Selenium is the open-source browser automation project behind the
+            W3C WebDriver standard, with official bindings for five languages.
+            It is a library, so your team builds the framework, waits, and
+            execution setup around it. Wopee.io is an AI alternative to
+            Selenium for web test automation: agents explore your app and
+            generate, run, and maintain Playwright tests your team reviews.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -245,21 +243,21 @@ const WopeeVsSelenium = () => {
         stickTitle="Stick with Selenium when"
         stickItems={[
           "Your test code must be written in Java, C#, Python, or Ruby",
-          "You need real Safari or native mobile apps through Appium",
+          "You need real Safari, or native mobile apps through Appium",
           "A mature Grid and framework already run reliably and maintenance is under control",
           "A vendor-neutral W3C standard is a hard requirement",
         ]}
         switchTitle="Switch to Wopee.io when"
         switchItems={[
           "Flaky waits and broken locators take more time than new coverage",
-          "Nobody wants to own browser drivers, Grid nodes, or a cloud grid bill",
+          "You'd rather not run Grid nodes or pay for hosted grid sessions",
           "You test web apps and want coverage generated from the running app",
           "You want visual regression and run evidence (screenshots, traces, video) built in",
           "You want Playwright code you can export, not tests in a proprietary format",
         ]}
       />
 
-      <CostOfFree />
+      <WhatItCosts />
 
       <MigrationSteps />
 
@@ -268,10 +266,10 @@ const WopeeVsSelenium = () => {
         faqs={FAQS}
       />
 
-      <LastChecked note="Last checked: September 2026. Selenium details come from selenium.dev documentation and release notes; cloud grid prices from the BrowserStack, Sauce Labs, and TestMu AI pricing pages." />
+      <LastChecked note="Last checked: September 2026. Selenium details come from selenium.dev documentation and release notes; hosted grid prices from the BrowserStack, Sauce Labs, and TestMu AI pricing pages." />
 
       <CompareCta
-        heading="Done maintaining WebDriver plumbing?"
+        heading="Rather review tests than repair them?"
         subheading="Start free and see generated tests today."
         ctaId="cta-vs-selenium-footer"
       />

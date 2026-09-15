@@ -14,39 +14,43 @@ import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 const TLDR_ROWS = [
   {
     aspect: "Approach",
-    left: "Open-source (MIT) test framework: your team writes and maintains JavaScript or TypeScript specs",
+    left: "Open-source (MIT) framework: your team writes and maintains JavaScript or TypeScript specs",
     right:
-      "AI testing agents explore your app from a URL and generate user stories, test cases, and Playwright code you review",
+      "AI agents explore your app from a URL and generate test cases and Playwright code you review",
   },
   {
     aspect: "AI assistance",
-    left: "cy.prompt turns plain-English steps into Cypress commands; it needs a Cypress Cloud account and runs in Chrome and Edge",
+    left: "cy.prompt turns plain-English steps into Cypress commands; it needs a Cypress Cloud account and Chrome or Edge",
     right:
-      "Agents generate and run the whole suite; every artifact is editable, and you can take over a live run in the Interactive Cockpit",
+      "Agents generate and run tests from your running app; every artifact is editable before it runs",
   },
   {
     aspect: "Maintenance",
-    left: "Broken selectors and timing issues are fixed by hand, outside of cy.prompt steps",
+    left: "Selectors are fixed by hand; cy.prompt steps can re-resolve when the page changes",
     right:
-      "Elements resolve by role and accessible name with fallbacks; a Troubleshoot sub-agent handles steps that keep failing, and failed assertions are never healed away",
+      "Accessible-name locators with fallbacks; an agent investigates steps that keep failing and never heals a failed assertion",
   },
   {
     aspect: "Tabs, origins, iframes",
-    left: "One browser tab per test, cy.origin() for other origins, and iframe support its own docs call limited",
+    left: "One tab per test, cy.origin() for other origins, and iframe support its own docs call limited",
     right:
-      "Built on Playwright: agent runs handle new tabs and resolve locators inside iframes, including cross-origin frames",
+      "Agent runs handle new tabs and iframes, including cross-origin frames",
   },
   {
     aspect: "Parallel runs",
-    left: "Parallelization requires recording to Cypress Cloud: free for 500 test results a month, then $799 or $3,199 per year",
-    right:
-      "Runs execute as CI jobs managed by Wopee.io, on published pricing: start free, then 19 to 179 € per user per month",
+    left: "Built-in parallelization and load balancing need Cypress Cloud; otherwise you split specs across CI jobs yourself",
+    right: "Runs execute as CI jobs managed by Wopee.io",
+  },
+  {
+    aspect: "Pricing",
+    left: "Framework free; Cloud Starter free for 500 test results a month, Team $799 and Business $3,199 per year for up to 50 users",
+    right: "Start free, then 19 to 179 € per user per month",
   },
   {
     aspect: "Visual testing",
     left: "Not built in: add Percy, Applitools, or an open-source snapshot plugin",
     right:
-      "Built into agent runs with baseline review; the Cypress plugin adds it to your existing specs",
+      "Built into agent runs with baseline review; the Cypress plugin adds it to existing specs",
   },
   {
     aspect: "Test ownership",
@@ -61,7 +65,7 @@ const MIGRATION_STEPS = [
     step: "1",
     title: "Keep the suite that works",
     description:
-      "Leave stable Cypress specs in CI. Nothing about Wopee.io requires deleting them, and the Cypress plugin can add visual checks to them in the meantime.",
+      "Leave stable Cypress specs in CI. Nothing about Wopee.io requires deleting them.",
   },
   {
     step: "2",
@@ -81,18 +85,19 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "What is the best Cypress alternative?",
     answer:
-      "It depends on why you are leaving. Teams that want a code-first framework usually move to Playwright, which drives multiple tabs, runs Chromium, Firefox, and WebKit, and parallelizes for free. Teams that want to stop writing and repairing specs look at AI testing agents. Wopee.io generates Playwright tests from your running web app, so you get an agent that maintains the suite and code you can export.",
+      "It depends on why you are leaving. Teams that want a code-first framework usually move to Playwright, which drives multiple tabs, runs Chromium, Firefox, and WebKit, and parallelizes without a paid service. Teams that want to stop writing and repairing specs look at AI testing agents. Wopee.io generates Playwright tests from your running web app, so you get agents that help maintain the suite and code you can export.",
   },
   {
     question: "How much does Cypress cost?",
     answer:
-      "The Cypress framework is free and MIT-licensed. Parallel runs require Cypress Cloud: as of September 2026 the Starter plan is free for 500 test results a month, Team costs $799 per year and Business $3,199 per year for 120,000 results, with extra results billed per 1,000, and Enterprise is quote-based. Wopee.io publishes its pricing: start free, then 19 to 179 € per user per month.",
+      "The Cypress framework is free and MIT-licensed. Cypress Cloud adds built-in parallelization, Test Replay, and analytics. As of September 2026 its Starter plan is free for 500 test results a month, and Team ($799 per year) and Business ($3,199 per year) each cover up to 50 users and 120,000 test results, with extra results billed per 1,000. Enterprise is quote-based. Wopee.io publishes its pricing: start free, then 19 to 179 € per user per month.",
     render: (
       <>
-        The Cypress framework is free and MIT-licensed. Parallel runs require
-        Cypress Cloud: as of September 2026 the Starter plan is free for 500
-        test results a month, Team costs $799 per year and Business $3,199 per
-        year for 120,000 results, with extra results billed per 1,000, and
+        The Cypress framework is free and MIT-licensed. Cypress Cloud adds
+        built-in parallelization, Test Replay, and analytics. As of September
+        2026 its Starter plan is free for 500 test results a month, and Team
+        ($799 per year) and Business ($3,199 per year) each cover up to 50
+        users and 120,000 test results, with extra results billed per 1,000.
         Enterprise is quote-based. Wopee.io publishes its pricing:{" "}
         <Link href="/pricing/">
           start free, then 19 to 179 € per user per month
@@ -104,7 +109,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Does Cypress have AI features?",
     answer:
-      "Yes. cy.prompt turns natural-language steps into Cypress commands and can re-resolve them when the page changes. It requires a Cypress Cloud account and runs in Chrome and Edge. Cypress Cloud adds AI error summaries and an MCP server. These features help you write and debug specs; Wopee.io agents explore the app and generate the suite for you.",
+      "Yes. cy.prompt turns natural-language steps into Cypress commands and can re-resolve them when the page changes. It requires a Cypress Cloud account and runs in Chrome and Edge. Cypress Cloud adds AI error summaries and an MCP server. These features help you write and debug specs; Wopee.io agents explore the app and generate the tests for you to review.",
   },
   {
     question: "Can Wopee.io convert my Cypress tests to Playwright?",
@@ -138,7 +143,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Is Cypress still maintained?",
     answer:
-      "Yes. Cypress 16.0 shipped on 1 September 2026 with native network interception in Chrome and Edge and memory management on by default, and releases arrive about every two weeks. It still sees around 5 million npm downloads a week, while Playwright has grown much faster over the same period.",
+      "Yes. Cypress 16.0 shipped on 1 September 2026 with native network interception in Chrome and Edge and memory management on by default, and new releases arrive about every two weeks.",
   },
 ];
 
@@ -212,20 +217,22 @@ const PricingWedge = () => (
         What you actually pay for
       </h2>
       <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-        Cypress the framework is free. Running a suite in parallel is where
-        Cypress Cloud comes in: the Starter plan includes 500 test results a
-        month, Team costs $799 a year and Business $3,199 a year for 120,000
-        results, with extra results billed at $5 to $6 per 1,000. UI Coverage
-        and Accessibility are premium add-ons without a public price.
+        Cypress the framework is free. Cypress Cloud adds built-in
+        parallelization, Test Replay, and analytics: the Starter plan includes
+        500 test results a month, and Team ($799 per year) and Business ($3,199
+        per year) each cover up to 50 users and 120,000 results, with extra
+        results billed at $5 to $6 per 1,000. UI Coverage and Accessibility are
+        add-ons without a public price.
       </p>
       <p className="text-lg text-slate-600 dark:text-slate-400 m-0">
-        With Wopee.io you pay for agents that generate, run, and maintain the
-        tests:{" "}
+        Wopee.io is priced per user, with agent usage set by plan:{" "}
         <Link href="/pricing/">
           start free, then 19 to 179 € per user per month
         </Link>
-        . The bigger cost in either case is the engineering time spent writing
-        and repairing specs, which is the part Wopee.io takes over.
+        . The units differ, so compare what usually costs the most: the
+        engineering time spent writing and repairing specs. That is the work
+        Wopee.io's agents are built to reduce, while your team still reviews
+        the tests.
       </p>
     </div>
   </section>
@@ -248,13 +255,11 @@ const WopeeVsCypress = () => {
             Cypress
           </h1>
           <p className="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-left sm:text-center">
-            Cypress is a well-loved JavaScript testing framework: great
-            debugging, excellent docs, and component testing, with parallel
-            runs tied to Cypress Cloud and one browser tab per test. Wopee.io
-            is a Cypress alternative of a different kind: AI testing agents
-            explore your web app, generate Playwright tests, and keep them
-            running as the UI changes. You can also keep Cypress and add
-            Wopee.io visual checks to it.
+            Cypress is a well-loved JavaScript testing framework with great
+            debugging, excellent docs, and component testing. Wopee.io is a
+            Cypress alternative of a different kind: AI testing agents explore
+            your web app and generate Playwright tests your team reviews. You
+            can also keep Cypress and add Wopee.io visual checks to it.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -315,7 +320,7 @@ const WopeeVsCypress = () => {
         faqs={FAQS}
       />
 
-      <LastChecked note="Last checked: September 2026. Cypress details come from cypress.io, its pricing page, docs.cypress.io, and the Cypress changelog; download figures from the npm registry." />
+      <LastChecked note="Last checked: September 2026. Cypress details come from cypress.io, its pricing page, docs.cypress.io, and the Cypress changelog." />
 
       <CompareCta
         heading="Tired of repairing specs?"
