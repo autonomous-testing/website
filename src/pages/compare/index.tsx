@@ -30,7 +30,7 @@ const CompareHub = () => {
   return (
     <Layout
       title="Compare AI Testing Tools"
-      description="Compare Wopee.io with Playwright CLI and MCP, Applitools, Tricentis Tosca, Ranorex, and Octomind alternatives. Honest comparisons with date-stamped facts."
+      description="Compare Wopee.io with Cypress, Selenium, Playwright CLI and MCP, Applitools, Tosca, Ranorex, and Octomind. Honest comparisons with date-stamped facts."
     >
       <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center">
         <div className="flex flex-col gap-6 max-w-4xl">
