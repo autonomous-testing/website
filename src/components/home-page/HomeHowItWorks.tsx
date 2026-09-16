@@ -50,7 +50,7 @@ export default function HomeHowItWorks(): JSX.Element {
           href={cmdBaseUrl}
           className="w-60 h-[50px]"
         />
-        <p className="text-sm italic">No credit card required</p>
+        <p className="text-sm italic text-gray-300">No credit card required</p>
       </div>
 
       {/* Fullscreen Video Modal */}

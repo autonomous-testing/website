@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { mdiFormatQuoteClose, mdiFormatQuoteOpen } from "@mdi/js";
 import Icon from "@mdi/react";
 import Link from "@docusaurus/Link";
@@ -113,9 +113,9 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
     <div
       className={`${
         activeItemIndex === itemIndex
-          ? "block md:opacity-100"
-          : "hidden md:opacity-0"
-      } md:absolute md:inset-0 md:flex md:items-center md:justify-center transition-opacity duration-500`}
+          ? "visible opacity-100"
+          : "invisible opacity-0"
+      } [grid-area:1/1] md:absolute md:inset-0 md:flex md:items-center md:justify-center transition-[opacity,visibility] duration-500`}
     >
       {isLivesport ? (
         <Link
@@ -138,11 +138,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
   );
 };
 
-const TestimonialSwitcher = ({
-  activeItemIndex,
-  setActiveItemIndex,
-  activateInterval,
-}) => {
+const TestimonialSwitcher = ({ activeItemIndex, onSelect }) => {
   return (
     <div className="flex justify-center mt-8">
       {testimonials.map((_, index) => (
@@ -151,10 +147,7 @@ const TestimonialSwitcher = ({
           type="button"
           // 24x24 tap target (WCAG 2.5.8) wrapping a 12px visual dot.
           className="appearance-none border-0 bg-transparent p-1.5 flex items-center justify-center cursor-pointer"
-          onClick={() => {
-            setActiveItemIndex(index);
-            activateInterval();
-          }}
+          onClick={() => onSelect(index)}
           aria-label={`Go to testimonial ${index + 1}`}
         >
           <span
@@ -172,22 +165,20 @@ const TestimonialSwitcher = ({
 
 const HomeSocialProof = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const activateInterval = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
+  const stopRotation = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-    const interval = setInterval(() => {
-      setActiveItemIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 6000);
-
-    setIntervalId(interval);
   };
 
   useEffect(() => {
-    activateInterval();
-    return () => clearInterval(intervalId);
+    intervalRef.current = setInterval(() => {
+      setActiveItemIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 6000);
+    return stopRotation;
   }, []);
 
   return (
@@ -202,7 +193,10 @@ const HomeSocialProof = () => {
       </div>
 
       <div className="max-w-4xl w-full px-4">
-        <div className="relative w-full md:h-[350px]">
+        <div
+          className="relative grid md:block w-full md:h-[350px]"
+          onPointerDown={stopRotation}
+        >
           {testimonials.map((testimonial, idx) => (
             <TestimonialCard
               key={idx}
@@ -215,8 +209,10 @@ const HomeSocialProof = () => {
 
         <TestimonialSwitcher
           activeItemIndex={activeItemIndex}
-          setActiveItemIndex={setActiveItemIndex}
-          activateInterval={activateInterval}
+          onSelect={(index) => {
+            stopRotation();
+            setActiveItemIndex(index);
+          }}
         />
       </div>
     </section>

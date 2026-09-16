@@ -198,7 +198,7 @@ const HomeHeroVibe = () => {
                     "Demo app" switches to a demo and opens the picker so a
                     specific demo (Website / E-commerce / Banking) stays
                     selectable. */}
-                <div className="inline-flex items-center gap-0.5 rounded-lg p-0.5 ring-1 ring-inset ring-secondary-wopee/20 dark:ring-white/10 bg-secondary-wopee/5 dark:bg-white/5">
+                <div className="inline-flex items-center gap-0.5 max-sm:flex max-sm:w-full max-sm:gap-1 rounded-lg p-0.5 ring-1 ring-inset ring-secondary-wopee/20 dark:ring-white/10 bg-secondary-wopee/5 dark:bg-white/5">
                   <div
                     role="button"
                     tabIndex={0}
@@ -210,16 +210,16 @@ const HomeHeroVibe = () => {
                         handleAppTypeChange(AppType.YOUR_APPLICATION);
                       }
                     }}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none cursor-pointer select-none transition-all ${
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none max-sm:flex-1 max-sm:justify-center max-sm:min-h-[44px] max-sm:text-sm cursor-pointer select-none transition-all ${
                       appType === AppType.YOUR_APPLICATION
                         ? "bg-secondary-wopee text-white shadow-sm"
-                        : "text-secondary-wopee/70 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
+                        : "text-secondary-wopee/90 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
                     }`}
                   >
                     <AppWindow className="w-3.5 h-3.5" />
                     Your app
                   </div>
-                  <div className="relative inline-flex" ref={demoMenuRef}>
+                  <div className="relative inline-flex max-sm:flex-1" ref={demoMenuRef}>
                     <div
                       role="button"
                       tabIndex={0}
@@ -241,10 +241,10 @@ const HomeHeroVibe = () => {
                           setDemoMenuOpen((open) => !open);
                         }
                       }}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none cursor-pointer select-none transition-all ${
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none max-sm:flex-1 max-sm:justify-center max-sm:min-h-[44px] max-sm:text-sm cursor-pointer select-none transition-all ${
                         DEMO_SCENARIOS.includes(appType)
                           ? "bg-secondary-wopee text-white shadow-sm"
-                          : "text-secondary-wopee/70 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
+                          : "text-secondary-wopee/90 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
                       }`}
                     >
                       <FlaskConical className="w-3.5 h-3.5" />
@@ -275,7 +275,7 @@ const HomeHeroVibe = () => {
                                   handleAppTypeChange(type);
                                 }
                               }}
-                              className={`flex items-center gap-2 px-3 py-1.5 text-[11px] cursor-pointer select-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${selected ? "text-secondary-wopee dark:text-primary-wopee font-semibold" : "text-gray-700 dark:text-gray-300"}`}
+                              className={`flex items-center gap-2 px-3 py-1.5 text-[11px] max-sm:min-h-[44px] max-sm:text-sm cursor-pointer select-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${selected ? "text-secondary-wopee dark:text-primary-wopee font-semibold" : "text-gray-700 dark:text-gray-300"}`}
                             >
                               <Icon className="w-3.5 h-3.5 flex-shrink-0" />
                               <span className="flex-1">{tpl.label}</span>
@@ -297,7 +297,7 @@ const HomeHeroVibe = () => {
                   type="url"
                   value={appUrl}
                   placeholder="https://your-project-url.com"
-                  className="flex-1 w-full bg-transparent border-none focus:outline-none text-sm font-mono text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  className="flex-1 w-full bg-transparent border-none focus:outline-none text-sm max-sm:text-base font-mono text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   onChange={handleUrlChange}
                 />
               </div>
@@ -324,7 +324,7 @@ const HomeHeroVibe = () => {
                           ? ""
                           : "What should the agent test? (e.g. login, checkout, search). Leave blank to let it decide."
                       }
-                      className={`block w-full rounded-lg px-3 py-2 outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-y text-sm leading-snug text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-colors ${
+                      className={`block w-full rounded-lg px-3 py-2 outline-none focus:border-secondary-wopee focus:ring-2 focus:ring-secondary-wopee/20 resize-y text-sm leading-snug max-sm:text-base max-sm:leading-snug text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-colors ${
                         collapsed
                           ? "bg-transparent border border-dashed border-gray-400/60 dark:border-gray-600/40 pointer-events-none"
                           : "bg-gray-50/80 dark:bg-gray-800/60 border border-gray-300 dark:border-gray-700"

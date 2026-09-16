@@ -89,6 +89,16 @@ export default function VideoCard({
             onLoadedData={handleVideoLoad}
             preload="metadata"
           >
+            <source
+              src={videoSrc.replace(".webm", "-mobile.webm")}
+              type="video/webm"
+              media="(max-width: 767px)"
+            />
+            <source
+              src={videoSrc.replace(".webm", "-mobile.mp4")}
+              type="video/mp4"
+              media="(max-width: 767px)"
+            />
             <source src={videoSrc} type="video/webm" />
             <source src={videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
             Your browser does not support the video tag.
