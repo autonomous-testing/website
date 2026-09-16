@@ -195,7 +195,7 @@ const OctomindAlternative = () => {
             generate real Playwright code you can export and run without Wopee.io
 , so a vendor shutdown can never strand your tests again.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
               <ButtonPrimary
                 label="Start for free"
@@ -209,7 +209,7 @@ const OctomindAlternative = () => {
             </div>
             <Link
               href="/pricing/"
-              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg"
+              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg flex items-center sm:h-[50px]"
             >
               See Wopee.io pricing &rarr;
             </Link>

@@ -130,7 +130,7 @@ const WopeeVsPlaywrightCli = () => {
             autonomous generation from a URL, hosted runs, visual baselines,
             and team review, with Playwright code you can export at any time.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
               <ButtonPrimary
                 label="Start for free"
@@ -144,7 +144,7 @@ const WopeeVsPlaywrightCli = () => {
             </div>
             <Link
               href="/compare/wopee-vs-playwright-mcp/"
-              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg"
+              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg flex items-center sm:h-[50px]"
             >
               Comparing with Playwright MCP? &rarr;
             </Link>

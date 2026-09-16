@@ -138,7 +138,7 @@ const WopeeVsTosca = () => {
             published pricing and generated Playwright code you can export.
             Which one fits depends on what you actually need to test.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
               <ButtonPrimary
                 label="Start for free"
@@ -152,7 +152,7 @@ const WopeeVsTosca = () => {
             </div>
             <Link
               href="/pricing/"
-              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg"
+              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg flex items-center sm:h-[50px]"
             >
               See Wopee.io pricing &rarr;
             </Link>
