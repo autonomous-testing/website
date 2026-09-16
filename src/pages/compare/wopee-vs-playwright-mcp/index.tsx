@@ -190,7 +190,7 @@ const WopeeVsPlaywrightMcp = () => {
             at any time. Most teams need both: Playwright MCP in the editor,
             Wopee.io as the regression safety net.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
               <ButtonPrimary
                 label="Start for free"
@@ -204,7 +204,7 @@ const WopeeVsPlaywrightMcp = () => {
             </div>
             <Link
               href="/mcp/"
-              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg"
+              className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg flex items-center sm:h-[50px]"
             >
               See how they work together &rarr;
             </Link>

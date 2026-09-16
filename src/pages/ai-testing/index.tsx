@@ -1,5 +1,6 @@
 import React from "react";
 
+import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoCard from "@site/src/components/pseo/PseoCard";
@@ -70,6 +71,16 @@ export default function AiTestingHub() {
             </section>
           );
         })}
+
+        <section className="mt-14">
+          <h2 className="text-2xl font-bold sm:text-3xl">Comparing testing tools?</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
+            Honest, date-stamped comparisons with the tools teams move from:{" "}
+            <Link href="/compare/wopee-vs-cypress/">Wopee.io vs Cypress</Link>,{" "}
+            <Link href="/compare/wopee-vs-selenium/">Wopee.io vs Selenium</Link>, and{" "}
+            <Link href="/compare/">all comparisons</Link>.
+          </p>
+        </section>
 
         <section className="mt-16 rounded-2xl bg-gradient-to-br from-secondary-wopee to-[#451f6b] px-6 py-10 text-center text-white">
           <h2 className="text-2xl font-bold sm:text-3xl">Don't see your exact setup?</h2>

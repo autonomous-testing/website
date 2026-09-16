@@ -30,7 +30,7 @@ const CompareHub = () => {
   return (
     <Layout
       title="Compare AI Testing Tools"
-      description="Compare Wopee.io with Playwright CLI and MCP, Applitools, Tricentis Tosca, Ranorex, and Octomind alternatives. Honest comparisons with date-stamped facts."
+      description="Compare Wopee.io with Cypress, Selenium, Playwright CLI and MCP, Applitools, Tosca, Ranorex, and Octomind. Honest comparisons with date-stamped facts."
     >
       <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center">
         <div className="flex flex-col gap-6 max-w-4xl">
@@ -43,7 +43,7 @@ const CompareHub = () => {
           <p className="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-left sm:text-center">
             AI testing tool comparisons should be honest: every tool has a
             place. These pages compare Wopee.io, an autonomous testing
-            platform that generates, runs, and maintains Playwright tests,
+            platform whose AI agents generate, run, and maintain tests for web apps,
             with the alternatives teams evaluate most often. Each page states
             what the other tool does well, when to stick with it, and when
             Wopee.io is the better fit. Facts are checked against public

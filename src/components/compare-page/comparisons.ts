@@ -1,5 +1,19 @@
 export const COMPARISONS = [
   {
+    title: "Wopee.io vs Cypress",
+    href: "/compare/wopee-vs-cypress/",
+    tagline: "Hand-written specs vs generated tests",
+    description:
+      "Cypress gives you fast, repeatable specs, great debugging, and component testing. Wopee.io agents write and run tests from your running app instead. Honest about where Cypress is stronger.",
+  },
+  {
+    title: "Wopee.io vs Selenium",
+    href: "/compare/wopee-vs-selenium/",
+    tagline: "WebDriver library vs AI agents",
+    description:
+      "Selenium implements the W3C WebDriver standard across five languages, with a huge ecosystem. Wopee.io agents write and run tests for web apps, with no drivers or grid. Honest about where Selenium is stronger.",
+  },
+  {
     title: "Wopee.io vs Playwright MCP",
     href: "/compare/wopee-vs-playwright-mcp/",
     tagline: "Browser automation vs a testing system",
