@@ -129,16 +129,11 @@ const config = {
                 },
               },
             ],
+            // HubSpot tracking loads after the load event, once the page is idle.
             postBodyTags: [
               {
                 tagName: "script",
-                attributes: {
-                  type: "text/javascript",
-                  id: "hs-script-loader",
-                  async: true,
-                  defer: true,
-                  src: "//js-eu1.hs-scripts.com/139620033.js",
-                },
+                innerHTML: `(function(){function a(){if(document.getElementById("hs-script-loader"))return;var s=document.createElement("script");s.id="hs-script-loader";s.async=true;s.defer=true;s.src="//js-eu1.hs-scripts.com/139620033.js";document.body.appendChild(s)}function i(){"requestIdleCallback"in window?requestIdleCallback(a,{timeout:3000}):setTimeout(a,1500)}document.readyState==="complete"?i():window.addEventListener("load",i,{once:true})})();`,
               },
             ],
           };

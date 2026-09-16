@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Maximize2 } from "lucide-react";
+import useDeferredInView from "@site/src/hooks/useDeferredInView";
 
 interface HeroVideoInlineProps {
   sources: string[];
@@ -14,7 +15,8 @@ interface HeroVideoInlineProps {
 
 // Muted autoplay loop of the demo clips, cycling through `sources`. Muting is
 // required for browsers to allow autoplay without a user gesture; onExpand
-// opens the fullscreen modal with sound + controls.
+// opens the fullscreen modal with sound + controls. Only the poster renders
+// until the page has loaded and the clip is in view.
 const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
   sources,
   poster,
@@ -25,10 +27,12 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
 }) => {
   const [index, setIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const active = useDeferredInView(frameRef, { respectReducedMotion: true });
 
   useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, [index]);
+    if (active) videoRef.current?.play().catch(() => {});
+  }, [index, active]);
 
   const currentSrc = sources[index];
 
@@ -42,6 +46,7 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
         className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       <div
+        ref={frameRef}
         role={onExpand ? "button" : undefined}
         tabIndex={onExpand ? 0 : undefined}
         onClick={onExpand}
@@ -57,9 +62,10 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
         <video
           ref={videoRef}
           key={`hero-inline-${index}`}
-          autoPlay
+          autoPlay={active}
           muted
           playsInline
+          preload={active ? "auto" : "none"}
           poster={poster}
           onEnded={() => setIndex((i) => (i + 1) % sources.length)}
           className={`w-full h-full object-cover transition-all duration-500 ease-out ${
@@ -68,18 +74,25 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
               : ""
           }`}
         >
-          <source
-            src={currentSrc.replace(".webm", "-mobile.webm")}
-            type="video/webm"
-            media="(max-width: 767px)"
-          />
-          <source
-            src={currentSrc.replace(".webm", "-mobile.mp4")}
-            type="video/mp4"
-            media="(max-width: 767px)"
-          />
-          <source src={currentSrc} type="video/webm" />
-          <source src={currentSrc.replace(".webm", ".mp4")} type="video/mp4" />
+          {active && (
+            <>
+              <source
+                src={currentSrc.replace(".webm", "-mobile.webm")}
+                type="video/webm"
+                media="(max-width: 767px)"
+              />
+              <source
+                src={currentSrc.replace(".webm", "-mobile.mp4")}
+                type="video/mp4"
+                media="(max-width: 767px)"
+              />
+              <source src={currentSrc} type="video/webm" />
+              <source
+                src={currentSrc.replace(".webm", ".mp4")}
+                type="video/mp4"
+              />
+            </>
+          )}
         </video>
 
         {onExpand && (
