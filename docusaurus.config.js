@@ -248,15 +248,9 @@ const config = {
             "/testing-bot/**",
           ],
         },
-        // Only emit analytics in production builds. The gtag plugin's
-        // onRouteDidUpdate calls window.gtag() unguarded; in dev (and any
-        // browser with an ad/privacy blocker) window.gtag is undefined, so
-        // every internal navigation, including in-page anchor clicks like
-        // the blog post TOC, throws an "Uncaught runtime error" overlay.
-        gtag:
-          process.env.NODE_ENV === "production"
-            ? { trackingID: "G-PVTHWLV51B" }
-            : undefined,
+        // Only emit analytics in production builds. GA4 (G-PVTHWLV51B) and
+        // Google Ads run from the GTM container with Consent Mode, including
+        // page_view on client-side navigation; no separate gtag plugin.
         googleTagManager:
           process.env.NODE_ENV === "production"
             ? { containerId: "GTM-T54MTRSZ" }
