@@ -26,23 +26,23 @@ const TLDR_ROWS = [
     aspect: "Test creation",
     left: "Recorder plus C#/VB.NET code; AI in Studio is still under development, per Ranorex's own blog (January 2026)",
     right:
-      "AI agents explore your app from a URL and generate user stories, test cases, and Playwright code",
+      "AI agents explore your app from a URL and generate user stories and test cases in plain language",
   },
   {
     aspect: "Licensing",
     left: "Quote-based; subscription-only for new customers since 2025, and access ends when the subscription lapses",
     right:
-      "Published: start free, then 19 to 179 € per user per month; exported tests keep running without Wopee.io",
+      "Published: start free, then 19 to 179 € per user per month",
   },
   {
     aspect: "Execution",
     left: "Runtime licenses required per additional concurrent endpoint",
-    right: "Cloud runs included; on-premise for Enterprise",
+    right: "Cloud runs included in every plan, metered in steps; on-premise for Enterprise",
   },
   {
     aspect: "Ecosystem",
     left: "Selenium WebDriver integration; no Playwright support in its documentation",
-    right: "Native Playwright output, exportable at any time",
+    right: "Built on Playwright; passing tests can also be generated as Playwright code",
   },
 ];
 
@@ -68,7 +68,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "What happens to Ranorex tests if the subscription ends?",
     answer:
-      "Ranorex's own licensing FAQ states that when a subscription lapses you lose access to the software immediately; project files remain but cannot run without renewing. Wopee.io works the other way: generated tests are deterministic Playwright code you can export at any time, and exported tests run as plain Playwright with no Wopee.io runtime.",
+      "Ranorex's own licensing FAQ states that when a subscription lapses you lose access to the software immediately; project files remain but cannot run without renewing. Wopee.io is a service too, so agent runs need an active account. What you keep is readable: your test cases are plain-language files you can download as JSON, not projects tied to proprietary assemblies.",
   },
   {
     question: "Does Ranorex support Playwright?",
@@ -88,7 +88,7 @@ const OwnershipWedge = () => {
     <section className="w-full flex flex-col items-center py-16 px-4">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-secondary-wopee dark:text-yellow-400 mb-6">
-          Who owns your tests when you stop paying?
+          What you keep, and what you pay to run
         </h2>
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
           Ranorex tests are C#/VB.NET projects, but they reference Ranorex's
@@ -98,10 +98,11 @@ const OwnershipWedge = () => {
           your files remain, your test runs do not.
         </p>
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-          Wopee.io generates deterministic Playwright code you can export at
-          any time. Exported tests run as plain, open-source Playwright, in
-          your CI, on any OS, with no Wopee.io runtime and no per-endpoint
-          run licenses.
+          Wopee.io is a service as well, so agent runs also stop with the
+          subscription. The differences: there are no per-endpoint run
+          licenses, since cloud runs are included in every plan, and your tests
+          are plain-language test cases your team can read, edit, and download
+          as JSON, not code bound to proprietary assemblies.
         </p>
         <ButtonPrimary
           label="Start for free"
@@ -120,7 +121,7 @@ const WopeeVsRanorex = () => {
   return (
     <Layout
       title="Wopee.io vs Ranorex"
-      description="Wopee.io vs Ranorex Studio: self-serve autonomous web testing with exportable Playwright code vs a quote-based, Windows-only toolchain with runtime licenses."
+      description="Wopee.io vs Ranorex Studio: self-serve autonomous web testing with published pricing vs a quote-based, Windows-only toolchain with runtime licenses."
     >
       <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center">
         <div className="flex flex-col gap-6 max-w-4xl">
@@ -135,9 +136,9 @@ const WopeeVsRanorex = () => {
             Ranorex Studio is a veteran Windows toolchain: recorder plus
             C#/VB.NET automation for desktop, web, and mobile, licensed by
             quote with runtime licenses per execution endpoint. Wopee.io is
-            web-native and autonomous: agents generate Playwright suites from
-            a URL, pricing is published, and exported tests keep running even
-            if you leave. Where your app lives decides this one.
+            web-native and autonomous: agents generate test suites from a URL,
+            pricing is published, and there are no per-endpoint run licenses.
+            Where your app lives decides this one.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -180,7 +181,7 @@ const WopeeVsRanorex = () => {
         switchTitle="Switch to Wopee.io when"
         switchItems={[
           "Your product is a web app and desktop coverage is dead weight",
-          "You want tests that outlive the subscription, as exportable Playwright code",
+          "You want tests as readable test cases, not code bound to proprietary assemblies",
           "You don't want Windows-only tooling in the loop",
           "You want AI test generation that ships today, not a roadmap item",
           "You want the price on the page and a free start, not a quote form",
@@ -198,7 +199,7 @@ const WopeeVsRanorex = () => {
 
       <CompareCta
         heading="Testing a web app?"
-        subheading="Start free and own the generated Playwright code."
+        subheading="Start free and see generated tests today."
         ctaId="cta-vs-ranorex-footer"
       />
     </Layout>

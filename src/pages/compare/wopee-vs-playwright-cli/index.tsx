@@ -16,13 +16,19 @@ const TLDR_ROWS = [
     aspect: "What it is",
     left: "The free Playwright toolkit: test runner, codegen recorder, trace viewer, and Test Agents definitions",
     right:
-      "An autonomous platform that generates, runs, and maintains Playwright tests for you",
+      "A managed platform whose AI agents generate, run, and maintain tests for your web app",
   },
   {
     aspect: "Test creation",
     left: "Codegen records as you click; Test Agents plan and generate tests, driven by your own AI tool and LLM account",
     right:
-      "Goal-driven agents explore your app and generate user stories, test cases, and Playwright code, no LLM account needed",
+      "Goal-driven agents explore your app and generate user stories and test cases, no LLM account needed",
+  },
+  {
+    aspect: "Test format",
+    left: "Test files your engineers own, in TypeScript, JavaScript, Python, Java, or .NET",
+    right:
+      "Plain-language test cases run by an AI agent; passing tests can also be generated as Playwright code that uses the Wopee.io SDK",
   },
   {
     aspect: "Orchestration",
@@ -46,6 +52,11 @@ const TLDR_ROWS = [
     right: "Runtime self-healing, plus honest failures with evidence attached",
   },
   {
+    aspect: "Speed",
+    left: "Scripted tests run in seconds and parallelize across workers",
+    right: "The agent works through each test step by step, which takes minutes per test",
+  },
+  {
     aspect: "Price",
     left: "Free, Apache-2.0 open source",
     right: "Start free, then 19 to 179 € per user per month, published",
@@ -56,7 +67,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Does Wopee.io replace Playwright?",
     answer:
-      "No, it builds on it. Wopee.io agents generate deterministic Playwright code, and the exported tests run with the standard Playwright CLI, no LLM and no Wopee.io runtime required. Playwright is the foundation; Wopee.io is the autonomous layer on top.",
+      "No. Wopee.io's agent drives the browser with Playwright under the hood, but a Wopee.io test is a plain-language test case the agent runs, not a Playwright file. Passing tests can also be generated as Playwright code, which uses the Wopee.io SDK for visual checks. You can keep a Playwright suite for fast, scripted checks and use Wopee.io for coverage that maintains itself.",
   },
   {
     question: "What are Playwright Test Agents?",
@@ -71,7 +82,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Can I run Wopee.io tests with the Playwright CLI?",
     answer:
-      "Yes. Exported Wopee.io tests are plain Playwright code: npx playwright test runs them anywhere the standard CLI works, in your CI, on your machines, with no Wopee.io dependency.",
+      "Partly. Wopee.io tests normally run as agent jobs. For a passing test, Wopee.io can generate a Playwright version that runs with npx playwright test, but it imports the Wopee.io SDK, and its visual checks call the Wopee.io API. Treat it as a head start for a scripted suite, not a copy that runs without Wopee.io.",
   },
 ];
 
@@ -84,12 +95,13 @@ const BetterTogether = () => {
           Same foundation, different altitude
         </h2>
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-          This page is not Playwright versus a rival. Wopee.io generates
-          Playwright code, and everything you export runs with the standard
-          Playwright CLI. The real question is who operates the loop around
-          the framework: your engineers with their own AI tooling, or a
-          managed platform with hosted agents, visual baselines, scheduling,
-          and team review built in.
+          This page is not Playwright versus a rival: Wopee.io's agent drives
+          the browser with Playwright too. The difference is what a test is.
+          With the Playwright CLI, a test is code your engineers write, run,
+          and repair. With Wopee.io, it is a plain-language test case that an
+          AI agent runs and adapts, with hosted runs, visual baselines,
+          scheduling, and team review built in. The trade-off is speed:
+          scripted Playwright runs in seconds, an agent takes minutes per test.
         </p>
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
           Playwright gives you the parts. Wopee.io ships the machine.
@@ -126,9 +138,9 @@ const WopeeVsPlaywrightCli = () => {
             The Playwright CLI is the best free testing toolkit on the web:
             runner, codegen, trace viewer, and, since v1.56, Test Agents that
             plan, generate, and heal tests through your own AI tool. Wopee.io
-            builds on the same foundation and operates the whole loop for you:
-            autonomous generation from a URL, hosted runs, visual baselines,
-            and team review, with Playwright code you can export at any time.
+            uses the same browser engine and operates the whole loop for you:
+            autonomous generation from a URL, tests run by an AI agent, hosted
+            runs, visual baselines, and team review.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -167,6 +179,7 @@ const WopeeVsPlaywrightCli = () => {
           "You already pay for an AI coding tool and want to drive Test Agents yourself",
           "Pixel-diff screenshots reviewed in git are enough visual coverage",
           "Your CI and infrastructure needs are already solved",
+          "You need fast, scripted tests that run in seconds",
         ]}
         switchTitle="Add Wopee.io when"
         switchItems={[
@@ -189,7 +202,7 @@ const WopeeVsPlaywrightCli = () => {
 
       <CompareCta
         heading="Keep the framework. Skip the plumbing."
-        subheading="Point Wopee.io at your app and export Playwright code whenever you like."
+        subheading="Point Wopee.io at your app and see generated tests today."
         ctaId="cta-vs-pwcli-footer"
       />
     </Layout>
