@@ -27,7 +27,7 @@ const TLDR_ROWS = [
   {
     aspect: "Regression",
     left: "You prompt again and hope the agent repeats itself",
-    right: "Scheduled and CI-triggered runs against saved suites",
+    right: "Scheduled and on-demand runs against saved suites",
   },
   {
     aspect: "Visual testing",
@@ -43,12 +43,12 @@ const TLDR_ROWS = [
   {
     aspect: "Evidence",
     left: "A chat transcript, plus opt-in video and trace recording",
-    right: "Screenshots, traces, and run history",
+    right: "Step screenshots, run reports, logs, and run history",
   },
   {
-    aspect: "Output",
-    left: "Browser actions in the moment; saving tests requires the separate Test Agents workflow",
-    right: "Deterministic Playwright code you can export and run anywhere",
+    aspect: "Verdicts",
+    left: "Whatever the LLM reports in the chat; saving tests requires the separate Test Agents workflow",
+    right: "A pass or fail for each saved test case, with a run report and evidence",
   },
 ];
 
@@ -91,9 +91,9 @@ const FAQS: CompareFaqItem[] = [
     ),
   },
   {
-    question: "Does Wopee.io lock me in?",
+    question: "What happens to my tests if I stop using Wopee.io?",
     answer:
-      "No. Wopee.io agents generate deterministic Playwright code you can export at any time. The exported tests run as plain Playwright, no LLM and no Wopee.io runtime required.",
+      "Your test cases are plain-language files in a Git repository your team can access, and you can download them as JSON. Running them with the AI agent is a Wopee.io service. Passing tests can also be generated as Playwright code, which uses the Wopee.io SDK for visual checks.",
   },
   {
     question: "What does Wopee.io cost?",
@@ -157,9 +157,8 @@ const PricingWedge = () => (
         <Link href="/pricing/">
           start free, then 19 to 179 € per user per month
         </Link>
-        , Enterprise custom. And because generated tests re-run as plain
-        Playwright code, your regression runs don't depend on an LLM being in
-        the loop.
+        , Enterprise custom. The LLM behind every agent run is included in
+        your plan, so there is no separate model bill to manage.
       </p>
     </div>
   </section>
@@ -184,10 +183,9 @@ const WopeeVsPlaywrightMcp = () => {
           <p className="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-left sm:text-center">
             Playwright MCP gives your AI coding agent a browser: it executes
             whatever the LLM decides, ad hoc, one session at a time. Wopee.io
-            adds the testing system around it: persistent test suites, visual
+            adds the testing system around it: saved test suites, visual
             baselines, self-healing, scheduled regression runs, and an
-            evidence trail, with deterministic Playwright code you can export
-            at any time. Most teams need both: Playwright MCP in the editor,
+            evidence trail. Most teams need both: Playwright MCP in the editor,
             Wopee.io as the regression safety net.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
@@ -232,9 +230,9 @@ const WopeeVsPlaywrightMcp = () => {
         switchItems={[
           "The same suites must run tonight, on schedule, and in CI",
           "You need visual baselines so regressions get caught across releases",
-          "Teammates and auditors need screenshots, traces, and run history",
-          "You want test code you can export and keep, not decisions in a context window",
-          "Generated tests should re-run as plain Playwright, no LLM in the loop",
+          "Teammates and auditors need screenshots, run reports, and run history",
+          "You want saved test cases you can read, edit, and re-run, not decisions lost in a context window",
+          "Every run should end in a clear pass or fail with evidence attached",
         ]}
       />
 

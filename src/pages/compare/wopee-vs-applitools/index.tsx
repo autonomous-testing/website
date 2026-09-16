@@ -27,13 +27,13 @@ const TLDR_ROWS = [
     aspect: "Test creation",
     left: "No-code recorder and plain-English steps, corrected by an LLM",
     right:
-      "Goal-driven agents explore your app and generate user stories, test cases, and Playwright code",
+      "Goal-driven agents explore your app and generate user stories and test cases in plain language",
   },
   {
     aspect: "AI approach",
     left: "'Deterministic AI' manifesto on the homepage; LLM-driven authoring in the product",
     right:
-      "LLMs author, deterministic Playwright code executes, no LLM needed at runtime",
+      "An AI agent runs every test, so tests adapt to UI changes; runs take minutes and results can vary between runs",
   },
   {
     aspect: "Visual testing",
@@ -42,9 +42,10 @@ const TLDR_ROWS = [
       "Visual baselines with branching, ignore areas, diff tolerance, and cross-browser configs",
   },
   {
-    aspect: "Code ownership",
+    aspect: "Test format",
     left: "No-code tests managed inside the Applitools platform",
-    right: "Playwright code you can export and run anywhere",
+    right:
+      "Plain-language test cases in a Git repository your team can access, downloadable as JSON",
   },
 ];
 
@@ -140,8 +141,8 @@ const WopeeVsApplitools = () => {
             and deployment. Applitools publishes no prices on any tier and
             offers on-premise only as an Eyes add-on. Wopee.io
             publishes its prices, free start, then 19 to 179 € per user per
-            month, runs its agent on-premise for Enterprise, and lets
-            you export the generated Playwright code at any time.
+            month, runs its agent on-premise for Enterprise, and keeps tests
+            as plain-language test cases your team can read and edit.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -186,7 +187,7 @@ const WopeeVsApplitools = () => {
           "You want the price on the page before talking to anyone",
           "Your on-premise requirement covers the whole testing agent, not only visual validation",
           "You want goal-driven exploration that builds test suites from a URL",
-          "You want to own the generated tests as plain Playwright code",
+          "You want tests as readable, plain-language test cases your team can edit",
           "EU data residency by default matters to your compliance team",
         ]}
       />

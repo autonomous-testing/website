@@ -19,13 +19,13 @@ const TLDR_ROWS = [
   {
     aspect: "Foundation",
     left: "AI test generation built on Playwright",
-    right: "AI testing agents built on Playwright, the same foundation",
+    right: "AI testing agents that drive the browser with Playwright",
   },
   {
     aspect: "Where tests live",
     left: "Exportable Playwright code; the scheduling, execution, and maintenance system lived in the platform",
     right:
-      "Deterministic Playwright code you can export and run without Wopee.io",
+      "Plain-language test cases in a Git repository your team can access, downloadable as JSON; an AI agent runs them",
   },
   {
     aspect: "Last published pricing",
@@ -54,9 +54,9 @@ const MIGRATION_STEPS = [
   },
   {
     step: "3",
-    title: "Regenerate and own the suite",
+    title: "Run and review the suite",
     description:
-      "Every agent run emits deterministic Playwright code you can export. Run it on a schedule, in CI, or from your AI coding agent via MCP, and approve visual baselines as you go.",
+      "Wopee.io's agent runs your test cases on a schedule, on demand, or from your AI coding agent via MCP, and you approve visual baselines as you go. Passing tests can also be generated as Playwright code.",
   },
 ];
 
@@ -79,12 +79,12 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "How do I migrate from Octomind to Wopee.io?",
     answer:
-      "Point Wopee.io at your app's URL. The agent crawls it, builds an app context, and generates user stories, test cases, and Playwright code, each artifact reviewable and editable. The generated Playwright code can be exported and run anywhere, and suites run on schedule or in CI.",
+      "Point Wopee.io at your app's URL. The agent crawls it, builds an app context, and generates user stories and test cases, each artifact reviewable and editable. The agent then runs the suite on a schedule or on demand, and passing tests can also be generated as Playwright code.",
   },
   {
-    question: "How does Wopee.io prevent the same vendor-shutdown problem?",
+    question: "What would I keep if Wopee.io went away?",
     answer:
-      "Your tests are never trapped in the platform. Wopee.io generates deterministic Playwright code you can export at any time, and the exported tests run as plain Playwright, with no LLM and no Wopee.io runtime required.",
+      "Your test cases, which are plain-language files in a Git repository your team can access and can be downloaded as JSON. Passing tests can also be generated as Playwright code, but its visual checks use the Wopee.io SDK and would need editing to run on their own. Running tests with the AI agent is a Wopee.io service.",
   },
 ];
 
@@ -102,10 +102,11 @@ const WhatHappened = () => (
         it.
       </p>
       <p className="text-lg text-slate-600 dark:text-slate-400 m-0">
-        That is the real lesson: if your tests exist only inside a vendor's
-        platform, they are gone when the vendor is. Wopee.io's answer is
-        structural, agents generate deterministic Playwright code you can
-        export at any time, so the code outlives any vendor, including us.
+        That is the real lesson: before you depend on a testing vendor, check
+        what you keep if it disappears. With Wopee.io you keep readable test
+        cases, downloadable as JSON, and Playwright code for passing tests,
+        whose visual checks use the Wopee.io SDK. Running the agent is a
+        Wopee.io service, just as Octomind's platform was.
       </p>
     </div>
   </section>
@@ -155,7 +156,7 @@ const PricingWedge = () => (
       </h2>
       <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
         Octomind's last published pricing (March 2026) ran from $89 to $589
-        per month, capped by test cases, cloud runs, and AI test creations.
+        per month, capped by test cases, cloud runs, and AI test creations,
         with Enterprise behind a sales call.
       </p>
       <p className="text-lg text-slate-600 dark:text-slate-400 m-0">
@@ -176,7 +177,7 @@ const OctomindAlternative = () => {
   return (
     <Layout
       title="Octomind Alternative for Playwright Teams"
-      description="Octomind alternative for Playwright teams: Octomind shut down in May 2026. Wopee.io regenerates your suites as Playwright code you can export and keep."
+      description="Octomind alternative for Playwright teams: Octomind shut down in May 2026. Wopee.io's AI agents rebuild your coverage from your app, with published EU pricing."
     >
       <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center">
         <div className="flex flex-col gap-6 max-w-4xl">
@@ -191,9 +192,10 @@ const OctomindAlternative = () => {
             Octomind discontinued its AI testing product in May 2026, and
             octomind.dev is now offline. Teams that relied on its Playwright
             test generation need a new home for their suites. Wopee.io is an
-            alternative built on the same foundation: agents explore your app,
-            generate real Playwright code you can export and run without Wopee.io
-, so a vendor shutdown can never strand your tests again.
+            alternative on the same browser engine: AI agents explore your app,
+            write test cases in plain language, and run them in a real browser.
+            Keep any Playwright code you exported from Octomind; it runs without
+            any vendor.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
             <div className="flex flex-col items-center gap-1.5">
@@ -221,7 +223,7 @@ const OctomindAlternative = () => {
 
       <ComparisonTable
         title="Octomind vs Wopee.io"
-        subtitle="The same Playwright foundation, with tests you can export instead of locked in a vendor's platform."
+        subtitle="The same browser engine, a different model: plain-language test cases that an AI agent runs."
         leftLabel="Octomind (as it was)"
         rows={TLDR_ROWS}
       />
@@ -238,8 +240,8 @@ const OctomindAlternative = () => {
       <LastChecked note="Last checked: August 2026. Octomind status verified against public sources; octomind.dev no longer resolves. Last published pricing from third-party records of its March 2026 pricing page." />
 
       <CompareCta
-        heading="Your tests should outlive any vendor."
-        subheading="Regenerate your suites and keep the code."
+        heading="Rebuild your coverage from your app."
+        subheading="Start free and see generated tests today."
         ctaId="cta-octomind-footer"
       />
     </Layout>

@@ -32,27 +32,27 @@ export const COMPARISONS = [
     href: "/compare/wopee-vs-playwright-cli/",
     tagline: "DIY toolkit vs managed platform",
     description:
-      "Playwright's free CLI, codegen, and Test Agents give you the building blocks, with your own LLM and orchestration. Wopee.io is the managed loop on the same foundation, and exported tests run as plain Playwright.",
+      "Playwright's free CLI, codegen, and Test Agents give you the building blocks, with your own LLM and orchestration. Wopee.io is the managed loop, with AI agents that write and run your tests.",
   },
   {
     title: "Wopee.io vs Tricentis Tosca",
     href: "/compare/wopee-vs-tosca/",
     tagline: "Enterprise suite vs web-native agent",
     description:
-      "Tosca covers 200+ enterprise technologies with quote-based licensing and Windows-based tooling. Wopee.io does one thing, autonomous web app testing, with published pricing and exportable code. Honest about where Tosca is stronger.",
+      "Tosca covers 200+ enterprise technologies with quote-based licensing and Windows-based tooling. Wopee.io does one thing, autonomous web app testing, with published pricing and plain-language tests. Honest about where Tosca is stronger.",
   },
   {
     title: "Wopee.io vs Ranorex",
     href: "/compare/wopee-vs-ranorex/",
     tagline: "Windows toolchain vs browser-native",
     description:
-      "Ranorex automates desktop, web, and mobile on Windows, licensed by quote with runtime licenses per endpoint. Wopee.io is web-only, self-serve, and its exported Playwright tests keep running even if you leave.",
+      "Ranorex automates desktop, web, and mobile on Windows, licensed by quote with runtime licenses per endpoint. Wopee.io is web-only, self-serve, with published pricing and no per-endpoint run licenses.",
   },
   {
     title: "Octomind alternative",
     href: "/compare/octomind-alternative/",
     tagline: "For teams orphaned by the shutdown",
     description:
-      "Octomind discontinued its product in May 2026. What Playwright-based teams should do next, and how to make sure a vendor shutdown never strands your tests again.",
+      "Octomind discontinued its product in May 2026. What Playwright-based teams should do next, and what to check before depending on any testing vendor again.",
   },
 ];

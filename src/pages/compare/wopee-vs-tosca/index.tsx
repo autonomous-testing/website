@@ -26,7 +26,7 @@ const TLDR_ROWS = [
     aspect: "Test creation",
     left: "Model-based and codeless; Tosca Copilot and agentic generation from natural language",
     right:
-      "Goal-driven agents explore your app from a URL and generate user stories, test cases, and Playwright code",
+      "Goal-driven agents explore your app from a URL and generate user stories and test cases in plain language",
   },
   {
     aspect: "Platform",
@@ -34,9 +34,10 @@ const TLDR_ROWS = [
     right: "Browser-based SaaS; nothing to install",
   },
   {
-    aspect: "Test ownership",
+    aspect: "Test format",
     left: "Model artifacts in a proprietary repository; exports target another Tosca repository",
-    right: "Deterministic Playwright code you can export and run without Wopee.io",
+    right:
+      "Plain-language test cases in a Git repository your team can access, downloadable as JSON",
   },
   {
     aspect: "Onboarding",
@@ -76,7 +77,7 @@ const FAQS: CompareFaqItem[] = [
   {
     question: "Does Wopee.io do model-based testing?",
     answer:
-      "No. Wopee.io agents explore your running web app and generate user stories, test cases, and Playwright code as reviewable, editable artifacts. There is no model repository to build or maintain, and the output is code your team can read, version, and export.",
+      "No. Wopee.io agents explore your running web app and generate user stories and test cases in plain language, as reviewable, editable artifacts. There is no model to build or maintain: an AI agent runs the test cases, and passing tests can also be generated as Playwright code.",
   },
 ];
 
@@ -100,7 +101,7 @@ const PricingWedge = () => {
             free to start, then 19 to 179 € per user per month
           </Link>
           , self-serve from the first click, and the generated tests are
-          Playwright code you can export whenever you want.
+          plain-language test cases your team can read and edit.
         </p>
         <ButtonPrimary
           label="Start for free"
@@ -135,7 +136,7 @@ const WopeeVsTosca = () => {
             automation across 200+ technologies from SAP to mainframes, sold
             by quote and rolled out as a program. Wopee.io is the opposite
             shape: autonomous testing for web apps, self-serve, with
-            published pricing and generated Playwright code you can export.
+            published pricing and tests written as plain-language test cases.
             Which one fits depends on what you actually need to test.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5 items-center sm:items-start mt-2">
@@ -180,7 +181,7 @@ const WopeeVsTosca = () => {
         switchItems={[
           "You test web applications and want them covered autonomously, starting today",
           "You want the price on the page before any sales conversation",
-          "Tests should be open Playwright code you can export, not artifacts in a proprietary repository",
+          "Tests should be readable, plain-language test cases, not model artifacts in a proprietary repository",
           "Your team is not on Windows and does not want Windows-only tooling",
           "You'd rather review generated tests than build and maintain a test model",
         ]}
