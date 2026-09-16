@@ -68,6 +68,16 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
               : ""
           }`}
         >
+          <source
+            src={currentSrc.replace(".webm", "-mobile.webm")}
+            type="video/webm"
+            media="(max-width: 767px)"
+          />
+          <source
+            src={currentSrc.replace(".webm", "-mobile.mp4")}
+            type="video/mp4"
+            media="(max-width: 767px)"
+          />
           <source src={currentSrc} type="video/webm" />
           <source src={currentSrc.replace(".webm", ".mp4")} type="video/mp4" />
         </video>
