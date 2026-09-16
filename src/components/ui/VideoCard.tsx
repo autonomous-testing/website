@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import GradientCard from "./GradientCard";
+import useDeferredInView from "@site/src/hooks/useDeferredInView";
 
 interface VideoCardProps {
   videoSrc: string;
@@ -20,10 +21,18 @@ export default function VideoCard({
   const [videoLoading, setVideoLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleVideoError = useCallback(() => {
-    setVideoError(true);
-    setVideoLoading(false);
-  }, []);
+  // React re-dispatches <source> errors to the <video> handler. Sources whose
+  // media query doesn't match fail by design, only the last one failing means
+  // nothing can play.
+  const handleVideoError = useCallback(
+    (e: React.SyntheticEvent<HTMLVideoElement>) => {
+      const video = e.currentTarget;
+      if (e.target !== video && e.target !== video.lastElementChild) return;
+      setVideoError(true);
+      setVideoLoading(false);
+    },
+    []
+  );
 
   const handleVideoLoad = () => {
     setVideoLoading(false);
@@ -35,26 +44,15 @@ export default function VideoCard({
     }
   };
 
-  const [isInView, setIsInView] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  // Attach the clip only once the card is near the viewport, autoplay would
+  // otherwise download every step video at page load.
+  const shouldLoad = useDeferredInView(cardRef, { rootMargin: "300px" });
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (videoLoading) {
+    if (shouldLoad && videoLoading) {
       timeoutRef.current = setTimeout(() => {
         setVideoError(true);
         setVideoLoading(false);
@@ -66,7 +64,7 @@ export default function VideoCard({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [videoLoading]);
+  }, [shouldLoad, videoLoading]);
 
   return (
     <GradientCard
@@ -79,7 +77,8 @@ export default function VideoCard({
       {!videoError ? (
           <video
             ref={videoRef}
-            autoPlay
+            key={shouldLoad ? "video" : "placeholder"}
+            autoPlay={shouldLoad}
             muted
             loop
             playsInline
@@ -89,18 +88,25 @@ export default function VideoCard({
             onLoadedData={handleVideoLoad}
             preload="metadata"
           >
-            <source
-              src={videoSrc.replace(".webm", "-mobile.webm")}
-              type="video/webm"
-              media="(max-width: 767px)"
-            />
-            <source
-              src={videoSrc.replace(".webm", "-mobile.mp4")}
-              type="video/mp4"
-              media="(max-width: 767px)"
-            />
-            <source src={videoSrc} type="video/webm" />
-            <source src={videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            {shouldLoad && (
+              <>
+                <source
+                  src={videoSrc.replace(".webm", "-mobile.webm")}
+                  type="video/webm"
+                  media="(max-width: 767px)"
+                />
+                <source
+                  src={videoSrc.replace(".webm", "-mobile.mp4")}
+                  type="video/mp4"
+                  media="(max-width: 767px)"
+                />
+                <source src={videoSrc} type="video/webm" />
+                <source
+                  src={videoSrc.replace(".webm", ".mp4")}
+                  type="video/mp4"
+                />
+              </>
+            )}
             Your browser does not support the video tag.
           </video>
         ) : (
