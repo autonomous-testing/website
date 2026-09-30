@@ -13,6 +13,7 @@ import SearchMetadata from "@theme/SearchMetadata";
 import type { Props } from "@theme/BlogListPage";
 import BlogPostItems from "@theme/BlogPostItems";
 import BlogListPageStructuredData from "@theme/BlogListPage/StructuredData";
+import versions from "@site/data/versions.json";
 
 import Link from "@docusaurus/Link";
 
@@ -61,6 +62,18 @@ function ChangelogListContent(props: Props): ReactNode {
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 m-0">
           Product updates and improvements, as they ship to production.
+        </p>
+        <p className="mt-5 m-0 inline-flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-md border border-solid border-gray-200 dark:border-white/10 px-3 py-1.5 text-xs font-mono text-gray-500 dark:text-gray-400">
+          <span className="uppercase tracking-widest text-[0.65rem] text-gray-400 dark:text-gray-500">
+            Running in production
+          </span>
+          <span>API v{versions.api}</span>
+          <span>CMD v{versions.cmd}</span>
+          <span>Agent v{versions.agent}</span>
+          <span>
+            since{" "}
+            <time dateTime={versions.deployed}>{changelogDate(versions.deployed)}</time>
+          </span>
         </p>
       </header>
 

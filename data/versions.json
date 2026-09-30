@@ -1,0 +1,7 @@
+{
+  "api": "5.214.1",
+  "cmd": "3.424.0",
+  "agent": "3.123.0",
+  "deployed": "2026-09-22",
+  "source": "autonomous-testing/infra main environment/default/versions.env + runners/default/versions.env at 67e3fbb"
+}
