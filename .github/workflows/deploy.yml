@@ -24,6 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Full history: Docusaurus derives sitemap <lastmod> from each file's git date.
+          # With a shallow clone every page reports the deploy date and IndexNow would
+          # resubmit the whole site on every deploy.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v6
         with:
@@ -74,3 +79,25 @@ jobs:
         id: deployment_retry
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
+
+      # IndexNow: tell Bing and Yandex which pages changed, instead of waiting for their crawl.
+      # Google ignores IndexNow. Production only; the key file lives in static/.
+      - name: Submit changed pages to IndexNow
+        if: github.repository == 'autonomous-testing/website-prod' && (steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success')
+        continue-on-error: true
+        run: |
+          KEY=e7780840a47ed6825300aa66a0cf8e98
+          HOST=wopee.io
+          SINCE=$(date -u -d '8 days ago' +%Y-%m-%d)
+          node -e '
+            const fs = require("fs");
+            const xml = fs.readFileSync("build/sitemap.xml", "utf8");
+            const since = process.argv[1];
+            const urls = [...xml.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)]
+              .filter(([, , d]) => d >= since).map(([, u]) => u);
+            fs.writeFileSync("indexnow.json", JSON.stringify({ host: process.argv[2], key: process.argv[3], keyLocation: `https://${process.argv[2]}/${process.argv[3]}.txt`, urlList: urls }));
+            console.log(`${urls.length} pages changed since ${since}`);
+          ' "$SINCE" "$HOST" "$KEY"
+          if [ "$(node -e 'console.log(JSON.parse(require("fs").readFileSync("indexnow.json","utf8")).urlList.length)')" = "0" ]; then echo "nothing to submit"; exit 0; fi
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST 'https://api.indexnow.org/indexnow' -H 'Content-Type: application/json; charset=utf-8' --data @indexnow.json)
+          echo "IndexNow responded $code (200/202 = accepted)"
