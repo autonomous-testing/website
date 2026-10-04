@@ -1,7 +1,7 @@
 ---
 slug: atomic-step-sequences
-title: "Steps that belong together replay as one"
-description: "Recorded action sequences are marked atomic, replay as a single call, can repeat until the page says stop, and may declare optional elements."
+title: "Dropdowns and pop-ups replay as one step"
+description: "Actions that belong together, like opening a dropdown and picking an option, now replay as one step, repeat until the page says stop and allow optional parts."
 ---
 
 Some steps only work back to back: a dropdown that re-arms itself, a filter that reacts as you type, a modal that reopens between clicks. The agent now records such a run of steps as one sequence and replays it as a single call, so the page state between the steps can no longer break the test.

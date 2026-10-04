@@ -1,7 +1,7 @@
 ---
 slug: reasoning-effort-per-model
-title: "Reasoning effort that each model accepts"
-description: "Every reasoning-effort level from none to max is checked against the model it is set for, GPT-6 runs as a reasoning model, and AI chat honours it."
+title: "AI settings that fit each model"
+description: "Every reasoning level from none to max is checked against the model it is set for, GPT-6 runs as a reasoning model, and the AI chat respects the setting."
 ---
 
 Reasoning effort now covers every level, none, low, medium, high, xhigh and max, and each one is checked against the model it applies to. Saving an LLM configuration with a level its own or inherited model rejects is refused with a clear message, and a stored level a model no longer accepts moves to the nearest one it does, with the change written to the run log.

@@ -1,8 +1,7 @@
 ---
 slug: saved-locators-stay-true
-title: "Saved locators keep pointing at the right element"
-title_meta: "Saved locators keep the right element"
-description: "Saved locators drop state such as item counts, keep every role option on replay, and a heal can no longer swap in a control with a different name."
+title: "Self-healing that keeps the right button"
+description: "Saved locators drop state such as item counts and keep every role option on replay, and a heal can no longer swap Finish for a differently named button."
 ---
 
 A locator saved as the button named "Cart, 1 items" matched only while the cart held exactly one item. When an element's name carries a number, the agent now saves a state-free form: the element's own test attributes first, otherwise the stable start of the name. Replay honours every role option, such as heading level, checked or expanded, instead of quietly widening the match, and a locator replay cannot run is not saved.

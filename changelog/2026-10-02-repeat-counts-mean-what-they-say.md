@@ -1,7 +1,7 @@
 ---
 slug: repeat-counts-mean-what-they-say
-title: "Repeat counts run exactly as the test says"
-description: "A repeat count is run as given, an until condition that already holds is refused before anything runs, and only evidenced iterations count toward a goal."
+title: '"Repeat 3 times" means three real times'
+description: "A repeat count runs exactly as written, a stop condition that already holds is refused before the run starts, and only repetitions with evidence count."
 ---
 
 A sequence with a repeat count now runs exactly that many times. Only a sequence with no count gets the default ceiling, and that ceiling never overshoots what the test still needs. A repeat of one with an until condition runs one pass and checks the condition once.

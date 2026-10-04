@@ -1,7 +1,7 @@
 ---
 slug: crawls-flag-what-they-never-saw
-title: "Crawls that flag what they never actually saw"
-description: "Expected text the crawl never saw is flagged, the agent's scenario picks run first, steps visit only crawled URLs, and broken images are reported."
+title: "A warning on text the agent never saw"
+description: "Expected text the agent never saw while exploring is flagged, its own scenario picks run first, steps visit only pages it saw, and broken images are reported."
 ---
 
 A crawl now records the text it saw. Any expected text in a generated assertion that never appeared during the crawl gets a warning icon on the scenario card and on the step, with the text in the tooltip. It is a flag, not a refusal: edit the value and the flag clears.
