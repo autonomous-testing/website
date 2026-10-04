@@ -1,7 +1,7 @@
 ---
 slug: agent-vision-on-by-default
-title: "Agent vision is on by default"
-description: "The agent now receives a screenshot after every interaction and can look at the page on demand; existing projects move to Observe unless they chose Off."
+title: "The agent now sees the screen"
+description: "The agent gets a screenshot after every action and can look at the page when it needs to; existing projects switch on unless they chose Off."
 ---
 
 Vision mode has been an opt-in project setting since April. It is now the default. In Observe, the agent receives a screenshot after each interaction and has an `observe` tool to look at the page on demand, so it notices visual state that text snapshots miss and needs fewer explicit visual assertions.

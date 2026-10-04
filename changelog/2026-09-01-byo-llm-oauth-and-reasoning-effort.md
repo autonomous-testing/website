@@ -1,8 +1,7 @@
 ---
 slug: byo-llm-oauth-and-reasoning-effort
-title: "Bring your own LLM: OAuth gateways and per-prompt reasoning effort"
-title_meta: "BYO LLM: OAuth gateways, per-prompt effort"
-description: "LLM calls can authenticate with OAuth 2.0 client credentials, and reasoning effort is tunable per prompt with inherited defaults shown."
+title: "Use your approved AI model, through your gateway"
+description: "Connect the model your security team approved through an OAuth 2.0 gateway, and set how hard each prompt thinks, with the inherited defaults shown."
 ---
 
 Enterprise LLM gateways often refuse a static API key. Wopee.io now obtains an OAuth 2.0 client-credentials token, with a private-key JWT or a client secret, caches it and refreshes it before it expires. Both the API and the testing agent use it, so a gateway-fronted model works end to end.
