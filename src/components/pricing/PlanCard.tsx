@@ -6,10 +6,23 @@ import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 import GradientCard from "@/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
+export type Billing = "monthly" | "annual";
+
+export const MONEY_BACK = "14-day money-back guarantee";
+
+export const formatEur = (amount: number) =>
+  amount.toLocaleString("en-US", {
+    minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+
 export type PlanCardT = {
   title: string;
   tagline: string;
   monthlyPrice: number;
+  annualPrice: number;
+  stepsPerSession: string;
+  testRuns: string;
   bestFor: string;
   features: string[];
   featured?: boolean;
@@ -24,6 +37,9 @@ export const PlanCards: PlanCardT[] = [
     title: "Starter",
     tagline: "Catch bugs before users do, without writing test scripts.",
     monthlyPrice: 19,
+    annualPrice: 190,
+    stepsPerSession: "150 steps per 5 h session",
+    testRuns: "≈ 6–15 test runs",
     bestFor: "Solo devs & side projects",
     features: [
       "Up to 10 active projects",
@@ -40,6 +56,9 @@ export const PlanCards: PlanCardT[] = [
     title: "Basic",
     tagline: "Ship faster with autonomous regression on every PR.",
     monthlyPrice: 79,
+    annualPrice: 790,
+    stepsPerSession: "500 steps per 5 h session",
+    testRuns: "≈ 20–50 test runs",
     bestFor: "Growing product teams",
     features: [
       "Up to 100 active projects",
@@ -57,6 +76,9 @@ export const PlanCards: PlanCardT[] = [
     title: "Premium",
     tagline: "Maximum throughput for teams that ship multiple times a day.",
     monthlyPrice: 179,
+    annualPrice: 1790,
+    stepsPerSession: "1,000 steps per 5 h session",
+    testRuns: "≈ 40–100 test runs",
     bestFor: "High-velocity engineering orgs",
     features: [
       "Unlimited projects",
@@ -90,6 +112,9 @@ export default function PlanCard({
   title,
   tagline,
   monthlyPrice,
+  annualPrice,
+  stepsPerSession,
+  testRuns,
   bestFor,
   features,
   featured,
@@ -97,7 +122,9 @@ export default function PlanCard({
   ctaLabel,
   socialProof,
   image,
-}: PlanCardT) {
+  billing,
+}: PlanCardT & { billing: Billing }) {
+  const isAnnual = billing === "annual";
   return (
     <GradientCard
       variant={featured ? "featured" : "default"}
@@ -134,14 +161,27 @@ export default function PlanCard({
       <div className="text-left">
         <div className="flex items-baseline gap-1">
           <span className="text-6xl font-extrabold leading-none bg-gradient-to-br from-secondary-wopee to-purple-700 dark:from-primary-wopee dark:to-yellow-300 bg-clip-text text-transparent tracking-tight">
-            {monthlyPrice}
+            {formatEur(isAnnual ? annualPrice : monthlyPrice)}
           </span>
           <span className="text-2xl font-bold leading-none text-secondary-wopee dark:text-primary-wopee">
             €
           </span>
-          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">
-            / user / mo
+          <span className="text-sm text-gray-500 dark:text-gray-400 ml-1 whitespace-nowrap">
+            {isAnnual ? "/ user / yr" : "/ user / mo"}
           </span>
+        </div>
+        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 min-h-[16px]">
+          {isAnnual ? (
+            <>
+              ≈ {formatEur(Math.round((annualPrice / 12) * 100) / 100)} € / user
+              / mo ·{" "}
+              <span className="font-semibold text-secondary-wopee dark:text-primary-wopee">
+                2 months free
+              </span>
+            </>
+          ) : (
+            "Billed monthly"
+          )}
         </div>
       </div>
 
@@ -149,7 +189,8 @@ export default function PlanCard({
         <ButtonGradientOutline className="w-full" label={ctaLabel} />
       </Link>
       <div className="text-[11px] text-center text-gray-500 dark:text-gray-400 -mt-3">
-        No credit card required · Cancel anytime
+        <span className="whitespace-nowrap">No credit card to start</span> ·{" "}
+        <span className="whitespace-nowrap">{MONEY_BACK}</span>
       </div>
 
       {socialProof && (
@@ -164,6 +205,13 @@ export default function PlanCard({
           className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"
         />
         <ul className="flex flex-col gap-2.5 m-0 p-0 list-none">
+          <li className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
+            <CheckIcon />
+            <span>
+              <span className="font-semibold">{stepsPerSession}</span>{" "}
+              <span className="whitespace-nowrap">{testRuns}</span>
+            </span>
+          </li>
           {features.map((feature) => (
             <li
               key={feature}

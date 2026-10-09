@@ -58,7 +58,7 @@ const FAQS: {
   {
     question: "How much does Wopee.io cost?",
     answer:
-      "Starter is 19 € per user per month, Basic 79 €, Premium 179 €, and Enterprise is custom with on-premise deployment. You start completely free, with no credit card required and a 14-day money-back guarantee.",
+      "Starter is 19 € per user per month, Basic 79 €, Premium 179 €, and Enterprise is custom with on-premise deployment. You start completely free, with no credit card required and a 14-day money-back guarantee on every plan.",
     link: {
       href: "/pricing/",
       text: "Starter is 19 € per user per month, Basic 79 €, Premium 179 €",

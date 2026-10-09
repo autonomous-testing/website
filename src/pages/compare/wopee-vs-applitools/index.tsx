@@ -104,8 +104,8 @@ const PricingWedge = () => {
             start free, Starter 19 €, Basic 79 €, Premium 179 € per user per
             month
           </Link>
-          , Enterprise custom, with a 14-day money-back guarantee. You can
-          budget before you ever talk to us.
+          , Enterprise custom, with a 14-day money-back guarantee on every plan.
+          You can budget before you ever talk to us.
         </p>
         <ButtonPrimary
           label="Start for free"

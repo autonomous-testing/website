@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PlanComparison from "./PlanComparison";
-import PlanCard, { PlanCards } from "./PlanCard";
+import PlanCard, { Billing, MONEY_BACK, PlanCards } from "./PlanCard";
+import BillingToggle from "./BillingToggle";
 import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 import GradientCard from "@/components/ui/GradientCard";
@@ -116,7 +117,15 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens when I hit my limit?",
-    a: "Step allowances apply per 5-hour session window and reset automatically. You'll see a clear in-app indicator before you run out, and you can upgrade in one click without losing the current session.",
+    a: "Your agent pauses until your 5-hour session resets, and the app shows the reset time. Wait for it, or upgrade to keep going.",
+  },
+  {
+    q: "Is there a money-back guarantee?",
+    a: `Yes, a ${MONEY_BACK} on every plan, monthly or annual.`,
+  },
+  {
+    q: "Can I pay annually?",
+    a: "Yes. Annual billing gives you 2 months free: Starter 190 €, Basic 790 € and Premium 1,790 € per user per year.",
   },
   {
     q: "Can I change or cancel plans anytime?",
@@ -133,6 +142,7 @@ const faqs: { q: string; a: string }[] = [
 ];
 
 export default function Pricing(): JSX.Element {
+  const [billing, setBilling] = useState<Billing>("monthly");
   return (
     <main className="relative pt-16 mb-12 px-4">
       {/* HERO GLOW BACKDROP, full-bleed, breaks out of the container */}
@@ -209,12 +219,13 @@ export default function Pricing(): JSX.Element {
 
       {/* PLAN CARDS */}
       <div className="flex flex-col items-center gap-10">
+        <BillingToggle value={billing} onChange={setBilling} />
         <div
           id="plans"
           className="flex flex-col sm:flex-row sm:flex-wrap xl:flex-nowrap justify-center items-stretch gap-6 sm:gap-7 scroll-mt-24"
         >
           {PlanCards.map((props, idx) => (
-            <PlanCard key={idx} {...props} />
+            <PlanCard key={idx} {...props} billing={billing} />
           ))}
         </div>
 
@@ -222,7 +233,7 @@ export default function Pricing(): JSX.Element {
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center gap-2">
             <span className="text-secondary-wopee dark:text-primary-wopee text-lg">✓</span>
-            14-day money-back guarantee
+            {MONEY_BACK} on every plan
           </div>
           <div className="flex items-center gap-2">
             <span className="text-secondary-wopee dark:text-primary-wopee text-lg">✓</span>
@@ -376,7 +387,7 @@ export default function Pricing(): JSX.Element {
         </div>
       </section>
 
-      <PlanComparison />
+      <PlanComparison billing={billing} />
 
       {/* WHY WOPEE, competitor comparison */}
       <section className="my-20 max-w-3xl mx-auto px-4">

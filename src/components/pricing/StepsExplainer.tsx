@@ -3,10 +3,10 @@ import React from "react";
 const stepActions = ["Click a button", "Fill a field", "Assert a result"];
 
 const planBudgets = [
-  { plan: "Free", steps: "50 steps", note: "≈ a few full test runs" },
-  { plan: "Starter", steps: "150 steps", note: "" },
-  { plan: "Basic", steps: "500 steps", note: "" },
-  { plan: "Premium", steps: "1,000 steps", note: "" },
+  { plan: "Free", steps: "50 steps", note: "≈ 2–5 executed tests" },
+  { plan: "Starter", steps: "150 steps", note: "≈ 6–15 test runs" },
+  { plan: "Basic", steps: "500 steps", note: "≈ 20–50 test runs" },
+  { plan: "Premium", steps: "1,000 steps", note: "≈ 40–100 test runs" },
 ];
 
 const CheckIcon = () => (
