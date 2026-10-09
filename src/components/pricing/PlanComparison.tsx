@@ -3,6 +3,7 @@ import Link from "@docusaurus/Link";
 import ButtonGradientOutline from "../buttons/ButtonGradientOutline";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 import StepsExplainer from "./StepsExplainer";
+import { Billing, MONEY_BACK, PlanCards, formatEur } from "./PlanCard";
 
 type Cell = string | boolean;
 
@@ -29,9 +30,9 @@ const rows: Row[] = [
   {
     feature: "Executed tests / session*",
     free: "2–5",
-    starter: "7–15",
-    basic: "25–50",
-    premium: "50–100",
+    starter: "6–15",
+    basic: "20–50",
+    premium: "40–100",
     enterprise: "Unlimited",
   },
   {
@@ -120,15 +121,16 @@ const renderCell = (cell: Cell) => {
 const planKey = (plan: string) =>
   plan.toLowerCase() as "free" | "starter" | "basic" | "premium" | "enterprise";
 
-const PLAN_PRICES: Record<string, string> = {
-  Free: "0 \u20ac",
-  Starter: "19 \u20ac/mo",
-  Basic: "79 \u20ac/mo",
-  Premium: "179 \u20ac/mo",
-  Enterprise: "Custom",
+const planPrice = (plan: string, billing: Billing) => {
+  if (plan === "Free") return "0 €";
+  const card = PlanCards.find((c) => c.title === plan);
+  if (!card) return "Custom";
+  return billing === "annual"
+    ? `${formatEur(card.annualPrice)} €/yr`
+    : `${formatEur(card.monthlyPrice)} €/mo`;
 };
 
-const PlanComparison = () => {
+const PlanComparison = ({ billing }: { billing: Billing }) => {
   return (
     <section className="my-20 max-w-4xl mx-auto px-4">
       <div className="text-center mb-10">
@@ -166,7 +168,7 @@ const PlanComparison = () => {
                           : "text-gray-500 dark:text-gray-400"
                       }`}
                     >
-                      {PLAN_PRICES[plan]}
+                      {planPrice(plan, billing)}
                     </div>
                   </th>
                 );
@@ -265,14 +267,15 @@ const PlanComparison = () => {
 
       <p className="mt-6 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         <span className="text-secondary-wopee dark:text-primary-wopee">*</span>{" "}
-        Estimated based on roughly 10–20 steps per typical test. Actual numbers
+        Estimated based on roughly 10–25 steps per test run. Actual numbers
         depend on test complexity.
       </p>
       <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         Each plan has a 5-hour rolling session window. Your usage resets
         automatically once the window expires, no manual action needed, no
         waiting until midnight. All plans include autonomous test generation,
-        visual regression testing, and Playwright + CI/CD integration.
+        visual regression testing, and Playwright + CI/CD integration, with a{" "}
+        {MONEY_BACK} on every plan.
       </p>
 
       <StepsExplainer />

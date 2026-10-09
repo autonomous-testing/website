@@ -83,7 +83,7 @@ const PricingPage = () => {
   return (
     <Layout
       title="Pricing: AI Testing from 19 €/user/mo, Free Start"
-      description="Wopee.io pricing: Starter 19 €, Basic 79 €, Premium 179 € per user/month. Start completely free, no credit card, 14-day money-back guarantee."
+      description="Wopee.io pricing: Starter 19 €, Basic 79 €, Premium 179 € per user/month, 2 months free on annual billing. 14-day money-back guarantee on every plan."
     >
       <Head>
         <script type="application/ld+json">
