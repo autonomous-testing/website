@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { cn } from "@/lib/utils";
+import LyingCheck from "./LyingCheck";
 
 type VideoBlockProps = {
   /** YouTube video id. Empty = poster (or branded placeholder) and `comingLabel`. */
@@ -33,7 +34,7 @@ export default function VideoBlock({
   return (
     <div
       className={cn(
-        "relative w-full aspect-video overflow-hidden rounded-2xl border border-solid border-secondary-wopee/20 dark:border-primary-wopee/20 shadow-2xl shadow-purple-900/30 bg-gray-950",
+        "relative w-full aspect-video overflow-hidden rounded-2xl border border-solid border-white/10 shadow-2xl shadow-black/40 bg-[#0d0d0d]",
         className,
       )}
     >
@@ -85,22 +86,16 @@ export default function VideoBlock({
 
 const Placeholder = () => (
   <div
-    className="absolute inset-0 flex flex-col items-center justify-center gap-4 sm:gap-6 bg-gradient-to-br from-secondary-wopee via-purple-900 to-gray-950 px-6 text-center"
+    className="absolute inset-0 flex flex-col items-center justify-center gap-4 sm:gap-6 bg-[#0d0d0d] px-6 text-center"
     role="img"
     aria-label="Green Is Not Correct, video poster"
   >
-    <span className="relative inline-flex items-center gap-2 rounded-full bg-green-500 px-4 py-1.5 sm:px-6 sm:py-2 font-mono text-base sm:text-2xl font-bold text-gray-950">
-      ✓ 1 passed
-      <span
-        aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-[3px] w-[115%] -translate-x-1/2 -translate-y-1/2 -rotate-12 rounded bg-red-500"
-      />
-    </span>
-    <span className="text-2xl sm:text-5xl font-bold leading-tight text-white">
-      Green Is Not Correct
-    </span>
-    <span className="hidden sm:block text-base uppercase tracking-widest text-primary-wopee">
-      Agentic testing for testers
+    <LyingCheck size="lg" />
+    <span
+      style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
+      className="text-3xl sm:text-5xl uppercase leading-none text-primary-wopee"
+    >
+      Green is not correct
     </span>
   </div>
 );

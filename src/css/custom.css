@@ -11,8 +11,10 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"); */
 
 /* Scroll setup and behavior */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 section {
@@ -689,4 +691,23 @@ a.navbar__item:hover {
   .navbar__item.navbar-learn {
     display: none;
   }
+}
+
+/* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Green Is Not Correct" and episode tags. */
+@font-face {
+  font-family: "Bungee";
+  src: url("/fonts/bungee-subset.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* /learn scroll regions: an edge fade while more content sits to the right. */
+.learn-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.learn-scroll[data-more="true"] {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
 }

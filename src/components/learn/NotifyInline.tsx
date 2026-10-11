@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { learnConfig } from "@/data/learn-config";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +36,12 @@ export default function NotifyInline({
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const dark = tone === "dark";
+  const doneRef = useRef<HTMLParagraphElement>(null);
+
+  // The form is replaced by the thank-you line: move focus there so it isn't lost.
+  useEffect(() => {
+    if (state === "done") doneRef.current?.focus();
+  }, [state]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,9 +71,11 @@ export default function NotifyInline({
   if (state === "done") {
     return (
       <p
+        ref={doneRef}
+        tabIndex={-1}
         role="status"
         className={cn(
-          "rounded-xl px-4 py-3 font-semibold",
+          "rounded-xl px-4 py-3 font-semibold outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current",
           dark ? "bg-white/10 text-white" : "bg-green-600/10 text-green-800 dark:text-green-300",
           className,
         )}
@@ -79,7 +87,7 @@ export default function NotifyInline({
 
   return (
     <form id={id} onSubmit={submit} className={cn("w-full", className)}>
-      <div className="flex flex-col sm:flex-row gap-2">
+      <div className="flex flex-col min-[420px]:flex-row gap-2">
         <label htmlFor={`${id ?? "notify"}-email`} className="sr-only">
           Email
         </label>
@@ -96,7 +104,7 @@ export default function NotifyInline({
             "focus:outline focus:outline-2 focus:outline-offset-1",
             dark
               ? "border-white/30 bg-white text-gray-900 focus:outline-primary-wopee"
-              : "border-gray-300 dark:border-white/20 bg-white dark:bg-black/40 dark:placeholder:text-gray-500 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
+              : "border-gray-300 dark:border-white/20 bg-white dark:bg-white/[0.06] placeholder:text-gray-500 dark:placeholder:text-gray-400 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
           )}
         />
         <button
@@ -106,8 +114,8 @@ export default function NotifyInline({
             "min-h-[48px] whitespace-nowrap rounded-lg border-0 px-6 text-base font-semibold font-[inherit] cursor-pointer transition-colors disabled:opacity-70",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
             dark
-              ? "bg-primary-wopee text-secondary-wopee hover:bg-yellow-300 focus-visible:outline-white"
-              : "bg-secondary-wopee text-white hover:bg-purple-800 dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee",
+              ? "bg-primary-wopee text-secondary-wopee hover:bg-primary-wopee/90 focus-visible:outline-white"
+              : "bg-secondary-wopee text-white hover:bg-secondary-wopee/90 dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-primary-wopee/90 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee",
           )}
         >
           {state === "sending" ? "Sending…" : cta}
@@ -115,7 +123,7 @@ export default function NotifyInline({
       </div>
       <p
         role={state === "error" ? "alert" : undefined}
-        className={cn("mt-2 text-sm", dark ? "text-white/80" : "opacity-70")}
+        className={cn("mt-2 text-sm", dark ? "text-white/85" : "text-gray-700 dark:text-gray-300")}
       >
         {state === "error"
           ? "That didn't go through. Try again in a moment."

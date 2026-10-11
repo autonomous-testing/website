@@ -1,50 +1,48 @@
 import React from "react";
-import NewsletterForm from "@/components/hub-spot/NewsletterForm";
-import { learnConfig } from "@/data/learn-config";
+import GradientCard from "@/components/ui/GradientCard";
+import NotifyInline from "./NotifyInline";
 import { cn } from "@/lib/utils";
 
 type NotifyCardProps = {
   id?: string;
+  /** Element id of the form, for analytics. */
+  formId?: string;
   eyebrow?: string;
   heading: string;
   body: string;
+  cta?: string;
+  note?: string;
   className?: string;
 };
 
-// Same pattern as the blog's InPostCTA: the site's HubSpot form inside a white card.
+// The site's solid purple CTA card with the inline email form (same HubSpot
+// form as the newsletter, posted directly: no embed, no HubSpot branding).
 export default function NotifyCard({
   id = "notify",
+  formId = "cta-learn-notify-card",
   eyebrow = "Notify me",
   heading,
   body,
+  cta = "Notify me",
+  note = "One email when it opens. Unsubscribe anytime.",
   className,
 }: NotifyCardProps) {
   return (
-    <section
-      id={id}
-      className={cn(
-        "rounded-2xl overflow-hidden bg-gradient-to-br from-secondary-wopee to-purple-800 dark:to-purple-900 text-white shadow-2xl shadow-purple-900/40",
-        className,
-      )}
-    >
-      <div className="grid lg:grid-cols-2 gap-6 p-6 sm:p-10 items-center">
-        <div className="flex flex-col gap-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary-wopee">
-            {eyebrow}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold leading-tight text-white">
-            {heading}
-          </h2>
-          <p className="text-base text-white/85">{body}</p>
+    <section id={id} aria-labelledby={`${id}-h`} className={cn("scroll-mt-24", className)}>
+      <GradientCard variant="solid" padding="none">
+        <div className="grid items-center gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:gap-10">
+          <div className="flex flex-col gap-2">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-primary-wopee">
+              {eyebrow}
+            </p>
+            <h2 id={`${id}-h`} className="m-0 text-2xl sm:text-3xl font-bold tracking-tight leading-tight text-white text-balance">
+              {heading}
+            </h2>
+            <p className="m-0 text-base text-white/85">{body}</p>
+          </div>
+          <NotifyInline id={formId} tone="dark" cta={cta} note={note} />
         </div>
-        <div className="bg-white text-gray-900 rounded-xl p-4 sm:p-6 min-h-[180px] overflow-hidden">
-          <div id="learn-notify-form" />
-          <NewsletterForm
-            formId={learnConfig.notifyFormId}
-            target="#learn-notify-form"
-          />
-        </div>
-      </div>
+      </GradientCard>
     </section>
   );
 }

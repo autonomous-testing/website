@@ -26,7 +26,7 @@ const linkClass =
   "group inline-flex min-h-7 items-center gap-1 text-[15px] leading-6 text-gray-600 no-underline transition-colors hover:text-secondary-wopee hover:no-underline dark:text-gray-400 dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const bottomLinkClass =
-  "inline-flex min-h-7 items-center text-gray-500 no-underline transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex min-h-7 items-center text-gray-600 no-underline dark:text-gray-400 transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const primaryCtaClass =
   "inline-flex h-10 w-full items-center justify-center rounded-lg bg-secondary-wopee px-4 sm:w-auto text-sm font-semibold text-white no-underline transition-colors hover:bg-purple-800 hover:text-white hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
@@ -144,7 +144,7 @@ export default function Footer(): JSX.Element {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-7 text-sm text-gray-500 dark:border-white/10 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-7 text-sm text-gray-600 dark:text-gray-400 dark:border-white/10 md:flex-row md:items-center md:justify-between">
           <p>© {year} wopee labs, s.r.o. · Prague, Czech Republic</p>
           <ul className="m-0 flex list-none flex-wrap items-center gap-x-6 gap-y-2 p-0">
             {footerLegal.map((link) => (
