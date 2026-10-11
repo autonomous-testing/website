@@ -1,5 +1,9 @@
 // The tutorial roadmap for wopee.io/learn. The /learn page renders its cards
-// from this list, so launching a tutorial means flipping its `status` to "live".
+// from this list, and every slug without its own page gets a "coming soon +
+// notify" page (plugin in docusaurus.config.js). T1 follows the launch flag in
+// learn-config.ts; the others go live by flipping `status` to "live".
+
+import { learnConfig } from "./learn-config";
 
 export type TutorialStatus = "coming-soon" | "live";
 
@@ -9,16 +13,23 @@ export type Tutorial = {
   /** Page slug under /learn/, e.g. "agentic-testing" → /learn/agentic-testing/. */
   slug: string;
   title: string;
+  /** Shorter, outcome-first title for the /learn card; defaults to `title`. */
+  cardTitle?: string;
+  /** One line, 12 words or fewer, for the card and the coming-soon page. */
   oneLiner: string;
   status: TutorialStatus;
   /** Honest time label from the dry run; omit until it is measured. */
   duration?: string;
   level: "Beginner" | "Intermediate" | "QA leads";
   prerequisites: string;
+  /** Short label on the roadmap row, e.g. what a Wopee.io lab needs. */
+  tag?: string;
   /** "wopee" = the lab needs a free Wopee.io account; "neutral" = vendor-neutral. */
   track: "neutral" | "wopee";
   /** Counts toward the Agentic Testing Practitioner certificate (T1 + T2 + T3). */
   practitioner?: boolean;
+  /** The tutorial has its own page in src/pages/learn/; otherwise a coming-soon page is generated. */
+  hasPage?: boolean;
 };
 
 export const tutorials: Tutorial[] = [
@@ -26,9 +37,9 @@ export const tutorials: Tutorial[] = [
     id: "T1",
     slug: "agentic-testing",
     title: "Agentic testing for testers",
-    oneLiner:
-      "Run Playwright's planner, generator and healer on a demo app, and catch the agent writing a bug into a green test.",
-    status: "coming-soon",
+    cardTitle: "Agentic testing with Playwright's AI agents",
+    oneLiner: "Run the planner, generator and healer on a demo app. Check their tests.",
+    status: learnConfig.t1.launched ? "live" : "coming-soon",
     duration: "About 2 hours",
     level: "Beginner",
     prerequisites: "None",
@@ -39,8 +50,8 @@ export const tutorials: Tutorial[] = [
     id: "T2",
     slug: "mcp",
     title: "MCP for testers",
-    oneLiner:
-      "Connect Playwright to your AI agent through MCP, see what the agent really reads on a page, and measure what it costs.",
+    cardTitle: "MCP: connect an AI agent to the browser",
+    oneLiner: "Set up Playwright MCP and see exactly what the agent reads.",
     status: "coming-soon",
     duration: "About 90 min",
     level: "Beginner",
@@ -52,8 +63,8 @@ export const tutorials: Tutorial[] = [
     id: "T3",
     slug: "skills",
     title: "Skills for AI testing agents",
-    oneLiner:
-      "Write a SKILL.md that runs cold, prove the agent follows it, and review a colleague's skill for planted flaws.",
+    cardTitle: "Skills: testing instructions for your agent",
+    oneLiner: "Write a SKILL.md file and prove the agent follows it.",
     status: "coming-soon",
     duration: "About 90 min",
     level: "Intermediate",
@@ -65,8 +76,7 @@ export const tutorials: Tutorial[] = [
     id: "T4",
     slug: "playwright",
     title: "Playwright from zero",
-    oneLiner:
-      "Install, codegen, locators, web-first assertions, traces and your first CI run.",
+    oneLiner: "Locators, assertions, traces and your first automated run.",
     status: "coming-soon",
     level: "Beginner",
     prerequisites: "None",
@@ -76,8 +86,9 @@ export const tutorials: Tutorial[] = [
     id: "T5",
     slug: "wopee-intro",
     title: "Intro to Wopee.io: from a URL to a running suite",
-    oneLiner:
-      "Create a project, read the analysis, review scenarios, answer the agent and rerun.",
+    cardTitle: "Wopee.io: from URL to tests",
+    oneLiner: "Point Wopee.io at a URL and review the tests it writes.",
+    tag: "Free Wopee.io account",
     status: "coming-soon",
     level: "Beginner",
     prerequisites: "A free Wopee.io account",
@@ -87,8 +98,8 @@ export const tutorials: Tutorial[] = [
     id: "T6",
     slug: "agent-verdicts",
     title: "Trusting an agent's verdict",
-    oneLiner:
-      "Oracles, evidence and LLM-as-judge: why an unproven pass is incomplete, and how to review a run in 5 minutes.",
+    cardTitle: "Can you trust that pass?",
+    oneLiner: "When to believe an agent's pass, and a 5-minute review.",
     status: "coming-soon",
     level: "Intermediate",
     prerequisites: "T1",
@@ -98,8 +109,8 @@ export const tutorials: Tutorial[] = [
     id: "T7",
     slug: "api-testing",
     title: "API testing with Playwright and an agent",
-    oneLiner:
-      "Find the API in the UI's traffic, let an agent write API tests, and prove a UI claim through the API.",
+    cardTitle: "API testing with an agent",
+    oneLiner: "Find the API behind the page. Let an agent test it.",
     status: "coming-soon",
     level: "Intermediate",
     prerequisites: "T4",
@@ -109,8 +120,7 @@ export const tutorials: Tutorial[] = [
     id: "T8",
     slug: "test-data",
     title: "Test data for agents",
-    oneLiner:
-      "Static data, lists, Faker, CSV and AI-generated data that never collides, plus masking.",
+    oneLiner: "Fake, CSV and AI-made data that never collides, plus masking.",
     status: "coming-soon",
     level: "Intermediate",
     prerequisites: "T4 or T5",
@@ -120,8 +130,8 @@ export const tutorials: Tutorial[] = [
     id: "T9",
     slug: "agent-files-the-bug",
     title: "Your coding agent files the bug",
-    oneLiner:
-      "Use the Wopee.io MCP server in your coding agent: dispatch a run, read the results and file a GitHub issue.",
+    oneLiner: "Use the Wopee.io MCP server to run tests and file issues.",
+    tag: "The free plan includes MCP",
     status: "coming-soon",
     level: "Intermediate",
     prerequisites: "T2 and T5",
@@ -131,8 +141,8 @@ export const tutorials: Tutorial[] = [
     id: "T10",
     slug: "team-rollout",
     title: "Rolling out AI testing in a team",
-    oneLiner:
-      "Pick 10 critical flows, set a baseline, measure a pilot, and answer the auditor's questions.",
+    cardTitle: "AI testing rollout for QA leads",
+    oneLiner: "Pick 10 critical flows, measure a pilot, answer the auditor.",
     status: "coming-soon",
     level: "QA leads",
     prerequisites: "None",
@@ -141,3 +151,8 @@ export const tutorials: Tutorial[] = [
 ];
 
 export const tutorialUrl = (t: Tutorial) => `/learn/${t.slug}/`;
+export const cardTitle = (t: Tutorial) => t.cardTitle ?? t.title;
+
+/** T1–T3: the first path, shown as cards on /learn. The rest sit in the roadmap expander. */
+export const featuredTutorials = tutorials.filter((t) => t.practitioner);
+export const roadmapTutorials = tutorials.filter((t) => !t.practitioner);

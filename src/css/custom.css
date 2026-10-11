@@ -683,3 +683,10 @@ a.navbar__item:hover {
 .menu__link .nav-rich-desc {
   display: none;
 }
+
+/* Navbar "Learn" (behind the T1 launch flag): only where the bar has room, so Log in and Start for free never move. */
+@media (min-width: 997px) and (max-width: 1199px) {
+  .navbar__item.navbar-learn {
+    display: none;
+  }
+}

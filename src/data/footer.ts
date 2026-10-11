@@ -47,6 +47,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Community",
     links: [
       { label: "Blog", to: "/blog/" },
+      { label: "Free tutorials", to: "/learn/" },
       { label: "Newsletter", to: "/newsletter/" },
       { label: "Changelog", to: "/changelog/" },
       { label: "LinkedIn", to: "https://www.linkedin.com/company/wopee" },
