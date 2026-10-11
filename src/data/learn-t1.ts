@@ -83,14 +83,14 @@ export const t1Steps: LabStep[] = [
   },
   {
     key: "1",
-    title: "Worked example",
+    title: "Catch your first agent mistake",
     time: "15 min",
     does: "Catch your first agent mistake, then find four more in a green test. No AI.",
     checkpoint: "CP1 · 3 of 4 hidden flaws",
   },
   {
     key: "2",
-    title: "Guided",
+    title: "Fix the agent's checkout tests",
     time: "20 min",
     does: "Finish two checkout tests with a coding agent, then fix what it got wrong.",
     checkpoint: "CP2 · the right test fails",
@@ -98,7 +98,7 @@ export const t1Steps: LabStep[] = [
   },
   {
     key: "3a",
-    title: "Plan",
+    title: "Plan a new feature",
     time: "12 min",
     does: "Wire Playwright's agents, plan a new feature: promo codes.",
     checkpoint: "CP3a · plan with spec values",
@@ -106,7 +106,7 @@ export const t1Steps: LabStep[] = [
   },
   {
     key: "3b",
-    title: "Generate",
+    title: "Generate and review tests",
     time: "10 min",
     does: "Generate the tests, run them, review them.",
     checkpoint: "CP3b · 3 tests, spec values",

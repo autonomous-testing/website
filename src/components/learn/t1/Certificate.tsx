@@ -3,6 +3,7 @@ import Link from "@docusaurus/Link";
 import NewsletterForm from "@/components/hub-spot/NewsletterForm";
 import { learnConfig } from "@/data/learn-config";
 import { t1Certificate } from "@/data/learn-t1";
+import Expander from "@/components/learn/Expander";
 
 const TIERS = [
   {
@@ -21,35 +22,18 @@ export default function Certificate() {
   const formId = learnConfig.t1.certFormId;
   return (
     <div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {TIERS.map((t, i) => (
-          <div
-            key={t.name}
-            className={
-              i === 1
-                ? "rounded-xl border-2 border-solid border-secondary-wopee/60 dark:border-primary-wopee/60 p-5"
-                : "rounded-xl border border-solid border-gray-200 dark:border-gray-800 p-5"
-            }
-          >
-            <h3 className="text-xl font-bold">
-              {t.name}{" "}
-              <span className="ml-1 align-middle text-xs font-semibold uppercase tracking-wide opacity-60">
-                {t.level}
-              </span>
-            </h3>
-            <p className="mt-1 opacity-85">{t.body}</p>
-          </div>
-        ))}
-      </div>
-      <p className="mt-4">
-        Both come with a verify page, LinkedIn "Add to profile" and an Open
-        Badges 3.0 credential.
+      <ul className="m-0 flex list-none flex-col gap-2 p-0 text-base sm:text-lg">
+        <li>
+          <strong>Completion:</strong> lab check 8/8 and quiz 8 of 10.
+        </li>
+        <li>
+          <strong>Verified:</strong> the same check, green on your fork (your
+          own copy of the lab on GitHub).
+        </li>
+      </ul>
+      <p className="mt-3">
+        Both name the bugs you caught and add to LinkedIn in one click.
       </p>
-      <p className="mt-2">
-        <strong>Agentic Testing Practitioner</strong> = T1 + T2 + T3 at the
-        Verified tier.
-      </p>
-      <p className="mt-5">It names what you did, not only that you finished:</p>
 
       <figure
         aria-label="Certificate preview"
@@ -81,15 +65,14 @@ export default function Certificate() {
         </div>
       </figure>
 
-      <div className="mt-8 rounded-2xl bg-gray-50 dark:bg-gray-900 p-5 sm:p-8">
+      <div className="mt-6 rounded-2xl bg-gray-50 dark:bg-gray-900 p-5 sm:p-6">
         <h3 className="text-2xl font-bold">Get your certificate</h3>
-        <p className="mt-1">We email you a PDF and a link you can add to LinkedIn.</p>
-        <p className="mt-3 text-sm italic opacity-80">
-          We use your email to send your certificate, its verify link and the
-          lab solutions. Nothing else, unless you tick the box below.{" "}
+        <p className="mt-1 text-sm opacity-85">
+          We email you a PDF and a LinkedIn link. Your email is used for the
+          certificate and the lab solutions only, unless you tick the box.{" "}
           <Link
             to="/privacy/"
-            className="font-semibold not-italic text-secondary-wopee dark:text-primary-wopee"
+            className="font-semibold text-secondary-wopee dark:text-primary-wopee"
           >
             Privacy
           </Link>
@@ -104,17 +87,31 @@ export default function Certificate() {
             role="note"
             className="mt-4 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-4 text-sm"
           >
-            The certificate form opens when T1 launches. It asks for the name
-            on the certificate and your email, with a separate, unticked box:
-            "Send me the next tutorial and occasional Wopee.io news. You can
-            unsubscribe from any email."
+            The certificate form opens when T1 launches.
           </p>
         )}
-        <p className="mt-4 text-xs opacity-70">
-          The certificate confirms you completed the lab check and the quiz.
-          It is not a proctored exam.
-        </p>
       </div>
+      <Expander className="mt-4" summary="About the certificate">
+        <div className="flex flex-col gap-2 text-sm sm:text-base">
+          {TIERS.map((t) => (
+            <p key={t.name} className="m-0">
+              <strong>{t.name}</strong> ({t.level}): {t.body}
+            </p>
+          ))}
+          <p className="m-0">
+            Both come with a verify page, LinkedIn "Add to profile" and an Open
+            Badges 3.0 credential.
+          </p>
+          <p className="m-0">
+            <strong>Agentic Testing Practitioner</strong> = T1 + T2 + T3 at the
+            Verified tier.
+          </p>
+          <p className="m-0">
+            The certificate confirms you completed the lab check and the quiz.
+            It is not a proctored exam.
+          </p>
+        </div>
+      </Expander>
     </div>
   );
 }

@@ -160,7 +160,7 @@ export default function LabTracker() {
               </li>
               {s.key === t1StopAfter && (
                 <li className="rounded-xl border border-dashed border-gray-300 dark:border-gray-700 px-5 py-3 text-sm">
-                  ☕ <strong>Good place to stop.</strong> Stop the codespace.
+                  <strong>Good place to stop.</strong> Stop the codespace.
                   Your work waits for you.
                 </li>
               )}
