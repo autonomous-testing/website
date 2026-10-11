@@ -87,7 +87,7 @@ export default function Quiz() {
         <span aria-live="polite" className="text-sm font-semibold whitespace-nowrap">
           {answered} of 10 answered · {correct} correct
         </span>
-        <span aria-hidden="true" className="order-last col-span-2 sm:order-none sm:col-span-1 h-2 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-800">
+        <span aria-hidden="true" className="order-last col-span-2 sm:order-none sm:col-span-1 h-2 overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
           <span
             className="block h-full bg-secondary-wopee dark:bg-primary-wopee transition-all"
             style={{ width: `${answered * 10}%` }}
@@ -98,17 +98,18 @@ export default function Quiz() {
         </button>
       </div>
 
-      <ol className="m-0 mt-4 list-none p-0 flex flex-col gap-6">
+      <ol className="m-0 mt-2 list-none p-0">
         {t1Quiz.map((q: QuizItem, qi) => {
           const order = attempt.order[qi];
           const picked = attempt.answers[qi];
           const isAnswered = typeof picked === "number";
           const ok = picked === q.a;
           return (
-            <li key={qi} className="rounded-xl border border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 sm:p-6">
+            <li key={qi} className="border-0 border-b border-solid border-gray-200 py-6 last:border-b-0 dark:border-white/10">
               <h3 className="text-lg font-semibold leading-snug">
                 <span className="mr-2 font-mono text-secondary-wopee dark:text-primary-wopee">
                   Q{qi + 1}
+                  <span className="sr-only">. </span>
                 </span>
                 <Md text={q.t} />
               </h3>
@@ -136,11 +137,11 @@ export default function Quiz() {
                           ? "border-green-600 bg-green-600/10"
                           : isWrongPick
                             ? "border-red-500 bg-red-500/10"
-                            : "border-gray-200 dark:border-gray-700 bg-transparent",
+                            : "border-gray-200 dark:border-white/15 bg-transparent",
                         isAnswered && !isRight && !isWrongPick && "opacity-70",
                       )}
                     >
-                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 font-mono text-sm font-bold">
+                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-gray-100 dark:bg-white/10 font-mono text-sm font-bold">
                         {LETTERS[pos]}
                       </span>
                       <span className="min-w-0 break-words">
@@ -156,7 +157,7 @@ export default function Quiz() {
                     explainRefs.current[qi] = el;
                   }}
                   tabIndex={-1}
-                  className="mt-4 rounded-lg bg-gray-50 dark:bg-gray-950 p-4 text-sm leading-relaxed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee"
+                  className="mt-4 rounded-lg bg-gray-50 dark:bg-white/[0.04] p-4 text-sm leading-relaxed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee"
                 >
                   <p>
                     <span className={cn("font-bold", ok ? "text-green-700 dark:text-green-400" : "text-red-600 dark:text-red-400")}>
@@ -180,7 +181,7 @@ export default function Quiz() {
           <div
             className={cn(
               "mt-6 rounded-xl border border-solid p-5",
-              correct >= PASS ? "border-green-600/50 bg-green-600/10" : "border-gray-300 dark:border-gray-700",
+              correct >= PASS ? "border-green-600/50 bg-green-600/10" : "border-gray-300 dark:border-white/15",
             )}
           >
             {correct >= PASS ? (

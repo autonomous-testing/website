@@ -129,7 +129,7 @@ export type TermLine = { text: string; tone?: "ok" | "bad" | "warn" | "dim" }[];
 export const t1CheckTabs: { id: string; label: string; lines: TermLine[] }[] = [
   {
     id: "fail",
-    label: "Step 3b · failing",
+    label: "3b · failing",
     lines: [
       [{ text: "$ npm run check -- t1 --step 3b", tone: "dim" }],
       [{ text: "T1 · check my work · step 3b" }],
@@ -146,7 +146,7 @@ export const t1CheckTabs: { id: string; label: string; lines: TermLine[] }[] = [
   },
   {
     id: "pass",
-    label: "Step 3b · passing",
+    label: "3b · passing",
     lines: [
       [{ text: "$ npm run check -- t1 --step 3b", tone: "dim" }],
       [
@@ -162,7 +162,7 @@ export const t1CheckTabs: { id: string; label: string; lines: TermLine[] }[] = [
   },
   {
     id: "full",
-    label: "Full run · 8/8",
+    label: "Full run 8/8",
     lines: [
       [{ text: "$ npm run check -- t1", tone: "dim" }],
       [{ text: "Score " }, { text: "8/8", tone: "ok" }, { text: ". Your completion code: " }, { text: "t1-K3M7QX2PLA", tone: "warn" }],

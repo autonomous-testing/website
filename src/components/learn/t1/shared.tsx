@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { codeSurface, focusRing } from "@/components/learn/styles";
 
 const STORE = "wopee-learn-t1";
 
@@ -68,7 +70,7 @@ export function Md({ text }: { text: string }) {
 }
 
 export const Eyebrow = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-sm font-bold uppercase tracking-widest text-secondary-wopee dark:text-primary-wopee mb-2">
+  <p className="mb-2 text-sm font-bold uppercase tracking-widest text-secondary-wopee dark:text-yellow-200/80">
     {children}
   </p>
 );
@@ -80,7 +82,7 @@ export const SectionTitle = ({
   id: string;
   children: React.ReactNode;
 }) => (
-  <h2 id={id} className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-5">
+  <h2 id={id} className="mb-5 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
     {children}
   </h2>
 );
@@ -92,7 +94,7 @@ export const Callout = ({
   label: string;
   children: React.ReactNode;
 }) => (
-  <div className="mt-6 rounded-xl border-0 border-l-4 border-solid border-secondary-wopee dark:border-primary-wopee bg-secondary-wopee/5 dark:bg-primary-wopee/5 px-5 py-4">
+  <div className="mt-6 rounded-xl border-0 border-l-4 border-solid border-secondary-wopee dark:border-primary-wopee bg-secondary-wopee/5 dark:bg-white/[0.04] px-5 py-4">
     <p>
       <span className="font-bold text-secondary-wopee dark:text-primary-wopee">
         {label}
@@ -102,13 +104,54 @@ export const Callout = ({
   </div>
 );
 
-export const CodeBlock = ({ children }: { children: string }) => (
-  <pre className="!my-4 !rounded-xl !bg-gray-950 !p-4 text-sm overflow-x-auto border border-solid border-gray-800">
-    <code className="!bg-transparent !text-gray-100 !border-0 !p-0 whitespace-pre">
-      {children}
-    </code>
-  </pre>
-);
+/** Tracks whether a horizontal scroller has more content to the right (drives the edge fade). */
+export function useScrollMore<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [more, setMore] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => setMore(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
+    ro?.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      ro?.disconnect();
+    };
+  }, []);
+  return [ref, more] as const;
+}
+
+/** A code block that scrolls sideways (never wraps), with an edge fade and keyboard access. */
+export const CodeBlock = ({
+  children,
+  label = "Code sample",
+}: {
+  children: string;
+  label?: string;
+}) => {
+  const [ref, more] = useScrollMore<HTMLPreElement>();
+  return (
+    <pre
+      ref={ref}
+      tabIndex={0}
+      role="region"
+      aria-label={label}
+      data-more={more}
+      className={cn(
+        "learn-scroll !my-4 !rounded-xl !bg-[#141416] !p-4 text-[13px] leading-relaxed",
+        codeSurface,
+        focusRing,
+      )}
+    >
+      <code className="!bg-transparent !text-gray-100 !border-0 !p-0 whitespace-pre">
+        {children}
+      </code>
+    </pre>
+  );
+};
 
 export const ExternalLink = ({
   href,
@@ -125,7 +168,7 @@ export const ExternalLink = ({
     rel="noopener noreferrer"
     className={
       className ??
-      "font-semibold text-secondary-wopee dark:text-primary-wopee underline underline-offset-2"
+      "font-semibold text-secondary-wopee dark:text-primary-wopee underline decoration-secondary-wopee/30 dark:decoration-primary-wopee/40 underline-offset-4 hover:decoration-current"
     }
   >
     {children}
@@ -134,7 +177,7 @@ export const ExternalLink = ({
 
 /** Shared look for small inline controls (Infima restyles bare buttons). */
 export const smallButton =
-  "inline-flex items-center justify-center min-h-[44px] font-[inherit] rounded-lg border border-solid border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 cursor-pointer hover:border-secondary-wopee dark:hover:border-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex items-center justify-center min-h-[44px] font-[inherit] rounded-lg border border-solid border-gray-300 dark:border-white/15 bg-white dark:bg-white/[0.04] px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 cursor-pointer hover:border-secondary-wopee dark:hover:border-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 export const inputClass =
-  "w-full min-h-[44px] rounded-lg border border-solid border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 focus:outline focus:outline-2 focus:outline-secondary-wopee dark:focus:outline-primary-wopee aria-[invalid=true]:border-red-500 dark:aria-[invalid=true]:border-red-400";
+  "w-full min-h-[44px] rounded-lg border border-solid border-gray-300 dark:border-white/15 bg-white dark:bg-white/[0.06] px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 focus:outline focus:outline-2 focus:outline-secondary-wopee dark:focus:outline-primary-wopee aria-[invalid=true]:border-red-500 dark:aria-[invalid=true]:border-red-400";

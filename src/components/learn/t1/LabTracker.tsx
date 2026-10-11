@@ -36,7 +36,7 @@ export default function LabTracker() {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-between rounded-xl bg-gray-50 dark:bg-gray-900 px-4 py-3 text-sm">
+      <div className="flex flex-col gap-3 justify-between pb-3 text-sm text-gray-700 dark:text-gray-300 sm:flex-row sm:items-center">
         <span>
           Paste the short code that <code>npm run check -- t1 --step N</code>{" "}
           prints to tick a box.
@@ -53,14 +53,14 @@ export default function LabTracker() {
                 "block h-2 w-6 rounded-full",
                 ticks[s.key]
                   ? "bg-green-500"
-                  : "bg-gray-300 dark:bg-gray-700",
+                  : "bg-gray-300 dark:bg-white/15",
               )}
             />
           ))}
         </span>
       </div>
 
-      <ol className="m-0 mt-4 list-none p-0 flex flex-col gap-3">
+      <ol className="m-0 list-none p-0 border-0 border-t border-solid border-gray-200 dark:border-white/10">
         {t1Steps.map((s) => {
           const on = !!ticks[s.key];
           const msg = msgs[s.key];
@@ -68,10 +68,8 @@ export default function LabTracker() {
             <React.Fragment key={s.key}>
               <li
                 className={cn(
-                  "grid gap-4 rounded-xl border border-solid p-4 sm:p-5 md:grid-cols-[1fr_minmax(240px,300px)]",
-                  on
-                    ? "border-green-600/50 bg-green-600/5"
-                    : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900",
+                  "grid gap-4 border-0 border-b border-solid border-gray-200 py-5 dark:border-white/10 md:grid-cols-[1fr_minmax(240px,300px)]",
+                  on && "bg-green-600/5",
                 )}
               >
                 <div className="flex gap-3">
@@ -81,7 +79,7 @@ export default function LabTracker() {
                       "mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md border-2 border-solid text-sm font-bold",
                       on
                         ? "border-green-600 bg-green-600 text-white"
-                        : "border-gray-300 dark:border-gray-600",
+                        : "border-gray-400 dark:border-white/30",
                     )}
                   >
                     {on ? "✓" : ""}
@@ -89,16 +87,16 @@ export default function LabTracker() {
                   <div>
                     <p className="font-bold">
                       {s.key} · {s.title}{" "}
-                      <span className="ml-1 text-sm font-normal opacity-60">
+                      <span className="ml-1 whitespace-nowrap text-sm font-normal text-gray-600 dark:text-gray-400">
                         {s.time}
                       </span>
                       {on && <span className="sr-only"> (done)</span>}
                     </p>
-                    <p className="mt-1 opacity-85">
+                    <p className="mt-1 text-gray-800 dark:text-gray-200">
                       <Md text={s.does} />
                     </p>
                     {s.clip && (
-                      <p className="mt-2 inline-block rounded-md bg-secondary-wopee/10 dark:bg-primary-wopee/10 px-2 py-1 text-xs">
+                      <p className="mt-2 inline-block rounded-r-md border-0 border-l-2 border-solid border-secondary-wopee bg-secondary-wopee/5 px-2 py-1 text-xs dark:border-primary-wopee dark:bg-white/5">
                         Before this step: <b>{s.clip}</b>
                       </p>
                     )}
@@ -151,7 +149,7 @@ export default function LabTracker() {
                     aria-live="polite"
                     className={cn(
                       "text-xs",
-                      msg && !msg.ok ? "text-red-600 dark:text-red-400" : "opacity-70",
+                      msg && !msg.ok ? "text-red-600 dark:text-red-400" : "text-gray-600 dark:text-gray-400",
                     )}
                   >
                     {msg?.text}
@@ -159,7 +157,8 @@ export default function LabTracker() {
                 </div>
               </li>
               {s.key === t1StopAfter && (
-                <li className="rounded-xl border border-dashed border-gray-300 dark:border-gray-700 px-5 py-3 text-sm">
+                <li className="border-0 border-b border-solid border-gray-200 py-3 text-sm text-gray-700 dark:border-white/10 dark:text-gray-300">
+                  <span aria-hidden="true" className="mr-2">⏸</span>
                   <strong>Good place to stop.</strong> Stop the codespace.
                   Your work waits for you.
                 </li>
@@ -168,7 +167,7 @@ export default function LabTracker() {
           );
         })}
       </ol>
-      <p className="mt-3 text-sm opacity-70">
+      <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
         Ticks are kept in this browser only.
       </p>
     </div>
