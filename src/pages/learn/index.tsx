@@ -341,7 +341,7 @@ const MadeWithAI = () => {
   const photo = useBaseUrl("/img/learn/marcel.jpg");
   return (
     <section aria-labelledby="why-h" className={cn(container, "py-14 lg:py-20")}>
-      <div className="mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[208px_minmax(0,1fr)] lg:gap-10">
+      <div className="mx-auto grid max-w-4xl items-start gap-8 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[208px_minmax(0,1fr)] lg:gap-10">
         <img
           src={photo}
           alt="Marcel Veselka"
