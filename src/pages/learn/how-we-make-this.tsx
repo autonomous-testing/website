@@ -11,7 +11,7 @@ import { whyAiSummary, whyAiPoints } from "@/data/learn-why-ai";
 
 // The link target for "How we make this" in the video descriptions.
 const HowWeMakeThisPage = () => {
-  const photo = useBaseUrl("/img/team/marcel.jpg");
+  const photo = useBaseUrl("/img/learn/marcel.jpg");
   return (
     <Layout
       title="How We Make the Free Tutorials"
