@@ -1,6 +1,14 @@
 import React, { useLayoutEffect } from "react";
 
-export default function NewsletterForm(): JSX.Element {
+type NewsletterFormProps = {
+  formId?: string;
+  target?: string;
+};
+
+export default function NewsletterForm({
+  formId = "307c72af-1a09-45b0-90d0-21e73ec2cbc3",
+  target = "#newsletter-form-container",
+}: NewsletterFormProps = {}): JSX.Element {
   useLayoutEffect(() => {
     const script = document.createElement("script");
     script.src = "//js-eu1.hsforms.net/forms/embed/v2.js";
@@ -14,8 +22,8 @@ export default function NewsletterForm(): JSX.Element {
         window.hbspt.forms.create({
           region: "eu1",
           portalId: "139620033",
-          formId: "307c72af-1a09-45b0-90d0-21e73ec2cbc3",
-          target: "#newsletter-form-container",
+          formId,
+          target,
         });
       }
     };
@@ -23,7 +31,7 @@ export default function NewsletterForm(): JSX.Element {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [formId, target]);
 
   return <React.Fragment></React.Fragment>;
 }
