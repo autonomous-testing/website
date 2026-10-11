@@ -44,6 +44,7 @@ export const tutorials: Tutorial[] = [
     oneLiner: "Run the planner, generator and healer on a demo app. Find their mistakes.",
     bug: "order total: $36.43 ≠ $30.04",
     status: learnConfig.t1.launched ? "live" : "coming-soon",
+    hasPage: true,
     duration: "About 2 hours",
     level: "Beginner",
     prerequisites: "A free GitHub account. Copilot optional",

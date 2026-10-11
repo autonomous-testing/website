@@ -17,5 +17,9 @@ export const learnConfig = {
      * shows the navbar "Learn" item (docusaurus.config.js) and the homepage band.
      */
     launched: false,
+    /** YouTube id of T1 part 1 ("Green is not correct", about 3 min). */
+    videoId: "",
+    /** HubSpot form for the certificate email gate. Empty = "opens at launch" note. */
+    certFormId: "",
   },
 };
