@@ -16,14 +16,14 @@ const {
 } = require("@mdi/js");
 
 // Rich navbar dropdown rows: icon tile + title + one-line description.
-const navRichItem = (title, desc, icon) =>
-  `<span class="nav-rich"><span class="nav-rich-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg></span><span class="nav-rich-text"><span class="nav-rich-title">${title}</span><span class="nav-rich-desc">${desc}</span></span></span>`;
+const navRichItem = (title, desc, icon, badge) =>
+  `<span class="nav-rich"><span class="nav-rich-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg></span><span class="nav-rich-text"><span class="nav-rich-title">${title}${badge ? `<span class="nav-new">${badge}</span>` : ""}</span><span class="nav-rich-desc">${desc}</span></span></span>`;
 
 
 // /learn: the T1 launch flag gates the navbar "Learn" item; tutorials without
 // their own page get a "coming soon + notify" route.
 const { learnConfig } = require("./src/data/learn-config");
-const { tutorials } = require("./src/data/learn-tutorials");
+const { tutorials, learnShowNew } = require("./src/data/learn-tutorials");
 
 // The pathname the site is served under. Docusaurus prefixes the `favicon`
 // field with this automatically, but not `headTags` hrefs -- those are emitted
@@ -322,7 +322,7 @@ const config = {
               { to: "/integrations/", html: navRichItem("Integrations", "Slack, GitHub, CI, MCP, and your stack", mdiPuzzleOutline) },
               { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
               { to: "/compare/", html: navRichItem("Compare tools", "Honest comparisons with the alternatives", mdiScaleBalance) },
-              { to: "/learn/", html: navRichItem("Free tutorials", "Hands-on labs on AI testing agents", mdiSchoolOutline) },
+              { to: "/learn/", html: navRichItem("Free tutorials", "Hands-on labs on AI testing agents", mdiSchoolOutline, learnShowNew ? "New" : "") },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },

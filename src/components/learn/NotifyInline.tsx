@@ -116,9 +116,10 @@ export default function NotifyInline({
     "min-h-[48px] min-w-0 rounded-lg border border-solid px-4 text-base font-[inherit]",
     "focus:outline focus:outline-2 focus:outline-offset-1",
     dark
-      ? "border-white/30 bg-white text-gray-900 focus:outline-primary-wopee"
+      ? "border-white/30 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-primary-wopee"
       : "border-gray-300 dark:border-white/20 bg-white dark:bg-white/[0.06] placeholder:text-gray-500 dark:placeholder:text-gray-400 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
   );
+  const placeholderText = dark ? "text-gray-500" : "text-gray-500 dark:text-gray-400";
   const fid = id ?? "notify";
 
   return (
@@ -135,29 +136,41 @@ export default function NotifyInline({
           placeholder={team ? "Work email" : "you@company.com"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={cn(fieldCls, "flex-1")}
+          className={cn(fieldCls, "h-12 flex-1")}
         />
         {team && (
           <div className="grid gap-2 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)]">
           <label htmlFor={`${fid}-size`} className="sr-only">
             Team size
           </label>
-          <select
-            id={`${fid}-size`}
-            required
-            value={size}
-            onChange={(e) => setSize(e.target.value)}
-            className={cn(fieldCls, "w-full cursor-pointer", !size && !dark && "text-gray-500 dark:text-gray-400", !size && dark && "text-gray-600")}
-          >
-            <option value="" disabled>
-              Team size
-            </option>
-            {TEAM_SIZES.map((s) => (
-              <option key={s} value={s} className="text-gray-900">
-                {s} testers
+          <div className="relative">
+            <select
+              id={`${fid}-size`}
+              required
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              className={cn(fieldCls, "h-12 w-full cursor-pointer appearance-none pr-10 leading-normal", !size && placeholderText)}
+            >
+              <option value="" disabled>
+                Team size
               </option>
-            ))}
-          </select>
+              {TEAM_SIZES.map((s) => (
+                <option key={s} value={s} className="text-gray-900 dark:bg-[#232326] dark:text-gray-100">
+                  {s} testers
+                </option>
+              ))}
+            </select>
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className={cn(
+                "pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 fill-current",
+                dark ? "text-gray-500" : "text-gray-500 dark:text-gray-400",
+              )}
+            >
+              <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+            </svg>
+          </div>
           <label htmlFor={`${fid}-goal`} className="sr-only">
             What should your team learn? (optional)
           </label>
@@ -168,7 +181,7 @@ export default function NotifyInline({
             placeholder="Learning goal (optional)"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
-            className={cn(fieldCls, "w-full")}
+            className={cn(fieldCls, "h-12 w-full")}
           />
           </div>
         )}

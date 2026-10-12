@@ -8,19 +8,20 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Button } from "@/components/ui/button";
 import GradientCard from "@/components/ui/GradientCard";
 import { Badge } from "@/components/ui/badge";
-import LyingCheck from "@/components/learn/LyingCheck";
+import HeroPill from "@/components/learn/HeroPill";
 import NotifyInline from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
 import Expander from "@/components/learn/Expander";
 import {
   tutorials,
   featuredTutorials,
+  learnShowNew,
   roadmapTutorials,
   tutorialUrl,
   cardTitle,
   type Tutorial,
 } from "@/data/learn-tutorials";
-import { whyAiSummary, whyAiPoints } from "@/data/learn-why-ai";
+import { whyAiSummary } from "@/data/learn-why-ai";
 import { cn } from "@/lib/utils";
 import {
   accent,
@@ -80,10 +81,10 @@ const Hero = () => (
     <div className={cn(container, "relative pt-6 pb-10 lg:pt-16 lg:pb-20")}>
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] xl:gap-14">
         <div className="flex min-w-0 flex-col items-start gap-5 xl:pt-6">
-          <p className={cn(eyebrow, "flex items-center gap-2")}>
-            <LyingCheck size="sm" />
-            Free · for QA testers
-          </p>
+          <HeroPill>
+            {learnShowNew && <>New · </>}
+            <strong className="font-semibold">Free</strong> tutorials for QA testers
+          </HeroPill>
           <h1 className={h1}>
             Hands-on tutorials on{" "}
             <span className={accent}>AI testing agents</span>
@@ -184,7 +185,11 @@ const CertArt = () => (
       <span className="mt-1 h-1.5 w-24 rounded bg-gray-200" />
       <span className="h-1.5 w-16 rounded bg-gray-200" />
     </div>
-    <LyingCheck label="" size="md" className="absolute bottom-3 right-3 h-9" />
+    <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-secondary-wopee text-white">
+      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none">
+        <path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
   </div>
 );
 
@@ -254,7 +259,6 @@ const TutorialCard = ({ t, lead }: { t: Tutorial; lead: boolean }) => {
         >
           {lead && (
             <div className="relative flex h-32 items-center gap-4 overflow-hidden rounded-t-[14px] bg-[#0d0d0d] px-6 sm:h-40 lg:h-44">
-              <LyingCheck size="lg" />
               <span
                 style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
                 className="text-3xl uppercase leading-none text-primary-wopee sm:text-4xl"
@@ -338,53 +342,24 @@ const Tutorials = () => (
 const MadeWithAI = () => {
   const photo = useBaseUrl("/img/learn/marcel.jpg");
   return (
-    <section aria-labelledby="why-h" className={cn(container, "py-14 lg:py-20")}>
-      <div className="mx-auto grid max-w-4xl items-start gap-8 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[208px_minmax(0,1fr)] lg:gap-10">
+    <section aria-labelledby="why-h" className={cn(container, "py-12 lg:py-16")}>
+      <div className="mx-auto flex max-w-3xl items-center gap-5 sm:gap-6">
         <img
           src={photo}
           alt="Marcel Veselka"
-          width={240}
-          height={240}
+          width={160}
+          height={160}
           loading="lazy"
-          className="h-32 w-32 rounded-2xl object-cover shadow-xl shadow-purple-900/20 md:h-[180px] md:w-[180px] lg:h-52 lg:w-52"
+          className="h-20 w-20 flex-shrink-0 rounded-2xl object-cover shadow-lg shadow-purple-900/15 sm:h-24 sm:w-24"
         />
         <div className="min-w-0">
-          <h2 id="why-h" className={cn(h2, "text-2xl sm:text-3xl")}>
+          <h2 id="why-h" className="m-0 text-xl font-bold tracking-tight sm:text-2xl">
             Made with AI, <span className={accent}>checked by me</span>
           </h2>
-          <p className="m-0 mt-3 text-lg leading-relaxed text-gray-800 dark:text-gray-200 sm:text-xl">
-            {whyAiSummary}
-          </p>
-          <ol className="m-0 mt-6 grid list-none gap-3 p-0 sm:grid-cols-2">
-            {whyAiPoints.map(({ title, body }, i) => {
-              const last = i === whyAiPoints.length - 1;
-              return (
-                <li
-                  key={title}
-                  className={cn(
-                    "flex gap-3 rounded-xl border border-solid p-4",
-                    last
-                      ? "border-secondary-wopee/40 bg-secondary-wopee/5 sm:col-span-2 dark:border-primary-wopee/40 dark:bg-primary-wopee/5"
-                      : "border-gray-200 dark:border-gray-800",
-                  )}
-                >
-                  <span
-                    aria-hidden="true"
-                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-bold text-white dark:bg-primary-wopee dark:text-gray-900"
-                  >
-                    {i + 1}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="m-0 font-bold">{title}</p>
-                    <p className="m-0 mt-1 leading-relaxed text-gray-700 dark:text-gray-300">{body}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-          <p className="m-0 mt-4 text-sm font-semibold text-gray-600 dark:text-gray-400">
-            Marcel Veselka · Founder of Wopee.io
-          </p>
+          <p className="m-0 mt-1 leading-relaxed text-gray-700 dark:text-gray-300">{whyAiSummary}</p>
+          <Link to="/learn/how-we-make-this/" className={cn(standaloneLink, "text-sm")}>
+            How I make this course →
+          </Link>
         </div>
       </div>
     </section>

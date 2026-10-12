@@ -41,20 +41,32 @@ const HowWeMakeThisPage = () => {
             </div>
           </div>
           <h2 className={cn(h2, "mt-6 text-2xl sm:text-3xl")}>Why I make it this way</h2>
-          <ol className="m-0 flex list-none flex-col gap-4 p-0">
-            {whyAiPoints.map(({ title, body }, i) => (
-              <li key={title} className="flex gap-3 sm:gap-4">
-                <span
-                  aria-hidden="true"
-                  className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 dark:border-primary-wopee/40 text-sm font-bold text-secondary-wopee dark:text-primary-wopee"
+          <ol className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2">
+            {whyAiPoints.map(({ title, body }, i) => {
+              const last = i === whyAiPoints.length - 1;
+              return (
+                <li
+                  key={title}
+                  className={cn(
+                    "flex gap-3 rounded-xl border border-solid p-4",
+                    last
+                      ? "border-secondary-wopee/40 bg-secondary-wopee/5 sm:col-span-2 dark:border-primary-wopee/40 dark:bg-primary-wopee/5"
+                      : "border-gray-200 dark:border-white/10",
+                  )}
                 >
-                  {i + 1}
-                </span>
-                <p className="m-0 text-base sm:text-lg leading-relaxed">
-                  <strong>{title}.</strong> {body}
-                </p>
-              </li>
-            ))}
+                  <span
+                    aria-hidden="true"
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-bold text-white dark:bg-primary-wopee dark:text-gray-900"
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="m-0 font-bold">{title}</p>
+                    <p className="m-0 mt-1 leading-relaxed text-gray-700 dark:text-gray-300">{body}</p>
+                  </div>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </main>

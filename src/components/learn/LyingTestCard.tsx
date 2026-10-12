@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import LyingCheck from "./LyingCheck";
 
 // The moment the series is about, from our 22 Sep rehearsal: an AI agent wrote
 // the FD-05 assertion from what the app showed, the run is green, and the spec
@@ -41,10 +40,16 @@ function Report() {
               t.lie && "bg-white/[0.06] ring-1 ring-inset ring-white/10",
             )}
           >
-            {t.lie ? <LyingCheck label="" size="sm" className="h-4" /> : <Tick />}
+            <Tick />
             <span className="whitespace-nowrap font-mono text-gray-400">{t.id}</span>
             <span className="min-w-0 truncate text-gray-100">{t.name}</span>
-            <span className="ml-auto hidden font-mono text-xs text-gray-400 min-[420px]:inline">{t.time}</span>
+            {t.lie ? (
+              <span className="ml-auto whitespace-nowrap rounded-full bg-red-500/15 px-2 py-0.5 font-mono text-[11px] font-bold text-red-300">
+                wrong
+              </span>
+            ) : (
+              <span className="ml-auto hidden font-mono text-xs text-gray-400 min-[420px]:inline">{t.time}</span>
+            )}
           </li>
         ))}
       </ul>
@@ -122,7 +127,6 @@ export default function LyingTestCard({ className }: { className?: string }) {
           <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-white/20" />
           <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-white/20" />
           <span className="ml-2 font-mono text-xs text-gray-400">order.agent.spec.ts</span>
-          <LyingCheck size="sm" className="ml-auto" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <Report />

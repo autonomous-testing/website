@@ -46,6 +46,11 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
         className={linkClass}
       >
         {link.label}
+        {link.badge && (
+          <span className="ml-1 rounded-full bg-secondary-wopee px-1.5 py-px text-[10px] font-bold uppercase leading-4 tracking-wide text-white dark:bg-primary-wopee dark:text-[#1b1b1d]">
+            {link.badge}
+          </span>
+        )}
         {external && (
           <ArrowUpRight
             size={14}

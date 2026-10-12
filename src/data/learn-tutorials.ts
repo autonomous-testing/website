@@ -156,3 +156,6 @@ export const cardTitle = (t: Tutorial) => t.cardTitle ?? t.title;
 /** T1–T3: the first path, shown as cards on /learn. The rest sit in the roadmap expander. */
 export const featuredTutorials = tutorials.filter((t) => t.practitioner);
 export const roadmapTutorials = tutorials.filter((t) => !t.practitioner);
+
+/** "New" badge on the navbar and footer links to /learn, shown until T1, T2 and T3 are all live. */
+export const learnShowNew = tutorials.filter((t) => t.practitioner && t.status === "live").length < 3;

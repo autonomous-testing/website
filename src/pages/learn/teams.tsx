@@ -7,14 +7,13 @@ import { PageMetadata } from "@docusaurus/theme-common";
 import NotifyInline from "@/components/learn/NotifyInline";
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import Expander, { ExpanderGroup } from "@/components/learn/Expander";
-import LyingCheck from "@/components/learn/LyingCheck";
+import HeroPill from "@/components/learn/HeroPill";
 import GradientCard from "@/components/ui/GradientCard";
 import { tutorials, tutorialUrl } from "@/data/learn-tutorials";
 import {
   accent,
   codeSurface,
   container,
-  eyebrow,
   h1,
   h2,
   heroBg,
@@ -145,10 +144,9 @@ const Hero = () => (
         <Breadcrumb here="For QA leads" />
         <div className="mt-2 grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:mt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-12">
           <div className="flex min-w-0 flex-col items-start gap-4 lg:pt-4">
-            <p className={cn(eyebrow, "flex items-center gap-2")}>
-              <LyingCheck size="sm" />
-              For QA leads · Free
-            </p>
+            <HeroPill>
+              For QA leads · <strong className="font-semibold">Free</strong>
+            </HeroPill>
             <h1 className={h1}>
               Free AI testing tutorials for <span className={accent}>your whole QA team</span>
             </h1>

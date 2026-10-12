@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { cn } from "@/lib/utils";
-import LyingCheck from "./LyingCheck";
 
 type VideoBlockProps = {
   /** YouTube video id. Empty = poster (or branded placeholder) and `comingLabel`. */
@@ -90,7 +89,6 @@ const Placeholder = () => (
     role="img"
     aria-label="Green Is Not Correct, video poster"
   >
-    <LyingCheck size="lg" />
     <span
       style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
       className="text-3xl sm:text-5xl uppercase leading-none text-primary-wopee"
