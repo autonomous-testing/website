@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import isInternalUrl from "@docusaurus/isInternalUrl";
+import { useLocation } from "@docusaurus/router";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import Icon from "@mdi/react";
 import { mdiGithub, mdiLinkedin, mdiYoutube } from "@mdi/js";
@@ -39,6 +40,9 @@ const socialClass =
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
   const external = !isInternalUrl(link.to);
+  // A "New" badge pointing at the section you are already in is noise.
+  const { pathname } = useLocation();
+  const badge = link.badge && !(link.to !== "/" && pathname.startsWith(link.to)) ? link.badge : undefined;
   return (
     <li>
       <Link
@@ -46,9 +50,9 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
         className={linkClass}
       >
         {link.label}
-        {link.badge && (
+        {badge && (
           <span className="ml-1 rounded-full bg-secondary-wopee px-1.5 py-px text-[10px] font-bold uppercase leading-4 tracking-wide text-white dark:bg-primary-wopee dark:text-[#1b1b1d]">
-            {link.badge}
+            {badge}
           </span>
         )}
         {external && (

@@ -12,7 +12,7 @@ export default function Breadcrumb({ here, className }: { here: string; classNam
           <Link
             to="/learn/"
             className={cn(
-              "inline-flex min-h-[44px] items-center rounded-md font-semibold text-secondary-wopee dark:text-primary-wopee",
+              "inline-flex min-h-[44px] items-center rounded-md font-semibold text-secondary-wopee hover:underline underline-offset-4 dark:text-gray-100 dark:underline dark:decoration-primary-wopee/60 dark:hover:text-white",
               focusRing,
             )}
           >

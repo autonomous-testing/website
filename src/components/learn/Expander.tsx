@@ -20,7 +20,7 @@ const Chevron = () => (
   <svg
     viewBox="0 0 24 24"
     aria-hidden="true"
-    className="h-5 w-5 flex-shrink-0 fill-secondary-wopee dark:fill-primary-wopee transition-transform group-open:rotate-180"
+    className="h-5 w-5 flex-shrink-0 fill-secondary-wopee dark:fill-gray-400 transition-transform group-open:rotate-180"
   >
     <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
   </svg>
@@ -29,7 +29,7 @@ const Chevron = () => (
 const Play = () => (
   <span
     aria-hidden="true"
-    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-white dark:bg-primary-wopee dark:text-black"
+    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-white dark:bg-white/15 dark:text-white"
   >
     <svg viewBox="0 0 24 24" className="ml-0.5 h-3.5 w-3.5 fill-current">
       <path d="M8 5v14l11-7z" />

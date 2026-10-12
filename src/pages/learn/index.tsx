@@ -9,13 +9,12 @@ import { Button } from "@/components/ui/button";
 import GradientCard from "@/components/ui/GradientCard";
 import { Badge } from "@/components/ui/badge";
 import HeroPill from "@/components/learn/HeroPill";
-import NotifyInline from "@/components/learn/NotifyInline";
+import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
 import Expander from "@/components/learn/Expander";
 import {
   tutorials,
   featuredTutorials,
-  learnShowNew,
   roadmapTutorials,
   tutorialUrl,
   cardTitle,
@@ -25,10 +24,10 @@ import { whyAiSummary } from "@/data/learn-why-ai";
 import { cn } from "@/lib/utils";
 import {
   accent,
+  accentH2,
   codeSurface,
   container,
   ctaSize,
-  eyebrow,
   focusRing,
   h1,
   h2,
@@ -71,16 +70,15 @@ const JSONLD = {
   })),
 };
 
-const CHIPS = ["3-minute video", "Lab in your browser", "Automatic grade", "LinkedIn certificate"];
+const CHIPS = ["3-minute video", "Lab in your browser", "LinkedIn certificate"];
 
 const Hero = () => (
   <section className="relative overflow-hidden">
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-50 to-transparent dark:from-transparent" style={heroBg} />
     <div className={cn(container, "relative pt-6 pb-10 lg:pt-16 lg:pb-20")}>
-      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] xl:gap-14">
-        <div className="flex min-w-0 flex-col items-start gap-5 xl:pt-6">
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] xl:items-center xl:gap-14">
+        <div className="flex min-w-0 flex-col items-start gap-5">
           <HeroPill>
-            {learnShowNew && <>New · </>}
             <strong className="font-semibold">Free</strong> tutorials for QA testers
           </HeroPill>
           <h1 className={h1}>
@@ -119,8 +117,8 @@ const Hero = () => (
             ) : (
               <NotifyInline
                 id="cta-learn-notify-hero"
-                cta="Email me at launch"
-                note="One email when Tutorial 1 opens. Unsubscribe anytime."
+                cta={NOTIFY_CTA}
+                note={NOTIFY_NOTE}
               />
             )}
           </div>
@@ -129,7 +127,10 @@ const Hero = () => (
               Try the 60-second test →
             </Link>
           ) : (
-            <a href="#tutorials" className={cn(standaloneLink, "-mt-2 text-sm")}>
+            <a
+              href="#tutorials"
+              className={cn(standaloneLink, "-mt-2 hidden text-sm text-gray-600 dark:text-gray-400 dark:no-underline xl:inline-flex")}
+            >
               See the tutorials ↓
             </a>
           )}
@@ -175,7 +176,7 @@ const TerminalArt = () => (
 );
 
 const CertArt = () => (
-  <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-white text-gray-900 shadow-sm ring-1 ring-gray-200 dark:ring-white/10">
+  <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-white text-gray-900 dark:bg-gray-100 shadow-sm ring-1 ring-gray-200 dark:ring-white/10">
     <span className="h-2 bg-secondary-wopee" />
     <div className="flex flex-1 flex-col justify-center gap-1 px-4">
       <span className="text-[10px] font-bold uppercase tracking-widest text-secondary-wopee">Completion</span>
@@ -198,9 +199,9 @@ const HowItWorks = () => (
     <div className="mx-auto max-w-6xl">
       <div className="mx-auto max-w-2xl text-center">
         <h2 id="steps-h" className={h2}>
-          How it <span className={accent}>works</span>
+          How it <span className={accentH2}>works</span>
         </h2>
-        <p className="m-0 mt-3 text-lg text-gray-700 dark:text-gray-300">
+        <p className="m-0 mt-3 text-balance text-lg text-gray-700 dark:text-gray-300">
           All free. Email only for the certificate.
         </p>
       </div>
@@ -216,10 +217,18 @@ const HowItWorks = () => (
               <div aria-hidden="true" className="h-36">
                 <Art />
               </div>
-              <span className="relative z-10 mx-auto mt-4 flex h-9 w-9 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-primary-wopee/50 dark:bg-[#1b1b1d] dark:text-primary-wopee md:mx-0 md:self-center">
+              <span
+                aria-hidden="true"
+                className="relative z-10 mx-auto mt-4 hidden h-9 w-9 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-200 md:flex md:self-center"
+              >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="m-0 mt-3 text-center text-lg font-bold">{title}</h3>
+              <h3 className="m-0 mt-4 text-center text-lg font-bold md:mt-3">
+                <span className="font-mono text-secondary-wopee dark:text-gray-400 md:hidden">
+                  {String(i + 1).padStart(2, "0")} ·{" "}
+                </span>
+                {title}
+              </h3>
               <p className="m-0 mt-1 text-center text-gray-700 dark:text-gray-300">{body}</p>
             </li>
           );
@@ -229,14 +238,13 @@ const HowItWorks = () => (
   </section>
 );
 
+// Only "Live" gets a badge; "coming soon" is said once, in the section subhead.
 const StatusBadge = ({ t }: { t: Tutorial }) =>
   t.status === "live" ? (
     <Badge className="border-transparent bg-green-700 text-white shadow-none hover:bg-green-700 uppercase tracking-wide font-bold">
       Live
     </Badge>
-  ) : (
-    <Badge variant="wopee">{t.hasPage ? "Preview" : "Coming soon"}</Badge>
-  );
+  ) : null;
 
 const TutorialCard = ({ t, lead }: { t: Tutorial; lead: boolean }) => {
   const live = t.status === "live";
@@ -252,23 +260,25 @@ const TutorialCard = ({ t, lead }: { t: Tutorial; lead: boolean }) => {
         <GradientCard
           variant="default"
           padding="none"
-          className={cn("h-full transition-shadow", lead ? "shadow-purple-900/40 group-hover:shadow-purple-900/60" : "shadow-purple-900/20 group-hover:shadow-purple-900/40")}
+          className={cn("h-full transition-[box-shadow,transform] group-hover:-translate-y-0.5 motion-reduce:group-hover:translate-y-0", lead ? "shadow-purple-900/40 group-hover:shadow-purple-900/60" : "shadow-purple-900/20 group-hover:shadow-purple-900/40")}
           innerClassName="flex flex-col dark:bg-[#232326]"
         >
           {lead && (
-            <div className="relative flex h-32 items-center gap-4 overflow-hidden rounded-t-[14px] bg-[#0d0d0d] px-6 sm:h-40 lg:h-44">
+            <div className="relative flex h-24 items-center gap-4 overflow-hidden rounded-t-[14px] bg-[#0d0d0d] px-6 sm:h-28 lg:h-32">
               <span
                 style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
                 className="text-3xl uppercase leading-none text-primary-wopee sm:text-4xl"
               >
                 EP.1
               </span>
-              <span className="absolute bottom-3 right-4 font-mono text-xs text-gray-400">order total: $36.43 ≠ $30.04</span>
+              <span className="absolute bottom-3 right-4 font-mono text-sm text-red-300">
+                order total: $36.43 <strong>≠</strong> $30.04
+              </span>
             </div>
           )}
           <div className={cn("flex flex-1 flex-col", lead ? "p-6 sm:p-8" : "p-5 sm:p-6")}>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-sm font-bold text-secondary-wopee dark:text-primary-wopee">{t.id}</span>
+              <span className="font-mono text-sm font-bold text-secondary-wopee dark:text-gray-300">{t.id}</span>
               <StatusBadge t={t} />
               {t.duration && <span className="text-sm text-gray-600 dark:text-gray-400">{t.duration}</span>}
             </div>
@@ -276,8 +286,8 @@ const TutorialCard = ({ t, lead }: { t: Tutorial; lead: boolean }) => {
               {cardTitle(t)}
             </h3>
             <p className="m-0 mt-2 flex-1 text-gray-700 dark:text-gray-300">{t.oneLiner}</p>
-            <span className="mt-5 text-sm font-semibold text-secondary-wopee group-hover:underline dark:text-primary-wopee">
-              {live ? "Start the tutorial →" : t.hasPage ? "Preview it →" : "Get notified →"}
+            <span className="mt-5 text-sm font-semibold text-secondary-wopee underline-offset-4 group-hover:underline dark:text-gray-100 dark:underline dark:decoration-primary-wopee/60 dark:group-hover:text-primary-wopee">
+              {live ? "Start the tutorial →" : "See the tutorial →"}
             </span>
           </div>
         </GradientCard>
@@ -294,12 +304,13 @@ const Tutorials = () => (
   >
     <div className={container}>
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 id="tutorials-h" className={h2}>
-            The first <span className={accent}>three tutorials</span>
+            The first <span className={accentH2}>three tutorials</span>
           </h2>
-          <p className="m-0 mt-3 text-lg text-gray-700 dark:text-gray-300">
-            Take them in order. All three together earn the Agentic Testing Practitioner certificate.
+          <p className="m-0 mt-3 text-balance text-lg text-gray-700 dark:text-gray-300">
+            {t1Live ? "" : "Opening soon. "}Take them in order. All three together earn the Agentic Testing
+            Practitioner certificate.
           </p>
         </div>
         <ul className="m-0 mt-10 grid grid-cols-1 gap-6 p-0 md:grid-cols-2 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-8">
@@ -309,13 +320,13 @@ const Tutorials = () => (
         </ul>
         {roadmapTutorials.length > 0 && (
           <Expander
-            className="mt-8"
+            className="mt-8 rounded-2xl dark:bg-[#232326]"
             summary={`${roadmapTutorials.length} more coming, from Playwright basics to rolling out AI testing in a team`}
           >
             <ol className="m-0 grid list-none gap-x-8 gap-y-3 p-0 md:grid-cols-2">
               {roadmapTutorials.map((t) => (
                 <li key={t.id} className="flex gap-3">
-                  <span className="w-9 flex-shrink-0 font-mono text-sm font-bold text-secondary-wopee dark:text-primary-wopee">
+                  <span className="w-9 flex-shrink-0 font-mono text-sm font-bold text-secondary-wopee dark:text-gray-400">
                     {t.id}
                   </span>
                   <span>
@@ -358,7 +369,7 @@ const BottomCard = ({
       variant="default"
       padding="none"
       className="h-full shadow-purple-900/20"
-      innerClassName="flex h-full gap-4 p-5 sm:gap-5 sm:p-6 dark:bg-[#232326]"
+      innerClassName="flex h-full flex-col gap-4 p-5 sm:flex-row sm:gap-5 sm:p-6 dark:bg-[#232326]"
     >
       {media}
       <div className="flex min-w-0 flex-1 flex-col">
@@ -366,7 +377,7 @@ const BottomCard = ({
           {title}
         </h2>
         <p className="m-0 mt-2 flex-1 leading-relaxed text-gray-700 dark:text-gray-300">{children}</p>
-        <Link to={to} className={cn(standaloneLink, "self-start")}>
+        <Link to={to} className={cn(standaloneLink, "self-start whitespace-nowrap")}>
           {cta}
         </Link>
       </div>
@@ -378,12 +389,12 @@ const BottomCards = () => {
   const photo = useBaseUrl("/img/learn/marcel.jpg");
   return (
     <div className={cn(container, "py-14 lg:py-20")}>
-      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-2 lg:gap-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-2 lg:gap-8">
         <BottomCard
           id="why-h"
           title={
             <>
-              Made with AI, <span className={accent}>checked by me</span>
+              Made with AI, <span className={accentH2}>checked by me</span>
             </>
           }
           to="/learn/how-we-make-this/"
@@ -394,7 +405,8 @@ const BottomCards = () => {
               alt="Marcel Veselka"
               width={128}
               height={128}
-              loading="lazy"
+              loading="eager"
+              decoding="async"
               className="h-16 w-16 flex-shrink-0 rounded-xl object-cover sm:h-20 sm:w-20"
             />
           }
@@ -414,21 +426,14 @@ const NotifyBand = () => (
   <section
     id="notify"
     aria-labelledby="notify-h"
-    className="scroll-mt-24 bg-gradient-to-b from-transparent to-primary-wopee/70 dark:to-secondary-wopee/60"
+    className="scroll-mt-24 border-0 border-b border-solid border-black/5 bg-gradient-to-b from-transparent to-primary-wopee/50 dark:border-white/5 dark:to-secondary-wopee/60"
   >
-    <div className={cn(container, "pb-14 pt-4 lg:pb-20")}>
-      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-end gap-6 md:grid-cols-2 lg:gap-8">
-        <div>
-          <p className={eyebrow}>Notify me</p>
-          <h2 id="notify-h" className={cn(h2, "mt-2")}>
-            Get an email when a tutorial opens
-          </h2>
-        </div>
-        <NotifyInline
-          id="cta-learn-notify-band"
-          cta="Notify me"
-          note="One email per new tutorial, from Wopee.io. Unsubscribe anytime."
-        />
+    <div className={cn(container, "pb-14 pt-10 lg:pb-20 lg:pt-14")}>
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-end gap-6 lg:grid-cols-2 lg:gap-8">
+        <h2 id="notify-h" className={h2}>
+          Get an email when a tutorial opens
+        </h2>
+        <NotifyInline id="cta-learn-notify-band" cta={NOTIFY_CTA} note={NOTIFY_NOTE} />
       </div>
     </div>
   </section>

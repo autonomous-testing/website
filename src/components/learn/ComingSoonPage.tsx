@@ -4,10 +4,9 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import { PageMetadata } from "@docusaurus/theme-common";
 
-import { Badge } from "@/components/ui/badge";
-import NotifyInline from "@/components/learn/NotifyInline";
+import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import Breadcrumb from "@/components/learn/Breadcrumb";
-import EpisodeTag from "@/components/learn/EpisodeTag";
+import HeroPill from "@/components/learn/HeroPill";
 import { tutorials, tutorialUrl, cardTitle } from "@/data/learn-tutorials";
 import { container, h1, standaloneLink, surface } from "@/components/learn/styles";
 import { cn } from "@/lib/utils";
@@ -37,20 +36,19 @@ export default function ComingSoonPage({ slug }: { slug: string }) {
         <div className={cn(container, "pt-6 pb-16 lg:pt-12")}>
           <div className="mx-auto flex max-w-3xl flex-col gap-5">
             <Breadcrumb here={`Tutorial ${n}`} />
-            {t.practitioner ? <EpisodeTag n={n} /> : null}
+            <HeroPill className="self-start">
+              Coming soon · <strong className="font-semibold">Free</strong>
+              {t.practitioner ? <> · Episode {n}</> : null}
+            </HeroPill>
             <h1 className={h1}>{cardTitle(t)}</h1>
-            <p className="m-0 flex flex-wrap items-center gap-2 text-sm">
-              <Badge variant="wopee">Coming soon</Badge>
-              <span className="text-gray-700 dark:text-gray-300">Free</span>
-            </p>
             <p className="m-0 max-w-[60ch] text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t.oneLiner}</p>
             <NotifyInline
               id={`cta-learn-notify-${t.slug}`}
               className="max-w-xl"
-              cta="Email me when it opens"
-              note="One email when it opens. Unsubscribe anytime."
+              cta={NOTIFY_CTA}
+              note={NOTIFY_NOTE}
             />
-            <dl className={cn("m-0 mt-4 grid grid-cols-1 gap-x-8 gap-y-4 rounded-2xl p-5 sm:grid-cols-2 sm:p-6", surface)}>
+            <dl className={cn("m-0 mt-2 grid grid-cols-1 gap-x-8 gap-y-4 rounded-xl p-4 sm:grid-cols-2 sm:p-5", surface)}>
               {facts
                 .filter(([, v]) => v)
                 .map(([k, v]) => (

@@ -32,7 +32,7 @@ const HowWeMakeThisPage = () => {
               className="h-28 w-28 flex-shrink-0 rounded-2xl object-cover shadow-xl shadow-purple-900/20 sm:h-36 sm:w-36"
             />
             <div className="min-w-0">
-              <blockquote className="m-0 border-0 border-l-4 border-solid border-secondary-wopee p-0 pl-5 text-lg leading-relaxed text-gray-800 dark:border-primary-wopee dark:text-gray-200">
+              <blockquote className="m-0 border-0 border-l-4 border-solid border-secondary-wopee p-0 pl-5 text-lg leading-relaxed text-gray-800 dark:border-purple-400 dark:text-gray-200">
                 {whyAiSummary}
               </blockquote>
               <p className="m-0 mt-3 pl-6 text-sm font-semibold text-gray-600 dark:text-gray-400">
@@ -56,7 +56,10 @@ const HowWeMakeThisPage = () => {
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-bold text-white dark:bg-primary-wopee dark:text-gray-900"
+                    className={cn(
+                      "flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-bold text-white",
+                      last ? "dark:bg-primary-wopee dark:text-gray-900" : "dark:bg-white/10 dark:text-gray-100",
+                    )}
                   >
                     {i + 1}
                   </span>

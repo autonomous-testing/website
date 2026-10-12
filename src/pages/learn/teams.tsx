@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import { PageMetadata } from "@docusaurus/theme-common";
 
-import NotifyInline from "@/components/learn/NotifyInline";
+import NotifyInline, { NOTIFY_CTA } from "@/components/learn/NotifyInline";
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import Expander, { ExpanderGroup } from "@/components/learn/Expander";
 import HeroPill from "@/components/learn/HeroPill";
@@ -12,6 +12,7 @@ import GradientCard from "@/components/ui/GradientCard";
 import { tutorials, tutorialUrl } from "@/data/learn-tutorials";
 import {
   accent,
+  accentH2,
   codeSurface,
   container,
   h1,
@@ -87,8 +88,7 @@ const SignupCard = () => (
   <GradientCard variant="solid" padding="none" className="w-full">
     <div className="flex flex-col gap-3 p-4 sm:gap-4 sm:p-8">
       <div>
-        <p className="m-0 hidden text-xs font-bold uppercase tracking-widest text-primary-wopee sm:block">Team sign-up</p>
-        <h2 className="m-0 text-xl font-bold leading-tight tracking-tight text-white sm:text-2xl">
+        <h2 className="m-0 text-balance text-xl font-bold leading-tight tracking-tight text-white sm:text-2xl">
           Get an email when the tutorials open
         </h2>
         <p className="m-0 mt-1 hidden text-sm text-white/85 sm:block sm:text-base">
@@ -100,7 +100,7 @@ const SignupCard = () => (
         tone="dark"
         team
         source="learn-teams"
-        cta={t1Live ? "Email me when the kit ships" : "Email me when it opens"}
+        cta={t1Live ? "Email me when the kit ships" : NOTIFY_CTA}
         note="Unsubscribe from any email."
         success={
           t1Live
@@ -145,7 +145,7 @@ const Hero = () => (
         <div className="mt-2 grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:mt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-12">
           <div className="flex min-w-0 flex-col items-start gap-4 lg:pt-4">
             <HeroPill>
-              For QA leads · <strong className="font-semibold">Free</strong>
+              {t1Live ? "Tutorial 1 is live" : "Coming soon"} · <strong className="font-semibold">Free</strong>
             </HeroPill>
             <h1 className={h1}>
               Free AI testing tutorials for <span className={accent}>your whole QA team</span>
@@ -162,18 +162,13 @@ const Hero = () => (
               <HeroLinks />
             </div>
           </div>
-          <section id="notify" aria-label="Team sign-up" className="scroll-mt-24">
+          <section id="notify" aria-label="Team sign-up" className="w-full max-w-xl scroll-mt-24 lg:max-w-none">
             <SignupCard />
           </section>
           <div className="-mt-2 flex flex-wrap items-center gap-x-6 gap-y-1 lg:hidden">
             <HeroLinks />
           </div>
         </div>
-        <p className="m-0 mt-4 text-sm text-gray-600 dark:text-gray-400">
-          {t1Live
-            ? "Tutorial 1 is live. Tutorials 2 and 3 and the facilitator kit come next."
-            : "Coming soon: Tutorial 1 first, then Tutorials 2 and 3 with the facilitator kit."}
-        </p>
       </div>
     </div>
   </section>
@@ -183,11 +178,18 @@ const Gets = () => (
   <section aria-labelledby="gets-h" className={cn(container, "py-12 lg:py-16")}>
     <div className="mx-auto max-w-6xl">
       <h2 id="gets-h" className={h2}>
-        What your <span className={accent}>team gets</span>
+        What your <span className={accentH2}>team gets</span>
       </h2>
-      <ul className="m-0 mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Five items: 2 + 2 + 1 wide on tablet, 3 + 2 on desktop, so no cell is left empty. */}
+      <ul className="m-0 mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-6">
         {GETS.map(([title, body]) => (
-          <li key={title} className={cn("flex gap-3 rounded-xl p-4 sm:p-5", surface)}>
+          <li
+            key={title}
+            className={cn(
+              "flex gap-3 rounded-xl p-4 sm:p-5 sm:last:col-span-2 lg:col-span-2 lg:[&:nth-child(n+4)]:col-span-3",
+              surface,
+            )}
+          >
             <span aria-hidden="true" className="mt-0.5 font-bold text-green-700 dark:text-green-400">
               ✓
             </span>
@@ -237,7 +239,7 @@ const Plan = () => (
     <div className={container}>
       <div className="mx-auto max-w-6xl">
         <h2 id="plan-h" className={h2}>
-          How a team <span className={accent}>runs it</span>
+          How a team <span className={accentH2}>runs it</span>
         </h2>
         <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-2 lg:gap-12">
           <ol className="m-0 flex list-none flex-col gap-5 p-0">
@@ -245,7 +247,7 @@ const Plan = () => (
               <li key={title} className="flex gap-4">
                 <span
                   aria-hidden="true"
-                  className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-primary-wopee/50 dark:bg-[#1b1b1d] dark:text-primary-wopee"
+                  className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-200"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -266,9 +268,9 @@ const Answers = () => (
   <section aria-labelledby="answers-h" className={cn(container, "py-12 lg:py-16")}>
     <div className="mx-auto max-w-6xl">
       <h2 id="answers-h" className={h2}>
-        What your <span className={accent}>security team</span> will ask
+        What your <span className={accentH2}>security team</span> will ask
       </h2>
-      <dl className={cn("m-0 mt-8 overflow-hidden rounded-2xl", surface)}>
+      <dl className={cn("m-0 mt-8 max-w-4xl overflow-hidden rounded-2xl", surface)}>
         {ANSWERS.map(([k, v], i) => (
           <div
             key={k}
@@ -292,9 +294,9 @@ const Faq = () => (
       <h2 id="faq-h" className={cn(h2, "text-2xl sm:text-3xl")}>
         Questions from QA leads
       </h2>
-      <ExpanderGroup className="mt-6">
+      <ExpanderGroup className="mt-6 max-w-4xl">
         {FAQ.map(([q, a]) => (
-          <Expander key={q} grouped summary={q}>
+          <Expander key={q} grouped summary={<span className="text-base sm:text-lg">{q}</span>}>
             <p className="m-0 max-w-[68ch] leading-relaxed text-gray-700 dark:text-gray-300">{a}</p>
           </Expander>
         ))}

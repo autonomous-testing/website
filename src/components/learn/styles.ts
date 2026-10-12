@@ -24,19 +24,24 @@ export const h1 =
 export const h2 =
   "m-0 font-bold tracking-tight leading-tight text-balance text-3xl sm:text-4xl";
 
+/** H1 accent: the one solid-yellow heading on a dark page. */
 export const accent = "text-secondary-wopee dark:text-primary-wopee";
+
+/** H2 accent: purple in light, plain in dark, so yellow stays for the CTA. */
+export const accentH2 = "text-secondary-wopee dark:text-inherit";
 
 /** Small uppercase label above a heading; muted in dark so solid yellow stays for actions. */
 export const eyebrow =
   "m-0 text-sm font-bold uppercase tracking-widest text-secondary-wopee dark:text-yellow-200/80";
 
+// In dark, links are near-white with a yellow underline: solid yellow is for the primary CTA.
 export const textLink =
-  "font-semibold text-secondary-wopee dark:text-primary-wopee underline decoration-secondary-wopee/30 dark:decoration-primary-wopee/40 underline-offset-4 hover:decoration-current rounded-sm " +
+  "font-semibold text-secondary-wopee dark:text-gray-100 dark:hover:text-white underline decoration-secondary-wopee/30 dark:decoration-primary-wopee/60 underline-offset-4 hover:decoration-current dark:hover:decoration-primary-wopee rounded-sm " +
   focusRing;
 
 /** A standalone text link with a 44 px touch target. */
 export const standaloneLink =
-  "inline-flex min-h-[44px] items-center gap-1 font-semibold text-secondary-wopee dark:text-primary-wopee hover:no-underline hover:underline-offset-4 rounded-md " +
+  "inline-flex min-h-[44px] items-center gap-1 font-semibold text-secondary-wopee underline-offset-4 hover:underline dark:text-gray-100 dark:underline dark:decoration-primary-wopee/60 dark:hover:text-white dark:hover:decoration-primary-wopee rounded-md " +
   focusRing;
 
 /** Size for a primary CTA rendered with <Button asChild variant="wopeeFlat">. */

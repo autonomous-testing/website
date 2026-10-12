@@ -23,6 +23,10 @@ type NotifyInlineProps = {
 
 export const TEAM_SIZES = ["1-4", "5-15", "16-50", "50+"];
 
+/** One button label and one promise for every tutorial notify form. */
+export const NOTIFY_CTA = "Email me at launch";
+export const NOTIFY_NOTE = "One email when each tutorial opens. Unsubscribe anytime.";
+
 const PORTAL = "139620033";
 
 function hubspotUtk() {
@@ -41,7 +45,7 @@ export default function NotifyInline({
   note,
   id,
   tone = "page",
-  success = "Thanks. You'll get one email when it opens.",
+  success = "Thanks. You'll get one email when each tutorial opens.",
   team = false,
   source,
   className,
@@ -116,7 +120,7 @@ export default function NotifyInline({
     "min-h-[48px] min-w-0 rounded-lg border border-solid px-4 text-base font-[inherit]",
     "focus:outline focus:outline-2 focus:outline-offset-1",
     dark
-      ? "border-white/30 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-primary-wopee"
+      ? "border-white/30 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-white focus:outline-offset-2"
       : "border-gray-300 dark:border-white/20 bg-white dark:bg-white/[0.06] placeholder:text-gray-500 dark:placeholder:text-gray-400 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
   );
   const placeholderText = dark ? "text-gray-500" : "text-gray-500 dark:text-gray-400";
@@ -136,7 +140,7 @@ export default function NotifyInline({
           placeholder={team ? "Work email" : "you@company.com"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={cn(fieldCls, "h-12 flex-1")}
+          className={cn(fieldCls, "h-12 flex-1 [&:not(:placeholder-shown):not(:focus):invalid]:border-red-500")}
         />
         {team && (
           <div className="grid gap-2 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)]">
@@ -178,7 +182,7 @@ export default function NotifyInline({
             id={`${fid}-goal`}
             type="text"
             maxLength={300}
-            placeholder="Learning goal (optional)"
+            placeholder="Focus topic (optional)"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
             className={cn(fieldCls, "h-12 w-full")}
@@ -201,10 +205,17 @@ export default function NotifyInline({
       </div>
       <p
         role={state === "error" ? "alert" : undefined}
-        className={cn("mt-2 text-sm", dark ? "text-white/85" : "text-gray-700 dark:text-gray-300")}
+        className={cn(
+          "mt-2 text-sm",
+          state === "error"
+            ? cn("font-semibold", dark ? "text-red-200" : "text-red-700 dark:text-red-300")
+            : dark
+              ? "text-white/85"
+              : "text-gray-700 dark:text-gray-300",
+        )}
       >
         {state === "error" ? (
-          "That didn't go through. Try again in a moment."
+          "That didn't go through. Check your connection and try again."
         ) : (
           <>
             {note}{" "}
