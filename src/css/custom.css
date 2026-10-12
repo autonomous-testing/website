@@ -702,21 +702,6 @@ a.navbar__item:hover {
   height: 16px;
 }
 
-.menu__link .nav-new {
-  display: inline-block;
-  margin-left: 0.45rem;
-  padding: 0.05rem 0.4rem;
-  border-radius: 999px;
-  vertical-align: 0.1em;
-  font-size: 0.65rem;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: #7030a0;
-  color: #fff;
-}
-
 .menu__link .nav-rich-desc {
   display: none;
 }
