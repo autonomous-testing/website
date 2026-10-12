@@ -51,7 +51,7 @@ export default function SeriesSlate() {
           ) : (
             <img
               src={monkey}
-              alt=""
+              alt="The Wopee.io monkey, mascot of the Green Is Not Correct series"
               width={240}
               height={240}
               loading="lazy"
