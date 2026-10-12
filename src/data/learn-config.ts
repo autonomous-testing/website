@@ -9,9 +9,8 @@ export const learnConfig = {
   notifyFormId: "307c72af-1a09-45b0-90d0-21e73ec2cbc3",
   /**
    * HubSpot form for /learn/teams with the contact properties learn_source, learn_team_size and learn_goal.
-   * Empty = the newsletter form, with those values in the submission's page URL.
    */
-  teamsFormId: "",
+  teamsFormId: "4eb5eff0-9b5c-4b6b-9bfd-d538d61d06ac",
   t1: {
     /**
      * Launch flag, the one switch for T1 going live: marks T1 live on /learn,
