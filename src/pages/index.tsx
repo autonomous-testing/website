@@ -14,6 +14,7 @@ import HomeTrustedBy from "@/components/home-page/HomeTrustedBy";
 import HomeDeploymentOptions from "@/components/home-page/HomeDeploymentOptions";
 import HomeEndingSection from "@/components/home-page/HomeEndingSection";
 import HomeFaqSection from "@/components/home-page/HomeFaqSection";
+import HomeLearnBand from "@/components/home-page/HomeLearnBand";
 
 const JSONLD_ORG = {
   "@context": "https://schema.org",
@@ -80,6 +81,7 @@ export default function Home(): JSX.Element {
       <HomeCockpitSection />
       <HomeTestingFrameworks />
       <HomeDeploymentOptions />
+      <HomeLearnBand />
       <HomeFaqSection />
       <HomeEndingSection />
     </Layout>
