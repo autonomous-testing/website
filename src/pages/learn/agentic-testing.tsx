@@ -3,12 +3,12 @@ import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import { PageMetadata } from "@docusaurus/theme-common";
-import { Clock } from "lucide-react";
 
 import VideoBlock from "@/components/learn/VideoBlock";
 import Expander, { ExpanderGroup } from "@/components/learn/Expander";
 import Breadcrumb from "@/components/learn/Breadcrumb";
-import EpisodeTag from "@/components/learn/EpisodeTag";
+import HeroPill from "@/components/learn/HeroPill";
+import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import SectionRail, { type RailItem } from "@/components/learn/t1/SectionRail";
 import GradientCard from "@/components/ui/GradientCard";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ import {
   ctaSize,
   h1,
   heroBg,
-  surface,
+  standaloneLink,
   textLink,
 } from "@/components/learn/styles";
 import TryWidget from "@/components/learn/t1/TryWidget";
@@ -52,7 +52,6 @@ const RAIL: RailItem[] = [
   { id: "try", label: "60-second test" },
   { id: "steps", label: "How it works" },
   { id: "learn", label: "What you'll learn" },
-  { id: "before", label: "Before you start" },
   { id: "concepts", label: "The ideas" },
   { id: "lab", label: "The lab" },
   { id: "check", label: "Check my work" },
@@ -78,7 +77,7 @@ const Section = ({
     id={id}
     aria-labelledby={`${id}-h`}
     className={cn(
-      "scroll-mt-24 py-8 sm:py-10 lg:py-14 [&>p]:max-w-[68ch]",
+      "scroll-mt-24 py-8 sm:py-10 lg:py-12 [&>p]:max-w-[68ch]",
       band &&
         "-mx-6 my-4 bg-purple-50/70 px-6 dark:bg-white/[0.03] sm:mx-0 sm:rounded-3xl sm:px-8 lg:px-10",
       className,
@@ -88,30 +87,21 @@ const Section = ({
   </section>
 );
 
-const ghostBtn =
-  "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 bg-transparent px-6 py-3 text-base font-semibold text-gray-700 dark:border-white/20 dark:text-gray-300";
-
-const LabButton = () =>
-  launched ? (
-    <Button asChild variant="wopeeFlat" className={ctaSize}>
-      <a href={t1Links.codespaces} target="_blank" rel="noopener noreferrer" id="cta-t1-open-lab">
-        Open the free lab
-      </a>
-    </Button>
-  ) : (
-    <span className={ghostBtn}>
-      <Clock aria-hidden="true" className="h-4 w-4" />
-      Lab opens at launch
-    </span>
-  );
+const LabButton = () => (
+  <Button asChild variant="wopeeFlat" className={ctaSize}>
+    <a href={t1Links.codespaces} target="_blank" rel="noopener noreferrer" id="cta-t1-open-lab">
+      Open the free lab
+    </a>
+  </Button>
+);
 
 const Hero = () => (
   <header className="relative overflow-hidden">
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-50 to-transparent dark:from-transparent" style={heroBg} />
-    <div className={cn(container, "relative pt-4 pb-8 lg:pt-14 lg:pb-16")}>
+    <div className={cn(container, "relative pt-4 pb-8 lg:pt-14 lg:pb-10")}>
       <div className="mx-auto max-w-6xl">
         <Breadcrumb here="Tutorial 1" />
-        <EpisodeTag n={1} className="mt-4" />
+        <HeroPill className="mt-4">Green Is Not Correct · Episode 1</HeroPill>
         <h1 className={cn(h1, "mt-4 max-w-4xl")}>
           Agentic testing with{" "}
           <span className={accent}>Playwright's AI agents</span>
@@ -120,58 +110,48 @@ const Hero = () => (
           Run Playwright's planner, generator and healer on a demo app, then
           check every test they write. No coding experience needed.
         </p>
-        <ul className="m-0 mt-5 flex list-none flex-wrap gap-2 p-0 text-sm">
-          {["About 2 hours", "Lab in your browser", "Automatic grade", "LinkedIn certificate"].map((c) => (
-            <li
-              key={c}
-              className="rounded-full border border-solid border-gray-200 bg-white/80 px-3 py-1 font-semibold dark:border-white/10 dark:bg-white/5"
-            >
+        {/* Plain facts, not pills: on mobile, bordered chips read as buttons. */}
+        <ul className="m-0 mt-5 flex list-none flex-wrap gap-x-2 gap-y-1 p-0 text-sm font-semibold text-gray-700 dark:text-gray-300 sm:text-base">
+          {["About 2 hours", "Lab in your browser", "Automatic grade", "LinkedIn certificate"].map((c, i) => (
+            <li key={c} className="flex gap-2">
+              {i > 0 && <span aria-hidden="true" className="text-gray-400 dark:text-gray-500">·</span>}
               {c}
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-          {launched ? (
-            <>
+        {launched ? (
+          <>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
               <LabButton />
-              <a href="#try" className={cn(textLink, "inline-flex min-h-[44px] items-center no-underline")}>
+              <a href="#try" className={cn(standaloneLink, "self-start sm:self-auto")}>
                 Try the 60-second test ↓
               </a>
-            </>
-          ) : (
-            <>
-              <Button asChild variant="wopeeFlat" className={ctaSize}>
-                <a href="#try">Try the 60-second test ↓</a>
-              </Button>
-              <LabButton />
-            </>
-          )}
-        </div>
-        <p className="m-0 mt-4 text-sm text-gray-700 dark:text-gray-300">
-          {launched ? (
-            <>
+            </div>
+            <p className="m-0 mt-4 text-sm text-gray-700 dark:text-gray-300">
               Free GitHub account needed. Not now?{" "}
               <ExternalLink href={t1Links.calendar}>Add 2 hours to your calendar</ExternalLink>.
               Prefer your laptop?{" "}
               <ExternalLink href={t1Links.localSetup}>Local setup</ExternalLink>.
-            </>
-          ) : (
-            <>
-              Not open yet.{" "}
-              <Link to="/learn/#notify" className={linkCls}>
-                Get one email at launch
-              </Link>
-              .
-            </>
-          )}
-        </p>
+            </p>
+          </>
+        ) : (
+          <div id="notify" className="mt-6 max-w-xl scroll-mt-24">
+            <NotifyInline id="cta-t1-notify-hero" source="learn-t1" cta={NOTIFY_CTA} note={NOTIFY_NOTE} />
+            <a href="#try" className={cn(standaloneLink, "mt-1")}>
+              Try the 60-second test ↓
+            </a>
+          </div>
+        )}
       </div>
     </div>
   </header>
 );
 
+// Step 01 promises the video only once there is one to watch.
 const STEPS = [
-  { title: "Watch a 3-minute video", body: "One idea, explained with a real test run, plus a 60-second exercise." },
+  learnConfig.t1.videoId
+    ? { title: "Watch a 3-minute video", body: "One idea, explained with a real test run, plus a 60-second exercise." }
+    : { title: "Try the 60-second test", body: "Spot the line that lies in a test an AI agent wrote and that passes." },
   { title: "Do the lab in your browser", body: "Run Playwright's AI agents on a demo food-delivery app and fix what they get wrong." },
   { title: "Get graded, get certified", body: "An automatic check grades your tests. Pass the quiz, then add the certificate to LinkedIn." },
 ];
@@ -186,7 +166,7 @@ const HowItWorks = () => (
       />
       {STEPS.map(({ title, body }, i) => (
         <li key={title} className="relative flex gap-4 md:flex-col md:gap-3">
-          <span className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-primary-wopee/50 dark:bg-[#1b1b1d] dark:text-primary-wopee">
+          <span className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-200">
             {String(i + 1).padStart(2, "0")}
           </span>
           <div>
@@ -284,7 +264,6 @@ const T1Page = () => (
           <div className="min-w-0 max-w-4xl">
 
       <Section id="try" className="pt-4 lg:pt-6">
-        <Eyebrow>60 seconds</Eyebrow>
         <SectionTitle id="try-h">Is this test correct?</SectionTitle>
         <p className="mb-6 text-lg">
           An AI agent wrote this test. It passes. The spec, the written rules
@@ -330,7 +309,10 @@ const T1Page = () => (
 
       <Section id="learn">
         <SectionTitle id="learn-h">What you'll learn</SectionTitle>
-        <ul className="m-0 grid list-none gap-2 p-0 sm:grid-cols-2 text-base sm:text-lg">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <h3 className="m-0 mb-3 text-lg font-bold">You'll be able to</h3>
+            <ul className="m-0 flex list-none flex-col gap-2 p-0 text-base sm:text-lg">
           {[
             "Tell scripted, AI-assisted and agentic testing apart",
             "Run Playwright's three AI agents and know what each may change",
@@ -345,12 +327,10 @@ const T1Page = () => (
             </li>
           ))}
         </ul>
-      </Section>
-
-
-      <Section id="before">
-        <SectionTitle id="before-h">Before you start</SectionTitle>
-        <ul className="m-0 flex list-none flex-col gap-2 p-0 text-base sm:text-lg">
+          </div>
+          <div id="before" className="scroll-mt-24">
+            <h3 className="m-0 mb-3 text-lg font-bold">Before you start</h3>
+            <ul className="m-0 flex list-none flex-col gap-2 p-0 text-base sm:text-lg">
           {[
             <>A free <strong>GitHub account</strong>. That's all you need.</>,
             <><strong>Copilot Free</strong> is optional: 5 prompts. Every step also works without AI.</>,
@@ -363,6 +343,8 @@ const T1Page = () => (
             </li>
           ))}
         </ul>
+          </div>
+        </div>
         <Expander className="mt-5" summary="Details: free hours, prompts, fast lane">
           <ul className="m-0 flex flex-col gap-2 pl-5">
             <li>
@@ -422,7 +404,7 @@ const T1Page = () => (
               {i < t1Steps.length - 1 && (
                 <span aria-hidden="true" className="absolute left-[17px] top-9 bottom-0 w-px bg-secondary-wopee/25 dark:bg-white/15" />
               )}
-              <span className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-primary-wopee/50 dark:bg-[#232326] dark:text-primary-wopee">
+              <span className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 bg-white font-mono text-sm font-bold text-secondary-wopee dark:border-white/20 dark:bg-[#232326] dark:text-gray-200">
                 {s.key}
               </span>
               <span className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-4 pt-1.5">
@@ -436,7 +418,7 @@ const T1Page = () => (
           ))}
         </ol>
         <ExpanderGroup>
-          <Expander grouped summary="Step tracker: what you do, checkpoints" meta="6 steps">
+          <Expander grouped open={launched} summary="Track your progress" meta="6 checkpoints">
             <LabTracker />
           </Expander>
           <Expander grouped summary="Stuck? Hints and reset">
@@ -449,7 +431,7 @@ const T1Page = () => (
               and tell us the step.
             </p>
           </Expander>
-          <Expander grouped variant="clip" meta="2.5 min" summary="Before step 4: before you trust a pass">
+          <Expander grouped summary="Before step 4: before you trust a pass">
             <p className="m-0">
               In our own rehearsal, the generator expected an order total of
               $36.43. The spec says $30.04. The healer kept the wrong value,
@@ -467,7 +449,7 @@ npx playwright test --retries=0 --repeat-each=20  # stability
 git grep -nE "test\\.(fixme|skip)"
 git diff`}</CodeBlock>
           </Expander>
-          <Expander grouped variant="clip" meta="1.5 min" summary="After the lab: where agents break">
+          <Expander grouped summary="After the lab: where agents break">
             <p className="m-0">
               Models differ, and some go silent mid-task. Every run uses quota.
               Two runs of one prompt can give different tests. Agents copy what
@@ -489,7 +471,8 @@ git diff`}</CodeBlock>
           </Expander>
         </ExpanderGroup>
         <p className="m-0 mt-4 text-sm text-gray-600 dark:text-gray-400">
-          Lab content: CC BY-NC 4.0. Free for internal team training. Not for resale or paid courses.
+          Lab content: CC BY-NC 4.0. Free for internal team training. Not for resale or paid courses.{" "}
+          <ExternalLink href={t1Links.issues}>Found a problem? Report it on GitHub</ExternalLink>
         </p>
       </Section>
 
@@ -502,7 +485,7 @@ git diff`}</CodeBlock>
           it's wrong. Nothing leaves your codespace. At 8/8 you get a code.
           Paste it here.
         </p>
-        <CompletionCodeForm />
+        {launched && <CompletionCodeForm />}
         <Expander className="mt-4" summary="See sample output" meta="3 runs">
           <p className="m-0 text-sm text-gray-700 dark:text-gray-300">
             It runs your tests against frozen builds of the app, in your
@@ -562,7 +545,7 @@ git diff`}</CodeBlock>
                 to={tutorialUrl(next)}
                 className="mt-5 inline-flex min-h-[44px] items-center rounded-lg bg-primary-wopee px-5 py-2.5 font-semibold text-secondary-wopee hover:bg-primary-wopee/90 hover:text-secondary-wopee hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {next.status === "live" ? "Start the next tutorial" : "Email me when it's out"}
+                {next.status === "live" ? "Start the next tutorial" : "See the tutorial →"}
               </Link>
             </div>
           </GradientCard>
@@ -579,28 +562,7 @@ git diff`}</CodeBlock>
         </p>
       </Section>
 
-        <div className="pb-16 pt-4">
-          <p className={cn("mb-8 rounded-xl px-5 py-4 text-base", surface)}>
-            Training a QA team? A team plan and answers for your security
-            team.{" "}
-            <Link to={teamsHref} className={linkCls}>
-              For QA leads →
-            </Link>
-          </p>
-          <div className="border-0 border-t border-solid border-gray-200 pt-5 text-sm leading-relaxed text-gray-600 dark:border-white/10 dark:text-gray-400">
-            <p className="m-0">
-              FoodDash is a demo app built for this course, not affiliated with
-              any delivery company.
-            </p>
-            <p className="mt-1">
-              <ExternalLink href={t1Links.goingDeeper}>Agents in a real pipeline</ExternalLink>
-              {" · "}
-              <ExternalLink href={t1Links.boss}>Boss challenge: FD-10 and FD-11</ExternalLink>
-              {" · "}
-              <ExternalLink href={t1Links.issues}>Found a problem? Report it on GitHub</ExternalLink>
-            </p>
-          </div>
-        </div>
+        <div className="pb-16" />
           </div>
         </div>
       </div>

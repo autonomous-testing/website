@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { t1Widget as W } from "@/data/learn-t1";
-import { codeSurface } from "@/components/learn/styles";
+import { t1Links, t1Widget as W } from "@/data/learn-t1";
+import { learnConfig } from "@/data/learn-config";
+import { codeSurface, standaloneLink } from "@/components/learn/styles";
 
 // Break code only between tokens: after "expect(" and before ".getByText" / ".toBe…".
 function CodeLine({ code }: { code: string }) {
@@ -9,6 +10,8 @@ function CodeLine({ code }: { code: string }) {
     .replace("expect(", "expect(\u0000")
     .replace(".getByText", "\u0000.getByText")
     .replace(".toBe", "\u0000.toBe")
+    // Keep spec IDs whole: a word joiner after the hyphen stops "(FD-" / "05)" splitting.
+    .replace(/FD-(\d)/g, "FD-\u2060$1")
     .split("\u0000");
   return (
     <>
@@ -86,6 +89,21 @@ export default function TryWidget() {
             can be green and wrong.{" "}
             <strong>This tutorial trains you to catch it in five minutes.</strong>
           </p>
+          {learnConfig.t1.launched ? (
+            <a
+              href={t1Links.codespaces}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="cta-t1-try-lab"
+              className={cn(standaloneLink, "mt-1")}
+            >
+              Open the free lab →
+            </a>
+          ) : (
+            <a href="#notify" id="cta-t1-try-notify" className={cn(standaloneLink, "mt-1")}>
+              Email me at launch ↑
+            </a>
+          )}
         </div>
       )}
       {picked !== null && !right && (
@@ -173,7 +191,7 @@ export default function TryWidget() {
             aria-label="Spec rule FD-05"
             className="rounded-xl border border-solid border-secondary-wopee/30 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04]"
           >
-            <span className="rounded-md bg-secondary-wopee px-2 py-0.5 font-mono text-xs font-bold text-white dark:bg-primary-wopee dark:text-black">
+            <span className="rounded-md bg-secondary-wopee px-2 py-0.5 font-mono text-xs font-bold text-white dark:bg-white/10 dark:text-white">
               FD-05
             </span>
             <dl className="mt-3 grid grid-cols-[1fr_auto] gap-x-3 gap-y-1.5 text-sm">
@@ -188,6 +206,9 @@ export default function TryWidget() {
               The spec is the source of truth. Not the app.
             </p>
           </aside>
+          <p className="m-0 text-xs text-gray-600 dark:text-gray-400">
+            FoodDash is a demo app built for this course, not affiliated with any delivery company.
+          </p>
           {feedback}
         </div>
       </div>

@@ -168,7 +168,7 @@ export const ExternalLink = ({
     rel="noopener noreferrer"
     className={
       className ??
-      "font-semibold text-secondary-wopee dark:text-primary-wopee underline decoration-secondary-wopee/30 dark:decoration-primary-wopee/40 underline-offset-4 hover:decoration-current"
+      "font-semibold text-secondary-wopee dark:text-gray-100 dark:hover:text-white underline decoration-secondary-wopee/30 dark:decoration-primary-wopee/60 underline-offset-4 hover:decoration-current dark:hover:decoration-primary-wopee"
     }
   >
     {children}

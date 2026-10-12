@@ -107,7 +107,7 @@ export default function Quiz() {
           return (
             <li key={qi} className="border-0 border-b border-solid border-gray-200 py-6 last:border-b-0 dark:border-white/10">
               <h3 className="text-lg font-semibold leading-snug">
-                <span className="mr-2 font-mono text-secondary-wopee dark:text-primary-wopee">
+                <span className="mr-2 font-mono text-secondary-wopee dark:text-gray-400">
                   Q{qi + 1}
                   <span className="sr-only">. </span>
                 </span>

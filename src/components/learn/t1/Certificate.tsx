@@ -22,17 +22,8 @@ export default function Certificate() {
   const formId = learnConfig.t1.certFormId;
   return (
     <div>
-      <ul className="m-0 flex list-none flex-col gap-2 p-0 text-base sm:text-lg">
-        <li>
-          <strong>Completion:</strong> lab check 8/8 and quiz 8 of 10.
-        </li>
-        <li>
-          <strong>Verified:</strong> the same check, green on your fork (your
-          own copy of the lab on GitHub).
-        </li>
-      </ul>
-      <p className="mt-3">
-        Both name the bugs you caught and add to LinkedIn in one click.
+      <p className="m-0 text-base sm:text-lg">
+        It names the bugs you caught and adds to LinkedIn in one click.
       </p>
 
       <figure
@@ -78,14 +69,14 @@ export default function Certificate() {
         </div>
       </figure>
 
-      <div className="mt-10 rounded-2xl border border-solid border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04] sm:p-6">
+      <div className="mt-10 rounded-xl border border-solid border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04] sm:p-6">
         <h3 className="text-2xl font-bold tracking-tight">Get your certificate</h3>
         <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
           We email you a PDF and a LinkedIn link. Your email is used for the
           certificate and the lab solutions only, unless you tick the box.{" "}
           <Link
             to="/privacy/"
-            className="font-semibold text-secondary-wopee dark:text-primary-wopee"
+            className="font-semibold text-secondary-wopee underline decoration-secondary-wopee/30 underline-offset-4 dark:text-gray-100 dark:decoration-primary-wopee/60"
           >
             Privacy
           </Link>
