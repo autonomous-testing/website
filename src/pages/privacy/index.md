@@ -20,7 +20,7 @@ This notice covers [wopee.io/learn](/learn/). The controller is wopee labs s.r.o
 
 - **Email address**, to tell you when a tutorial opens and, if you agree, to send you Wopee.io news.
 - **Name and GitHub username**, to issue your certificate and its verify link.
-- **Team details** (optional): team size and what your team wants to learn, to plan the team material.
+- **Team details**: team size and what your team wants to learn, to plan the team material.
 
 ## Who processes it
 
