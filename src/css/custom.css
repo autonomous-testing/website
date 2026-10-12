@@ -717,12 +717,7 @@ a.navbar__item:hover {
   color: #fff;
 }
 
-[data-theme="dark"] .nav-new {
-  background: #ffcc00;
-  color: #1b1b1d;
-}
-
-.nav-rich-desc {
+.menu__link .nav-rich-desc {
   display: none;
 }
 
