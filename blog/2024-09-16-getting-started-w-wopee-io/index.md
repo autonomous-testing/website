@@ -7,6 +7,12 @@ tags: [playwright, automation, testing, AI]
 image: ./wopee-io-3-pillars.png
 ---
 
+:::info Updated October 2026
+
+Wopee.io has changed a lot since this post. For the current product, watch the [6-minute quick start](/blog/wopee-io-quick-start), which walks through every step on today's app.
+
+:::
+
 > ## Automate Web App Testing -- No Coding Required
 
 From the beginning, we've been delivering webinars that explore trends and innovative testing ideas, focusing on modern test automation frameworks and tools for web app testing.
@@ -28,11 +34,7 @@ Over the past two decades, testing has evolved significantly. Manual testing can
 
 If any of these challenges resonate with you, Wopee.io’s autonomous testing bots are designed to tackle them, making testing faster, easier, and more accessible to teams with limited technical resources.
 
-Watch the webinar below to get started:
-
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b7J0AEufAM0?si=FeWOQp3At9Y5YjCS" title="Getting Started with Wopee.io: Automate Web App Testing with No Coding Required" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+The updated walkthrough is in the [quick start](/blog/wopee-io-quick-start).
 
 ## Autonomous Testing Bots: A New Era of Test Automation
 
@@ -45,17 +47,15 @@ Our autonomous testing bot revolutionizes the testing lifecycle by automating th
 - **Automated repetitive tasks:** Spend less time maintaining tests and more time focusing on new features.
 - **Built-in validations:** Wopee.io offers visual, network, and JavaScript validations to ensure comprehensive testing for common issues like broken functionality or visual bugs.
 
-You can explore these features in detail by watching the video above.
-
 ## Step-by-Step: How to Get Started with Wopee.io
 
-Here’s a quick guide (covered in more detail in the video) to setting up and running your first test using Wopee.io:
+Here’s the current flow (see the [quick start](/blog/wopee-io-quick-start) for the video):
 
-1. **Create an Account:** Head over to [CMD.wopee.io](https://cmd.wopee.io/login) and create your free account.
-2. **Set Up a Project:** Once logged in, provide the URL of your web app. The autonomous testing bot will crawl the app and gather all necessary data to generate test cases.
-3. **Review Generated Test Scenarios:** Wopee.io will automatically generate test cases based on the app's structure and functionality.
-4. **Run Your First Test:** With just a few clicks, you can run the generated tests and review a detailed report covering any issues identified during the analysis.
-5. **Customizing Tests:** Need more control? Manually add or prioritize test cases, exclude elements from testing (e.g., cookie banners), or schedule tests to run regularly.
+1. **Sign in:** go to [cmd.wopee.io](https://cmd.wopee.io) and sign in with GitHub, Google or GitLab.
+2. **Create a project:** click **New project**, paste your app's URL (or pick a demo), describe what to test in plain English, and click **Create project and generate tests**.
+3. **Watch the first Analysis:** the agent explores your app live, then writes the application description, user flows and test scenarios, and runs every scenario.
+4. **Read the verdicts:** each run ends with a report of every step, what was expected and what was verified.
+5. **Keep testing:** add your own tests in plain English, group them into Test Plans, schedule them, and find every test in your own GitHub repository.
 
 ## Advanced Features: Beyond Basic Testing
 
@@ -71,13 +71,13 @@ Wopee.io is more than just a testing tool. It’s a fresh approach to automated 
 
 ![Wopee.io](./wopee-io-3-pillars.png)
 
-Want to learn more? Watch the full webinar above, or sign up for a free trial to experience Wopee.io firsthand.
+Want to learn more? Watch the [6-minute quick start](/blog/wopee-io-quick-start), or [start free](https://cmd.wopee.io) to experience Wopee.io firsthand.
 
 :::tip Get Started Today 🔥
 
 Interested in trying out Wopee.io?
 
-Head over to [https://wopee.io](https://wopee.io) to sign up for a [free trial](https://cmd.wopee.io/login) or [book a demo](https://wopee.io/book-demo/) with us.
+Head over to [https://wopee.io](https://wopee.io) to [start free](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo/) with us.
 
 :::
 
