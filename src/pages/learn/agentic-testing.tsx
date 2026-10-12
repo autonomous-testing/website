@@ -489,7 +489,7 @@ git diff`}</CodeBlock>
           </Expander>
         </ExpanderGroup>
         <p className="m-0 mt-4 text-sm text-gray-600 dark:text-gray-400">
-          Lab content: CC BY-NC 4.0. Free for internal team training at any company. Not for resale or paid courses.
+          Lab content: CC BY-NC 4.0. Free for internal team training. Not for resale or paid courses.
         </p>
       </Section>
 
