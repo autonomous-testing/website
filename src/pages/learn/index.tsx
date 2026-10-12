@@ -34,8 +34,6 @@ import {
   h2,
   heroBg,
   standaloneLink,
-  surface,
-  textLink,
 } from "@/components/learn/styles";
 
 const TITLE = "Free Hands-on Tutorials on AI Testing Agents";
@@ -339,43 +337,77 @@ const Tutorials = () => (
   </section>
 );
 
-const MadeWithAI = () => {
+// The two closing cards share the tutorial cards' surface, so the page ends on one grid.
+const BottomCard = ({
+  id,
+  title,
+  children,
+  to,
+  cta,
+  media,
+}: {
+  id: string;
+  title: React.ReactNode;
+  children: React.ReactNode;
+  to: string;
+  cta: string;
+  media?: React.ReactNode;
+}) => (
+  <section aria-labelledby={id} className="h-full">
+    <GradientCard
+      variant="default"
+      padding="none"
+      className="h-full shadow-purple-900/20"
+      innerClassName="flex h-full gap-4 p-5 sm:gap-5 sm:p-6 dark:bg-[#232326]"
+    >
+      {media}
+      <div className="flex min-w-0 flex-1 flex-col">
+        <h2 id={id} className="m-0 text-xl font-bold leading-snug tracking-tight">
+          {title}
+        </h2>
+        <p className="m-0 mt-2 flex-1 leading-relaxed text-gray-700 dark:text-gray-300">{children}</p>
+        <Link to={to} className={cn(standaloneLink, "self-start")}>
+          {cta}
+        </Link>
+      </div>
+    </GradientCard>
+  </section>
+);
+
+const BottomCards = () => {
   const photo = useBaseUrl("/img/learn/marcel.jpg");
   return (
-    <section aria-labelledby="why-h" className={cn(container, "py-12 lg:py-16")}>
-      <div className="mx-auto flex max-w-3xl items-center gap-5 sm:gap-6">
-        <img
-          src={photo}
-          alt="Marcel Veselka"
-          width={160}
-          height={160}
-          loading="lazy"
-          className="h-20 w-20 flex-shrink-0 rounded-2xl object-cover shadow-lg shadow-purple-900/15 sm:h-24 sm:w-24"
-        />
-        <div className="min-w-0">
-          <h2 id="why-h" className="m-0 text-xl font-bold tracking-tight sm:text-2xl">
-            Made with AI, <span className={accent}>checked by me</span>
-          </h2>
-          <p className="m-0 mt-1 leading-relaxed text-gray-700 dark:text-gray-300">{whyAiSummary}</p>
-          <Link to="/learn/how-we-make-this/" className={cn(standaloneLink, "text-sm")}>
-            How I make this course →
-          </Link>
-        </div>
+    <div className={cn(container, "py-14 lg:py-20")}>
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-2 lg:gap-8">
+        <BottomCard
+          id="why-h"
+          title={
+            <>
+              Made with AI, <span className={accent}>checked by me</span>
+            </>
+          }
+          to="/learn/how-we-make-this/"
+          cta="How I make this course →"
+          media={
+            <img
+              src={photo}
+              alt="Marcel Veselka"
+              width={128}
+              height={128}
+              loading="lazy"
+              className="h-16 w-16 flex-shrink-0 rounded-xl object-cover sm:h-20 sm:w-20"
+            />
+          }
+        >
+          {whyAiSummary}
+        </BottomCard>
+        <BottomCard id="teams-h" title="Training a QA team?" to="/learn/teams/" cta="Run it with your team →">
+          A team plan, a pitch for your manager and answers for your security team.
+        </BottomCard>
       </div>
-    </section>
+    </div>
   );
 };
-
-const TeamsLine = () => (
-  <div className={cn(container, "pb-10")}>
-    <p className={cn("mx-auto m-0 max-w-5xl rounded-xl px-5 py-4 text-base", surface)}>
-      Training a QA team? A team plan and answers for your security team.{" "}
-      <Link to="/learn/teams/" className={textLink}>
-        For QA leads →
-      </Link>
-    </p>
-  </div>
-);
 
 // Ends like every product page: the site's yellow (dark: purple) closing gradient.
 const NotifyBand = () => (
@@ -384,8 +416,8 @@ const NotifyBand = () => (
     aria-labelledby="notify-h"
     className="scroll-mt-24 bg-gradient-to-b from-transparent to-primary-wopee/70 dark:to-secondary-wopee/60"
   >
-    <div className={cn(container, "py-14 lg:py-20")}>
-      <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+    <div className={cn(container, "pb-14 pt-4 lg:pb-20")}>
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-end gap-6 md:grid-cols-2 lg:gap-8">
         <div>
           <p className={eyebrow}>Notify me</p>
           <h2 id="notify-h" className={cn(h2, "mt-2")}>
@@ -394,7 +426,6 @@ const NotifyBand = () => (
         </div>
         <NotifyInline
           id="cta-learn-notify-band"
-          className="max-w-xl text-left"
           cta="Notify me"
           note="One email per new tutorial, from Wopee.io. Unsubscribe anytime."
         />
@@ -413,8 +444,7 @@ const LearnPage = () => (
       <Hero />
       <HowItWorks />
       <Tutorials />
-      <MadeWithAI />
-      <TeamsLine />
+      <BottomCards />
       <NotifyBand />
     </main>
   </Layout>
