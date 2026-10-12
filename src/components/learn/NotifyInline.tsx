@@ -67,9 +67,9 @@ export default function NotifyInline({
     setState("sending");
     const dedicated = team && learnConfig.teamsFormId;
     const extra: Record<string, string> = {};
-    if (source) extra.source = source;
+    if (source) extra.learn_source = source;
     if (team) {
-      extra.team_size = size;
+      extra.learn_team_size = size;
       if (goal.trim()) extra.learn_goal = goal.trim().slice(0, 300);
     }
     const page = new URL(window.location.href);

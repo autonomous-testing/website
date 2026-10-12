@@ -8,7 +8,7 @@ export const learnConfig = {
   /** HubSpot form behind "Notify me". Today the site newsletter form; swap for a learners form. */
   notifyFormId: "307c72af-1a09-45b0-90d0-21e73ec2cbc3",
   /**
-   * HubSpot form for /learn/teams with the fields source, team_size and learn_goal.
+   * HubSpot form for /learn/teams with the contact properties learn_source, learn_team_size and learn_goal.
    * Empty = the newsletter form, with those values in the submission's page URL.
    */
   teamsFormId: "",
