@@ -41,7 +41,7 @@ const GETS: [string, string][] = [
 
 const PLAN: [string, string][] = [
   ["Block the time.", "Tutorial 1 takes about 2 hours per tester. Two sittings are fine."],
-  ["Testers open the lab.", "Each starts it in their own GitHub account; company accounts work."],
+  ["Testers open the lab.", "Each starts it in their own personal GitHub account. No company code or access is involved."],
   ["Testers get certified.", "They pass the check and the quiz, then send you their certificate link."],
 ];
 
@@ -53,7 +53,7 @@ const ANSWERS: [string, string][] = [
     "Data",
     "The labs test a public demo app. No company code or data goes in. Nothing is sent unless the tester opts in.",
   ],
-  ["Accounts", "Each tester uses their own GitHub account, personal or company."],
+  ["Accounts", "Each tester uses a personal GitHub account. The lab touches no company code or systems."],
   [
     "AI use",
     "AI is optional. Use your organisation's Copilot, or no AI at all: every step has a path without it.",
@@ -72,7 +72,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "What does the Verified tier mean?",
-    "Completion means the tester passed the automatic check and the quiz. It is not proctored. Verified means the same check also passed in GitHub Actions on the tester's own copy of the lab.",
+    "Completion means the tester passed the automatic check and the quiz. It is not proctored. Verified means the same check also passed in GitHub Actions on the tester's own public copy of the lab. Many company GitHub accounts block public repositories, so testers use a personal GitHub account for the lab.",
   ],
   [
     "Do testers need a Wopee.io account?",
