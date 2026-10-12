@@ -41,17 +41,19 @@ const HowWeMakeThisPage = () => {
               </p>
             </div>
           </div>
-          <h2 className={cn(h2, "mt-6 text-2xl sm:text-3xl")}>My 5 reasons</h2>
+          <h2 className={cn(h2, "mt-6 text-2xl sm:text-3xl")}>Why I make it this way</h2>
           <ol className="m-0 flex list-none flex-col gap-4 p-0">
-            {whyAiPoints.map((text, i) => (
-              <li key={i} className="flex gap-3 sm:gap-4">
+            {whyAiPoints.map(({ title, body }, i) => (
+              <li key={title} className="flex gap-3 sm:gap-4">
                 <span
                   aria-hidden="true"
                   className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 dark:border-primary-wopee/40 text-sm font-bold text-secondary-wopee dark:text-primary-wopee"
                 >
                   {i + 1}
                 </span>
-                <p className="m-0 text-base sm:text-lg leading-relaxed">{text}</p>
+                <p className="m-0 text-base sm:text-lg leading-relaxed">
+                  <strong>{title}.</strong> {body}
+                </p>
               </li>
             ))}
           </ol>

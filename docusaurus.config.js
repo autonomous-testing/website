@@ -11,6 +11,7 @@ const {
   mdiConnection,
   mdiShieldCheckOutline,
   mdiScaleBalance,
+  mdiSchoolOutline,
   mdiPuzzleOutline,
 } = require("@mdi/js");
 
@@ -321,6 +322,7 @@ const config = {
               { to: "/integrations/", html: navRichItem("Integrations", "Slack, GitHub, CI, MCP, and your stack", mdiPuzzleOutline) },
               { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
               { to: "/compare/", html: navRichItem("Compare tools", "Honest comparisons with the alternatives", mdiScaleBalance) },
+              { to: "/learn/", html: navRichItem("Free tutorials", "Hands-on labs on AI testing agents", mdiSchoolOutline) },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },

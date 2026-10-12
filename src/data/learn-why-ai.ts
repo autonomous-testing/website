@@ -1,12 +1,27 @@
 // "Made with AI, checked by me": the approved points, shared by /learn and /learn/how-we-make-this/.
 
 export const whyAiSummary =
-  "I build AI testing agents, so I build this course with AI too. My cloned voice narrates; AI helps me research and structure. The opinions, the test runs and the final check are mine. The agent works, a human verifies. Found a mistake? Tell me.";
+  "I build AI testing agents, so I make this course with AI too. Here is what AI does, and what stays human.";
 
 export const whyAiPoints = [
-  "I believe in AI, so I use it wherever it already works. I build AI testing agents; teaching you to use them while doing my own work the old way would be odd.",
-  "The voice is my own, cloned. It speaks clearer English than I do, so my knowledge reaches you without friction.",
-  "AI makes the content better, not just faster: deeper research, clearer structure, my own mistakes caught.",
-  "The tools are good enough today. Used at full strength, they let me deliver consistent, high-quality lessons at a pace I couldn't manage alone.",
-  "What stays human: the opinions, the decisions, the real test runs and the responsibility. I check every script and every result. The agent works, a human verifies, which is exactly what this course teaches. If something is wrong, it's on me. Tell me.",
+  {
+    title: "I use what I teach",
+    body: "I build AI testing agents. Making this course the old way would be odd.",
+  },
+  {
+    title: "My voice, cloned",
+    body: "The narration is an AI clone of my voice. Its English is clearer than mine.",
+  },
+  {
+    title: "Better, not just faster",
+    body: "AI helps me research deeper, structure clearly and catch my own mistakes.",
+  },
+  {
+    title: "More lessons, same quality",
+    body: "Today's tools let me keep the quality high and publish faster than I could alone.",
+  },
+  {
+    title: "A human signs off",
+    body: "The opinions, decisions and test runs are mine. I check every script and every result. Found a mistake? Tell me.",
+  },
 ];

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import GradientCard from "@/components/ui/GradientCard";
 import { Badge } from "@/components/ui/badge";
 import LyingCheck from "@/components/learn/LyingCheck";
-import SeriesSlate from "@/components/learn/SeriesSlate";
 import NotifyInline from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
 import Expander from "@/components/learn/Expander";
@@ -354,27 +353,39 @@ const MadeWithAI = () => {
           <h2 id="why-h" className={cn(h2, "text-2xl sm:text-3xl")}>
             Made with AI, <span className={accent}>checked by me</span>
           </h2>
-          <blockquote className="m-0 mt-4 border-0 border-l-4 border-solid border-secondary-wopee p-0 pl-5 text-lg leading-relaxed text-gray-800 dark:border-primary-wopee dark:text-gray-200 sm:text-xl">
+          <p className="m-0 mt-3 text-lg leading-relaxed text-gray-800 dark:text-gray-200 sm:text-xl">
             {whyAiSummary}
-          </blockquote>
-          <p className="m-0 mt-3 pl-6 text-sm font-semibold text-gray-600 dark:text-gray-400">
-            Marcel Veselka · Founder of Wopee.io
           </p>
-          <Expander className="mt-6" summary="Read my 5 reasons">
-            <ol className="m-0 flex list-none flex-col gap-3 p-0">
-              {whyAiPoints.map((text, i) => (
-                <li key={i} className="flex gap-3">
+          <ol className="m-0 mt-6 grid list-none gap-3 p-0 sm:grid-cols-2">
+            {whyAiPoints.map(({ title, body }, i) => {
+              const last = i === whyAiPoints.length - 1;
+              return (
+                <li
+                  key={title}
+                  className={cn(
+                    "flex gap-3 rounded-xl border border-solid p-4",
+                    last
+                      ? "border-secondary-wopee/40 bg-secondary-wopee/5 sm:col-span-2 dark:border-primary-wopee/40 dark:bg-primary-wopee/5"
+                      : "border-gray-200 dark:border-gray-800",
+                  )}
+                >
                   <span
                     aria-hidden="true"
-                    className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-solid border-secondary-wopee/40 text-xs font-bold text-secondary-wopee dark:border-primary-wopee/40 dark:text-primary-wopee"
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-bold text-white dark:bg-primary-wopee dark:text-gray-900"
                   >
                     {i + 1}
                   </span>
-                  <p className="m-0 leading-relaxed">{text}</p>
+                  <div className="min-w-0">
+                    <p className="m-0 font-bold">{title}</p>
+                    <p className="m-0 mt-1 leading-relaxed text-gray-700 dark:text-gray-300">{body}</p>
+                  </div>
                 </li>
-              ))}
-            </ol>
-          </Expander>
+              );
+            })}
+          </ol>
+          <p className="m-0 mt-4 text-sm font-semibold text-gray-600 dark:text-gray-400">
+            Marcel Veselka · Founder of Wopee.io
+          </p>
         </div>
       </div>
     </section>
@@ -426,7 +437,6 @@ const LearnPage = () => (
     </Head>
     <main>
       <Hero />
-      <SeriesSlate />
       <HowItWorks />
       <Tutorials />
       <MadeWithAI />
