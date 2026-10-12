@@ -12,7 +12,6 @@ import LyingCheck from "@/components/learn/LyingCheck";
 import NotifyInline from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
 import Expander from "@/components/learn/Expander";
-import HowThisWasMade from "@/components/learn/HowThisWasMade";
 import {
   tutorials,
   featuredTutorials,
@@ -395,7 +394,7 @@ const MadeWithAI = () => {
 const TeamsLine = () => (
   <div className={cn(container, "pb-10")}>
     <p className={cn("mx-auto m-0 max-w-5xl rounded-xl px-5 py-4 text-base", surface)}>
-      Training a QA team? Company accounts, cohorts and a facilitator guide.{" "}
+      Training a QA team? A team plan and answers for your security team.{" "}
       <Link to="/learn/teams/" className={textLink}>
         For QA leads →
       </Link>
@@ -442,9 +441,6 @@ const LearnPage = () => (
       <MadeWithAI />
       <TeamsLine />
       <NotifyBand />
-      <div className={cn(container, "pb-16 pt-10")}>
-        <HowThisWasMade className="mx-auto max-w-5xl" teamsLink={false} />
-      </div>
     </main>
   </Layout>
 );

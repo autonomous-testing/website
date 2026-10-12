@@ -60,4 +60,5 @@ export const footerColumns: FooterColumn[] = [
 export const footerLegal: FooterLink[] = [
   { label: "Terms and Conditions", to: "/terms-and-conditions/" },
   { label: "GDPR", to: "/gdpr/" },
+  { label: "Privacy", to: "/privacy/" },
 ];

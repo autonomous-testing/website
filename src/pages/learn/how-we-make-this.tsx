@@ -3,7 +3,6 @@ import Layout from "@theme/Layout";
 import { PageMetadata } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-import HowThisWasMade from "@/components/learn/HowThisWasMade";
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import { accent, container, h1, h2 } from "@/components/learn/styles";
 import { cn } from "@/lib/utils";
@@ -57,7 +56,6 @@ const HowWeMakeThisPage = () => {
               </li>
             ))}
           </ol>
-          <HowThisWasMade className="mt-10" />
         </div>
       </main>
     </Layout>

@@ -7,6 +7,11 @@ export const learnConfig = {
   introPoster: "/img/learn/intro-poster.png",
   /** HubSpot form behind "Notify me". Today the site newsletter form; swap for a learners form. */
   notifyFormId: "307c72af-1a09-45b0-90d0-21e73ec2cbc3",
+  /**
+   * HubSpot form for /learn/teams with the fields source, team_size and learn_goal.
+   * Empty = the newsletter form, with those values in the submission's page URL.
+   */
+  teamsFormId: "",
   t1: {
     /**
      * Launch flag, the one switch for T1 going live: marks T1 live on /learn,

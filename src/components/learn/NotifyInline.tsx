@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Link from "@docusaurus/Link";
 import { learnConfig } from "@/data/learn-config";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +12,16 @@ type NotifyInlineProps = {
   id?: string;
   /** "dark" for use on the purple gradient bands. */
   tone?: "page" | "dark";
+  /** Line that replaces the form after a successful submit. */
+  success?: string;
+  /** Adds team size (required) and "what should your team learn" (optional). */
+  team?: boolean;
+  /** Where the sign-up came from, e.g. "learn-teams"; sent with the submission. */
+  source?: string;
   className?: string;
 };
+
+export const TEAM_SIZES = ["1-4", "5-15", "16-50", "50+"];
 
 const PORTAL = "139620033";
 
@@ -24,16 +33,22 @@ function hubspotUtk() {
   }
 }
 
-// One email field and one button, posting to the same HubSpot form as the
-// site newsletter (email is its only field), so the hero needs no embed script.
+// Posts straight to HubSpot, so the page needs no embed script. Without a
+// dedicated form (learnConfig.teamsFormId) the team details travel in the
+// submission's page URL, because the newsletter form only defines `email`.
 export default function NotifyInline({
   cta,
   note,
   id,
   tone = "page",
+  success = "Thanks. You'll get one email when it opens.",
+  team = false,
+  source,
   className,
 }: NotifyInlineProps) {
   const [email, setEmail] = useState("");
+  const [size, setSize] = useState("");
+  const [goal, setGoal] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const dark = tone === "dark";
   const doneRef = useRef<HTMLParagraphElement>(null);
@@ -46,18 +61,30 @@ export default function NotifyInline({
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setState("sending");
+    const dedicated = team && learnConfig.teamsFormId;
+    const extra: Record<string, string> = {};
+    if (source) extra.source = source;
+    if (team) {
+      extra.team_size = size;
+      if (goal.trim()) extra.learn_goal = goal.trim().slice(0, 300);
+    }
+    const page = new URL(window.location.href);
+    if (!dedicated) for (const [k, v] of Object.entries(extra)) page.searchParams.set(k, v);
+    const fields = [{ objectTypeId: "0-1", name: "email", value: email.trim() }];
+    if (dedicated)
+      for (const [name, value] of Object.entries(extra)) fields.push({ objectTypeId: "0-1", name, value });
     try {
       const res = await fetch(
-        `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${PORTAL}/${learnConfig.notifyFormId}`,
+        `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${PORTAL}/${dedicated || learnConfig.notifyFormId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            fields: [{ objectTypeId: "0-1", name: "email", value: email.trim() }],
+            fields,
             context: {
               hutk: hubspotUtk(),
-              pageUri: window.location.href,
-              pageName: document.title,
+              pageUri: page.toString(),
+              pageName: team ? `${document.title} (team ${size})` : document.title,
             },
           }),
         },
@@ -80,33 +107,71 @@ export default function NotifyInline({
           className,
         )}
       >
-        Thanks. You'll get one email when it opens.
+        {success}
       </p>
     );
   }
 
+  const fieldCls = cn(
+    "min-h-[48px] min-w-0 rounded-lg border border-solid px-4 text-base font-[inherit]",
+    "focus:outline focus:outline-2 focus:outline-offset-1",
+    dark
+      ? "border-white/30 bg-white text-gray-900 focus:outline-primary-wopee"
+      : "border-gray-300 dark:border-white/20 bg-white dark:bg-white/[0.06] placeholder:text-gray-500 dark:placeholder:text-gray-400 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
+  );
+  const fid = id ?? "notify";
+
   return (
     <form id={id} onSubmit={submit} className={cn("w-full", className)}>
-      <div className="flex flex-col min-[420px]:flex-row gap-2">
-        <label htmlFor={`${id ?? "notify"}-email`} className="sr-only">
-          Email
+      <div className={cn("flex flex-col gap-2", !team && "min-[420px]:flex-row")}>
+        <label htmlFor={`${fid}-email`} className="sr-only">
+          {team ? "Work email" : "Email"}
         </label>
         <input
-          id={`${id ?? "notify"}-email`}
+          id={`${fid}-email`}
           type="email"
           required
           autoComplete="email"
-          placeholder="you@company.com"
+          placeholder={team ? "Work email" : "you@company.com"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={cn(
-            "min-h-[48px] flex-1 min-w-0 rounded-lg border border-solid px-4 text-base font-[inherit]",
-            "focus:outline focus:outline-2 focus:outline-offset-1",
-            dark
-              ? "border-white/30 bg-white text-gray-900 focus:outline-primary-wopee"
-              : "border-gray-300 dark:border-white/20 bg-white dark:bg-white/[0.06] placeholder:text-gray-500 dark:placeholder:text-gray-400 text-gray-900 dark:text-gray-100 focus:outline-secondary-wopee dark:focus:outline-primary-wopee",
-          )}
+          className={cn(fieldCls, "flex-1")}
         />
+        {team && (
+          <div className="grid gap-2 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)]">
+          <label htmlFor={`${fid}-size`} className="sr-only">
+            Team size
+          </label>
+          <select
+            id={`${fid}-size`}
+            required
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+            className={cn(fieldCls, "w-full cursor-pointer", !size && !dark && "text-gray-500 dark:text-gray-400", !size && dark && "text-gray-600")}
+          >
+            <option value="" disabled>
+              Team size
+            </option>
+            {TEAM_SIZES.map((s) => (
+              <option key={s} value={s} className="text-gray-900">
+                {s} testers
+              </option>
+            ))}
+          </select>
+          <label htmlFor={`${fid}-goal`} className="sr-only">
+            What should your team learn? (optional)
+          </label>
+          <input
+            id={`${fid}-goal`}
+            type="text"
+            maxLength={300}
+            placeholder="Learning goal (optional)"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            className={cn(fieldCls, "w-full")}
+          />
+          </div>
+        )}
         <button
           type="submit"
           disabled={state === "sending"}
@@ -125,9 +190,24 @@ export default function NotifyInline({
         role={state === "error" ? "alert" : undefined}
         className={cn("mt-2 text-sm", dark ? "text-white/85" : "text-gray-700 dark:text-gray-300")}
       >
-        {state === "error"
-          ? "That didn't go through. Try again in a moment."
-          : note}
+        {state === "error" ? (
+          "That didn't go through. Try again in a moment."
+        ) : (
+          <>
+            {note}{" "}
+            <Link
+              to="/privacy/"
+              className={cn(
+                "underline underline-offset-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+                dark
+                  ? "text-white hover:text-white focus-visible:outline-white"
+                  : "text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee",
+              )}
+            >
+              Privacy
+            </Link>
+          </>
+        )}
       </p>
     </form>
   );

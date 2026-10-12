@@ -6,7 +6,6 @@ import { PageMetadata } from "@docusaurus/theme-common";
 
 import { Badge } from "@/components/ui/badge";
 import NotifyInline from "@/components/learn/NotifyInline";
-import HowThisWasMade from "@/components/learn/HowThisWasMade";
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import EpisodeTag from "@/components/learn/EpisodeTag";
 import { tutorials, tutorialUrl, cardTitle } from "@/data/learn-tutorials";
@@ -72,7 +71,6 @@ export default function ComingSoonPage({ slug }: { slug: string }) {
                 </Link>
               )}
             </p>
-            <HowThisWasMade className="mt-8" />
           </div>
         </div>
       </main>
