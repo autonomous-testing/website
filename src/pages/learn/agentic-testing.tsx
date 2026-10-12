@@ -6,11 +6,9 @@ import { PageMetadata } from "@docusaurus/theme-common";
 import { Clock } from "lucide-react";
 
 import VideoBlock from "@/components/learn/VideoBlock";
-import HowThisWasMade from "@/components/learn/HowThisWasMade";
 import Expander, { ExpanderGroup } from "@/components/learn/Expander";
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import EpisodeTag from "@/components/learn/EpisodeTag";
-import LyingCheck from "@/components/learn/LyingCheck";
 import SectionRail, { type RailItem } from "@/components/learn/t1/SectionRail";
 import GradientCard from "@/components/ui/GradientCard";
 import { Button } from "@/components/ui/button";
@@ -340,7 +338,9 @@ const T1Page = () => (
             "Review an agent's test in 5 minutes",
           ].map((t) => (
             <li key={t} className="flex gap-3">
-              <LyingCheck label="" size="sm" className="mt-1 h-5" />
+              <svg viewBox="0 0 16 16" aria-hidden="true" className="mt-1.5 h-4 w-4 flex-shrink-0 text-green-700 dark:text-green-400" fill="none">
+                <path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
               <span>{t}</span>
             </li>
           ))}
@@ -387,8 +387,8 @@ const T1Page = () => (
               questions; at 3 of 3, go straight to step 3 and the boss challenge.
             </li>
             <li>
-              <strong>Taking this with your team?</strong> Company accounts,
-              cohorts and a facilitator guide:{" "}
+              <strong>Taking this with your team?</strong> A team plan and
+              answers for your security team:{" "}
               <Link to={teamsHref} className={linkCls}>For QA leads</Link>
             </li>
           </ul>
@@ -488,6 +488,9 @@ git diff`}</CodeBlock>
             </ul>
           </Expander>
         </ExpanderGroup>
+        <p className="m-0 mt-4 text-sm text-gray-600 dark:text-gray-400">
+          Lab content: CC BY-NC 4.0. Free for internal team training at any company. Not for resale or paid courses.
+        </p>
       </Section>
 
       <Section id="check">
@@ -578,14 +581,14 @@ git diff`}</CodeBlock>
 
         <div className="pb-16 pt-4">
           <p className={cn("mb-8 rounded-xl px-5 py-4 text-base", surface)}>
-            Training a QA team? Company accounts, cohorts and a facilitator
-            guide.{" "}
+            Training a QA team? A team plan and answers for your security
+            team.{" "}
             <Link to={teamsHref} className={linkCls}>
               For QA leads →
             </Link>
           </p>
-          <HowThisWasMade teamsLink={false}>
-            <p className="mt-1">
+          <div className="border-0 border-t border-solid border-gray-200 pt-5 text-sm leading-relaxed text-gray-600 dark:border-white/10 dark:text-gray-400">
+            <p className="m-0">
               FoodDash is a demo app built for this course, not affiliated with
               any delivery company.
             </p>
@@ -596,7 +599,7 @@ git diff`}</CodeBlock>
               {" · "}
               <ExternalLink href={t1Links.issues}>Found a problem? Report it on GitHub</ExternalLink>
             </p>
-          </HowThisWasMade>
+          </div>
         </div>
           </div>
         </div>
