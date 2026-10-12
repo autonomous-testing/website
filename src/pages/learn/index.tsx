@@ -7,17 +7,16 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 import { Button } from "@/components/ui/button";
 import GradientCard from "@/components/ui/GradientCard";
-import { Badge } from "@/components/ui/badge";
 import HeroPill from "@/components/learn/HeroPill";
 import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
-import Expander from "@/components/learn/Expander";
 import {
   tutorials,
   featuredTutorials,
   roadmapTutorials,
   tutorialUrl,
   cardTitle,
+  pathStatus,
   type Tutorial,
 } from "@/data/learn-tutorials";
 import { whyAiSummary } from "@/data/learn-why-ai";
@@ -31,8 +30,10 @@ import {
   focusRing,
   h1,
   h2,
+  hairline,
   heroBg,
   standaloneLink,
+  surface,
 } from "@/components/learn/styles";
 
 const TITLE = "Free Hands-on Tutorials on AI Testing Agents";
@@ -175,12 +176,17 @@ const TerminalArt = () => (
   </div>
 );
 
-const CertArt = () => (
+// `title` omitted: a name placeholder instead, where the heading next to it already names the certificate.
+const CertArt = ({ label = "Completion", title = "Agentic testing for testers" }: { label?: string; title?: string | null }) => (
   <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-white text-gray-900 dark:bg-gray-100 shadow-sm ring-1 ring-gray-200 dark:ring-white/10">
     <span className="h-2 bg-secondary-wopee" />
     <div className="flex flex-1 flex-col justify-center gap-1 px-4">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-secondary-wopee">Completion</span>
-      <span className="text-sm font-bold leading-tight">Agentic testing for testers</span>
+      <span className="text-[10px] font-bold uppercase tracking-widest text-secondary-wopee">{label}</span>
+      {title ? (
+        <span className="pr-10 text-sm font-bold leading-tight">{title}</span>
+      ) : (
+        <span className="h-2.5 w-32 rounded bg-gray-300" />
+      )}
       <span className="mt-1 h-1.5 w-24 rounded bg-gray-200" />
       <span className="h-1.5 w-16 rounded bg-gray-200" />
     </div>
@@ -192,7 +198,7 @@ const CertArt = () => (
   </div>
 );
 
-const ARTS = [VideoArt, TerminalArt, CertArt];
+const ARTS = [VideoArt, TerminalArt, () => <CertArt />];
 
 const HowItWorks = () => (
   <section aria-labelledby="steps-h" className={cn(container, "py-14 lg:py-20")}>
@@ -238,63 +244,107 @@ const HowItWorks = () => (
   </section>
 );
 
-// Only "Live" gets a badge; "coming soon" is said once, in the section subhead.
-const StatusBadge = ({ t }: { t: Tutorial }) =>
-  t.status === "live" ? (
-    <Badge className="border-transparent bg-green-700 text-white shadow-none hover:bg-green-700 uppercase tracking-wide font-bold">
-      Live
-    </Badge>
-  ) : null;
+// The first path as a rail: T1 → T2 → T3 → certificate. Horizontal from lg,
+// a vertical rail below. Status and actions follow `status` and `hasPage`.
+const PathDisc = ({ filled, children }: { filled?: boolean; children: React.ReactNode }) => (
+  <span
+    aria-hidden="true"
+    className={cn(
+      "relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full font-mono text-sm font-bold",
+      filled
+        ? "bg-secondary-wopee text-white dark:bg-gray-100 dark:text-black"
+        : "border border-solid border-secondary-wopee/40 bg-white text-secondary-wopee dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-200",
+    )}
+  >
+    {children}
+  </span>
+);
 
-const TutorialCard = ({ t, lead }: { t: Tutorial; lead: boolean }) => {
-  const live = t.status === "live";
+// Joins this step's disc to the next one: down on the vertical rail, right on the horizontal one.
+const Connector = () => (
+  <span
+    aria-hidden="true"
+    className="absolute left-5 top-10 -bottom-8 w-px bg-secondary-wopee/30 dark:bg-white/15 lg:left-12 lg:-right-6 lg:top-5 lg:bottom-auto lg:h-px lg:w-auto"
+  />
+);
+
+const stepAction = (t: Tutorial) => {
+  if (t.status === "live") return { to: tutorialUrl(t), label: "Start the tutorial →" };
+  if (t.hasPage) return { to: tutorialUrl(t), label: "See the tutorial →" };
+  return { href: "#notify", label: "Get notified ↓" };
+};
+
+const PathStep = ({ t, n }: { t: Tutorial; n: number }) => {
+  const status = pathStatus(t);
+  const action = stepAction(t);
+  const id = `cta-learn-path-${t.id.toLowerCase()}`;
+  const actionCls = cn(standaloneLink, "mt-auto self-start text-sm");
   return (
-    <li className={cn("list-none", lead && "md:col-span-2 lg:col-span-1 lg:row-span-2")}>
-      <Link
-        to={tutorialUrl(t)}
-        className={cn(
-          "group block h-full rounded-2xl text-inherit hover:text-inherit hover:no-underline",
-          focusRing,
-        )}
-      >
-        <GradientCard
-          variant="default"
-          padding="none"
-          className={cn("h-full transition-[box-shadow,transform] group-hover:-translate-y-0.5 motion-reduce:group-hover:translate-y-0", lead ? "shadow-purple-900/40 group-hover:shadow-purple-900/60" : "shadow-purple-900/20 group-hover:shadow-purple-900/40")}
-          innerClassName="flex flex-col dark:bg-[#232326]"
-        >
-          {lead && (
-            <div className="relative flex h-24 items-center gap-4 overflow-hidden rounded-t-[14px] bg-[#0d0d0d] px-6 sm:h-28 lg:h-32">
-              <span
-                style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
-                className="text-3xl uppercase leading-none text-primary-wopee sm:text-4xl"
-              >
-                EP.1
-              </span>
-              <span className="absolute bottom-3 right-4 font-mono text-sm text-red-300">
-                order total: $36.43 <strong>≠</strong> $30.04
-              </span>
-            </div>
-          )}
-          <div className={cn("flex flex-1 flex-col", lead ? "p-6 sm:p-8" : "p-5 sm:p-6")}>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-sm font-bold text-secondary-wopee dark:text-gray-300">{t.id}</span>
-              <StatusBadge t={t} />
-              {t.duration && <span className="text-sm text-gray-600 dark:text-gray-400">{t.duration}</span>}
-            </div>
-            <h3 className={cn("m-0 mt-3 font-bold leading-snug tracking-tight text-balance", lead ? "text-2xl sm:text-3xl" : "text-xl")}>
+    <li className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 lg:flex lg:flex-col lg:gap-4">
+      <Connector />
+      <PathDisc filled={t.status === "live" || featuredTutorials.find((x) => x.status !== "live") === t}>{n}</PathDisc>
+      <div className={cn("flex flex-col rounded-xl p-5 lg:flex-1", surface)}>
+        <p className="m-0 text-sm">
+          <span className="font-mono font-bold text-secondary-wopee dark:text-gray-300">{t.id}</span>
+          <span className="text-gray-600 dark:text-gray-400"> · </span>
+          <span className={cn("font-semibold", t.status === "live" ? "text-green-700 dark:text-green-400" : "text-gray-700 dark:text-gray-300")}>
+            {status}
+          </span>
+        </p>
+        <h3 className="m-0 mt-2 text-lg font-bold leading-snug tracking-tight text-balance">
+          {t.hasPage || t.status === "live" ? (
+            <Link to={tutorialUrl(t)} className={cn("text-inherit hover:text-inherit rounded-sm", focusRing)}>
               {cardTitle(t)}
-            </h3>
-            <p className="m-0 mt-2 flex-1 text-gray-700 dark:text-gray-300">{t.oneLiner}</p>
-            <span className="mt-5 text-sm font-semibold text-secondary-wopee underline-offset-4 group-hover:underline dark:text-gray-100 dark:underline dark:decoration-primary-wopee/60 dark:group-hover:text-primary-wopee">
-              {live ? "Start the tutorial →" : "See the tutorial →"}
-            </span>
-          </div>
-        </GradientCard>
-      </Link>
+            </Link>
+          ) : (
+            cardTitle(t)
+          )}
+        </h3>
+        <p className="m-0 mt-2 text-gray-700 dark:text-gray-300">{t.oneLiner}</p>
+        {t.bug && (
+          <p className="m-0 mt-3 text-sm">
+            <span className="text-gray-600 dark:text-gray-400">The bug you'll catch: </span>
+            <code className="border-0 bg-transparent p-0 font-mono text-[0.8125rem] text-red-700 dark:text-red-300">
+              {t.bug}
+            </code>
+          </p>
+        )}
+        <p className="m-0 mt-3 mb-2 text-sm text-gray-600 dark:text-gray-400">
+          {t.duration && <>{t.duration} · </>}You need: {t.prerequisites.replace(/^A /, "a ")}
+        </p>
+        {action.to ? (
+          <Link to={action.to} id={id} className={actionCls}>
+            {action.label}
+          </Link>
+        ) : (
+          <a href={action.href} id={id} className={actionCls}>
+            {action.label}
+          </a>
+        )}
+      </div>
     </li>
   );
 };
+
+const CertStep = () => (
+  <li className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 lg:flex lg:flex-col lg:gap-4">
+    <PathDisc>
+      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none">
+        <path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </PathDisc>
+    <GradientCard variant="default" padding="none" className="shadow-none lg:flex-1" innerClassName="flex h-full flex-col p-5 dark:bg-[#232326]">
+      <div aria-hidden="true" className="h-24 max-w-xs lg:max-w-none">
+        <CertArt label="Agentic Testing Practitioner" title={null} />
+      </div>
+      <h3 className="m-0 mt-4 text-lg font-bold leading-snug tracking-tight">Agentic Testing Practitioner</h3>
+      <p className="m-0 mt-2 text-gray-700 dark:text-gray-300">
+        Pass T1, T2 and T3 at the Verified tier: each check green in GitHub Actions on your own public fork.
+      </p>
+      <p className="m-0 mt-2 text-sm text-gray-600 dark:text-gray-400">Each tutorial also gives its own Completion certificate.</p>
+    </GradientCard>
+  </li>
+);
 
 const Tutorials = () => (
   <section
@@ -306,42 +356,45 @@ const Tutorials = () => (
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
           <h2 id="tutorials-h" className={h2}>
-            The first <span className={accentH2}>three tutorials</span>
+            Start here: <span className={accentH2}>three tutorials</span>, about 5 hours
           </h2>
           <p className="m-0 mt-3 text-balance text-lg text-gray-700 dark:text-gray-300">
-            {t1Live ? "" : "Opening soon. "}Take them in order. All three together earn the Agentic Testing
-            Practitioner certificate.
+            Free, in your browser, in this order.
           </p>
         </div>
-        <ul className="m-0 mt-10 grid grid-cols-1 gap-6 p-0 md:grid-cols-2 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-8">
+        <ol className="m-0 mt-10 grid list-none grid-cols-[minmax(0,1fr)] gap-8 p-0 lg:grid-cols-4 lg:gap-6">
           {featuredTutorials.map((t, i) => (
-            <TutorialCard key={t.id} t={t} lead={i === 0} />
+            <PathStep key={t.id} t={t} n={i + 1} />
           ))}
-        </ul>
+          <CertStep />
+        </ol>
         {roadmapTutorials.length > 0 && (
-          <Expander
-            className="mt-8 rounded-2xl dark:bg-[#232326]"
-            summary={`${roadmapTutorials.length} more coming, from Playwright basics to rolling out AI testing in a team`}
-          >
-            <ol className="m-0 grid list-none gap-x-8 gap-y-3 p-0 md:grid-cols-2">
+          <div className={cn("mt-14 border-0 border-t border-solid pt-8", hairline)}>
+            <h3 className="m-0 text-lg font-bold">
+              {roadmapTutorials.length} more on the roadmap
+            </h3>
+            <p className="m-0 mt-1 text-gray-600 dark:text-gray-400">
+              From Playwright basics to rolling out AI testing in a team.
+            </p>
+            <ol className="m-0 mt-5 list-none gap-x-8 p-0 sm:columns-2 lg:columns-3">
               {roadmapTutorials.map((t) => (
-                <li key={t.id} className="flex gap-3">
-                  <span className="w-9 flex-shrink-0 font-mono text-sm font-bold text-secondary-wopee dark:text-gray-400">
+                <li key={t.id} className="mb-4 flex break-inside-avoid gap-3">
+                  <span className="w-9 flex-shrink-0 font-mono text-sm font-bold leading-6 text-secondary-wopee dark:text-gray-400">
                     {t.id}
                   </span>
-                  <span>
-                    <span className="font-semibold">{cardTitle(t)}</span>
+                  <span className="min-w-0">
+                    <span className="block font-semibold">{cardTitle(t)}</span>
+                    <span className="block text-sm text-gray-600 dark:text-gray-400">{t.oneLiner}</span>
                     {t.tag && (
-                      <span className="ml-2 whitespace-nowrap rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-semibold text-gray-700 dark:bg-white/10 dark:text-gray-300">
+                      <span className="mt-1 block text-xs font-semibold text-secondary-wopee dark:text-yellow-200/80">
                         {t.tag}
                       </span>
                     )}
-                    <span className="block text-sm text-gray-600 dark:text-gray-400">{t.oneLiner}</span>
                   </span>
                 </li>
               ))}
             </ol>
-          </Expander>
+          </div>
         )}
       </div>
     </div>

@@ -23,8 +23,8 @@ export default function ComingSoonPage({ slug }: { slug: string }) {
   const facts: [string, string | undefined][] = [
     ["Level", t.level],
     ["Time", t.duration],
-    ["Before this", t.prerequisites],
-    ["Lab", t.track === "neutral" ? "Vendor-neutral, free" : "Free Wopee.io account"],
+    ["You need", t.prerequisites],
+    ["Lab", t.tag ?? (t.track === "neutral" ? "Vendor-neutral, free" : "Uses a free Wopee.io account")],
   ];
   return (
     <Layout title={`${t.title}: free tutorial, coming soon`} description={t.oneLiner}>

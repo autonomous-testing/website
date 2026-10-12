@@ -34,7 +34,7 @@ const GETS: [string, string][] = [
   ["An automatic grade.", "A check grades the tests each tester writes."],
   [
     "A LinkedIn certificate",
-    "for each tester. Tutorials 1 to 3 together earn the Agentic Testing Practitioner certificate at the Verified tier.",
+    "for each tester. Tutorials 1 to 3, each at the Verified tier, earn the Agentic Testing Practitioner certificate.",
   ],
   ["A facilitator kit", "to run the sessions yourself, shipping with Tutorial 2."],
 ];

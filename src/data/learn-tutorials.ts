@@ -17,14 +17,17 @@ export type Tutorial = {
   cardTitle?: string;
   /** One line, 12 words or fewer, for the card and the coming-soon page. */
   oneLiner: string;
+  /** T1 only: the bug the learner catches, shown on the /learn path. */
+  bug?: string;
   status: TutorialStatus;
   /** Honest time label from the dry run; omit until it is measured. */
   duration?: string;
-  level: "Beginner" | "Intermediate" | "QA leads";
+  /** Omit when the tutorial files do not state one. */
+  level?: "Beginner" | "Intermediate" | "QA leads";
   prerequisites: string;
-  /** Short label on the roadmap row, e.g. what a Wopee.io lab needs. */
+  /** Wopee.io label on the roadmap row and the coming-soon page, e.g. "Uses a free Wopee.io account". */
   tag?: string;
-  /** "wopee" = the lab needs a free Wopee.io account; "neutral" = vendor-neutral. */
+  /** "wopee" = the lab (or part of it) needs a free Wopee.io account; "neutral" = vendor-neutral. */
   track: "neutral" | "wopee";
   /** Counts toward the Agentic Testing Practitioner certificate (T1 + T2 + T3). */
   practitioner?: boolean;
@@ -38,11 +41,12 @@ export const tutorials: Tutorial[] = [
     slug: "agentic-testing",
     title: "Agentic testing for testers",
     cardTitle: "Agentic testing with Playwright's AI agents",
-    oneLiner: "Run the planner, generator and healer on a demo app. Check their tests.",
+    oneLiner: "Run the planner, generator and healer on a demo app. Find their mistakes.",
+    bug: "order total: $36.43 ≠ $30.04",
     status: learnConfig.t1.launched ? "live" : "coming-soon",
     duration: "About 2 hours",
     level: "Beginner",
-    prerequisites: "None",
+    prerequisites: "A free GitHub account. Copilot optional",
     track: "neutral",
     practitioner: true,
   },
@@ -64,11 +68,10 @@ export const tutorials: Tutorial[] = [
     slug: "skills",
     title: "Skills for AI testing agents",
     cardTitle: "Skills: testing instructions for your agent",
-    oneLiner: "Write a SKILL.md file and prove the agent follows it.",
+    oneLiner: "Write a SKILL.md the agent follows, then review a colleague's flawed one.",
     status: "coming-soon",
     duration: "About 90 min",
-    level: "Intermediate",
-    prerequisites: "T1",
+    prerequisites: "T1, or Copilot Agent mode",
     track: "neutral",
     practitioner: true,
   },
@@ -88,7 +91,7 @@ export const tutorials: Tutorial[] = [
     title: "Intro to Wopee.io: from a URL to a running suite",
     cardTitle: "Wopee.io: from URL to tests",
     oneLiner: "Point Wopee.io at a URL and review the tests it writes.",
-    tag: "Free Wopee.io account",
+    tag: "Uses a free Wopee.io account",
     status: "coming-soon",
     level: "Beginner",
     prerequisites: "A free Wopee.io account",
@@ -123,15 +126,16 @@ export const tutorials: Tutorial[] = [
     oneLiner: "Fake, CSV and AI-made data that never collides, plus masking.",
     status: "coming-soon",
     level: "Intermediate",
+    tag: "Part uses a free Wopee.io account",
     prerequisites: "T4 or T5",
-    track: "neutral",
+    track: "wopee",
   },
   {
     id: "T9",
     slug: "agent-files-the-bug",
     title: "Your coding agent files the bug",
     oneLiner: "Use the Wopee.io MCP server to run tests and file issues.",
-    tag: "The free plan includes MCP",
+    tag: "Uses a free Wopee.io account",
     status: "coming-soon",
     level: "Intermediate",
     prerequisites: "T2 and T5",
@@ -144,6 +148,7 @@ export const tutorials: Tutorial[] = [
     cardTitle: "AI testing rollout for QA leads",
     oneLiner: "Pick 10 critical flows, measure a pilot, answer the auditor.",
     status: "coming-soon",
+    tag: "Uses a free Wopee.io account",
     level: "QA leads",
     prerequisites: "None",
     track: "wopee",
@@ -153,9 +158,24 @@ export const tutorials: Tutorial[] = [
 export const tutorialUrl = (t: Tutorial) => `/learn/${t.slug}/`;
 export const cardTitle = (t: Tutorial) => t.cardTitle ?? t.title;
 
-/** T1–T3: the first path, shown as cards on /learn. The rest sit in the roadmap expander. */
+/** T1–T3: the path on /learn that ends in the Practitioner certificate. The rest form the roadmap list. */
 export const featuredTutorials = tutorials.filter((t) => t.practitioner);
 export const roadmapTutorials = tutorials.filter((t) => !t.practitioner);
+
+/**
+ * Status line on the /learn path: "Live", or the release order. No dates until
+ * they are decided; flipping a tutorial to live re-labels the ones after it.
+ */
+export const pathStatus = (t: Tutorial) => {
+  if (t.status === "live") return "Live";
+  const waiting = featuredTutorials.filter((x) => x.status !== "live");
+  const k = waiting.indexOf(t);
+  const anyLive = waiting.length < featuredTutorials.length;
+  if (k < 0) return "Coming soon";
+  if (k === 0) return anyLive ? "Opens next" : "Opens first";
+  if (k === 1 && !anyLive) return "Opens next";
+  return `Opens after ${waiting[k - 1].id}`;
+};
 
 /** "New" badge on the navbar and footer links to /learn, shown until T1, T2 and T3 are all live. */
 export const learnShowNew = tutorials.filter((t) => t.practitioner && t.status === "live").length < 3;
