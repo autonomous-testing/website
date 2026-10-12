@@ -545,7 +545,7 @@ git diff`}</CodeBlock>
                 to={tutorialUrl(next)}
                 className="mt-5 inline-flex min-h-[44px] items-center rounded-lg bg-primary-wopee px-5 py-2.5 font-semibold text-secondary-wopee hover:bg-primary-wopee/90 hover:text-secondary-wopee hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {next.status === "live" ? "Start the next tutorial" : "See the tutorial →"}
+                {next.status === "live" ? "Start the next tutorial" : next.hasPage ? "See the tutorial →" : "Get notified when it opens →"}
               </Link>
             </div>
           </GradientCard>
