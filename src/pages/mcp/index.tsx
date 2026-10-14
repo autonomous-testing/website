@@ -71,7 +71,7 @@ const CAPABILITIES = [
     title: "File GitHub Issues",
     tool: "wopee_create_github_issue",
     description:
-      "Turn test failures into GitHub issues in your connected repository, title, Markdown body, and labels.",
+      "Turn test failures into GitHub issues in your connected repository, with the failing step, expected vs actual, the screenshot, and a link to the report.",
   },
   {
     icon: mdiChartLine,
@@ -222,7 +222,7 @@ const TERMINAL_LINES = [
   { type: "claude", text: "7 of 8 test cases passed. The promo code field accepts empty submissions, screenshots and agent report attached.", delay: 4500 },
   { type: "user", text: "File that as a GitHub issue.", delay: 6500 },
   { type: "tool", name: "wopee_create_github_issue", text: "issue created in your repo", delay: 7700 },
-  { type: "claude", text: "Bug filed, steps to reproduce, agent report, and screenshots included.", delay: 8700 },
+  { type: "claude", text: "Bug filed with the failing step, expected vs actual, and its screenshot.", delay: 8700 },
 ];
 
 const TerminalAnimation = () => {
