@@ -101,7 +101,7 @@ const SupportedTestingTools = () => {
                 <span className="flex justify-center items-center aspect-video w-full rounded dark:bg-zinc-100 dark:bg-opacity-90 px-2">
                   <img
                     src={tool.src}
-                    alt=""
+                    alt={`${tool.name} logo`}
                     className="max-w-full max-h-full object-contain w-auto h-auto"
                   />
                 </span>

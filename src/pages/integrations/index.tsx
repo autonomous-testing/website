@@ -352,7 +352,7 @@ const IntegrationsPage = () => {
   return (
     <Layout
       title="Integrations: MCP, Slack, GitHub, Playwright"
-      description="Wopee.io integrations: connect Claude Code, Cursor, Slack, GitHub Actions, Playwright, Cypress, Robot Framework, Selenium, and Appium via MCP, ChatOps, and a GraphQL API."
+      description="Wopee.io integrations: Claude Code, Cursor, Slack, GitHub Actions, Playwright, Cypress, Robot Framework, Selenium, and Appium via MCP, ChatOps, and GraphQL API."
     >
       <HeroSection />
       {CATEGORIES.map((category) => (

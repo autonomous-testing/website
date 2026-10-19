@@ -7,7 +7,7 @@ export default function LandingHome() {
   return (
     <Layout
       title="Visual Regression Testing"
-      description="AI visual regression testing for Playwright, Cypress, Selenium, Appium, WebdriverIO and Robot Framework. Native SDKs plus an API for any framework that takes screenshots."
+      description="AI visual regression testing for Playwright, Cypress, Selenium, Appium, WebdriverIO and Robot Framework. Native SDKs plus an API for any other framework."
     >
       <LandingPage />
     </Layout>
