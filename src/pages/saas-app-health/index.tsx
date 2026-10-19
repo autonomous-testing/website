@@ -161,33 +161,6 @@ const PATTERNS: {
       "Pricing lives in three places: the marketing site, the billing provider and the app. Nobody compares them after a price change.",
   },
   {
-    title: "The trial that leaves you stuck",
-    products: 13,
-    short: "Onboarding dead ends in a fresh trial",
-    seen: "21 findings · 13 products",
-    saw: "Trials that couldn't connect a data source or upload a file, locked features with no word on how to unlock them, wizards that saved an empty draft. In one product, a payment request on the first day of the free trial.",
-    blind:
-      "Teams test onboarding with their own account, which has data, a paid plan and history. Nobody sees a fresh, empty trial.",
-  },
-  {
-    title: "Failures that stay silent or unclear",
-    products: 14,
-    short: "Silent or unclear errors",
-    seen: "22 findings · 14 products",
-    saw: "A refused deletion reported as a success. Endless spinners instead of an error. A generic “unknown error” when the real problem was a server that couldn't be found.",
-    blind:
-      "Error paths get clicked least, so they get tested least. Nothing throws an error, so an error tracker has nothing to catch.",
-  },
-  {
-    title: "Data that shows up wrong",
-    products: 14,
-    short: "Dates, statuses and contact data shown wrong",
-    seen: "23 findings · 14 products",
-    saw: "Dates in several formats across one app, times in the wrong time zone, a status that means one thing on the dashboard and another in the list, different phone numbers for the same office.",
-    blind:
-      "Each screen formats its own data. Nobody compares the same record across screens, or the website with the app.",
-  },
-  {
     title: "The banner asks. The tags already fired.",
     products: 10,
     short: "Tags fire without consent",
@@ -204,6 +177,33 @@ const PATTERNS: {
     saw: "Login, sign-up or reset screens that confirm whether an e-mail has an account. Passwords e-mailed in plain text. No e-mail verification.",
     blind:
       "Each screen was written to be helpful. Nobody looked at all three together from an attacker's point of view.",
+  },
+  {
+    title: "Failures that stay silent or unclear",
+    products: 14,
+    short: "Silent or unclear errors",
+    seen: "22 findings · 14 products",
+    saw: "A refused deletion reported as a success. Endless spinners instead of an error. A generic “unknown error” when the real problem was a server that couldn't be found.",
+    blind:
+      "Error paths get clicked least, so they get tested least. Nothing throws an error, so an error tracker has nothing to catch.",
+  },
+  {
+    title: "The trial that leaves you stuck",
+    products: 13,
+    short: "Onboarding dead ends in a fresh trial",
+    seen: "21 findings · 13 products",
+    saw: "Trials that couldn't connect a data source or upload a file, locked features with no word on how to unlock them, wizards that saved an empty draft. In one product, a payment request on the first day of the free trial.",
+    blind:
+      "Teams test onboarding with their own account, which has data, a paid plan and history. Nobody sees a fresh, empty trial.",
+  },
+  {
+    title: "Data that shows up wrong",
+    products: 14,
+    short: "Dates, statuses and contact data shown wrong",
+    seen: "23 findings · 14 products",
+    saw: "Dates in several formats across one app, times in the wrong time zone, a status that means one thing on the dashboard and another in the list, different phone numbers for the same office.",
+    blind:
+      "Each screen formats its own data. Nobody compares the same record across screens, or the website with the app.",
   },
   {
     title: "Broken links, sometimes on the money button",
