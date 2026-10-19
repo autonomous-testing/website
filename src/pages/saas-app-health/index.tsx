@@ -53,7 +53,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
         { count: 17, tone: "strong", label: "17 at High or Medium" },
         { count: 7, tone: "mid", label: "24 with an open defect" },
       ],
-      rest: "4 with no self-service sign-up we could use",
+      rest: "4 with no sign-up we could use or test",
     },
   },
   {
@@ -73,12 +73,12 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
-    value: "11 of 28",
+    value: "10 of 28",
     label:
-      "fired ad or analytics tags before the visitor touched the cookie banner.",
+      "fired ad or analytics tags without consent: before the cookie banner was answered, or after “Reject all”.",
     viz: {
       kind: "dots",
-      layers: [{ count: 11, tone: "strong", label: "11 of 28 products" }],
+      layers: [{ count: 10, tone: "strong", label: "10 of 28 products" }],
     },
   },
   {
@@ -143,11 +143,11 @@ const PATTERNS: {
   blind: string;
 }[] = [
   {
-    title: "The sign-up that fails on the first try",
+    title: "The front door: sign-up, registration, trial form",
     products: 24,
-    short: "Sign-up fails on the first try",
+    short: "A defect in sign-up or the trial form",
     seen: "24 of 28 products · 17 at High or Medium",
-    saw: "Sign-up forms that fail on the first submit and work on the second. E-mailed sign-in links that never work, so the only way in is “Forgot password”.",
+    saw: "One trial form failed on every first submit and worked on the second. E-mailed sign-in links that never work, so the only way in is “Forgot password”.",
     blind:
       "The last person to test sign-up is usually the person who built it, on their own logged-in machine.",
   },
@@ -161,38 +161,11 @@ const PATTERNS: {
       "Pricing lives in three places: the marketing site, the billing provider and the app. Nobody compares them after a price change.",
   },
   {
-    title: "The trial that greets you with a bill",
-    products: 13,
-    short: "The trial that greets you with a bill",
-    seen: "21 findings · 13 products",
-    saw: "Free trials that asked for payment on day one, or blocked the account with a billing message that didn't apply to a trial.",
-    blind:
-      "Teams test onboarding with their own account, which has data, a paid plan and history. Nobody sees a fresh, empty trial.",
-  },
-  {
-    title: "Errors that vanish, failures that stay silent",
-    products: 14,
-    short: "Errors that vanish",
-    seen: "22 findings · 14 products",
-    saw: "Wrong-password messages that disappear after a few seconds. Correct sign-ins that end on a dead page with no message.",
-    blind:
-      "Error paths get clicked least, so they get tested least. Nothing throws an error, so an error tracker has nothing to catch.",
-  },
-  {
-    title: "Numbers on the dashboard that can't be true",
-    products: 14,
-    short: "Dashboard numbers that can't be true",
-    seen: "23 findings · 14 products",
-    saw: "Percentages computed on zero in empty trial accounts. Year-on-year tiles comparing part of this year with all of last year.",
-    blind:
-      "Reports get tested with realistic demo data. A new trial user sees empty data first.",
-  },
-  {
     title: "The banner asks. The tags already fired.",
-    products: 11,
-    short: "Tags fire before consent",
-    seen: "11 of 28 products · 18 findings, 13 of them High",
-    saw: "Ad and analytics tags fired before the visitor touched the cookie banner, in some cases even after “Reject all”.",
+    products: 10,
+    short: "Tags fire without consent",
+    seen: "10 of 28 products · 18 findings, 13 of them High",
+    saw: "Ad and analytics tags fired before the visitor answered the cookie banner, in some cases even after “Reject all”.",
     blind:
       "Marketing adds a tag through a tag manager. Nobody re-checks the network tab after the next campaign. (Observed network behaviour, not a legal opinion.)",
   },
@@ -206,11 +179,38 @@ const PATTERNS: {
       "Each screen was written to be helpful. Nobody looked at all three together from an attacker's point of view.",
   },
   {
-    title: "The most valuable button goes nowhere",
+    title: "Failures that stay silent or unclear",
+    products: 14,
+    short: "Silent or unclear errors",
+    seen: "22 findings · 14 products",
+    saw: "A refused deletion reported as a success. Endless spinners instead of an error. A generic “unknown error” when the real problem was a server that couldn't be found.",
+    blind:
+      "Error paths get clicked least, so they get tested least. Nothing throws an error, so an error tracker has nothing to catch.",
+  },
+  {
+    title: "The trial that leaves you stuck",
+    products: 13,
+    short: "Onboarding dead ends in a fresh trial",
+    seen: "21 findings · 13 products",
+    saw: "Trials that couldn't connect a data source or upload a file, locked features with no word on how to unlock them, wizards that saved an empty draft. In one product, a payment request on the first day of the free trial.",
+    blind:
+      "Teams test onboarding with their own account, which has data, a paid plan and history. Nobody sees a fresh, empty trial.",
+  },
+  {
+    title: "Data that shows up wrong",
+    products: 14,
+    short: "Dates, statuses and contact data shown wrong",
+    seen: "23 findings · 14 products",
+    saw: "Dates in several formats across one app, times in the wrong time zone, a status that means one thing on the dashboard and another in the list, different phone numbers for the same office.",
+    blind:
+      "Each screen formats its own data. Nobody compares the same record across screens, or the website with the app.",
+  },
+  {
+    title: "Broken links, sometimes on the money button",
     products: 19,
-    short: "The most valuable button goes nowhere",
-    seen: "33 findings · 19 products",
-    saw: "The button that books a call or starts a trial, on a page or at the end of a tour, opened a 404.",
+    short: "A broken or wrong link",
+    seen: "33 findings · 19 products · 3 with a call or trial button that opened a 404",
+    saw: "Links to pages that no longer exist, across navigation, help and policy pages. In 3 products, it was the button that books a call or starts a trial.",
     blind:
       "The site and the app are deployed separately. URLs change on one side, and the other side never hears about it.",
   },
@@ -335,19 +335,19 @@ const PILOT_STEPS: PilotStep[] = [
     ],
     proof: (
       <>
-        In October: <strong>median 1 h 41 min</strong> from the first sign-up
-        click to the first filed findings.
+        In October: <strong>median 1 h 41 min</strong> from starting on a new
+        product to its first filed findings (13 products timed).
       </>
     ),
   },
   {
     tag: "Weeks 2 to 6",
     active: [1, 2, 3, 4, 5],
-    title: "Before every release",
+    title: "From your CI, or on demand",
     diagram: "release",
     points: [
-      "The flows run before each release you tell us about.",
-      "Where it makes sense, they also run on a schedule as monitoring, so a Friday change shows up before Monday.",
+      "We run it from your CI, or on demand: you or we click one button and get the report in a few minutes.",
+      "We improve and maintain the tests for you as your product changes.",
       <>
         You see a green run or a short list of real defects.{" "}
         <strong>Nothing else.</strong>
@@ -415,12 +415,12 @@ const WRONG: { lead: string; detail: string }[] = [
   {
     lead: "Our first round was only 56% green",
     detail:
-      "On the 18 products where all 10 flows ran, 101 of 180 passed. After we fixed our own test wording and test data, 123 of 180 (68%). All 22 extra passes came from fixing our side.",
+      "On the 18 products with a full first round, 101 of 180 passed. After we fixed our own test wording and test data, 123 of 180 (68%). 20 of the 22 extra passes came from fixing our own tests; 2 came after the vendor apparently fixed the bug.",
   },
   {
     lead: "15 of 381 findings were our mistake",
     detail:
-      "We misread a setting, or couldn't reproduce it. We closed them ourselves. That's 4% noise, and it's why a person reviews every finding.",
+      "We misread a setting, or couldn't reproduce it. We closed them ourselves. That's 4% noise, and it's why a person reviews findings before you see them.",
   },
   {
     lead: "Our pass/fail judge doubted 8 of 10 passes on one product",
@@ -846,8 +846,12 @@ function PilotStepCard({ step, index }: { step: PilotStep; index: number }) {
       {step.diagram === "release" ? (
         <div className="mt-4">
           <FlowRow
-            label="Release, then the flows run, then a reviewed result"
-            nodes={["Release", "~10 flows run", "Reviewed result"]}
+            label="Your CI or one click, then the flows run, then the report in a few minutes"
+            nodes={[
+              "Your CI or one click",
+              "~10 flows run",
+              "Report in minutes",
+            ]}
           />
         </div>
       ) : null}
@@ -956,7 +960,7 @@ export default function SaasAppHealthPage() {
           >
             In October we did what your next customer does: started the free
             trials of 28 SaaS products, signed up and tried the ~10 flows that
-            matter. A person re-checked every finding. One trial form failed on
+            matter. A person re-checked the findings. One trial form failed on
             the first submit, every time. The second try worked. None of it
             threw an error. An uptime check sees a green page.
           </p>
@@ -1007,7 +1011,7 @@ export default function SaasAppHealthPage() {
           id="numbers"
           eyebrow="The numbers"
           title="Six numbers from 28 products"
-          intro="On each product, an AI agent read the website, signed up for the free trial, logged in and tried the ~10 flows that matter most. We re-checked every finding and threw out anything we couldn't reproduce or that was our mistake."
+          intro="On each product, an AI agent read the website, signed up for the free trial, logged in and tried the ~10 flows that matter most. We re-checked the findings by hand and threw out anything we couldn't reproduce or that was our mistake."
         >
           <ul className="grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-3">
             {KEY_NUMBERS.map((n, i) => (
@@ -1217,7 +1221,7 @@ export default function SaasAppHealthPage() {
           intro={
             <>
               <strong className="text-gray-900 dark:text-white">
-                Your ~10 critical flows, checked before every release.
+                Your ~10 critical flows, run from your CI or with one click.
               </strong>{" "}
               A 6-week pilot for SaaS teams with no QA yet. Wopee.io runs an AI
               agent that uses your web app like a real user. It reads the
@@ -1251,8 +1255,8 @@ export default function SaasAppHealthPage() {
             ))}
           </ul>
           <p className={`mt-6 max-w-3xl ${MUTED}`}>
-            What went right: from starting the sign-up to filing the first
-            finding with screenshots took a median of 1 hour 41 minutes (13
+            What went right: from starting on a new product to its first filed
+            findings with screenshots took a median of 1 hour 41 minutes (13
             products timed). 21 products got their first findings in one
             evening, with agents working in parallel and one person supervising.
           </p>
@@ -1314,10 +1318,11 @@ export default function SaasAppHealthPage() {
               beyond what a normal sign-up shows.
             </li>
             <li>
-              Every finding re-checked on 16 and 17 October. Of 381 filed, 15
-              were closed as our mistake and 3 as apparently fixed by the
-              vendor, which leaves 363 valid. All counts come from one export
-              taken on 19 October 2026.
+              Findings re-checked by a person on 16 and 17 October (341 of the
+              363 valid ones carry a re-check note). Of 381 filed, 15 were
+              closed as our mistake and 3 as apparently fixed by the vendor,
+              which leaves 363 valid. All counts come from one export taken on
+              19 October 2026.
             </li>
             <li>
               Severity and categories are ours. No vendor had confirmed any
