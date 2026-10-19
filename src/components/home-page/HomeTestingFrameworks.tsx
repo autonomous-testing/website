@@ -1,5 +1,7 @@
 import React from "react";
+import Link from "@docusaurus/Link";
 import {
+  SiAppium,
   SiCypress,
   SiRobotframework,
   SiSelenium,
@@ -27,6 +29,7 @@ const TOOLS: { name: string; icon: React.ReactNode }[] = [
   { name: "Robot Framework", icon: <SiRobotframework size={40} /> },
   { name: "Selenium", icon: <SiSelenium size={40} /> },
   { name: "WebdriverIO", icon: <SiWebdriverio size={40} /> },
+  { name: "Appium", icon: <SiAppium size={40} /> },
 ];
 
 const HomeTestingFrameworks = () => {
@@ -51,6 +54,12 @@ const HomeTestingFrameworks = () => {
           </li>
         ))}
       </ul>
+      <p className="mt-10 mb-0 text-center text-balance text-gray-500 dark:text-gray-400 max-w-3xl">
+        Native SDKs for Playwright, Cypress, WebdriverIO and Robot Framework.
+        Selenium, Appium, Puppeteer and any other framework that takes
+        screenshots connect through the{" "}
+        <Link href="/visual-testing/">Wopee.io API</Link>.
+      </p>
     </section>
   );
 };

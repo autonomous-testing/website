@@ -7,7 +7,7 @@ export default function LandingHome() {
   return (
     <Layout
       title="Visual Regression Testing"
-      description="Automated visual regression testing for web apps. Detect UI regressions across browsers and screen sizes with AI-powered pixel-by-pixel comparisons."
+      description="AI visual regression testing for Playwright, Cypress, Selenium, Appium, WebdriverIO and Robot Framework. Native SDKs plus an API for any framework that takes screenshots."
     >
       <LandingPage />
     </Layout>
