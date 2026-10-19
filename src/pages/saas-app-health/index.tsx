@@ -28,36 +28,102 @@ function useBookingHref(cta: string) {
   return href;
 }
 
-const KEY_NUMBERS: { value: string; label: string }[] = [
+type Tone = "strong" | "mid" | "light" | "neutral" | "empty";
+
+type Viz =
+  | {
+      kind: "dots";
+      layers: { count: number; tone: Tone; label: string }[];
+      rest?: string;
+    }
+  | {
+      kind: "bar";
+      total: number;
+      segments: { value: number; tone: Tone; label: string }[];
+    };
+
+const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
   {
     value: "24 of 28",
     label:
       "had an open defect in sign-up, registration or the trial form. 17 of them at High or Medium.",
+    viz: {
+      kind: "dots",
+      layers: [
+        { count: 17, tone: "strong", label: "17 at High or Medium" },
+        { count: 7, tone: "mid", label: "24 with an open defect" },
+      ],
+      rest: "4 with no self-service sign-up we could use",
+    },
   },
   {
     value: "10 of 28",
     label:
       "showed a price or a saving on the page that didn't match what you're charged or get.",
+    viz: {
+      kind: "dots",
+      layers: [
+        {
+          count: 10,
+          tone: "strong",
+          label: "10 with a price that didn't match",
+        },
+        { count: 9, tone: "mid", label: "19 with a pricing or number defect" },
+      ],
+    },
   },
   {
     value: "11 of 28",
     label:
       "fired ad or analytics tags before the visitor touched the cookie banner.",
+    viz: {
+      kind: "dots",
+      layers: [{ count: 11, tone: "strong", label: "11 of 28 products" }],
+    },
   },
   {
     value: "12 of 28",
     label:
       "told a stranger, on login, sign-up or password reset, whether an e-mail address has an account.",
+    viz: {
+      kind: "dots",
+      layers: [{ count: 12, tone: "strong", label: "12 of 28 products" }],
+    },
   },
   {
     value: "About 55%",
     label: "of valid findings are visible before the user even logs in.",
+    viz: {
+      kind: "bar",
+      total: 363,
+      segments: [
+        { value: 110, tone: "strong", label: "110 on the public website" },
+        { value: 90, tone: "mid", label: "90 on sign-up, login and reset" },
+        { value: 163, tone: "neutral", label: "The rest, inside the app" },
+      ],
+    },
   },
   {
     value: "67 of 250",
     label:
       "core app flows were not green. 60 of them failed on a real defect in the app.",
+    viz: {
+      kind: "bar",
+      total: 250,
+      segments: [
+        { value: 183, tone: "neutral", label: "183 passed (73%)" },
+        { value: 60, tone: "strong", label: "60 failed on a real defect" },
+        { value: 1, tone: "mid", label: "1 our own wrong expectation" },
+        { value: 6, tone: "empty", label: "6 couldn't run" },
+      ],
+    },
   },
+];
+
+const SEVERITY: { value: number; tone: Tone; label: string }[] = [
+  { value: 37, tone: "strong", label: "37 High (10%)" },
+  { value: 124, tone: "mid", label: "124 Medium (34%)" },
+  { value: 202, tone: "light", label: "202 Low (56%)" },
 ];
 
 const FACTS = [
@@ -70,12 +136,16 @@ const FACTS = [
 
 const PATTERNS: {
   title: string;
+  products: number;
+  short: string;
   seen: string;
   saw: string;
   blind: string;
 }[] = [
   {
     title: "The sign-up that fails on the first try",
+    products: 24,
+    short: "Sign-up fails on the first try",
     seen: "24 of 28 products · 17 at High or Medium",
     saw: "Sign-up forms that fail on the first submit and work on the second. E-mailed sign-in links that never work, so the only way in is “Forgot password”.",
     blind:
@@ -83,6 +153,8 @@ const PATTERNS: {
   },
   {
     title: "The price on the page is not the price you pay",
+    products: 10,
+    short: "The price on the page is not the price you pay",
     seen: "10 of 28 products · 19 of 28 with a pricing or number defect",
     saw: "Two different products advertised “save 20%” on yearly billing. On both, the real saving was 16.7%.",
     blind:
@@ -90,6 +162,8 @@ const PATTERNS: {
   },
   {
     title: "The trial that greets you with a bill",
+    products: 13,
+    short: "The trial that greets you with a bill",
     seen: "21 findings · 13 products",
     saw: "Free trials that asked for payment on day one, or blocked the account with a billing message that didn't apply to a trial.",
     blind:
@@ -97,6 +171,8 @@ const PATTERNS: {
   },
   {
     title: "Errors that vanish, failures that stay silent",
+    products: 14,
+    short: "Errors that vanish",
     seen: "22 findings · 14 products",
     saw: "Wrong-password messages that disappear after a few seconds. Correct sign-ins that end on a dead page with no message.",
     blind:
@@ -104,6 +180,8 @@ const PATTERNS: {
   },
   {
     title: "Numbers on the dashboard that can't be true",
+    products: 14,
+    short: "Dashboard numbers that can't be true",
     seen: "23 findings · 14 products",
     saw: "Percentages computed on zero in empty trial accounts. Year-on-year tiles comparing part of this year with all of last year.",
     blind:
@@ -111,6 +189,8 @@ const PATTERNS: {
   },
   {
     title: "The banner asks. The tags already fired.",
+    products: 11,
+    short: "Tags fire before consent",
     seen: "11 of 28 products · 18 findings, 13 of them High",
     saw: "Ad and analytics tags fired before the visitor touched the cookie banner, in some cases even after “Reject all”.",
     blind:
@@ -118,6 +198,8 @@ const PATTERNS: {
   },
   {
     title: "Your login screen answers strangers",
+    products: 12,
+    short: "Login tells a stranger who has an account",
     seen: "21 findings · 15 products · 12 of 28 reveal who has an account",
     saw: "Login, sign-up or reset screens that confirm whether an e-mail has an account. Passwords e-mailed in plain text. No e-mail verification.",
     blind:
@@ -125,6 +207,8 @@ const PATTERNS: {
   },
   {
     title: "The most valuable button goes nowhere",
+    products: 19,
+    short: "The most valuable button goes nowhere",
     seen: "33 findings · 19 products",
     saw: "The button that books a call or starts a trial, on a page or at the end of a tour, opened a 404.",
     blind:
@@ -227,24 +311,76 @@ const CHECKS: { title: string; body: React.ReactNode }[] = [
   },
 ];
 
-const WEEKS: { when: string; what: string; detail: string }[] = [
+const TIMELINE = ["W1", "W2", "W3", "W4", "W5", "W6", "END"];
+
+type PilotStep = {
+  tag: string;
+  active: number[];
+  title: string;
+  points: React.ReactNode[];
+  diagram?: "release" | "review";
+  proof?: React.ReactNode;
+  note?: string;
+};
+
+const PILOT_STEPS: PilotStep[] = [
   {
-    when: "Week 1",
-    what: "Pick your flows, get the first findings",
-    detail:
-      "You send a URL and a test account. Together we pick your ~10 critical flows, usually the list above adjusted to your product. We write the tests in plain English, and you get the first findings with evidence.",
+    tag: "Week 1",
+    active: [0],
+    title: "Pick the flows, get the first findings",
+    points: [
+      "We agree on your ~10 flows together: sign-up, login, pricing to checkout, your core action, invites, cancel.",
+      "The agent signs up as a stranger and walks them.",
+      "First findings with steps and screenshots in the first week.",
+    ],
+    proof: (
+      <>
+        In October: <strong>median 1 h 41 min</strong> from the first sign-up
+        click to the first filed findings.
+      </>
+    ),
   },
   {
-    when: "Weeks 2 to 6",
-    what: "Before every release",
-    detail:
-      "The flows run before every release, triggered from your pipeline or on request. Where it makes sense (sign-up, login, checkout) they also run on a schedule, so you hear about a break before a customer does.",
+    tag: "Weeks 2 to 6",
+    active: [1, 2, 3, 4, 5],
+    title: "Before every release",
+    diagram: "release",
+    points: [
+      "The flows run before each release you tell us about.",
+      "Where it makes sense, they also run on a schedule as monitoring, so a Friday change shows up before Monday.",
+      <>
+        You see a green run or a short list of real defects.{" "}
+        <strong>Nothing else.</strong>
+      </>,
+    ],
   },
   {
-    when: "At the end",
-    what: "A short report",
-    detail:
-      "What we found, what your team fixed and what's still open. Then you decide whether to keep going.",
+    tag: "Every week",
+    active: [0, 1, 2, 3, 4, 5],
+    title: "A person reviews every failure",
+    diagram: "review",
+    points: [
+      "A red test is a question: is it the app, or is it our test? We answer it before you see it.",
+    ],
+    proof: (
+      <>
+        In October, <strong>15 of 381 findings</strong> didn't hold up on our
+        own re-check. We closed them ourselves.
+      </>
+    ),
+    note: "Some sign-ups need a human step (CAPTCHA). We'll ask you for a test account.",
+  },
+  {
+    tag: "End of week 6",
+    active: [6],
+    title: "What you get",
+    points: [
+      "Defects with steps, a recording and one line of business impact.",
+      "Your ~10 flows, running and maintained by us. Green means they work, red means a reviewed defect.",
+      "An end-of-pilot report: what we found, what your team fixed, what's still open.",
+      "When you hire QA later, they start from running flows and evidence, not a blank page.",
+    ],
+    note: "End of week 6: the report, and you decide whether to keep going.",
   },
 ];
 
@@ -368,6 +504,393 @@ function LeadCard({ lead, detail }: { lead: string; detail: string }) {
   );
 }
 
+const TONE: Record<Tone, string> = {
+  strong: "bg-secondary-wopee dark:bg-primary-wopee",
+  mid: "bg-secondary-wopee/45 dark:bg-primary-wopee/50",
+  light: "bg-secondary-wopee/20 dark:bg-primary-wopee/25",
+  neutral: "bg-gray-300 dark:bg-white/25",
+  empty:
+    "border border-solid border-gray-300 bg-transparent dark:border-white/40",
+};
+
+function Swatch({ tone, round }: { tone: Tone; round?: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`box-border inline-block h-2.5 w-2.5 shrink-0 ${
+        round ? "rounded-full" : "rounded-sm"
+      } ${TONE[tone]}`}
+    />
+  );
+}
+
+function Legend({
+  items,
+  round,
+}: {
+  items: { tone: Tone; label: string; tones?: Tone[] }[];
+  round?: boolean;
+}) {
+  return (
+    <ul
+      className={`m-0 mt-3 flex list-none flex-col gap-1 pl-0 text-xs ${MUTED}`}
+    >
+      {items.map((it) => (
+        <li key={it.label} className="flex items-center gap-2">
+          {it.tones ? (
+            <span
+              aria-hidden="true"
+              className="inline-flex h-2.5 w-2.5 shrink-0 overflow-hidden rounded-full"
+            >
+              {it.tones.map((t) => (
+                <span key={t} className={`block h-full w-1/2 ${TONE[t]}`} />
+              ))}
+            </span>
+          ) : (
+            <Swatch tone={it.tone} round={round} />
+          )}
+          {it.label}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// One dot per product tested; layers fill in order, the rest stay empty.
+function DotGrid({
+  layers,
+  rest,
+  columns = 14,
+  legend = true,
+}: {
+  layers: { count: number; tone: Tone; label: string }[];
+  rest?: string;
+  columns?: 14 | 28;
+  legend?: boolean;
+}) {
+  const tones: Tone[] = [];
+  layers.forEach((l) => {
+    for (let i = 0; i < l.count; i++) tones.push(l.tone);
+  });
+  while (tones.length < 28) tones.push("empty");
+  const filled = layers.reduce((n, l) => n + l.count, 0);
+  return (
+    <div>
+      <div
+        role="img"
+        aria-label={`${filled} of 28 products`}
+        className={`grid ${
+          columns === 14
+            ? "max-w-[15rem] grid-cols-[repeat(14,minmax(0,1fr))] gap-1"
+            : "grid-cols-[repeat(28,minmax(0,1fr))] gap-[3px]"
+        }`}
+      >
+        {tones.map((t, i) => (
+          <span
+            key={i}
+            aria-hidden="true"
+            className={`box-border block aspect-square rounded-full ${TONE[t]}`}
+          />
+        ))}
+      </div>
+      {legend && (layers.length > 1 || rest) ? (
+        <Legend
+          round
+          items={[
+            // Layer labels are cumulative: a later layer's label counts
+            // every dot up to it, so its swatch shows all tones so far.
+            ...layers.map((l, i) => ({
+              tone: l.tone,
+              label: l.label,
+              tones:
+                i > 0 ? layers.slice(0, i + 1).map((x) => x.tone) : undefined,
+            })),
+            ...(rest ? [{ tone: "empty" as Tone, label: rest }] : []),
+          ]}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function StackBar({
+  segments,
+}: {
+  segments: { value: number; tone: Tone; label: string }[];
+}) {
+  return (
+    <div>
+      <div
+        role="img"
+        aria-label={segments.map((s) => s.label).join(", ")}
+        className="grid h-3.5 w-full gap-[2px]"
+        style={{
+          gridTemplateColumns: segments
+            .map((seg) => `minmax(0, ${seg.value}fr)`)
+            .join(" "),
+        }}
+      >
+        {segments.map((seg) => (
+          <span
+            key={seg.label}
+            title={seg.label}
+            className={`box-border block rounded-[3px] ${TONE[seg.tone]}`}
+          />
+        ))}
+      </div>
+      <Legend items={segments} />
+    </div>
+  );
+}
+
+function NumberViz({ viz }: { viz: Viz }) {
+  return viz.kind === "dots" ? (
+    <DotGrid layers={viz.layers} rest={viz.rest} />
+  ) : (
+    <StackBar segments={viz.segments} />
+  );
+}
+
+function PatternChart() {
+  return (
+    <figure className={`${CARD} m-0 mb-6 px-5 py-5 sm:px-6`}>
+      <figcaption className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+        <span className="font-bold">
+          How many of the 28 products each pattern hit
+        </span>
+        <span className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+          <span className="flex items-center gap-1.5">
+            <Swatch tone="strong" round /> one product
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Swatch tone="empty" round /> not seen
+          </span>
+        </span>
+      </figcaption>
+      <ol className="m-0 grid list-none gap-3 pl-0">
+        {PATTERNS.map((p, i) => (
+          <li
+            key={p.title}
+            className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-1.5 lg:grid-cols-[16rem_minmax(0,1fr)_3rem]"
+          >
+            <a
+              href={`#pattern-${i + 1}`}
+              className="text-sm font-medium text-inherit no-underline hover:text-inherit hover:underline"
+            >
+              <span className={`mr-2 font-extrabold tabular-nums ${ACCENT}`}>
+                #{i + 1}
+              </span>
+              {p.short}
+            </a>
+            <span className="text-right text-sm font-bold tabular-nums lg:order-last">
+              {p.products}/28
+            </span>
+            <div className="col-span-2 min-w-0 lg:col-span-1">
+              <DotGrid
+                columns={28}
+                legend={false}
+                layers={[{ count: p.products, tone: "strong", label: p.short }]}
+              />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  );
+}
+
+function Timeline({ active }: { active: number[] }) {
+  return (
+    <ol
+      aria-hidden="true"
+      className="relative m-0 flex list-none items-center justify-between gap-1 pl-0"
+    >
+      <span className="absolute inset-x-2 top-1/2 h-px -translate-y-1/2 bg-gray-300 dark:bg-white/20" />
+      {TIMELINE.map((t, i) => (
+        <li
+          key={t}
+          className={`relative m-0 rounded-full border border-solid px-1.5 py-0.5 text-[10px] font-medium leading-tight tabular-nums sm:px-2 sm:text-[11px] ${
+            active.includes(i)
+              ? "border-secondary-wopee bg-secondary-wopee text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-gray-900"
+              : "border-gray-300 bg-white text-gray-500 dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-400"
+          }`}
+        >
+          {t}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+const NODE =
+  "m-0 flex items-center justify-center rounded-lg border border-solid px-3 py-2 text-center text-xs font-semibold leading-snug sm:text-sm";
+const NODE_PLAIN =
+  "border-gray-300 bg-white text-gray-900 dark:border-white/20 dark:bg-white/[0.06] dark:text-white";
+const NODE_STRONG =
+  "border-secondary-wopee bg-secondary-wopee text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-gray-900";
+
+function Arrow({ down, inverted }: { down?: boolean; inverted?: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`flex shrink-0 items-center justify-center text-base ${
+        inverted ? "text-white/80" : "text-gray-400 dark:text-gray-400"
+      } ${down ? "h-6" : "h-6 sm:h-auto sm:w-6"}`}
+    >
+      {down ? (
+        "↓"
+      ) : (
+        <>
+          <span className="sm:hidden">↓</span>
+          <span className="hidden sm:inline">→</span>
+        </>
+      )}
+    </span>
+  );
+}
+
+function FlowRow({
+  nodes,
+  label,
+  inverted,
+}: {
+  nodes: string[];
+  label: string;
+  inverted?: boolean;
+}) {
+  const plain = inverted
+    ? "border-white/40 bg-white/10 text-white"
+    : NODE_PLAIN;
+  const strong = inverted
+    ? "border-primary-wopee bg-white/10 text-primary-wopee"
+    : NODE_STRONG;
+  return (
+    <ol
+      aria-label={label}
+      className="m-0 flex list-none flex-col items-stretch pl-0 sm:flex-row"
+    >
+      {nodes.map((n, i) => (
+        <React.Fragment key={n}>
+          {i > 0 ? (
+            <li aria-hidden="true" className="m-0 flex justify-center">
+              <Arrow inverted={inverted} />
+            </li>
+          ) : null}
+          <li
+            className={`${NODE} sm:flex-1 ${
+              i === nodes.length - 1 ? strong : plain
+            }`}
+          >
+            {n}
+          </li>
+        </React.Fragment>
+      ))}
+    </ol>
+  );
+}
+
+function ReviewDiagram() {
+  return (
+    <div
+      role="group"
+      aria-label="What happens to a red test"
+      className="flex flex-col items-stretch"
+    >
+      <div className={`${NODE} ${NODE_PLAIN}`}>
+        <span
+          aria-hidden="true"
+          className="mr-2 inline-block h-2 w-2 rounded-full bg-red-500"
+        />
+        Red test
+      </div>
+      <Arrow down />
+      <div className={`${NODE} ${NODE_PLAIN}`}>
+        A person checks the trace and video
+      </div>
+      <div aria-hidden="true" className="relative h-6">
+        <span className="absolute left-1/2 top-0 h-3 w-px bg-gray-400" />
+        <span className="absolute left-1/4 right-1/4 top-3 h-3 border-0 border-x border-t border-solid border-gray-400" />
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div className={`${NODE} ${NODE_STRONG}`}>
+          App defect: sent to you, with evidence
+        </div>
+        <div className={`${NODE} ${NODE_PLAIN}`}>
+          Our test: we fix it, you never hear about it
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PilotStepCard({ step, index }: { step: PilotStep; index: number }) {
+  return (
+    <li className={`${CARD} m-0 flex flex-col px-5 py-5 sm:px-6`}>
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee text-sm font-extrabold text-white dark:bg-primary-wopee dark:text-gray-900"
+        >
+          {index + 1}
+        </span>
+        <span
+          className={`text-xs font-semibold uppercase tracking-widest ${ACCENT}`}
+        >
+          {step.tag}
+        </span>
+      </div>
+      <h3 className="mb-0 mt-2 text-lg font-bold leading-snug">{step.title}</h3>
+      <div className="mt-3">
+        <Timeline active={step.active} />
+      </div>
+      {step.diagram === "release" ? (
+        <div className="mt-4">
+          <FlowRow
+            label="Release, then the flows run, then a reviewed result"
+            nodes={["Release", "~10 flows run", "Reviewed result"]}
+          />
+        </div>
+      ) : null}
+      <ul
+        className={`m-0 mt-4 list-none space-y-2 pl-0 text-sm leading-relaxed ${MUTED}`}
+      >
+        {step.points.map((pt, i) => (
+          <li key={i} className="m-0 flex gap-2.5">
+            <span
+              aria-hidden="true"
+              className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-secondary-wopee dark:bg-primary-wopee"
+            />
+            <span>{pt}</span>
+          </li>
+        ))}
+      </ul>
+      {step.diagram === "review" ? (
+        <div className="mt-4">
+          <ReviewDiagram />
+        </div>
+      ) : null}
+      {step.proof || step.note ? (
+        <div className="mt-4">
+          {step.proof ? (
+            <p className="m-0 rounded-lg bg-gray-900 px-4 py-3 text-sm leading-relaxed text-white dark:bg-black/40 [&_strong]:text-primary-wopee">
+              {step.proof}
+            </p>
+          ) : null}
+          {step.note ? (
+            <p
+              className={`m-0 rounded-lg border border-dashed border-gray-400 px-4 py-3 text-sm leading-relaxed dark:border-white/30 ${
+                step.proof ? "mt-3" : ""
+              } ${MUTED}`}
+            >
+              {step.note}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+    </li>
+  );
+}
+
 function Ctas({ cta }: { cta: string }) {
   const bookHref = useBookingHref(cta);
   return (
@@ -458,7 +981,7 @@ export default function SaasAppHealthPage() {
             <blockquote className="m-0 border-0 p-0">
               <p className="text-base leading-relaxed">
                 I'm not writing this from above. I run a small SaaS too, and
-                I've spent 15+ years in testing. For weeks our own sign-up chart
+                I've spent 20+ years in testing. For weeks our own sign-up chart
                 showed zero while people were signing up. The sign-up worked.
                 The tracking event behind it didn't. Nobody broke it. Nobody
                 owned it.
@@ -490,7 +1013,7 @@ export default function SaasAppHealthPage() {
             {KEY_NUMBERS.map((n, i) => (
               <li
                 key={n.value}
-                className={`${CARD} px-5 py-5 ${
+                className={`${CARD} flex flex-col px-5 py-5 ${
                   i === 0
                     ? "!border-secondary-wopee/50 !bg-secondary-wopee/[0.06] dark:!border-primary-wopee/40 dark:!bg-primary-wopee/[0.06]"
                     : ""
@@ -504,6 +1027,9 @@ export default function SaasAppHealthPage() {
                 <span className={`mt-2 block text-sm leading-relaxed ${MUTED}`}>
                   {n.label}
                 </span>
+                <div className="mt-auto pt-5 lg:min-h-[7.5rem]">
+                  <NumberViz viz={n.viz} />
+                </div>
               </li>
             ))}
           </ul>
@@ -520,11 +1046,16 @@ export default function SaasAppHealthPage() {
               </li>
             ))}
           </ul>
-          <p className={`mt-6 max-w-3xl ${MUTED}`}>
-            Of the 363 valid findings, 37 are High, 124 Medium and 202 Low. Most
-            are small. That's the point: small things pile up where nobody is
-            looking.
-          </p>
+          <figure className={`${CARD} m-0 mt-6 px-5 py-5 sm:px-6`}>
+            <figcaption className="mb-3 font-bold">
+              The 363 valid findings by severity
+            </figcaption>
+            <StackBar segments={SEVERITY} />
+            <p className={`m-0 mt-4 max-w-3xl text-sm ${MUTED}`}>
+              Most are small. That's the point: small things pile up where
+              nobody is looking.
+            </p>
+          </figure>
         </Section>
 
         <Section
@@ -533,10 +1064,15 @@ export default function SaasAppHealthPage() {
           title="What kept coming back"
           intro="Recurring patterns, anonymised across products: never one product's exact text, amount or screen."
         >
+          <PatternChart />
           <ol className="grid list-none gap-4 pl-0 md:grid-cols-2">
             {PATTERNS.map((p, i) => (
-              <li key={p.title} className={`${CARD} flex flex-col px-5 py-5`}>
-                <div className="flex items-baseline gap-3">
+              <li
+                key={p.title}
+                id={`pattern-${i + 1}`}
+                className={`${CARD} flex scroll-mt-24 flex-col px-5 py-5`}
+              >
+                <div className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-3 gap-y-1 sm:grid-cols-[auto_minmax(0,1fr)_auto]">
                   <span
                     className={`text-sm font-extrabold tabular-nums ${ACCENT}`}
                   >
@@ -545,6 +1081,9 @@ export default function SaasAppHealthPage() {
                   <h3 className="m-0 text-lg font-bold leading-snug">
                     {p.title}
                   </h3>
+                  <span className="col-start-2 justify-self-start rounded-md bg-secondary-wopee px-2 py-0.5 sm:col-start-auto text-xs font-bold tabular-nums text-white dark:bg-primary-wopee dark:text-gray-900">
+                    {p.products}/28
+                  </span>
                 </div>
                 <p className="mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">
                   {p.seen}
@@ -675,54 +1214,22 @@ export default function SaasAppHealthPage() {
           id="how-it-works"
           eyebrow="If you'd rather hand it off"
           title="How a 6-week pilot works"
-          intro="Wopee.io runs an AI agent that uses your web app like a real user. It reads the screen, not your code, so a renamed button doesn't break the test."
+          intro={
+            <>
+              <strong className="text-gray-900 dark:text-white">
+                Your ~10 critical flows, checked before every release.
+              </strong>{" "}
+              A 6-week pilot for SaaS teams with no QA yet. Wopee.io runs an AI
+              agent that uses your web app like a real user. It reads the
+              screen, not your code, so a renamed button doesn't break the test.
+            </>
+          }
         >
-          <ol className={`${CARD} m-0 list-none overflow-hidden p-0`}>
-            {WEEKS.map((w, i) => (
-              <li
-                key={w.when}
-                className={`m-0 grid gap-2 px-5 py-5 sm:grid-cols-[9rem,1fr] sm:gap-6 ${
-                  i > 0
-                    ? "border-0 border-t border-solid border-gray-200 dark:border-white/10"
-                    : ""
-                }`}
-              >
-                <span className="inline-flex h-fit w-fit items-center rounded-full bg-secondary-wopee/10 px-3 py-1 text-sm font-bold text-secondary-wopee dark:bg-primary-wopee/10 dark:text-primary-wopee">
-                  {w.when}
-                </span>
-                <span>
-                  <span className="block font-semibold">{w.what}</span>
-                  <span
-                    className={`mt-1 block text-sm leading-relaxed ${MUTED}`}
-                  >
-                    {w.detail}
-                  </span>
-                </span>
-              </li>
+          <ol className="m-0 grid list-none gap-4 pl-0 md:grid-cols-2">
+            {PILOT_STEPS.map((step, i) => (
+              <PilotStepCard key={step.title} step={step} index={i} />
             ))}
           </ol>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className={`${CARD} px-6 py-6`}>
-              <h3 className="text-lg font-bold">
-                A person reviews every failure
-              </h3>
-              <p className={`mt-2 text-sm leading-relaxed ${MUTED}`}>
-                A red test is a question: is it the app, or is it our test? We
-                check the trace and the video before you see it. If the problem
-                was our test, we fix our test and you never hear about it.
-              </p>
-            </div>
-            <div className={`${CARD} px-6 py-6`}>
-              <h3 className="text-lg font-bold">Defects with evidence</h3>
-              <p className={`mt-2 text-sm leading-relaxed ${MUTED}`}>
-                Steps, a screenshot, a video and an impact line in plain words.
-                Not a dashboard to babysit. An example test: “Sign up with a new
-                e-mail, open the confirmation link, check that the empty
-                dashboard loads.”
-              </p>
-            </div>
-          </div>
 
           <h3 className="mt-10 text-lg font-bold">Honest limits</h3>
           <ul className="mt-4 grid list-none gap-3 pl-0 md:grid-cols-2">
@@ -765,6 +1272,17 @@ export default function SaasAppHealthPage() {
           <h2 className="mt-4 text-2xl font-bold sm:text-3xl">
             Start here: send me your URL
           </h2>
+          <div className="mx-auto mt-6 max-w-2xl">
+            <FlowRow
+              inverted
+              label="Your URL, then the flows we'd check first, then a 30-minute call if it fits"
+              nodes={[
+                "Your URL",
+                "The flows we'd check first",
+                "30-min call, if it fits",
+              ]}
+            />
+          </div>
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-white/80">
             Book 30 minutes or message me on LinkedIn. I'll tell you which of
             the eight patterns I'd check first on your product, and whether a
