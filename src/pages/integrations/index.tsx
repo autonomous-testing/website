@@ -152,7 +152,7 @@ const CATEGORIES: Category[] = [
     id: "test-frameworks",
     title: "Test frameworks",
     intro:
-      "Playwright is native, agents generate and run plain Playwright tests. Visual testing SDKs cover the other frameworks your suites already use.",
+      "Playwright is native, agents generate and run plain Playwright tests. Visual testing SDKs cover Cypress, Robot Framework and WebdriverIO, and any other framework connects through the API.",
     items: [
       {
         name: "Playwright",
@@ -202,6 +202,16 @@ const CATEGORIES: Category[] = [
           },
         ],
       },
+      {
+        name: "Any other framework",
+        icon: mdiTestTube,
+        description:
+          "Selenium WebDriver (Java, Python, C#, JavaScript), Appium, Puppeteer, TestCafe, Nightwatch.js, Katalon, Detox, Espresso and XCUITest: capture a screenshot and send it to the API with your project API key. JavaScript and TypeScript suites can use @wopee-io/sdk.",
+        links: [
+          { label: "Visual testing", href: "/visual-testing/" },
+          { label: "npm", href: "https://www.npmjs.com/package/@wopee-io/sdk" },
+        ],
+      },
     ],
   },
   {
@@ -249,7 +259,8 @@ const HeroSection = () => (
         Windsurf through the Model Context Protocol (MCP); ChatOps in Slack and
         Microsoft Teams; GitHub repositories and GitHub Actions for test
         execution; test frameworks including Playwright, Cypress, Robot
-        Framework, and WebdriverIO; and a GraphQL API that powers all of it.
+        Framework, WebdriverIO, Selenium, and Appium; and a GraphQL API that
+        powers all of it.
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-4">
@@ -341,7 +352,7 @@ const IntegrationsPage = () => {
   return (
     <Layout
       title="Integrations: MCP, Slack, GitHub, Playwright"
-      description="Wopee.io integrations: connect Claude Code, Cursor, Slack, GitHub Actions, Playwright, Cypress, and Robot Framework via MCP, ChatOps, and a GraphQL API."
+      description="Wopee.io integrations: Claude Code, Cursor, Slack, GitHub Actions, Playwright, Cypress, Robot Framework, Selenium, and Appium via MCP, ChatOps, and GraphQL API."
     >
       <HeroSection />
       {CATEGORIES.map((category) => (
