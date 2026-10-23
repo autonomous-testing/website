@@ -1,4 +1,6 @@
-export type FooterLink = { label: string; to: string };
+import { learnShowNew } from "./learn-tutorials";
+
+export type FooterLink = { label: string; to: string; badge?: string };
 export type FooterColumn = { title: string; links: FooterLink[] };
 
 export const footerColumns: FooterColumn[] = [
@@ -47,6 +49,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Community",
     links: [
       { label: "Blog", to: "/blog/" },
+      { label: "Free tutorials", to: "/learn/", ...(learnShowNew ? { badge: "New" } : {}) },
       { label: "Newsletter", to: "/newsletter/" },
       { label: "Changelog", to: "/changelog/" },
       { label: "LinkedIn", to: "https://www.linkedin.com/company/wopee" },
@@ -59,4 +62,5 @@ export const footerColumns: FooterColumn[] = [
 export const footerLegal: FooterLink[] = [
   { label: "Terms and Conditions", to: "/terms-and-conditions/" },
   { label: "GDPR", to: "/gdpr/" },
+  { label: "Privacy", to: "/privacy/" },
 ];

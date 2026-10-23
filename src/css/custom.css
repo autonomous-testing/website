@@ -11,8 +11,10 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"); */
 
 /* Scroll setup and behavior */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 section {
@@ -644,6 +646,26 @@ a.navbar__item:hover {
   color: var(--ifm-font-color-base);
 }
 
+.nav-new {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  vertical-align: 0.1em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #7030a0;
+  color: #fff;
+}
+
+[data-theme="dark"] .nav-new {
+  background: #ffcc00;
+  color: #1b1b1d;
+}
+
 .nav-rich-desc {
   display: block;
   font-size: 0.78rem;
@@ -682,4 +704,30 @@ a.navbar__item:hover {
 
 .menu__link .nav-rich-desc {
   display: none;
+}
+
+/* Navbar "Learn" (behind the T1 launch flag): only where the bar has room, so Log in and Start for free never move. */
+@media (min-width: 997px) and (max-width: 1199px) {
+  .navbar__item.navbar-learn {
+    display: none;
+  }
+}
+
+/* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Green Is Not Correct" and episode tags. */
+@font-face {
+  font-family: "Bungee";
+  src: url("/fonts/bungee-subset.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* /learn scroll regions: an edge fade while more content sits to the right. */
+.learn-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.learn-scroll[data-more="true"] {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
 }
