@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Link from "@docusaurus/Link";
+import { Link } from "../../components/ui/typedDocusaurus";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
@@ -1017,7 +1017,7 @@ export default function SaasAppHealthPage() {
           <ul className="grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-3">
             {KEY_NUMBERS.map((n, i) => (
               <li
-                key={n.value}
+                key={`${n.value}-${i}`}
                 className={`${CARD} flex flex-col px-5 py-5 ${
                   i === 0
                     ? "!border-secondary-wopee/50 !bg-secondary-wopee/[0.06] dark:!border-primary-wopee/40 dark:!bg-primary-wopee/[0.06]"
@@ -1236,12 +1236,13 @@ export default function SaasAppHealthPage() {
             ))}
           </ol>
           <p className={`mt-6 max-w-3xl ${MUTED}`}>
-            Who does what, a sample report and how pricing works:{" "}
+            Who does what, a sample report, the monthly service and how pricing
+            works:{" "}
             <Link
               to="/managed-testing/"
               className="font-semibold text-secondary-wopee underline underline-offset-4 dark:text-primary-wopee"
             >
-              the managed testing service and the 6-week managed pilot
+              managed testing, starting with a 6-week pilot
             </Link>
             .
           </p>
@@ -1312,7 +1313,7 @@ export default function SaasAppHealthPage() {
               to="/managed-testing/"
               className="font-semibold text-white underline underline-offset-4 hover:text-primary-wopee"
             >
-              How the managed service and the 6-week pilot work
+              How the 6-week pilot and monthly managed testing work
             </Link>
           </p>
         </section>

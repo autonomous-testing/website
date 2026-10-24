@@ -321,7 +321,7 @@ const FAQS = [
           <li>Help with integrations and customizations where needed</li>
         </ul>
         <p>
-          Don't want to run the tests yourself? With the <a href="/managed-testing/">managed testing service</a> we write, run and maintain them for your critical flows, and a person reviews every failure. It is priced by your flows and release cadence, not per user.
+          Don't want to run the tests yourself? With <a href="/managed-testing/">managed testing</a> we write, run and maintain them for your most important flows, and a person checks every failure. It starts with a 6-week pilot, then runs month to month, priced by your flows and release cadence, not per user.
         </p>
       </div>
     ),
@@ -332,7 +332,7 @@ const FAQS = [
       <div className="space-y-4">
         <p>Yes, and there are two pilots, depending on who does the testing.</p>
         <p>The <a href="/pilot/">8-week enterprise pilot</a> is for QA teams: up to 10 critical flows of one web application, your people build the tests with our coaching, a baseline measured in Sprint 1, and a go or no-go decision at the end of Sprint 8.</p>
-        <p>The <a href="/managed-testing/">6-week managed pilot</a> is for teams without QA: we write, run and maintain the tests for your ~10 critical flows, a person reviews every failure, and you give about an hour a week.</p>
+        <p>The <a href="/managed-testing/">6-week managed pilot</a> is for teams without QA: we write, run and maintain the tests for your ~10 most important flows, a person checks every failure, and you give about an hour a week. After it, managed testing runs month to month.</p>
         <p>In a typical enterprise pilot, we:</p>
         <ul className="list-disc pl-5">
           <li>Run an onboarding workshop and set up project context</li>

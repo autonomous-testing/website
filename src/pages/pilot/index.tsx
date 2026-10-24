@@ -1,7 +1,7 @@
 import React from "react";
 
 import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
+import { Link } from "../../components/ui/typedDocusaurus";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";

@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
-import Layout from "@theme/Layout";
+import ExplainerVideo from "../../components/ui/ExplainerVideo";
+import { Head, Layout, Link } from "../../components/ui/typedDocusaurus";
 
 const CAMPAIGN = "managed-testing";
 const PRICING = "/pricing/";
 const ENTERPRISE_PILOT = "/pilot/";
 const STUDY = "/saas-app-health/";
+const LINKEDIN = "https://www.linkedin.com/in/marcelveselka/";
+const HUBSPOT_MEETINGS = "https://meetings-eu1.hubspot.com/marcel-veselka";
+const PAGE_URL = "https://wopee.io/managed-testing/";
+const VIDEO_BASE = "managed-testing-explainer";
+// Flip to true in the commit that adds the files to static/video/, so the
+// VideoObject never points at a file that isn't deployed.
+const VIDEO_PUBLISHED = false;
 
-// Forwards the visitor's utm_* params to the booking page so a call booked
-// from a post or e-mail keeps its source in HubSpot.
-function useBookingHref(cta: string) {
-  const fallback = `/book-demo/?utm_source=website&utm_medium=managed-testing&utm_campaign=${CAMPAIGN}&utm_content=${cta}`;
-  const [href, setHref] = useState(fallback);
+// The visitor's utm_* params, with this page's defaults filled in. Used for
+// the inline calendar and the booking-page fallback, so a call booked from a
+// post or e-mail keeps its source in HubSpot.
+function useUtm(cta: string) {
+  const defaults = `utm_source=website&utm_medium=managed-testing&utm_campaign=${CAMPAIGN}&utm_content=${cta}`;
+  const [query, setQuery] = useState(defaults);
   useEffect(() => {
     const incoming = new URLSearchParams(window.location.search);
     const params = new URLSearchParams();
@@ -24,50 +31,34 @@ function useBookingHref(cta: string) {
     if (!params.has("utm_medium")) params.set("utm_medium", "managed-testing");
     params.set("utm_campaign", CAMPAIGN);
     if (!params.has("utm_content")) params.set("utm_content", cta);
-    setHref(`/book-demo/?${params.toString()}`);
+    setQuery(params.toString());
   }, [cta]);
-  return href;
+  return query;
 }
 
-const AT_A_GLANCE = [
-  "~10 critical flows",
-  "Your CI or one click",
-  "A person reviews every failure",
-  "About an hour a week from you",
-];
-
-type Way = {
-  name: string;
-  tag: string;
-  rows: { field: string; value: string }[];
-  highlight?: boolean;
+const track = (event: string, params: Record<string, string> = {}) => {
+  const w = window as typeof window & { dataLayer?: object[] };
+  w.dataLayer?.push({ event, page_path: window.location.pathname, ...params });
 };
 
-const WAYS: Way[] = [
+/* ------------------------------------------------------------------ copy */
+
+
+const PAINS: { lead: string; detail: string }[] = [
   {
-    name: "License",
-    tag: "Self-serve. Your team drives the agents.",
-    rows: [
-      { field: "Who writes the tests", value: "Your team, with our AI agents" },
-      { field: "Who runs and maintains them", value: "Your team" },
-      { field: "Who reviews failures", value: "Your team" },
-      { field: "Your effort", value: "Your people own the suite" },
-      { field: "How you start", value: "Sign up free, no credit card" },
-      { field: "Price", value: "Published, per user per month" },
-    ],
+    lead: "Developers test what they changed.",
+    detail:
+      "Nobody walks sign-up or payment again after an unrelated change, and that's where things break quietly.",
   },
   {
-    name: "Managed service",
-    tag: "We write, run and maintain the tests for you.",
-    highlight: true,
-    rows: [
-      { field: "Who writes the tests", value: "We do, from flows you confirm" },
-      { field: "Who runs and maintains them", value: "We do, as your product changes" },
-      { field: "Who reviews failures", value: "A person on our team, every one" },
-      { field: "Your effort", value: "A test account and about an hour a week" },
-      { field: "How you start", value: "A 6-week managed pilot" },
-      { field: "Price", value: "Priced per scope, told on a call" },
-    ],
+    lead: "Customers don't file bug reports.",
+    detail:
+      "A stranger whose sign-up fails just leaves. You find out weeks later, as a dip in the numbers.",
+  },
+  {
+    lead: "The test suite stopped when its owner left.",
+    detail:
+      "Someone set up automated tests once. Today they fail in the pipeline and nobody looks.",
   },
 ];
 
@@ -82,11 +73,11 @@ const STEPS: { title: string; body: string }[] = [
   },
   {
     title: "They run before every release",
-    body: "From your CI, or on demand: you or we click one button. The report with steps and screenshots is ready in a few minutes.",
+    body: "From your CI, or with one click by you or us. The agent's run finishes in minutes, with steps and screenshots.",
   },
   {
-    title: "A person reviews every failure",
-    body: "A red test is a question: is it the app, or our test? We answer it before you see it. You get a green run or a short list of real defects.",
+    title: "A person checks every failure",
+    body: "A red test is a question: is it your app, or our test? We answer it before you see it.",
   },
 ];
 
@@ -138,54 +129,76 @@ const SAMPLE_DEFECTS: {
   },
 ];
 
-const WE_DO = [
-  "Define your ~10 critical flows with you, in plain language you confirm.",
-  "Write the tests and run them before every release.",
-  "Maintain the tests as your product changes.",
-  "Review every failure before it reaches you.",
-  "Send each defect with steps, screenshots and one line of business impact.",
-];
-
-const YOU_DO = [
-  "Give us a test account, plus a bot-protection exception or a sandbox where needed.",
-  "About an hour a week: read the report and answer our questions.",
-  "Decide which defects to fix. Fixing them stays with your team.",
-];
-
-const PILOT_WEEKS: { tag: string; title: string; points: string[] }[] = [
+const PILOT_WEEKS: { tag: string; text: string }[] = [
   {
     tag: "Week 1",
-    title: "Kickoff, flows and success criteria",
-    points: [
-      "We pick your ~10 flows together and agree the success criteria for the pilot.",
-      "The agent signs up as a stranger and walks the flows.",
-      "First findings with steps and screenshots in the first week.",
-    ],
+    text: "We pick your flows together and agree in writing what success looks like. First findings arrive with steps and screenshots.",
   },
   {
     tag: "Weeks 2 and 3",
-    title: "Tests running",
-    points: [
-      "Tests for all your flows, run from your CI or with one click.",
-      "We settle the tests: the first rounds include test fixes on our side.",
-    ],
+    text: "The tests run from your CI or with one click. The first rounds include test fixes on our side.",
   },
   {
     tag: "Weeks 4 and 5",
-    title: "Every release",
-    points: [
-      "The flows run before every release, and you get the report.",
-      "We maintain the tests as your product changes.",
-    ],
+    text: "The flows run before every release. We keep the tests working as your product changes.",
   },
   {
     tag: "Week 6",
-    title: "Review and decision",
-    points: [
-      "An end-of-pilot report: what we found, what your team fixed, what's still open.",
-      "We check the results against the success criteria from week 1.",
-      "You decide what happens next.",
-    ],
+    text: "An end-of-pilot report: what we found, what your team fixed, what's still open. We check it against the week 1 criteria, and you decide.",
+  },
+];
+
+const MONTHLY = [
+  "Your flows run before every release, from your CI or with one click.",
+  "We update the tests when your product changes.",
+  "A person checks every failure, so you only hear about real problems.",
+  "A short monthly check-in: what we found, and which flows to add, drop or swap.",
+  "Plain-language tests and reports anyone on your team can read and download.",
+];
+
+type GrowTag = "Included" | "On request";
+
+const GROW: { name: string; tag: GrowTag; line: string; link?: string }[] = [
+  {
+    name: "More flows",
+    tag: "On request",
+    line: "Add flows as your product grows. Extra flows change the price from the next month.",
+  },
+  {
+    name: "Release gate in your CI",
+    tag: "Included",
+    line: "A red run can block the release right away, on the agent's result. A person then checks whether it was your app or our test.",
+  },
+  {
+    name: "Daily checks on your live site",
+    tag: "On request",
+    line: "Your key flows run every day on production, with sandbox payments only and nothing sent to real customers.",
+  },
+  {
+    name: "Mobile web and API checks",
+    tag: "On request",
+    line: "Your flows in a phone-size browser, and checks on the API behind them.",
+  },
+  {
+    name: "Visual, accessibility and speed checks",
+    tag: "On request",
+    line: "Catch layout changes and basic accessibility or speed problems. Not a legal or compliance audit.",
+  },
+  {
+    name: "Handover when you hire QA",
+    tag: "Included",
+    line: "Your new QA person starts with running tests and evidence. Move to a license and keep the tests.",
+  },
+  {
+    name: "A QA partner inside your team",
+    tag: "On request",
+    line: "For bigger teams, we work inside your release process with your people.",
+    link: ENTERPRISE_PILOT,
+  },
+  {
+    name: "Workshops for your team",
+    tag: "On request",
+    line: "A hands-on session for developers or product people on testing with AI agents.",
   },
 ];
 
@@ -196,112 +209,166 @@ const AFTER_PILOT: { lead: string; detail: string }[] = [
   },
   {
     lead: "Switch to a license",
-    detail: "Your team runs the tests itself. You keep the tests we wrote.",
+    detail: "Your team runs the tests itself, and keeps the tests we wrote.",
   },
   {
     lead: "Stop",
-    detail: "You keep the end-of-pilot report and can download the tests.",
+    detail: "You keep the end-of-pilot report and the tests you downloaded.",
   },
 ];
 
-const SAFETY = [
-  "We test with a test account, on staging or production, as you prefer.",
-  "Nothing is sent to your real customers or contacts.",
-  "Payment flows run only in a sandbox, with test cards.",
-  "We never train models on your code or test data. EU data residency with a DPA is standard.",
+const TERMS = [
+  "Pilot first. No annual contract.",
+  "Month to month after the pilot. Cancel any time, effective next month.",
+  "Swap flows for free at the monthly check-in. Extra flows change the price.",
+  "Fewer than 10 flows is fine. Start with your most important ones.",
+  "You keep the downloaded tests and reports, even if you stop.",
+  "Anything beyond your flows is quoted first.",
 ];
 
-const LIMITS: { lead: string; detail: string }[] = [
-  {
-    lead: "CAPTCHAs, bot walls and 2FA stop any unattended agent",
-    detail:
-      "We need a test bypass, a test account, or one human step. A CAPTCHA is protection, not a bug.",
-  },
-  {
-    lead: "The agent can be wrong",
-    detail:
-      "That's why a person reviews every failure. We promise evidence and review, not zero false alarms.",
-  },
-  {
-    lead: "It doesn't replace unit tests",
-    detail:
-      "It covers the top layer unit tests can't see: can a user sign up, pay and do the main thing in today's build?",
-  },
-  {
-    lead: "It isn't a penetration test or a legal audit",
-    detail: "We test what your users do, the way a careful user would.",
-  },
-  {
-    lead: "It takes a few rounds to settle",
-    detail: "Expect the first week to include test fixes on our side.",
-  },
+const NUMBERS: { value: string; label: string }[] = [
+  { value: "28", label: "SaaS products we signed up for as strangers" },
+  { value: "24 of 28", label: "had a defect in sign-up" },
+  { value: "363 of 381", label: "findings held up when a person re-checked them" },
+  { value: "15 of 381", label: "were our own mistake, and we published that" },
 ];
 
-const PRICING_POINTS: { lead: string; detail: string }[] = [
+const PRICE_POINTS: { lead: string; detail: string }[] = [
   {
-    lead: "Priced by your flows and release cadence",
-    detail:
-      "How many flows we cover and how often you release decide the price. Nothing else does.",
+    lead: "What sets the price",
+    detail: "How many flows we cover and how often you release. Nothing else.",
   },
   {
-    lead: "Told to you on a 30-minute call",
+    lead: "What's included",
     detail:
-      "After we've looked at your product. The 6-week managed pilot is priced the same way.",
+      "Writing, running and maintaining the tests, a person checking every failure, and the monthly check-in.",
   },
   {
-    lead: "No per-run or per-seat fees",
+    lead: "Never billed",
+    detail: "Runs, seats, reports, or fixing a test that was our mistake.",
+  },
+  {
+    lead: "Compared with one QA hire",
     detail:
-      "Run the flows on every release and share the reports with anyone on your team.",
+      "A hire means recruiting, onboarding and months before the first useful test, and testing pauses when they're on holiday or leave. With us, first findings arrive in week 1 and the tests stay when people change.",
   },
 ];
 
-type Faq = { q: string; a: string; link?: { text: string; to: string } };
+const COMPARE_COLS = [
+  "Managed testing",
+  "Hire a QA engineer",
+  "Your developers test",
+  "A Wopee.io license",
+];
 
-const FAQS: Faq[] = [
+const COMPARE_ROWS: { row: string; cells: string[] }[] = [
   {
-    q: "What do I get, and what do I have to do?",
-    a: "You get your ~10 critical flows tested before every release, and a green run or a short list of real defects with steps and screenshots. We write, run and maintain the tests and review every failure. From you: a test account and about an hour a week.",
+    row: "Who writes and maintains the tests",
+    cells: ["We do", "Your new hire", "Whoever has time", "Your team, with our AI agents"],
   },
+  {
+    row: "Who checks failures",
+    cells: ["A person on our team, every one", "Your hire", "Usually nobody", "Your team"],
+  },
+  {
+    row: "First results",
+    cells: ["Week 1", "After hiring and onboarding", "Whenever someone finds time", "When your team has built tests"],
+  },
+  {
+    row: "Holidays and people leaving",
+    cells: ["The tests keep running", "Testing pauses", "Testing pauses", "Depends on your team"],
+  },
+  {
+    row: "Commitment",
+    cells: ["Month to month after the pilot", "An employment contract", "None", "Published per-user prices"],
+  },
+];
+
+type Qa = { q: string; a: string; link?: { text: string; to: string } };
+
+const FOR_CEO: Qa[] = [
+  {
+    q: "What will it cost?",
+    a: "It's priced by your flows and how often you release. We look at your product, talk for 30 minutes, and send a written quote within one business day.",
+  },
+  {
+    q: "What if it doesn't work for us?",
+    a: "We agree the success criteria in writing in week 1 and check them in week 6. If it isn't worth it, you stop and keep the report.",
+  },
+  {
+    q: "How much of my team's time does it take?",
+    a: "About an hour a week, plus a test account.",
+  },
+  {
+    q: "Are we locked in?",
+    a: "No. Month to month after the pilot, cancel any time, effective next month. You keep the tests and reports you downloaded.",
+  },
+  {
+    q: "Will it help when a customer or investor asks how we test?",
+    a: "Every release gets a report of which flows ran and what failed. It's a record of your test process, not a certification.",
+  },
+];
+
+const FOR_CTO: Qa[] = [
+  {
+    q: "How does it plug into our release?",
+    a: "Trigger a run from your CI or with one click. If you switch the gate on, a red run blocks the release right away, on the agent's result. A person then reviews each failure, which can take longer than the run, and tells you whether it was your app or our test.",
+  },
+  {
+    q: "What access do you need?",
+    a: "A test account, on staging or production as you prefer, plus a bot-protection exception or a sandbox where needed. Nothing is sent to your real customers, payments run only in a sandbox with test cards, we never train models on your code or test data, and EU data residency with a DPA is standard.",
+  },
+  {
+    q: "What about flaky tests?",
+    a: "A person checks every failure first. When our test was wrong, we fix it and it never reaches your report. The agent can be wrong, so we promise evidence and review, not zero false alarms.",
+  },
+  {
+    q: "Who owns the tests?",
+    a: "They're written in plain language and you can download them. Prefer to run them yourselves later? Switch to a license and keep them.",
+  },
+  {
+    q: "What can't it do?",
+    a: "CAPTCHAs, bot walls and 2FA need a bypass or a test account. It doesn't replace unit tests, and it isn't a penetration test or a legal audit. Native mobile apps are out of scope today.",
+  },
+  {
+    q: "Why not let our coding agent write the tests?",
+    a: "A coding agent tests the code it just wrote. We test your app from the outside, like a stranger, and a person owns every failure.",
+  },
+];
+
+const FAQS: Qa[] = [
   {
     q: "How fast do we see results?",
     a: "In the first week. The agent signs up as a stranger and walks your flows, and the first findings arrive with steps and screenshots. From week 2 the tests run from your CI or with one click.",
   },
   {
-    q: "How much does it cost?",
-    a: "It's priced by your flows and your release cadence, so we can't give a fair number before we've seen your product. We look at it first and tell you the price on a 30-minute call. There are no per-run or per-seat fees. If you'd rather run the tests yourself, license prices are public on the pricing page.",
+    q: "What happens when our UI changes?",
+    a: "Maintenance is part of the service. The agent reads the screen, not your code, so many changes don't break the tests at all. When one does, we update the test, and you only hear about it if the app is at fault.",
+  },
+  {
+    q: "Can we change flows later?",
+    a: "Yes. Swap flows for free at the monthly check-in. Extra flows change the price from the next month.",
+  },
+  {
+    q: "Can you test our mobile app?",
+    a: "Mobile web, in a phone-size browser, on request. Native mobile apps are out of scope today.",
+  },
+  {
+    q: "Do you fix the bugs you find?",
+    a: "No, fixing stays with your team. You get each defect with steps, screenshots and one line of business impact, so it's quick to act on.",
+  },
+  {
+    q: "What happens to our tests if we stop?",
+    a: "You keep the reports and the tests you downloaded. You can also switch to a license and keep running them yourselves.",
+  },
+  {
+    q: "How is this different from a license?",
+    a: "With a license your team drives the agents, and prices are public per user on the pricing page. With managed testing we do the work.",
     link: { text: "pricing page", to: PRICING },
   },
   {
-    q: "How does it plug into our release?",
-    a: "The tests run from your CI, or on demand: you or we click one button. The run's report with steps and screenshots is ready in a few minutes. A person reviews every failure before it reaches you, and that review can take longer than the run.",
-  },
-  {
-    q: "Can we trust the results?",
-    a: "Every failure is checked by a person against the trace and the video before you hear about it. If our test was wrong, we fix it and you never see it. The agent can be wrong, so we promise evidence and review, not zero false alarms.",
-  },
-  {
-    q: "What happens when our UI changes?",
-    a: "Maintenance is part of the service. The agent reads the screen, not your code, so many changes don't break the tests at all. When a change does break a test, we update it, and you only hear about it if the app is at fault.",
-  },
-  {
-    q: "Why not let our coding agent write tests, or hire a QA engineer?",
-    a: "A coding agent tests the code it just wrote. We test your app from the outside, like a stranger, and someone owns every failure. When you hire QA later, they start from running flows and evidence, not a blank page.",
-  },
-  {
-    q: "What access do you need, and is our data safe?",
-    a: "A test account, and a bot-protection exception or a sandbox where needed. Nothing is sent to your real customers or contacts, and payment flows run only in a sandbox with test cards. We never train models on your code or test data.",
-  },
-  {
-    q: "Who owns the tests, and what if we stop?",
-    a: "The tests are written in plain language that product and management can read, and you can download them. If you stop, you keep the reports and the tests.",
-  },
-  {
-    q: "What happens after the 6-week managed pilot?",
-    a: "We check the results against the success criteria agreed in week 1. Then you decide: continue, switch to a license and keep the tests, or stop and keep the report.",
-  },
-  {
     q: "How is this different from the enterprise pilot?",
-    a: "The enterprise pilot is built for QA teams: 8 weeks, your people build about 20 tests with our coaching, and it asks 3 to 5 person-days per sprint from your team. The 6-week managed pilot is for teams without QA: we do the work, and you give about an hour a week.",
+    a: "The enterprise pilot is built for QA teams: 8 weeks, your people build about 20 tests with our coaching, and it asks 3 to 5 person-days per sprint. The 6-week managed pilot is for teams without QA: we do the work, and you give about an hour a week.",
     link: { text: "enterprise pilot", to: ENTERPRISE_PILOT },
   },
 ];
@@ -309,28 +376,38 @@ const FAQS: Faq[] = [
 const JSON_LD_SERVICE = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Wopee.io managed testing service",
+  name: "Wopee.io managed testing",
   serviceType: "Managed software testing",
-  provider: {
-    "@type": "Organization",
-    name: "Wopee.io",
-    url: "https://wopee.io/",
-  },
+  provider: { "@type": "Organization", name: "Wopee.io", url: "https://wopee.io/" },
   description:
-    "We define your ~10 critical flows with you, write and maintain AI tests for them, run them before every release from your CI or with one click, and a person reviews every failure. Starts with a 6-week managed pilot. Priced per scope.",
+    "We write, run and maintain tests for your most important flows before every release, and a person checks every failure. Starts with a 6-week managed pilot, then month to month. Priced by your flows and release cadence.",
   areaServed: "EU",
-  url: "https://wopee.io/managed-testing/",
+  url: PAGE_URL,
 };
 
 const JSON_LD_FAQ = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: FAQS.map(({ q, a }) => ({
+  mainEntity: [...FOR_CEO, ...FOR_CTO, ...FAQS].map(({ q, a }) => ({
     "@type": "Question",
     name: q,
     acceptedAnswer: { "@type": "Answer", text: a },
   })),
 };
+
+const JSON_LD_VIDEO = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Managed testing in 80 seconds",
+  description:
+    "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure. Voice: AI clone of Marcel Veselka's voice.",
+  thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.png`,
+  uploadDate: "2026-10-24",
+  duration: "PT1M20S",
+  contentUrl: `https://wopee.io/video/${VIDEO_BASE}.mp4`,
+};
+
+/* --------------------------------------------------------------- styling */
 
 const CARD =
   "rounded-2xl border border-solid border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/[0.04]";
@@ -338,10 +415,31 @@ const ACCENT = "text-secondary-wopee dark:text-primary-wopee";
 const MUTED = "text-gray-600 dark:text-gray-300";
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
-const BUTTON = `inline-flex min-h-11 items-center justify-center rounded-lg border border-solid px-5 py-2.5 text-center text-sm font-semibold no-underline transition ease-out hover:no-underline md:text-base xl:text-lg ${FOCUS}`;
-const BUTTON_PRIMARY = `${BUTTON} border-secondary-wopee bg-secondary-wopee text-white hover:bg-transparent hover:text-secondary-wopee dark:border-primary-wopee dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-transparent dark:hover:text-primary-wopee`;
-const BUTTON_OUTLINE = `${BUTTON} border-secondary-wopee bg-transparent text-secondary-wopee hover:bg-secondary-wopee/10 hover:text-secondary-wopee dark:border-primary-wopee dark:text-primary-wopee dark:hover:bg-primary-wopee/10 dark:hover:text-primary-wopee`;
+const FOCUS_ON_DARK =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee";
+const BUTTON = `inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-solid px-6 py-3 text-center text-base font-bold no-underline transition ease-out hover:no-underline motion-reduce:transition-none`;
+const BUTTON_YELLOW = `${BUTTON} border-primary-wopee bg-primary-wopee text-[#1a1124] shadow-[0_10px_30px_-10px_rgba(255,204,0,0.6)] hover:-translate-y-px hover:bg-[#ffd633] hover:text-[#1a1124] ${FOCUS_ON_DARK}`;
+const BUTTON_PRIMARY = `${BUTTON} border-secondary-wopee bg-secondary-wopee text-white hover:bg-[#5e2786] hover:text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-[#1a1124] dark:hover:bg-[#ffd633] dark:hover:text-[#1a1124] ${FOCUS}`;
+const BUTTON_OUTLINE = `${BUTTON} border-secondary-wopee bg-transparent text-secondary-wopee hover:bg-secondary-wopee/10 hover:text-secondary-wopee dark:border-primary-wopee dark:text-primary-wopee dark:hover:bg-primary-wopee/10 dark:hover:text-primary-wopee ${FOCUS}`;
 const TEXT_LINK = `rounded-sm font-semibold underline decoration-1 underline-offset-4 ${ACCENT} ${FOCUS}`;
+const DARK_BAND =
+  "relative isolate overflow-hidden bg-[#0b0a10] text-white [background-image:radial-gradient(ellipse_70%_60%_at_15%_0%,rgba(112,48,160,0.55),transparent_70%),radial-gradient(ellipse_50%_50%_at_95%_100%,rgba(112,48,160,0.35),transparent_70%)]";
+
+const PAGE_CSS = `
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 767px) {
+  .theme-back-to-top-button { bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important; }
+}
+.mt-balance { text-wrap: balance; }
+@keyframes mt-tick { from { opacity: 0; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
+@keyframes mt-stamp { 0% { opacity: 0; transform: rotate(-8deg) scale(1.25); } 100% { opacity: 1; transform: rotate(-4deg) scale(1); } }
+.mt-tick { animation: mt-tick 0.35s ease-out both; }
+.mt-stamp { animation: mt-stamp 0.4s cubic-bezier(.2,.9,.3,1.3) both; animation-delay: 1.5s; }
+@media (prefers-reduced-motion: reduce) { .mt-tick, .mt-stamp { animation: none; } }
+`;
+
+/* ---------------------------------------------------------- primitives */
 
 function Section({
   id,
@@ -357,21 +455,24 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className="mt-10 scroll-mt-24 border-0 border-t border-solid border-gray-200 pt-8 dark:border-white/[0.14] sm:mt-14 sm:pt-14"
-    >
-      <header className="mb-6 sm:mb-8">
+    <section id={id} className="scroll-mt-24 pt-16 sm:pt-24">
+      <header className="mb-8 max-w-3xl sm:mb-10">
         {eyebrow ? (
           <span
-            className={`text-xs font-semibold uppercase tracking-widest ${ACCENT}`}
+            className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}
           >
+            <span
+              aria-hidden="true"
+              className="h-px w-6 bg-secondary-wopee dark:bg-primary-wopee"
+            />
             {eyebrow}
           </span>
         ) : null}
-        <h2 className="mt-2 text-2xl font-bold sm:text-3xl">{title}</h2>
+        <h2 className="mt-balance mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+          {title}
+        </h2>
         {intro ? (
-          <p className={`mt-4 max-w-3xl text-base leading-relaxed ${MUTED}`}>
+          <p className={`mt-4 text-base leading-relaxed sm:text-lg ${MUTED}`}>
             {intro}
           </p>
         ) : null}
@@ -381,23 +482,37 @@ function Section({
   );
 }
 
-function Dot() {
+function Check({ className = "" }: { className?: string }) {
   return (
-    <span
+    <svg
       aria-hidden="true"
-      className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-secondary-wopee dark:bg-primary-wopee"
-    />
+      viewBox="0 0 20 20"
+      className={`mt-[0.2rem] h-4 w-4 shrink-0 ${className}`}
+    >
+      <path
+        d="M4 10.5l3.5 3.5L16 6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
-function Bullets({ items }: { items: React.ReactNode[] }) {
+function Bullets({ items, dark }: { items: React.ReactNode[]; dark?: boolean }) {
   return (
     <ul
-      className={`m-0 list-none space-y-2 pl-0 text-sm leading-relaxed ${MUTED}`}
+      className={`m-0 list-none space-y-2.5 pl-0 text-base leading-relaxed sm:text-[0.95rem] ${
+        dark ? "text-white/80" : MUTED
+      }`}
     >
       {items.map((item, i) => (
         <li key={i} className="m-0 flex gap-2.5">
-          <Dot />
+          <Check
+            className={dark ? "text-primary-wopee" : "text-secondary-wopee dark:text-primary-wopee"}
+          />
           <span>{item}</span>
         </li>
       ))}
@@ -407,119 +522,240 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 
 function LeadCard({ lead, detail }: { lead: string; detail: string }) {
   return (
-    <li className={`${CARD} m-0 flex gap-3 px-5 py-4`}>
-      <span
-        aria-hidden="true"
-        className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-secondary-wopee dark:bg-primary-wopee"
-      />
-      <span>
-        <span className="block font-semibold">{lead}</span>
-        <span className={`mt-1 block text-sm leading-relaxed ${MUTED}`}>
-          {detail}
-        </span>
+    <li className={`${CARD} m-0 px-5 py-5`}>
+      <span className="block text-base font-bold">{lead}</span>
+      <span className={`mt-1.5 block text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>
+        {detail}
       </span>
     </li>
   );
 }
 
-const NODE =
-  "m-0 flex items-center justify-center rounded-lg border border-solid px-3 py-2 text-center text-xs font-semibold leading-snug sm:text-sm";
-const NODE_PLAIN =
-  "border-gray-300 bg-white text-gray-900 dark:border-white/20 dark:bg-white/[0.06] dark:text-white";
-const NODE_STRONG =
-  "border-secondary-wopee bg-secondary-wopee text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-gray-900";
-
-function Arrow({ down, inverted }: { down?: boolean; inverted?: boolean }) {
+function renderAnswer({ a, link }: Qa) {
+  if (!link) return a;
+  const at = a.indexOf(link.text);
+  if (at === -1) return a;
   return (
-    <span
-      aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center text-base ${
-        inverted ? "text-white/80" : "text-gray-500 dark:text-gray-400"
-      } ${down ? "h-6" : "h-6 sm:h-auto sm:w-6"}`}
-    >
-      {down ? (
-        "↓"
-      ) : (
-        <>
-          <span className="sm:hidden">↓</span>
-          <span className="hidden sm:inline">→</span>
-        </>
-      )}
-    </span>
+    <>
+      {a.slice(0, at)}
+      <Link to={link.to} className={TEXT_LINK}>
+        {link.text}
+      </Link>
+      {a.slice(at + link.text.length)}
+    </>
   );
 }
 
-function FlowRow({
-  nodes,
-  label,
-  inverted,
+// Every primary button on the page scrolls to the inline calendar.
+function BookButton({
+  cta,
+  onDark,
+  className = "",
 }: {
-  nodes: string[];
-  label: string;
-  inverted?: boolean;
+  cta: string;
+  onDark?: boolean;
+  className?: string;
 }) {
-  const plain = inverted
-    ? "border-white/40 bg-white/10 text-white"
-    : NODE_PLAIN;
-  const strong = inverted
-    ? "border-primary-wopee bg-white/10 text-primary-wopee"
-    : NODE_STRONG;
   return (
-    <ol
-      aria-label={label}
-      className="m-0 flex list-none flex-col items-stretch pl-0 sm:flex-row"
+    <a
+      href="#book"
+      id={`cta-managed-testing-${cta}`}
+      onClick={() => track("managed_testing_cta", { cta })}
+      className={`${onDark ? BUTTON_YELLOW : BUTTON_PRIMARY} ${className}`}
     >
-      {nodes.map((n, i) => (
-        <React.Fragment key={n}>
-          {i > 0 ? (
-            <li aria-hidden="true" className="m-0 flex justify-center">
-              <Arrow inverted={inverted} />
-            </li>
-          ) : null}
-          <li
-            className={`${NODE} sm:flex-1 ${
-              i === nodes.length - 1 ? strong : plain
-            }`}
-          >
-            {n}
-          </li>
-        </React.Fragment>
-      ))}
-    </ol>
+      Book a 30-minute pilot call
+      <span aria-hidden="true">→</span>
+    </a>
   );
 }
 
-function ReviewDiagram() {
+function RiskLine({ onDark }: { onDark?: boolean }) {
   return (
-    <div
-      role="group"
-      aria-label="What happens to a red test"
-      className="flex flex-col items-stretch"
+    <p
+      className={`m-0 flex max-w-xl gap-2 text-sm leading-relaxed ${
+        onDark ? "text-white/80" : MUTED
+      }`}
     >
-      <div className={`${NODE} ${NODE_PLAIN}`}>
-        <span
-          aria-hidden="true"
-          className="mr-2 inline-block h-2 w-2 rounded-full bg-red-500"
+      <Check className={onDark ? "text-primary-wopee" : "text-secondary-wopee dark:text-primary-wopee"} />
+      <span>
+        6-week pilot with success criteria agreed in writing in week 1. Then
+        month to month, no annual contract.
+      </span>
+    </p>
+  );
+}
+
+/* --------------------------------------------------------------- hero */
+
+function ReleaseCard() {
+  const green = SAMPLE_FLOWS.filter((f) => f.status === "pass").length;
+  return (
+    <figure className="relative m-0">
+      <div className="rounded-2xl border border-solid border-white/15 bg-white/[0.06] p-5 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)] backdrop-blur-sm sm:p-6">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-wopee">
+              Fri 17:02 · from CI
+            </div>
+            <div className="mt-1 text-lg font-bold text-white">Release 2.14</div>
+          </div>
+          <div className="flex gap-2 text-xs font-semibold tabular-nums">
+            <span className="rounded-full bg-green-400/15 px-2.5 py-1 text-green-300">
+              {green} green
+            </span>
+            <span className="rounded-full bg-red-400/15 px-2.5 py-1 text-red-300">
+              {SAMPLE_FLOWS.length - green} real defects
+            </span>
+          </div>
+        </div>
+        <ol className="m-0 mt-4 list-none space-y-1.5 border-0 border-t border-solid border-white/10 pl-0 pt-4">
+          {SAMPLE_FLOWS.map((f, i) => (
+            <li
+              key={f.flow}
+              className="mt-tick m-0 flex items-center justify-between gap-3 text-sm"
+              style={{ animationDelay: `${0.15 + i * 0.12}s` }}
+            >
+              <span className="min-w-0 truncate text-white/85">{f.flow}</span>
+              {f.status === "pass" ? (
+                <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-green-300">
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-green-400" />
+                  Green
+                </span>
+              ) : (
+                <span className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-red-300">
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-red-400" />
+                  Real defect
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div
+        aria-hidden="true"
+        className="mt-stamp relative mb-3 inline-block rounded-lg border-2 border-solid border-primary-wopee bg-[#1a1124] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wide text-primary-wopee shadow-xl sm:absolute sm:-right-5 sm:-top-4 sm:mb-0 sm:rotate-[-4deg] sm:tracking-[0.14em]"
+      >
+        Every failure checked by a person
+      </div>
+      <figcaption className="mt-3 text-xs text-white/60">
+        Sample report, invented demo data.
+      </figcaption>
+    </figure>
+  );
+}
+
+function Hero() {
+  return (
+    <section className={`${DARK_BAND} px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20`}>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_30%_30%,black,transparent_75%)]"
+      />
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-2xl border border-solid border-white/20 bg-white/5 px-3 py-1 text-xs sm:rounded-full font-semibold uppercase tracking-[0.16em] text-white/85">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary-wopee" />
+            Managed testing for software companies without QA
+          </span>
+          <h1 className="mt-balance mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+            We test your app before every release,{" "}
+            <span className="text-primary-wopee">
+              so your customers don't have to.
+            </span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+            We write and maintain the tests for your ~10 most important flows,
+            like sign-up, payment and the thing customers pay you for. They run
+            before every release, and a person on our team checks every
+            failure. You get a green run, or a short list of real defects.
+          </p>
+          <div className="mt-8 flex flex-col items-start gap-4">
+            <BookButton cta="hero" onDark />
+            <RiskLine onDark />
+            <p className="m-0 text-sm text-white/65">
+              A founder looks at your product before the call. Written quote
+              within one business day after it.
+            </p>
+            <a
+              href="#send-your-url"
+              className={`inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-white underline decoration-white/40 decoration-1 underline-offset-4 hover:text-primary-wopee hover:decoration-primary-wopee ${FOCUS_ON_DARK}`}
+            >
+              Not ready for a call? Send your URL, get 3 findings free
+            </a>
+          </div>
+        </div>
+        <ReleaseCard />
+      </div>
+
+      <div className="mx-auto mt-12 max-w-4xl sm:mt-16">
+        <ExplainerVideo
+          base={VIDEO_BASE}
+          title="Managed testing in 80 seconds"
+          duration="80 s"
+          disclosure="Voice: AI clone of Marcel Veselka's voice."
+          pendingNote="The video is on its way. Everything it says is on this page."
         />
-        Red test
       </div>
-      <Arrow down />
-      <div className={`${NODE} ${NODE_PLAIN}`}>
-        A person checks the trace and video
-      </div>
-      <div aria-hidden="true" className="relative h-6">
-        <span className="absolute left-1/2 top-0 h-3 w-px bg-gray-400" />
-        <span className="absolute left-1/4 right-1/4 top-3 h-3 border-0 border-x border-t border-solid border-gray-400" />
-      </div>
-      <div className="grid grid-cols-2 gap-2">
-        <div className={`${NODE} ${NODE_STRONG}`}>
-          App defect: sent to you, with evidence
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------ sections */
+
+function Problem() {
+  return (
+    <Section
+      id="today"
+      eyebrow="Right now"
+      title="Who tests your release today?"
+      intro="In most small software companies, the developer who built the feature tests it, logged in, on their own laptop. The next people to try it are your customers."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
+        {PAINS.map((p) => (
+          <div key={p.lead} className={`${CARD} px-5 py-5`}>
+            <div className="text-base font-bold">{p.lead}</div>
+            <p className={`mb-0 mt-2 text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>
+              {p.detail}
+            </p>
+          </div>
+        ))}
+        <div className="flex flex-col justify-between rounded-2xl bg-secondary-wopee px-5 py-5 text-white">
+          <div className="text-5xl font-extrabold tracking-tight tabular-nums text-primary-wopee">
+            24 of 28
+          </div>
+          <p className="mb-0 mt-3 text-base leading-relaxed text-white/90">
+            SaaS products we signed up for as strangers in October 2026 had a
+            defect in sign-up.{" "}
+            <Link
+              to={STUDY}
+              className={`rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+            >
+              See the study
+            </Link>
+          </p>
         </div>
-        <div className={`${NODE} ${NODE_PLAIN}`}>
-          Our test: we fix it, you never hear about it
-        </div>
       </div>
-    </div>
+    </Section>
+  );
+}
+
+function HowItWorks() {
+  return (
+    <Section id="how-it-works" eyebrow="How it works" title="Four steps, then it runs with every release">
+      <ol className="m-0 grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-4">
+        {STEPS.map((s, i) => (
+          <li key={s.title} className="relative m-0 border-0 border-t-2 border-solid border-secondary-wopee pt-5 dark:border-primary-wopee">
+            <span className={`font-mono text-sm font-bold ${ACCENT}`}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mb-0 mt-2 text-lg font-bold leading-snug">{s.title}</h3>
+            <p className={`mb-0 mt-2 text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>
+              {s.body}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }
 
@@ -541,10 +777,10 @@ function ScreenshotSketch({ text }: { text: string }) {
   return (
     <div
       aria-hidden="true"
-      className="flex h-24 w-full shrink-0 flex-col gap-1.5 rounded-md border border-solid border-gray-200 bg-white p-2 dark:border-white/10 dark:bg-[#1b1b1d] sm:w-36"
+      className="flex h-24 w-full max-w-xs shrink-0 flex-col gap-1.5 rounded-md border border-solid border-gray-200 bg-white p-2 dark:border-white/10 dark:bg-[#1b1b1d]"
     >
       <span className="h-2 w-1/2 rounded bg-gray-200 dark:bg-white/15" />
-      <span className="mt-1 flex flex-1 items-center justify-center rounded border border-dashed border-red-400 text-[10px] font-semibold text-red-700 dark:text-red-300">
+      <span className="mt-1 flex flex-1 items-center justify-center rounded border border-dashed border-red-400 text-[11px] font-semibold text-red-700 dark:text-red-300">
         {text}
       </span>
       <span className="h-2 w-1/3 rounded bg-gray-200 dark:bg-white/15" />
@@ -562,9 +798,7 @@ function SampleReport() {
             <div className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
               Release report · Demo app
             </div>
-            <div className="mt-1 text-lg font-bold">
-              Release 2.14 · triggered from CI
-            </div>
+            <div className="mt-1 text-lg font-bold">Release 2.14 · triggered from CI</div>
           </div>
           <div className="flex flex-wrap gap-2 text-sm tabular-nums">
             <span className="rounded-full bg-green-100 px-3 py-1 font-semibold text-green-800 dark:bg-green-400/15 dark:text-green-300">
@@ -577,12 +811,9 @@ function SampleReport() {
         </div>
 
         <div className="grid gap-0 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-          <ol className="m-0 list-none border-0 border-b border-solid border-gray-200 px-5 py-4 pl-5 dark:border-white/10 sm:px-6 lg:border-b-0 lg:border-r">
+          <ol className="m-0 list-none border-0 border-b border-solid border-gray-200 px-5 py-4 dark:border-white/10 sm:px-6 lg:border-b-0 lg:border-r">
             {SAMPLE_FLOWS.map((f, i) => (
-              <li
-                key={f.flow}
-                className="m-0 flex items-center justify-between gap-3 py-1.5 text-sm"
-              >
+              <li key={f.flow} className="m-0 flex items-center justify-between gap-3 py-1.5 text-sm">
                 <span className="flex min-w-0 gap-2">
                   <span className="w-5 shrink-0 text-right tabular-nums text-gray-500 dark:text-gray-400">
                     {i + 1}
@@ -596,20 +827,13 @@ function SampleReport() {
 
           <div className="flex flex-col gap-4 px-5 py-5 sm:px-6">
             {SAMPLE_DEFECTS.map((d) => (
-              <article
-                key={d.title}
-                className="rounded-xl border border-solid border-gray-200 p-4 dark:border-white/10"
-              >
+              <article key={d.title} className="rounded-xl border border-solid border-gray-200 p-4 dark:border-white/10">
                 <div className="text-xs font-semibold uppercase tracking-widest text-red-700 dark:text-red-300">
                   Defect · {d.flow}
                 </div>
-                <h3 className="mb-0 mt-1 text-base font-bold leading-snug">
-                  {d.title}
-                </h3>
-                <div className="mt-3 flex flex-col gap-4 sm:flex-row">
-                  <ol
-                    className={`m-0 flex-1 list-decimal space-y-1 pl-5 text-sm leading-relaxed ${MUTED}`}
-                  >
+                <h3 className="mb-0 mt-1 text-base font-bold leading-snug">{d.title}</h3>
+                <div className="mt-3 flex flex-col gap-4">
+                  <ol className={`m-0 list-decimal space-y-1 pl-5 text-sm leading-relaxed ${MUTED}`}>
                     {d.steps.map((s) => (
                       <li key={s} className="m-0">
                         {s}
@@ -630,419 +854,718 @@ function SampleReport() {
         </div>
       </div>
       <figcaption className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-        A sample built from invented demo data. Your report uses your flows and
-        your release.
+        A sample built from invented demo data. Your report uses your flows and your release.
       </figcaption>
     </figure>
   );
 }
 
-function renderAnswer({ a, link }: Faq) {
-  if (!link) return a;
-  const at = a.indexOf(link.text);
-  if (at === -1) return a;
+function StageHead({ step, when, name }: { step: string; when: string; name: string }) {
   return (
-    <>
-      {a.slice(0, at)}
-      <Link to={link.to} className={TEXT_LINK}>
-        {link.text}
-      </Link>
-      {a.slice(at + link.text.length)}
-    </>
-  );
-}
-
-function Ctas({ cta }: { cta: string }) {
-  const bookHref = useBookingHref(cta);
-  return (
-    <div className="flex flex-col items-center gap-4">
-      <Link
-        href={bookHref}
-        id={`cta-managed-testing-${cta}`}
-        className={BUTTON_PRIMARY}
-      >
-        Book a pilot call
-      </Link>
-      <Link
-        to={PRICING}
-        className={`inline-flex min-h-11 items-center text-sm ${TEXT_LINK}`}
-      >
-        Prefer to run it yourself? See license pricing
-      </Link>
+    <div>
+      <div className="flex items-center justify-between gap-3">
+        <span className={`font-mono text-xs font-bold uppercase tracking-[0.16em] ${ACCENT}`}>
+          {step}
+        </span>
+        <span className="rounded-full border border-solid border-gray-300 px-2.5 py-0.5 text-xs font-semibold text-gray-700 dark:border-white/20 dark:text-gray-200">
+          {when}
+        </span>
+      </div>
+      <h3 className="mb-0 mt-3 text-2xl font-extrabold leading-tight">{name}</h3>
     </div>
   );
 }
 
-function BandCtas() {
-  const bookHref = useBookingHref("closing");
+function WeekBar() {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <Link
-        href={bookHref}
-        id="cta-managed-testing-closing"
-        className={`${BUTTON} border-primary-wopee bg-primary-wopee text-secondary-wopee hover:bg-transparent hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
-      >
-        Book a pilot call
-      </Link>
-      <Link
-        to={PRICING}
-        className="inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-      >
-        Prefer to run it yourself? See license pricing
-      </Link>
+    <div aria-hidden="true" className="mt-4 grid grid-cols-6 gap-1">
+      {[1, 2, 3, 4, 5, 6].map((w) => (
+        <span
+          key={w}
+          className={`h-1.5 rounded-full ${
+            w === 1 || w === 6
+              ? "bg-secondary-wopee dark:bg-primary-wopee"
+              : "bg-secondary-wopee/30 dark:bg-primary-wopee/35"
+          }`}
+        />
+      ))}
     </div>
   );
 }
 
-function WayCard({ way, cta }: { way: Way; cta: React.ReactNode }) {
+function Offer() {
   return (
-    <div
-      className={`flex flex-col rounded-2xl border border-solid px-5 py-5 sm:px-6 ${
-        way.highlight
-          ? "border-secondary-wopee bg-secondary-wopee/[0.04] dark:border-primary-wopee dark:bg-primary-wopee/[0.05]"
-          : "border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/[0.04]"
-      }`}
+    <Section
+      id="offer"
+      eyebrow="The offer"
+      title="Start with six weeks. Keep going only if it pays off."
+      intro="One way in, one service after it, and more when you need it. No tiers to compare and no annual contract."
     >
-      <h3 className="m-0 text-xl font-bold">{way.name}</h3>
-      <p className={`mb-0 mt-1 text-sm ${MUTED}`}>{way.tag}</p>
-      <dl className="m-0 mt-4 flex-1">
-        {way.rows.map((r) => (
-          <div
-            key={r.field}
-            className="border-0 border-t border-solid border-gray-200 py-2.5 dark:border-white/10"
-          >
-            <dt className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {r.field}
-            </dt>
-            <dd className="m-0 mt-0.5 text-sm font-medium">{r.value}</dd>
+      <ol className="m-0 grid list-none gap-4 pl-0 lg:grid-cols-2">
+        <li className="m-0 flex flex-col rounded-2xl border-2 border-solid border-secondary-wopee bg-secondary-wopee/[0.04] px-5 py-6 dark:border-primary-wopee dark:bg-primary-wopee/[0.05] sm:px-6">
+          <StageHead step="Step 1" when="6 weeks" name="6-week managed pilot" />
+          <p className="mb-0 mt-3 text-base leading-relaxed">
+            In six weeks, your ~10 most important flows are tested before every
+            release, and you decide with evidence whether to keep going.
+          </p>
+          <WeekBar />
+          <dl className="m-0 mt-5 space-y-3">
+            {PILOT_WEEKS.map((w) => (
+              <div key={w.tag}>
+                <dt className="text-sm font-bold">{w.tag}</dt>
+                <dd className={`m-0 mt-0.5 text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>{w.text}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mb-0 mt-5 rounded-xl bg-white px-4 py-3 text-sm font-semibold dark:bg-white/[0.06]">
+            From you: a test account and about an hour a week.
+          </p>
+        </li>
+
+        <li className={`${CARD} m-0 flex flex-col px-5 py-6 sm:px-6`}>
+          <StageHead step="Step 2" when="Month to month" name="Managed testing" />
+          <p className="mb-0 mt-3 text-base leading-relaxed">
+            After the pilot, we keep doing the work.
+          </p>
+          <div className="mt-5">
+            <Bullets items={MONTHLY} />
+          </div>
+          <div className="mt-auto pt-6">
+            <div className="rounded-xl bg-white px-4 py-4 dark:bg-white/[0.06]">
+              <div className="text-sm font-bold">Not included</div>
+              <p className={`mb-0 mt-1 text-sm leading-relaxed ${MUTED}`}>
+                Fixing your bugs (that stays with your team), penetration tests
+                or legal audits, unit tests, and native mobile apps.
+              </p>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+
+      <div className={`${CARD} mt-4 px-5 py-6 sm:px-6`}>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-10">
+          <div>
+            <StageHead step="Step 3" when="When you need it" name="Grow with us" />
+            <p className="mb-0 mt-3 text-base leading-relaxed">
+              Add more when your business does. We quote it first and start
+              only after you say yes.
+            </p>
+          </div>
+          <ul className="m-0 grid list-none gap-x-8 gap-y-5 pl-0 sm:grid-cols-2">
+            {GROW.map((g) => (
+              <li key={g.name} className="m-0">
+                <span
+                  className={`inline-block rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider ${
+                    g.tag === "Included"
+                      ? "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300"
+                      : "bg-gray-200 text-gray-700 dark:bg-white/10 dark:text-gray-200"
+                  }`}
+                >
+                  {g.tag}
+                </span>
+                <div className="mt-2 text-base font-bold">
+                  {g.link ? (
+                    <Link to={g.link} className={TEXT_LINK}>
+                      {g.name}
+                    </Link>
+                  ) : (
+                    g.name
+                  )}
+                </div>
+                <p className={`mb-0 mt-1 text-sm leading-relaxed ${MUTED}`}>{g.line}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <h3 className="mb-0 mt-12 text-xl font-bold">After week 6, you choose</h3>
+      <ul className="m-0 mt-4 grid list-none gap-3 pl-0 md:grid-cols-3">
+        {AFTER_PILOT.map((o) => (
+          <LeadCard key={o.lead} lead={o.lead} detail={o.detail} />
+        ))}
+      </ul>
+
+      <div className="mt-10 rounded-2xl border border-dashed border-gray-300 px-5 py-6 dark:border-white/20 sm:px-8">
+        <h3 className="m-0 text-xl font-bold">Flexible terms</h3>
+        <ul className="m-0 mt-4 grid list-none gap-x-8 gap-y-2.5 pl-0 md:grid-cols-2 lg:grid-cols-3">
+          {TERMS.map((t) => (
+            <li key={t} className={`m-0 flex gap-2.5 text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>
+              <Check className="text-secondary-wopee dark:text-primary-wopee" />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-col items-start gap-4 border-0 border-t border-solid border-gray-200 pt-6 dark:border-white/10 md:flex-row md:items-center md:gap-8">
+          <BookButton cta="offer" />
+          <RiskLine />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function ReviewDiagram() {
+  const node =
+    "m-0 flex items-center justify-center rounded-md border border-solid px-3 py-2.5 text-center text-sm font-semibold leading-snug";
+  const plain = "border-gray-300 bg-white text-gray-900 dark:border-white/15 dark:bg-white/[0.06] dark:text-white";
+  const strong =
+    "border-secondary-wopee bg-secondary-wopee text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-gray-900";
+  return (
+    <div role="group" aria-label="What happens to a red test" className="flex flex-col items-stretch">
+      <div className={`${node} ${plain}`}>
+        <span aria-hidden="true" className="mr-2 inline-block h-2 w-2 rounded-full bg-red-500" />
+        Red test
+      </div>
+      <span aria-hidden="true" className="flex h-7 items-center justify-center text-gray-500 dark:text-gray-400">
+        ↓
+      </span>
+      <div className={`${node} ${plain}`}>A person checks the trace and video</div>
+      <div aria-hidden="true" className="relative h-6">
+        <span className="absolute left-1/2 top-0 h-3 w-px bg-gray-400" />
+        <span className="absolute left-1/4 right-1/4 top-3 h-3 border-0 border-x border-t border-solid border-gray-400" />
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div className={`${node} ${strong}`}>App defect: sent to you, with evidence</div>
+        <div className={`${node} ${plain}`}>Our test: we fix it, it never reaches your report</div>
+      </div>
+    </div>
+  );
+}
+
+function Trust() {
+  return (
+    <Section id="trust" eyebrow="Why you can trust what we send" title="A person behind every result">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+        <figure className={`${CARD} m-0 flex flex-col gap-5 px-5 py-6 sm:flex-row sm:px-7`}>
+          <img
+            src={require("@site/static/img/team/marcel.jpg").default}
+            alt="Marcel Veselka, founder of Wopee.io"
+            width={112}
+            height={112}
+            className="h-24 w-24 shrink-0 rounded-2xl object-cover sm:h-28 sm:w-28"
+          />
+          <blockquote className="m-0 border-0 p-0">
+            <p className="m-0 text-base leading-relaxed sm:text-lg">
+              I've spent more than 20 years in software testing, and I run a
+              small SaaS company too. For weeks our own sign-up chart showed
+              zero while people were signing up. The sign-up worked; the
+              tracking behind it didn't, and nobody owned it. That's the gap we
+              fill: someone owns your critical flows, every release. You talk to
+              me on the first call.
+            </p>
+            <figcaption className="mt-4 text-sm font-semibold">
+              Marcel Veselka
+              <span className={`font-normal ${MUTED}`}>, founder of Wopee.io</span>
+            </figcaption>
+          </blockquote>
+        </figure>
+
+        <div>
+          <ul className="m-0 grid list-none grid-cols-2 gap-3 pl-0">
+            {NUMBERS.map((n) => (
+              <li key={n.value} className={`${CARD} m-0 px-4 py-4`}>
+                <span className={`block text-2xl font-extrabold tracking-tight tabular-nums sm:text-3xl ${ACCENT}`}>
+                  {n.value}
+                </span>
+                <span className={`mt-1 block text-sm leading-snug ${MUTED}`}>{n.label}</span>
+              </li>
+            ))}
+          </ul>
+          <p className={`mb-0 mt-3 text-sm ${MUTED}`}>
+            From our public October 2026 study.{" "}
+            <Link to={STUDY} className={TEXT_LINK}>
+              Read how we tested 28 SaaS products
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center">
+        <div>
+          <h3 className="m-0 text-xl font-bold">How we decide a failure is real</h3>
+          <p className={`mb-0 mt-3 text-base leading-relaxed ${MUTED}`}>
+            The agent's run finishes in minutes. Then a person on our team looks
+            at every red test against the trace and the video, which can take
+            longer. If our test was wrong, we fix it. Only defects in your app
+            reach you, each with steps, a screenshot and one line of business
+            impact.
+          </p>
+        </div>
+        <div className={`${CARD} px-5 py-5 sm:px-6`}>
+          <ReviewDiagram />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Pricing() {
+  return (
+    <Section
+      id="pricing"
+      eyebrow="How pricing works"
+      title="Priced by your flows. No seats, no per-run fees."
+      intro="We don't publish a price for managed testing, because it depends on your product. Here is what sets it, and what you get for it."
+    >
+      <ul className="m-0 grid list-none gap-3 pl-0 md:grid-cols-2">
+        {PRICE_POINTS.map((p) => (
+          <LeadCard key={p.lead} lead={p.lead} detail={p.detail} />
+        ))}
+      </ul>
+      <p className="mb-0 mt-6 flex max-w-3xl gap-2.5 text-base font-semibold leading-relaxed">
+        <Check className="text-secondary-wopee dark:text-primary-wopee" />
+        After the 30-minute call, you get a written quote within one business day.
+      </p>
+    </Section>
+  );
+}
+
+function Compare() {
+  return (
+    <Section id="compare" eyebrow="Compared with the alternatives" title="What changes when we do the testing">
+      <p className={`mb-3 mt-0 text-sm md:hidden ${MUTED}`}>Scroll sideways to compare all four.</p>
+      <div
+        tabIndex={0}
+        role="region"
+        aria-label="Managed testing compared with the alternatives"
+        className={`overflow-x-auto rounded-2xl border border-solid border-gray-200 dark:border-white/10 ${FOCUS}`}
+      >
+        <table className="m-0 table w-full min-w-[44rem] border-collapse text-left text-sm">
+          <thead>
+            <tr className="border-0">
+              <th scope="col" className="sticky left-0 z-10 border-0 bg-gray-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:bg-white/[0.03] dark:text-gray-400">
+                <span className="sr-only">Question</span>
+              </th>
+              {COMPARE_COLS.map((c, i) => (
+                <th
+                  key={c}
+                  scope="col"
+                  className={`border-0 px-4 py-3 text-sm font-bold ${
+                    i === 0
+                      ? "bg-secondary-wopee text-white dark:bg-primary-wopee dark:text-[#1a1124]"
+                      : "bg-gray-50 dark:bg-white/[0.03]"
+                  }`}
+                >
+                  {c}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARE_ROWS.map((r) => (
+              <tr key={r.row} className="border-0 border-t border-solid border-gray-200 bg-transparent dark:border-white/10 [&:nth-child(2n)]:bg-transparent">
+                <th scope="row" className={`sticky left-0 z-10 w-44 border-0 bg-white px-4 py-3 text-sm font-semibold dark:bg-[#1b1b1d] ${MUTED}`}>
+                  {r.row}
+                </th>
+                {r.cells.map((cell, i) => (
+                  <td
+                    key={i}
+                    className={`border-0 px-4 py-3 ${
+                      i === 0
+                        ? "bg-secondary-wopee/[0.06] font-semibold dark:bg-primary-wopee/[0.06]"
+                        : MUTED
+                    }`}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className={`mb-0 mt-4 text-sm ${MUTED}`}>
+        Prefer to run it yourself? License prices are public, per user per month, on the{" "}
+        <Link to={PRICING} className={TEXT_LINK}>
+          pricing page
+        </Link>
+        .
+      </p>
+    </Section>
+  );
+}
+
+function ForwardButton({ anchor, who }: { anchor: string; who: string }) {
+  const [copied, setCopied] = useState(false);
+  const link = `${PAGE_URL}#${anchor}`;
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      track("managed_testing_forward", { to: who });
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.location.hash = anchor;
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className={`mt-auto inline-flex min-h-11 cursor-pointer self-start items-center gap-2 rounded-lg border border-solid border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 transition hover:border-secondary-wopee dark:border-white/20 dark:bg-white/[0.06] dark:text-white dark:hover:border-primary-wopee ${FOCUS}`}
+    >
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="2">
+        <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" strokeLinecap="round" />
+      </svg>
+      <span aria-live="polite">{copied ? "Link copied" : `Copy a link for your ${who}`}</span>
+    </button>
+  );
+}
+
+function QaColumn({ id, role, items, forward }: { id: string; role: string; items: Qa[]; forward: string }) {
+  return (
+    <div id={id} className={`${CARD} flex scroll-mt-24 flex-col px-5 py-6 sm:px-7`}>
+      <h3 className="m-0 flex items-center gap-3 text-xl font-extrabold">
+        <span className="rounded-md bg-secondary-wopee px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-white dark:bg-primary-wopee dark:text-[#1a1124]">
+          {role}
+        </span>
+        Questions we hear from the {role}
+      </h3>
+      <dl className="m-0 mb-6 mt-5 space-y-5">
+        {items.map((it) => (
+          <div key={it.q}>
+            <dt className="text-base font-bold">{it.q}</dt>
+            <dd className={`m-0 mt-1 text-base leading-relaxed sm:text-[0.95rem] ${MUTED}`}>{it.a}</dd>
           </div>
         ))}
       </dl>
-      <div className="mt-5">{cta}</div>
+      <ForwardButton anchor={id} who={forward} />
     </div>
   );
 }
 
-function ManagedWayCta() {
-  const bookHref = useBookingHref("comparison");
+function Decide() {
   return (
-    <Link
-      href={bookHref}
-      id="cta-managed-testing-comparison"
-      className={BUTTON_PRIMARY}
+    <Section
+      id="decide"
+      eyebrow="Two people decide this"
+      title="Answers for the CEO, and for the CTO"
+      intro="Money, risk and time on one side. Access, CI, noise and ownership on the other. Send each half to the person who asks."
     >
-      Book a pilot call
-    </Link>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <QaColumn id="for-ceo" role="CEO" items={FOR_CEO} forward="CTO" />
+        <QaColumn id="for-cto" role="CTO" items={FOR_CTO} forward="CEO" />
+      </div>
+    </Section>
   );
 }
+
+function SendUrl() {
+  return (
+    <section id="send-your-url" className="scroll-mt-24 pt-16 sm:pt-24">
+      <div className="grid gap-6 rounded-2xl border-2 border-dashed border-secondary-wopee/50 px-5 py-8 dark:border-primary-wopee/50 sm:px-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
+        <div>
+          <span className={`text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}>
+            Not ready for a call?
+          </span>
+          <h2 className="mt-balance mb-0 mt-2 text-2xl font-extrabold leading-tight sm:text-3xl">
+            Send your URL, get 3 findings free
+          </h2>
+          <p className={`mb-0 mt-3 text-base leading-relaxed ${MUTED}`}>
+            Send Marcel your product's URL. An agent signs up as a stranger and
+            walks your first steps, and you get 3 findings with steps and
+            screenshots. If we find fewer, you hear that too. Nothing from the
+            check is ever posted.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="cta-managed-testing-url-check"
+              onClick={() => track("managed_testing_cta", { cta: "url-check" })}
+              className={BUTTON_OUTLINE}
+            >
+              Send your URL on LinkedIn
+            </a>
+            <a href="#book" className={`inline-flex min-h-11 items-center text-sm ${TEXT_LINK}`}>
+              or bring it to a pilot call
+            </a>
+            <span className={`basis-full text-sm ${MUTED}`}>
+              Opens Marcel's LinkedIn profile. Message him your URL there.
+            </span>
+          </div>
+        </div>
+        <ol aria-label="How the free check works" className="m-0 list-none space-y-2 pl-0">
+          {["Your URL", "We sign up as a stranger", "3 findings in your inbox"].map((s, i) => (
+            <li key={s} className="m-0 flex items-center gap-3 rounded-xl bg-gray-50 px-4 py-3 font-semibold dark:bg-white/[0.05]">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee font-mono text-xs font-bold text-white dark:bg-primary-wopee dark:text-[#1a1124]">
+                {i + 1}
+              </span>
+              {s}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  return (
+    <Section id="faq" eyebrow="FAQ" title="Other questions">
+      <div className="flex flex-col gap-3">
+        {FAQS.map((f) => (
+          <details key={f.q} className={`${CARD} group`}>
+            <summary
+              className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-base font-semibold sm:px-6 [&::-webkit-details-marker]:hidden ${FOCUS}`}
+            >
+              <span>{f.q}</span>
+              <span
+                aria-hidden="true"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee/10 text-lg text-secondary-wopee transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none dark:bg-primary-wopee/10 dark:text-primary-wopee"
+              >
+                +
+              </span>
+            </summary>
+            <p className={`mb-0 max-w-3xl px-5 pb-5 text-base leading-relaxed sm:px-6 ${MUTED}`}>
+              {renderAnswer(f)}
+            </p>
+          </details>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// Loads HubSpot's embed script once the section is near the viewport. The
+// script turns .meetings-iframe-container into the same calendar /book-demo/
+// shows, and passes the page URL (with its utm_* params) to HubSpot.
+function Calendar() {
+  const utm = useUtm("inline-calendar");
+  const ref = useRef<HTMLDivElement>(null);
+  const [load, setLoad] = useState(false);
+  const [stalled, setStalled] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) {
+      setLoad(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "800px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!load) return;
+    const script = document.createElement("script");
+    script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+    script.async = true;
+    document.body.appendChild(script);
+    const timer = window.setTimeout(() => {
+      if (!ref.current?.querySelector("iframe")) setStalled(true);
+    }, 10000);
+    return () => {
+      window.clearTimeout(timer);
+      script.remove();
+    };
+  }, [load]);
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div
+        ref={ref}
+        className="relative min-h-[640px] overflow-hidden rounded-2xl bg-white text-gray-900"
+      >
+        <div className="absolute inset-x-0 top-1/2 m-0 -translate-y-1/2 px-6 text-center text-sm text-gray-600">
+          {stalled ? (
+            <>
+              <p className="m-0 font-semibold text-gray-900">
+                The calendar didn't load here.
+              </p>
+              <a
+                href={`/book-demo/?${utm}`}
+                className="mt-3 inline-flex min-h-11 items-center justify-center rounded-lg bg-secondary-wopee px-5 font-bold text-white no-underline hover:text-white hover:no-underline"
+              >
+                Open the calendar on its own page
+              </a>
+            </>
+          ) : (
+            <p className="m-0">Loading Marcel's calendar…</p>
+          )}
+        </div>
+        {load ? (
+          <div
+            key={utm}
+            className="meetings-iframe-container relative z-10 bg-white"
+            data-src={`${HUBSPOT_MEETINGS}?embed=true&${utm}`}
+          />
+        ) : null}
+        <noscript>
+          <p className="p-6">
+            <a href={`/book-demo/?${utm}`}>Open the booking calendar</a>
+          </p>
+        </noscript>
+      </div>
+      <a
+        href={`/book-demo/?${utm}`}
+        className={`inline-flex min-h-11 items-center self-start rounded-sm py-2 text-sm font-semibold text-white/80 underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+      >
+        Calendar not loading? Open it on its own page
+      </a>
+    </div>
+  );
+}
+
+function Book() {
+  return (
+    <section id="book" className={`${DARK_BAND} mt-16 scroll-mt-16 px-4 py-16 sm:mt-24 sm:px-6 sm:py-24`}>
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-0">
+        <div className="lg:col-start-1 lg:row-start-1">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary-wopee">
+            Book a 30-minute pilot call
+          </span>
+          <h2 className="mt-balance mb-0 mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+            Pick a time. We look at your product first.
+          </h2>
+          <div className="mt-4">
+            <RiskLine onDark />
+          </div>
+        </div>
+        <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <Calendar />
+        </div>
+        <div className="lg:col-start-1 lg:row-start-2">
+          <ol className="m-0 mt-8 list-none space-y-5 pl-0">
+            {[
+              ["Before the call", "A founder looks at your product."],
+              ["On the call", "Which flows we'd start with, and how the pilot would run."],
+              ["Within one business day", "A written quote."],
+            ].map(([when, what], i) => (
+              <li key={when} className="m-0 flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-solid border-primary-wopee font-mono text-sm font-bold text-primary-wopee">
+                  {i + 1}
+                </span>
+                <span>
+                  <span className="block font-bold text-white">{when}</span>
+                  <span className="block text-white/75">{what}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-8 rounded-2xl border border-solid border-white/15 bg-white/[0.05] px-5 py-5">
+            <p className="m-0 flex gap-2.5 text-base leading-relaxed text-white/90">
+              <Check className="text-primary-wopee" />
+              <span>
+                After week 6: continue, switch to a license and keep the tests,
+                or stop and keep the report.
+              </span>
+            </p>
+            <p className="m-0 mt-3 flex gap-2.5 text-base leading-relaxed text-white/90">
+              <Check className="text-primary-wopee" />
+              <span>No deck. No sales sequence afterwards.</span>
+            </p>
+          </div>
+          <p className="mb-0 mt-6 text-sm text-white/70">
+            Prefer to run the tests yourself?{" "}
+            <Link
+              to={PRICING}
+              className={`rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+            >
+              See license pricing
+            </Link>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// One button in a bottom bar on phones: shown once the hero CTA has scrolled
+// away, hidden again while the calendar is on screen.
+function StickyCta() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const hero = document.getElementById("cta-managed-testing-hero");
+    const book = document.getElementById("book");
+    if (!hero || !book || !("IntersectionObserver" in window)) return;
+    let heroVisible = true;
+    let bookVisible = false;
+    const update = () => setShow(!heroVisible && !bookVisible);
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.target === hero) heroVisible = e.isIntersecting || e.boundingClientRect.top > 0;
+        if (e.target === book) bookVisible = e.isIntersecting;
+      }
+      update();
+    });
+    io.observe(hero);
+    io.observe(book);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div
+      className={`fixed inset-x-0 bottom-0 z-40 border-0 border-t border-solid border-white/10 bg-[#0b0a10]/95 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-3 backdrop-blur transition-[transform,visibility] duration-300 motion-reduce:transition-none md:hidden ${
+        show ? "visible translate-y-0" : "pointer-events-none invisible translate-y-full"
+      }`}
+      aria-hidden={!show}
+    >
+      <a
+        href="#book"
+        tabIndex={show ? 0 : -1}
+        id="cta-managed-testing-sticky"
+        onClick={() => track("managed_testing_cta", { cta: "sticky" })}
+        className={`${BUTTON_YELLOW} w-full`}
+      >
+        Book a 30-minute pilot call
+      </a>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------- page */
 
 export default function ManagedTestingPage() {
   return (
     <Layout
-      title="Managed testing service for SaaS teams"
-      description="We write, run and maintain AI tests for your ~10 critical flows, and a person reviews every failure. Start with a 6-week managed pilot, priced per scope."
+      title="Managed testing for teams without QA"
+      description="We test your most important flows before every release, and a person checks every failure. Start with a 6-week pilot, then go month to month."
     >
       <Head>
-        <script type="application/ld+json">
-          {JSON.stringify(JSON_LD_SERVICE)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(JSON_LD_FAQ)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(JSON_LD_SERVICE)}</script>
+        <script type="application/ld+json">{JSON.stringify(JSON_LD_FAQ)}</script>
+        {VIDEO_PUBLISHED ? (
+          <script type="application/ld+json">{JSON.stringify(JSON_LD_VIDEO)}</script>
+        ) : null}
+        <style>{PAGE_CSS}</style>
       </Head>
 
-      <main className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-        <header className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-solid border-secondary-wopee/40 bg-secondary-wopee/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary-wopee dark:border-primary-wopee/40 dark:bg-primary-wopee/10 dark:text-primary-wopee">
-            <span
-              aria-hidden="true"
-              className="h-1.5 w-1.5 rounded-full bg-primary-wopee"
-            />
-            Managed testing service
-          </span>
-          <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            Your critical flows, tested before every release.{" "}
-            <span className={ACCENT}>We do the work.</span>
-          </h1>
-          <p
-            className={`mx-auto mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${MUTED}`}
+      <main className="w-full overflow-x-clip">
+        <Hero />
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <Problem />
+          <HowItWorks />
+          <Section
+            id="sample-report"
+            eyebrow="What lands before every release"
+            title="A green run, or a short list of real defects"
+            intro="Every defect comes with the steps to reproduce it, a screenshot and one line of business impact. Nothing else reaches you."
           >
-            We write, run and maintain AI tests for the ~10 flows your customers
-            rely on. They run from your CI or with one click, and a person
-            reviews every failure before it reaches you. You get a green run or
-            a short list of real defects.
-          </p>
-
-          <ul className="mx-auto mt-6 flex max-w-3xl list-none flex-wrap justify-center gap-2 pl-0">
-            {AT_A_GLANCE.map((item) => (
-              <li
-                key={item}
-                className="m-0 rounded-full border border-solid border-gray-200 px-3 py-1 text-sm text-gray-600 dark:border-white/10 dark:text-gray-300"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8">
-            <Ctas cta="hero" />
-          </div>
-          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-            A 30-minute call with a founder. We look at your product first. No
-            deck.
-          </p>
-          <div className="mx-auto mt-10 max-w-3xl">
-            <FlowRow
-              label="Your release, then your ~10 flows run, then a person reviews every failure, then a green run or a short list of real defects"
-              nodes={[
-                "Your release",
-                "~10 flows run",
-                "A person reviews failures",
-                "Green, or real defects",
-              ]}
-            />
-          </div>
-        </header>
-
-        <Section
-          id="two-ways"
-          eyebrow="Two ways to use Wopee.io"
-          title="Run it yourself, or have us run it"
-          intro="Same AI testing agents, two ways to work with them. A license is for teams that want to drive the agents themselves. The managed service is for teams without QA who want the work done."
-        >
-          <div className="grid gap-4 md:grid-cols-2">
-            <WayCard
-              way={WAYS[0]}
-              cta={
-                <Link to={PRICING} className={BUTTON_OUTLINE}>
-                  See license pricing
-                </Link>
-              }
-            />
-            <WayCard way={WAYS[1]} cta={<ManagedWayCta />} />
-          </div>
-        </Section>
-
-        <Section
-          id="how-it-works"
-          eyebrow="How it works"
-          title="Four steps, then it runs with every release"
-        >
-          <ol className="m-0 grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((s, i) => (
-              <li key={s.title} className={`${CARD} m-0 px-5 py-5`}>
-                <span
-                  aria-hidden="true"
-                  className="flex h-7 w-7 items-center justify-center rounded-full bg-secondary-wopee text-sm font-extrabold text-white dark:bg-primary-wopee dark:text-gray-900"
-                >
-                  {i + 1}
-                </span>
-                <h3 className="mb-0 mt-3 text-base font-bold leading-snug">
-                  {s.title}
-                </h3>
-                <p className={`mb-0 mt-2 text-sm leading-relaxed ${MUTED}`}>
-                  {s.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </Section>
-
-        <Section
-          id="sample-report"
-          eyebrow="What lands before every release"
-          title="A green run, or a short list of real defects"
-          intro="Every defect comes with the steps to reproduce it, a screenshot and one line of business impact. Nothing else reaches you."
-        >
-          <SampleReport />
-        </Section>
-
-        <Section
-          id="who-does-what"
-          eyebrow="Who does what"
-          title="We do the testing. You give us about an hour a week."
-        >
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className={`${CARD} px-5 py-5 sm:px-6`}>
-              <h3 className="m-0 text-lg font-bold">What we do</h3>
-              <div className="mt-4">
-                <Bullets items={WE_DO} />
-              </div>
-            </div>
-            <div className={`${CARD} px-5 py-5 sm:px-6`}>
-              <h3 className="m-0 text-lg font-bold">What you do</h3>
-              <div className="mt-4">
-                <Bullets items={YOU_DO} />
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        <Section
-          id="pilot"
-          eyebrow="Start here"
-          title="The 6-week managed pilot"
-          intro="Your ~10 critical flows, tested and maintained by us for six weeks. Success criteria are agreed in week 1, so the decision at the end is based on what we agreed."
-        >
-          <ol className="m-0 grid list-none gap-4 pl-0 md:grid-cols-2">
-            {PILOT_WEEKS.map((w) => (
-              <li
-                key={w.tag}
-                className={`${CARD} m-0 flex flex-col px-5 py-5 sm:px-6`}
-              >
-                <span
-                  className={`text-xs font-semibold uppercase tracking-widest ${ACCENT}`}
-                >
-                  {w.tag}
-                </span>
-                <h3 className="mb-0 mt-2 text-lg font-bold leading-snug">
-                  {w.title}
-                </h3>
-                <div className="mt-3">
-                  <Bullets items={w.points} />
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <h3 className="mt-10 text-lg font-bold">After week 6, you choose</h3>
-          <ul className="mt-4 grid list-none gap-3 pl-0 md:grid-cols-3">
-            {AFTER_PILOT.map((o) => (
-              <LeadCard key={o.lead} lead={o.lead} detail={o.detail} />
-            ))}
-          </ul>
-          <p className={`mt-6 max-w-3xl text-sm leading-relaxed ${MUTED}`}>
-            Looking for the 8-week pilot where your QA team builds the tests
-            with our coaching? That's the{" "}
-            <Link to={ENTERPRISE_PILOT} className={TEXT_LINK}>
-              enterprise pilot
-            </Link>
-            .
-          </p>
-        </Section>
-
-        <Section
-          id="review"
-          eyebrow="Every finding checked by a person"
-          title="A red test is a question. We answer it before you see it."
-          intro={
-            <>
-              The run's report is ready in a few minutes. A person then reviews
-              each failure against the trace and video, which can take longer.
-              You hear about real defects only. In October we tested{" "}
-              <Link to={STUDY} className={TEXT_LINK}>
-                28 SaaS products as strangers
-              </Link>
-              : 24 had a defect in sign-up.
-            </>
-          }
-        >
-          <div className="grid gap-6 md:grid-cols-2 md:items-start">
-            <div className={`${CARD} px-5 py-5 sm:px-6`}>
-              <ReviewDiagram />
-            </div>
-            <div className={`${CARD} px-5 py-5 sm:px-6`}>
-              <h3 className="m-0 text-lg font-bold">
-                Safe for your customers and data
-              </h3>
-              <div className="mt-4">
-                <Bullets items={SAFETY} />
-              </div>
-            </div>
-          </div>
-
-          <h3 className="mt-10 text-lg font-bold">Honest limits</h3>
-          <ul className="mt-4 grid list-none gap-3 pl-0 md:grid-cols-2">
-            {LIMITS.map((l) => (
-              <LeadCard key={l.lead} lead={l.lead} detail={l.detail} />
-            ))}
-          </ul>
-        </Section>
-
-        <Section
-          id="pricing"
-          eyebrow="How pricing works"
-          title="Priced by your scope, not by seats"
-          intro="We don't publish a price for the managed service, because it depends on your product. Here is how we set it."
-        >
-          <ul className="m-0 grid list-none gap-3 pl-0 md:grid-cols-3">
-            {PRICING_POINTS.map((p) => (
-              <LeadCard key={p.lead} lead={p.lead} detail={p.detail} />
-            ))}
-          </ul>
-          <p className={`mt-6 max-w-3xl text-sm leading-relaxed ${MUTED}`}>
-            Running the tests yourself? License prices are public, per user per
-            month, on the{" "}
-            <Link to={PRICING} className={TEXT_LINK}>
-              pricing page
-            </Link>
-            .
-          </p>
-        </Section>
-
-        <Section id="faq" eyebrow="FAQ" title="Questions CTOs ask us">
-          <div className="flex flex-col gap-3">
-            {FAQS.map((f) => (
-              <details
-                key={f.q}
-                className={`${CARD} group`}
-              >
-                <summary
-                  className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-semibold sm:px-6 [&::-webkit-details-marker]:hidden ${FOCUS}`}
-                >
-                  <span>{f.q}</span>
-                  <span
-                    aria-hidden="true"
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee/10 text-lg text-secondary-wopee transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none dark:bg-primary-wopee/10 dark:text-primary-wopee"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p
-                  className={`mb-0 max-w-3xl px-5 pb-4 text-sm leading-relaxed sm:px-6 ${MUTED}`}
-                >
-                  {renderAnswer(f)}
-                </p>
-              </details>
-            ))}
-          </div>
-        </Section>
-
-        <section
-          id="book"
-          className="mt-12 scroll-mt-24 rounded-2xl bg-gradient-to-br from-secondary-wopee to-[#451f6b] px-6 py-12 text-center text-white sm:mt-14"
-        >
-          <img
-            src="/img/wopee_head_1_2023-10-10-640.webp"
-            alt="Wopee.io monkey"
-            width={96}
-            height={124}
-            className="mx-auto h-16 w-auto"
-          />
-          <h2 className="mt-4 text-2xl font-bold sm:text-3xl">
-            Start with the 6-week managed pilot
-          </h2>
-          <div className="mx-auto mt-6 max-w-2xl">
-            <FlowRow
-              inverted
-              label="Book a call, then we look at your product, then a 30-minute call with your price and pilot plan"
-              nodes={[
-                "Book a call",
-                "We look at your product",
-                "30 minutes: price and plan",
-              ]}
-            />
-          </div>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-white/80">
-            Book 30 minutes with a founder and tell us your product and how
-            often you release. We look at your product before we talk, then
-            tell you which flows we'd start with and what the pilot costs. No
-            deck.
-          </p>
-          <div className="mt-8">
-            <BandCtas />
-          </div>
-        </section>
+            <SampleReport />
+          </Section>
+          <Offer />
+          <Trust />
+          <Pricing />
+          <Compare />
+          <Decide />
+          <SendUrl />
+          <Faq />
+        </div>
+        <Book />
+        <StickyCta />
       </main>
     </Layout>
   );
