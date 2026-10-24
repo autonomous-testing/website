@@ -441,12 +441,12 @@ const JSON_LD_FAQ = {
 const JSON_LD_VIDEO = {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  name: "Managed testing in 86 seconds",
+  name: "Managed testing in 90 seconds",
   description:
     "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure. Voice: AI clone of Marcel Veselka's voice.",
   thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.jpg`,
   uploadDate: "2026-10-24",
-  duration: "PT1M26S",
+  duration: "PT1M30S",
   contentUrl: `https://wopee.io/video/${VIDEO_BASE}.mp4`,
 };
 
@@ -733,8 +733,8 @@ function Hero() {
       <div className="mx-auto mt-12 max-w-4xl sm:mt-16">
         <ExplainerVideo
           base={VIDEO_BASE}
-          title="Managed testing in 86 seconds"
-          duration="86 s"
+          title="Managed testing in 90 seconds"
+          duration="90 s"
           pendingNote="The video is on its way. Everything it says is on this page."
         />
       </div>
