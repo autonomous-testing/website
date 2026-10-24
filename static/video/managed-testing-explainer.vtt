@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00:00.600 --> 00:00:02.787
+Friday. Five o'clock.
+
+00:00:02.807 --> 00:00:03.877
+You ship.
+
+00:00:04.427 --> 00:00:06.113
+There's no QA team.
+
+00:00:06.213 --> 00:00:08.719
+The people who built it tested it.
+
+00:00:08.819 --> 00:00:11.517
+Logged in. On their own laptops.
+
+00:00:11.867 --> 00:00:15.373
+So the first stranger to try your sign-up
+is a customer.
+
+00:00:15.673 --> 00:00:18.423
+And when it fails, they don't file a bug.
+
+00:00:19.373 --> 00:00:20.451
+They leave.
+
+00:00:21.601 --> 00:00:23.882
+Unless someone tests it first.
+
+00:00:23.982 --> 00:00:25.241
+That's what we do.
+
+00:00:25.591 --> 00:00:29.921
+Together, we pick about 10 flows your
+customers rely on.
+
+00:00:30.021 --> 00:00:32.781
+Written in plain language you confirm.
+
+00:00:33.031 --> 00:00:37.752
+Before every release, our AI agent walks
+them like a real user.
+
+00:00:37.852 --> 00:00:40.791
+From your CI, or with one click.
+
+00:00:40.891 --> 00:00:44.938
+We write the tests, and we keep them
+working as your product changes.
+
+00:00:45.288 --> 00:00:49.452
+When a test goes red, a person on our team
+looks at it first.
+
+00:00:49.552 --> 00:00:51.959
+Is it your app, or our test?
+
+00:00:52.059 --> 00:00:54.283
+We answer that before you see it.
+
+00:00:54.533 --> 00:00:56.245
+What you get is simple.
+
+00:00:56.665 --> 00:01:00.005
+A green run. Or a short list of real
+defects,
+
+00:01:00.025 --> 00:01:02.000
+with steps and screenshots.
+
+00:01:02.500 --> 00:01:06.663
+We run dedicated research batches to track
+the state of the market.
+
+00:01:06.763 --> 00:01:11.278
+In our latest, we signed up for 28 SaaS
+products as strangers.
+
+00:01:11.728 --> 00:01:14.401
+24 had a defect in sign-up.
+
+00:01:14.751 --> 00:01:18.659
+From you: a test account, and about an
+hour a week.
+
+00:01:18.759 --> 00:01:21.397
+Start with a 6-week managed pilot.
+
+00:01:21.497 --> 00:01:22.823
+Then you decide.
+
+00:01:23.173 --> 00:01:24.914
+Book a 30-minute call.
+
+00:01:25.014 --> 00:01:28.267
+We look at your product first.

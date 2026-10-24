@@ -5,6 +5,9 @@
 ## Core pages
 - [Home](https://wopee.io/): What Wopee.io is, who uses it, headline benefits, and how it fits into a modern test stack.
 - [Pricing](https://wopee.io/pricing/): Starter (€19/user/mo), Basic (€79/user/mo), Premium (€179/user/mo), and Enterprise (on-prem, SSO, dedicated CSM). Free to start, no credit card required, 14-day money-back guarantee.
+- [Managed testing](https://wopee.io/managed-testing/): For software companies without QA. We write, run and maintain tests for your ~10 most important flows before every release, and a person checks every failure. Starts with a 6-week managed pilot, then month to month; priced by flows and release cadence, written quote after a 30-minute call, no per-run or per-seat fees.
+- [Enterprise pilot](https://wopee.io/pilot/): 8-week pilot for enterprise QA teams. Up to 10 critical flows, your team builds about 20 tests with our coaching, go or no-go decision at the end. From €12,000, credited against year one.
+- [SaaS app health](https://wopee.io/saas-app-health/): Our latest research batch: we signed up for 28 SaaS products as strangers; 24 had a defect in sign-up. Eight recurring patterns and a starter list of 10 flows to check.
 - [AI Testing Agents](https://wopee.io/ai-testing-agents/): How the autonomous agents explore, generate, run, and maintain tests without manual scripting.
 - [Visual testing](https://wopee.io/visual-testing/): AI visual regression testing with native SDKs for Playwright, Cypress, WebdriverIO and Robot Framework; Selenium WebDriver, Appium, Puppeteer and any other framework that takes screenshots connect through the API.
 - [Integrations](https://wopee.io/integrations/): MCP clients (Claude Code, Cursor, VS Code, Windsurf), Slack and Teams, GitHub and GitHub Actions, test frameworks, and the GraphQL API.

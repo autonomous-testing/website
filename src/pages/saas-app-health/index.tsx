@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Link from "@docusaurus/Link";
+import { Link } from "../../components/ui/typedDocusaurus";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
@@ -335,7 +335,7 @@ const PILOT_STEPS: PilotStep[] = [
     ],
     proof: (
       <>
-        In October: <strong>median 1 h 41 min</strong> from starting on a new
+        In our latest research batch: <strong>median 1 h 41 min</strong> from starting on a new
         product to its first filed findings (13 products timed).
       </>
     ),
@@ -348,6 +348,7 @@ const PILOT_STEPS: PilotStep[] = [
     points: [
       "We run it from your CI, or on demand: you or we click one button and get the report in a few minutes.",
       "We improve and maintain the tests for you as your product changes.",
+      "Nothing is sent to your real customers or contacts. Payments run only in a sandbox, with test cards.",
       <>
         You see a green run or a short list of real defects.{" "}
         <strong>Nothing else.</strong>
@@ -364,11 +365,11 @@ const PILOT_STEPS: PilotStep[] = [
     ],
     proof: (
       <>
-        In October, <strong>15 of 381 findings</strong> didn't hold up on our
+        In our latest research batch, <strong>15 of 381 findings</strong> didn't hold up on our
         own re-check. We closed them ourselves.
       </>
     ),
-    note: "Some sign-ups need a human step (CAPTCHA). We'll ask you for a test account.",
+    note: "From you: a test account and about an hour a week. Some sign-ups need a human step (CAPTCHA), so we'll ask for a bypass or a sandbox where needed.",
   },
   {
     tag: "End of week 6",
@@ -946,7 +947,7 @@ export default function SaasAppHealthPage() {
               aria-hidden="true"
               className="h-1.5 w-1.5 rounded-full bg-primary-wopee"
             />
-            SaaS app health · October 2026
+            SaaS app health · research batch
           </span>
           <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
             We signed up for 28 SaaS products as strangers.{" "}
@@ -958,7 +959,7 @@ export default function SaasAppHealthPage() {
           <p
             className={`mx-auto mt-4 max-w-2xl text-base leading-relaxed sm:text-lg ${MUTED}`}
           >
-            In October we did what your next customer does: started the free
+            In our latest research batch we did what your next customer does: started the free
             trials of 28 SaaS products, signed up and tried the ~10 flows that
             matter. A person re-checked the findings. One trial form failed on
             the first submit, every time. The second try worked. None of it
@@ -1016,7 +1017,7 @@ export default function SaasAppHealthPage() {
           <ul className="grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-3">
             {KEY_NUMBERS.map((n, i) => (
               <li
-                key={n.value}
+                key={`${n.value}-${i}`}
                 className={`${CARD} flex flex-col px-5 py-5 ${
                   i === 0
                     ? "!border-secondary-wopee/50 !bg-secondary-wopee/[0.06] dark:!border-primary-wopee/40 dark:!bg-primary-wopee/[0.06]"
@@ -1217,13 +1218,13 @@ export default function SaasAppHealthPage() {
         <Section
           id="how-it-works"
           eyebrow="If you'd rather hand it off"
-          title="How a 6-week pilot works"
+          title="How a 6-week managed pilot works"
           intro={
             <>
               <strong className="text-gray-900 dark:text-white">
                 Your ~10 critical flows, run from your CI or with one click.
               </strong>{" "}
-              A 6-week pilot for SaaS teams with no QA yet. Wopee.io runs an AI
+              A 6-week managed pilot for SaaS teams with no QA yet. Wopee.io runs an AI
               agent that uses your web app like a real user. It reads the
               screen, not your code, so a renamed button doesn't break the test.
             </>
@@ -1234,6 +1235,17 @@ export default function SaasAppHealthPage() {
               <PilotStepCard key={step.title} step={step} index={i} />
             ))}
           </ol>
+          <p className={`mt-6 max-w-3xl ${MUTED}`}>
+            Who does what, a sample report, the monthly service and how pricing
+            works:{" "}
+            <Link
+              to="/managed-testing/"
+              className="font-semibold text-secondary-wopee underline underline-offset-4 dark:text-primary-wopee"
+            >
+              managed testing, starting with a 6-week pilot
+            </Link>
+            .
+          </p>
 
           <h3 className="mt-10 text-lg font-bold">Honest limits</h3>
           <ul className="mt-4 grid list-none gap-3 pl-0 md:grid-cols-2">
@@ -1296,6 +1308,14 @@ export default function SaasAppHealthPage() {
           <div className="mt-8">
             <BandCtas />
           </div>
+          <p className="mt-6 text-sm">
+            <Link
+              to="/managed-testing/"
+              className="font-semibold text-white underline underline-offset-4 hover:text-primary-wopee"
+            >
+              How the 6-week pilot and monthly managed testing work
+            </Link>
+          </p>
         </section>
 
         <Section

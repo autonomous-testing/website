@@ -18,7 +18,8 @@ export const footerColumns: FooterColumn[] = [
     title: "Company",
     links: [
       { label: "Enterprise", to: "/enterprise/" },
-      { label: "Pilot projects", to: "/pilot/" },
+      { label: "Managed testing", to: "/managed-testing/" },
+      { label: "Enterprise pilot", to: "/pilot/" },
       { label: "Customers", to: "/customers/" },
       { label: "Pricing", to: "/pricing/" },
       { label: "Security & Trust", to: "/security/" },

@@ -76,6 +76,14 @@ const JSONLD_PRODUCT = {
       url: "https://wopee.io/book-demo/",
       availability: "https://schema.org/InStock",
     },
+    {
+      "@type": "Offer",
+      name: "Managed testing",
+      description:
+        "We write, run and maintain the tests for your most important flows, and a person checks every failure. Starts with a 6-week managed pilot, then month to month, priced by your flows and release cadence.",
+      url: "https://wopee.io/managed-testing/",
+      availability: "https://schema.org/InStock",
+    },
   ],
 };
 
