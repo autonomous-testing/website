@@ -467,6 +467,7 @@ const JSON_LD_VIDEO = {
   uploadDate: "2026-10-24",
   duration: "PT1M30S",
   contentUrl: `https://wopee.io/video/${VIDEO_BASE}.mp4`,
+  embedUrl: "https://www.youtube.com/watch?v=NzJEhzWA-NM",
 };
 
 /* --------------------------------------------------------------- styling */
