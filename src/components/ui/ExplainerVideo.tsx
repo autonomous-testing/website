@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 // Click-to-play explainer with sound. Files live in static/video/ under one
 // base name: <base>.mp4 (1080p), <base>-720.mp4 (phones), <base>.vtt
-// (captions), <base>-poster.webp with a <base>-poster.png fallback.
+// (captions), <base>-poster.webp with a <base>-poster.jpg fallback.
 // Until the MP4 exists the player shows the poster (or a designed frame)
 // without a play button, so the page never offers a video that 404s.
 
@@ -55,7 +55,7 @@ export default function ExplainerVideo({
 
   const onPosterError = () => {
     setPosterSrc((current) =>
-      current?.endsWith(".webp") ? `/video/${base}-poster.png` : null
+      current?.endsWith(".webp") ? `/video/${base}-poster.jpg` : null
     );
   };
 

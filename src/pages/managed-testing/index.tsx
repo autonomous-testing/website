@@ -13,7 +13,7 @@ const PAGE_URL = "https://wopee.io/managed-testing/";
 const VIDEO_BASE = "managed-testing-explainer";
 // Flip to true in the commit that adds the files to static/video/, so the
 // VideoObject never points at a file that isn't deployed.
-const VIDEO_PUBLISHED = false;
+const VIDEO_PUBLISHED = true;
 
 // The visitor's utm_* params, with this page's defaults filled in. Used for
 // the inline calendar and the booking-page fallback, so a call booked from a
@@ -444,7 +444,7 @@ const JSON_LD_VIDEO = {
   name: "Managed testing in 86 seconds",
   description:
     "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure. Voice: AI clone of Marcel Veselka's voice.",
-  thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.png`,
+  thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.jpg`,
   uploadDate: "2026-10-24",
   duration: "PT1M26S",
   contentUrl: `https://wopee.io/video/${VIDEO_BASE}.mp4`,
