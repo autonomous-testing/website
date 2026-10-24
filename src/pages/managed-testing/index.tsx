@@ -254,33 +254,76 @@ const PRICE_POINTS: { lead: string; detail: string }[] = [
   },
 ];
 
-const COMPARE_COLS = [
-  "Managed testing",
-  "Hire a QA engineer",
-  "Your developers test",
-  "A Wopee.io license",
+type Score = { dots: 1 | 2 | 3 | 4 | 5; label: string };
+
+const OPTIONS: { name: string; who: string; highlight?: boolean }[] = [
+  { name: "Managed testing", who: "We do the testing", highlight: true },
+  { name: "Hire a QA engineer", who: "One person in-house" },
+  { name: "Your developers test", who: "Your existing engineers" },
+  { name: "A Wopee.io license", who: "Your team runs our agents" },
 ];
 
-const COMPARE_ROWS: { row: string; cells: string[] }[] = [
+// More dots = better for you. Each row: Managed, QA hire, developers, license.
+const METRICS: { name: string; question: string; scores: Score[] }[] = [
   {
-    row: "Who writes and maintains the tests",
-    cells: ["We do", "Your new hire", "Whoever has time", "Your team, with our AI agents"],
+    name: "Time to first results",
+    question: "How soon do you see real findings?",
+    scores: [
+      { dots: 5, label: "Week 1" },
+      { dots: 1, label: "Months: hiring, then onboarding" },
+      { dots: 3, label: "Now, when someone has time" },
+      { dots: 3, label: "After your team builds tests" },
+    ],
   },
   {
-    row: "Who checks failures",
-    cells: ["A person on our team, every one", "Your hire", "Usually nobody", "Your team"],
+    name: "Effort for your team",
+    question: "How much of your people's time it takes",
+    scores: [
+      { dots: 5, label: "About an hour a week" },
+      { dots: 3, label: "Hiring and managing a person" },
+      { dots: 1, label: "Developer hours every release" },
+      { dots: 2, label: "Your team writes and runs tests" },
+    ],
   },
   {
-    row: "First results",
-    cells: ["Week 1", "After hiring and onboarding", "Whenever someone finds time", "When your team has built tests"],
+    name: "Release confidence",
+    question: "Are the flows that earn you money checked before each release?",
+    scores: [
+      { dots: 4, label: "Your ~10 key flows, every release" },
+      { dots: 4, label: "Good, while they have time" },
+      { dots: 2, label: "Mostly what they changed" },
+      { dots: 3, label: "Good, if your team keeps it up" },
+    ],
   },
   {
-    row: "Holidays and people leaving",
-    cells: ["The tests keep running", "Testing pauses", "Testing pauses", "Depends on your team"],
+    name: "Trust in results",
+    question: "When something is red, is it a real bug?",
+    scores: [
+      { dots: 4, label: "A person checks every failure" },
+      { dots: 4, label: "Your hire checks them" },
+      { dots: 2, label: "Checked when someone has time" },
+      { dots: 3, label: "Your team checks them" },
+    ],
   },
   {
-    row: "Commitment",
-    cells: ["Month to month after the pilot", "An employment contract", "None", "Published per-user prices"],
+    name: "Risk",
+    question: "What happens on holidays, when people leave, or if it doesn't work out",
+    scores: [
+      { dots: 4, label: "Keeps running. Cancel monthly" },
+      { dots: 2, label: "Pauses when they're away or leave" },
+      { dots: 2, label: "Stops when deadlines hit" },
+      { dots: 3, label: "Depends on your team" },
+    ],
+  },
+  {
+    name: "Cost",
+    question: "Relative cost to you, all in",
+    scores: [
+      { dots: 3, label: "A fixed monthly fee" },
+      { dots: 1, label: "A salary, plus recruiting" },
+      { dots: 3, label: "Looks free, costs developer time" },
+      { dots: 3, label: "License fee plus your team's time" },
+    ],
   },
 ];
 
@@ -653,21 +696,21 @@ function Hero() {
       />
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-2xl border border-solid border-white/20 bg-white/5 px-3 py-1 text-xs sm:rounded-full font-semibold uppercase tracking-[0.16em] text-white/85">
+          <span className="inline-flex items-center gap-2 rounded-2xl border border-solid border-white/20 bg-white/5 px-3 py-1 text-xs sm:rounded-full font-semibold uppercase leading-relaxed tracking-[0.08em] text-white/85 sm:tracking-[0.16em]">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary-wopee" />
             Managed testing for software companies without QA
           </span>
-          <h1 className="mt-balance mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
-            We test your app before every release,{" "}
-            <span className="text-primary-wopee">
-              so your customers don't have to.
-            </span>
+          <h1 className="mt-balance mt-6 text-5xl font-extrabold leading-[1] tracking-tight text-white sm:text-6xl lg:text-[5.5rem]">
+            We test.{" "}
+            <span className="text-primary-wopee">You ship.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            We write and maintain the tests for your ~10 most important flows,
-            like sign-up, payment and the thing customers pay you for. They run
-            before every release, and a person on our team checks every
-            failure. You get a green run, or a short list of real defects.
+          <p className="mt-6 max-w-xl text-xl font-semibold leading-snug text-white sm:text-2xl">
+            Your ~10 most important flows, like sign-up and payment, tested
+            before every release, so your customers don't find the bugs first.
+          </p>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/75">
+            We write and maintain the tests, and a person on our team checks
+            every failure. You get a green run, or a short list of real defects.
           </p>
           <div className="mt-8 flex flex-col items-start gap-4">
             <BookButton cta="hero" onDark />
@@ -1040,7 +1083,8 @@ function Trust() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <figure className={`${CARD} m-0 flex flex-col gap-5 px-5 py-6 sm:flex-row sm:px-7`}>
           <img
-            src={require("@site/static/img/team/marcel.jpg").default}
+            src={require("@site/static/img/team/marcel-black-tshirt.jpg").default}
+            decoding="async"
             alt="Marcel Veselka, founder of Wopee.io"
             width={112}
             height={112}
@@ -1122,60 +1166,168 @@ function Pricing() {
   );
 }
 
+function Dots({ score, strong }: { score: Score; strong?: boolean }) {
+  return (
+    <span className="inline-flex items-center gap-2">
+    <span
+      role="img"
+      aria-label={`${score.dots} of 5`}
+      className="inline-flex gap-1"
+    >
+      {[1, 2, 3, 4, 5].map((d) => (
+        <span
+          key={d}
+          aria-hidden="true"
+          className={`box-border h-2.5 w-2.5 rounded-full border border-solid ${
+            d <= score.dots
+              ? strong
+                ? "border-primary-wopee bg-primary-wopee"
+                : "border-secondary-wopee bg-secondary-wopee dark:border-gray-200 dark:bg-gray-200"
+              : strong
+                ? "border-white/70 bg-transparent"
+                : "border-gray-500 bg-transparent dark:border-gray-400"
+          }`}
+        />
+      ))}
+    </span>
+    <span
+      aria-hidden="true"
+      className={`text-xs font-semibold tabular-nums ${strong ? "text-white/85" : MUTED}`}
+    >
+      {score.dots}/5
+    </span>
+    </span>
+  );
+}
+
+function ScoreCell({ score, strong }: { score: Score; strong?: boolean }) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <Dots score={score} strong={strong} />
+      <span
+        className={`text-sm leading-snug ${
+          strong ? "font-semibold text-white" : MUTED
+        }`}
+      >
+        {score.label}
+      </span>
+    </div>
+  );
+}
+
 function Compare() {
   return (
-    <Section id="compare" eyebrow="Compared with the alternatives" title="What changes when we do the testing">
-      <p className={`mb-3 mt-0 text-sm md:hidden ${MUTED}`}>Scroll sideways to compare all four.</p>
+    <Section
+      id="compare"
+      eyebrow="Compared with the alternatives"
+      title="What changes when we do the testing"
+      intro="Six things owners and CTOs weigh when nobody owns testing yet. More dots means better for you: 1 is least favourable, 5 most."
+    >
+      {/* Wide screens: one grid, managed testing as a raised column. */}
       <div
-        tabIndex={0}
-        role="region"
+        role="table"
         aria-label="Managed testing compared with the alternatives"
-        className={`overflow-x-auto rounded-2xl border border-solid border-gray-200 dark:border-white/10 ${FOCUS}`}
+        className="hidden lg:block"
       >
-        <table className="m-0 table w-full min-w-[44rem] border-collapse text-left text-sm">
-          <thead>
-            <tr className="border-0">
-              <th scope="col" className="sticky left-0 z-10 border-0 bg-gray-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:bg-white/[0.03] dark:text-gray-400">
-                <span className="sr-only">Question</span>
-              </th>
-              {COMPARE_COLS.map((c, i) => (
-                <th
-                  key={c}
-                  scope="col"
-                  className={`border-0 px-4 py-3 text-sm font-bold ${
-                    i === 0
-                      ? "bg-secondary-wopee text-white dark:bg-primary-wopee dark:text-[#1a1124]"
-                      : "bg-gray-50 dark:bg-white/[0.03]"
+        <div role="row" className="grid grid-cols-[minmax(0,1.15fr)_repeat(4,minmax(0,1fr))]">
+          <div role="columnheader" className="px-4 pb-4 pt-6">
+            <span className="sr-only">What you weigh</span>
+          </div>
+          {OPTIONS.map((o) => (
+            <div
+              key={o.name}
+              role="columnheader"
+              className={
+                o.highlight
+                  ? "rounded-t-2xl border-0 border-t-4 border-solid border-primary-wopee bg-secondary-wopee px-5 pb-4 pt-5 text-white dark:bg-[#2a1640]"
+                  : "px-5 pb-4 pt-6"
+              }
+            >
+              <div className="text-lg font-extrabold leading-tight">{o.name}</div>
+              <div
+                className={`mt-1 text-sm ${o.highlight ? "text-white/80" : MUTED}`}
+              >
+                {o.who}
+              </div>
+            </div>
+          ))}
+        </div>
+        {METRICS.map((m, r) => {
+          const last = r === METRICS.length - 1;
+          return (
+            <div key={m.name} role="row" className="grid grid-cols-[minmax(0,1.15fr)_repeat(4,minmax(0,1fr))]">
+              <div
+                role="rowheader"
+                className="border-0 border-t border-solid border-gray-200 px-4 py-4 dark:border-white/10"
+              >
+                <div className="text-base font-bold">{m.name}</div>
+                <div className={`mt-0.5 text-sm leading-snug ${MUTED}`}>
+                  {m.question}
+                </div>
+              </div>
+              {m.scores.map((sc, i) => (
+                <div
+                  key={i}
+                  role="cell"
+                  className={
+                    OPTIONS[i].highlight
+                      ? `border-0 border-t border-solid border-white/15 bg-secondary-wopee px-5 py-4 dark:bg-[#2a1640] ${
+                          last ? "rounded-b-2xl" : ""
+                        }`
+                      : "border-0 border-t border-solid border-gray-200 px-5 py-4 dark:border-white/10"
+                  }
+                >
+                  <ScoreCell score={sc} strong={OPTIONS[i].highlight} />
+                </div>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Phones and tablets: one card per option, swipe sideways. */}
+      <p className={`mb-3 mt-0 text-sm lg:hidden ${MUTED}`}>
+        Swipe to compare all four.
+      </p>
+      <ul
+        tabIndex={0}
+        aria-label="Managed testing compared with the alternatives, one card per option"
+        className={`-mx-4 my-0 flex list-none snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-4 pl-4 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:hidden ${FOCUS}`}
+      >
+        {OPTIONS.map((o, i) => (
+          <li
+            key={o.name}
+            className={`m-0 w-[85%] max-w-sm shrink-0 snap-start rounded-2xl px-5 py-5 ${
+              o.highlight
+                ? "bg-secondary-wopee text-white dark:bg-[#2a1640] dark:ring-1 dark:ring-primary-wopee"
+                : CARD
+            }`}
+          >
+            <div className="text-lg font-extrabold leading-tight">{o.name}</div>
+            <div className={`mt-1 text-sm ${o.highlight ? "text-white/80" : MUTED}`}>
+              {o.who}
+            </div>
+            <dl className="m-0 mt-4 space-y-3.5">
+              {METRICS.map((m) => (
+                <div
+                  key={m.name}
+                  className={`border-0 border-t border-solid pt-3 ${
+                    o.highlight ? "border-white/15" : "border-gray-200 dark:border-white/10"
                   }`}
                 >
-                  {c}
-                </th>
+                  <dt className="text-xs font-bold uppercase tracking-wider">
+                    {m.name}
+                  </dt>
+                  <dd className="m-0 mt-1.5">
+                    <ScoreCell score={m.scores[i]} strong={o.highlight} />
+                  </dd>
+                </div>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARE_ROWS.map((r) => (
-              <tr key={r.row} className="border-0 border-t border-solid border-gray-200 bg-transparent dark:border-white/10 [&:nth-child(2n)]:bg-transparent">
-                <th scope="row" className={`sticky left-0 z-10 w-44 border-0 bg-white px-4 py-3 text-sm font-semibold dark:bg-[#1b1b1d] ${MUTED}`}>
-                  {r.row}
-                </th>
-                {r.cells.map((cell, i) => (
-                  <td
-                    key={i}
-                    className={`border-0 px-4 py-3 ${
-                      i === 0
-                        ? "bg-secondary-wopee/[0.06] font-semibold dark:bg-primary-wopee/[0.06]"
-                        : MUTED
-                    }`}
-                  >
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </dl>
+          </li>
+        ))}
+      </ul>
+
       <p className={`mb-0 mt-4 text-sm ${MUTED}`}>
         Prefer to run it yourself? License prices are public, per user per month, on the{" "}
         <Link to={PRICING} className={TEXT_LINK}>
