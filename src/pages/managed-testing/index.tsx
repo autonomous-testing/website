@@ -7,7 +7,11 @@ const CAMPAIGN = "managed-testing";
 const PRICING = "/pricing/";
 const ENTERPRISE_PILOT = "/pilot/";
 const STUDY = "/saas-app-health/";
-const LINKEDIN = "https://www.linkedin.com/in/marcelveselka/";
+const HUBSPOT_PORTAL = "139620033";
+const HUBSPOT_FORM = "f6257e05-afe3-4f7c-8f84-75b186a7ea0c";
+const HUBSPOT_SUBMIT = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL}/${HUBSPOT_FORM}`;
+const GUARANTEE =
+  "If the agreed flows aren't running by the end of week 3, the pilot is free.";
 const HUBSPOT_MEETINGS = "https://meetings-eu1.hubspot.com/marcel-veselka";
 const PAGE_URL = "https://wopee.io/managed-testing/";
 const VIDEO_BASE = "managed-testing-explainer";
@@ -34,6 +38,17 @@ function useUtm(cta: string) {
     setQuery(params.toString());
   }, [cta]);
   return query;
+}
+
+// Long blocks start collapsed below the lg breakpoint (phones, tablets) and
+// stay open on desktop. Open on the server and on first render, so nothing is
+// hidden without JavaScript.
+function useCollapsedOnSmall() {
+  const [open, setOpen] = useState(true);
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 1024px)").matches) setOpen(false);
+  }, []);
+  return [open, setOpen] as const;
 }
 
 const track = (event: string, params: Record<string, string> = {}) => {
@@ -381,6 +396,10 @@ const FOR_CTO: Qa[] = [
 
 const FAQS: Qa[] = [
   {
+    q: "What if the pilot doesn't work out?",
+    a: `${GUARANTEE} We agree the flows in writing in week 1, so there is nothing to argue about at the end of week 3.`,
+  },
+  {
     q: "How fast do we see results?",
     a: "In the first week. The agent signs up as a stranger and walks your flows, and the first findings arrive with steps and screenshots. From week 2 the tests run from your CI or with one click.",
   },
@@ -443,7 +462,7 @@ const JSON_LD_VIDEO = {
   "@type": "VideoObject",
   name: "Managed testing in 90 seconds",
   description:
-    "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure. Voice: AI clone of Marcel Veselka's voice.",
+    "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure.",
   thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.jpg`,
   uploadDate: "2026-10-24",
   duration: "PT1M30S",
@@ -612,19 +631,26 @@ function BookButton({
   );
 }
 
-function RiskLine({ onDark }: { onDark?: boolean }) {
+function RiskLine({ onDark, short }: { onDark?: boolean; short?: boolean }) {
+  const check = onDark ? "text-primary-wopee" : "text-secondary-wopee dark:text-primary-wopee";
   return (
-    <p
-      className={`m-0 flex max-w-xl gap-2 text-sm leading-relaxed ${
+    <div
+      className={`flex max-w-xl flex-col gap-2 text-base sm:text-sm leading-relaxed ${
         onDark ? "text-white/80" : MUTED
       }`}
     >
-      <Check className={onDark ? "text-primary-wopee" : "text-secondary-wopee dark:text-primary-wopee"} />
-      <span>
-        6-week pilot with success criteria agreed in writing in week 1. Then
-        month to month, no annual contract.
-      </span>
-    </p>
+      <p className={`m-0 flex gap-2 font-semibold ${onDark ? "text-white" : "text-gray-900 dark:text-white"}`}>
+        <Check className={check} />
+        <span>{GUARANTEE}</span>
+      </p>
+      <p className={`m-0 gap-2 ${short ? "hidden sm:flex" : "flex"}`}>
+        <Check className={check} />
+        <span>
+          6-week pilot with success criteria agreed in writing in week 1. Then
+          month to month, no annual contract.
+        </span>
+      </p>
+    </div>
   );
 }
 
@@ -689,54 +715,65 @@ function ReleaseCard() {
 
 function Hero() {
   return (
-    <section className={`${DARK_BAND} px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20`}>
+    <section className={`${DARK_BAND} px-4 pb-12 pt-8 sm:px-6 sm:pb-24 sm:pt-20`}>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_30%_30%,black,transparent_75%)]"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-2xl border border-solid border-white/20 bg-white/5 px-3 py-1 text-xs sm:rounded-full font-semibold uppercase leading-relaxed tracking-[0.08em] text-white/85 sm:tracking-[0.16em]">
+          <span className="hidden items-center gap-2 rounded-2xl border border-solid border-white/20 bg-white/5 px-3 py-1 text-xs sm:rounded-full font-semibold uppercase leading-relaxed tracking-[0.08em] text-white/85 sm:inline-flex sm:tracking-[0.16em]">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary-wopee" />
             Managed testing for software companies without QA
           </span>
-          <h1 className="mt-balance mt-6 text-5xl font-extrabold leading-[1] tracking-tight text-white sm:text-6xl lg:text-[5.5rem]">
+          <h1 className="mt-balance mt-0 text-5xl sm:mt-6 font-extrabold leading-[1] tracking-tight text-white sm:text-6xl lg:text-[5.5rem]">
             We test.{" "}
             <span className="text-primary-wopee">You ship.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-xl font-semibold leading-snug text-white sm:text-2xl">
+          <p className="mt-4 max-w-xl text-lg font-semibold leading-snug text-white sm:mt-6 sm:text-2xl">
             Your ~10 most important flows, like sign-up and payment, tested
             before every release, so your customers don't find the bugs first.
           </p>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/75">
+          <p className="mt-3 max-w-xl text-base leading-snug text-white/80 sm:hidden">
+            We write and maintain the tests. A person checks every failure.
+          </p>
+          <p className="mt-4 hidden max-w-xl text-lg leading-relaxed text-white/75 sm:block">
             We write and maintain the tests, and a person on our team checks
             every failure. You get a green run, or a short list of real defects.
           </p>
-          <div className="mt-8 flex flex-col items-start gap-4">
+          <div className="mt-6 flex flex-col items-start gap-4 sm:mt-8">
             <BookButton cta="hero" onDark />
-            <RiskLine onDark />
-            <p className="m-0 text-sm text-white/65">
+            <RiskLine onDark short />
+            <p className="m-0 hidden text-base text-white/65 sm:block sm:text-sm">
               A founder looks at your product before the call. Written quote
               within one business day after it.
             </p>
             <a
               href="#send-your-url"
-              className={`inline-flex min-h-11 items-center rounded-sm text-sm font-semibold text-white underline decoration-white/40 decoration-1 underline-offset-4 hover:text-primary-wopee hover:decoration-primary-wopee ${FOCUS_ON_DARK}`}
+              className={`hidden min-h-11 items-center rounded-sm text-sm font-semibold text-white underline decoration-white/40 sm:inline-flex decoration-1 underline-offset-4 hover:text-primary-wopee hover:decoration-primary-wopee ${FOCUS_ON_DARK}`}
             >
               Not ready for a call? Send your URL, get 3 findings free
             </a>
           </div>
         </div>
-        <ReleaseCard />
+        <div className="hidden lg:block">
+          <ReleaseCard />
+        </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-4xl sm:mt-16">
+      <div className="mx-auto mt-8 max-w-4xl sm:mt-16">
         <ExplainerVideo
           base={VIDEO_BASE}
           title="Managed testing in 90 seconds"
           duration="90 s"
           pendingNote="The video is on its way. Everything it says is on this page."
         />
+        <a
+          href="#send-your-url"
+          className={`mt-3 inline-flex min-h-11 items-center rounded-sm text-base font-semibold text-white underline decoration-white/40 decoration-1 underline-offset-4 hover:text-primary-wopee sm:hidden ${FOCUS_ON_DARK}`}
+        >
+          Not ready for a call? Send your URL, get 3 findings free
+        </a>
       </div>
     </section>
   );
@@ -770,7 +807,7 @@ function Problem() {
             defect in sign-up.{" "}
             <Link
               to={STUDY}
-              className={`rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+              className={`inline-flex min-h-11 items-center rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
             >
               See the study
             </Link>
@@ -831,6 +868,7 @@ function ScreenshotSketch({ text }: { text: string }) {
 }
 
 function SampleReport() {
+  const [open, setOpen] = useCollapsedOnSmall();
   const green = SAMPLE_FLOWS.filter((f) => f.status === "pass").length;
   return (
     <figure className="m-0">
@@ -855,7 +893,7 @@ function SampleReport() {
         <div className="grid gap-0 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
           <ol className="m-0 list-none border-0 border-b border-solid border-gray-200 px-5 py-4 dark:border-white/10 sm:px-6 lg:border-b-0 lg:border-r">
             {SAMPLE_FLOWS.map((f, i) => (
-              <li key={f.flow} className="m-0 flex items-center justify-between gap-3 py-1.5 text-sm">
+              <li key={f.flow} className="m-0 flex items-center justify-between gap-3 py-1.5 text-base sm:text-sm">
                 <span className="flex min-w-0 gap-2">
                   <span className="w-5 shrink-0 text-right tabular-nums text-gray-500 dark:text-gray-400">
                     {i + 1}
@@ -868,6 +906,17 @@ function SampleReport() {
           </ol>
 
           <div className="flex flex-col gap-4 px-5 py-5 sm:px-6">
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls="sample-defects"
+              onClick={() => setOpen(!open)}
+              className={`inline-flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg border border-solid border-gray-300 bg-white px-4 text-base font-semibold text-gray-900 dark:border-white/20 dark:bg-white/[0.06] dark:text-white lg:hidden ${FOCUS}`}
+            >
+              {open ? "Hide the defect write-ups" : `Show the ${SAMPLE_DEFECTS.length} defect write-ups`}
+              <span aria-hidden="true">{open ? "−" : "+"}</span>
+            </button>
+            <div id="sample-defects" className={`flex-col gap-4 ${open ? "flex" : "hidden lg:flex"}`}>
             {SAMPLE_DEFECTS.map((d) => (
               <article key={d.title} className="rounded-xl border border-solid border-gray-200 p-4 dark:border-white/10">
                 <div className="text-xs font-semibold uppercase tracking-widest text-red-700 dark:text-red-300">
@@ -875,7 +924,7 @@ function SampleReport() {
                 </div>
                 <h3 className="mb-0 mt-1 text-base font-bold leading-snug">{d.title}</h3>
                 <div className="mt-3 flex flex-col gap-4">
-                  <ol className={`m-0 list-decimal space-y-1 pl-5 text-sm leading-relaxed ${MUTED}`}>
+                  <ol className={`m-0 list-decimal space-y-1 pl-5 text-base sm:text-sm leading-relaxed ${MUTED}`}>
                     {d.steps.map((s) => (
                       <li key={s} className="m-0">
                         {s}
@@ -884,7 +933,7 @@ function SampleReport() {
                   </ol>
                   <ScreenshotSketch text={d.screen} />
                 </div>
-                <p className="mb-0 mt-3 text-sm">
+                <p className="mb-0 mt-3 text-base sm:text-sm">
                   <strong>Business impact:</strong> {d.impact}
                 </p>
                 <p className="mb-0 mt-2 text-xs text-gray-500 dark:text-gray-400">
@@ -892,10 +941,11 @@ function SampleReport() {
                 </p>
               </article>
             ))}
+            </div>
           </div>
         </div>
       </div>
-      <figcaption className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+      <figcaption className="mt-3 text-base sm:text-sm text-gray-500 dark:text-gray-400">
         A sample built from invented demo data. Your report uses your flows and your release.
       </figcaption>
     </figure>
@@ -959,7 +1009,11 @@ function Offer() {
               </div>
             ))}
           </dl>
-          <p className="mb-0 mt-5 rounded-xl bg-white px-4 py-3 text-sm font-semibold dark:bg-white/[0.06]">
+          <p className="mb-0 mt-5 flex gap-2.5 rounded-xl border border-solid border-secondary-wopee/40 bg-white px-4 py-3 text-base font-bold leading-snug dark:border-primary-wopee/40 dark:bg-white/[0.06]">
+            <Check className="text-secondary-wopee dark:text-primary-wopee" />
+            <span>{GUARANTEE}</span>
+          </p>
+          <p className="mb-0 mt-3 rounded-xl bg-white px-4 py-3 text-sm font-semibold dark:bg-white/[0.06]">
             From you: a test account and about an hour a week.
           </p>
         </li>
@@ -975,7 +1029,7 @@ function Offer() {
           <div className="mt-auto pt-6">
             <div className="rounded-xl bg-white px-4 py-4 dark:bg-white/[0.06]">
               <div className="text-sm font-bold">Not included</div>
-              <p className={`mb-0 mt-1 text-sm leading-relaxed ${MUTED}`}>
+              <p className={`mb-0 mt-1 text-base sm:text-sm leading-relaxed ${MUTED}`}>
                 Fixing your bugs (that stays with your team), penetration tests
                 or legal audits, unit tests, and native mobile apps.
               </p>
@@ -1008,14 +1062,14 @@ function Offer() {
                 </span>
                 <div className="mt-2 text-base font-bold">
                   {g.link ? (
-                    <Link to={g.link} className={TEXT_LINK}>
+                    <Link to={g.link} className={`${TEXT_LINK} inline-flex min-h-11 items-center`}>
                       {g.name}
                     </Link>
                   ) : (
                     g.name
                   )}
                 </div>
-                <p className={`mb-0 mt-1 text-sm leading-relaxed ${MUTED}`}>{g.line}</p>
+                <p className={`mb-0 mt-1 text-base sm:text-sm leading-relaxed ${MUTED}`}>{g.line}</p>
               </li>
             ))}
           </ul>
@@ -1112,13 +1166,13 @@ function Trust() {
                 <span className={`block text-2xl font-extrabold tracking-tight tabular-nums sm:text-3xl ${ACCENT}`}>
                   {n.value}
                 </span>
-                <span className={`mt-1 block text-sm leading-snug ${MUTED}`}>{n.label}</span>
+                <span className={`mt-1 block text-base sm:text-sm leading-snug ${MUTED}`}>{n.label}</span>
               </li>
             ))}
           </ul>
-          <p className={`mb-0 mt-3 text-sm ${MUTED}`}>
+          <p className={`mb-0 mt-3 text-base sm:text-sm ${MUTED}`}>
             From our latest public research batch.{" "}
-            <Link to={STUDY} className={TEXT_LINK}>
+            <Link to={STUDY} className={`${TEXT_LINK} inline-flex min-h-11 items-center`}>
               Read how we tested 28 SaaS products
             </Link>
           </p>
@@ -1244,7 +1298,7 @@ function Compare() {
             >
               <div className="text-lg font-extrabold leading-tight">{o.name}</div>
               <div
-                className={`mt-1 text-sm ${o.highlight ? "text-white/80" : MUTED}`}
+                className={`mt-1 text-base sm:text-sm ${o.highlight ? "text-white/80" : MUTED}`}
               >
                 {o.who}
               </div>
@@ -1260,7 +1314,7 @@ function Compare() {
                 className="border-0 border-t border-solid border-gray-200 px-4 py-4 dark:border-white/10"
               >
                 <div className="text-base font-bold">{m.name}</div>
-                <div className={`mt-0.5 text-sm leading-snug ${MUTED}`}>
+                <div className={`mt-0.5 text-base sm:text-sm leading-snug ${MUTED}`}>
                   {m.question}
                 </div>
               </div>
@@ -1285,7 +1339,7 @@ function Compare() {
       </div>
 
       {/* Phones and tablets: one card per option, swipe sideways. */}
-      <p className={`mb-3 mt-0 text-sm lg:hidden ${MUTED}`}>
+      <p className={`mb-3 mt-0 text-base sm:text-sm lg:hidden ${MUTED}`}>
         Swipe to compare all four.
       </p>
       <ul
@@ -1303,7 +1357,7 @@ function Compare() {
             }`}
           >
             <div className="text-lg font-extrabold leading-tight">{o.name}</div>
-            <div className={`mt-1 text-sm ${o.highlight ? "text-white/80" : MUTED}`}>
+            <div className={`mt-1 text-base sm:text-sm ${o.highlight ? "text-white/80" : MUTED}`}>
               {o.who}
             </div>
             <dl className="m-0 mt-4 space-y-3.5">
@@ -1327,7 +1381,7 @@ function Compare() {
         ))}
       </ul>
 
-      <p className={`mb-0 mt-4 text-sm ${MUTED}`}>
+      <p className={`mb-0 mt-4 text-base sm:text-sm ${MUTED}`}>
         Prefer to run it yourself? License prices are public, per user per month, on the{" "}
         <Link to={PRICING} className={TEXT_LINK}>
           pricing page
@@ -1365,7 +1419,8 @@ function ForwardButton({ anchor, who }: { anchor: string; who: string }) {
   );
 }
 
-function QaColumn({ id, role, items, forward }: { id: string; role: string; items: Qa[]; forward: string }) {
+function QaColumn({ id, role, items, forward, topics }: { id: string; role: string; items: Qa[]; forward: string; topics: string }) {
+  const [open, setOpen] = useCollapsedOnSmall();
   return (
     <div id={id} className={`${CARD} flex scroll-mt-24 flex-col px-5 py-6 sm:px-7`}>
       <h3 className="m-0 flex items-center gap-3 text-xl font-extrabold">
@@ -1374,7 +1429,17 @@ function QaColumn({ id, role, items, forward }: { id: string; role: string; item
         </span>
         Questions we hear from the {role}
       </h3>
-      <dl className="m-0 mb-6 mt-5 space-y-5">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={`${id}-answers`}
+        onClick={() => setOpen(!open)}
+        className={`mt-4 mb-3 inline-flex min-h-11 cursor-pointer items-center justify-between gap-3 text-left rounded-lg border border-solid border-gray-300 bg-white px-4 text-base font-semibold text-gray-900 dark:border-white/20 dark:bg-white/[0.06] dark:text-white lg:hidden ${FOCUS}`}
+      >
+        {open ? "Hide the answers" : `Show ${items.length} answers on ${topics}`}
+        <span aria-hidden="true">{open ? "−" : "+"}</span>
+      </button>
+      <dl id={`${id}-answers`} className={`m-0 mb-6 mt-5 space-y-5 ${open ? "" : "hidden lg:block"}`}>
         {items.map((it) => (
           <div key={it.q}>
             <dt className="text-base font-bold">{it.q}</dt>
@@ -1396,17 +1461,240 @@ function Decide() {
       intro="Money, risk and time on one side. Access, CI, noise and ownership on the other. Send each half to the person who asks."
     >
       <div className="grid gap-4 lg:grid-cols-2">
-        <QaColumn id="for-ceo" role="CEO" items={FOR_CEO} forward="CTO" />
-        <QaColumn id="for-cto" role="CTO" items={FOR_CTO} forward="CEO" />
+        <QaColumn id="for-ceo" role="CEO" items={FOR_CEO} forward="CTO" topics="cost, risk and time" />
+        <QaColumn id="for-cto" role="CTO" items={FOR_CTO} forward="CEO" topics="access, CI and ownership" />
       </div>
     </Section>
+  );
+}
+
+const INPUT =
+  "block min-h-12 w-full rounded-lg border border-solid border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-500 dark:border-white/20 dark:bg-white/[0.06] dark:text-white dark:placeholder:text-gray-400 " +
+  FOCUS;
+
+// Trim, add https:// when no scheme is given, and accept only an http(s)
+// address whose host has a dot. Anything with "@" or a space is refused, so an
+// e-mail address typed into the URL field never passes.
+function normalizeUrl(raw: string): string | null {
+  const value = raw.trim();
+  if (!value || /[\s@]/.test(value)) return null;
+  const hasScheme = /^[a-z][a-z0-9+.-]*:(\/\/|(?!\d))/i.test(value);
+  if (hasScheme && !/^https?:\/\//i.test(value)) return null;
+  try {
+    const u = new URL(hasScheme ? value : `https://${value}`);
+    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+    if (u.username || u.password) return null;
+    const labels = u.hostname.split(".");
+    if (labels.length < 2 || labels.some((l) => !l) || !/^[a-z]{2,}$|^xn--/i.test(labels[labels.length - 1]))
+      return null;
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
+const FREE_MAIL = /@(gmail|googlemail|yahoo|hotmail|outlook|live|icloud|me|aol|proton|protonmail|gmx|seznam|centrum|azet|post)\./i;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
+
+function UrlForm() {
+  const utm = useUtm("url-check");
+  const [step, setStep] = useState<1 | 2>(1);
+  const [url, setUrl] = useState("");
+  const [email, setEmail] = useState("");
+  const [fieldError, setFieldError] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const urlRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (step === 2) emailRef.current?.focus();
+  }, [step]);
+  useEffect(() => {
+    if (status === "done" || status === "error") resultRef.current?.focus();
+  }, [status]);
+
+  const bookingHref = `${HUBSPOT_MEETINGS}?${utm}`;
+
+  const next = (e: React.FormEvent) => {
+    e.preventDefault();
+    const clean = normalizeUrl(url);
+    if (!clean) {
+      setFieldError("Enter your website address, e.g. https://yourapp.com");
+      urlRef.current?.focus();
+      return;
+    }
+    setFieldError("");
+    setUrl(clean);
+    setStep(2);
+    track("managed_testing_url_step1");
+  };
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!EMAIL_RE.test(email.trim())) {
+      setFieldError("Enter a valid e-mail address, e.g. you@yourcompany.com");
+      emailRef.current?.focus();
+      return;
+    }
+    setFieldError("");
+    setStatus("sending");
+    const params = new URLSearchParams(utm);
+    const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
+    try {
+      const res = await fetch(HUBSPOT_SUBMIT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: [
+            { name: "website", value: url },
+            { name: "email", value: email.trim() },
+            { name: "utm_source", value: params.get("utm_source") ?? "" },
+            { name: "utm_medium", value: params.get("utm_medium") ?? "" },
+            { name: "utm_campaign", value: params.get("utm_campaign") ?? "" },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+            ...(hutk ? { hutk } : {}),
+          },
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("done");
+      track("managed_testing_url_submit");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "done") {
+    return (
+      <div ref={resultRef} tabIndex={-1} role="status" className={`${CARD} px-5 py-5 outline-none`}>
+        <p className="m-0 flex gap-2.5 text-lg font-bold">
+          <Check className="text-secondary-wopee dark:text-primary-wopee" />
+          <span>Thanks. We'll send your 3 findings within 2 business days.</span>
+        </p>
+      </div>
+    );
+  }
+
+  const label = "mb-1.5 block text-sm font-bold";
+  return (
+    <div className={`${CARD} px-5 py-5`}>
+      <p className={`m-0 mb-3 font-mono text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}>
+        Step {step} of 2
+      </p>
+      {step === 1 ? (
+        <form onSubmit={next} noValidate>
+          <label htmlFor="mt-url" className={label}>
+            Your product's URL
+          </label>
+          <input
+            ref={urlRef}
+            id="mt-url"
+            name="website"
+            type="url"
+            inputMode="url"
+            autoComplete="url"
+            autoCapitalize="none"
+            spellCheck={false}
+            placeholder="https://yourapp.com"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            aria-invalid={fieldError ? true : undefined}
+            aria-describedby={fieldError ? "mt-form-error" : undefined}
+            className={INPUT}
+          />
+          {fieldError ? (
+            <p id="mt-form-error" role="alert" className="m-0 mt-2 text-sm font-semibold text-red-700 dark:text-red-300">
+              {fieldError}
+            </p>
+          ) : null}
+          <button type="submit" id="cta-managed-testing-url-check" className={`${BUTTON_PRIMARY} mt-4 w-full sm:w-auto`}>
+            Next
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      ) : (
+        <form onSubmit={submit} noValidate>
+          <p className={`m-0 mb-4 break-all text-base sm:text-sm ${MUTED}`}>
+            Checking <strong className="text-gray-900 dark:text-white">{url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</strong>{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setStep(1);
+                setStatus("idle");
+                setFieldError("");
+              }}
+              className={`cursor-pointer border-0 bg-transparent p-0 text-sm ${TEXT_LINK}`}
+            >
+              Change
+            </button>
+          </p>
+          <label htmlFor="mt-email" className={label}>
+            Your work e-mail
+          </label>
+          <input
+            ref={emailRef}
+            id="mt-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="you@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-invalid={fieldError ? true : undefined}
+            aria-describedby={fieldError ? "mt-form-error mt-email-hint" : "mt-email-hint"}
+            className={INPUT}
+          />
+          {fieldError ? (
+            <p id="mt-form-error" role="alert" className="m-0 mt-2 text-sm font-semibold text-red-700 dark:text-red-300">
+              {fieldError}
+            </p>
+          ) : null}
+          <p id="mt-email-hint" aria-live="polite" className={`m-0 mt-2 text-sm ${MUTED}`}>
+            {FREE_MAIL.test(email)
+              ? "A work e-mail helps us match the findings to your team. A personal one works too."
+              : "Use your work e-mail, so the findings reach your team."}
+          </p>
+          <button
+            type="submit"
+            id="cta-managed-testing-url-send"
+            disabled={status === "sending"}
+            className={`${BUTTON_PRIMARY} mt-4 w-full sm:w-auto`}
+          >
+            {status === "sending" ? "Sending…" : "Get my 3 findings"}
+          </button>
+          {status === "error" ? (
+            <div ref={resultRef} tabIndex={-1} role="alert" className="mt-4 text-base sm:text-sm font-semibold outline-none">
+              That didn't go through.{" "}
+              <a
+                href={bookingHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("managed_testing_cta", { cta: "url-check-fallback" })}
+                className={TEXT_LINK}
+              >
+                Book a call instead
+              </a>{" "}
+              and send your URL there.
+            </div>
+          ) : null}
+        </form>
+      )}
+      <p className={`m-0 mt-4 text-xs leading-relaxed ${MUTED}`}>
+        We use your e-mail only to send the findings and one follow-up.
+      </p>
+    </div>
   );
 }
 
 function SendUrl() {
   return (
     <section id="send-your-url" className="scroll-mt-24 pt-16 sm:pt-24">
-      <div className="grid gap-6 rounded-2xl border-2 border-dashed border-secondary-wopee/50 px-5 py-8 dark:border-primary-wopee/50 sm:px-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
+      <div className="grid gap-6 rounded-2xl border-2 border-dashed border-secondary-wopee/50 px-5 py-8 dark:border-primary-wopee/50 sm:px-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-start">
         <div>
           <span className={`text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}>
             Not ready for a call?
@@ -1415,40 +1703,30 @@ function SendUrl() {
             Send your URL, get 3 findings free
           </h2>
           <p className={`mb-0 mt-3 text-base leading-relaxed ${MUTED}`}>
-            Send Marcel your product's URL. An agent signs up as a stranger and
+            Send us your product's URL. An agent signs up as a stranger and
             walks your first steps, and you get 3 findings with steps and
-            screenshots. If we find fewer, you hear that too. Nothing from the
-            check is ever posted.
+            screenshots within 2 business days. If we find fewer, you hear that
+            too. Nothing from the check is ever posted.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="cta-managed-testing-url-check"
-              onClick={() => track("managed_testing_cta", { cta: "url-check" })}
-              className={BUTTON_OUTLINE}
-            >
-              Send your URL on LinkedIn
-            </a>
+          <ol aria-label="How the free check works" className="m-0 mt-6 list-none space-y-2 pl-0">
+            {["Your URL", "We sign up as a stranger", "3 findings in your inbox"].map((s, i) => (
+              <li key={s} className="m-0 flex items-center gap-3 rounded-xl bg-gray-50 px-4 py-3 font-semibold dark:bg-white/[0.05]">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee font-mono text-xs font-bold text-white dark:bg-primary-wopee dark:text-[#1a1124]">
+                  {i + 1}
+                </span>
+                {s}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div>
+          <UrlForm />
+          <p className="m-0 mt-4">
             <a href="#book" className={`inline-flex min-h-11 items-center text-sm ${TEXT_LINK}`}>
               or bring it to a pilot call
             </a>
-            <span className={`basis-full text-sm ${MUTED}`}>
-              Opens Marcel's LinkedIn profile. Message him your URL there.
-            </span>
-          </div>
+          </p>
         </div>
-        <ol aria-label="How the free check works" className="m-0 list-none space-y-2 pl-0">
-          {["Your URL", "We sign up as a stranger", "3 findings in your inbox"].map((s, i) => (
-            <li key={s} className="m-0 flex items-center gap-3 rounded-xl bg-gray-50 px-4 py-3 font-semibold dark:bg-white/[0.05]">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee font-mono text-xs font-bold text-white dark:bg-primary-wopee dark:text-[#1a1124]">
-                {i + 1}
-              </span>
-              {s}
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
@@ -1619,11 +1897,11 @@ function Book() {
               <span>No deck. No sales sequence afterwards.</span>
             </p>
           </div>
-          <p className="mb-0 mt-6 text-sm text-white/70">
+          <p className="mb-0 mt-6 text-base sm:text-sm text-white/70">
             Prefer to run the tests yourself?{" "}
             <Link
               to={PRICING}
-              className={`rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+              className={`inline-flex min-h-11 items-center rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
             >
               See license pricing
             </Link>
@@ -1641,20 +1919,35 @@ function StickyCta() {
   useEffect(() => {
     const hero = document.getElementById("cta-managed-testing-hero");
     const book = document.getElementById("book");
+    const urlSection = document.getElementById("send-your-url");
     if (!hero || !book || !("IntersectionObserver" in window)) return;
     let heroVisible = true;
     let bookVisible = false;
-    const update = () => setShow(!heroVisible && !bookVisible);
+    let urlVisible = false;
+    const update = () => setShow(!heroVisible && !bookVisible && !urlVisible);
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.target === hero) heroVisible = e.isIntersecting || e.boundingClientRect.top > 0;
         if (e.target === book) bookVisible = e.isIntersecting;
+        if (e.target === urlSection) urlVisible = e.isIntersecting;
       }
       update();
     });
     io.observe(hero);
     io.observe(book);
-    return () => io.disconnect();
+    if (urlSection) io.observe(urlSection);
+    // The on-screen keyboard would put the bar on top of the field being typed in.
+    const isField = (t: EventTarget | null) =>
+      t instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
+    const onIn = (e: FocusEvent) => isField(e.target) && setShow(false);
+    const onOut = (e: FocusEvent) => isField(e.target) && update();
+    document.addEventListener("focusin", onIn);
+    document.addEventListener("focusout", onOut);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("focusin", onIn);
+      document.removeEventListener("focusout", onOut);
+    };
   }, []);
 
   return (
