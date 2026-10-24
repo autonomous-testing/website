@@ -106,7 +106,7 @@ const enterpriseFeatures = [
   "Bring your own LLM",
 ];
 
-const faqs: { q: string; a: string }[] = [
+const faqs: { q: string; a: React.ReactNode }[] = [
   {
     q: "Do I need a credit card to start?",
     a: "No. You can start using Wopee.io completely free, no credit card, no commitment. Upgrade only when you're ready.",
@@ -134,6 +134,25 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "Do you offer discounts for startups, students, or open source?",
     a: "Yes, early-stage startups, students, and OSS maintainers can apply for a discounted plan. Just talk to our founders.",
+  },
+  {
+    q: "Can you run the tests for us instead?",
+    a: (
+      <>
+        Yes. With the{" "}
+        <Link
+          to="/managed-testing/"
+          className="font-semibold text-secondary-wopee underline underline-offset-4 dark:text-primary-wopee"
+        >
+          managed testing service
+        </Link>{" "}
+        we write, run and maintain the tests for your critical flows, and a
+        person reviews every failure before it reaches you. It's priced by your
+        flows and release cadence, not per user, and starts with a 6-week
+        managed pilot. The license prices on this page are for teams that run
+        the agents themselves.
+      </>
+    ),
   },
   {
     q: "Is my data and source code safe?",
@@ -317,6 +336,32 @@ export default function Pricing(): JSX.Element {
             </div>
           </div>
         </GradientCard>
+
+        {/* MANAGED SERVICE STRIP */}
+        <div className="w-full max-w-5xl rounded-2xl border border-solid border-gray-200 bg-gray-50/60 px-6 py-6 dark:border-gray-800 dark:bg-gray-900 md:px-8 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+          <div className="min-w-0 flex-1 text-left">
+            <div className="text-xs font-semibold uppercase tracking-wider text-secondary-wopee dark:text-primary-wopee mb-2">
+              Managed testing service
+            </div>
+            <h3 className="text-xl xl:text-2xl font-bold m-0 mb-3 leading-tight">
+              Don't want to run it yourself? We can.
+            </h3>
+            <p className="m-0 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              We write, run and maintain the tests for your ~10 critical flows,
+              and a person reviews every failure. Priced by your flows and
+              release cadence, not per user, and told to you on a 30-minute
+              call. Starts with a 6-week managed pilot.
+            </p>
+          </div>
+          <div className="lg:flex-shrink-0">
+            <Link
+              to="/managed-testing/"
+              className="inline-flex min-h-11 items-center justify-center whitespace-nowrap w-full lg:w-auto rounded-lg border border-solid border-secondary-wopee px-5 py-2.5 text-center text-sm font-semibold text-secondary-wopee no-underline transition ease-out hover:bg-secondary-wopee/10 hover:text-secondary-wopee hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:border-primary-wopee dark:text-primary-wopee dark:hover:bg-primary-wopee/10 dark:hover:text-primary-wopee dark:focus-visible:outline-primary-wopee md:text-base"
+            >
+              See the managed service
+            </Link>
+          </div>
+        </div>
 
         {/* INTEGRATIONS STRIP */}
         <div className="w-full max-w-5xl">

@@ -69,7 +69,7 @@ const FAQS = [
     answer: (
       <div className="space-y-4">
         <p>
-          Every <a href="/pilot/">pilot project</a> measures your own baseline in Sprint 1 and compares against it in Sprint 8, so the return is reported against your numbers rather than someone else's. We do not quote percentages from other customers as your expected result, because every application and team is different.
+          Every <a href="/pilot/">enterprise pilot</a> measures your own baseline in Sprint 1 and compares against it in Sprint 8, so the return is reported against your numbers rather than someone else's. We do not quote percentages from other customers as your expected result, because every application and team is different.
         </p>
         <p>Expect improvements in key testing metrics such as:</p>
         <ul className="list-disc pl-5">
@@ -320,6 +320,9 @@ const FAQS = [
           <li>Enhanced onboarding and support</li>
           <li>Help with integrations and customizations where needed</li>
         </ul>
+        <p>
+          Don't want to run the tests yourself? With the <a href="/managed-testing/">managed testing service</a> we write, run and maintain them for your critical flows, and a person reviews every failure. It is priced by your flows and release cadence, not per user.
+        </p>
       </div>
     ),
   },
@@ -327,8 +330,10 @@ const FAQS = [
     question: "Do you offer onboarding, training or a pilot project?",
     answer: (
       <div className="space-y-4">
-        <p>Yes. The preferred way to start with larger teams is an <a href="/pilot/">8-week pilot project</a>: up to 10 critical flows of one web application, a baseline measured in Sprint 1, and a go or no-go decision at the end of Sprint 8.</p>
-        <p>In a typical pilot, we:</p>
+        <p>Yes, and there are two pilots, depending on who does the testing.</p>
+        <p>The <a href="/pilot/">8-week enterprise pilot</a> is for QA teams: up to 10 critical flows of one web application, your people build the tests with our coaching, a baseline measured in Sprint 1, and a go or no-go decision at the end of Sprint 8.</p>
+        <p>The <a href="/managed-testing/">6-week managed pilot</a> is for teams without QA: we write, run and maintain the tests for your ~10 critical flows, a person reviews every failure, and you give about an hour a week.</p>
+        <p>In a typical enterprise pilot, we:</p>
         <ul className="list-disc pl-5">
           <li>Run an onboarding workshop and set up project context</li>
           <li>Share best practices from previous implementations</li>

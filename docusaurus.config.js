@@ -12,6 +12,7 @@ const {
   mdiShieldCheckOutline,
   mdiScaleBalance,
   mdiPuzzleOutline,
+  mdiAccountCheckOutline,
 } = require("@mdi/js");
 
 // Rich navbar dropdown rows: icon tile + title + one-line description.
@@ -295,6 +296,7 @@ const config = {
             items: [
               { to: "/how-it-works/", html: navRichItem("How it works", "From URL to reviewed tests, step by step", mdiRoutes) },
               { to: "/ai-testing-agents/", html: navRichItem("AI Testing Agents", "Autonomous agents that test your web app", mdiRobotOutline) },
+              { to: "/managed-testing/", html: navRichItem("Managed testing", "We write, run and maintain your tests", mdiAccountCheckOutline) },
               { to: "/visual-testing/", html: navRichItem("Visual Testing", "Catch visual regressions on every run", mdiEyeCheckOutline) },
               { to: "/mcp/", html: navRichItem("MCP Server", "Test from Claude, Cursor, and other AI tools", mdiConnection) },
               { to: "/integrations/", html: navRichItem("Integrations", "Slack, GitHub, CI, MCP, and your stack", mdiPuzzleOutline) },

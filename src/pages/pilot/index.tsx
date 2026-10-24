@@ -1,6 +1,7 @@
 import React from "react";
 
 import Head from "@docusaurus/Head";
+import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
@@ -278,9 +279,18 @@ export default function PilotPage() {
       </Head>
 
       <main className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+        <p className="mx-auto mb-8 max-w-2xl rounded-lg border border-solid border-gray-200 px-4 py-2.5 text-center text-sm text-gray-600 dark:border-white/10 dark:text-gray-300">
+          Built for enterprise QA teams. Small SaaS team without QA?{" "}
+          <Link
+            to="/managed-testing/"
+            className="rounded-sm font-semibold text-secondary-wopee underline underline-offset-4 dark:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee"
+          >
+            See the 6-week managed pilot →
+          </Link>
+        </p>
         <header className="text-center">
           <span className="inline-block rounded-full border border-solid border-secondary-wopee/40 bg-secondary-wopee/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary-wopee dark:border-primary-wopee/40 dark:bg-primary-wopee/10 dark:text-primary-wopee">
-            Pilot project
+            Enterprise pilot
           </span>
           <h1 className="mt-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
             Prove autonomous testing on your application in 8 weeks
