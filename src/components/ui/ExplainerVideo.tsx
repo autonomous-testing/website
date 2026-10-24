@@ -10,7 +10,6 @@ type Props = {
   base: string;
   title: string;
   duration: string;
-  disclosure: string;
   pendingNote: string;
 };
 
@@ -25,7 +24,6 @@ export default function ExplainerVideo({
   base,
   title,
   duration,
-  disclosure,
   pendingNote,
 }: Props) {
   const [availability, setAvailability] = useState<Availability>("checking");
@@ -132,27 +130,41 @@ export default function ExplainerVideo({
                 type="button"
                 onClick={start}
                 aria-label={`Play: ${title} (${duration}, with sound)`}
-                className="group absolute inset-0 flex cursor-pointer items-center justify-center border-0 bg-black/10 p-0 transition hover:bg-black/0 focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-primary-wopee"
+                className="group absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-3 border-0 bg-transparent bg-[radial-gradient(circle_at_center,rgba(11,10,16,0.6)_0%,rgba(11,10,16,0.25)_28%,transparent_55%)] p-0 focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-primary-wopee"
               >
-                <span className="flex items-center gap-3 rounded-full bg-primary-wopee py-3 pl-4 pr-6 text-base font-bold text-[#1a1124] shadow-lg transition group-hover:scale-105 motion-reduce:transition-none">
-                  <svg
+                <span className="relative flex h-[72px] w-[72px] items-center justify-center sm:h-24 sm:w-24">
+                  <span
                     aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-6 w-6 fill-current"
+                    className="absolute inset-0 rounded-full bg-primary-wopee/40 opacity-0 transition duration-500 group-hover:scale-[1.35] group-hover:opacity-100 group-focus-visible:scale-[1.35] group-focus-visible:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="relative flex h-full w-full items-center justify-center rounded-full bg-primary-wopee text-[#1a1124] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.75)] ring-4 ring-black/20 transition duration-300 group-hover:scale-105 group-focus-visible:ring-white motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   >
-                    <path d="M8 5.5v13l11-6.5z" />
-                  </svg>
-                  Play · {duration}
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="ml-1 h-8 w-8 fill-current sm:h-10 sm:w-10"
+                    >
+                      <path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.5-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z" />
+                    </svg>
+                  </span>
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="rounded-full bg-black/60 px-3 py-1 text-sm font-semibold text-white backdrop-blur-sm"
+                >
+                  Watch · {duration}
                 </span>
               </button>
             ) : null}
           </>
         )}
       </div>
-      <figcaption className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-sm text-white/70">
-        <span className="font-semibold text-white">{title}</span>
-        <span>{availability === "missing" ? pendingNote : disclosure}</span>
-      </figcaption>
+      {availability === "missing" ? (
+        <figcaption className="mt-3 text-sm text-white/70">{pendingNote}</figcaption>
+      ) : (
+        <figcaption className="sr-only">{title}</figcaption>
+      )}
     </figure>
   );
 }

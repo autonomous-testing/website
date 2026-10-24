@@ -735,7 +735,6 @@ function Hero() {
           base={VIDEO_BASE}
           title="Managed testing in 86 seconds"
           duration="86 s"
-          disclosure="Voice: AI clone of Marcel Veselka's voice."
           pendingNote="The video is on its way. Everything it says is on this page."
         />
       </div>
@@ -767,7 +766,7 @@ function Problem() {
             24 of 28
           </div>
           <p className="mb-0 mt-3 text-base leading-relaxed text-white/90">
-            SaaS products we signed up for as strangers in October 2026 had a
+            SaaS products we signed up for as strangers in our latest research batch had a
             defect in sign-up.{" "}
             <Link
               to={STUDY}
@@ -1118,7 +1117,7 @@ function Trust() {
             ))}
           </ul>
           <p className={`mb-0 mt-3 text-sm ${MUTED}`}>
-            From our public October 2026 study.{" "}
+            From our latest public research batch.{" "}
             <Link to={STUDY} className={TEXT_LINK}>
               Read how we tested 28 SaaS products
             </Link>

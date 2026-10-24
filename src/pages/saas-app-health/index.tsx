@@ -335,7 +335,7 @@ const PILOT_STEPS: PilotStep[] = [
     ],
     proof: (
       <>
-        In October: <strong>median 1 h 41 min</strong> from starting on a new
+        In our latest research batch: <strong>median 1 h 41 min</strong> from starting on a new
         product to its first filed findings (13 products timed).
       </>
     ),
@@ -365,7 +365,7 @@ const PILOT_STEPS: PilotStep[] = [
     ],
     proof: (
       <>
-        In October, <strong>15 of 381 findings</strong> didn't hold up on our
+        In our latest research batch, <strong>15 of 381 findings</strong> didn't hold up on our
         own re-check. We closed them ourselves.
       </>
     ),
@@ -947,7 +947,7 @@ export default function SaasAppHealthPage() {
               aria-hidden="true"
               className="h-1.5 w-1.5 rounded-full bg-primary-wopee"
             />
-            SaaS app health · October 2026
+            SaaS app health · research batch
           </span>
           <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
             We signed up for 28 SaaS products as strangers.{" "}
@@ -959,7 +959,7 @@ export default function SaasAppHealthPage() {
           <p
             className={`mx-auto mt-4 max-w-2xl text-base leading-relaxed sm:text-lg ${MUTED}`}
           >
-            In October we did what your next customer does: started the free
+            In our latest research batch we did what your next customer does: started the free
             trials of 28 SaaS products, signed up and tried the ~10 flows that
             matter. A person re-checked the findings. One trial form failed on
             the first submit, every time. The second try worked. None of it
