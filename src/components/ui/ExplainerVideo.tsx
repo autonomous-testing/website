@@ -28,10 +28,9 @@ export default function ExplainerVideo({
 }: Props) {
   const [availability, setAvailability] = useState<Availability>("checking");
   const [posterSrc, setPosterSrc] = useState<string | null>(
-    `/video/${base}-poster.webp`
+    `/video/${base}-poster.webp`,
   );
   const [playing, setPlaying] = useState(false);
-  const [src, setSrc] = useState(`/video/${base}.mp4`);
   const videoRef = useRef<HTMLVideoElement>(null);
   const milestones = useRef(new Set<number>());
 
@@ -43,7 +42,9 @@ export default function ExplainerVideo({
       .then((res) => {
         const type = res.headers.get("content-type") ?? "";
         if (!cancelled)
-          setAvailability(res.ok && type.startsWith("video/") ? "ready" : "missing");
+          setAvailability(
+            res.ok && type.startsWith("video/") ? "ready" : "missing",
+          );
       })
       .catch(() => !cancelled && setAvailability("missing"));
     return () => {
@@ -53,22 +54,24 @@ export default function ExplainerVideo({
 
   const onPosterError = () => {
     setPosterSrc((current) =>
-      current?.endsWith(".webp") ? `/video/${base}-poster.jpg` : null
+      current?.endsWith(".webp") ? `/video/${base}-poster.jpg` : null,
     );
   };
 
+  // The <video> stays mounted from the first render and play() runs inside the
+  // tap handler: iOS Safari leaves a play() that is called on a freshly mounted
+  // preload="none" element pending forever (readyState 0, no request sent).
   const start = () => {
+    const v = videoRef.current;
+    if (!v) return;
     const small = window.matchMedia("(max-width: 767px)").matches;
-    setSrc(`/video/${base}${small ? "-720" : ""}.mp4`);
+    v.src = `/video/${base}${small ? "-720" : ""}.mp4`;
+    v.load();
+    v.play().catch(() => undefined);
     setPlaying(true);
+    v.focus();
     track("explainer_play", { video: base });
   };
-
-  useEffect(() => {
-    if (!playing) return;
-    videoRef.current?.focus();
-    videoRef.current?.play().catch(() => undefined);
-  }, [playing]);
 
   const onTimeUpdate = () => {
     const v = videoRef.current;
@@ -92,28 +95,27 @@ export default function ExplainerVideo({
       <div
         className={`relative ${frame} w-full max-w-full overflow-hidden rounded-2xl border border-solid border-white/15 bg-[#0b0a10] shadow-[0_30px_80px_-30px_rgba(112,48,160,0.65)]`}
       >
-        {playing ? (
-          <video
-            ref={videoRef}
-            tabIndex={0}
-            controls
-            playsInline
-            preload="none"
-            poster={posterSrc ?? undefined}
-            className="absolute inset-0 h-full w-full bg-black"
-            aria-label={title}
-            onTimeUpdate={onTimeUpdate}
-            onEnded={() => track("explainer_complete", { video: base })}
-          >
-            <source src={src} type="video/mp4" />
-            <track
-              kind="captions"
-              src={`/video/${base}.vtt`}
-              srcLang="en"
-              label="English"
-            />
-          </video>
-        ) : (
+        <video
+          ref={videoRef}
+          tabIndex={playing ? 0 : -1}
+          aria-hidden={playing ? undefined : true}
+          controls={playing}
+          playsInline
+          preload="none"
+          poster={posterSrc ?? undefined}
+          className={`absolute inset-0 h-full w-full bg-black ${playing ? "" : "invisible"}`}
+          aria-label={title}
+          onTimeUpdate={onTimeUpdate}
+          onEnded={() => track("explainer_complete", { video: base })}
+        >
+          <track
+            kind="captions"
+            src={`/video/${base}.vtt`}
+            srcLang="en"
+            label="English"
+          />
+        </video>
+        {!playing ? (
           <>
             {posterSrc ? (
               <img
@@ -158,10 +160,12 @@ export default function ExplainerVideo({
               </button>
             ) : null}
           </>
-        )}
+        ) : null}
       </div>
       {availability === "missing" ? (
-        <figcaption className="mt-3 text-sm text-white/70">{pendingNote}</figcaption>
+        <figcaption className="mt-3 text-sm text-white/70">
+          {pendingNote}
+        </figcaption>
       ) : (
         <figcaption className="sr-only">{title}</figcaption>
       )}
