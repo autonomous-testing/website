@@ -1472,19 +1472,30 @@ const INPUT =
   "block min-h-12 w-full rounded-lg border border-solid border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-500 dark:border-white/20 dark:bg-white/[0.06] dark:text-white dark:placeholder:text-gray-400 " +
   FOCUS;
 
+// Trim, add https:// when no scheme is given, and accept only an http(s)
+// address whose host has a dot. Anything with "@" or a space is refused, so an
+// e-mail address typed into the URL field never passes.
 function normalizeUrl(raw: string): string | null {
   const value = raw.trim();
-  if (!value || /\s/.test(value)) return null;
-  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  if (!value || /[\s@]/.test(value)) return null;
+  const hasScheme = /^[a-z][a-z0-9+.-]*:(\/\/|(?!\d))/i.test(value);
+  if (hasScheme && !/^https?:\/\//i.test(value)) return null;
   try {
-    const u = new URL(withScheme);
-    return u.hostname.includes(".") ? u.toString() : null;
+    const u = new URL(hasScheme ? value : `https://${value}`);
+    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+    if (u.username || u.password) return null;
+    const labels = u.hostname.split(".");
+    if (labels.length < 2 || labels.some((l) => !l) || !/^[a-z]{2,}$|^xn--/i.test(labels[labels.length - 1]))
+      return null;
+    return u.toString();
   } catch {
     return null;
   }
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const FREE_MAIL = /@(gmail|googlemail|yahoo|hotmail|outlook|live|icloud|me|aol|proton|protonmail|gmx|seznam|centrum|azet|post)\./i;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
 
 function UrlForm() {
   const utm = useUtm("url-check");
@@ -1510,7 +1521,7 @@ function UrlForm() {
     e.preventDefault();
     const clean = normalizeUrl(url);
     if (!clean) {
-      setFieldError("Enter your product's address, like app.example.com.");
+      setFieldError("Enter your website address, e.g. https://yourapp.com");
       urlRef.current?.focus();
       return;
     }
@@ -1523,7 +1534,7 @@ function UrlForm() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!EMAIL_RE.test(email.trim())) {
-      setFieldError("Enter a work e-mail address we can send the findings to.");
+      setFieldError("Enter a valid e-mail address, e.g. you@yourcompany.com");
       emailRef.current?.focus();
       return;
     }
@@ -1584,12 +1595,12 @@ function UrlForm() {
             ref={urlRef}
             id="mt-url"
             name="website"
-            type="text"
+            type="url"
             inputMode="url"
             autoComplete="url"
             autoCapitalize="none"
             spellCheck={false}
-            placeholder="app.example.com"
+            placeholder="https://yourapp.com"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             aria-invalid={fieldError ? true : undefined}
@@ -1635,7 +1646,7 @@ function UrlForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             aria-invalid={fieldError ? true : undefined}
-            aria-describedby={fieldError ? "mt-form-error" : undefined}
+            aria-describedby={fieldError ? "mt-form-error mt-email-hint" : "mt-email-hint"}
             className={INPUT}
           />
           {fieldError ? (
@@ -1643,6 +1654,11 @@ function UrlForm() {
               {fieldError}
             </p>
           ) : null}
+          <p id="mt-email-hint" aria-live="polite" className={`m-0 mt-2 text-sm ${MUTED}`}>
+            {FREE_MAIL.test(email)
+              ? "A work e-mail helps us match the findings to your team. A personal one works too."
+              : "Use your work e-mail, so the findings reach your team."}
+          </p>
           <button
             type="submit"
             id="cta-managed-testing-url-send"
