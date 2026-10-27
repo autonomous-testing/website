@@ -29,6 +29,7 @@ import TestimonialCarousel from "@site/src/components/landing-page/home/sections
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import GradientCard from "@site/src/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
+import { ORG_REF } from "@site/src/data/organization";
 
 const CAPABILITIES = [
   {
@@ -763,11 +764,7 @@ const JSONLD_MCP_APP = {
   softwareRequirements: "Node.js 18+",
   downloadUrl: "https://www.npmjs.com/package/wopee-mcp",
   installUrl: "https://www.npmjs.com/package/wopee-mcp",
-  publisher: {
-    "@type": "Organization",
-    name: "Wopee.io",
-    url: "https://wopee.io",
-  },
+  publisher: ORG_REF,
   offers: {
     "@type": "Offer",
     price: "0",
@@ -788,11 +785,7 @@ const JSONLD_MCP_SOURCE = {
   programmingLanguage: "TypeScript",
   runtimePlatform: "Node.js",
   url: "https://wopee.io/mcp/",
-  author: {
-    "@type": "Organization",
-    name: "Wopee.io",
-    url: "https://wopee.io",
-  },
+  author: ORG_REF,
 };
 
 const McpPage = () => {

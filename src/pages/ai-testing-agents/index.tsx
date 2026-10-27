@@ -15,6 +15,7 @@ import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
 import EndingSection from "@site/src/components/landing-page/home/sections/EndingSection";
+import { ORG_REF } from "@site/src/data/organization";
 
 const STEPS = [
   {
@@ -66,11 +67,7 @@ const JSONLD_APP = {
   url: "https://wopee.io/ai-testing-agents/",
   description:
     "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate Playwright tests, run them across browsers, and self-heal when the UI changes.",
-  publisher: {
-    "@type": "Organization",
-    name: "Wopee.io",
-    url: "https://wopee.io",
-  },
+  publisher: ORG_REF,
   offers: {
     "@type": "Offer",
     price: "0",

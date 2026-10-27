@@ -3,6 +3,7 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useBlogPostStructuredData} from '@docusaurus/plugin-content-blog/client';
+import {ORG_REF} from '@site/src/data/organization';
 
 export default function BlogPostStructuredData(): ReactNode {
   const structuredData = useBlogPostStructuredData();
@@ -27,7 +28,7 @@ export default function BlogPostStructuredData(): ReactNode {
     },
     author: hasAuthor
       ? structuredData.author
-      : {'@type': 'Organization', name: 'Wopee.io', url: siteConfig.url},
+      : ORG_REF,
   };
 
   return (
