@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import ExplainerVideo from "../../components/ui/ExplainerVideo";
 import { Head, Layout, Link } from "../../components/ui/typedDocusaurus";
+import { ORG_REF } from "@site/src/data/organization";
 
 const CAMPAIGN = "managed-testing";
 const PRICING = "/pricing/";
@@ -440,7 +441,7 @@ const JSON_LD_SERVICE = {
   "@type": "Service",
   name: "Wopee.io managed testing",
   serviceType: "Managed software testing",
-  provider: { "@type": "Organization", name: "Wopee.io", url: "https://wopee.io/" },
+  provider: ORG_REF,
   description:
     "We write, run and maintain tests for your most important flows before every release, and a person checks every failure. Starts with a 6-week managed pilot, then month to month. Priced by your flows and release cadence.",
   areaServed: "EU",

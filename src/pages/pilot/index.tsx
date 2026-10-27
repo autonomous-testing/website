@@ -5,6 +5,7 @@ import { Link } from "../../components/ui/typedDocusaurus";
 import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import { ORG_REF } from "@site/src/data/organization";
 
 const BOOK_DEMO = "/book-demo/";
 const DOCS_SPEC = "https://docs.wopee.io/pilot-projects/";
@@ -190,11 +191,7 @@ const JSON_LD = {
   "@type": "Service",
   name: "Wopee.io pilot project",
   serviceType: "Autonomous software testing pilot",
-  provider: {
-    "@type": "Organization",
-    name: "Wopee.io",
-    url: "https://wopee.io/",
-  },
+  provider: ORG_REF,
   description:
     "An 8-week, fixed-scope engagement that proves autonomous testing on your application, with your team, before you commit to a contract. Up to 10 critical user flows, baseline measured in Sprint 1, go or no-go decision at the end of Sprint 8.",
   areaServed: "EU",

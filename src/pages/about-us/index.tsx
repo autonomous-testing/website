@@ -4,6 +4,7 @@ import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import PartnersCarouselCard from "@site/src/components/demo/PartnersCarouselCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
+import { JSONLD_ORG } from "@site/src/data/organization";
 
 const INVESTORS = [
   {
@@ -17,28 +18,6 @@ const INVESTORS = [
     classes: "dark:brightness-[1.8]",
   },
 ];
-
-const JSONLD_ORG = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Wopee.io",
-  legalName: "wopee labs s.r.o.",
-  url: "https://wopee.io",
-  logo: "https://wopee.io/img/logo.png",
-  email: "help@wopee.io",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Pujmanove 883/23",
-    addressLocality: "Prague",
-    postalCode: "140 00",
-    addressCountry: "CZ",
-  },
-  sameAs: [
-    "https://www.linkedin.com/company/wopee",
-    "https://github.com/Wopee-io",
-    "https://www.youtube.com/@wopee",
-  ],
-};
 
 const TeamPage = () => {
   return (
