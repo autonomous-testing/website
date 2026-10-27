@@ -27,6 +27,7 @@ import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import VideoCallout from "@site/src/components/ui/VideoCallout";
 import GradientCard from "@site/src/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 import { ORG_REF } from "@site/src/data/organization";
@@ -806,6 +807,7 @@ const McpPage = () => {
       <ProblemSection />
       <CapabilitiesSection />
       <HowItWorksSection />
+      <VideoCallout text="An AI QA agent in Cursor combines the Wopee.io, Playwright and Atlassian MCP servers to retest a Jira bug and post the report back." />
       <CompatibleToolsSection />
       <OpenSourceSection />
       <TestimonialCarousel />

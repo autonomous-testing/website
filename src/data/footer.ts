@@ -50,6 +50,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Blog", to: "/blog/" },
       { label: "Newsletter", to: "/newsletter/" },
       { label: "Changelog", to: "/changelog/" },
+      { label: "Videos", to: "/videos/" },
       { label: "LinkedIn", to: "https://www.linkedin.com/company/wopee" },
       { label: "GitHub", to: "https://github.com/Wopee-io" },
       { label: "YouTube", to: "https://www.youtube.com/@wopee" },
