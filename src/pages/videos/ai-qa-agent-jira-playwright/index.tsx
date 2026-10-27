@@ -140,6 +140,10 @@ export default function AiQaAgentJiraPlaywrightVideo(): JSX.Element {
         <script type="application/ld+json">{JSON.stringify(JSON_LD_VIDEO)}</script>
       </Head>
       <main className="mx-auto w-full max-w-4xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
+        <nav aria-label="Breadcrumb" className={`mb-4 text-sm ${MUTED}`}>
+          <Link to="/videos/">Videos</Link> <span aria-hidden="true">/</span>{" "}
+          <span aria-current="page">AI QA agent with Jira and Playwright</span>
+        </nav>
         <p className={`mb-2 text-sm font-semibold uppercase tracking-wide ${ACCENT}`}>
           Video · 4:36
         </p>
@@ -233,6 +237,9 @@ export default function AiQaAgentJiraPlaywrightVideo(): JSX.Element {
             </li>
             <li>
               <Link to={WATCH_URL}>Watch on YouTube</Link>
+            </li>
+            <li>
+              <Link to="/videos/">More Wopee.io videos</Link>
             </li>
           </ul>
         </section>

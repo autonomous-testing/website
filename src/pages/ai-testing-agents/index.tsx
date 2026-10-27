@@ -15,6 +15,7 @@ import HowItWorksIntro from "@site/src/components/bot-page/HowItWorksIntro";
 import HowItWorks from "@site/src/components/landing-page/home/sections/HowItWorks";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
 import EndingSection from "@site/src/components/landing-page/home/sections/EndingSection";
+import VideoCallout from "@site/src/components/ui/VideoCallout";
 import { ORG_REF } from "@site/src/data/organization";
 
 const STEPS = [
@@ -112,6 +113,8 @@ const AiTestingAgentsPage = () => {
         <section className="py-12 sm:py-16 lg:py-20 [&>div]:!my-0 [&>div>div:first-child]:!text-3xl sm:[&>div>div:first-child]:!text-4xl [&>div>div:nth-child(2)>div>div]:!rounded-xl [&>div>div:nth-child(2)>div>div]:!border-slate-200 [&>div>div:nth-child(2)>div>div]:!border-t-2 [&>div>div:nth-child(2)>div>div]:!border-t-secondary-wopee/70 [&>div>div:nth-child(2)>div>div]:!bg-white [&>div>div:nth-child(2)>div>div]:!shadow-[0_12px_35px_-24px_rgba(15,23,42,0.35)] dark:[&>div>div:nth-child(2)>div>div]:!border-white/10 dark:[&>div>div:nth-child(2)>div>div]:!border-t-primary-wopee/70 dark:[&>div>div:nth-child(2)>div>div]:!bg-white/[0.035] dark:[&>div>div:nth-child(2)>div>div]:!shadow-[0_16px_40px_-24px_rgba(0,0,0,0.85)]">
           <TestimonialCarousel />
         </section>
+
+        <VideoCallout text="Watch an AI QA agent pick the right tests, run them with Playwright and report back to Jira, driven from Cursor." />
 
         <StackLinks />
 
