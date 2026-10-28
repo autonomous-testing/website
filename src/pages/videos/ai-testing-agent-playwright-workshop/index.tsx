@@ -143,7 +143,7 @@ export default function AiTestingAgentPlaywrightWorkshopVideo(): JSX.Element {
   return (
     <Layout
       title="AI Testing Agent Workshop with Playwright (Video)"
-      description="Full workshop recording: build your first AI testing agent with Playwright and Wopee.io, from prompt and URL to generated tests, agent runs and a GitHub pull request. Chapters and full transcript."
+      description="Workshop recording: build your first AI testing agent with Playwright and Wopee.io, from a prompt and URL to tests in a GitHub PR. Full transcript."
     >
       <Head>
         <meta property="og:type" content="video.other" />
