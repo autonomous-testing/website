@@ -21,6 +21,17 @@ export const videos: VideoEntry[] = [
     thumbnailAlt:
       "Video thumbnail: AI QA agent in Cursor using the Wopee.io, Playwright and Atlassian MCP servers",
   },
+  {
+    slug: "ai-testing-agent-playwright-workshop",
+    youtubeId: "AgQsNN5e8OQ",
+    title:
+      "Build Your First AI Testing Agent with Playwright & Wopee.io (Full Workshop Recording)",
+    summary:
+      "A 42-minute workshop: go from a prompt and a URL to generated tests, agent runs and a Playwright pull request on GitHub.",
+    duration: "41:55",
+    thumbnailAlt:
+      "Video thumbnail: workshop on building a first AI testing agent with Playwright and Wopee.io",
+  },
 ];
 
 export const videoPath = (v: VideoEntry) => `/videos/${v.slug}/`;

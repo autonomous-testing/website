@@ -116,6 +116,12 @@ const AiTestingAgentsPage = () => {
 
         <VideoCallout text="Watch an AI QA agent pick the right tests, run them with Playwright and report back to Jira, driven from Cursor." />
 
+        <VideoCallout
+          slug="ai-testing-agent-playwright-workshop"
+          heading="Build your first agent"
+          text="Watch the full workshop: set up an AI testing agent with Playwright and Wopee.io, then run and export its tests."
+        />
+
         <StackLinks />
 
         <FaqSection />

@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import VideoCallout from "@site/src/components/ui/VideoCallout";
 import StackLinks from "@site/src/components/pseo/StackLinks";
 
 const STAGES = [
@@ -185,6 +186,10 @@ const HowItWorksPage = () => {
       <PipelineSection />
       <SupervisedAutonomySection />
       <GitRepoClosing />
+      <VideoCallout
+        slug="ai-testing-agent-playwright-workshop"
+        text="Follow a full workshop from a prompt and a URL to generated tests, agent runs and a Playwright pull request on GitHub."
+      />
       <StackLinks heading="Guides for your stack" />
 
     </Layout>
