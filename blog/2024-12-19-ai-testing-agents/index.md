@@ -484,7 +484,7 @@ We picked one representative per approach rather than the ten loudest logos: an 
     { label: "Self-healing", cells: [
       { v: "yes", note: "locators + baselines" }, { v: "yes", note: "from test intent" }, { v: "yes", note: "repairs as PRs" }, { v: "yes", note: "since ~2018" }, { v: "partial", note: "cache, no repair" } ] },
     { label: "Tests you own (portable)", cells: [
-      { v: "yes", note: "Playwright code" }, { v: "yes", note: "YAML in Git" }, { v: "partial", note: "YAML, no export" }, { v: "no", note: "proprietary" }, { v: "yes", note: "your code" } ] },
+      { v: "partial", note: "test cases as JSON" }, { v: "yes", note: "YAML in Git" }, { v: "partial", note: "YAML, no export" }, { v: "partial", note: "browser tests to Playwright" }, { v: "yes", note: "your code" } ] },
     { label: "Coding-agent / MCP integration", cells: [
       { v: "yes" }, { v: "yes", note: "MCP + skills" }, { v: "yes", note: "MCP server" }, { v: "yes", note: "cloud MCP" }, { v: "partial", note: "skills, MCP retired" } ] },
     { label: "Cross-browser", cells: [
@@ -530,9 +530,11 @@ We picked one representative per approach rather than the ten loudest logos: an 
 
 **What's real:** The agentic layer is real, not a rebrand, and mabl's opt-in, zero-risk default for autonomous recovery is the most conservative and arguably most honest posture in this comparison. Coverage spans web, native mobile (simulators, add-on), API, accessibility and performance. G2 rates it around 4.5/5 with ease of use and support praised.
 
-**Limitations to be aware of:** Pricing is quote-only (14-day trial, consumption model from 500 cloud-run credits/month); third-party estimates put starter contracts in the mid hundreds of dollars per month and enterprise deals above $40k/year. Credit burn is complexity-based, which nudges per-PR regression onto your own CI runners. Tests live in mabl's proprietary format with no Playwright or Selenium export. Capterra's 3.9/5 for ease of use and repeated reports of cloud execution being slower than local Playwright undercut the low-code promise once flows get complex. Agentic generation assumes an existing workspace with recorded context; cold-start autonomy on an untested app is not what it demonstrates.
+**Limitations to be aware of:** Pricing is quote-only (14-day trial, consumption model from 500 cloud-run credits/month); third-party estimates put starter contracts in the mid hundreds of dollars per month and enterprise deals above $40k/year. Credit burn is complexity-based, which nudges per-PR regression onto your own CI runners. Tests live in mabl; browser tests can be [exported to Playwright or Selenium IDE](https://docs.mabl.com/docs/mabl-cli/exporting-tests-from-the-cli.md), but API steps, JavaScript snippets and several other step types do not export. Capterra's 3.9/5 for ease of use and repeated reports of cloud execution being slower than local Playwright undercut the low-code promise once flows get complex. Agentic generation assumes an existing workspace with recorded context; cold-start autonomy on an untested app is not what it demonstrates.
 
 <Fit best="Mid-size to enterprise QA organisations with mixed-skill teams that want one governed platform across UI, API, accessibility and performance, and a vendor with CSMs and 24/5 support." notFor="Developer-centric teams who want tests-as-code in their repo, startups needing published pricing, or anyone allergic to lock-in." />
+
+For a side-by-side with sources, see [Wopee.io vs mabl](/compare/wopee-vs-mabl/) and [mabl alternatives](/compare/mabl-alternatives/).
 
 ### 5. Midscene.js: the open-source vision agent
 
@@ -551,7 +553,7 @@ We picked one representative per approach rather than the ten loudest logos: an 
     { q: "Need functional + visual regression in one platform and want to own the Playwright code?", a: "Wopee.io", href: "/pricing/" },
     { q: "Coding agents write your UI and you want verified flows to become E2E tests?", a: "Shiplight", href: "https://www.shiplight.ai/", note: "Remember: no visual diffing." },
     { q: "Want natural-language tests in Git with maintenance delivered as PRs?", a: "Momentic", href: "https://momentic.ai/", note: "Chromium-only, no export to Playwright." },
-    { q: "Enterprise QA org that wants one governed platform and a CSM?", a: "mabl", href: "https://www.mabl.com/", note: "Quote-only; proprietary test format." },
+    { q: "Enterprise QA org that wants one governed platform and a CSM?", a: "mabl", href: "https://www.mabl.com/", note: "Quote-only; limited code export." },
     { q: "Open source, self-hosted, already on Playwright, testing canvas-heavy UIs?", a: "Midscene.js", href: "https://midscenejs.com/", note: "Bring your own model and API key." },
     { q: "None of the above and you just want to start?", a: "Playwright MCP + your coding agent", note: "Graduate when you need baselines and history." },
   ]}

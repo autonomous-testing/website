@@ -1,5 +1,33 @@
 export const COMPARISONS = [
   {
+    title: "Wopee.io vs mabl",
+    href: "/compare/wopee-vs-mabl/",
+    tagline: "Broad low-code platform vs web testing agent",
+    description:
+      "mabl covers web, mobile, API and performance, sold by quote, with SOC 2 Type II. Wopee.io is web-only, generates tests from your running app and publishes its prices.",
+  },
+  {
+    title: "mabl alternatives",
+    href: "/compare/mabl-alternatives/",
+    tagline: "Eight options, with sources",
+    description:
+      "Wopee.io, Testim, Katalon, Testsigma, testRigor, QA Wolf, Momentic and Playwright Test Agents: what each is, whether it publishes prices, and when to pick it.",
+  },
+  {
+    title: "Testim alternatives",
+    href: "/compare/testim-alternatives/",
+    tagline: "Where Testim stands, and what else fits",
+    description:
+      "Tricentis Testim today, and eight alternatives for web, Salesforce and mobile testing, with published pricing where it exists and when to pick each.",
+  },
+  {
+    title: "Wopee.io vs Katalon",
+    href: "/compare/wopee-vs-katalon/",
+    tagline: "Desktop IDE vs AI testing agent",
+    description:
+      "Katalon Studio covers web, mobile, API and Windows desktop on Selenium and Appium. Wopee.io is a web-only agent that writes and runs tests from your app. Honest about where Katalon is stronger.",
+  },
+  {
     title: "Wopee.io vs Cypress",
     href: "/compare/wopee-vs-cypress/",
     tagline: "Hand-written specs vs generated tests",
