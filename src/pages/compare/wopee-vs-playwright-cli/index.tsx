@@ -10,6 +10,7 @@ import CompareFaq, {
 } from "@site/src/components/compare-page/CompareFaq";
 import CompareCta from "@site/src/components/compare-page/CompareCta";
 import LastChecked from "@site/src/components/compare-page/LastChecked";
+import VideoCallout from "@site/src/components/ui/VideoCallout";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 
 const TLDR_ROWS = [
@@ -206,6 +207,12 @@ const WopeeVsPlaywrightCli = () => {
       />
 
       <BetterTogether />
+
+      <VideoCallout
+        slug="vibe-testing-lab-ai-testing-agents"
+        heading="See them side by side"
+        text="Watch four AI testing tools on one app and one task, including the Playwright CLI with skills, and where each one reported a pass it could not prove."
+      />
 
       <CompareFaq
         title="Wopee.io vs Playwright CLI: frequently asked questions"
