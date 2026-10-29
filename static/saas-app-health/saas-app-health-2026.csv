@@ -1,0 +1,34 @@
+id,section,metric,value,of,percent,notes
+products-tested,numbers,Products tested (website + sign-up + app),28,,,"Czech and Slovak software companies from the top of a scored list; not a random sample of SaaS"
+findings-filed,numbers,Findings filed,381,,,
+valid-findings,numbers,Findings still valid after our re-check,363,381,95,
+closed-our-mistake,method,Findings closed as our mistake or not reproducible,15,381,4,
+closed-looked-fixed,method,Findings closed because they looked fixed by the vendor within about 3 days,3,381,,
+rechecked-findings,method,Valid findings carrying a re-check note,341,363,,"Re-checked by a person on 16 and 17 October 2026"
+median-findings,numbers,Valid findings per product (median),12,,,"Range 8 to 21"
+median-high-medium,numbers,High or Medium findings per product (median),5.5,,,
+products-with-high,numbers,Products with at least one High finding still open,25,28,,
+signup-defects,numbers,Products with an open defect in sign-up registration or the trial form,24,28,,"4 had no sign-up we could use or test; sign-up completed on 20 of 28"
+signup-high-medium,numbers,Products with a High or Medium defect in sign-up registration or the trial form,17,28,,
+pricing-mismatch,numbers,Products showing a price or saving that didn't match what you're charged or get,10,28,,
+pricing-number-defect,numbers,Products with a pricing or number defect of any kind,19,28,,
+consent-tags,numbers,Products firing ad or analytics tags without consent,10,28,,"Before the cookie banner was answered or after Reject all; observed network behaviour, not a legal opinion"
+account-enumeration,numbers,Products revealing to a stranger whether an e-mail address has an account,12,28,,"On login, sign-up or password reset"
+before-login-findings,numbers,Valid findings visible before the user logs in,200,363,55,"110 on the public website and 90 on sign-up, login and reset screens; the page rounds to about 55%"
+public-website-findings,numbers,Valid findings on the public website,110,363,,
+signup-screen-findings,numbers,Valid findings on sign-up login and reset screens,90,363,,
+core-flows-passed,numbers,Core app flows that passed,183,250,73,
+core-flows-not-green,numbers,Core app flows that were not green,67,250,,
+core-flows-real-defect,numbers,Not-green core flows that failed on a real defect in the app,60,67,,
+core-flows-our-expectation,numbers,Not-green core flows that failed on our own wrong expectation,1,67,,
+core-flows-could-not-run,numbers,Not-green core flows that couldn't run,6,67,,"A bot wall, a missing account type or a refused plan change"
+severity-high,severity,Valid findings rated High,37,363,10,"13 of the 37 are about cookie consent or privacy"
+severity-medium,severity,Valid findings rated Medium,124,363,34,
+severity-low,severity,Valid findings rated Low,202,363,56,
+pattern-pricing-findings,patterns,Pricing and number findings,45,363,,"Across 19 products; 12 of them High"
+pattern-consent-findings,patterns,Privacy and consent findings,18,363,,"Across 10 products; 13 of them High"
+pattern-account-security-findings,patterns,Account-security findings,21,363,,"Across 15 products"
+pattern-silent-errors-findings,patterns,Silent or unclear error findings,22,363,,"Across 14 products"
+pattern-onboarding-findings,patterns,Onboarding dead-end and empty-trial findings,21,363,,"Across 13 products; 3 of them High"
+pattern-data-display-findings,patterns,Data shown wrong or inconsistently,23,363,,"Across 14 products"
+pattern-broken-link-findings,patterns,Broken or wrong link findings,33,363,,"Across 19 products; in 3 the broken link was the button that books a call or starts a trial"
