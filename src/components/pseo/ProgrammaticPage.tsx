@@ -8,6 +8,7 @@ import PseoFaq from "@site/src/components/pseo/PseoFaq";
 import PseoCard from "@site/src/components/pseo/PseoCard";
 import ComparisonJourney from "@site/src/components/pseo/ComparisonJourney";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
+import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 
 export type PseoData = {
   slug: string;
@@ -17,6 +18,7 @@ export type PseoData = {
   title: string;
   description: string;
   aioOpener: string;
+  shortAnswer?: { q: string; a: string; lastChecked: string };
   problem: string;
   solution: string;
   steps: string[];
@@ -108,6 +110,16 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
             <CtaButtons />
           </div>
         </header>
+
+        {data.shortAnswer && (
+          <AnswerFirst
+            question={data.shortAnswer.q}
+            lastChecked={data.shortAnswer.lastChecked}
+            className="mt-12 !px-0"
+          >
+            <RichText>{data.shortAnswer.a}</RichText>
+          </AnswerFirst>
+        )}
 
         {/* Problem */}
         <section className="mt-16">

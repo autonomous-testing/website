@@ -2,6 +2,7 @@ import React from "react";
 
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
+import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import StackLinks from "@site/src/components/pseo/StackLinks";
 import HeroSection from "@site/src/components/bot-page/HeroSection";
 import DefinitionBlock from "@site/src/components/bot-page/DefinitionBlock";
@@ -90,6 +91,20 @@ const AiTestingAgentsPage = () => {
       </Head>
       <div className="overflow-hidden text-slate-900 dark:text-slate-100">
         <HeroSection />
+        <AnswerFirst
+          question="Which AI tool explores my web app and finds bugs on its own?"
+          lastChecked="29 October 2026"
+          className="pb-12 sm:pb-16"
+        >
+          Wopee.io is an AI testing agent built for that. Give it a URL and a
+          test account: it explores the app, writes plain-language test cases,
+          runs them in a real browser and reports what fails, with screenshots
+          and steps. In our October 2026 study of 28 SaaS products,{" "}
+          <a href="/saas-app-health/#valid-findings">
+            363 of its 381 findings held up
+          </a>{" "}
+          after a person re-checked them.
+        </AnswerFirst>
         <DefinitionBlock />
 
         <div className="[&>div]:!py-12 sm:[&>div]:!py-16 lg:[&>div]:!py-20">

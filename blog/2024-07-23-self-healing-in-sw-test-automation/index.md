@@ -9,6 +9,8 @@ image: ./self-healing-explained.jpg
 
 import Head from '@docusaurus/Head';
 
+> **Short answer (last checked 29 October 2026):** self-healing test automation tools include Wopee.io, mabl, Tricentis Testim, Katalon, Playwright's open-source healer agent and Healenium for Selenium. Wopee.io runs every test with an AI agent that finds elements by role, label and visual context, so a renamed button or moved field does not have to break the test.
+
 What is self-healing in test automation? It is a mechanism where tests automatically repair broken locators when the application UI changes. When a selector fails, the self-healing engine analyzes the DOM, identifies the intended element using alternative attributes, and updates the test in real time, turning brittle test suites into resilient ones without manual intervention.
 
 <!--truncate-->
