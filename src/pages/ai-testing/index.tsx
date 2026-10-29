@@ -77,7 +77,10 @@ export default function AiTestingHub() {
           <p className="mt-2 text-gray-600 dark:text-gray-300">
             Honest, date-stamped comparisons with the tools teams move from:{" "}
             <Link href="/compare/wopee-vs-cypress/">Wopee.io vs Cypress</Link>,{" "}
-            <Link href="/compare/wopee-vs-selenium/">Wopee.io vs Selenium</Link>, and{" "}
+            <Link href="/compare/wopee-vs-selenium/">Wopee.io vs Selenium</Link>,{" "}
+            <Link href="/compare/wopee-vs-mabl/">Wopee.io vs mabl</Link>,{" "}
+            <Link href="/compare/wopee-vs-katalon/">Wopee.io vs Katalon</Link>,{" "}
+            <Link href="/compare/testim-alternatives/">Testim alternatives</Link>, and{" "}
             <Link href="/compare/">all comparisons</Link>.
           </p>
         </section>

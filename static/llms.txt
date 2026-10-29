@@ -15,6 +15,13 @@
 - [About](https://wopee.io/about-us/): Team, mission, investors, and contact (help@wopee.io, wopee labs s.r.o., Prague).
 - [Book a demo](https://wopee.io/book-demo/): 30-minute call with the founders.
 
+## Comparisons
+- [Compare AI testing tools](https://wopee.io/compare/): Date-stamped comparisons of Wopee.io with the tools teams evaluate most often, each with a "when to pick them" section.
+- [Wopee.io vs mabl](https://wopee.io/compare/wopee-vs-mabl/): mabl covers web, mobile, API and performance by quote with SOC 2 Type II; Wopee.io is a web-only AI testing agent with published pricing.
+- [mabl alternatives](https://wopee.io/compare/mabl-alternatives/): Wopee.io, Testim, Katalon, Testsigma, testRigor, QA Wolf, Momentic and Playwright Test Agents, with pricing and sources.
+- [Testim alternatives](https://wopee.io/compare/testim-alternatives/): Where Tricentis Testim stands in 2026 and eight alternatives, with pricing and sources.
+- [Wopee.io vs Katalon](https://wopee.io/compare/wopee-vs-katalon/): Katalon Studio's desktop IDE for web, mobile, API and desktop vs Wopee.io's web-only AI testing agent.
+
 ## Documentation
 - [Docs home](https://docs.wopee.io/): Setup, concepts, integrations, and reference for the Wopee.io platform.
 - [MCP guide](https://docs.wopee.io/guides/wopee-mcp/): Step-by-step integration of the Wopee.io MCP server with Claude Code, Claude Desktop, Cursor, VS Code, and Windsurf.
