@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
+import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ComparisonTable from "@site/src/components/compare-page/ComparisonTable";
 import WhenToChoose from "@site/src/components/compare-page/WhenToChoose";
@@ -209,6 +210,19 @@ const WopeeVsPlaywrightMcp = () => {
           </div>
         </div>
       </div>
+
+      <AnswerFirst
+        question="Playwright MCP or a testing agent?"
+        lastChecked="29 October 2026"
+        className="mt-4"
+      >
+        Playwright MCP is Microsoft's open-source MCP server that lets your AI
+        coding agent drive a browser in the moment; it saves no tests. A
+        testing agent such as Wopee.io keeps a suite of saved test cases, reruns
+        it on a schedule or on demand, compares visual baselines and reports a
+        pass or fail with evidence for each test. Use Playwright MCP while you
+        build and Wopee.io for regression.
+      </AnswerFirst>
 
       <ComparisonTable
         title="TL;DR comparison"

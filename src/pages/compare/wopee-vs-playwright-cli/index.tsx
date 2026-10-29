@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
+import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ComparisonTable from "@site/src/components/compare-page/ComparisonTable";
 import WhenToChoose from "@site/src/components/compare-page/WhenToChoose";
@@ -163,6 +164,19 @@ const WopeeVsPlaywrightCli = () => {
           </div>
         </div>
       </div>
+
+      <AnswerFirst
+        question="AI testing agent or traditional Playwright scripts?"
+        lastChecked="29 October 2026"
+        className="mt-4"
+      >
+        Playwright scripts are code your team writes and maintains: fast,
+        repeatable and free, but every UI change is your fix. An AI testing
+        agent such as Wopee.io writes plain-language test cases from your
+        running app and runs each one with an LLM, so tests adapt when the UI
+        changes; runs take minutes and can vary. Many teams keep scripts for
+        stable core paths and add the agent for broad coverage.
+      </AnswerFirst>
 
       <ComparisonTable
         title="TL;DR comparison"

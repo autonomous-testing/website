@@ -24,6 +24,7 @@ import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 
 import Layout from "@theme/Layout";
+import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import TestimonialCarousel from "@site/src/components/landing-page/home/sections/TestimonialCarousel";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
@@ -804,6 +805,17 @@ const McpPage = () => {
         </script>
       </Head>
       <HeroSection />
+      <AnswerFirst
+        question="Is there an MCP server for testing web apps?"
+        lastChecked="29 October 2026"
+        className="pb-12"
+      >
+        Yes. Wopee.io's MCP server, wopee-mcp on npm, connects Claude Code,
+        Cursor, VS Code or Windsurf to Wopee.io's AI testing agents. From the
+        chat, your coding agent can generate tests, start test runs against
+        your web app, fetch the results and file GitHub issues. It is for
+        testing your web app through MCP, not for testing an MCP server.
+      </AnswerFirst>
       <ProblemSection />
       <CapabilitiesSection />
       <HowItWorksSection />

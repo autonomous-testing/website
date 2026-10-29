@@ -44,6 +44,7 @@ function renderPage(page, bySlug) {
     title: page.title,
     description: page.description,
     aioOpener: page.aioOpener,
+    ...(page.shortAnswer ? { shortAnswer: page.shortAnswer } : {}),
     problem: page.problem,
     solution: page.solution,
     steps: page.steps,
