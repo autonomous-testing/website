@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Link } from "../../components/ui/typedDocusaurus";
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 
@@ -42,8 +43,9 @@ type Viz =
       segments: { value: number; tone: Tone; label: string }[];
     };
 
-const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
+const KEY_NUMBERS: { id: string; value: string; label: string; viz: Viz }[] = [
   {
+    id: "signup-defects",
     value: "24 of 28",
     label:
       "had an open defect in sign-up, registration or the trial form. 17 of them at High or Medium.",
@@ -57,6 +59,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
+    id: "pricing-mismatch",
     value: "10 of 28",
     label:
       "showed a price or a saving on the page that didn't match what you're charged or get.",
@@ -73,6 +76,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
+    id: "consent-tags",
     value: "10 of 28",
     label:
       "fired ad or analytics tags without consent: before the cookie banner was answered, or after “Reject all”.",
@@ -82,6 +86,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
+    id: "account-enumeration",
     value: "12 of 28",
     label:
       "told a stranger, on login, sign-up or password reset, whether an e-mail address has an account.",
@@ -91,6 +96,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
+    id: "before-login-findings",
     value: "About 55%",
     label: "of valid findings are visible before the user even logs in.",
     viz: {
@@ -104,6 +110,7 @@ const KEY_NUMBERS: { value: string; label: string; viz: Viz }[] = [
     },
   },
   {
+    id: "core-flows-not-green",
     value: "67 of 250",
     label:
       "core app flows were not green. 60 of them failed on a real defect in the app.",
@@ -126,12 +133,84 @@ const SEVERITY: { value: number; tone: Tone; label: string }[] = [
   { value: 202, tone: "light", label: "202 Low (56%)" },
 ];
 
-const FACTS = [
-  "28 products tested",
-  "381 findings filed",
-  "363 still valid after our re-check (95%)",
-  "Median 12 valid findings per product",
-  "25 of 28 with at least one High still open",
+const FACTS: { id: string; text: string }[] = [
+  { id: "products-tested", text: "28 products tested" },
+  { id: "findings-filed", text: "381 findings filed" },
+  { id: "valid-findings", text: "363 of 381 still valid after our re-check (95%)" },
+  { id: "median-findings", text: "Median 12 valid findings per product" },
+  { id: "products-with-high", text: "25 of 28 with at least one High still open" },
+];
+
+const PUBLISHED = "2026-10-19";
+const UPDATED = "2026-10-29";
+const PAGE_URL = "https://wopee.io/saas-app-health/";
+const CSV_PATH = "/saas-app-health/saas-app-health-2026.csv";
+const CITE =
+  "Wopee.io, “We signed up for 28 SaaS products as strangers”, SaaS app health research, October 2026, n = 28, https://wopee.io/saas-app-health/";
+
+const JSON_LD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "We signed up for 28 SaaS products as strangers. 24 had a defect in sign-up.",
+    description:
+      "An AI testing agent signed up for 28 Czech and Slovak SaaS products and tried the ~10 flows that matter. 363 of 381 findings held up after a manual re-check.",
+    datePublished: PUBLISHED,
+    dateModified: UPDATED,
+    author: {
+      "@type": "Person",
+      name: "Marcel Veselka",
+      url: "https://wopee.io/marcel/",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Wopee.io",
+      url: "https://wopee.io/",
+      logo: { "@type": "ImageObject", url: "https://wopee.io/img/logo.png" },
+    },
+    mainEntityOfPage: PAGE_URL,
+    image: "https://wopee.io/img/wopee-social-card.jpg",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Wopee.io SaaS app health, October 2026",
+    description:
+      "Aggregate results of testing 28 Czech and Slovak SaaS products as a new user between 14 and 17 October 2026: an AI agent read each website, signed up for the free trial and tried about 10 core flows, and a person re-checked the findings. 381 findings were filed and 363 held up. Counts cover sign-up defects, pricing mismatches, tracking before consent, account enumeration, core-flow pass rates and severity. Product names are not published.",
+    url: PAGE_URL,
+    creator: {
+      "@type": "Organization",
+      name: "Wopee.io",
+      url: "https://wopee.io/",
+    },
+    datePublished: PUBLISHED,
+    dateModified: UPDATED,
+    temporalCoverage: "2026-10-14/2026-10-17",
+    spatialCoverage: "Czech Republic and Slovakia",
+    isAccessibleForFree: true,
+    keywords: [
+      "SaaS",
+      "sign-up defects",
+      "software quality",
+      "AI testing agent",
+      "web app testing",
+    ],
+    variableMeasured: [
+      "Products with an open sign-up defect",
+      "Products with a price mismatch",
+      "Products firing tags without consent",
+      "Products revealing whether an e-mail has an account",
+      "Core flows passed",
+      "Findings by severity",
+    ],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/csv",
+        contentUrl: `https://wopee.io${CSV_PATH}`,
+      },
+    ],
+  },
 ];
 
 const PATTERNS: {
@@ -940,6 +1019,13 @@ export default function SaasAppHealthPage() {
       title="28 SaaS sign-ups, tested as strangers"
       description="We signed up for 28 SaaS products as strangers. 24 had a defect in sign-up. Eight patterns, a checklist for this week, and how a 6-week pilot works."
     >
+      <Head>
+        {JSON_LD.map((d) => (
+          <script key={d["@type"]} type="application/ld+json">
+            {JSON.stringify(d)}
+          </script>
+        ))}
+      </Head>
       <main className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
         <header className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-solid border-secondary-wopee/40 bg-secondary-wopee/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary-wopee dark:border-primary-wopee/40 dark:bg-primary-wopee/10 dark:text-primary-wopee">
@@ -955,6 +1041,19 @@ export default function SaasAppHealthPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-xl font-semibold sm:text-2xl">
             Your sign-up works. On the second try.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-gray-500 dark:text-gray-400">
+            By Marcel Veselka · Published{" "}
+            <time dateTime={PUBLISHED}>19 October 2026</time> · Last updated{" "}
+            <time dateTime={UPDATED}>29 October 2026</time> · Data snapshot 19
+            October 2026 ·{" "}
+            <a href="#method" className="underline">
+              Method
+            </a>{" "}
+            ·{" "}
+            <a href={CSV_PATH} download className="underline">
+              Data (CSV)
+            </a>
           </p>
           <p
             className={`mx-auto mt-4 max-w-2xl text-base leading-relaxed sm:text-lg ${MUTED}`}
@@ -1008,6 +1107,26 @@ export default function SaasAppHealthPage() {
           </div>
         </figure>
 
+        <aside
+          id="method-in-brief"
+          aria-label="Method in brief"
+          className={`${CARD} mx-auto mt-8 max-w-3xl scroll-mt-24 px-6 py-5 text-sm leading-relaxed sm:px-8`}
+        >
+          <p className="m-0 font-bold">Method in brief</p>
+          <p className={`m-0 mt-2 ${MUTED}`}>
+            n = 28 Czech and Slovak SaaS products, tested 14 to 17 October
+            2026. On each one, an AI agent read the website, signed up for the
+            free trial as a new user and tried about 10 core flows. A person
+            re-checked the findings on 16 and 17 October; we kept only what
+            reproduced. 363 of 381 findings held up (95%). All counts come
+            from one export taken on 19 October 2026, and no product is named.{" "}
+            <a href="#method" className="underline">
+              Full method and caveats
+            </a>
+            .
+          </p>
+        </aside>
+
         <Section
           id="numbers"
           eyebrow="The numbers"
@@ -1017,18 +1136,21 @@ export default function SaasAppHealthPage() {
           <ul className="grid list-none gap-4 pl-0 sm:grid-cols-2 lg:grid-cols-3">
             {KEY_NUMBERS.map((n, i) => (
               <li
-                key={`${n.value}-${i}`}
-                className={`${CARD} flex flex-col px-5 py-5 ${
+                key={n.id}
+                id={n.id}
+                className={`${CARD} flex scroll-mt-24 flex-col px-5 py-5 ${
                   i === 0
                     ? "!border-secondary-wopee/50 !bg-secondary-wopee/[0.06] dark:!border-primary-wopee/40 dark:!bg-primary-wopee/[0.06]"
                     : ""
                 }`}
               >
-                <span
-                  className={`block text-3xl font-extrabold tracking-tight ${ACCENT}`}
+                <a
+                  href={`#${n.id}`}
+                  title="Link to this number"
+                  className={`block text-3xl font-extrabold tracking-tight hover:no-underline ${ACCENT}`}
                 >
                   {n.value}
-                </span>
+                </a>
                 <span className={`mt-2 block text-sm leading-relaxed ${MUTED}`}>
                   {n.label}
                 </span>
@@ -1042,16 +1164,21 @@ export default function SaasAppHealthPage() {
             className={`mt-6 flex list-none flex-wrap gap-x-5 gap-y-1 pl-0 text-sm ${MUTED}`}
           >
             {FACTS.map((f) => (
-              <li key={f} className="flex items-center gap-2">
+              <li key={f.id} id={f.id} className="flex scroll-mt-24 items-center gap-2">
                 <span
                   aria-hidden="true"
                   className="h-1 w-1 rounded-full bg-gray-400"
                 />
-                {f}
+                <a href={`#${f.id}`} className="text-inherit hover:underline">
+                  {f.text}
+                </a>
               </li>
             ))}
           </ul>
-          <figure className={`${CARD} m-0 mt-6 px-5 py-5 sm:px-6`}>
+          <figure
+            id="severity"
+            className={`${CARD} m-0 mt-6 scroll-mt-24 px-5 py-5 sm:px-6`}
+          >
             <figcaption className="mb-3 font-bold">
               The 363 valid findings by severity
             </figcaption>
@@ -1356,6 +1483,25 @@ export default function SaasAppHealthPage() {
               a pattern that 10 other products share.
             </li>
           </ul>
+          <div
+            id="data"
+            className={`${CARD} mt-6 scroll-mt-24 px-5 py-5 text-sm leading-relaxed`}
+          >
+            <p className="m-0 font-bold">Data and citation</p>
+            <p className={`m-0 mt-2 ${MUTED}`}>
+              <a href={CSV_PATH} download className="font-semibold underline">
+                Download the numbers as CSV
+              </a>{" "}
+              (the report's figures, one row each, with the anchor id that
+              links to it on this page, such as{" "}
+              <a href="#signup-defects" className="underline">
+                #signup-defects
+              </a>
+              ). Products are not named, exactly as on this page.
+            </p>
+            <p className={`m-0 mt-3 ${MUTED}`}>How to cite:</p>
+            <p className="m-0 mt-1 font-mono text-xs break-words">{CITE}</p>
+          </div>
         </Section>
       </main>
     </Layout>
