@@ -21,8 +21,6 @@ export default function HomeHowItWorks(): JSX.Element {
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             First tests from a URL in minutes. A reviewed regression suite in
             days.
-            <br />
-            2–5x coverage over an 8-week pilot.
           </p>
         </div>
 

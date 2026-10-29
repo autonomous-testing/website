@@ -179,7 +179,7 @@ Prices below are vendor-published list prices as of May 2026, sourced from each 
 - Transparent pricing (published, starts at €19/user/mo)
 - One platform for functional + visual (no second E2E framework needed)
 - Self-healing locators reduce flaky-test maintenance
-- Built on Playwright, low lock-in, high portability if you ever leave
+- Built on Playwright, with tests in a Git repository you can open, diff and roll back
 
 **Where Applitools still wins:**
 

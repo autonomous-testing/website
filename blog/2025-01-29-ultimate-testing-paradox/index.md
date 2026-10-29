@@ -110,7 +110,7 @@ The most significant impact of modern testing solutions goes beyond technical ca
 
 Make Wopee.io your superpower. Wopee.io is at the forefront of this transformation, offering an AI-powered web app testing solution that eliminates the need for complex test preparation and manual intervention. Unlike traditional test automation tools, Wopee.io leverages AI Testing Agents to:
 
-- **Boost efficiency:** Achieve 10x faster testing with 5x more test coverage and 30% less maintenance
+- **Boost efficiency:** Faster test preparation, wider test coverage and less maintenance effort
 - **Simplify automation:** No coding, no complex setups, just plug-and-play
 - **Minimize human errors:** Ensure consistent and accurate test execution, reducing the risk of overlooked bugs
 - **Enable low-skilled staff to automate tests:** Empower your whole team to contribute to quality, remove dependencies on expensive specialists
@@ -122,10 +122,10 @@ The impact of transformed testing practices can be measured in multiple dimensio
 
 ### Technical Outcomes
 
-- 10x faster testing execution
-- 5x increase in test coverage
-- 30% reduction in maintenance overhead
-- 90% decrease in false positives
+- Faster test preparation and execution
+- Wider test coverage
+- Less maintenance effort
+- Fewer false positives
 
 ### Business Impact
 

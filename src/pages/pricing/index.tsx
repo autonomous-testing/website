@@ -9,7 +9,7 @@ const JSONLD_PRODUCT = {
   "@type": "Product",
   name: "Wopee.io",
   description:
-    "Autonomous AI testing agents for web applications. Generate, run, and self-heal Playwright tests without writing scripts.",
+    "Autonomous AI testing agents for web applications. Generate, run, and self-heal tests without writing scripts.",
   brand: {
     "@type": "Brand",
     name: "Wopee.io",

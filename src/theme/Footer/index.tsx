@@ -95,7 +95,7 @@ export default function Footer(): JSX.Element {
             </Link>
             <p className="mt-5 max-w-sm text-[15px] leading-7 dark:text-gray-300">
               Autonomous AI testing agents for web apps. Paste a URL, get
-              Playwright tests that run across browsers and self-heal when the
+              test cases that run across browsers and self-heal when the
               UI changes.
             </p>
             <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

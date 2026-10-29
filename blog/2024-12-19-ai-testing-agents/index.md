@@ -682,7 +682,7 @@ AI Testing Agents are autonomous or semi-autonomous systems that use large langu
 - **Coding-Agent Verification Tools**: [Shiplight](https://www.shiplight.ai/), Momentic and Playwright Test Agents, which verify UI changes produced by Claude Code, Cursor or Copilot in a real browser.
 - **Exploratory Testing Bots**: [AI-driven testing bots](/ai-testing-agents/) that mimic user behaviour and uncover defects that scripted tests miss.
 - **Natural-Language Test Platforms**: Momentic, mabl and Midscene.js, where tests are authored in plain language and resolved by a model at runtime.
-- **Code-Driven AI Bots**: Wopee.io's [Playwright AI Bot](/blog/playwright-bot-ai-powered-test-automation/), which generates Playwright code you own.
+- **Code-Driven AI Bots**: Wopee.io's [Playwright AI Bot](/blog/playwright-bot-ai-powered-test-automation/), which runs on Playwright and generates test cases from your app.
 - **Self-Healing Agents**: Agents that regenerate broken locators (or whole flows) when the UI changes. See [self-healing test automation](/blog/self-healing-in-sw-test-automation/) for how the leading approaches compare.
 - **Predictive Selection Agents**: Agents that rank tests by failure risk and run the riskiest first, see [predictive test selection](/blog/predictive-test-selection/).
 

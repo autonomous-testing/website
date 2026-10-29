@@ -20,7 +20,7 @@ const DefinitionBlock = () => {
                 UI changes without human-written scripts.
               </strong>{" "}
               Wopee.io's testing bot crawls your application from one URL,
-              discovers user flows, and generates Playwright tests that run
+              discovers user flows, and generates test cases that run
               across browsers. When the interface changes, tests self-heal
               instead of breaking, so your team can focus on shipping rather
               than fixing flaky tests.

@@ -247,7 +247,7 @@ export default function AiTestingAgentPlaywrightWorkshopVideo(): JSX.Element {
             </li>
             <li>
               <Link to="/how-it-works/">How Wopee.io works</Link>, from URL to
-              Playwright tests.
+              test cases.
             </li>
             <li>
               <Link to={BOOK_DEMO}>Book a demo</Link> to see it on your own app.

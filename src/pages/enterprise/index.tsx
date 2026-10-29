@@ -121,12 +121,6 @@ const PILOT_WEEKS = [
   },
 ];
 
-const PILOT_OUTCOMES = [
-  { value: "70–90%", label: "less time to create tests" },
-  { value: "2–5x", label: "increase in test coverage" },
-  { value: "60–90%", label: "less maintenance effort" },
-];
-
 const HeroSection = () => (
   <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center relative">
     <div className="flex flex-col gap-6 max-w-4xl">
@@ -395,37 +389,11 @@ const PilotSection = () => (
         <article className="rounded-xl border border-slate-200 border-t-2 border-t-secondary-wopee/70 bg-white p-6 shadow-sm dark:border-white/10 dark:border-t-primary-wopee/70 dark:bg-white/[0.035]">
           <h3 className="text-lg font-bold mb-3">Exit with your assets</h3>
           <p className="m-0 text-slate-600 dark:text-slate-300">
-            Generated Playwright code can be published to your own Git repo.
+            Tests live in a Git repository you can open, diff and roll back.
             If you stop, all exchanged data is deleted from Wopee.io systems
             within 30 days.
           </p>
         </article>
-      </div>
-
-      <div className="max-w-4xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-6">
-          Typical pilot outcomes, measured against your baseline
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-5">
-          {PILOT_OUTCOMES.map((outcome) => (
-            <article
-              key={outcome.label}
-              className="rounded-xl border border-slate-200 border-t-2 border-t-secondary-wopee/70 bg-white p-6 shadow-sm dark:border-white/10 dark:border-t-primary-wopee/70 dark:bg-white/[0.035]"
-            >
-              <p className="text-4xl font-bold text-secondary-wopee dark:text-primary-wopee m-0 mb-1">
-                {outcome.value}
-              </p>
-              <p className="m-0 text-slate-600 dark:text-slate-300">
-                {outcome.label}
-              </p>
-            </article>
-          ))}
-        </div>
-        <p className="mx-auto max-w-2xl text-sm text-slate-500 dark:text-slate-400">
-          Typical improvements observed during pilot projects. Actual results
-          vary with your testing maturity, application complexity, and team
-          engagement. That is exactly what the pilot measures.
-        </p>
       </div>
     </div>
   </div>

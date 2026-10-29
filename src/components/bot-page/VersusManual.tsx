@@ -15,7 +15,7 @@ const ROWS = [
     icon: mdiRocket,
     dimension: "Test preparation",
     manual: "Requires coding and complicated setup.",
-    stat: "10x",
+    stat: "",
     statLabel: "Quicker preparation",
     wopee:
       "Point the testing bot at any web app and it starts exploring immediately.",
@@ -24,23 +24,23 @@ const ROWS = [
     icon: mdiCurrencyUsd,
     dimension: "Test maintenance",
     manual: "Traditional test frameworks break with every UI change.",
-    stat: "30 - 40%",
-    statLabel: "Cheaper maintenance",
+    stat: "",
+    statLabel: "Lower maintenance effort",
     wopee: "Tests self-heal instead of breaking.",
   },
   {
     icon: mdiCheckboxMultipleOutline,
     dimension: "Test coverage",
     manual: "Manual methods miss bugs and lead to inconsistent results.",
-    stat: "5x",
-    statLabel: "Higher coverage",
+    stat: "",
+    statLabel: "Broader coverage",
     wopee: "Agents autonomously crawl your application and discover user flows.",
   },
   {
     icon: mdiRunFast,
     dimension: "Test execution",
     manual: "Testers face delays due to complex tools and manual testing.",
-    stat: "50 - 70%",
+    stat: "",
     statLabel: "Quicker execution",
     wopee: "Multi-browser execution, results ready in 2 minutes.",
   },
@@ -107,8 +107,7 @@ const VersusManual = () => {
                     With Wopee.io agents
                   </p>
                   <p className="m-0 text-2xl font-bold leading-none text-slate-950 dark:text-white">
-                    {row.stat}{" "}
-                    <span className="align-middle text-sm font-bold text-secondary-wopee sm:text-base dark:text-primary-wopee">
+                    <span className="align-middle text-base font-bold text-secondary-wopee sm:text-lg dark:text-primary-wopee">
                       {row.statLabel}
                     </span>
                   </p>

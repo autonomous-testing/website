@@ -33,7 +33,7 @@ const STAGES = [
     title: "Test cases",
     duration: "10–30 s or 5–10 min per test",
     description:
-      "Each user story becomes a Playwright test. Direct mode writes the code in 10–30 seconds. Agent mode runs the scenario live in a browser first, taking 5–10 minutes per test for highly reliable code.",
+      "Each user story becomes a test case. Direct mode writes it in 10–30 seconds. Agent mode runs the scenario live in a browser first, taking 5–10 minutes per test.",
   },
 ];
 
@@ -50,10 +50,10 @@ const HowItWorksHero = () => (
       <p className="mx-auto mb-0 mt-7 max-w-3xl text-left text-base leading-7 text-slate-600 sm:text-center sm:text-lg lg:text-xl dark:text-slate-300">
         <strong>
           Wopee.io works in four stages: it crawls your web app, builds an
-          app-context document, derives user stories, and generates Playwright
+          app-context document, derives user stories, and generates
           test cases. Every artifact is editable before anything runs.
         </strong>{" "}
-        The crawl takes 5–15 minutes. Code generation takes 10–30 seconds per
+        The crawl takes 5–15 minutes. Test generation takes 10–30 seconds per
         test in Direct mode, or 5–10 minutes in Agent mode, where the AI runs
         the scenario live in a browser.
       </p>
@@ -156,10 +156,10 @@ const GitRepoClosing = () => (
           </span>
         </h2>
         <p className="mx-auto mb-0 mt-6 text-left text-base leading-7 text-slate-600 sm:text-center sm:text-lg lg:text-xl dark:text-slate-300">
-          Sign in with GitHub, GitLab, or Google. Agent runs emit plain{" "}
-          <Link to="/ai-testing-agents/">Playwright code</Link> that you can
-          export and run anywhere without the Wopee.io runtime. No lock-in: if
-          you leave, the tests go with you.
+          Sign in with GitHub, GitLab, or Google. Tests live in a Git repository you can open, diff and roll back.
+          Passing tests can also be generated as{" "}
+          <Link to="/ai-testing-agents/">Playwright code</Link> that uses the
+          Wopee.io SDK.
         </p>
         <div className="mt-8 w-full sm:w-auto">
           <ButtonPrimary
@@ -179,8 +179,8 @@ const GitRepoClosing = () => (
 const HowItWorksPage = () => {
   return (
     <Layout
-      title="How It Works: From URL to Playwright Tests"
-      description="How Wopee.io works: crawl your app in 5–15 minutes, review and edit every artifact, then generate Playwright tests you can export and run anywhere."
+      title="How It Works: From URL to Test Cases"
+      description="How Wopee.io works: crawl your app in 5–15 minutes, review and edit every artifact, then generate test cases kept in a Git repository you can roll back."
     >
       <HowItWorksHero />
       <PipelineSection />

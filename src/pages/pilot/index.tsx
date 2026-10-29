@@ -45,7 +45,7 @@ const OFFER: { field: string; value: string }[] = [
   {
     field: "After the pilot",
     value:
-      "You own every test. They export as plain Playwright code and keep running without Wopee.io.",
+      "You own every test. Tests live in a Git repository you can open, diff and roll back.",
   },
 ];
 

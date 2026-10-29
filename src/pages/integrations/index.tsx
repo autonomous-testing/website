@@ -125,13 +125,13 @@ const CATEGORIES: Category[] = [
     id: "git-ci",
     title: "Git & CI",
     intro:
-      "Your tests are real Playwright code you can export, open, and run without Wopee.io.",
+      "Your tests live in a Git repository you can open, diff and roll back.",
     items: [
       {
         name: "GitHub",
         icon: mdiGithub,
         description:
-          "Generated Playwright tests live in a Git-backed workspace you can export at any time, real code, no lock-in.",
+          "Tests live in a Git repository you can open, diff and roll back. Passing tests can also be generated as Playwright code that uses the Wopee.io SDK.",
         links: [{ label: "Docs", href: "https://docs.wopee.io/" }],
       },
       {
@@ -144,7 +144,7 @@ const CATEGORIES: Category[] = [
         name: "GitLab",
         icon: mdiGitlab,
         description:
-          "Sign in to Wopee.io with your GitLab account. And because generated tests are plain Playwright, they run in GitLab CI like any other suite.",
+          "Sign in to Wopee.io with your GitLab account. Agent runs execute in your CI like any other suite.",
       },
     ],
   },
@@ -152,13 +152,13 @@ const CATEGORIES: Category[] = [
     id: "test-frameworks",
     title: "Test frameworks",
     intro:
-      "Playwright is native, agents generate and run plain Playwright tests. Visual testing SDKs cover Cypress, Robot Framework and WebdriverIO, and any other framework connects through the API.",
+      "Playwright is native: the agent drives the browser through Playwright. Visual testing SDKs cover Cypress, Robot Framework and WebdriverIO, and any other framework connects through the API.",
     items: [
       {
         name: "Playwright",
         icon: mdiTestTube,
         description:
-          "Native. Agents generate plain Playwright tests, and the visual testing SDK adds AI-powered visual checks to suites you already have.",
+          "Native. Agents run on Playwright, and the visual testing SDK adds AI-powered visual checks to suites you already have.",
         links: [
           {
             label: "Docs",

@@ -25,7 +25,7 @@ const JSONLD_APP = {
   operatingSystem: "Web",
   url: "https://wopee.io",
   description:
-    "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate Playwright tests, run them across browsers, and self-heal when the UI changes.",
+    "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate test cases, run them across browsers, and self-heal when the UI changes.",
   publisher: ORG_REF,
   offers: {
     "@type": "Offer",
@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title="AI Testing Agents for Web Apps"
-      description="Paste a URL. Wopee.io AI agents explore your web app, generate Playwright tests, run them across browsers, and self-heal when the UI changes. Start free."
+      description="Paste a URL. Wopee.io AI agents explore your web app, generate test cases, run them across browsers, and self-heal when the UI changes. Start free."
     >
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>

@@ -1,13 +1,13 @@
 ---
 slug: playwright-bot-ai-powered-test-automation
 title: "Playwright Bot: AI-Generated Tests in Minutes"
-description: "A Playwright bot that explores your web app and generates ready-to-run Playwright tests. AI-powered test automation with no scripts to write."
+description: "A Playwright bot that explores your web app and generates test cases. AI-powered test automation with no scripts to write."
 authors: marcel
 tags: [playwright, automation, testing, AI]
 image: ./pw-bot.png
 ---
 
-Playwright Bot is an AI agent that generates, runs, and maintains Playwright tests from a URL, no manual scripting required. It collects HTML and screenshots, uses an LLM to derive user flows, and emits adaptive Playwright code that handles cookie banners and shifting UI. Compared to Playwright codegen, which only records what you click, Playwright Bot decides what to test and rewrites scripts when your app changes.
+Playwright Bot is an AI agent that generates, runs, and maintains test cases from a URL, no manual scripting required. It collects HTML and screenshots, uses an LLM to derive user flows, and adapts to cookie banners and shifting UI. Compared to Playwright codegen, which only records what you click, Playwright Bot decides what to test and rewrites scripts when your app changes.
 
 <!--truncate-->
 
@@ -24,7 +24,7 @@ But here’s the catch: manual test creation is frustratingly slow, error-prone,
       "name": "What is Playwright Bot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Playwright Bot is an AI agent built on top of Playwright that generates end-to-end test cases automatically from a URL. It collects HTML and screenshots, uses a large language model to derive user flows, and outputs runnable Playwright test code without manual scripting."
+        "text": "Playwright Bot is an AI agent built on top of Playwright that generates end-to-end test cases automatically from a URL. It collects HTML and screenshots and uses a large language model to derive user flows, without manual scripting. Passing tests can also be generated as Playwright code that uses the Wopee.io SDK."
       }
     },
     {
@@ -40,7 +40,7 @@ But here’s the catch: manual test creation is frustratingly slow, error-prone,
       "name": "Do I need to write any code to use Playwright Bot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. You point the bot at a URL and it generates Playwright test cases on its own. You can review and tweak the emitted code, but writing tests from scratch is not required."
+        "text": "No. You point the bot at a URL and it generates test cases on its own. You can review and edit them, but writing tests from scratch is not required."
       }
     },
     {

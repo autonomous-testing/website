@@ -19,8 +19,8 @@ const HeroSection = () => {
           </h1>
 
           <p className="mb-0 mt-7 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg lg:text-xl dark:text-slate-300">
-            A testing bot that explores your web app, generates Playwright
-            tests, and self-heals when the UI changes. Set up in 1 minute. No
+            A testing bot that explores your web app, generates test
+            cases, and self-heals when the UI changes. Set up in 1 minute. No
             coding required.
           </p>
 
@@ -42,7 +42,7 @@ const HeroSection = () => {
             <OptimizedImage
               className="mx-auto max-h-[360px] w-full object-contain lg:max-h-[430px]"
               src="/img/wopee_head_1_2023-10-10.png"
-              alt="Wopee.io testing bot mascot representing the AI testing agents that explore web apps, generate Playwright tests, and self-heal them when the UI changes."
+              alt="Wopee.io testing bot mascot representing the AI testing agents that explore web apps, generate test cases, and self-heal them when the UI changes."
               loading="eager"
               sizes="(max-width: 1023px) 384px, 420px"
             />

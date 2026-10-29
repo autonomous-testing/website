@@ -35,8 +35,8 @@ const EVIDENCE: {
     text: (
       <>
         Results are ready for review before anything merges. You review
-        generated tests and own the test strategy. The tests are standard
-        Playwright code you can export and run in your own CI/CD. No lock-in.
+        generated tests and own the test strategy. Tests live in a Git repository
+        you can open, diff and roll back.
       </>
     ),
   },

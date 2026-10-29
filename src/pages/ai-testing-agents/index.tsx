@@ -24,11 +24,11 @@ const STEPS = [
     title: "Effortless setup:",
     subtitle: "Get started in 1 minute",
     description:
-      "Point the testing bot at any web app. It starts exploring immediately, with no scripts, selectors, or programming required. The agent autonomously crawls your application, discovers user flows, and generates Playwright test cases.",
+      "Point the testing bot at any web app. It starts exploring immediately, with no scripts, selectors, or programming required. The agent autonomously crawls your application, discovers user flows, and generates test cases.",
   },
   {
     image: "/img/landing/instant-results.png",
-    alt: "Wopee.io results dashboard showing autonomous test runs with screenshots, traces, and video recordings after the testing bot executes generated Playwright tests across browsers.",
+    alt: "Wopee.io results dashboard showing autonomous test runs with screenshots, traces, and video recordings after the testing bot executes generated tests across browsers.",
     title: "Autonomous testing:",
     subtitle: "Results ready in 2 minutes",
     description:
@@ -49,7 +49,7 @@ const FEATURES = [
   "Scheduled test runs",
   "Video recording and traces",
   "Self-healing tests",
-  "Playwright test export",
+  "Tests in a Git repository",
   "Multi-browser execution",
   "Autonomous visual testing",
   "Exploratory testing",
@@ -68,7 +68,7 @@ const JSONLD_APP = {
   operatingSystem: "Web",
   url: "https://wopee.io/ai-testing-agents/",
   description:
-    "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate Playwright tests, run them across browsers, and self-heal when the UI changes.",
+    "Autonomous AI testing agents for web applications. Wopee.io agents explore your app, generate test cases, run them across browsers, and self-heal when the UI changes.",
   publisher: ORG_REF,
   offers: {
     "@type": "Offer",
@@ -84,7 +84,7 @@ const AiTestingAgentsPage = () => {
   return (
     <Layout
       title="Testing Bot for Web Apps: AI Testing Agents"
-      description="Testing bot for web apps: Wopee.io's AI testing agents explore your app, generate Playwright tests, and self-heal when the UI changes. Start in minutes."
+      description="Testing bot for web apps: Wopee.io's AI testing agents explore your app, generate test cases, and self-heal when the UI changes. Start in minutes."
     >
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>
