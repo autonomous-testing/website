@@ -83,7 +83,7 @@ const DATA_FLOW = [
     runsWhere: "Git repository with full commit history",
     connectsTo:
       "Commander for review and editing; test cases can be published to your own repo",
-    data: "User stories, test cases, generated Playwright code",
+    data: "User stories, test cases, Playwright code from passing tests",
   },
   {
     component: "LLM provider",

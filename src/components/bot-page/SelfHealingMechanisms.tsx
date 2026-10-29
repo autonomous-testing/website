@@ -16,8 +16,8 @@ const MECHANISMS: {
         The agent reads your app's accessibility tree. It targets elements by
         ARIA roles first, then attributes like data-testid, with visual
         coordinates as the last resort. If one strategy fails, the next takes
-        over automatically. Generated Playwright code follows the same fallback
-        hierarchy.
+        over automatically. Playwright code generated from passing tests follows
+        the same fallback hierarchy.
       </>
     ),
   },

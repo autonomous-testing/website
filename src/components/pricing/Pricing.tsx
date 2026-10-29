@@ -34,7 +34,6 @@ const heroBenefits = [
   "Zero scripts to maintain",
   "Set up in minutes",
   "Self-healing test suites",
-  "60–90% less maintenance",
 ];
 
 const competitors = [
@@ -54,11 +53,6 @@ const competitors = [
     others: "Constant babysitting",
   },
   {
-    feature: "Flaky test rate",
-    wopee: "< 1%",
-    others: "10–30%",
-  },
-  {
     feature: "On-prem option",
     wopee: "Yes",
     others: "Rarely",
@@ -68,7 +62,7 @@ const competitors = [
 const testimonials = [
   {
     quote:
-      "Wopee.io saves us serious time keeping our app's visual integrity intact across 60+ web and mobile properties.",
+      "Wopee.io showcased its potential to save us valuable time and effort in maintaining the visual integrity of our application.",
     author: "Martin Šimon",
     role: "Test Automation Lead",
     company: "Livesport",
@@ -77,7 +71,7 @@ const testimonials = [
   },
   {
     quote:
-      "Autonomous testing has been extremely valuable for keeping our marketing and customer account pages bug-free.",
+      "Wopee.io autonomous testing is extremely valuable in testing our marketing & customer account pages.",
     author: "Juraj Žabka",
     role: "Engineering Lead",
     company: "Multitude",
@@ -86,9 +80,9 @@ const testimonials = [
   },
   {
     quote:
-      "Before Wopee.io's visual testing, some of our scenarios simply weren't testable. Now they are.",
+      "Before implementing visual testing from Wopee.io, it wasn't possible to test some scenarios at all.",
     author: "Jakub Miakyš",
-    role: "QA Automation Lead",
+    role: "QA Automation specialist & lead",
     company: "SYNOT TECH",
     avatar: "/img/customers/avatars/jakub-synot.webp",
     metric:

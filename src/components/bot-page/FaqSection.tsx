@@ -16,20 +16,20 @@ const FAQS: {
   {
     question: "What is an AI testing agent?",
     answer:
-      "AI testing agents are autonomous software programs that explore a web app, generate and execute test cases, and adapt when the UI changes without human-written scripts. Wopee.io's agents generate Playwright tests and run visual and functional validations across browsers.",
+      "AI testing agents are autonomous software programs that explore a web app, generate and execute test cases, and adapt when the UI changes without human-written scripts. Wopee.io's agents generate plain-language test cases and run visual and functional validations across browsers.",
   },
   {
     question: "What is a testing bot?",
     answer:
-      "A testing bot is an autonomous AI agent that explores a web app, generates and executes test cases, and adapts when the UI changes without human-written scripts. Wopee.io's testing bot generates Playwright tests you can export and run in your own CI/CD.",
+      "A testing bot is an autonomous AI agent that explores a web app, generates and executes test cases, and adapts when the UI changes without human-written scripts. Wopee.io's testing bot generates test cases that live in a Git repository you can open, diff and roll back. Passing tests can also be generated as Playwright code that uses the Wopee.io SDK.",
   },
   {
     question: "How do Wopee.io's AI testing agents work?",
     answer:
-      "Point the agent at your web app's URL. It autonomously crawls the application, discovers user flows, and generates Playwright test cases. No scripts, no selectors, no programming. Tests run across browsers, returning screenshots, traces, and video recordings.",
+      "Point the agent at your web app's URL. It autonomously crawls the application, discovers user flows, and generates test cases. No scripts, no selectors, no programming. Tests run across browsers, returning screenshots, traces, and video recordings.",
     link: {
       href: "/blog/playwright-bot-ai-powered-test-automation/",
-      text: "generates Playwright test cases",
+      text: "generates test cases",
     },
   },
   {

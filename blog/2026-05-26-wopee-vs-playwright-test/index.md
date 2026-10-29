@@ -44,7 +44,7 @@ Playwright is Microsoft's free, open-source browser automation framework. Wopee.
       "name": "Does Wopee.io lock me in if I want to leave?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Low lock-in. Wopee.io runs Playwright underneath, so the test concepts, locators, and ecosystem you learn transfer directly back to vanilla Playwright. You leave with skills and patterns that still work, the cost of leaving is rebuilding the managed dashboard and self-healing layer, not relearning a framework."
+        "text": "Wopee.io runs Playwright underneath, so the test concepts and ecosystem you learn transfer back to vanilla Playwright. Tests live in a Git repository you can open, diff and roll back."
       }
     },
     {
@@ -139,9 +139,9 @@ This is the underrated part of the comparison. Because Wopee.io runs Playwright 
 ![Low-friction migration: an existing Playwright test suite (login.spec.ts, checkout.spec.ts, profile.spec.ts) sits as a foundation. Wopee.io layers on top with six feature cards (autonomous analysis, app mapping, additional coverage generation, orchestrate runs, visual checks, and reporting. Side callouts read "No rewrite needed" and "Keep current tests") adoption is incremental and additive.](./migration-low-friction.webp)
 
 - **Playwright → Wopee.io:** point Wopee at your existing Playwright suite. The tests run as-is. You opt into self-healing and the hosted dashboard incrementally.
-- **Wopee.io → Playwright:** the test code is Playwright. You take the suite with you. The cost of leaving is rebuilding the dashboard and self-healing layer, not relearning a framework.
+- **Wopee.io → Playwright:** tests live in a Git repository you can open, diff and roll back, and passing tests can also be generated as Playwright code that uses the Wopee.io SDK.
 
-That low-lock-in story is the strategic reason "Wopee vs Playwright" is the wrong framing in the first place. They are not competing for the same buying decision. Wopee.io is the platform decision *after* you already chose Playwright.
+That shared Playwright foundation is the strategic reason "Wopee vs Playwright" is the wrong framing in the first place. They are not competing for the same buying decision. Wopee.io is the platform decision *after* you already chose Playwright.
 
 ## Pricing side-by-side
 

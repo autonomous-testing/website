@@ -67,18 +67,18 @@ const FEATURES = [
 const VALUES = [
   {
     icon: mdiRocket,
-    title: "10x",
+    title: "Fast",
     description: "Quicker setup compared to traditional tools",
   },
   {
     icon: mdiCurrencyUsd,
-    title: "30 - 40%",
-    description: "Lower cost than our competitors",
+    title: "0 €",
+    description: "Free plan, no credit card required",
   },
   {
     icon: mdiCheckboxMultipleOutline,
-    title: "5x",
-    description: "Higher test coverage with simple maintenance",
+    title: "Broad",
+    description: "Wider test coverage with simple maintenance",
   },
 ];
 

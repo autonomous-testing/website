@@ -15,8 +15,8 @@ const benefits = [
   {
     icon: (
       <Bolt className="text-secondary-wopee dark:text-yellow-400" size={32} />
-    ), // 70–90% faster test creation
-    badge: "70–90% faster",
+    ), // Fast authoring
+    badge: "Fast authoring",
     title: "Prepare tests in minutes, not days",
     description:
       "Benefit from rapid authoring plus the execution speed of traditional automation, without the setup complexity.",
@@ -27,8 +27,8 @@ const benefits = [
         className="text-secondary-wopee dark:text-yellow-400"
         size={32}
       />
-    ), // 2–5x coverage
-    badge: "2–5x coverage",
+    ), // Coverage
+    badge: "Broader coverage",
     title: "Cover the paths others miss",
     description:
       "Mitigate risks with comprehensive coverage. AI agents explore critical paths other testing methods miss.",
@@ -36,8 +36,8 @@ const benefits = [
   {
     icon: (
       <Shield className="text-secondary-wopee dark:text-yellow-400" size={32} />
-    ), // 60–90% less maintenance
-    badge: "60–90% less maintenance",
+    ), // Maintenance
+    badge: "Less maintenance",
     title: "Eliminate tedious test maintenance",
     description:
       "Finding and fixing locators is yesterday's news. AI adapts tests to UI changes and updates scripts automatically.",
@@ -57,11 +57,11 @@ const benefits = [
         className="text-secondary-wopee dark:text-yellow-400"
         size={32}
       />
-    ), // No lock-in
-    badge: "No lock-in",
-    title: "Your tests stay yours",
+    ), // Tests in Git
+    badge: "Tests in Git",
+    title: "Tests you can open, diff and roll back",
     description:
-      "Every agent run emits deterministic Playwright code. Export it and run it in CI/CD without Wopee.io. Move away any time.",
+      "Tests live in a Git repository you can open, diff and roll back. Passing tests can also be generated as Playwright code that uses the Wopee.io SDK.",
   },
   {
     icon: (

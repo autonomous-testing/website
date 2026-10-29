@@ -2,23 +2,23 @@ import React from "react";
 
 const comparisonItems = [
   {
-    stat: "10",
-    unit: "x",
+    stat: "",
+    unit: "",
     description: "Quicker preparation",
   },
   {
-    stat: "30 - 40",
-    unit: "%",
-    description: "Cheaper maintenance",
+    stat: "",
+    unit: "",
+    description: "Lower maintenance effort",
   },
   {
-    stat: "5",
-    unit: "x",
-    description: "Higher coverage",
+    stat: "",
+    unit: "",
+    description: "Broader coverage",
   },
   {
-    stat: "50 - 70",
-    unit: "%",
+    stat: "",
+    unit: "",
     description: "Quicker execution",
   },
 ];

@@ -15,7 +15,7 @@ const HowItWorksIntro = () => {
           </h2>
           <p className="mb-0 mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg lg:text-xl dark:text-slate-300">
             Point it at a URL. Wopee.io agents explore your app, generate
-            Playwright tests, and self-heal them when the UI changes.
+            test cases, and self-heal them when the UI changes.
           </p>
 
           <div className="mt-8 w-full sm:w-auto">
