@@ -32,6 +32,17 @@ export const videos: VideoEntry[] = [
     thumbnailAlt:
       "Video thumbnail: workshop on building a first AI testing agent with Playwright and Wopee.io",
   },
+  {
+    slug: "vibe-testing-lab-ai-testing-agents",
+    youtubeId: "d-KRA2M5bwE",
+    title:
+      "I tested 4 AI testing agents on one app. Which one reported the truth?",
+    summary:
+      "The Vibe Testing Lab talk: a coding agent, Playwright's test agents, the Playwright CLI with skills and Wopee.io with MCP, on one app and one task.",
+    duration: "22:56",
+    thumbnailAlt:
+      "Video thumbnail: Vibe Testing Lab, four AI testing agents compared on one demo app",
+  },
 ];
 
 export const videoPath = (v: VideoEntry) => `/videos/${v.slug}/`;

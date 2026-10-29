@@ -9,6 +9,7 @@ import CompareFaq, {
 } from "@site/src/components/compare-page/CompareFaq";
 import CompareCta from "@site/src/components/compare-page/CompareCta";
 import LastChecked from "@site/src/components/compare-page/LastChecked";
+import VideoCallout from "@site/src/components/ui/VideoCallout";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 
 const TLDR_ROWS = [
@@ -237,6 +238,12 @@ const WopeeVsPlaywrightMcp = () => {
       />
 
       <BetterTogether />
+
+      <VideoCallout
+        slug="vibe-testing-lab-ai-testing-agents"
+        heading="See them side by side"
+        text="Watch Playwright's planner, generator and healer next to a coding agent, the Playwright CLI and Wopee.io with MCP, on one app and one task."
+      />
 
       <PricingWedge />
 
