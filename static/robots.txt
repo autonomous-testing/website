@@ -1,3 +1,5 @@
-# Staging: block all crawlers (production robots.txt is written by deploy pipeline)
+# Staging and demo: crawlable so search engines see each page's noindex and its
+# canonical to wopee.io and drop the indexed copies. Production gets
+# robots.prod.txt from the deploy pipeline.
 User-agent: *
-Disallow: /
+Allow: /

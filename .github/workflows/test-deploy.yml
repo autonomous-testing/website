@@ -22,5 +22,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
+        # Production build, so the SEO check sees indexable pages (staging builds are all noindex).
+        env:
+          WOPEE_SITE: production
       - name: Check SEO meta (titles, descriptions, alt text)
         run: node scripts/check-seo-meta.js

@@ -25,6 +25,11 @@ const navRichItem = (title, desc, icon) =>
 // verbatim, so they have to interpolate it themselves.
 const baseUrl = "/";
 
+// Staging (website.wopee.io) and demo builds are copies of wopee.io: they carry
+// noindex and point canonical, og:url and the sitemap at wopee.io. Only builds
+// with WOPEE_SITE=production (the website-prod deploy) are indexable.
+const isProductionSite = process.env.WOPEE_SITE === "production";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // Site title is appended to every page's <title> tag as "Page Title | <site title>".
@@ -56,9 +61,7 @@ const config = {
     },
   ],
 
-  // Set the production url of your site here
-  url: "https://website.wopee.io",
-  // url: "https://wopee.io",
+  url: "https://wopee.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl,
@@ -273,6 +276,9 @@ const config = {
       metadata: [
         { property: "og:type", content: "website" },
         { property: "og:site_name", content: "Wopee.io" },
+        ...(isProductionSite
+          ? []
+          : [{ name: "robots", content: "noindex, nofollow" }]),
       ],
       // https://docusaurus.io/docs/api/themes/configuration#color-mode---dark-mode
       colorMode: {
