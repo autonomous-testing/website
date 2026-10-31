@@ -646,6 +646,26 @@ a.navbar__item:hover {
   color: var(--ifm-font-color-base);
 }
 
+.nav-new {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  vertical-align: 0.1em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #7030a0;
+  color: #fff;
+}
+
+[data-theme="dark"] .nav-new {
+  background: #ffcc00;
+  color: #1b1b1d;
+}
+
 .nav-rich-desc {
   display: block;
   font-size: 0.78rem;
@@ -684,6 +704,36 @@ a.navbar__item:hover {
 
 .menu__link .nav-rich-desc {
   display: none;
+}
+
+/* Mobile sidebar: 44 px tap targets */
+.navbar-sidebar .menu__link,
+.navbar-sidebar .menu__caret {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.navbar-sidebar .menu__caret {
+  min-width: 44px;
+  justify-content: center;
+}
+.navbar-sidebar__close,
+.navbar-sidebar__brand [class*="toggle"] button {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-sidebar .navbar-sidebar__back {
+  min-height: 44px;
+}
+
+/* Navbar "Learn" (behind the T1 launch flag): only where the bar has room, so Log in and Start for free never move. */
+@media (min-width: 997px) and (max-width: 1199px) {
+  .navbar__item.navbar-learn {
+    display: none;
+  }
 }
 
 /* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Green Is Not Correct" and episode tags. */
@@ -849,4 +899,15 @@ a.navbar__item:hover {
 .legal-page .table-of-contents__link {
   display: block;
   padding: 0.25rem 0;
+}
+
+/* Mobile navbar: 44 px hamburger */
+@media (max-width: 996px) {
+  .navbar__toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "@docusaurus/Link";
 import NewsletterForm from "@/components/hub-spot/NewsletterForm";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +32,12 @@ export default function InPostCTA({
             {heading}
           </h3>
           <p className="text-base text-white/85 m-0">{body}</p>
+          <Link
+            to="/learn/"
+            className="text-sm font-semibold text-primary-wopee hover:text-primary-wopee hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Or take the free hands-on tutorials →
+          </Link>
         </div>
         <div className="bg-white rounded-xl p-4 sm:p-5">
           <div id="newsletter-form-container" />

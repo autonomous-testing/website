@@ -23,19 +23,19 @@ const social = [
 ];
 
 const linkClass =
-  "group inline-flex min-h-7 items-center gap-1 text-[15px] leading-6 text-gray-600 no-underline transition-colors hover:text-secondary-wopee hover:no-underline dark:text-gray-400 dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "group inline-flex min-h-11 lg:min-h-7 items-center gap-1 text-[15px] leading-6 text-gray-600 no-underline transition-colors hover:text-secondary-wopee hover:no-underline dark:text-gray-400 dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const bottomLinkClass =
-  "inline-flex min-h-7 items-center text-gray-500 no-underline transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex min-h-11 lg:min-h-7 items-center text-gray-600 no-underline dark:text-gray-400 transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const primaryCtaClass =
-  "inline-flex h-10 w-full items-center justify-center rounded-lg bg-secondary-wopee px-4 sm:w-auto text-sm font-semibold text-white no-underline transition-colors hover:bg-purple-800 hover:text-white hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg bg-secondary-wopee px-4 sm:w-auto text-sm font-semibold text-white no-underline transition-colors hover:bg-purple-800 hover:text-white hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const secondaryCtaClass =
-  "inline-flex h-10 w-full items-center justify-center rounded-lg border border-solid border-gray-300 px-4 sm:w-auto text-sm font-semibold text-gray-900 no-underline transition-colors hover:border-secondary-wopee hover:text-secondary-wopee hover:no-underline dark:border-white/15 dark:text-white dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg border border-solid border-gray-300 px-4 sm:w-auto text-sm font-semibold text-gray-900 no-underline transition-colors hover:border-secondary-wopee hover:text-secondary-wopee hover:no-underline dark:border-white/15 dark:text-white dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const socialClass =
-  "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-solid border-gray-200 bg-white text-gray-500 transition-colors hover:border-secondary-wopee hover:text-secondary-wopee dark:border-white/10 dark:bg-white/[0.03] dark:text-gray-400 dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex h-11 w-11 lg:h-9 lg:w-9 items-center justify-center rounded-lg border border-solid border-gray-200 bg-white text-gray-500 transition-colors hover:border-secondary-wopee hover:text-secondary-wopee dark:border-white/10 dark:bg-white/[0.03] dark:text-gray-400 dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
   const external = !isInternalUrl(link.to);
@@ -46,6 +46,11 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
         className={linkClass}
       >
         {link.label}
+        {link.badge && (
+          <span className="ml-1 rounded-full bg-secondary-wopee px-1.5 py-px text-[10px] font-bold uppercase leading-4 tracking-wide text-white dark:bg-primary-wopee dark:text-[#1b1b1d]">
+            {link.badge}
+          </span>
+        )}
         {external && (
           <ArrowUpRight
             size={14}
@@ -135,7 +140,7 @@ export default function Footer(): JSX.Element {
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
                 {column.title}
               </h3>
-              <ul className="m-0 mt-4 list-none space-y-2.5 p-0">
+              <ul className="m-0 mt-4 list-none space-y-0 p-0 lg:space-y-2.5">
                 {column.links.map((link) => (
                   <FooterLinkItem key={link.label} link={link} />
                 ))}
@@ -144,9 +149,9 @@ export default function Footer(): JSX.Element {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-7 text-sm text-gray-500 dark:border-white/10 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-7 text-sm text-gray-600 dark:text-gray-400 dark:border-white/10 md:flex-row md:items-center md:justify-between">
           <p>© {year} wopee labs, s.r.o. · Prague, Czech Republic</p>
-          <ul className="m-0 flex list-none flex-wrap items-center gap-x-6 gap-y-2 p-0">
+          <ul className="m-0 flex list-none flex-wrap items-center gap-x-6 gap-y-0 p-0 lg:gap-y-2">
             {footerLegal.map((link) => (
               <li key={link.label}>
                 <Link to={link.to} className={bottomLinkClass}>

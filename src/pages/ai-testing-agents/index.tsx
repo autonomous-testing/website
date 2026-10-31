@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import AnswerFirst from "@site/src/components/ui/AnswerFirst";
+import Link from "@docusaurus/Link";
 import StackLinks from "@site/src/components/pseo/StackLinks";
 import HeroSection from "@site/src/components/bot-page/HeroSection";
 import DefinitionBlock from "@site/src/components/bot-page/DefinitionBlock";
@@ -136,6 +137,18 @@ const AiTestingAgentsPage = () => {
           heading="Build your first agent"
           text="Watch the full workshop: set up an AI testing agent with Playwright and Wopee.io, then run and export its tests."
         />
+
+        <div className="container px-5 lg:px-10 pb-4">
+          <p className="m-0 text-center text-lg">
+            New to agentic testing?{" "}
+            <Link
+              to="/learn/"
+              className="font-semibold text-secondary-wopee dark:text-primary-wopee"
+            >
+              Free hands-on tutorials &rarr;
+            </Link>
+          </p>
+        </div>
 
         <StackLinks />
 

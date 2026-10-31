@@ -15,6 +15,7 @@ import HomeDeploymentOptions from "@/components/home-page/HomeDeploymentOptions"
 import HomeEndingSection from "@/components/home-page/HomeEndingSection";
 import HomeFaqSection from "@/components/home-page/HomeFaqSection";
 import { JSONLD_ORG, ORG_REF } from "@site/src/data/organization";
+import HomeLearnBand from "@/components/home-page/HomeLearnBand";
 
 const JSONLD_APP = {
   "@context": "https://schema.org",
@@ -56,6 +57,7 @@ export default function Home(): JSX.Element {
       <HomeCockpitSection />
       <HomeTestingFrameworks />
       <HomeDeploymentOptions />
+      <HomeLearnBand />
       <HomeFaqSection />
       <HomeEndingSection />
     </Layout>

@@ -11,14 +11,20 @@ const {
   mdiConnection,
   mdiShieldCheckOutline,
   mdiScaleBalance,
+  mdiSchoolOutline,
   mdiPuzzleOutline,
   mdiAccountCheckOutline,
 } = require("@mdi/js");
 
 // Rich navbar dropdown rows: icon tile + title + one-line description.
-const navRichItem = (title, desc, icon) =>
-  `<span class="nav-rich"><span class="nav-rich-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg></span><span class="nav-rich-text"><span class="nav-rich-title">${title}</span><span class="nav-rich-desc">${desc}</span></span></span>`;
+const navRichItem = (title, desc, icon, badge) =>
+  `<span class="nav-rich"><span class="nav-rich-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg></span><span class="nav-rich-text"><span class="nav-rich-title">${title}${badge ? `<span class="nav-new">${badge}</span>` : ""}</span><span class="nav-rich-desc">${desc}</span></span></span>`;
 
+
+// /learn: learnHubLive (hub.live or t1.launched) gates the navbar "Learn" item;
+// tutorials without their own page get a "coming soon + notify" route.
+const { learnHubLive } = require("./src/data/learn-config");
+const { tutorials, learnShowNew } = require("./src/data/learn-tutorials");
 
 // The pathname the site is served under. Docusaurus prefixes the `favicon`
 // field with this automatically, but not `headTags` hrefs -- those are emitted
@@ -101,6 +107,22 @@ const config = {
               },
             },
           };
+        },
+      };
+    },
+
+    function learnComingSoonPlugin() {
+      return {
+        name: "learn-coming-soon",
+        async contentLoaded({ actions }) {
+          for (const t of tutorials.filter((x) => !x.hasPage)) {
+            actions.addRoute({
+              path: `${baseUrl}learn/${t.slug}/`,
+              component: "@site/src/components/learn/ComingSoonPage.tsx",
+              exact: true,
+              props: { slug: t.slug },
+            });
+          }
         },
       };
     },
@@ -308,12 +330,17 @@ const config = {
               { to: "/integrations/", html: navRichItem("Integrations", "Slack, GitHub, CI, MCP, and your stack", mdiPuzzleOutline) },
               { to: "/security/", html: navRichItem("Security & Trust", "How we handle your data and access", mdiShieldCheckOutline) },
               { to: "/compare/", html: navRichItem("Compare tools", "Honest comparisons with the alternatives", mdiScaleBalance) },
+              { to: "/learn/", html: navRichItem("Free tutorials", "Hands-on labs on AI testing agents", mdiSchoolOutline, learnShowNew ? "New" : "") },
             ],
           },
           { to: "/pricing/", label: "Pricing", position: "left" },
           { to: "/enterprise/", label: "Enterprise", position: "left" },
           { to: "/customers/", label: "Customers", position: "left" },
           { href: "https://docs.wopee.io/", label: "Docs", position: "left" },
+          // Shown from 1200 px up (custom.css) so Log in and Start for free never move.
+          ...(learnHubLive
+            ? [{ to: "/learn/", label: "Learn", position: "left", className: "navbar-learn" }]
+            : []),
           { to: "/blog/", label: "Blog", position: "left" },
           {
             to: "https://cmd.wopee.io/login",
