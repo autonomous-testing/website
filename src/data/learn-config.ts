@@ -1,7 +1,9 @@
 // Values for wopee.io/learn that change without a redesign.
 
 export const learnConfig = {
-  /** YouTube id of the evergreen series intro. Empty = the intro block is hidden. */
+  /** Self-hosted series intro: static/video/<base>.mp4, -720.mp4, .vtt, -poster.webp/.jpg. Empty = the intro block is hidden. */
+  introVideo: "learn-intro",
+  /** YouTube id of the evergreen series intro (not used on the page yet). */
   introVideoId: "",
   /** Thumbnail shown before the intro video plays; empty = YouTube's own. */
   introPoster: "/img/learn/intro-poster.png",

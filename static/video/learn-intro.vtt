@@ -1,0 +1,126 @@
+WEBVTT
+
+00:15.300 --> 00:17.665
+So code is no longer the bottleneck.
+
+00:18.415 --> 00:22.816
+Anthropic's playbook for delivering
+software with agents has six stages.
+
+00:22.916 --> 00:27.580
+Plan, design, build, test, deploy,
+maintain.
+
+00:27.680 --> 00:29.566
+Agents now run all six.
+
+00:29.916 --> 00:31.197
+Look at stage four.
+
+00:31.297 --> 00:34.091
+The agent checks itself, with a test it
+wrote.
+
+00:34.191 --> 00:35.261
+Hold that thought.
+
+00:36.011 --> 00:37.144
+Here's the catch.
+
+00:37.244 --> 00:39.388
+This test was written by an agent.
+
+00:39.488 --> 00:41.853
+It ran, and it's green.
+
+00:41.953 --> 00:43.082
+And it's wrong.
+
+00:43.182 --> 00:45.277
+It checks the app against the app.
+
+00:45.377 --> 00:47.036
+Green is not correct.
+
+00:47.986 --> 00:49.510
+So what's our new goal?
+
+00:49.610 --> 00:51.952
+If you build, you shape the work.
+
+00:52.052 --> 00:54.391
+If you automate, you maintain it.
+
+00:54.491 --> 00:56.962
+If you test, you define the rules.
+
+00:57.062 --> 01:00.121
+If you lead, you manage the whole process.
+
+01:00.221 --> 01:03.150
+A role or a skill? Nobody knows yet.
+
+01:03.800 --> 01:05.772
+Will AI replace testers?
+
+01:05.872 --> 01:07.305
+Not the ones who are ready.
+
+01:07.405 --> 01:10.048
+Agents will do more and more of the
+testing.
+
+01:10.148 --> 01:15.324
+This series gets you ready, with free,
+hands-on labs and the tools teams use now.
+
+01:15.974 --> 01:19.488
+Every tutorial on this page gives you the
+same four things.
+
+01:19.588 --> 01:21.642
+A short video with one idea.
+
+01:21.742 --> 01:24.642
+A lab in your browser, with nothing to
+install.
+
+01:24.742 --> 01:27.493
+An automatic check that grades what you
+built.
+
+01:27.593 --> 01:31.074
+And a certificate when you pass, free like
+everything else.
+
+01:31.624 --> 01:33.328
+Here's roughly what we're building.
+
+01:33.428 --> 01:37.612
+We start with agentic testing, MCP and
+skills.
+
+01:37.712 --> 01:43.038
+Then Playwright, API testing, test data,
+and how far you can trust an agent's
+
+01:43.078 --> 01:43.952
+verdict.
+
+01:43.992 --> 01:46.265
+All the way to rolling it out in your
+team.
+
+01:46.365 --> 01:50.880
+We'll shape and improve it as we learn, so
+the final list may look a bit different.
+
+01:50.980 --> 01:54.611
+The goal stays the same: get you ready to
+lead the agents.
+
+01:55.361 --> 01:57.434
+Get ready to lead the agents.
+
+01:57.534 --> 01:59.921
+Pick a tutorial below and open the lab.
