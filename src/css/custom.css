@@ -11,8 +11,10 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Gruppo&family=Rubik:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"); */
 
 /* Scroll setup and behavior */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 section {
@@ -644,6 +646,26 @@ a.navbar__item:hover {
   color: var(--ifm-font-color-base);
 }
 
+.nav-new {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  vertical-align: 0.1em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #7030a0;
+  color: #fff;
+}
+
+[data-theme="dark"] .nav-new {
+  background: #ffcc00;
+  color: #1b1b1d;
+}
+
 .nav-rich-desc {
   display: block;
   font-size: 0.78rem;
@@ -682,4 +704,210 @@ a.navbar__item:hover {
 
 .menu__link .nav-rich-desc {
   display: none;
+}
+
+/* Mobile sidebar: 44 px tap targets */
+.navbar-sidebar .menu__link,
+.navbar-sidebar .menu__caret {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.navbar-sidebar .menu__caret {
+  min-width: 44px;
+  justify-content: center;
+}
+.navbar-sidebar__close,
+.navbar-sidebar__brand [class*="toggle"] button {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-sidebar .navbar-sidebar__back {
+  min-height: 44px;
+}
+
+/* Navbar "Learn" (behind the T1 launch flag): only where the bar has room, so Log in and Start for free never move. */
+@media (min-width: 997px) and (max-width: 1199px) {
+  .navbar__item.navbar-learn {
+    display: none;
+  }
+}
+
+/* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Green Is Not Correct" and episode tags. */
+@font-face {
+  font-family: "Bungee";
+  src: url("/fonts/bungee-subset.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* /learn scroll regions: an edge fade while more content sits to the right. */
+.learn-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.learn-scroll[data-more="true"] {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+}
+
+/* ---------- Legal pages (frontmatter wrapperClassName: legal-page) ---------- */
+.legal-page main.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+.legal-page main .row {
+  justify-content: center;
+  gap: 0 3.5rem;
+  margin: 0;
+}
+.legal-page main .row > .col {
+  padding: 0;
+}
+.legal-page main .row > .col:first-child {
+  flex: 1 1 auto;
+  max-width: 44rem;
+}
+.legal-page main .row > .col--2 {
+  flex: 0 0 14rem;
+  max-width: 14rem;
+}
+@media (max-width: 996px) {
+  .legal-page main .row > .col--2 {
+    display: none;
+  }
+}
+@media (min-width: 997px) {
+  .legal-toc-mobile {
+    display: none;
+  }
+}
+.legal-page article {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ifm-color-emphasis-800);
+}
+.legal-page article h1 {
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+  color: #111827;
+}
+.legal-page article > header + p {
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+.legal-page article h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 650;
+  color: #111827;
+  margin: 3rem 0 0.875rem;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1.5rem);
+}
+.legal-page article h2:first-of-type {
+  margin-top: 0;
+}
+@media (max-width: 639px) {
+  .legal-page main.container {
+    padding: 2rem 1.25rem 3rem;
+  }
+  .legal-page article h2 {
+    margin-top: 2.25rem;
+  }
+}
+.legal-page article p {
+  margin: 0 0 1rem;
+}
+.legal-page article ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+.legal-page article li {
+  margin: 0 0 0.625rem;
+  padding-left: 0.25rem;
+}
+.legal-page article li::marker {
+  color: var(--ifm-color-primary);
+}
+.legal-page article strong {
+  color: #111827;
+}
+[data-theme="dark"].legal-page article h1,
+[data-theme="dark"].legal-page article h2,
+[data-theme="dark"].legal-page article strong {
+  color: #fff;
+}
+.legal-page article a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.legal-page article a:hover {
+  text-decoration-thickness: 2px;
+}
+.legal-page article code {
+  font-size: 0.9em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.375rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-color-emphasis-100);
+}
+.legal-page .legal-toc-mobile {
+  margin: 0 0 2.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.75rem;
+  background: var(--ifm-color-emphasis-100);
+}
+.legal-page .legal-toc-mobile > button {
+  min-height: 48px;
+  padding: 0 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.legal-page .legal-toc-mobile ul {
+  font-size: 1rem;
+  padding: 0.25rem 0;
+}
+.legal-page .legal-toc-mobile ul li {
+  margin: 0;
+}
+.legal-page .legal-toc-mobile a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  text-decoration: none;
+  color: var(--ifm-color-emphasis-800);
+}
+.legal-page .table-of-contents {
+  font-size: 0.875rem;
+}
+.legal-page .table-of-contents__link {
+  display: block;
+  padding: 0.25rem 0;
+}
+
+/* Mobile navbar: 44 px hamburger */
+@media (max-width: 996px) {
+  .navbar__toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

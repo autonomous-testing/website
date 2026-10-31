@@ -411,6 +411,12 @@ const HeroSection = () => (
       >
         Read the docs &rarr;
       </Link>
+      <Link
+        to="/learn/"
+        className="mt-4 ml-6 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
+      >
+        New to MCP? Free tutorial &rarr;
+      </Link>
     </div>
   </div>
 );
@@ -704,6 +710,12 @@ const OpenSourceSection = () => (
             npm
           </Link>
         </div>
+        <Link
+          to="/learn/"
+          className="mt-4 inline-block font-semibold text-primary-wopee hover:text-primary-wopee hover:underline"
+        >
+          Free tutorial: MCP for testers &rarr;
+        </Link>
       </div>
       <div className="flex-1 w-full">
         <div className="rounded-xl overflow-hidden shadow-2xl shadow-black/30 border border-white/15">
