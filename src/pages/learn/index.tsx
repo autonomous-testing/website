@@ -11,6 +11,7 @@ import HeroPill from "@/components/learn/HeroPill";
 import { trackLearn } from "@/components/learn/track";
 import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import LyingTestCard from "@/components/learn/LyingTestCard";
+import ExplainerVideo from "@/components/ui/ExplainerVideo";
 import {
   tutorials,
   featuredTutorials,
@@ -20,6 +21,7 @@ import {
   pathStatus,
   type Tutorial,
 } from "@/data/learn-tutorials";
+import { learnConfig } from "@/data/learn-config";
 import { whyAiSummary } from "@/data/learn-why-ai";
 import { cn } from "@/lib/utils";
 import {
@@ -208,6 +210,19 @@ const CertArt = ({ label = "Completion", title = "Agentic testing for testers" }
 );
 
 const ARTS = [VideoArt, TerminalArt, () => <CertArt />];
+
+const IntroVideo = () => (
+  <section aria-label="Series intro video" className={cn(container, "pb-6 lg:pb-10")}>
+    <div className="mx-auto max-w-4xl">
+      <ExplainerVideo
+        base={learnConfig.introVideo}
+        title="Green Is Not Correct: the series intro"
+        duration="2 min"
+        pendingNote="The intro video is on its way."
+      />
+    </div>
+  </section>
+);
 
 const HowItWorks = () => (
   <section aria-labelledby="steps-h" className={cn(container, "py-14 lg:py-20")}>
@@ -514,6 +529,7 @@ const LearnPage = () => (
     </Head>
     <main>
       <Hero />
+      {learnConfig.introVideo && <IntroVideo />}
       <HowItWorks />
       <Tutorials />
       <BottomCards />
