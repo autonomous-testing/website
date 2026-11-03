@@ -189,7 +189,7 @@ function pageJobs() {
     type: "page",
     permalink: pg.permalink,
     out: `pages/${pg.id}.png`,
-    data: { kicker: pg.kicker, punchline: pg.punchline || derivePunchline(pg.title) },
+    data: { kicker: pg.kicker, punchline: pg.punchline || derivePunchline(pg.title), layout: pg.layout },
     alt: pg.alt,
   }));
 }

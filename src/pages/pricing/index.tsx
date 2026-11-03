@@ -3,7 +3,7 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import Pricing from "@site/src/components/pricing/Pricing";
-import SocialCard from "@site/src/components/seo/SocialCard";
+import SocialCard, { cardFor } from "@site/src/components/seo/SocialCard";
 
 const JSONLD_PRODUCT = {
   "@context": "https://schema.org",
@@ -15,7 +15,7 @@ const JSONLD_PRODUCT = {
     "@type": "Brand",
     name: "Wopee.io",
   },
-  image: "https://wopee.io/img/wopee-social-card.jpg",
+  image: `https://wopee.io${cardFor("/pricing/")?.image ?? ""}`,
   url: "https://wopee.io/pricing/",
   offers: [
     {

@@ -7,6 +7,7 @@ import { ThemeClassNames } from "@docusaurus/theme-common";
 import Icon from "@mdi/react";
 import { mdiGithub, mdiLinkedin, mdiYoutube } from "@mdi/js";
 import { ArrowUpRight } from "lucide-react";
+import ThemedImage from "@theme/ThemedImage";
 
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 import { footerColumns, footerLegal } from "@/data/footer";
@@ -64,7 +65,8 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
 }
 
 export default function Footer(): JSX.Element {
-  const logo = useBaseUrl("img/logo.png");
+  const logoLight = useBaseUrl("brand/svg/wopee-logo-horizontal-color-light.svg");
+  const logoDark = useBaseUrl("brand/svg/wopee-wordmark-color-dark.svg");
   const year = new Date().getFullYear();
 
   return (
@@ -85,18 +87,15 @@ export default function Footer(): JSX.Element {
             <Link
               to="/"
               aria-label="Wopee.io home"
-              className="inline-flex items-center gap-3 no-underline hover:no-underline"
+              className="inline-flex min-h-11 items-center no-underline hover:no-underline"
             >
-              <img
-                src={logo}
-                alt="Wopee.io logo"
-                width={32}
-                height={32}
-                className="h-8 w-8 dark:invert"
+              <ThemedImage
+                sources={{ light: logoLight, dark: logoDark }}
+                alt="Wopee.io"
+                width={164}
+                height={36}
+                className="block h-[34px] w-auto [&[src*='logo-horizontal']]:h-[35.6px]"
               />
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-                Wopee.io
-              </span>
             </Link>
             <p className="mt-5 max-w-sm text-[15px] leading-7 dark:text-gray-300">
               Autonomous AI testing agents for web apps. Paste a URL, get
@@ -150,7 +149,7 @@ export default function Footer(): JSX.Element {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-7 text-sm text-gray-600 dark:text-gray-400 dark:border-white/10 md:flex-row md:items-center md:justify-between">
-          <p>© {year} wopee labs, s.r.o. · Prague, Czech Republic</p>
+          <p>© {year} wopee labs s.r.o. · Prague, Czech&nbsp;Republic</p>
           <ul className="m-0 flex list-none flex-wrap items-center gap-x-6 gap-y-0 p-0 lg:gap-y-2">
             {footerLegal.map((link) => (
               <li key={link.label}>

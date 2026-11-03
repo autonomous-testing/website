@@ -6,7 +6,7 @@ import Head from "@docusaurus/Head";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import UrlCheckForm from "@site/src/components/hub-spot/UrlCheckForm";
-import SocialCard from "@site/src/components/seo/SocialCard";
+import SocialCard, { cardFor } from "@site/src/components/seo/SocialCard";
 
 const CAMPAIGN = "saas-app-health-2026";
 const LINKEDIN = "https://www.linkedin.com/in/marcelveselka/";
@@ -169,10 +169,10 @@ const JSON_LD = [
       "@type": "Organization",
       name: "Wopee.io",
       url: "https://wopee.io/",
-      logo: { "@type": "ImageObject", url: "https://wopee.io/img/logo.png" },
+      logo: { "@type": "ImageObject", url: "https://wopee.io/img/icon-512.png" },
     },
     mainEntityOfPage: PAGE_URL,
-    image: "https://wopee.io/img/wopee-social-card.jpg",
+    image: `https://wopee.io${cardFor("/saas-app-health/")?.image ?? ""}`,
   },
   {
     "@context": "https://schema.org",

@@ -87,9 +87,7 @@ export default function ComparisonJourney({ comparison }: { comparison: Comparis
                   {isWopee ? (
                     <>
                       <div className="flex items-center gap-2.5">
-                        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-secondary-wopee to-[#451f6b]">
-                          <img src="/img/logo.png" alt="Wopee.io logo" className="h-5 w-5" />
-                        </span>
+                        <img src="/brand/svg/wopee-symbol-color-light.svg" alt="Wopee.io" width={36} height={36} className="h-9 w-9" />
                         <span className="text-lg font-extrabold text-gray-900 dark:text-white">Wopee.io</span>
                       </div>
                       <div className="mt-3 flex items-center gap-2">

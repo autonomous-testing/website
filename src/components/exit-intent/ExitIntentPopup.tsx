@@ -138,9 +138,11 @@ export default function ExitIntentPopup({ enabled }: { enabled: boolean }) {
 
           <div className="flex flex-col items-center text-center">
             <img
-              src="/img/logo.png"
-              alt="Wopee.io logo"
-              className="mb-4 h-10 w-10 object-contain dark:invert"
+              src="/brand/svg/wopee-symbol-color-light.svg"
+              alt="Wopee.io"
+              width={40}
+              height={40}
+              className="mb-4 h-10 w-10"
             />
             <DialogPrimitive.Title className="m-0 text-balance text-xl font-semibold leading-tight sm:text-2xl">
               Before you go, create your first{" "}

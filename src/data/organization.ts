@@ -7,7 +7,7 @@ export const JSONLD_ORG = {
   name: "Wopee.io",
   legalName: "wopee labs s.r.o.",
   url: "https://wopee.io/",
-  logo: "https://wopee.io/img/logo.png",
+  logo: "https://wopee.io/img/icon-512.png",
   email: "help@wopee.io",
   address: {
     "@type": "PostalAddress",

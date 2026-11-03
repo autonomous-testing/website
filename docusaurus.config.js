@@ -45,25 +45,31 @@ const config = {
   title: "Wopee.io",
   tagline:
     "Boost your testing team. Elevate your quality & speed up release pace.",
-  favicon: "img/favicon.png",
+  favicon: "img/favicon.ico",
 
-  // Docusaurus `favicon` emits a single PNG link. Add the SVG (sharper at any
-  // size) and the apple-touch-icon alongside it; Safari falls back to the PNG.
+  // Docusaurus `favicon` emits one icon link (the 16/32/48 .ico). The rest of the
+  // set from the brand masters: SVG for sharp tabs, PNG sizes, the iOS icon and
+  // the web app manifest (192/512, any + maskable).
   headTags: [
     {
       tagName: "link",
-      attributes: {
-        rel: "icon",
-        type: "image/svg+xml",
-        href: `${baseUrl}img/favicon.svg`,
-      },
+      attributes: { rel: "icon", type: "image/svg+xml", href: `${baseUrl}img/favicon.svg` },
     },
     {
       tagName: "link",
-      attributes: {
-        rel: "apple-touch-icon",
-        href: `${baseUrl}img/apple-touch-icon.png`,
-      },
+      attributes: { rel: "icon", type: "image/png", sizes: "32x32", href: `${baseUrl}img/favicon-32.png` },
+    },
+    {
+      tagName: "link",
+      attributes: { rel: "icon", type: "image/png", sizes: "16x16", href: `${baseUrl}img/favicon-16.png` },
+    },
+    {
+      tagName: "link",
+      attributes: { rel: "apple-touch-icon", sizes: "180x180", href: `${baseUrl}img/apple-touch-icon.png` },
+    },
+    {
+      tagName: "link",
+      attributes: { rel: "manifest", href: `${baseUrl}manifest.webmanifest` },
     },
   ],
 
@@ -311,11 +317,15 @@ const config = {
         // respectPrefersColorScheme: false,
       },
       navbar: {
-        title: "Wopee.io",
+        // L1 lockup from static/brand (synced from the masters): the W square on in
+        // light mode, off (yellow W) in dark mode. No `title`: the SVG is the name.
         logo: {
-          alt: "AI-Powered Software Testing Bots",
-          src: "img/logo.png",
-          className: "margin-left--md",
+          alt: "Wopee.io",
+          src: "brand/svg/wopee-logo-horizontal-color-light.svg",
+          srcDark: "brand/svg/wopee-wordmark-color-dark.svg",
+          width: 144,
+          height: 31,
+          className: "navbar-brand-logo",
         },
         items: [
           {

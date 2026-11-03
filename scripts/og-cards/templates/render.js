@@ -56,6 +56,7 @@
     setPunchline(p, d.punchline);
 
     var frame = document.querySelector(".frame");
+    if (d.layout) frame.classList.add("l-" + d.layout);
     var shot = document.querySelector(".shot img");
     var hasShot = false;
     if (shot) hasShot = await loadImg(shot, d.shot);
