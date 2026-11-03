@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "@docusaurus/router";
 import Head from "@docusaurus/Head";
+import { DEFAULT_CARD, SocialCardMeta } from "@site/src/components/seo/SocialCard";
 import ExitIntentPopup, {
   isExitIntentPath,
 } from "@site/src/components/exit-intent/ExitIntentPopup";
@@ -13,6 +14,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
   const isBlogTagPage = pathname.startsWith("/blog/tags/");
   return (
     <>
+      <SocialCardMeta card={DEFAULT_CARD} />
       {isBlogTagPage && (
         <Head>
           <meta name="robots" content="noindex" />

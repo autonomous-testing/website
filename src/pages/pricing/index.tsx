@@ -3,6 +3,7 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import Pricing from "@site/src/components/pricing/Pricing";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const JSONLD_PRODUCT = {
   "@context": "https://schema.org",
@@ -93,6 +94,7 @@ const PricingPage = () => {
       title="Pricing: AI Testing from 19 €/user/mo, Free Start"
       description="Wopee.io pricing: Starter 19 €, Basic 79 €, Premium 179 € per user/month, 2 months free on annual billing. 14-day money-back guarantee on every plan."
     >
+      <SocialCard permalink="/pricing/" />
       <Head>
         <script type="application/ld+json">
           {JSON.stringify(JSONLD_PRODUCT)}

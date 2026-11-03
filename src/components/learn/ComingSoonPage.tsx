@@ -2,7 +2,6 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
-import { PageMetadata } from "@docusaurus/theme-common";
 
 import NotifyInline, { NOTIFY_CTA, NOTIFY_NOTE } from "@/components/learn/NotifyInline";
 import Breadcrumb from "@/components/learn/Breadcrumb";
@@ -11,6 +10,7 @@ import { trackLearn } from "@/components/learn/track";
 import { tutorials, tutorialUrl, cardTitle } from "@/data/learn-tutorials";
 import { container, h1, standaloneLink, surface } from "@/components/learn/styles";
 import { cn } from "@/lib/utils";
+import SocialCard, { LEARN_CARD } from "@site/src/components/seo/SocialCard";
 
 // Route component for /learn/<slug>/ of every tutorial without its own page
 // (registered by the learn-coming-soon plugin in docusaurus.config.js), so links
@@ -29,7 +29,7 @@ export default function ComingSoonPage({ slug }: { slug: string }) {
   ];
   return (
     <Layout title={`${t.title}: free tutorial, coming soon`} description={t.oneLiner}>
-      <PageMetadata image="/img/learn/learn-og.jpg" />
+      <SocialCard card={LEARN_CARD} />
       <Head>
         <meta name="robots" content="noindex, follow" />
       </Head>

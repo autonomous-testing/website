@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
-import { PageMetadata } from "@docusaurus/theme-common";
 
 import NotifyInline, { NOTIFY_CTA } from "@/components/learn/NotifyInline";
 import Breadcrumb from "@/components/learn/Breadcrumb";
@@ -25,6 +24,7 @@ import {
   textLink,
 } from "@/components/learn/styles";
 import { cn } from "@/lib/utils";
+import SocialCard, { LEARN_CARD } from "@site/src/components/seo/SocialCard";
 
 const t1 = tutorials[0];
 const t1Live = t1.status === "live";
@@ -326,7 +326,7 @@ const LearnTeamsPage = () => (
     title="Agentic Testing Training for QA Teams"
     description="Free hands-on tutorials on AI testing agents for your QA team. Video, browser lab, automatic grade and LinkedIn certificate. No company data needed."
   >
-    <PageMetadata image="/img/learn/learn-og.jpg" />
+    <SocialCard card={LEARN_CARD} />
     <Head>
       <meta name="robots" content="noindex, follow" />
     </Head>

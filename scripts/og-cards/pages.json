@@ -1,0 +1,44 @@
+[
+  {
+    "id": "default",
+    "permalink": "*",
+    "kicker": "AI TESTING AGENTS",
+    "title": "Paste a URL. Get tested.",
+    "description": "AI agents explore your web app, write the tests, run them and fix them when the UI changes."
+  },
+  {
+    "id": "home",
+    "permalink": "/",
+    "kicker": "START FREE",
+    "title": "AI testing agents for web apps",
+    "description": "Agents explore your app, generate test cases, run them across browsers and self-heal. Start free."
+  },
+  {
+    "id": "pricing",
+    "permalink": "/pricing/",
+    "kicker": "PRICING",
+    "title": "AI testing from 19 € per user a month",
+    "description": "Start free. Two months free on annual billing and a 14-day money-back guarantee on every plan."
+  },
+  {
+    "id": "mcp",
+    "permalink": "/mcp/",
+    "kicker": "MCP SERVER",
+    "title": "Test your app from Claude, Cursor or Copilot",
+    "description": "Dispatch tests, generate artifacts and fetch results without leaving the chat."
+  },
+  {
+    "id": "saas-app-health",
+    "permalink": "/saas-app-health/",
+    "kicker": "RESEARCH",
+    "title": "28 SaaS sign-ups, tested as strangers",
+    "description": "24 of 28 had a defect in sign-up. Eight patterns, and a checklist you can run this week."
+  },
+  {
+    "id": "managed-testing",
+    "permalink": "/managed-testing/",
+    "kicker": "MANAGED TESTING",
+    "title": "Managed testing for teams without QA",
+    "description": "We test your key flows before every release, and a person checks every failure."
+  }
+]

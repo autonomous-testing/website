@@ -6,6 +6,7 @@ import Head from "@docusaurus/Head";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import UrlCheckForm from "@site/src/components/hub-spot/UrlCheckForm";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const CAMPAIGN = "saas-app-health-2026";
 const LINKEDIN = "https://www.linkedin.com/in/marcelveselka/";
@@ -1033,6 +1034,7 @@ export default function SaasAppHealthPage() {
       title="28 SaaS sign-ups, tested as strangers"
       description="We signed up for 28 SaaS products as strangers. 24 had a defect in sign-up. Eight patterns, a checklist for this week, and how a 6-week pilot works."
     >
+      <SocialCard permalink="/saas-app-health/" />
       <Head>
         {JSON_LD.map((d) => (
           <script key={d["@type"]} type="application/ld+json">

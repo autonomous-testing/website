@@ -20,10 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Check share cards are up to date
+        run: node scripts/og-cards/generate.cjs --check
       - name: Test build website
         run: yarn build
         # Production build, so the SEO check sees indexable pages (staging builds are all noindex).
         env:
           WOPEE_SITE: production
-      - name: Check SEO meta (titles, descriptions, alt text)
+      - name: Check SEO meta (titles, descriptions, alt text, og:image)
         run: node scripts/check-seo-meta.js

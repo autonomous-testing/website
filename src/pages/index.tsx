@@ -16,6 +16,7 @@ import HomeEndingSection from "@/components/home-page/HomeEndingSection";
 import HomeFaqSection from "@/components/home-page/HomeFaqSection";
 import { JSONLD_ORG, ORG_REF } from "@site/src/data/organization";
 import HomeLearnBand from "@/components/home-page/HomeLearnBand";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const JSONLD_APP = {
   "@context": "https://schema.org",
@@ -44,6 +45,7 @@ export default function Home(): JSX.Element {
       title="AI Testing Agents for Web Apps"
       description="Paste a URL. Wopee.io AI agents explore your web app, generate test cases, run them across browsers, and self-heal when the UI changes. Start free."
     >
+      <SocialCard permalink="/" />
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSONLD_ORG)}</script>
         <script type="application/ld+json">{JSON.stringify(JSONLD_APP)}</script>

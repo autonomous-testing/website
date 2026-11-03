@@ -14,7 +14,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "og:cards": "node scripts/og-cards/generate.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.2",
@@ -52,6 +53,8 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.9.2",
     "@tsconfig/docusaurus": "^1.0.5",
+    "gray-matter": "^4.0.3",
+    "playwright-core": "^1.64.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^4.7.4"
   },

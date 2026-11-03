@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Head, Layout, Link } from "../../../components/ui/typedDocusaurus";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const VIDEO_ID = "AgQsNN5e8OQ";
 const TITLE =
@@ -145,12 +146,16 @@ export default function AiTestingAgentPlaywrightWorkshopVideo(): JSX.Element {
       title="AI Testing Agent Workshop with Playwright (Video)"
       description="Workshop recording: build your first AI testing agent with Playwright and Wopee.io, from a prompt and URL to tests in a GitHub PR. Full transcript."
     >
+      <SocialCard
+        card={{
+          image: `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`,
+          width: 1280,
+          height: 720,
+          alt: TITLE,
+        }}
+      />
       <Head>
         <meta property="og:type" content="video.other" />
-        <meta
-          property="og:image"
-          content={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-        />
         <meta property="og:video" content={EMBED_URL} />
         <script type="application/ld+json">{JSON.stringify(JSON_LD_VIDEO)}</script>
       </Head>
