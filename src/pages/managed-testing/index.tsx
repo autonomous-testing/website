@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import UrlCheckForm from "../../components/hub-spot/UrlCheckForm";
 import ExplainerVideo from "../../components/ui/ExplainerVideo";
@@ -19,8 +19,8 @@ const VIDEO_BASE = "managed-testing-explainer";
 const VIDEO_PUBLISHED = true;
 
 // The visitor's utm_* params, with this page's defaults filled in. Used for
-// the inline calendar and the booking-page fallback, so a call booked from a
-// post or e-mail keeps its source in HubSpot.
+// the URL form and the booking links, so a lead from a post or e-mail keeps
+// its source in HubSpot.
 function useUtm(cta: string) {
   const defaults = `utm_source=website&utm_medium=managed-testing&utm_campaign=${CAMPAIGN}&utm_content=${cta}`;
   const [query, setQuery] = useState(defaults);
@@ -608,7 +608,7 @@ function renderAnswer({ a, link }: Qa) {
   );
 }
 
-// Every primary button on the page scrolls to the inline calendar.
+// Every primary button on the page scrolls to the URL form in #book.
 function BookButton({
   cta,
   onDark,
@@ -625,7 +625,7 @@ function BookButton({
       onClick={() => track("managed_testing_cta", { cta })}
       className={`${onDark ? BUTTON_YELLOW : BUTTON_PRIMARY} ${className}`}
     >
-      Book a 30-minute pilot call
+      Send your URL, get 3 findings free
       <span aria-hidden="true">→</span>
     </a>
   );
@@ -745,15 +745,9 @@ function Hero() {
             <BookButton cta="hero" onDark />
             <RiskLine onDark short />
             <p className="m-0 hidden text-base text-white/65 sm:block sm:text-sm">
-              A founder looks at your product before the call. Written quote
-              within one business day after it.
+              We check your product first. If it fits, we book a call, and you
+              get a written quote within one business day after it.
             </p>
-            <a
-              href="#send-your-url"
-              className={`hidden min-h-11 items-center rounded-sm text-sm font-semibold text-white underline decoration-white/40 sm:inline-flex decoration-1 underline-offset-4 hover:text-primary-wopee hover:decoration-primary-wopee ${FOCUS_ON_DARK}`}
-            >
-              Not ready for a call? Send your URL, get 3 findings free
-            </a>
           </div>
         </div>
         <div className="hidden lg:block">
@@ -768,12 +762,6 @@ function Hero() {
           duration="90 s"
           pendingNote="The video is on its way. Everything it says is on this page."
         />
-        <a
-          href="#send-your-url"
-          className={`mt-3 inline-flex min-h-11 items-center rounded-sm text-base font-semibold text-white underline decoration-white/40 decoration-1 underline-offset-4 hover:text-primary-wopee sm:hidden ${FOCUS_ON_DARK}`}
-        >
-          Not ready for a call? Send your URL, get 3 findings free
-        </a>
       </div>
     </section>
   );
@@ -1468,63 +1456,6 @@ function Decide() {
   );
 }
 
-function UrlForm() {
-  const utm = useUtm("url-check");
-  return (
-    <UrlCheckForm
-      utm={utm}
-      fallbackHref={`${HUBSPOT_MEETINGS}?${utm}`}
-      fieldId="mt"
-      ctaId="cta-managed-testing"
-      trackPrefix="managed_testing"
-      submitLabel="Get my 3 findings"
-      successText="Thanks. We'll send your 3 findings within 2 business days."
-      consent="We use your e-mail only to send the findings and one follow-up."
-    />
-  );
-}
-
-function SendUrl() {
-  return (
-    <section id="send-your-url" className="scroll-mt-24 pt-16 sm:pt-24">
-      <div className="grid gap-6 rounded-2xl border-2 border-dashed border-secondary-wopee/50 px-5 py-8 dark:border-primary-wopee/50 sm:px-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-start">
-        <div>
-          <span className={`text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}>
-            Not ready for a call?
-          </span>
-          <h2 className="mt-balance mb-0 mt-2 text-2xl font-extrabold leading-tight sm:text-3xl">
-            Send your URL, get 3 findings free
-          </h2>
-          <p className={`mb-0 mt-3 text-base leading-relaxed ${MUTED}`}>
-            Send us your product's URL. An agent signs up as a stranger and
-            walks your first steps, and you get 3 findings with steps and
-            screenshots within 2 business days. If we find fewer, you hear that
-            too. Nothing from the check is ever posted.
-          </p>
-          <ol aria-label="How the free check works" className="m-0 mt-6 list-none space-y-2 pl-0">
-            {["Your URL", "We sign up as a stranger", "3 findings in your inbox"].map((s, i) => (
-              <li key={s} className="m-0 flex items-center gap-3 rounded-xl bg-gray-50 px-4 py-3 font-semibold dark:bg-white/[0.05]">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-wopee font-mono text-xs font-bold text-white dark:bg-primary-wopee dark:text-[#1a1124]">
-                  {i + 1}
-                </span>
-                {s}
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div>
-          <UrlForm />
-          <p className="m-0 mt-4">
-            <a href="#book" className={`inline-flex min-h-11 items-center text-sm ${TEXT_LINK}`}>
-              or bring it to a pilot call
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Faq() {
   return (
     <Section id="faq" eyebrow="FAQ" title="Other questions">
@@ -1552,119 +1483,67 @@ function Faq() {
   );
 }
 
-// Loads HubSpot's embed script once the section is near the viewport. The
-// script turns .meetings-iframe-container into the same calendar /book-demo/
-// shows, and passes the page URL (with its utm_* params) to HubSpot.
-function Calendar() {
-  const utm = useUtm("inline-calendar");
-  const ref = useRef<HTMLDivElement>(null);
-  const [load, setLoad] = useState(false);
-  const [stalled, setStalled] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) {
-      setLoad(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setLoad(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "800px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!load) return;
-    const script = document.createElement("script");
-    script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
-    script.async = true;
-    document.body.appendChild(script);
-    const timer = window.setTimeout(() => {
-      if (!ref.current?.querySelector("iframe")) setStalled(true);
-    }, 10000);
-    return () => {
-      window.clearTimeout(timer);
-      script.remove();
-    };
-  }, [load]);
-
+function UrlForm() {
+  const utm = useUtm("url-check");
   return (
-    <div className="flex flex-col gap-3">
-      <div
-        ref={ref}
-        className="relative min-h-[640px] overflow-hidden rounded-2xl bg-white text-gray-900"
-      >
-        <div className="absolute inset-x-0 top-1/2 m-0 -translate-y-1/2 px-6 text-center text-sm text-gray-600">
-          {stalled ? (
-            <>
-              <p className="m-0 font-semibold text-gray-900">
-                The calendar didn't load here.
-              </p>
-              <a
-                href={`/book-demo/?${utm}`}
-                className="mt-3 inline-flex min-h-11 items-center justify-center rounded-lg bg-secondary-wopee px-5 font-bold text-white no-underline hover:text-white hover:no-underline"
-              >
-                Open the calendar on its own page
-              </a>
-            </>
-          ) : (
-            <p className="m-0">Loading Marcel's calendar…</p>
-          )}
-        </div>
-        {load ? (
-          <div
-            key={utm}
-            className="meetings-iframe-container relative z-10 bg-white"
-            data-src={`${HUBSPOT_MEETINGS}?embed=true&${utm}`}
-          />
-        ) : null}
-        <noscript>
-          <p className="p-6">
-            <a href={`/book-demo/?${utm}`}>Open the booking calendar</a>
-          </p>
-        </noscript>
-      </div>
-      <a
-        href={`/book-demo/?${utm}`}
-        className={`inline-flex min-h-11 items-center self-start rounded-sm py-2 text-sm font-semibold text-white/80 underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
-      >
-        Calendar not loading? Open it on its own page
-      </a>
-    </div>
+    <UrlCheckForm
+      utm={utm}
+      fallbackHref={`${HUBSPOT_MEETINGS}?${utm}`}
+      fieldId="mt"
+      ctaId="cta-managed-testing"
+      trackPrefix="managed_testing"
+      submitLabel="Get my 3 findings"
+      successText="Thanks. We'll send your 3 findings within 2 business days."
+      consent="We use your e-mail only to send the findings and one follow-up."
+    />
   );
 }
 
+// The page's one form. #send-your-url is kept as an anchor for older links.
 function Book() {
+  const utm = useUtm("book-call");
   return (
     <section id="book" className={`${DARK_BAND} mt-16 scroll-mt-16 px-4 py-16 sm:mt-24 sm:px-6 sm:py-24`}>
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-0">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-0">
         <div className="lg:col-start-1 lg:row-start-1">
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary-wopee">
-            Book a 30-minute pilot call
+            Free check first, call later
           </span>
           <h2 className="mt-balance mb-0 mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-            Pick a time. We look at your product first.
+            Send your URL. Get 3 findings free.
           </h2>
-          <div className="mt-4">
-            <RiskLine onDark />
-          </div>
+          <p className="mb-0 mt-4 max-w-xl text-lg leading-relaxed text-white/80">
+            An agent signs up as a stranger and walks your first steps. You get
+            3 findings with steps and screenshots within 2 business days. If
+            it fits, we book a call.
+          </p>
         </div>
-        <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-          <Calendar />
+        <div
+          id="send-your-url"
+          className="scroll-mt-24 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+        >
+          {/* Dark variants inside the band, whatever the site theme. */}
+          <div data-theme="dark">
+            <UrlForm />
+          </div>
+          <p className="m-0 mt-4 text-base text-white/70 sm:text-sm">
+            Already a customer or need a call now?{" "}
+            <a
+              href={`/book-demo/?${utm}`}
+              id="cta-managed-testing-book-call"
+              onClick={() => track("managed_testing_cta", { cta: "book-call" })}
+              className={`inline-flex min-h-11 items-center rounded-sm font-semibold text-white underline decoration-1 underline-offset-4 hover:text-primary-wopee ${FOCUS_ON_DARK}`}
+            >
+              Book 30 minutes
+            </a>
+          </p>
         </div>
         <div className="lg:col-start-1 lg:row-start-2">
-          <ol className="m-0 mt-8 list-none space-y-5 pl-0">
+          <ol className="m-0 mt-2 list-none space-y-5 pl-0">
             {[
-              ["Before the call", "A founder looks at your product."],
-              ["On the call", "Which flows we'd start with, and how the pilot would run."],
-              ["Within one business day", "A written quote."],
+              ["Within 2 business days", "3 findings in your inbox. If we find fewer, you hear that too. Nothing from the check is ever posted."],
+              ["If it fits", "A 30-minute call: which flows we'd start with, and how the pilot would run."],
+              ["Within one business day after the call", "A written quote."],
             ].map(([when, what], i) => (
               <li key={when} className="m-0 flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-solid border-primary-wopee font-mono text-sm font-bold text-primary-wopee">
@@ -1677,6 +1556,9 @@ function Book() {
               </li>
             ))}
           </ol>
+          <div className="mt-8">
+            <RiskLine onDark />
+          </div>
           <div className="mt-8 rounded-2xl border border-solid border-white/15 bg-white/[0.05] px-5 py-5">
             <p className="m-0 flex gap-2.5 text-base leading-relaxed text-white/90">
               <Check className="text-primary-wopee" />
@@ -1706,29 +1588,25 @@ function Book() {
 }
 
 // One button in a bottom bar on phones: shown once the hero CTA has scrolled
-// away, hidden again while the calendar is on screen.
+// away, hidden again while the URL form is on screen.
 function StickyCta() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const hero = document.getElementById("cta-managed-testing-hero");
     const book = document.getElementById("book");
-    const urlSection = document.getElementById("send-your-url");
     if (!hero || !book || !("IntersectionObserver" in window)) return;
     let heroVisible = true;
     let bookVisible = false;
-    let urlVisible = false;
-    const update = () => setShow(!heroVisible && !bookVisible && !urlVisible);
+    const update = () => setShow(!heroVisible && !bookVisible);
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.target === hero) heroVisible = e.isIntersecting || e.boundingClientRect.top > 0;
         if (e.target === book) bookVisible = e.isIntersecting;
-        if (e.target === urlSection) urlVisible = e.isIntersecting;
       }
       update();
     });
     io.observe(hero);
     io.observe(book);
-    if (urlSection) io.observe(urlSection);
     // The on-screen keyboard would put the bar on top of the field being typed in.
     const isField = (t: EventTarget | null) =>
       t instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
@@ -1757,7 +1635,7 @@ function StickyCta() {
         onClick={() => track("managed_testing_cta", { cta: "sticky" })}
         className={`${BUTTON_YELLOW} w-full`}
       >
-        Book a 30-minute pilot call
+        Send your URL, get 3 findings free
       </a>
     </div>
   );
@@ -1765,7 +1643,21 @@ function StickyCta() {
 
 /* ---------------------------------------------------------------- page */
 
+// Blocks collapse after hydration on small screens, so the browser's jump to
+// #book (or #send-your-url) lands too far down. Jump again once they have.
+function useRescrollToHash() {
+  useEffect(() => {
+    const el = window.location.hash && document.getElementById(window.location.hash.slice(1));
+    if (!el) return;
+    const raf = requestAnimationFrame(() =>
+      requestAnimationFrame(() => el.scrollIntoView({ behavior: "auto" }))
+    );
+    return () => cancelAnimationFrame(raf);
+  }, []);
+}
+
 export default function ManagedTestingPage() {
+  useRescrollToHash();
   return (
     <Layout
       title="Managed testing for teams without QA"
@@ -1798,7 +1690,6 @@ export default function ManagedTestingPage() {
           <Pricing />
           <Compare />
           <Decide />
-          <SendUrl />
           <Faq />
         </div>
         <Book />
