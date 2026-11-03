@@ -122,3 +122,6 @@ body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: a
 .t-page .punchline { color: var(--white); }
 .t-page .punchline .arrow { color: var(--yellow); }
 .t-page .disc { left: 836px; top: 105px; width: 420px; height: 420px; background: var(--yellow); }
+/* pages.json "layout": "disc-inside": the whole disc inside the safe area (the /brand card, where the monkey is never cropped). */
+.t-page.l-disc-inside .punch { width: 620px; }
+.t-page.l-disc-inside .disc { left: 716px; }

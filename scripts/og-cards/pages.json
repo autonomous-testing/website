@@ -46,5 +46,15 @@
     "title": "Managed testing for teams without QA",
     "punchline": "We test, you ship",
     "description": "We test your key flows before every release, and a person checks every failure."
+  },
+  {
+    "id": "brand",
+    "permalink": "/brand/",
+    "kicker": "LOGO · COLOUR · TYPE",
+    "title": "The Wopee.io logo, colours and type",
+    "punchline": "Brand kit",
+    "alt": "Wopee.io brand kit: logo, colours and type",
+    "layout": "disc-inside",
+    "description": "SVG and PNG files, favicons, the monkey and the rules for using them."
   }
 ]
