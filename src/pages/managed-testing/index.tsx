@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import UrlCheckForm from "../../components/hub-spot/UrlCheckForm";
 import ExplainerVideo from "../../components/ui/ExplainerVideo";
 import { Head, Layout, Link } from "../../components/ui/typedDocusaurus";
 import { ORG_REF } from "@site/src/data/organization";
@@ -8,9 +9,6 @@ const CAMPAIGN = "managed-testing";
 const PRICING = "/pricing/";
 const ENTERPRISE_PILOT = "/pilot/";
 const STUDY = "/saas-app-health/";
-const HUBSPOT_PORTAL = "139620033";
-const HUBSPOT_FORM = "f6257e05-afe3-4f7c-8f84-75b186a7ea0c";
-const HUBSPOT_SUBMIT = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL}/${HUBSPOT_FORM}`;
 const GUARANTEE =
   "If the agreed flows aren't running by the end of week 3, the pilot is free.";
 const HUBSPOT_MEETINGS = "https://meetings-eu1.hubspot.com/marcel-veselka";
@@ -1470,226 +1468,19 @@ function Decide() {
   );
 }
 
-const INPUT =
-  "block min-h-12 w-full rounded-lg border border-solid border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-500 dark:border-white/20 dark:bg-white/[0.06] dark:text-white dark:placeholder:text-gray-400 " +
-  FOCUS;
-
-// Trim, add https:// when no scheme is given, and accept only an http(s)
-// address whose host has a dot. Anything with "@" or a space is refused, so an
-// e-mail address typed into the URL field never passes.
-function normalizeUrl(raw: string): string | null {
-  const value = raw.trim();
-  if (!value || /[\s@]/.test(value)) return null;
-  const hasScheme = /^[a-z][a-z0-9+.-]*:(\/\/|(?!\d))/i.test(value);
-  if (hasScheme && !/^https?:\/\//i.test(value)) return null;
-  try {
-    const u = new URL(hasScheme ? value : `https://${value}`);
-    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
-    if (u.username || u.password) return null;
-    const labels = u.hostname.split(".");
-    if (labels.length < 2 || labels.some((l) => !l) || !/^[a-z]{2,}$|^xn--/i.test(labels[labels.length - 1]))
-      return null;
-    return u.toString();
-  } catch {
-    return null;
-  }
-}
-
-const FREE_MAIL = /@(gmail|googlemail|yahoo|hotmail|outlook|live|icloud|me|aol|proton|protonmail|gmx|seznam|centrum|azet|post)\./i;
-
-const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
-
 function UrlForm() {
   const utm = useUtm("url-check");
-  const [step, setStep] = useState<1 | 2>(1);
-  const [url, setUrl] = useState("");
-  const [email, setEmail] = useState("");
-  const [fieldError, setFieldError] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
-  const urlRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const resultRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (step === 2) emailRef.current?.focus();
-  }, [step]);
-  useEffect(() => {
-    if (status === "done" || status === "error") resultRef.current?.focus();
-  }, [status]);
-
-  const bookingHref = `${HUBSPOT_MEETINGS}?${utm}`;
-
-  const next = (e: React.FormEvent) => {
-    e.preventDefault();
-    const clean = normalizeUrl(url);
-    if (!clean) {
-      setFieldError("Enter your website address, e.g. https://yourapp.com");
-      urlRef.current?.focus();
-      return;
-    }
-    setFieldError("");
-    setUrl(clean);
-    setStep(2);
-    track("managed_testing_url_step1");
-  };
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!EMAIL_RE.test(email.trim())) {
-      setFieldError("Enter a valid e-mail address, e.g. you@yourcompany.com");
-      emailRef.current?.focus();
-      return;
-    }
-    setFieldError("");
-    setStatus("sending");
-    const params = new URLSearchParams(utm);
-    const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
-    try {
-      const res = await fetch(HUBSPOT_SUBMIT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fields: [
-            { name: "website", value: url },
-            { name: "email", value: email.trim() },
-            { name: "utm_source", value: params.get("utm_source") ?? "" },
-            { name: "utm_medium", value: params.get("utm_medium") ?? "" },
-            { name: "utm_campaign", value: params.get("utm_campaign") ?? "" },
-          ],
-          context: {
-            pageUri: window.location.href,
-            pageName: document.title,
-            ...(hutk ? { hutk } : {}),
-          },
-        }),
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      setStatus("done");
-      track("managed_testing_url_submit");
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  if (status === "done") {
-    return (
-      <div ref={resultRef} tabIndex={-1} role="status" className={`${CARD} px-5 py-5 outline-none`}>
-        <p className="m-0 flex gap-2.5 text-lg font-bold">
-          <Check className="text-secondary-wopee dark:text-primary-wopee" />
-          <span>Thanks. We'll send your 3 findings within 2 business days.</span>
-        </p>
-      </div>
-    );
-  }
-
-  const label = "mb-1.5 block text-sm font-bold";
   return (
-    <div className={`${CARD} px-5 py-5`}>
-      <p className={`m-0 mb-3 font-mono text-xs font-bold uppercase tracking-[0.18em] ${ACCENT}`}>
-        Step {step} of 2
-      </p>
-      {step === 1 ? (
-        <form onSubmit={next} noValidate>
-          <label htmlFor="mt-url" className={label}>
-            Your product's URL
-          </label>
-          <input
-            ref={urlRef}
-            id="mt-url"
-            name="website"
-            type="url"
-            inputMode="url"
-            autoComplete="url"
-            autoCapitalize="none"
-            spellCheck={false}
-            placeholder="https://yourapp.com"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            aria-invalid={fieldError ? true : undefined}
-            aria-describedby={fieldError ? "mt-form-error" : undefined}
-            className={INPUT}
-          />
-          {fieldError ? (
-            <p id="mt-form-error" role="alert" className="m-0 mt-2 text-sm font-semibold text-red-700 dark:text-red-300">
-              {fieldError}
-            </p>
-          ) : null}
-          <button type="submit" id="cta-managed-testing-url-check" className={`${BUTTON_PRIMARY} mt-4 w-full sm:w-auto`}>
-            Next
-            <span aria-hidden="true">→</span>
-          </button>
-        </form>
-      ) : (
-        <form onSubmit={submit} noValidate>
-          <p className={`m-0 mb-4 break-all text-base sm:text-sm ${MUTED}`}>
-            Checking <strong className="text-gray-900 dark:text-white">{url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</strong>{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setStep(1);
-                setStatus("idle");
-                setFieldError("");
-              }}
-              className={`cursor-pointer border-0 bg-transparent p-0 text-sm ${TEXT_LINK}`}
-            >
-              Change
-            </button>
-          </p>
-          <label htmlFor="mt-email" className={label}>
-            Your work e-mail
-          </label>
-          <input
-            ref={emailRef}
-            id="mt-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="you@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            aria-invalid={fieldError ? true : undefined}
-            aria-describedby={fieldError ? "mt-form-error mt-email-hint" : "mt-email-hint"}
-            className={INPUT}
-          />
-          {fieldError ? (
-            <p id="mt-form-error" role="alert" className="m-0 mt-2 text-sm font-semibold text-red-700 dark:text-red-300">
-              {fieldError}
-            </p>
-          ) : null}
-          <p id="mt-email-hint" aria-live="polite" className={`m-0 mt-2 text-sm ${MUTED}`}>
-            {FREE_MAIL.test(email)
-              ? "A work e-mail helps us match the findings to your team. A personal one works too."
-              : "Use your work e-mail, so the findings reach your team."}
-          </p>
-          <button
-            type="submit"
-            id="cta-managed-testing-url-send"
-            disabled={status === "sending"}
-            className={`${BUTTON_PRIMARY} mt-4 w-full sm:w-auto`}
-          >
-            {status === "sending" ? "Sending…" : "Get my 3 findings"}
-          </button>
-          {status === "error" ? (
-            <div ref={resultRef} tabIndex={-1} role="alert" className="mt-4 text-base sm:text-sm font-semibold outline-none">
-              That didn't go through.{" "}
-              <a
-                href={bookingHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => track("managed_testing_cta", { cta: "url-check-fallback" })}
-                className={TEXT_LINK}
-              >
-                Book a call instead
-              </a>{" "}
-              and send your URL there.
-            </div>
-          ) : null}
-        </form>
-      )}
-      <p className={`m-0 mt-4 text-xs leading-relaxed ${MUTED}`}>
-        We use your e-mail only to send the findings and one follow-up.
-      </p>
-    </div>
+    <UrlCheckForm
+      utm={utm}
+      fallbackHref={`${HUBSPOT_MEETINGS}?${utm}`}
+      fieldId="mt"
+      ctaId="cta-managed-testing"
+      trackPrefix="managed_testing"
+      submitLabel="Get my 3 findings"
+      successText="Thanks. We'll send your 3 findings within 2 business days."
+      consent="We use your e-mail only to send the findings and one follow-up."
+    />
   );
 }
 

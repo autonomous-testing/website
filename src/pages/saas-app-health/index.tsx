@@ -5,15 +5,17 @@ import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import UrlCheckForm from "@site/src/components/hub-spot/UrlCheckForm";
 
 const CAMPAIGN = "saas-app-health-2026";
 const LINKEDIN = "https://www.linkedin.com/in/marcelveselka/";
 
-// Forwards the visitor's utm_* params to the booking page so a call booked
-// from a LinkedIn post or e-mail keeps its source in HubSpot.
-function useBookingHref(cta: string) {
-  const fallback = `/book-demo/?utm_source=wopee.io&utm_medium=landing-page&utm_campaign=${CAMPAIGN}&utm_content=${cta}`;
-  const [href, setHref] = useState(fallback);
+// The visitor's utm_* params, with this page's defaults filled in, so a URL
+// sent or a call booked from a LinkedIn post or e-mail keeps its source in
+// HubSpot.
+function useUtm(cta: string) {
+  const fallback = `utm_source=wopee.io&utm_medium=landing-page&utm_campaign=${CAMPAIGN}&utm_content=${cta}`;
+  const [query, setQuery] = useState(fallback);
   useEffect(() => {
     const incoming = new URLSearchParams(window.location.search);
     const params = new URLSearchParams();
@@ -24,9 +26,9 @@ function useBookingHref(cta: string) {
     if (!params.has("utm_medium")) params.set("utm_medium", "landing-page");
     params.set("utm_campaign", CAMPAIGN);
     if (!params.has("utm_content")) params.set("utm_content", cta);
-    setHref(`/book-demo/?${params.toString()}`);
+    setQuery(params.toString());
   }, [cta]);
-  return href;
+  return query;
 }
 
 type Tone = "strong" | "mid" | "light" | "neutral" | "empty";
@@ -976,11 +978,10 @@ function PilotStepCard({ step, index }: { step: PilotStep; index: number }) {
 }
 
 function Ctas({ cta }: { cta: string }) {
-  const bookHref = useBookingHref(cta);
   return (
     <div className="flex flex-wrap justify-center gap-4">
       <ButtonPrimary
-        href={bookHref}
+        href="#send-your-url"
         label="Send me your URL"
         id={`cta-saas-health-${cta}`}
       />
@@ -989,26 +990,39 @@ function Ctas({ cta }: { cta: string }) {
   );
 }
 
-const BAND_BUTTON =
-  "inline-block rounded-lg border border-solid px-5 py-2.5 text-sm font-semibold no-underline transition ease-out hover:no-underline md:text-base xl:text-lg";
-
-function BandCtas() {
-  const bookHref = useBookingHref("closing");
+function SendUrl() {
+  const utm = useUtm("closing");
   return (
-    <div className="flex flex-wrap justify-center gap-4">
-      <Link
-        href={bookHref}
-        id="cta-saas-health-closing"
-        className={`${BAND_BUTTON} border-primary-wopee bg-primary-wopee text-secondary-wopee hover:bg-transparent hover:text-primary-wopee`}
-      >
-        Send me your URL
-      </Link>
-      <Link
-        href={LINKEDIN}
-        className={`${BAND_BUTTON} border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white`}
-      >
-        Message me on LinkedIn
-      </Link>
+    <div className="mx-auto max-w-md text-left">
+      <UrlCheckForm
+        utm={utm}
+        fallbackHref={`/book-demo/?${utm}`}
+        fieldId="sah"
+        ctaId="cta-saas-health"
+        trackPrefix="saas_health"
+        submitLabel="Send me your URL"
+        successText="Thanks. I'll reply by e-mail with the patterns I'd check first on your product."
+        consent="We use your e-mail only to reply about your product and one follow-up. Nothing from the check is ever posted."
+        className="text-gray-900 dark:text-white"
+      />
+      <p className="m-0 mt-5 text-center text-sm text-white/80">
+        Rather talk?{" "}
+        <a
+          href={LINKEDIN}
+          className="font-semibold text-primary-wopee underline underline-offset-4 hover:text-white"
+        >
+          Message me on LinkedIn
+        </a>{" "}
+        or{" "}
+        <Link
+          href={`/book-demo/?${utm}`}
+          id="cta-saas-health-closing"
+          className="font-semibold text-primary-wopee underline underline-offset-4 hover:text-white"
+        >
+          book 30 minutes
+        </Link>
+        .
+      </p>
     </div>
   );
 }
@@ -1068,8 +1082,8 @@ export default function SaasAppHealthPage() {
             <Ctas cta="hero" />
           </div>
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-            A 30-minute call with me. I'll tell you which of the eight patterns
-            I'd check first on your product. No deck.
+            Send your URL and I'll tell you which of the eight patterns I'd
+            check first on your product. No deck.
           </p>
         </header>
 
@@ -1427,13 +1441,12 @@ export default function SaasAppHealthPage() {
             />
           </div>
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-white/80">
-            Book 30 minutes or message me on LinkedIn. I'll tell you which of
-            the eight patterns I'd check first on your product, and whether a
-            pilot makes sense for you. No deck. Nothing from the check is ever
-            posted.
+            Send your URL below. I'll tell you which of the eight patterns I'd
+            check first on your product, and whether a pilot makes sense for
+            you. No deck. Nothing from the check is ever posted.
           </p>
           <div className="mt-8">
-            <BandCtas />
+            <SendUrl />
           </div>
           <p className="mt-6 text-sm">
             <Link
