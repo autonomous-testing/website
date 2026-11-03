@@ -6,3 +6,10 @@ description: "The three-column Analysis workspace, with a live agent view, scena
 ---
 
 The redesigned Analysis workspace is now what everyone sees: analyses on the left, the scenario board with variables and app knowledge in the middle, and a Live / Steps / Test Runs panel on the right. The initial crawl appears as its own execution card, running scenarios stream steps and screenshots live, runs sit in dated tabs, and generated Playwright code is one click from the steps. After each generation run you see exactly what changed, down to "12 test cases kept, 0 modified, 0 added". The legacy screen remains one switch away.
+
+{/* changelog-clip:start */}
+<figure className="changelog-clip">
+  <img src="/img/changelog/new-analysis-workspace-default.gif" alt="The three-column Wopee.io Analysis workspace with the scenario board, the agent's live browser and a finished test's steps with locators" width="960" height="520" decoding="async" />
+  <figcaption>{"Scenario board, live agent view, then a finished test's steps with their locators."}</figcaption>
+</figure>
+{/* changelog-clip:end */}
