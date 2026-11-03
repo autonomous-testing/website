@@ -2,7 +2,6 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import { PageMetadata } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 import { Button } from "@/components/ui/button";
@@ -36,6 +35,7 @@ import {
   standaloneLink,
   surface,
 } from "@/components/learn/styles";
+import SocialCard, { LEARN_CARD } from "@site/src/components/seo/SocialCard";
 
 const TITLE = "Free Hands-on Tutorials on AI Testing Agents";
 const DESCRIPTION =
@@ -508,7 +508,7 @@ const NotifyBand = () => (
 
 const LearnPage = () => (
   <Layout title={TITLE} description={DESCRIPTION}>
-    <PageMetadata image="/img/learn/learn-og.jpg" />
+    <SocialCard card={LEARN_CARD} />
     <Head>
       <script type="application/ld+json">{JSON.stringify(JSONLD)}</script>
     </Head>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Head, Layout, Link } from "../../../components/ui/typedDocusaurus";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const VIDEO_ID = "9qk64KKUZJw";
 const TITLE =
@@ -130,12 +131,16 @@ export default function AiQaAgentJiraPlaywrightVideo(): JSX.Element {
       title="AI QA Agent with Jira and Playwright (Video)"
       description="Watch an AI agent read a Jira bug, pick the right Wopee.io tests, run them with Playwright and post the report back to Jira. Chapters and full transcript."
     >
+      <SocialCard
+        card={{
+          image: `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`,
+          width: 1280,
+          height: 720,
+          alt: TITLE,
+        }}
+      />
       <Head>
         <meta property="og:type" content="video.other" />
-        <meta
-          property="og:image"
-          content={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-        />
         <meta property="og:video" content={EMBED_URL} />
         <script type="application/ld+json">{JSON.stringify(JSON_LD_VIDEO)}</script>
       </Head>

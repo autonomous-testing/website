@@ -1,0 +1,604 @@
+{
+  "*": {
+    "image": "/img/og/pages/default.png?v=87d35b0b",
+    "width": 1200,
+    "height": 630,
+    "alt": "Paste a URL. Get tested.",
+    "hash": "87d35b0b63681fb1"
+  },
+  "/": {
+    "image": "/img/og/pages/home.png?v=b511d9f2",
+    "width": 1200,
+    "height": 630,
+    "alt": "AI testing agents for web apps",
+    "hash": "b511d9f22849d4a2"
+  },
+  "/blog/7-principles-for-successful-web-app-test-automation/": {
+    "image": "/img/og/blog/7-principles-for-successful-web-app-test-automation.png?v=4b91ccac",
+    "width": 1200,
+    "height": 630,
+    "alt": "Web App Test Automation: 7 Key Principles",
+    "hash": "4b91ccac99580550"
+  },
+  "/blog/9-benefits-of-automated-web-app-testing/": {
+    "image": "/img/og/blog/9-benefits-of-automated-web-app-testing.png?v=e2d26259",
+    "width": 1200,
+    "height": 630,
+    "alt": "9 Benefits of Automated Web App Testing",
+    "hash": "e2d262596f61f2c0"
+  },
+  "/blog/ai-agent-vs-vibe-coded-app/": {
+    "image": "/img/og/blog/ai-agent-vs-vibe-coded-app.png?v=9ff7e36f",
+    "width": 1200,
+    "height": 630,
+    "alt": "AI Agent vs a Vibe-Coded App: 5 of 5 Bugs, Plus One Nobody Planted",
+    "hash": "9ff7e36f63a2e119"
+  },
+  "/blog/ai-test-generation-myths/": {
+    "image": "/img/og/blog/ai-test-generation-myths.png?v=cdbac267",
+    "width": 1200,
+    "height": 630,
+    "alt": "5 AI Test Generation Myths QA Teams Still Believe in 2026",
+    "hash": "cdbac2671b911de5"
+  },
+  "/blog/ai-testing-agents/": {
+    "image": "/img/og/blog/ai-testing-agents.png?v=0d6ad457",
+    "width": 1200,
+    "height": 630,
+    "alt": "AI Testing Agents in 2026: Hype, Reality, and 5 Tools Compared",
+    "hash": "0d6ad4575b8d9fdc"
+  },
+  "/blog/applitools-alternatives/": {
+    "image": "/img/og/blog/applitools-alternatives.png?v=ac66d279",
+    "width": 1200,
+    "height": 630,
+    "alt": "Applitools Alternatives 2026: 6 Tools + Prices",
+    "hash": "ac66d27984e2a55f"
+  },
+  "/blog/applitools/": {
+    "image": "/img/og/blog/applitools.png?v=6f891580",
+    "width": 1200,
+    "height": 630,
+    "alt": "Applitools vs Wopee.io: Pricing, Features, and AI Compared",
+    "hash": "6f8915800feab52e"
+  },
+  "/blog/automated-web-app-testing-and-how-to-do-it-right/": {
+    "image": "/img/og/blog/automated-web-app-testing-and-how-to-do-it-right.png?v=e4e7be4c",
+    "width": 1200,
+    "height": 630,
+    "alt": "Automated Web App Testing and How to do it Right?",
+    "hash": "e4e7be4cbd399ff3"
+  },
+  "/blog/autonomous-visual-testing-with-robot-framework/": {
+    "image": "/img/og/blog/autonomous-visual-testing-with-robot-framework.png?v=7fbd0878",
+    "width": 1200,
+    "height": 630,
+    "alt": "Autonomous Visual Testing with Robot Framework",
+    "hash": "7fbd0878e5183b1c"
+  },
+  "/blog/autopilot-your-sw-testing/": {
+    "image": "/img/og/blog/autopilot-your-sw-testing.png?v=376958f8",
+    "width": 1200,
+    "height": 630,
+    "alt": "Autopilot Your Software Testing",
+    "hash": "376958f8a1f51158"
+  },
+  "/blog/bdd-with-robot-framework/": {
+    "image": "/img/og/blog/bdd-with-robot-framework.png?v=261cdb88",
+    "width": 1200,
+    "height": 630,
+    "alt": "BDD with Robot Framework: Gherkin + Examples",
+    "hash": "261cdb88ed559331"
+  },
+  "/blog/beyond-test-automation/": {
+    "image": "/img/og/blog/beyond-test-automation.png?v=b94d4750",
+    "width": 1200,
+    "height": 630,
+    "alt": "Beyond Test Automation - The Future of Testing",
+    "hash": "b94d475004197798"
+  },
+  "/blog/flaky-tests-complete-guide/": {
+    "image": "/img/og/blog/flaky-tests-complete-guide.png?v=d65f1263",
+    "width": 1200,
+    "height": 630,
+    "alt": "Flaky Tests in E2E Suites: Detection & Fixes",
+    "hash": "d65f1263aec588ab"
+  },
+  "/blog/future-testing-report/": {
+    "image": "/img/og/blog/future-testing-report.png?v=f74bf9ae",
+    "width": 1200,
+    "height": 630,
+    "alt": "Report: Future of Web App Testing",
+    "hash": "f74bf9ae3c0f085b"
+  },
+  "/blog/getting-started-w-wopee-io-automation/": {
+    "image": "/img/og/blog/getting-started-w-wopee-io-automation.png?v=8eaea70b",
+    "width": 1200,
+    "height": 630,
+    "alt": "Getting Started with Wopee.io: No-Code Testing",
+    "hash": "8eaea70b77508dc8"
+  },
+  "/blog/getting-started-with-playwright-visual-testing/": {
+    "image": "/img/og/blog/getting-started-with-playwright-visual-testing.png?v=19adb755",
+    "width": 1200,
+    "height": 630,
+    "alt": "Playwright Visual Testing: Complete Setup Guide (2026)",
+    "hash": "19adb755eb4d64c9"
+  },
+  "/blog/grow-your-business-with-automation/": {
+    "image": "/img/og/blog/grow-your-business-with-automation.png?v=14ba1aba",
+    "width": 1200,
+    "height": 630,
+    "alt": "Grow Your Business via Automation, Not Headcount",
+    "hash": "14ba1aba222fc118"
+  },
+  "/blog/guide-to-reduce-maintanance/": {
+    "image": "/img/og/blog/guide-to-reduce-maintanance.png?v=10683347",
+    "width": 1200,
+    "height": 630,
+    "alt": "A Test Automation Engineer's Guide to Reducing Maintenance",
+    "hash": "106833473bc8a3c3"
+  },
+  "/blog/how-to-start-with-ai-in-qa/": {
+    "image": "/img/og/blog/how-to-start-with-ai-in-qa.png?v=ea4aeaa1",
+    "width": 1200,
+    "height": 630,
+    "alt": "How to Start with AI in QA: The 4 Questions Every Team Asks",
+    "hash": "ea4aeaa128049366"
+  },
+  "/blog/livesport-visual-testing-w-wopee-io/": {
+    "image": "/img/og/blog/livesport-visual-testing-w-wopee-io.png?v=a3b7fd40",
+    "width": 1200,
+    "height": 630,
+    "alt": "Livesport Testing: How Wopee.io Powers Visual Testing",
+    "hash": "a3b7fd40a2461601"
+  },
+  "/blog/playwright-bot-ai-powered-test-automation/": {
+    "image": "/img/og/blog/playwright-bot-ai-powered-test-automation.png?v=73e9ec3d",
+    "width": 1200,
+    "height": 630,
+    "alt": "Playwright Bot: AI-Generated Tests in Minutes",
+    "hash": "73e9ec3d3671d72d"
+  },
+  "/blog/predictive-test-selection/": {
+    "image": "/img/og/blog/predictive-test-selection.png?v=adf2066f",
+    "width": 1200,
+    "height": 630,
+    "alt": "Predictive Test Selection: How It Works",
+    "hash": "adf2066ff5fb37c4"
+  },
+  "/blog/saving-50-percent-in-sw-testing/": {
+    "image": "/img/og/blog/saving-50-percent-in-sw-testing.png?v=cc582fec",
+    "width": 1200,
+    "height": 630,
+    "alt": "Cut Software Testing Costs by 50% with AI",
+    "hash": "cc582fec6e50b064"
+  },
+  "/blog/screenshot-comparison-algorithms-visual-testing/": {
+    "image": "/img/og/blog/screenshot-comparison-algorithms-visual-testing.png?v=a255c376",
+    "width": 1200,
+    "height": 630,
+    "alt": "Screenshot Comparison Algorithms: A Visual Testing Guide",
+    "hash": "a255c376fca7aa69"
+  },
+  "/blog/self-healing-in-sw-test-automation/": {
+    "image": "/img/og/blog/self-healing-in-sw-test-automation.png?v=d1980ba0",
+    "width": 1200,
+    "height": 630,
+    "alt": "Self-Healing Test Automation: How It Works (2026)",
+    "hash": "d1980ba0ad705658"
+  },
+  "/blog/synot-tech-test-automation-wopee/": {
+    "image": "/img/og/blog/synot-tech-test-automation-wopee.png?v=2c468303",
+    "width": 1200,
+    "height": 630,
+    "alt": "How SYNOT TECH scaled test automation (& visual testing)",
+    "hash": "2c4683039240d1a9"
+  },
+  "/blog/test-design-techniques-w-wopee/": {
+    "image": "/img/og/blog/test-design-techniques-w-wopee.png?v=6ce57675",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test design techniques with Wopee.io",
+    "hash": "6ce57675f317a5ed"
+  },
+  "/blog/test-design-techniques/": {
+    "image": "/img/og/blog/test-design-techniques.png?v=b3a944c5",
+    "width": 1200,
+    "height": 630,
+    "alt": "Essential test design techniques for web apps",
+    "hash": "b3a944c5503395b5"
+  },
+  "/blog/ultimate-guide-to-visual-testing/": {
+    "image": "/img/og/blog/ultimate-guide-to-visual-testing.png?v=d4f9d561",
+    "width": 1200,
+    "height": 630,
+    "alt": "Visual Testing: The Complete Guide (2026)",
+    "hash": "d4f9d5617d35b3f0"
+  },
+  "/blog/ultimate-testing-paradox/": {
+    "image": "/img/og/blog/ultimate-testing-paradox.png?v=12021f38",
+    "width": 1200,
+    "height": 630,
+    "alt": "Technical Leaders Face the Ultimate Testing Paradox in 2025",
+    "hash": "12021f381e464366"
+  },
+  "/blog/vibe-testing-coding-engineering/": {
+    "image": "/img/og/blog/vibe-testing-coding-engineering.png?v=ce574bb0",
+    "width": 1200,
+    "height": 630,
+    "alt": "Vibe Coding, Vibe Testing, and Vibe Engineering",
+    "hash": "ce574bb08d9bdfee"
+  },
+  "/blog/wopee-io-quick-start/": {
+    "image": "/img/og/blog/wopee-io-quick-start.png?v=9dc4fed0",
+    "width": 1200,
+    "height": 630,
+    "alt": "Wopee.io Quick Start: Your First AI Test in 6 Minutes",
+    "hash": "9dc4fed018d5abb3"
+  },
+  "/blog/wopee-vs-playwright-test/": {
+    "image": "/img/og/blog/wopee-vs-playwright-test.png?v=0a5d592b",
+    "width": 1200,
+    "height": 630,
+    "alt": "Wopee.io vs Playwright: 2026 Honest Comparison",
+    "hash": "0a5d592bf67af3e2"
+  },
+  "/changelog/a-cheaper-model-for-locator-lookups/": {
+    "image": "/img/og/changelog/a-cheaper-model-for-locator-lookups.png?v=364fcedf",
+    "width": 1200,
+    "height": 630,
+    "alt": "Pay less for the agent's routine lookups",
+    "hash": "364fcedf8934af0a"
+  },
+  "/changelog/agent-vision-on-by-default/": {
+    "image": "/img/og/changelog/agent-vision-on-by-default.png?v=b316bd1d",
+    "width": 1200,
+    "height": 630,
+    "alt": "The agent now sees the screen",
+    "hash": "b316bd1d1d21e6ea"
+  },
+  "/changelog/answer-the-agent-in-one-click/": {
+    "image": "/img/og/changelog/answer-the-agent-in-one-click.png?v=4a539201",
+    "width": 1200,
+    "height": 630,
+    "alt": "Answer the agent in one click, or let it go on",
+    "hash": "4a539201ce52598a"
+  },
+  "/changelog/ask-for-a-test-get-the-story/": {
+    "image": "/img/og/changelog/ask-for-a-test-get-the-story.png?v=73538efa",
+    "width": 1200,
+    "height": 630,
+    "alt": "Ask for a test, get its user story too",
+    "hash": "73538efa691d5d6c"
+  },
+  "/changelog/assert-what-changed/": {
+    "image": "/img/og/changelog/assert-what-changed.png?v=39f7eb71",
+    "width": 1200,
+    "height": 630,
+    "alt": "Assert what changed, not just what is there",
+    "hash": "39f7eb71cf3dca51"
+  },
+  "/changelog/atomic-step-sequences/": {
+    "image": "/img/og/changelog/atomic-step-sequences.png?v=de9b8de2",
+    "width": 1200,
+    "height": 630,
+    "alt": "Dropdowns and pop-ups replay as one step",
+    "hash": "de9b8de24f5d66f0"
+  },
+  "/changelog/big-pages-stay-fast/": {
+    "image": "/img/og/changelog/big-pages-stay-fast.png?v=fc192740",
+    "width": 1200,
+    "height": 630,
+    "alt": "Big pages no longer slow the agent down",
+    "hash": "fc192740dcd225c5"
+  },
+  "/changelog/bring-your-own-llm/": {
+    "image": "/img/og/changelog/bring-your-own-llm.png?v=ec21947e",
+    "width": 1200,
+    "height": 630,
+    "alt": "Bring your own LLM across four providers",
+    "hash": "ec21947e00376f55"
+  },
+  "/changelog/byo-llm-oauth-and-reasoning-effort/": {
+    "image": "/img/og/changelog/byo-llm-oauth-and-reasoning-effort.png?v=18c124f1",
+    "width": 1200,
+    "height": 630,
+    "alt": "Use your approved AI model, through your gateway",
+    "hash": "18c124f1f5f9d933"
+  },
+  "/changelog/canvas-iframe-testing/": {
+    "image": "/img/og/changelog/canvas-iframe-testing.png?v=9c5ed5b2",
+    "width": 1200,
+    "height": 630,
+    "alt": "Canvas and cross-origin iframe testing",
+    "hash": "9c5ed5b257a4a926"
+  },
+  "/changelog/code-for-runs-that-found-a-defect/": {
+    "image": "/img/og/changelog/code-for-runs-that-found-a-defect.png?v=c8a204c5",
+    "width": 1200,
+    "height": 630,
+    "alt": "Found a bug? You still get the test code",
+    "hash": "c8a204c5ef421bfe"
+  },
+  "/changelog/crawls-flag-what-they-never-saw/": {
+    "image": "/img/og/changelog/crawls-flag-what-they-never-saw.png?v=b3066e9b",
+    "width": 1200,
+    "height": 630,
+    "alt": "A warning on text the agent never saw",
+    "hash": "b3066e9be8039c84"
+  },
+  "/changelog/crawls-merge-into-your-scenarios/": {
+    "image": "/img/og/changelog/crawls-merge-into-your-scenarios.png?v=66902d8f",
+    "width": 1200,
+    "height": 630,
+    "alt": "Exploring again never wipes your edits",
+    "hash": "66902d8f174147e5"
+  },
+  "/changelog/data-driven-variables/": {
+    "image": "/img/og/changelog/data-driven-variables.png?v=4a66381a",
+    "width": 1200,
+    "height": 630,
+    "alt": "Data-driven variables: CSV, Faker, AI",
+    "hash": "4a66381a943369d5"
+  },
+  "/changelog/drag-and-drop-steps/": {
+    "image": "/img/og/changelog/drag-and-drop-steps.png?v=e29ead4f",
+    "width": 1200,
+    "height": 630,
+    "alt": "Tests that drag and drop",
+    "hash": "e29ead4f1bbfca59"
+  },
+  "/changelog/faker-pattern-variables/": {
+    "image": "/img/og/changelog/faker-pattern-variables.png?v=31b53344",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test data your forms accept",
+    "hash": "31b53344bcb8d21a"
+  },
+  "/changelog/fewer-false-alarms-on-real-values/": {
+    "image": "/img/og/changelog/fewer-false-alarms-on-real-values.png?v=9fd5c318",
+    "width": 1200,
+    "height": 630,
+    "alt": "Fewer false alarms on values the run really read",
+    "hash": "9fd5c318af3077ba"
+  },
+  "/changelog/game-keys-count-when-the-screen-moves/": {
+    "image": "/img/og/changelog/game-keys-count-when-the-screen-moves.png?v=515689b6",
+    "width": 1200,
+    "height": 630,
+    "alt": "Game key presses count only if the game reacts",
+    "hash": "515689b69b28d854"
+  },
+  "/changelog/generation-updates-not-replaces/": {
+    "image": "/img/og/changelog/generation-updates-not-replaces.png?v=fd97f439",
+    "width": 1200,
+    "height": 630,
+    "alt": "Regeneration updates your suite instead of replacing it",
+    "hash": "fd97f439b630cc14"
+  },
+  "/changelog/github-issue-from-a-failed-run/": {
+    "image": "/img/og/changelog/github-issue-from-a-failed-run.png?v=25fa3025",
+    "width": 1200,
+    "height": 630,
+    "alt": "File a GitHub issue from a failed run",
+    "hash": "25fa3025e01464b4"
+  },
+  "/changelog/interactive-cockpit/": {
+    "image": "/img/og/changelog/interactive-cockpit.png?v=f7d5f3c6",
+    "width": 1200,
+    "height": 630,
+    "alt": "Interactive Cockpit: steer live runs",
+    "hash": "f7d5f3c6e486d9e6"
+  },
+  "/changelog/live-view-resilience/": {
+    "image": "/img/og/changelog/live-view-resilience.png?v=725f2517",
+    "width": 1200,
+    "height": 630,
+    "alt": "A live browser view that never goes dark",
+    "hash": "725f25179df94985"
+  },
+  "/changelog/log-in-through-the-api/": {
+    "image": "/img/og/changelog/log-in-through-the-api.png?v=3f250a37",
+    "width": 1200,
+    "height": 630,
+    "alt": "Log in through your API, reuse the token",
+    "hash": "3f250a37ebfc094d"
+  },
+  "/changelog/mcp-chat-and-bug-filing/": {
+    "image": "/img/og/changelog/mcp-chat-and-bug-filing.png?v=c8ac40e9",
+    "width": 1200,
+    "height": 630,
+    "alt": "File GitHub issues and chat via MCP",
+    "hash": "c8ac40e9cdb96db2"
+  },
+  "/changelog/new-analysis-workspace-default/": {
+    "image": "/img/og/changelog/new-analysis-workspace-default.png?v=7cdbc6d3",
+    "width": 1200,
+    "height": 630,
+    "alt": "The redesigned Analysis workspace is now the default",
+    "hash": "7cdbc6d388c2a1cd"
+  },
+  "/changelog/new-tests-open-on-their-steps/": {
+    "image": "/img/og/changelog/new-tests-open-on-their-steps.png?v=c4e287e0",
+    "width": 1200,
+    "height": 630,
+    "alt": "A test that never ran opens on its steps",
+    "hash": "c4e287e01404f381"
+  },
+  "/changelog/one-bug-one-issue/": {
+    "image": "/img/og/changelog/one-bug-one-issue.png?v=75fcfb91",
+    "width": 1200,
+    "height": 630,
+    "alt": "One bug, one issue",
+    "hash": "75fcfb91ee512697"
+  },
+  "/changelog/one-click-generation-and-agent-chat/": {
+    "image": "/img/og/changelog/one-click-generation-and-agent-chat.png?v=64089bbb",
+    "width": 1200,
+    "height": 630,
+    "alt": "Tests for every user story in one click",
+    "hash": "64089bbb1d12292b"
+  },
+  "/changelog/one-project-creation-form/": {
+    "image": "/img/og/changelog/one-project-creation-form.png?v=341b5b78",
+    "width": 1200,
+    "height": 630,
+    "alt": "Start a project with one form",
+    "hash": "341b5b7823233f41"
+  },
+  "/changelog/pay-and-go-straight-to-work/": {
+    "image": "/img/og/changelog/pay-and-go-straight-to-work.png?v=8bb8ff9d",
+    "width": 1200,
+    "height": 630,
+    "alt": "Pay once, land straight back in your projects",
+    "hash": "8bb8ff9daf9fc24a"
+  },
+  "/changelog/pay-yearly-or-start-free/": {
+    "image": "/img/og/changelog/pay-yearly-or-start-free.png?v=cba5c36c",
+    "width": 1200,
+    "height": 630,
+    "alt": "Pay yearly, or start with a month on us",
+    "hash": "cba5c36cac9263fb"
+  },
+  "/changelog/reasoning-effort-per-model/": {
+    "image": "/img/og/changelog/reasoning-effort-per-model.png?v=9e3ee110",
+    "width": 1200,
+    "height": 630,
+    "alt": "AI settings that fit each model",
+    "hash": "9e3ee1105669ce49"
+  },
+  "/changelog/repeat-counts-mean-what-they-say/": {
+    "image": "/img/og/changelog/repeat-counts-mean-what-they-say.png?v=e4bc5a1c",
+    "width": 1200,
+    "height": 630,
+    "alt": "\"Repeat 3 times\" means three real times",
+    "hash": "e4bc5a1c9740eb64"
+  },
+  "/changelog/repo-access-per-member/": {
+    "image": "/img/og/changelog/repo-access-per-member.png?v=13cdaccf",
+    "width": 1200,
+    "height": 630,
+    "alt": "See who can reach each project's repository",
+    "hash": "13cdaccf06af3263"
+  },
+  "/changelog/reported-issues-cite-evidence/": {
+    "image": "/img/og/changelog/reported-issues-cite-evidence.png?v=8f2f0a8c",
+    "width": 1200,
+    "height": 630,
+    "alt": "Bug reports show the actions behind them",
+    "hash": "8f2f0a8cabc6bade"
+  },
+  "/changelog/saved-locators-stay-true/": {
+    "image": "/img/og/changelog/saved-locators-stay-true.png?v=700619df",
+    "width": 1200,
+    "height": 630,
+    "alt": "Self-healing that keeps the right button",
+    "hash": "700619dfe04c6065"
+  },
+  "/changelog/see-why-a-run-failed/": {
+    "image": "/img/og/changelog/see-why-a-run-failed.png?v=2327922f",
+    "width": 1200,
+    "height": 630,
+    "alt": "See why a run failed, not just that it did",
+    "hash": "2327922ff27c2679"
+  },
+  "/changelog/show-the-chat-a-screenshot/": {
+    "image": "/img/og/changelog/show-the-chat-a-screenshot.png?v=0b9030b7",
+    "width": 1200,
+    "height": 630,
+    "alt": "Show the chat a screenshot, review its changes",
+    "hash": "0b9030b7fb96422a"
+  },
+  "/changelog/slack-integration/": {
+    "image": "/img/og/changelog/slack-integration.png?v=c77ffb5a",
+    "width": 1200,
+    "height": 630,
+    "alt": "Slack integration: chat with your agent",
+    "hash": "c77ffb5a3714470f"
+  },
+  "/changelog/smarter-test-data/": {
+    "image": "/img/og/changelog/smarter-test-data.png?v=ecfde3b1",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test data that changes on every run",
+    "hash": "ecfde3b118a73fd1"
+  },
+  "/changelog/test-apps-behind-windows-sso/": {
+    "image": "/img/og/changelog/test-apps-behind-windows-sso.png?v=17b8287a",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test apps behind Windows sign-in",
+    "hash": "17b8287a5d668e95"
+  },
+  "/changelog/test-plans/": {
+    "image": "/img/og/changelog/test-plans.png?v=a4d5ba3a",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test Plans: group tests and run them on a schedule",
+    "hash": "a4d5ba3a42fa6f28"
+  },
+  "/changelog/tests-run-themselves-after-crawl/": {
+    "image": "/img/og/changelog/tests-run-themselves-after-crawl.png?v=5387c71f",
+    "width": 1200,
+    "height": 630,
+    "alt": "Your first analysis ends with tests already run",
+    "hash": "5387c71f8b433d03"
+  },
+  "/changelog/the-chat-asks-before-replacing-tests/": {
+    "image": "/img/og/changelog/the-chat-asks-before-replacing-tests.png?v=032fa4e7",
+    "width": 1200,
+    "height": 630,
+    "alt": "The chat asks before it replaces your tests",
+    "hash": "032fa4e7bf220b64"
+  },
+  "/changelog/unified-run-logs/": {
+    "image": "/img/og/changelog/unified-run-logs.png?v=e1eccba1",
+    "width": 1200,
+    "height": 630,
+    "alt": "One Logs tab for every run",
+    "hash": "e1eccba1274154e6"
+  },
+  "/changelog/verdict-integrity-gates/": {
+    "image": "/img/og/changelog/verdict-integrity-gates.png?v=827f85c9",
+    "width": 1200,
+    "height": 630,
+    "alt": "No proof, no pass",
+    "hash": "827f85c992b07ea4"
+  },
+  "/changelog/verify-state-assertions/": {
+    "image": "/img/og/changelog/verify-state-assertions.png?v=76a74463",
+    "width": 1200,
+    "height": 630,
+    "alt": "Check that a button stays disabled",
+    "hash": "76a744631f3e1a92"
+  },
+  "/managed-testing/": {
+    "image": "/img/og/pages/managed-testing.png?v=2ad39d36",
+    "width": 1200,
+    "height": 630,
+    "alt": "Managed testing for teams without QA",
+    "hash": "2ad39d36408a30ea"
+  },
+  "/mcp/": {
+    "image": "/img/og/pages/mcp.png?v=9ad7225d",
+    "width": 1200,
+    "height": 630,
+    "alt": "Test your app from Claude, Cursor or Copilot",
+    "hash": "9ad7225dd105e4d6"
+  },
+  "/pricing/": {
+    "image": "/img/og/pages/pricing.png?v=5e8c763b",
+    "width": 1200,
+    "height": 630,
+    "alt": "AI testing from 19 € per user a month",
+    "hash": "5e8c763b647235bb"
+  },
+  "/saas-app-health/": {
+    "image": "/img/og/pages/saas-app-health.png?v=2a88181f",
+    "width": 1200,
+    "height": 630,
+    "alt": "28 SaaS sign-ups, tested as strangers",
+    "hash": "2a88181f3b97b3e5"
+  }
+}

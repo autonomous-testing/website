@@ -288,8 +288,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
-      // Replace with your project's social card
-      image: "img/wopee-social-card.jpg",
+      // Site-wide share card (1200x630), rendered by scripts/og-cards/generate.cjs.
+      // Root emits its og:image:width/height/alt; pages with their own card override them.
+      image: require("./static/img/og/manifest.json")["*"].image.replace(/^\//, ""),
       // Docusaurus's classic theme emits og:title, og:description, og:image, og:url,
       // og:locale and twitter:card/twitter:image automatically. It does NOT emit
       // og:type or og:site_name, both flagged by Ahrefs as "Open Graph tags

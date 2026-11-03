@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Head, Layout, Link } from "../../../components/ui/typedDocusaurus";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const VIDEO_ID = "d-KRA2M5bwE";
 const TITLE =
@@ -171,12 +172,16 @@ export default function VibeTestingLabVideo(): JSX.Element {
       title="Vibe Testing Lab: 4 AI Testing Agents (Video)"
       description="Four AI testing tools, one app, one task: a coding agent, Playwright agents, Playwright CLI with skills and Wopee.io with MCP. Who judges? Full transcript."
     >
+      <SocialCard
+        card={{
+          image: `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`,
+          width: 1280,
+          height: 720,
+          alt: TITLE,
+        }}
+      />
       <Head>
         <meta property="og:type" content="video.other" />
-        <meta
-          property="og:image"
-          content={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-        />
         <meta property="og:video" content={EMBED_URL} />
         <script type="application/ld+json">{JSON.stringify(JSON_LD_VIDEO)}</script>
       </Head>

@@ -32,6 +32,7 @@ import VideoCallout from "@site/src/components/ui/VideoCallout";
 import GradientCard from "@site/src/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
 import { ORG_REF } from "@site/src/data/organization";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const CAPABILITIES = [
   {
@@ -808,6 +809,7 @@ const McpPage = () => {
       title="MCP Server for Autonomous Testing"
       description="MCP server that connects Claude, Cursor, and other AI coding agents to Wopee.io. Dispatch tests, generate artifacts, and fetch results in chat."
     >
+      <SocialCard permalink="/mcp/" />
       <Head>
         <script type="application/ld+json">
           {JSON.stringify(JSONLD_MCP_APP)}

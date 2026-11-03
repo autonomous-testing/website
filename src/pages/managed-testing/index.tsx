@@ -4,6 +4,7 @@ import UrlCheckForm from "../../components/hub-spot/UrlCheckForm";
 import ExplainerVideo from "../../components/ui/ExplainerVideo";
 import { Head, Layout, Link } from "../../components/ui/typedDocusaurus";
 import { ORG_REF } from "@site/src/data/organization";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 const CAMPAIGN = "managed-testing";
 const PRICING = "/pricing/";
@@ -1663,6 +1664,7 @@ export default function ManagedTestingPage() {
       title="Managed testing for teams without QA"
       description="We test your most important flows before every release, and a person checks every failure. Start with a 6-week pilot, then go month to month."
     >
+      <SocialCard permalink="/managed-testing/" />
       <Head>
         <script type="application/ld+json">{JSON.stringify(JSON_LD_SERVICE)}</script>
         <script type="application/ld+json">{JSON.stringify(JSON_LD_FAQ)}</script>

@@ -1,0 +1,200 @@
+/* Wopee.io Open Graph cards, 1200x630 (1.91:1).
+   Safe area: all key text sits inside x 64-1136, y 48-582, which also survives
+   the centre crops Slack, WhatsApp and X apply. Only decoration may bleed. */
+@font-face { font-family: "Rubik"; font-weight: 500; src: url("assets/fonts/Rubik-w500.ttf") format("truetype"); }
+@font-face { font-family: "Rubik"; font-weight: 700; src: url("assets/fonts/Rubik-w700.ttf") format("truetype"); }
+@font-face { font-family: "Rubik"; font-weight: 800; src: url("assets/fonts/Rubik-w800.ttf") format("truetype"); }
+@font-face { font-family: "Rubik"; font-weight: 900; src: url("assets/fonts/Rubik-w900.ttf") format("truetype"); }
+@font-face { font-family: "Bungee"; font-weight: 400; src: url("assets/fonts/Bungee-Regular.ttf") format("truetype"); }
+
+:root {
+  --yellow: #ffcc00;
+  --purple: #7030a0;
+  --ink: #111827;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+
+.frame {
+  position: relative;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  font-family: "Rubik", sans-serif;
+  color: var(--ink);
+}
+
+/* Text column, inside the safe area */
+.text {
+  position: absolute;
+  left: 64px;
+  top: 52px;
+  bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.kicker {
+  align-self: flex-start;
+  font-family: "Bungee", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  padding: 11px 16px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.body { margin: auto 0; padding: 26px 0 30px; }
+.title {
+  margin: 0;
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.desc {
+  margin: 20px 0 0;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.foot .wordmark { height: 64px; width: auto; display: block; }
+.foot .path { font-weight: 700; font-size: 24px; opacity: 0.75; }
+
+/* Monkey head inside a disc. The source SVG is the full mascot (1080x1700);
+   the head is its top part. */
+.disc {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 7px solid var(--ink);
+  z-index: 1;
+}
+.disc img { position: absolute; left: 3.5%; top: 5.5%; width: 93%; }
+
+/* ---------- (a) changelog: yellow ---------- */
+.t-changelog { background: var(--yellow); }
+.t-changelog .kicker { background: var(--ink); color: var(--yellow); }
+.t-changelog .desc { color: #2b2f3a; }
+
+.t-changelog.has-shot .text { width: 600px; }
+.shot {
+  position: absolute;
+  left: 704px;
+  top: 74px;
+  width: 560px;
+  height: 452px;
+  background: var(--white);
+  border: 6px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 14px 14px 0 var(--ink);
+  overflow: hidden;
+  transform: rotate(2.2deg);
+  transform-origin: 0 0;
+  z-index: 1;
+}
+.shot .bar {
+  height: 34px;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 16px;
+}
+.shot .bar i { width: 12px; height: 12px; border-radius: 50%; background: var(--yellow); display: block; }
+.shot .bar i:nth-child(2) { background: #b98ae0; }
+.shot .bar i:nth-child(3) { background: var(--white); }
+.shot img {
+  display: block;
+  width: 100%;
+  height: calc(100% - 34px);
+  object-fit: cover;
+  object-position: left top;
+}
+.sticker {
+  position: absolute;
+  left: 652px;
+  top: 470px;
+  width: 112px;
+  height: 112px;
+  z-index: 3;
+}
+.sticker.disc { border-width: 5px; background: var(--white); }
+
+/* No GIF: purple pattern panel with the monkey */
+.t-changelog.no-shot .text { width: 690px; }
+.pattern {
+  position: absolute;
+  left: 836px;
+  top: -60px;
+  width: 520px;
+  height: 747px;
+  background-color: var(--purple);
+  background-image: radial-gradient(circle, rgba(255, 204, 0, 0.55) 2.6px, transparent 3px);
+  background-size: 30px 30px;
+  background-position: 6px 6px;
+  border-left: 7px solid var(--ink);
+  transform: rotate(6deg);
+  transform-origin: 0 0;
+  z-index: 0;
+}
+.t-changelog.no-shot .disc { left: 812px; top: 128px; width: 340px; height: 340px; background: var(--white); box-shadow: 12px 12px 0 var(--ink); }
+
+/* ---------- (b) blog: ink ---------- */
+.t-blog { background: var(--ink); color: var(--white); }
+.t-blog .kicker { background: var(--yellow); color: var(--ink); }
+.t-blog .text { width: 690px; }
+.t-blog .title { color: var(--white); }
+.t-blog .disc { left: 812px; top: 70px; width: 360px; height: 360px; background: var(--yellow); border-color: var(--yellow); }
+.t-blog .ring {
+  position: absolute;
+  left: 788px;
+  top: 46px;
+  width: 408px;
+  height: 408px;
+  border-radius: 50%;
+  border: 3px dashed rgba(255, 204, 0, 0.55);
+  z-index: 0;
+}
+.author { display: flex; align-items: center; gap: 18px; margin-top: 30px; }
+.author .avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  border: 4px solid var(--yellow);
+  object-fit: cover; background: var(--purple);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 28px; color: var(--white);
+  flex: none;
+}
+.author .name { font-weight: 700; font-size: 28px; line-height: 1.15; }
+.author .role { font-weight: 500; font-size: 22px; color: #c7ccd6; margin-top: 2px; }
+.t-blog .foot { position: absolute; right: 64px; bottom: 48px; }
+.t-blog .foot .wordmark { height: 60px; }
+
+/* ---------- (c) site default and landing pages: purple ---------- */
+.t-page { background: var(--purple); color: var(--white); }
+.t-page .kicker { background: var(--yellow); color: var(--ink); }
+.t-page .text { width: 690px; }
+.t-page .title { color: var(--white); }
+.t-page .title em { font-style: normal; color: var(--yellow); }
+.t-page .desc { color: #f1e8f8; }
+.t-page .burst {
+  position: absolute;
+  left: 770px;
+  top: 40px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, rgba(255, 204, 0, 0.5) 2.6px, transparent 3px);
+  background-size: 30px 30px;
+  z-index: 0;
+}
+.t-page .disc { left: 806px; top: 92px; width: 400px; height: 400px; background: var(--yellow); box-shadow: 14px 14px 0 var(--ink); }

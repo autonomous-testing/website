@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { PageMetadata } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 import Breadcrumb from "@/components/learn/Breadcrumb";
 import { accent, container, h1, h2 } from "@/components/learn/styles";
 import { cn } from "@/lib/utils";
 import { whyAiSummary, whyAiPoints } from "@/data/learn-why-ai";
+import SocialCard, { LEARN_CARD } from "@site/src/components/seo/SocialCard";
 
 // The link target for "How we make this" in the video descriptions.
 const HowWeMakeThisPage = () => {
@@ -16,7 +16,7 @@ const HowWeMakeThisPage = () => {
       title="How We Make the Free Tutorials"
       description="The free Wopee.io tutorials are made with AI and checked by Marcel Veselka: what AI does, what stays human, and why the narration is a voice clone."
     >
-      <PageMetadata image="/img/learn/learn-og.jpg" />
+      <SocialCard card={LEARN_CARD} />
       <main className={cn(container, "pt-6 pb-16 lg:pt-12")}>
         <div className="mx-auto flex max-w-3xl flex-col gap-6">
           <Breadcrumb here="How we make this" />
