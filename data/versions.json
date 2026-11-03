@@ -1,7 +1,7 @@
 {
-  "api": "5.240.5",
+  "api": "5.241.0",
   "cmd": "3.458.3",
-  "agent": "3.143.16",
-  "deployed": "2026-10-27",
-  "source": "autonomous-testing/infra main environment/default/versions.env + runners/default/versions.env at b7e0acf"
+  "agent": "3.146.0",
+  "deployed": "2026-11-02",
+  "source": "autonomous-testing/infra main environment/default/versions.env + runners/default/versions.env at 9be21d6"
 }
