@@ -6,3 +6,10 @@ description: "Test Plans group test cases into named collections you can run on 
 ---
 
 The new Test Plans tab sits between Scenarios and Runs. Group test cases into named plans, run a plan on demand, or give it a recurring schedule with frequency, day, and time (a raw cron field is there for the precise). The list shows each plan's schedule and its next run, and every scheduled execution lands in Runs like any other.
+
+{/* changelog-clip:start */}
+<figure className="changelog-clip">
+  <img src="/img/changelog/test-plans.gif" alt="Creating a Smoke Test plan in the Test Plans tab and scheduling it every day at 06:00, after which the plan shows its next run" width="960" height="440" decoding="async" />
+  <figcaption>{"Create a plan, schedule it every day at 06:00, and the next run shows up."}</figcaption>
+</figure>
+{/* changelog-clip:end */}

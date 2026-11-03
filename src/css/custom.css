@@ -911,3 +911,28 @@ a.navbar__item:hover {
     justify-content: center;
   }
 }
+
+/* changelog-clip css */
+.blog-post-page .markdown figure.changelog-clip {
+  margin: 1.75em auto;
+  text-align: center;
+}
+
+.blog-post-page .markdown figure.changelog-clip img,
+.blog-post-page .markdown figure.changelog-clip video {
+  display: block;
+  max-width: 100%;
+  max-height: 480px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+}
+
+.blog-post-page .markdown figure.changelog-clip figcaption {
+  margin-top: 0.6em;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+}
