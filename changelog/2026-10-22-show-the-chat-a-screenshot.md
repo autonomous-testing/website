@@ -1,6 +1,7 @@
 ---
 slug: show-the-chat-a-screenshot
 title: "Show the chat a screenshot, review its changes"
+og_punchline: "Show it a screenshot"
 description: "Paste a screenshot into the chat, point it at a story or test with @, and review each change it proposes as a readable preview before you apply it."
 ---
 

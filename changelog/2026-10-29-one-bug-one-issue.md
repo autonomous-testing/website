@@ -1,6 +1,7 @@
 ---
 slug: one-bug-one-issue
 title: "One bug, one issue"
+og_punchline: "One bug, one issue"
 description: "A defect the agent sees more than once is reported once, with every sighting under it, and the run log ends with the agent's verdict, not just Playwright's."
 ---
 

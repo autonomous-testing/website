@@ -3,14 +3,17 @@
 //
 //   node scripts/og-cards/generate.cjs            render new or changed cards
 //   node scripts/og-cards/generate.cjs --force    re-render everything
-//   node scripts/og-cards/generate.cjs --check    exit 1 if a card is missing or stale (no browser)
+//   node scripts/og-cards/generate.cjs --check    exit 1 if a card is missing, stale or over 150 KB (no browser)
+//   node scripts/og-cards/generate.cjs --write-punchlines   add a derived og_punchline to entries that lack one
 //   node scripts/og-cards/generate.cjs --only changelog,blog,pages  --limit 5  --site <dir>
 //
 // Cards: static/img/og/{changelog,blog,pages}/<slug>.png, plus static/img/og/manifest.json
 // ({ "<permalink>": { image, width, height, alt, hash } }) that the theme reads to emit og:image.
 // A card is re-rendered only when its inputs (front matter, GIF bytes, author, templates) change.
-// Optional front matter: og_title (shorter title for the card), og_frame (GIF frame: 0-based index or "last"),
-// og_gif (screenshot source, defaults to /img/changelog/<slug>.gif).
+// The card is built for LinkedIn's ~138 px thumbnail: a 2-5 word punchline in huge type, not the title
+// (the title already shows next to the thumbnail).
+// Front matter: og_punchline (the card text, \n for a forced line break; when missing it is derived from the title),
+// og_frame (GIF frame: 0-based index or "last"), og_gif (screenshot source, defaults to /img/changelog/<slug>.gif).
 "use strict";
 
 const fs = require("fs");
@@ -33,7 +36,7 @@ const TPL = path.join(__dirname, "templates");
 const ONLY = opt("only", "changelog,blog,pages").split(",");
 const LIMIT = Number(opt("limit", "0")) || Infinity;
 const CONCURRENCY = Number(opt("concurrency", "4"));
-const MAX_BYTES = 300 * 1024;
+const MAX_BYTES = 150 * 1024;
 const W = 1200;
 const H = 630;
 
@@ -62,6 +65,24 @@ const templateHash = (() => {
   h.update(fs.readFileSync(__filename));
   return h.digest("hex");
 })();
+
+// Short card text from a title: the title itself at 5 words or fewer, else its first clause
+// (before ":", "?", ",", " - ") when that has 2-5 words, else the first 5 words without a dangling
+// small word. `--write-punchlines` writes the result into front matter for review.
+const SMALL = new Set(["a", "an", "the", "and", "or", "of", "to", "for", "with", "in", "on", "that", "your", "its", "via", "by", "how", "it", "each", "is", "are", "as", "from", "only", "than"]);
+const words = (s) => s.trim().split(/\s+/).filter(Boolean);
+function derivePunchline(title) {
+  const t = String(title || "").replace(/["“”]/g, "").trim();
+  if (words(t).length <= 5) return t;
+  for (const sep of [/:\s/, /\?\s/, /,\s/, /\s[-–]\s/]) {
+    const head = t.split(sep)[0].trim();
+    const n = words(head).length;
+    if (head !== t && n >= 2 && n <= 5) return head;
+  }
+  let w = words(t.split(/[:?,]\s/)[0]).slice(0, 5);
+  while (w.length > 2 && SMALL.has(w[w.length - 1].toLowerCase())) w.pop();
+  return w.join(" ");
+}
 
 const fileHash = (p) => (p && fs.existsSync(p) ? crypto.createHash("sha1").update(fs.readFileSync(p)).digest("hex") : "");
 
@@ -97,10 +118,11 @@ function changelogJobs() {
         type: "changelog",
         permalink: `/changelog/${slug}/`,
         out: `changelog/${slug}.png`,
+        file: path.join(dir, f),
+        hasPunchline: Boolean(fm.og_punchline),
         data: {
           kicker: date ? `CHANGELOG · ${fmtDate(date)}` : "CHANGELOG",
-          title: fm.og_title || fm.title,
-          description: fm.description,
+          punchline: String(fm.og_punchline || derivePunchline(fm.title)),
         },
         gifPath,
         gifFrame: fm.og_frame ?? "auto",
@@ -146,10 +168,12 @@ function blogJobs() {
       type: "blog",
       permalink: `/blog/${slug}/`,
       out: `blog/${slug}.png`,
+      file,
+      hasPunchline: Boolean(fm.og_punchline),
       data: {
         kicker: date ? `BLOG · ${fmtDate(date)}` : "BLOG",
-        title: fm.og_title || fm.title,
-        author: a ? { name: a.name, title: a.title } : null,
+        punchline: String(fm.og_punchline || derivePunchline(fm.title)),
+        author: a ? { name: a.name } : null,
       },
       avatar: a ? authorImage(typeof key === "string" ? key : "", a) : null,
       sortKey: date || "",
@@ -165,7 +189,7 @@ function pageJobs() {
     type: "page",
     permalink: pg.permalink,
     out: `pages/${pg.id}.png`,
-    data: { kicker: pg.kicker, title: pg.title, description: pg.description },
+    data: { kicker: pg.kicker, punchline: pg.punchline || derivePunchline(pg.title) },
     alt: pg.alt,
   }));
 }
@@ -335,8 +359,26 @@ async function renderAll(jobs) {
   const known = new Set(jobs.map((j) => j.permalink));
   const orphans = full ? Object.keys(manifest).filter((k) => !known.has(k)) : [];
 
+  if (flag("write-punchlines")) {
+    let n = 0;
+    for (const j of jobs.filter((x) => x.file && !x.hasPunchline)) {
+      const src = fs.readFileSync(j.file, "utf8");
+      const line = `og_punchline: ${JSON.stringify(j.data.punchline)}`;
+      const out = src.replace(/^(---\r?\n[\s\S]*?^title:.*$)/m, `$1\n${line}`);
+      if (out === src) continue;
+      fs.writeFileSync(j.file, out);
+      console.log(`${path.relative(SITE, j.file)}: ${line}`);
+      n++;
+    }
+    console.log(`${n} punchlines written`);
+    process.exit(0);
+  }
+
   if (flag("check")) {
     stale.forEach((j) => console.log("stale:", j.out));
+    const big = jobs.filter((j) => !stale.includes(j) && fs.statSync(path.join(OUT, j.out)).size > MAX_BYTES);
+    big.forEach((j) => console.log(`over ${MAX_BYTES / 1024} KB:`, j.out));
+    stale.push(...big);
     orphans.forEach((k) => console.log("orphan manifest entry:", k));
     console.log(`${jobs.length - stale.length}/${jobs.length} cards up to date`);
     if (stale.length || orphans.length) console.log("Run `yarn og:cards` and commit static/img/og/.");
@@ -356,11 +398,12 @@ async function renderAll(jobs) {
       image: `/img/og/${r.job.out}?v=${r.job.hash.slice(0, 8)}`,
       width: W,
       height: H,
-      alt: r.job.alt || r.job.data.title,
+      alt: r.job.alt || r.job.data.punchline.replace(/\s*\n\s*/g, " "),
       hash: r.job.hash,
     };
     const kb = (r.bytes / 1024).toFixed(0);
-    console.log(`${r.bytes > MAX_BYTES ? "OVER " : ""}${kb.padStart(4)} KB  ${r.job.out}${r.info.hasShot ? "  (gif)" : ""}`);
+    const fitNote = `${r.info.size}px/${r.info.lines}l${r.info.overflow ? " OVERFLOW" : ""}`;
+    console.log(`${r.bytes > MAX_BYTES ? "OVER " : ""}${kb.padStart(4)} KB  ${fitNote.padEnd(10)} ${r.job.out}${r.info.hasShot ? "  (gif)" : ""}`);
   }
   const sorted = Object.fromEntries(Object.keys(manifest).sort().map((k) => [k, manifest[k]]));
   fs.mkdirSync(OUT, { recursive: true });

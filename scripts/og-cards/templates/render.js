@@ -1,10 +1,24 @@
-// Fills a card template from data and fits the text. The generator calls
+// Fills a card template from data and fits the punchline. The generator calls
 // window.renderCard(data) and screenshots once the returned promise resolves.
 (function () {
   function set(field, value) {
     document.querySelectorAll('[data-field="' + field + '"]').forEach(function (el) {
       if (value == null || value === "") el.remove();
       else el.textContent = value;
+    });
+  }
+
+  // The punchline as text, with "→" in the accent colour and a line break at each newline.
+  function setPunchline(el, text) {
+    el.textContent = "";
+    text.split(/(→|\n)/).forEach(function (part) {
+      if (part === "\n") el.appendChild(document.createElement("br"));
+      else if (part === "→") {
+        var s = document.createElement("span");
+        s.className = "arrow";
+        s.textContent = part;
+        el.appendChild(s);
+      } else if (part) el.appendChild(document.createTextNode(part));
     });
   }
 
@@ -17,55 +31,29 @@
     });
   }
 
-  // Shrink font size until the element fits in maxLines, between max and min px.
-  function fitLines(el, max, min, maxLines) {
-    if (!el) return;
+  // Largest font size (max..min px) at which the punchline fits its box in at most maxLines,
+  // without breaking a word. With forced breaks, no line may wrap further.
+  // Returns the size and the line count.
+  function fit(el, max, min, maxLines) {
+    var box = el.parentElement;
+    var forced = el.querySelectorAll("br").length;
     for (var size = max; size >= min; size -= 2) {
       el.style.fontSize = size + "px";
       var lh = parseFloat(getComputedStyle(el).lineHeight);
-      if (el.scrollHeight <= lh * maxLines + 2) return;
-    }
-    clampWords(el, maxLines);
-  }
-
-  // Cut whole words and end with an ellipsis until the text fits in maxLines.
-  function clampWords(el, maxLines) {
-    if (!el) return;
-    var lh = parseFloat(getComputedStyle(el).lineHeight);
-    var limit = lh * maxLines + 2;
-    if (el.scrollHeight <= limit) return;
-    var words = el.textContent.split(/\s+/);
-    while (words.length > 1 && el.scrollHeight > limit) {
-      words.pop();
-      el.textContent = words.join(" ").replace(/[,.;:–—-]+$/, "") + "…";
-    }
-  }
-
-  // Drop the description (then shrink the title further) while the column overflows.
-  function fitColumn() {
-    var text = document.querySelector(".text");
-    if (!text) return;
-    var desc = text.querySelector(".desc");
-    var guard = 0;
-    while (text.scrollHeight > text.clientHeight + 1 && guard++ < 6) {
-      if (desc && desc.textContent.length) {
-        var lh = parseFloat(getComputedStyle(desc).lineHeight);
-        var lines = Math.round(desc.scrollHeight / lh) - 1;
-        if (lines < 1) { desc.remove(); desc = null; } else clampWords(desc, lines);
-      } else {
-        var t = text.querySelector(".title");
-        t.style.fontSize = parseFloat(t.style.fontSize || "48") - 4 + "px";
+      var lines = Math.round(el.scrollHeight / lh);
+      var ok = forced ? lines === forced + 1 : lines <= maxLines;
+      if (ok && el.scrollWidth <= el.clientWidth + 1 && el.scrollHeight <= box.clientHeight) {
+        return { size: size, lines: lines };
       }
     }
+    return { size: min, lines: Math.round(el.scrollHeight / parseFloat(getComputedStyle(el).lineHeight)), overflow: true };
   }
 
   window.renderCard = async function (d) {
     set("kicker", d.kicker);
-    set("title", d.title);
-    set("desc", d.description);
     set("author", d.author && d.author.name);
-    set("role", d.author && d.author.title);
-    set("path", d.path);
+    var p = document.querySelector(".punchline");
+    setPunchline(p, d.punchline);
 
     var frame = document.querySelector(".frame");
     var shot = document.querySelector(".shot img");
@@ -82,7 +70,7 @@
       if (!ok && d.author && d.author.name) {
         var span = document.createElement("div");
         span.className = "avatar";
-        span.textContent = d.author.name.split(/\s+/).map(function (p) { return p[0]; }).join("").slice(0, 2);
+        span.textContent = d.author.name.split(/\s+/).map(function (w) { return w[0]; }).join("").slice(0, 2);
         document.querySelector(".author").prepend(span);
       }
     }
@@ -91,12 +79,8 @@
     await document.fonts.ready;
     await Promise.all(Array.from(document.images).map(function (i) { return i.decode().catch(function () {}); }));
 
-    var t = document.querySelector(".title");
-    var fit = (t && t.dataset.fit ? t.dataset.fit : "64,44,3").split(",").map(Number);
-    fitLines(t, fit[0], fit[1], fit[2]);
-    var desc = document.querySelector(".desc");
-    if (desc) clampWords(desc, Number(desc.dataset.lines || 3));
-    fitColumn();
-    return { hasShot: hasShot, title: t ? parseFloat(t.style.fontSize) : 0 };
+    var f = (p.dataset.fit || "170,84,3").split(",").map(Number);
+    var r = fit(p, f[0], f[1], f[2]);
+    return { hasShot: hasShot, size: r.size, lines: r.lines, overflow: !!r.overflow };
   };
 })();

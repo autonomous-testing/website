@@ -1,6 +1,7 @@
 ---
 slug: agent-vision-on-by-default
 title: "The agent now sees the screen"
+og_punchline: "The agent can see"
 description: "The agent gets a screenshot after every action and can look at the page when it needs to; existing projects switch on unless they chose Off."
 ---
 

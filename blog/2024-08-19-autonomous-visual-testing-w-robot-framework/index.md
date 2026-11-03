@@ -1,6 +1,7 @@
 ---
 slug: autonomous-visual-testing-with-robot-framework
 title: Autonomous Visual Testing with Robot Framework
+og_punchline: "Visual tests in Robot Framework"
 description: "Combine Robot Framework with Wopee.io for autonomous visual testing. Practical guide to adding visual regression to existing RF test suites."
 authors: marcel
 tags: [visual-testing, robot-framework, test-automation, webinars]

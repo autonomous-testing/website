@@ -1,6 +1,7 @@
 ---
 slug: repo-access-per-member
 title: "See who can reach each project's repository"
+og_punchline: "Who can reach the repo"
 description: "The Users screen shows each member's access to the project's GitHub repository, with resend, retry and connect actions, and access follows project membership."
 ---
 

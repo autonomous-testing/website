@@ -1,6 +1,7 @@
 ---
 slug: tests-run-themselves-after-crawl
 title: "Your first analysis ends with tests already run"
+og_punchline: "Tests already ran"
 description: "Scenarios generated during a crawl now start running automatically, so a fresh analysis ends with real results instead of a board of not-run cards."
 ---
 

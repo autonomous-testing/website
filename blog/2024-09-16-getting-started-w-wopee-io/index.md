@@ -1,6 +1,7 @@
 ---
 slug: getting-started-w-wopee-io-automation
 title: "Getting Started with Wopee.io: No-Code Testing"
+og_punchline: "Start with Wopee.io"
 description: "Get started with Wopee.io in minutes, no coding required. Automate web app testing with AI, from account setup to your first autonomous test run."
 authors: marcel
 tags: [playwright, automation, testing, AI]

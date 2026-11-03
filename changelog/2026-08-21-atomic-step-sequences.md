@@ -1,6 +1,7 @@
 ---
 slug: atomic-step-sequences
 title: "Dropdowns and pop-ups replay as one step"
+og_punchline: "Dropdowns in one step"
 description: "Actions that belong together, like opening a dropdown and picking an option, now replay as one step, repeat until the page says stop and allow optional parts."
 ---
 

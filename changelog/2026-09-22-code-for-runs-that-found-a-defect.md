@@ -1,6 +1,7 @@
 ---
 slug: code-for-runs-that-found-a-defect
 title: "Found a bug? You still get the test code"
+og_punchline: "Bug found, code kept"
 description: "A run that did every step and failed only on its checks now leaves a Playwright test asserting the expected values, so it turns green once the bug is fixed."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: mcp-chat-and-bug-filing
 title: "File GitHub issues and chat via MCP"
+og_punchline: "MCP files the bugs"
 description: "The wopee-mcp server added chat and bug-filing tools: your AI coding agent can message the project chat room and create GitHub issues directly."
 ---
 

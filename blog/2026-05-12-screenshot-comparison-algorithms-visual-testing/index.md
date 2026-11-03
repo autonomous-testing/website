@@ -1,6 +1,7 @@
 ---
 slug: screenshot-comparison-algorithms-visual-testing
 title: "Screenshot Comparison Algorithms: A Visual Testing Guide"
+og_punchline: "How screenshot diffs work"
 title_meta: "Screenshot Comparison Algorithms Explained"
 description: "How pixelmatch, SSIM, pHash, ODiff, and AI diffing actually compare screenshots, with benchmarks and when each is the right choice for visual testing."
 tags: [visual-regression-testing, screenshot-testing, playwright, pixelmatch, ssim, odiff]

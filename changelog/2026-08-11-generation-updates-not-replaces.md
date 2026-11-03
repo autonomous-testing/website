@@ -1,6 +1,7 @@
 ---
 slug: generation-updates-not-replaces
 title: "Regeneration updates your suite instead of replacing it"
+og_punchline: "Updated, not replaced"
 title_meta: "Regeneration updates your suite, not replaces it"
 description: "Regeneration keeps what you wrote: omitted cases are retained, removals need an explicit request, and verified locators stay in the generated code."
 ---

@@ -1,6 +1,7 @@
 ---
 slug: one-click-generation-and-agent-chat
 title: "Tests for every user story in one click"
+og_punchline: "Every story, one click"
 description: "Every user story is preselected, so one click generates the whole set; long runs no longer time out, and one chat lets you talk to the agent while it works."
 ---
 

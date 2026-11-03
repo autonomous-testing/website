@@ -1,6 +1,7 @@
 ---
 slug: future-testing-report
 title: "Report: Future of Web App Testing"
+og_punchline: "The future of testing"
 description: "Key findings from the Future of Web App Testing report: what QA pros and eng leaders think about AI, automation, and the next 5 years of testing."
 authors: marcel
 tags: [testing, automation, AI]

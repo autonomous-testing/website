@@ -1,6 +1,7 @@
 ---
 slug: ai-agent-vs-vibe-coded-app
 title: "AI Agent vs a Vibe-Coded App: 5 of 5 Bugs, Plus One Nobody Planted"
+og_punchline: "5 of 5 bugs found"
 title_meta: "AI Agent vs Vibe-Coded App: 5 of 5 Bugs Found"
 description: "We planted 5 bugs in a vibe-coded app and pointed an AI testing agent at it, live. It found all 5, 3 with exact steps, 0 false alarms, and 1 unplanted bug."
 tags: [ai-testing, vibe-coding, vibe-testing, ai-testing-agents, test-design, case-study]

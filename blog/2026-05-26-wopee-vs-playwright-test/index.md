@@ -1,6 +1,7 @@
 ---
 slug: wopee-vs-playwright-test
 title: "Wopee.io vs Playwright: 2026 Honest Comparison"
+og_punchline: "Wopee.io vs Playwright"
 description: "Playwright is a free framework; Wopee.io is the autonomous platform built on top of it. Honest 2026 comparison of when each one is the right pick."
 tags: [playwright, comparison, visual-testing, autonomous-testing, qa, test-automation]
 authors: marcel

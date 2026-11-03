@@ -1,6 +1,7 @@
 ---
 slug: verify-state-assertions
 title: "Check that a button stays disabled"
+og_punchline: "Still disabled? Checked."
 description: "A new step checks a control's state: enabled or disabled, checked or unchecked, editable or read-only, and it can wait until a gate opens."
 ---
 

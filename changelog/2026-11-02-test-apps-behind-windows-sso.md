@@ -1,6 +1,7 @@
 ---
 slug: test-apps-behind-windows-sso
 title: "Test apps behind Windows sign-in"
+og_punchline: "Windows sign-in, tested"
 description: "Runs can sign in to apps that use Windows single sign-on: set the domain account as project variables and the runner gets a Kerberos ticket before it starts."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: big-pages-stay-fast
 title: "Big pages no longer slow the agent down"
+og_punchline: "Big pages stay fast"
 description: "On very large pages the agent reads what is on screen in full and a short outline of the rest, then searches or opens the regions it needs."
 ---
 

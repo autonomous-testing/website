@@ -1,6 +1,7 @@
 ---
 slug: log-in-through-the-api
 title: "Log in through your API, reuse the token"
+og_punchline: "Log in via your API"
 description: "An HTTP request step can keep a token from the response as a hidden value that later steps use, and it can call your API on another domain."
 ---
 

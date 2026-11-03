@@ -1,6 +1,7 @@
 ---
 slug: predictive-test-selection
 title: "Predictive Test Selection: How It Works"
+og_punchline: "Predictive test selection"
 description: "What predictive test selection is, how the models pick which tests to run, what it saves in CI time, and the false-negative risk. Tools compared."
 authors: marcel
 tags:

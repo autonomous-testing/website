@@ -1,6 +1,7 @@
 ---
 slug: crawls-merge-into-your-scenarios
 title: "Exploring again never wipes your edits"
+og_punchline: "Your edits survive"
 description: "Scenarios you create while the agent explores keep their IDs; a new exploration updates only its own entries, and user stories keep their names."
 ---
 

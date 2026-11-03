@@ -1,6 +1,7 @@
 ---
 slug: byo-llm-oauth-and-reasoning-effort
 title: "Use your approved AI model, through your gateway"
+og_punchline: "Your model, your gateway"
 description: "Connect the model your security team approved through an OAuth 2.0 gateway, and set how hard each prompt thinks, with the inherited defaults shown."
 ---
 

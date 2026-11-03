@@ -1,6 +1,7 @@
 ---
 slug: fewer-false-alarms-on-real-values
 title: "Fewer false alarms on values the run really read"
+og_punchline: "Fewer false alarms"
 description: "The check for report values nothing observed now recognises what assertions matched or received, numbers in lists and amounts typed as plain numbers."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: interactive-cockpit
 title: "Interactive Cockpit: steer live runs"
+og_punchline: "Steer live runs"
 description: "The Wopee.io Interactive Cockpit streams the agent's browser live, watch every action, nudge the agent, take over control, and hand it back."
 ---
 

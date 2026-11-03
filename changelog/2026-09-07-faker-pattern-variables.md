@@ -1,6 +1,7 @@
 ---
 slug: faker-pattern-variables
 title: "Test data your forms accept"
+og_punchline: "Data your forms accept"
 description: "Test data can follow a pattern you define, and Slovak and Czech IBAN generators now produce real, bank-valid account numbers that sign-up forms accept."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: smarter-test-data
 title: "Test data that changes on every run"
+og_punchline: "Fresh data every run"
 description: "AI-generated variables now produce a fresh value per run, and the faker catalog adds IBAN, alphanumeric strings, usernames, and Czech birth numbers."
 ---
 

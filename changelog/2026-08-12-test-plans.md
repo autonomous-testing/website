@@ -1,6 +1,7 @@
 ---
 slug: test-plans
 title: "Test Plans: group tests and run them on a schedule"
+og_punchline: "Tests on a schedule"
 title_meta: "Test Plans: group tests and run on a schedule"
 description: "Test Plans group test cases into named collections you can run on demand or on a recurring schedule, with plain-English scheduling and a visible next run."
 ---

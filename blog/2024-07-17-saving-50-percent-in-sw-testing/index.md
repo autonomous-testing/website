@@ -1,6 +1,7 @@
 ---
 slug: saving-50-percent-in-sw-testing
 title: Cut Software Testing Costs by 50% with AI
+og_punchline: "Cut testing costs 50%"
 description: "How teams cut software testing costs by 50% with AI-powered automation. Practical strategies and real data on reducing QA overhead."
 authors: marcel
 tags:

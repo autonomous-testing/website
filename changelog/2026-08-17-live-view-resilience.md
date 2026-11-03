@@ -1,6 +1,7 @@
 ---
 slug: live-view-resilience
 title: "A live browser view that never goes dark"
+og_punchline: "Live view stays on"
 description: "The live agent view survives closing and reopening, reconnects with the last frame, labels replayed frames, and run times now show in your own timezone."
 ---
 
