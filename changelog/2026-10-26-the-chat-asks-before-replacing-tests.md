@@ -1,6 +1,7 @@
 ---
 slug: the-chat-asks-before-replacing-tests
 title: "The chat asks before it replaces your tests"
+og_punchline: "The chat asks first"
 description: "Asking the chat to generate tests now updates your suite; anything that would replace existing tests or steps waits until a project admin confirms it."
 ---
 

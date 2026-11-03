@@ -7,21 +7,13 @@
     <script src="render.js"></script>
   </head>
   <body>
-    <!-- (b) Blog post: kicker, title, author with avatar, the monkey on a yellow disc. -->
+    <!-- (b) Blog post, ink: the punchline in yellow, the monkey on a yellow disc, the author. -->
     <div class="frame t-blog">
-      <div class="ring"></div>
-      <div class="disc"><img src="assets/monkey-head.png" alt="" /></div>
-      <div class="text">
-        <div class="kicker" data-field="kicker"></div>
-        <div class="body">
-        <h1 class="title" data-field="title" data-fit="76,46,4"></h1>
-        <div class="author">
-          <img class="avatar" alt="" />
-          <div><div class="name" data-field="author"></div><div class="role" data-field="role"></div></div>
-        </div>
-        </div>
-      </div>
-      <div class="foot"><img class="wordmark" src="assets/wordmark-on-dark.svg" alt="Wopee.io" /></div>
+      <div class="kicker" data-field="kicker"></div>
+      <div class="disc"><img src="assets/monkey.png" alt="" /></div>
+      <div class="punch"><h1 class="punchline" data-field="punchline" data-fit="170,84,3"></h1></div>
+      <img class="logo" src="assets/logo-on-ink.svg" alt="Wopee.io" />
+      <div class="author"><img class="avatar" alt="" /><div class="name" data-field="author"></div></div>
     </div>
   </body>
 </html>

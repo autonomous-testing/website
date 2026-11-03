@@ -1,6 +1,7 @@
 ---
 slug: bring-your-own-llm
 title: "Bring your own LLM across four providers"
+og_punchline: "Bring your own LLM"
 description: "Run Wopee.io testing agents on your own Azure OpenAI, Google Vertex AI, Anthropic, or OpenAI account, now with OpenAI-compatible endpoints."
 ---
 

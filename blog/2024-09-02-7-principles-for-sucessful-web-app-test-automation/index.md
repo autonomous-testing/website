@@ -1,6 +1,7 @@
 ---
 slug: 7-principles-for-successful-web-app-test-automation
 title: "Web App Test Automation: 7 Key Principles"
+og_punchline: "7 automation principles"
 description: "Seven proven principles for web app test automation that scales, from test design to CI integration. Practical guide for QA engineers."
 authors: marcel
 tags: [test-automation, web-app-testing, quality-assurance, essentials]

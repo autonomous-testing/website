@@ -1,6 +1,7 @@
 ---
 slug: reported-issues-cite-evidence
 title: "Bug reports show the actions behind them"
+og_punchline: "Bug reports with proof"
 description: "Each reported issue is checked against what the run did: a claim the record contradicts is withdrawn, and locator failures are listed apart from bugs."
 ---
 

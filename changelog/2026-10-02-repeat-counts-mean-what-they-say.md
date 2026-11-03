@@ -1,6 +1,7 @@
 ---
 slug: repeat-counts-mean-what-they-say
 title: '"Repeat 3 times" means three real times'
+og_punchline: "Repeat 3 means 3"
 description: "A repeat count runs exactly as written, a stop condition that already holds is refused before the run starts, and only repetitions with evidence count."
 ---
 

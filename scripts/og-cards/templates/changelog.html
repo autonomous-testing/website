@@ -7,21 +7,15 @@
     <script src="render.js"></script>
   </head>
   <body>
-    <!-- (a) Changelog entry: kicker with the date, title, description, and the GIF's first frame
-         in a browser frame on the right (has-shot), or the purple pattern with the monkey (no-shot). -->
+    <!-- (a) Changelog entry, yellow: the punchline, and the GIF frame with a monkey sticker (has-shot)
+         or the big monkey (no-shot). Kicker and logo for the full-width card. -->
     <div class="frame t-changelog">
-      <div class="pattern only-pattern"></div>
-      <div class="disc only-pattern"><img src="assets/monkey-head.png" alt="" /></div>
+      <div class="kicker" data-field="kicker"></div>
+      <img class="monkey only-pattern" src="assets/monkey.png" alt="" />
       <div class="shot only-shot"><div class="bar"><i></i><i></i><i></i></div><img alt="" /></div>
-      <div class="sticker disc only-shot"><img src="assets/monkey-head.png" alt="" /></div>
-      <div class="text">
-        <div class="kicker" data-field="kicker"></div>
-        <div class="body">
-        <h1 class="title" data-field="title" data-fit="80,40,4"></h1>
-          <p class="desc" data-field="desc" data-lines="3"></p>
-        </div>
-        <div class="foot"><img class="wordmark" src="assets/wordmark-on-yellow.svg" alt="Wopee.io" /></div>
-      </div>
+      <div class="disc sticker only-shot"><img src="assets/monkey.png" alt="" /></div>
+      <div class="punch"><h1 class="punchline" data-field="punchline" data-fit="170,84,3"></h1></div>
+      <img class="logo" src="assets/logo-on-yellow.svg" alt="Wopee.io" />
     </div>
   </body>
 </html>

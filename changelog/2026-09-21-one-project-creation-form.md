@@ -1,6 +1,7 @@
 ---
 slug: one-project-creation-form
 title: "Start a project with one form"
+og_punchline: "One form, one project"
 description: "Quick start and Advanced Setup are one dialog now: pick a demo app or paste a URL, and framework, mode and name wait under one Advanced settings row."
 ---
 

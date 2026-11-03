@@ -1,6 +1,7 @@
 ---
 slug: pay-yearly-or-start-free
 title: "Pay yearly, or start with a month on us"
+og_punchline: "A month on us"
 description: "Plans now bill monthly or yearly, new accounts get the first month on us, and a plan change happens in the app with a prorated preview before you confirm."
 ---
 

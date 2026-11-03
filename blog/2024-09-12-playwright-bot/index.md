@@ -1,6 +1,7 @@
 ---
 slug: playwright-bot-ai-powered-test-automation
 title: "Playwright Bot: AI-Generated Tests in Minutes"
+og_punchline: "Playwright tests in minutes"
 description: "A Playwright bot that explores your web app and generates test cases. AI-powered test automation with no scripts to write."
 authors: marcel
 tags: [playwright, automation, testing, AI]

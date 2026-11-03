@@ -1,6 +1,7 @@
 ---
 slug: see-why-a-run-failed
 title: "See why a run failed, not just that it did"
+og_punchline: "See why it failed"
 description: "A failed run or crawl now says why, from an unreachable URL to a failed login, and any run's Playwright trace opens in Trace Viewer from the Logs menu."
 ---
 

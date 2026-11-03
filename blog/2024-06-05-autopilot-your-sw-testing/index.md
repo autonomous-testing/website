@@ -1,6 +1,7 @@
 ---
 slug: autopilot-your-sw-testing
 title: Autopilot Your Software Testing
+og_punchline: "Autopilot your testing"
 description: "Put software testing on autopilot. AI-powered autonomous testing handles creation, execution, and maintenance so your team focuses on what matters."
 authors: marcel
 tags: [basics, automation, business, efficiency]

@@ -1,6 +1,7 @@
 ---
 slug: unified-run-logs
 title: "One Logs tab for every run"
+og_punchline: "All logs, one tab"
 description: "Run logs now stream live under a single Logs tab for all runs, including pre-warmed pooled agents, with the GitHub Actions deep link where it belongs."
 ---
 

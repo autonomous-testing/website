@@ -1,6 +1,7 @@
 ---
 slug: saved-locators-stay-true
 title: "Self-healing that keeps the right button"
+og_punchline: "Heals to the right button"
 description: "Saved locators drop state such as item counts and keep every role option on replay, and a heal can no longer swap Finish for a differently named button."
 ---
 

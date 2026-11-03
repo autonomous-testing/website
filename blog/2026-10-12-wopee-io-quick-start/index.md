@@ -1,6 +1,7 @@
 ---
 slug: wopee-io-quick-start
 title: "Wopee.io Quick Start: Your First AI Test in 6 Minutes"
+og_punchline: "First test in 6 minutes"
 title_meta: "Wopee.io Quick Start: First AI Test in 6 Minutes"
 description: "Paste a URL, let the AI agent explore your app, read the verdict, schedule a test plan and find every test in your own GitHub repo. A 6-minute walkthrough."
 tags: [getting-started, ai-testing, test-automation, playwright, tutorial]

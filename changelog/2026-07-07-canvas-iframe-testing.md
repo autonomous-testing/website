@@ -1,6 +1,7 @@
 ---
 slug: canvas-iframe-testing
 title: "Canvas and cross-origin iframe testing"
+og_punchline: "Canvas and iframes, tested"
 description: "Wopee.io agents now test canvas-rendered apps and games: visual-coordinate clicks, configurable key-hold durations, and automatic iframe locator resolution."
 ---
 

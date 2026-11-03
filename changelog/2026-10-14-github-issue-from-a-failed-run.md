@@ -1,6 +1,7 @@
 ---
 slug: github-issue-from-a-failed-run
 title: "File a GitHub issue from a failed run"
+og_punchline: "Bug → GitHub issue"
 description: "A failed run in a project with a linked repository offers Create GitHub issue, filled with the failing step, expected and actual result and the screenshot."
 ---
 

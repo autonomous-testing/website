@@ -1,6 +1,7 @@
 ---
 slug: game-keys-count-when-the-screen-moves
 title: "Game key presses count only if the game reacts"
+og_punchline: "No reaction,\nno count"
 description: "A key press into a canvas game is checked against the picture before and after, so a press the game ignored is reported as having no effect, not as a success."
 ---
 

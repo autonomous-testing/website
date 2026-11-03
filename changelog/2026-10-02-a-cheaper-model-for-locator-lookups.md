@@ -1,6 +1,7 @@
 ---
 slug: a-cheaper-model-for-locator-lookups
 title: "Pay less for the agent's routine lookups"
+og_punchline: "Cheaper routine lookups"
 description: "Run element lookups and key presses on a cheaper Azure deployment with its own reasoning effort, and pick only the effort levels each model accepts."
 ---
 

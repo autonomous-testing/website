@@ -1,6 +1,7 @@
 ---
 slug: assert-what-changed
 title: "Assert what changed, not just what is there"
+og_punchline: "Assert what changed"
 description: "New steps check that exactly one new row appeared or that a balance moved by the right amount, by capturing a reading and comparing a later one to it."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: automated-web-app-testing-and-how-to-do-it-right
 title: Automated Web App Testing and How to do it Right?
+og_punchline: "Web app testing, done right"
 description: "Learn what automated web app testing is, why it matters, and how to implement it right. A complete guide for QA engineers and development teams."
 authors: marcel
 tags: [basics, testing-tools, playwright, selenium, test-automation]

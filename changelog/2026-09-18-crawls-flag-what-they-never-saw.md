@@ -1,6 +1,7 @@
 ---
 slug: crawls-flag-what-they-never-saw
 title: "A warning on text the agent never saw"
+og_punchline: "Flags what it never saw"
 description: "Expected text the agent never saw while exploring is flagged, its own scenario picks run first, steps visit only pages it saw, and broken images are reported."
 ---
 

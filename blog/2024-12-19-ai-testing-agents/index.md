@@ -2,6 +2,7 @@
 slug: ai-testing-agents
 date: 2026-09-08
 title: "AI Testing Agents in 2026: Hype, Reality, and 5 Tools Compared"
+og_punchline: "AI agents: hype vs reality"
 title_meta: "AI Testing Agents 2026: 5 Tools Compared"
 description: "What AI testing agents really do in 2026: the agentic loop, memory, enterprise readiness, and an honest comparison of 5 tools with verified pricing."
 authors: marcel

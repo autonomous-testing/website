@@ -1,6 +1,7 @@
 ---
 slug: drag-and-drop-steps
 title: "Tests that drag and drop"
+og_punchline: "Drag and drop, tested"
 description: "The agent can now drag an item onto a drop target and confirm it really moved, and you can write and edit drag-and-drop steps in the test case editor."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: answer-the-agent-in-one-click
 title: "Answer the agent in one click, or let it go on"
+og_punchline: "Answer in one click"
 description: "An agent question now shows one recommended option and a two-minute countdown; with no answer the run continues with that option and the chat says so."
 ---
 

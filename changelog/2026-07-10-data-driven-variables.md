@@ -1,6 +1,7 @@
 ---
 slug: data-driven-variables
 title: "Data-driven variables: CSV, Faker, AI"
+og_punchline: "CSV, Faker or AI data"
 description: "Test variables now support five value sources (static, predefined lists, Faker, AI-generated values, and CSV columns) with automatic secret masking."
 ---
 

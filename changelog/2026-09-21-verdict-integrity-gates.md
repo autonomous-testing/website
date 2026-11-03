@@ -1,6 +1,7 @@
 ---
 slug: verdict-integrity-gates
 title: "No proof, no pass"
+og_punchline: "No proof, no pass"
 description: "A run that asserted nothing or skipped a step can no longer show green: it is flagged for review in amber, and runs left hanging are closed."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: reasoning-effort-per-model
 title: "AI settings that fit each model"
+og_punchline: "Effort per model"
 description: "Every reasoning level from none to max is checked against the model it is set for, GPT-6 runs as a reasoning model, and the AI chat respects the setting."
 ---
 

@@ -1,6 +1,7 @@
 ---
 slug: slack-integration
 title: "Slack integration: chat with your agent"
+og_punchline: "Your agent, in Slack"
 description: "Wopee.io connects to Slack with one-click OAuth install: test results pushed to your channel, plus two-way chat with the testing agent."
 ---
 

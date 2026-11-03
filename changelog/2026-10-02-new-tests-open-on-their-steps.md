@@ -1,6 +1,7 @@
 ---
 slug: new-tests-open-on-their-steps
 title: "A test that never ran opens on its steps"
+og_punchline: "New tests open on steps"
 description: "Select a test that has not run yet and its steps open instead of an empty run view; story names show in the scope picker and step lists indent cleanly."
 ---
 

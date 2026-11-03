@@ -1,6 +1,7 @@
 ---
 slug: pay-and-go-straight-to-work
 title: "Pay once, land straight back in your projects"
+og_punchline: "Pay, then back to work"
 description: "After checkout you return to Wopee.io, your plan is active on arrival and you continue to Projects, even when the payment confirmation is slow to arrive."
 ---
 

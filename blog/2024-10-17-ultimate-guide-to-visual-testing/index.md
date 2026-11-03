@@ -1,6 +1,7 @@
 ---
 slug: ultimate-guide-to-visual-testing
 title: "Visual Testing: The Complete Guide (2026)"
+og_punchline: "Visual testing, explained"
 description: "How visual regression testing works, when it earns its place, and which tools (Playwright, Percy, Applitools, Wopee.io) fit your CI pipeline."
 authors: marcel
 tags: [visual testing, test automation, visual regression testing]
