@@ -67,9 +67,11 @@ const LoginDialog = ({
         <div className="flex flex-col items-center">
           <div className="relative mb-4">
             <img
-              src="/img/logo.png"
+              src="/brand/svg/wopee-symbol-color-light.svg"
               alt="Wopee.io"
-              className="w-10 h-10 object-contain dark:invert"
+              width={40}
+              height={40}
+              className="w-10 h-10"
             />
             <Sparkles
               className="absolute -top-1 -right-1 w-4 h-4 text-primary-wopee fill-primary-wopee"
