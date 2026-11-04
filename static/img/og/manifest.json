@@ -580,6 +580,13 @@
     "alt": "Still disabled? Checked.",
     "hash": "d33ed1c72733ff81"
   },
+  "/false-pass-checklist/": {
+    "image": "/img/og/pages/false-pass-checklist.png?v=7c0c114b",
+    "width": 1200,
+    "height": 630,
+    "alt": "Trust the green?",
+    "hash": "7c0c114be065e53e"
+  },
   "/managed-testing/": {
     "image": "/img/og/pages/managed-testing.png?v=e43bf94e",
     "width": 1200,
@@ -593,6 +600,13 @@
     "height": 630,
     "alt": "Test from your AI chat",
     "hash": "21e40c98e032ce45"
+  },
+  "/no-proof-no-pass/": {
+    "image": "/img/og/pages/no-proof-no-pass.png?v=a6b32c71",
+    "width": 1200,
+    "height": 630,
+    "alt": "No proof, no pass.",
+    "hash": "a6b32c71bb8c801b"
   },
   "/pricing/": {
     "image": "/img/og/pages/pricing.png?v=fc90d747",

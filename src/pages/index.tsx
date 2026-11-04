@@ -16,6 +16,7 @@ import HomeEndingSection from "@/components/home-page/HomeEndingSection";
 import HomeFaqSection from "@/components/home-page/HomeFaqSection";
 import { JSONLD_ORG, ORG_REF } from "@site/src/data/organization";
 import HomeLearnBand from "@/components/home-page/HomeLearnBand";
+import HomeVerdictBand from "@/components/home-page/HomeVerdictBand";
 import SocialCard from "@site/src/components/seo/SocialCard";
 
 const JSONLD_APP = {
@@ -54,6 +55,7 @@ export default function Home(): JSX.Element {
       <HomeProblemSection />
       <HomeTrustedBy />
       <HomeBenefits />
+      <HomeVerdictBand />
       <HomeSocialProof />
       <HomeHowItWorks />
       <HomeCockpitSection />

@@ -15,3 +15,5 @@ Every run now passes through integrity gates: a defined assertion that never exe
 {/* changelog-clip:end */}
 
 Switch a project to Enforce and such a pass is downgraded to Incomplete: amber, not red, because the run proved nothing rather than found a defect. Incomplete is now a verdict everywhere. A run whose agent died, a workflow cancelled during setup or a suite whose checks never reached the page no longer sits "In progress" forever or reads as a clean pass, and test-environment problems such as dropped clicks or a dead browser are listed apart from application issues.
+
+See it on a real run, from the trap to the amber and back to green: [No proof, no pass](/no-proof-no-pass/).
