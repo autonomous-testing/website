@@ -44,6 +44,14 @@ const rows: Row[] = [
     enterprise: "Unlimited",
   },
   {
+    feature: "Verdict integrity (experimental preview)",
+    free: true,
+    starter: true,
+    basic: true,
+    premium: true,
+    enterprise: true,
+  },
+  {
     feature: "Team user management",
     free: false,
     starter: false,
@@ -94,18 +102,21 @@ const rows: Row[] = [
 ];
 
 const Check = () => (
-  <svg
-    className="w-4 h-4 mx-auto text-secondary-wopee dark:text-primary-wopee"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fillRule="evenodd"
-      d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 011.42-1.42L8.5 12.08l6.79-6.79a1 1 0 011.414 0z"
-      clipRule="evenodd"
-    />
-  </svg>
+  <>
+    <span className="sr-only">Included</span>
+    <svg
+      className="w-4 h-4 mx-auto text-secondary-wopee dark:text-primary-wopee"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 011.42-1.42L8.5 12.08l6.79-6.79a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </>
 );
 
 const Dash = () => (

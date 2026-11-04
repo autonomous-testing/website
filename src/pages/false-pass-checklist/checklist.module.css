@@ -1,0 +1,284 @@
+.printOnly,
+.brand,
+.legend {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  :global(body.is-checklist) :global(.navbar),
+  :global(body.is-checklist) footer,
+  :global(body.is-checklist) :global(.theme-announcement-bar),
+  .noPrint,
+  .closing {
+    display: none !important;
+  }
+
+  :global(html:has(body.is-checklist)),
+  :global(body.is-checklist),
+  :global(body.is-checklist) :global(#__docusaurus),
+  :global(body.is-checklist) :global(.main-wrapper) {
+    min-height: 0 !important;
+    color-scheme: light !important;
+    background: #fff !important;
+    color: #1a1625 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: none !important;
+    width: 210mm !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .page * {
+    box-shadow: none !important;
+  }
+
+  /* Header band */
+  .page header {
+    position: relative;
+    overflow: hidden;
+    padding: 10mm 14mm 8mm !important;
+    background: #14101e !important;
+    background-image:
+      radial-gradient(
+        circle at 92% 8%,
+        rgba(255, 204, 0, 0.22) 0%,
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 0% 100%,
+        rgba(112, 48, 160, 0.55) 0%,
+        transparent 55%
+      ) !important;
+    color: #fff !important;
+  }
+
+  .page header * {
+    color: #fff !important;
+  }
+
+  .brand {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7mm;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .brand img {
+    height: 6.5mm;
+    width: auto;
+  }
+
+  .brand span {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .page h1 {
+    margin: 0 !important;
+    font-size: 27pt !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em;
+  }
+
+  .page header p {
+    margin-top: 3pt !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    max-width: 165mm;
+  }
+
+  .page header p.lead {
+    margin-top: 5pt !important;
+    font-size: 13pt !important;
+    color: #ffcc00 !important;
+  }
+
+  .page header p:not(.lead) {
+    color: rgba(255, 255, 255, 0.82) !important;
+  }
+
+  /* Verdict legend */
+  .legend {
+    display: flex !important;
+    gap: 6pt;
+    margin-top: 6mm;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4pt;
+    padding: 3pt 8pt;
+    border-radius: 999px;
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .chip b {
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .passed {
+    border: 1.2pt solid #22c55e;
+  }
+  .passed b {
+    color: #4ade80 !important;
+  }
+  .incomplete {
+    border: 1.2pt solid #f59e0b;
+  }
+  .incomplete b {
+    color: #fbbf24 !important;
+  }
+  .failed {
+    border: 1.2pt solid #ef4444;
+  }
+  .failed b {
+    color: #f87171 !important;
+  }
+
+  /* Body */
+  .note {
+    margin: 5mm 14mm 0 !important;
+    font-size: 8.5pt !important;
+    color: #6b6480 !important;
+    font-style: italic;
+  }
+
+  .list {
+    margin: 3mm 14mm 0 !important;
+    gap: 3.2mm !important;
+  }
+
+  .item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+
+  .item > div {
+    gap: 9pt !important;
+  }
+
+  .num {
+    width: 24pt !important;
+    height: 24pt !important;
+    font-size: 12pt !important;
+    background: #7030a0 !important;
+    color: #ffcc00 !important;
+  }
+
+  .item h2 {
+    font-size: 10.5pt !important;
+    line-height: 1.3 !important;
+    color: #1a1625 !important;
+  }
+
+  .must {
+    padding: 1pt 5pt !important;
+    margin-left: 4pt !important;
+    font-size: 6.5pt !important;
+    background: #ffcc00 !important;
+    color: #1a1625 !important;
+  }
+
+  .item p {
+    margin-top: 1.5pt !important;
+    font-size: 8.8pt !important;
+    line-height: 1.38 !important;
+    color: #4b4560 !important;
+  }
+
+  .item p span {
+    color: #1a1625 !important;
+  }
+
+  .answer {
+    margin-top: 3pt !important;
+    padding: 3pt 7pt !important;
+    border-radius: 4pt !important;
+    background: #f5effa !important;
+    border-left: 2.5pt solid #7030a0 !important;
+  }
+
+  /* Footer band */
+  .printOnly {
+    display: block !important;
+    margin: 6mm 14mm 0;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8mm;
+    padding: 6mm 7mm;
+    border-radius: 6pt;
+    background: #14101e !important;
+    background-image: radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 204, 0, 0.2) 0%,
+      transparent 45%
+    ) !important;
+  }
+
+  .footerClosing {
+    margin: 0 !important;
+    font-size: 13.5pt !important;
+    font-weight: 800;
+    line-height: 1.25 !important;
+    color: #ffcc00 !important;
+  }
+
+  .footerText {
+    margin: 3pt 0 0 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.4 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .footerCta {
+    margin: 4pt 0 0 !important;
+    font-size: 9.5pt !important;
+    font-weight: 700;
+    color: #fff !important;
+  }
+
+  .qr {
+    margin: 0;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .qr img {
+    width: 24mm;
+    height: 24mm;
+    padding: 2mm;
+    border-radius: 4pt;
+    background: #fff;
+  }
+
+  .qr figcaption {
+    margin-top: 2pt;
+    font-size: 6.5pt;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}

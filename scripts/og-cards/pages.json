@@ -56,5 +56,21 @@
     "alt": "Wopee.io brand kit: logo, colours and type",
     "layout": "disc-inside",
     "description": "SVG and PNG files, favicons, the monkey and the rules for using them."
+  },
+  {
+    "id": "no-proof-no-pass",
+    "permalink": "/no-proof-no-pass/",
+    "kicker": "EXPERIMENTAL PREVIEW",
+    "title": "Your AI tester said PASSED. Did it prove it?",
+    "punchline": "No proof,\nno pass.",
+    "description": "Wopee.io audits every pass its agent reports. In Enforce, a pass without proof becomes Incomplete."
+  },
+  {
+    "id": "false-pass-checklist",
+    "permalink": "/false-pass-checklist/",
+    "kicker": "FREE CHECKLIST",
+    "title": "The False Pass Checklist",
+    "punchline": "Trust the green?",
+    "description": "Seven questions to ask any AI testing tool before you trust its green."
   }
 ]
