@@ -1,12 +1,14 @@
 ---
 slug: flaky-tests-complete-guide
-title: "Flaky Tests in E2E Suites: Detection & Fixes"
+title: "Flaky E2E Tests: How to Find and Fix Them"
 og_punchline: "Fix flaky E2E tests"
 description: "Flaky tests affect 16% of tests at Google and erode CI trust. Learn root causes, detection methods, and proven remediation patterns for E2E test suites."
 tags: [flaky-tests, e2e-testing, test-automation, ci-cd, playwright, test-reliability, software-quality]
 image: ./ci-trust-erosion.webp
 authors: marcel
 ---
+
+> **Short answer (last checked 4 November 2026):** a flaky test passes and fails on the same code. In E2E suites the usual causes are timing (fixed sleeps instead of waiting for a condition), shared test data, order dependence and unstable environments or third-party calls. To find them, rerun failures and flag tests that pass only on retry. To fix them, wait for conditions instead of sleeping, give every test its own data, stub external services and quarantine a flaky test until its cause is fixed. Retries hide the symptom, they don't remove the cause.
 
 Flaky tests affect 16% of all tests at Google. 84% of pass-to-fail CI transitions involve one (Source: [Google Testing Blog](https://testing.googleblog.com/2017/04/where-do-our-flaky-tests-come-from.html), 2017). In E2E suites, async-wait issues alone drive about 45% of the failures. The wasted developer hours are bad. The trust damage is worse: once your team learns that red CI usually means "probably a flake," real regressions stop getting caught.
 <!--truncate-->
