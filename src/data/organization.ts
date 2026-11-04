@@ -5,6 +5,7 @@ export const JSONLD_ORG = {
   "@type": "Organization",
   "@id": ORG_ID,
   name: "Wopee.io",
+  alternateName: ["Wopee", "Woopee", "wopee labs"],
   legalName: "wopee labs s.r.o.",
   url: "https://wopee.io/",
   logo: "https://wopee.io/img/icon-512.png",
