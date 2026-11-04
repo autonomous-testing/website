@@ -464,7 +464,7 @@ const JSON_LD_VIDEO = {
   description:
     "How Wopee.io managed testing works: we pick your most important flows with you, test them before every release, and a person checks every failure.",
   thumbnailUrl: `https://wopee.io/video/${VIDEO_BASE}-poster.jpg`,
-  uploadDate: "2026-10-24",
+  uploadDate: "2026-10-24T16:58:32+00:00",
   duration: "PT1M30S",
   contentUrl: `https://wopee.io/video/${VIDEO_BASE}.mp4`,
   embedUrl: "https://www.youtube.com/embed/NzJEhzWA-NM",
