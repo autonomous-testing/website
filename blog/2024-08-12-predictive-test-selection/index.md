@@ -1,8 +1,8 @@
 ---
 slug: predictive-test-selection
-title: "Predictive Test Selection: How It Works"
+title: "What Is Predictive Test Selection & How It Works"
 og_punchline: "Predictive test selection"
-description: "What predictive test selection is, how the models pick which tests to run, what it saves in CI time, and the false-negative risk. Tools compared."
+description: "Predictive test selection runs only the tests likely to fail for a change. How the models work, what Meta measured, the tools and the risks."
 authors: marcel
 tags:
   [
@@ -15,6 +15,8 @@ image: ./test-selection.jpg
 ---
 
 import Head from '@docusaurus/Head';
+
+> **Short answer (last checked 4 November 2026):** predictive test selection is a machine-learning form of regression test selection. A model trained on past code changes and test results ranks the tests by how likely they are to fail for the current change, and CI runs only the riskiest ones. Meta's published model caught over 95% of individual test failures and over 99.9% of faulty changes while running a fraction of the tests ([Meta engineering](https://engineering.fb.com/developer-tools/predictive-test-selection/)). Tools that offer it include Gradle Develocity, CloudBees Smart Tests (formerly Launchable) and BrowserStack's Test Selection Agent.
 
 Predictive test selection uses machine learning to decide which tests to run for each code change. It works by analyzing commit history, code coverage data, and past failure patterns to rank tests by risk. High-risk tests run first, low-risk tests are deferred or skipped, giving teams faster CI feedback while maintaining defect coverage across releases.
 
