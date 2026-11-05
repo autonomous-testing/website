@@ -9,7 +9,7 @@ import WopeeIo from "@site/src/components/brand/WopeeIo";
 
 const KIT = {
   href: "/brand/wopee-brand-kit-2026.zip",
-  size: "ZIP, 950 KB",
+  size: "ZIP, 890 KB",
 };
 const SVG = (n: string) => `/brand/svg/wopee-${n}.svg`;
 const PNG = (n: string) => `/brand/png/wopee-${n}@2x.png`;
