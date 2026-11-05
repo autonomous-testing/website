@@ -110,10 +110,10 @@ const LOCKUPS = [
 ] as const;
 
 const MORE = [
-  { file: "logo-horizontal-mono-ink", title: "One colour, ink", g: "light" },
-  { file: "logo-horizontal-mono-white", title: "One colour, white", g: "dark" },
+  { file: "wordmark-mono-ink", title: "One colour, ink", g: "light" },
+  { file: "wordmark-mono-white", title: "One colour, white", g: "dark" },
   { file: "logo-horizontal-color-light", title: "Square on, light", g: "light" },
-  { file: "logo-horizontal-color-dark", title: "Square on, dark", g: "dark" },
+  { file: "logo-horizontal-mono-ink", title: "Square on, one colour", g: "light" },
 ] as const;
 
 function LogoSection() {
@@ -121,8 +121,8 @@ function LogoSection() {
     <Section id="logo">
       <SectionHead id="logo" n="01" title="One W, square on or off">
         The logo is the Bungee W followed by “opee.io” in Rubik ExtraBold. The W is the first letter of the name, so the
-        pair always reads <WopeeIo />. On light and dark grounds the W stands on its own, ink on light and yellow on
-        dark. On yellow and purple grounds it sits in a square.
+        pair always reads <WopeeIo />. The primary logo uses the W on its own: ink on light grounds, yellow on dark.
+        On yellow and purple grounds the W sits in a square.
       </SectionHead>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -148,7 +148,7 @@ function LogoSection() {
       <h3 className="mb-4 mt-12 text-lg font-semibold">More versions</h3>
       <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
         One-colour versions are for print, stamps and photo overlays. The square-on versions put the W in its tile,
-        for layouts that need a solid block, such as merch and event badges.
+        for layouts that need a solid block, such as merch and event badges. The symbol keeps its tile everywhere.
       </p>
       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
         {MORE.map((m) => (
@@ -283,7 +283,8 @@ function ProductsSection() {
     <Section id="products">
       <SectionHead id="products" n="03" title="Products">
         Every product is <WopeeIo /> plus its name, set in caps under “.io”, with the W on its own as in the main
-        logo. The colour of the name and of the symbol tile tells them apart: purple for Commander, ink for MCP.
+        logo. The colour of the name and of the symbol tile tells them apart: purple for Commander (purple-300 on
+        dark), ink for MCP (white on dark).
       </SectionHead>
 
       <div className="grid gap-6 xl:grid-cols-2">
@@ -291,10 +292,10 @@ function ProductsSection() {
           <article key={p.key} className="flex flex-col rounded-2xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <Ground g="light" className="h-36 px-6">
-                <img src={SVG(`wordmark-${p.key}-color-light`)} alt={`Wopee.io ${p.name} logo on light`} width={186} height={42} className="h-10 w-auto max-w-full" />
+                <img src={SVG(`wordmark-${p.key}-color-light`)} alt={`Wopee.io ${p.name} logo on light`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
               </Ground>
               <Ground g="dark" className="h-36 px-6">
-                <img src={SVG(`wordmark-${p.key}-color-dark`)} alt={`Wopee.io ${p.name} logo on dark`} width={190} height={42} className="h-10 w-auto max-w-full" />
+                <img src={SVG(`wordmark-${p.key}-color-dark`)} alt={`Wopee.io ${p.name} logo on dark`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
               </Ground>
             </div>
             <div className="flex flex-1 flex-col gap-4 px-4 pb-4 pt-5 sm:flex-row sm:items-stretch">
