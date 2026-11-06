@@ -11,7 +11,8 @@ const ButtonGradientOutline = ({
   return (
     <button
       className={clsx(
-        "relative inline-flex hover:cursor-pointer items-center justify-center p-0.5 overflow-hidden text-sm border-none font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-secondary-wopee group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800",
+        // Secondary action (DESIGN.md, Components): ink outline on light, the purple-to-yellow ring on dark. No blue.
+        "relative inline-flex hover:cursor-pointer items-center justify-center p-0.5 overflow-hidden text-sm border-none font-medium text-gray-900 rounded-lg group bg-gray-900 hover:text-white dark:bg-gradient-to-br dark:from-secondary-wopee dark:to-primary-wopee dark:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-purple-800",
         className
       )}
     >

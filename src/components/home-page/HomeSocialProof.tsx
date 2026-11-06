@@ -54,18 +54,18 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
               <Icon
                 size={1.2}
                 path={mdiFormatQuoteOpen}
-                className="text-secondary-wopee dark:text-primary-wopee inline mr-2"
+                className="text-gray-400 dark:text-primary-wopee inline mr-2"
               />
               {testimonial.quote}
               <Icon
                 size={1.2}
                 path={mdiFormatQuoteClose}
-                className="text-secondary-wopee dark:text-primary-wopee inline ml-2"
+                className="text-gray-400 dark:text-primary-wopee inline ml-2"
               />
             </p>
             {testimonial.metric && (
               <div className="flex justify-center mt-4">
-                <span className="text-xs uppercase tracking-wider font-bold px-3 py-1.5 rounded-full bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee text-center">
+                <span className="text-xs uppercase tracking-wider font-bold px-3 py-1.5 rounded-full bg-primary-wopee text-gray-900 dark:bg-primary-wopee/10 dark:text-primary-wopee text-center">
                   {testimonial.metric}
                 </span>
               </div>
@@ -91,7 +91,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
 
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-sm text-secondary-wopee dark:text-primary-wopee font-medium leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-primary-wopee font-medium leading-relaxed">
                   {testimonial.about}
                 </p>
               </div>
@@ -184,8 +184,8 @@ const HomeSocialProof = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-2">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-secondary-wopee dark:text-primary-wopee mb-2">
-          Trusted by leading tech teams
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-950 dark:text-white mb-2">
+          Trusted by <span className="key-phrase">leading tech teams</span>
         </h2>
         <p className="text-lg text-gray-700 dark:text-white">
           Join the visionaries who chose Wopee.io to transform their testing.

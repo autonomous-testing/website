@@ -30,7 +30,7 @@ const bottomLinkClass =
   "inline-flex min-h-11 lg:min-h-7 items-center text-gray-600 no-underline dark:text-gray-400 transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const primaryCtaClass =
-  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg bg-primary-wopee px-4 sm:w-auto text-sm font-semibold text-[#111827] no-underline transition-colors hover:bg-yellow-300 hover:text-[#111827] hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg bg-primary-wopee px-4 sm:w-auto text-sm font-semibold text-[#111827] no-underline transition-colors hover:bg-yellow-300 hover:text-[#111827] hover:no-underline dark:bg-primary-wopee dark:text-gray-900 dark:hover:bg-yellow-300 dark:hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const secondaryCtaClass =
   "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg border border-solid border-gray-300 px-4 sm:w-auto text-sm font-semibold text-gray-900 no-underline transition-colors hover:border-secondary-wopee hover:text-secondary-wopee hover:no-underline dark:border-white/15 dark:text-white dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
@@ -78,7 +78,7 @@ export default function Footer(): JSX.Element {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-secondary-wopee via-purple-500 to-primary-wopee"
+        className="absolute inset-x-0 top-0 h-px bg-gray-200 dark:bg-gradient-to-r dark:from-secondary-wopee dark:via-purple-500 dark:to-primary-wopee"
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pb-9 pt-14 lg:px-8 lg:pt-16">

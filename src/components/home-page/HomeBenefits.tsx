@@ -14,7 +14,7 @@ import { cmdBaseUrl } from "../../../cmdBaseUrl";
 const benefits = [
   {
     icon: (
-      <Bolt className="text-secondary-wopee dark:text-yellow-400" size={32} />
+      <Bolt className="text-gray-900 dark:text-yellow-400" size={32} />
     ), // Fast authoring
     badge: "Fast authoring",
     title: "Prepare tests in minutes, not days",
@@ -24,7 +24,7 @@ const benefits = [
   {
     icon: (
       <CheckCircle
-        className="text-secondary-wopee dark:text-yellow-400"
+        className="text-gray-900 dark:text-yellow-400"
         size={32}
       />
     ), // Coverage
@@ -35,7 +35,7 @@ const benefits = [
   },
   {
     icon: (
-      <Shield className="text-secondary-wopee dark:text-yellow-400" size={32} />
+      <Shield className="text-gray-900 dark:text-yellow-400" size={32} />
     ), // Maintenance
     badge: "Less maintenance",
     title: "Eliminate tedious test maintenance",
@@ -44,7 +44,7 @@ const benefits = [
   },
   {
     icon: (
-      <Users className="text-secondary-wopee dark:text-yellow-400" size={32} />
+      <Users className="text-gray-900 dark:text-yellow-400" size={32} />
     ), // Team efficiency
     badge: "Team efficiency",
     title: "Scale testing without scaling teams",
@@ -54,7 +54,7 @@ const benefits = [
   {
     icon: (
       <GitBranch
-        className="text-secondary-wopee dark:text-yellow-400"
+        className="text-gray-900 dark:text-yellow-400"
         size={32}
       />
     ), // Tests in Git
@@ -66,7 +66,7 @@ const benefits = [
   {
     icon: (
       <PencilLine
-        className="text-secondary-wopee dark:text-yellow-400"
+        className="text-gray-900 dark:text-yellow-400"
         size={32}
       />
     ), // Edits preserved
@@ -80,8 +80,8 @@ const benefits = [
 const HomeBenefits = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-2">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary-wopee dark:text-yellow-400 mb-2">
-        Why teams use Wopee.io as their AI testing tool.
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-950 dark:text-white mb-2">
+        Why teams use Wopee.io as their <span className="key-phrase">AI testing tool</span>.
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10">
         Automated web testing powered by AI. Six ways Wopee.io removes

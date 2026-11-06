@@ -102,7 +102,7 @@ const HomeCockpitSection = () => {
     <section className="w-full flex flex-col items-center px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-2 text-balance">
         Autonomy you can{" "}
-        <span className="text-secondary-wopee dark:text-primary-wopee">
+        <span className="key-phrase">
           supervise
         </span>
       </h2>
@@ -120,7 +120,7 @@ const HomeCockpitSection = () => {
             >
               <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-md bg-secondary-wopee/10 dark:bg-primary-wopee/10">
                 <Icon
-                  className="size-5 text-secondary-wopee dark:text-primary-wopee"
+                  className="size-5 text-gray-900 dark:text-primary-wopee"
                   aria-hidden="true"
                 />
               </span>

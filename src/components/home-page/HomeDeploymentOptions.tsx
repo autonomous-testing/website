@@ -26,7 +26,7 @@ const DeploymentCard = ({
   const body = (
     <>
       {recommended && (
-        <span className="absolute top-5 right-5 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary-wopee text-secondary-wopee">
+        <span className="absolute top-5 right-5 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary-wopee text-gray-900">
           Recommended
         </span>
       )}
@@ -91,7 +91,7 @@ const HomeDeploymentOptions = () => {
             cta={
               <ButtonPrimary
                 id="cta-deploy-cloud"
-                className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-secondary-wopee"
+                className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-gray-900"
                 label="Start for free"
                 href={cmdBaseUrl}
               />

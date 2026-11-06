@@ -37,7 +37,7 @@ const HomeTestingFrameworks = () => {
     <section className="w-full flex flex-col items-center py-16 px-4">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-12 text-balance">
         Plug Wopee.io into your{" "}
-        <span className="text-secondary-wopee dark:text-primary-wopee">
+        <span className="key-phrase">
           testing stack
         </span>
       </h2>

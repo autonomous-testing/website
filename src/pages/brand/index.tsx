@@ -63,7 +63,7 @@ function FileLink({ href, label, name }: { href: string; label: string; name?: s
 function SectionHead({ id, n, title, children }: { id: string; n: string; title: string; children?: React.ReactNode }) {
   return (
     <div className="mb-8 max-w-3xl lg:mb-10">
-      <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-secondary-wopee dark:text-primary-wopee">
+      <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-primary-wopee">
         {n} · {NAV.find(([k]) => k === id)?.[1]}
       </p>
       <h2 className="text-balance text-3xl font-bold leading-tight sm:text-4xl">{title}</h2>
@@ -114,7 +114,6 @@ const LOCKUPS = [
   { g: "light", file: INK_LOGO, title: "On light", note: "The default. Ink, one colour." },
   { g: "dark", file: WHITE_LOGO, title: "On dark", note: "White, one colour." },
   { g: "yellow", file: INK_LOGO, title: "On yellow", note: "Ink. The same file as on light." },
-  { g: "purple", file: WHITE_LOGO, title: "On purple", note: "White. The same file as on dark." },
 ] as const;
 
 function LogoSection() {
@@ -122,11 +121,11 @@ function LogoSection() {
     <Section id="logo">
       <SectionHead id="logo" n="01" title="One W, one colour">
         The logo is the Bungee W followed by “opee.io” in Rubik ExtraBold, with the W at cap height, so the pair always
-        reads <WopeeIo />. It is always one colour: ink on white and yellow, white on ink and purple. The brand’s
+        reads <WopeeIo />. It is always one colour: ink on white and yellow, white on ink and dark photos. The brand’s
         yellow lives in the symbol, the headline key phrase and the main button, never in parts of the logo.
       </SectionHead>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {LOCKUPS.map((l) => (
           <figure key={l.title} className="m-0 overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.03]">
             <Ground g={l.g} className="m-2 h-32 rounded-xl px-6 sm:h-56 sm:px-8">
@@ -215,7 +214,6 @@ function SymbolSection() {
           <div className="flex flex-wrap gap-2 px-4 pb-4 pt-2">
             <FileLink href={SVG("symbol-color-light")} label="Symbol SVG" />
             <FileLink href="/brand/png/wopee-symbol-color-light.png" label="Symbol PNG 512" />
-            <FileLink href={SVG("symbol-on-yellow")} label="On yellow SVG" />
             <FileLink href="/brand/png/wopee-avatar-tile-500.png" label="Avatar tile 500" />
           </div>
         </div>
@@ -247,13 +245,13 @@ const PRODUCTS = [
     name: "Commander",
     key: "commander",
     where: "cmd.wopee.io, the app where your team reviews tests and runs.",
-    tile: "Its symbol tile is purple. The logo itself is one colour: ink on light, white on dark.",
+    tile: "One colour like the main logo: ink on light, white on dark.",
   },
   {
     name: "MCP",
     key: "mcp",
     where: "wopee-mcp, the server that runs Wopee.io from Claude Code, Cursor and Copilot.",
-    tile: "Its symbol tile is ink. The logo itself is one colour: ink on light, white on dark.",
+    tile: "One colour like the main logo: ink on light, white on dark.",
   },
 ];
 
@@ -261,8 +259,9 @@ function ProductsSection() {
   return (
     <Section id="products">
       <SectionHead id="products" n="03" title="Products">
-        Every product is <WopeeIo /> plus its name, set in caps under “.io”, one colour like the main logo. Only
-        the symbol tile tells the products apart: yellow for <WopeeIo />, purple for Commander, ink for MCP.
+        Every product is <WopeeIo /> plus its name, set in caps under “.io”, one colour like the main logo. The name
+        tells the products apart. There is one symbol, the yellow square with the ink W, for the company and every
+        product; in running text write “Wopee.io Commander” or “Wopee.io MCP”.
       </SectionHead>
 
       <div className="grid gap-6 xl:grid-cols-2">
@@ -277,10 +276,6 @@ function ProductsSection() {
               </Ground>
             </div>
             <div className="flex flex-1 flex-col gap-4 px-4 pb-4 pt-5 sm:flex-row sm:items-stretch">
-              <div className="flex shrink-0 flex-col items-start gap-3">
-                <img src={SVG(`symbol-${p.key}-color-light`)} alt={`Wopee.io ${p.name} symbol`} width={48} height={48} className="h-12 w-12 rounded-[11px] dark:ring-1 dark:ring-white/20" />
-                <FileLink href={SVG(`symbol-${p.key}-color-light`)} label="Symbol" name={`${p.name} symbol`} />
-              </div>
               <div className="flex min-w-0 flex-1 flex-col">
                 <h3 className="text-xl font-bold">{p.name}</h3>
                 <p className="mt-1 text-slate-600 dark:text-slate-300">{p.where}</p>
@@ -305,12 +300,12 @@ function ProductsSection() {
 const MASCOT_DO = [
   "Social avatars, stickers, video end cards and the email sign-off",
   "404 pages, empty states and event booths",
-  "On white or yellow, or on its yellow disc on dark and purple",
+  "On white or yellow, or on its yellow disc on dark",
 ];
 const MASCOT_DONT = [
   "In place of the logo, or inside it",
   "In a customer logo row or on a customer quote",
-  "On dark without a yellow disc: its black parts disappear",
+  "On dark or purple without a yellow disc: its black parts disappear",
   "Redrawn, recoloured or cropped",
 ];
 
@@ -384,22 +379,21 @@ function MascotSection() {
 
 const COLOURS = [
   { name: "Yellow", hex: "#FFCC00", rgb: "255 204 0", role: "The brand colour: the symbol, the key phrase, main buttons, slide fields", fg: "#111827" },
-  { name: "Purple", hex: "#7030A0", rgb: "112 48 160", role: "Atmosphere: the background glow, links on light, the cap, Commander", fg: "#ffffff" },
-  { name: "Ink", hex: "#111827", rgb: "17 24 39", role: "Text, the logo on light, the dark ground, the MCP tile", fg: "#ffffff" },
-  { name: "White", hex: "#FFFFFF", rgb: "255 255 255", role: "The light ground", fg: "#111827" },
-  { name: "Purple 300", hex: "#B98AE0", rgb: "185 138 224", role: "Commander on dark only", fg: "#111827" },
+  { name: "Purple", hex: "#7030A0", rgb: "112 48 160", role: "Atmosphere: the background glow, links on light, the cap, the dark-theme toggle", fg: "#ffffff" },
+  { name: "Ink", hex: "#111827", rgb: "17 24 39", role: "Text, the logo on light and yellow, the dark ground", fg: "#ffffff" },
+  { name: "White", hex: "#FFFFFF", rgb: "255 255 255", role: "The light ground, text and the logo on dark", fg: "#111827" },
 ];
 
 const CONTRAST = [
-  { pair: "Ink on yellow", fg: "#111827", bg: "#FFCC00", ratio: "11.7 : 1", ok: true },
-  { pair: "Ink on white", fg: "#111827", bg: "#FFFFFF", ratio: "17.7 : 1", ok: true },
-  { pair: "Yellow on ink", fg: "#FFCC00", bg: "#111827", ratio: "11.7 : 1", ok: true },
-  { pair: "White on purple", fg: "#FFFFFF", bg: "#7030A0", ratio: "8.0 : 1", ok: true },
-  { pair: "Purple on white", fg: "#7030A0", bg: "#FFFFFF", ratio: "8.0 : 1", ok: true },
-  { pair: "Yellow on purple", fg: "#FFCC00", bg: "#7030A0", ratio: "5.3 : 1", ok: true },
-  { pair: "Purple 300 on ink", fg: "#B98AE0", bg: "#111827", ratio: "6.6 : 1", ok: true },
-  { pair: "Yellow on white", fg: "#FFCC00", bg: "#FFFFFF", ratio: "1.5 : 1", ok: false },
-  { pair: "Purple on ink", fg: "#7030A0", bg: "#111827", ratio: "2.2 : 1", ok: false },
+  { pair: "Ink on yellow", use: "Buttons, yellow slides, the marker", fg: "#111827", bg: "#FFCC00", ratio: "11.7 : 1", ok: true },
+  { pair: "Ink on white", use: "Text and the logo on light", fg: "#111827", bg: "#FFFFFF", ratio: "17.7 : 1", ok: true },
+  { pair: "White on ink", use: "Text and the logo on dark", fg: "#FFFFFF", bg: "#111827", ratio: "17.7 : 1", ok: true },
+  { pair: "Yellow on ink", use: "The key phrase and links on dark", fg: "#FFCC00", bg: "#111827", ratio: "11.7 : 1", ok: true },
+  { pair: "Purple on white", use: "Links on light", fg: "#7030A0", bg: "#FFFFFF", ratio: "8.0 : 1", ok: true },
+  { pair: "White on purple", use: "The active toggle on dark", fg: "#FFFFFF", bg: "#7030A0", ratio: "8.0 : 1", ok: true },
+  { pair: "Yellow on purple", use: "The symbol on the cap", fg: "#FFCC00", bg: "#7030A0", ratio: "5.3 : 1", ok: true },
+  { pair: "Yellow on white", use: "Never: no yellow text or lines on white", fg: "#FFCC00", bg: "#FFFFFF", ratio: "1.5 : 1", ok: false },
+  { pair: "Purple on ink", use: "Never: no purple text on dark", fg: "#7030A0", bg: "#111827", ratio: "2.2 : 1", ok: false },
 ];
 
 function CopyHex({ hex }: { hex: string }) {
@@ -435,13 +429,13 @@ function ColourSection() {
   return (
     <Section id="colour">
       <SectionHead id="colour" n="05" title="Colour">
-        Yellow is the brand colour, purple sets the mood, ink does the work, white gives room. Purple 300 exists for one
-        job: Commander on dark grounds. No other tints, no gradients on yellow, and no red.
+        Yellow is the brand colour, purple sets the mood, ink does the work, white gives room. Purple never carries the
+        logo or a main button. No other tints, no gradients on yellow, and no red.
       </SectionHead>
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-6 lg:grid-cols-5">
-        {COLOURS.map((c, i) => (
-          <div key={c.hex} className={clsx(i < 3 ? "md:col-span-2" : "md:col-span-3", i === COLOURS.length - 1 && "col-span-2", "lg:col-span-1", "overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.03]")}>
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+        {COLOURS.map((c) => (
+          <div key={c.hex} className={clsx("overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.03]")}>
             <div
               className={clsx("flex h-24 items-end p-4 sm:h-32 lg:h-40", c.hex === "#FFFFFF" && "border-0 border-b border-solid border-slate-200 dark:border-transparent", c.hex === "#111827" && "dark:border-0 dark:border-b dark:border-solid dark:border-white/10")}
               style={{ background: c.hex, color: c.fg }}
@@ -477,6 +471,7 @@ function ColourSection() {
             <span className="min-w-0 flex-1">
               <span className="block text-sm font-semibold text-slate-900 dark:text-white">{c.pair}</span>
               <span className="font-mono text-xs text-slate-500 dark:text-slate-400">{c.ratio}</span>
+              <span className="block text-xs text-slate-500 dark:text-slate-400">{c.use}</span>
             </span>
             <span
               className={clsx(
@@ -568,7 +563,7 @@ function TypeSection() {
 // ---------- 07 clear space + size ----------
 
 const XMark = () => (
-  <span className="rounded bg-white px-1 font-mono text-[10px] font-bold leading-4 sm:px-1.5 sm:text-xs sm:leading-5 text-secondary-wopee ring-1 ring-secondary-wopee/40 dark:bg-[#1f1f22] dark:text-primary-wopee dark:ring-primary-wopee/40">x</span>
+  <span className="rounded bg-white px-1 font-mono text-[10px] font-bold leading-4 sm:px-1.5 sm:text-xs sm:leading-5 text-slate-600 ring-1 ring-slate-400 dark:bg-[#1f1f22] dark:text-primary-wopee dark:ring-primary-wopee/40">x</span>
 );
 
 function SpaceSection() {
@@ -581,8 +576,8 @@ function SpaceSection() {
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div className="flex items-center justify-center rounded-2xl border border-solid border-slate-200 bg-white p-4 sm:p-10 dark:border-white/10 dark:bg-white/[0.03]">
           {/* x = the "o" height = 52/93.4 of the logo height = 9.57% of the box width (padding % is of the width on all sides) */}
-          <div className="relative w-full max-w-[560px] rounded-lg bg-secondary-wopee/[0.06] p-[9.57%] ring-1 ring-inset ring-secondary-wopee/40 dark:bg-primary-wopee/[0.08] dark:ring-primary-wopee/40">
-            <div className="bg-white ring-1 ring-secondary-wopee/40 dark:bg-[#1f1f22] dark:ring-primary-wopee/40">
+          <div className="relative w-full max-w-[560px] rounded-lg bg-slate-100 p-[9.57%] ring-1 ring-inset ring-slate-300 dark:bg-primary-wopee/[0.08] dark:ring-primary-wopee/40">
+            <div className="bg-white ring-1 ring-slate-300 dark:bg-[#1f1f22] dark:ring-primary-wopee/40">
               <ThemedImage
                 sources={{ light: SVG(INK_LOGO), dark: SVG(WHITE_LOGO) }}
                 alt="Wopee.io logo inside its clear-space box"
@@ -770,7 +765,7 @@ const logoImg = (src: string, alt: string, style?: React.CSSProperties, classNam
 
 const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.ReactNode }[] = [
   { ok: true, text: "Use the ink logo on white and pale grounds.", g: "light", art: logoImg(L, "Correct: the ink logo on white") },
-  { ok: true, text: "Use the white logo on ink, purple and dark photos.", g: "dark", art: logoImg(D, "Correct: the white logo on ink") },
+  { ok: true, text: "Use the white logo on ink and dark photos.", g: "dark", art: logoImg(D, "Correct: the white logo on ink") },
   { ok: true, text: "On yellow, the logo stays ink.", g: "yellow", art: logoImg(L, "Correct: the ink logo on yellow") },
   { ok: false, text: "Don’t colour parts of the logo, such as a yellow W or a coloured dot.", g: "dark", art: logoImg(OLD_TWO_COLOUR, "Incorrect: the logo with a yellow W and a yellow dot") },
   {
@@ -899,7 +894,7 @@ function Hero() {
     <header className="relative overflow-hidden">
       <div className={clsx(wrap, "grid items-center gap-10 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:pb-20 lg:pt-20")}>
         <div>
-          <p className="mb-5 inline-flex rounded-full border border-solid border-secondary-wopee/25 bg-secondary-wopee/10 px-4 py-1.5 text-sm font-semibold text-secondary-wopee dark:border-primary-wopee/25 dark:bg-primary-wopee/10 dark:text-primary-wopee">
+          <p className="mb-5 inline-flex rounded-full border border-solid border-slate-300 bg-slate-100 px-4 py-1.5 text-sm font-semibold text-slate-700 dark:border-primary-wopee/25 dark:bg-primary-wopee/10 dark:text-primary-wopee">
             Brand kit
           </p>
           <h1 className="text-balance text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
@@ -924,15 +919,15 @@ function Hero() {
           <Ground g="light" className="col-span-2 h-36 rounded-2xl px-8 shadow-sm sm:h-56 lg:h-60">
             <img src={L} alt="Wopee.io logo on light" width={300} height={64} className="h-14 w-auto max-w-full sm:h-16" />
           </Ground>
-          <Ground g="dark" className="h-28 rounded-2xl px-4 sm:h-36">
-            <img src={D} alt="Wopee.io logo on ink" width={150} height={32} className="h-7 w-auto max-w-full sm:h-9" />
-          </Ground>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <Ground g="yellow" className="h-28 rounded-2xl sm:h-36">
-              <img src={SVG("symbol-on-yellow")} alt="Wopee.io symbol on yellow" width={56} height={56} className="h-11 w-11 sm:h-14 sm:w-14" />
+          <div className="col-span-2 grid grid-cols-3 gap-3 sm:gap-4">
+            <Ground g="dark" className="h-28 rounded-2xl px-3 sm:h-36 sm:px-4">
+              <img src={D} alt="Wopee.io logo on ink" width={150} height={32} className="h-6 w-auto max-w-full sm:h-8" />
+            </Ground>
+            <Ground g="yellow" className="h-28 rounded-2xl px-3 sm:h-36 sm:px-4">
+              <img src={L} alt="Wopee.io logo on yellow" width={150} height={32} className="h-6 w-auto max-w-full sm:h-8" />
             </Ground>
             <Ground g="purple" className="h-28 rounded-2xl sm:h-36">
-              <img src={SVG("symbol-color-light")} alt="Wopee.io symbol on purple" width={56} height={56} className="h-11 w-11 sm:h-14 sm:w-14" />
+              <img src={SVG("symbol-color-light")} alt="Wopee.io symbol on purple, as on the cap" width={56} height={56} className="h-11 w-11 sm:h-14 sm:w-14" />
             </Ground>
           </div>
         </div>

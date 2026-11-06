@@ -27,7 +27,7 @@ const HomeProblemSection = () => {
     <section className="w-full flex flex-col items-center px-4 py-14 sm:px-6 sm:py-20 lg:py-24 bg-gray-50/70 dark:bg-white/[0.025]">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-2 text-balance">
         AI writes your code 10x faster.{" "}
-        <span className="text-secondary-wopee dark:text-primary-wopee">
+        <span className="key-phrase">
           Who tests it?
         </span>
       </h2>
@@ -44,7 +44,7 @@ const HomeProblemSection = () => {
             <div className="flex items-center justify-between mb-3">
               <span className="inline-flex items-center justify-center size-9 rounded-md bg-secondary-wopee/10 dark:bg-primary-wopee/10">
                 <Icon
-                  className="size-5 text-secondary-wopee dark:text-primary-wopee"
+                  className="size-5 text-gray-900 dark:text-primary-wopee"
                   aria-hidden="true"
                 />
               </span>
@@ -63,7 +63,7 @@ const HomeProblemSection = () => {
       </div>
       <div className="max-w-4xl border-t border-gray-200 pt-8 text-center dark:border-white/10 mt-10">
         <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300 text-balance m-0">
-          <span className="font-bold text-secondary-wopee dark:text-primary-wopee">
+          <span className="font-bold text-gray-950 dark:text-primary-wopee">
             Wopee.io closes the gap.
           </span>{" "}
           AI testing agents explore your app, generate tests, run them, and

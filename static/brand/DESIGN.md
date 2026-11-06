@@ -12,7 +12,6 @@ colors:
   ink: "#111827"
   secondary: "#7030A0"
   white: "#FFFFFF"
-  purple-300: "#B98AE0"
   surface-light: "#FFFFFF"
   surface-dark: "#111827"
   text-light: "#111827"
@@ -140,9 +139,6 @@ components:
   divider-light:
     backgroundColor: "{colors.border-light}"
     height: 1px
-  commander-accent-dark:
-    backgroundColor: "{colors.surface-dark}"
-    textColor: "{colors.purple-300}"
 ---
 
 # Wopee.io design system
@@ -164,8 +160,9 @@ competent and calm first, with one confident accent.
 - **Ink (#111827)** is used for text, the wordmark on light and yellow
   grounds, and dark grounds.
 - **Purple (#7030A0)** gives atmosphere and links. It is the background
-  glow, links on light, the cap, the dark-theme toggle and Commander. On
-  light grounds purple never sits next to yellow as an equal accent.
+  glow, links on light, the cap and the dark-theme toggle. Purple never
+  carries the logo, a main button or a ground for the logo, and on light
+  grounds it never sits next to yellow as an equal accent.
 - **Two typefaces:** Bungee for the W only, and Rubik for everything else.
 - **The logo is always one colour.** Colour belongs to the symbol, not to
   the wordmark.
@@ -186,12 +183,19 @@ competent and calm first, with one confident accent.
 
 **Contrast (WCAG 2):**
 
-- Passing pairs: ink on yellow 11.7:1, ink on white 17.7:1, yellow on
-  ink 11.7:1, white on purple 8.0:1, purple on white 8.0:1, yellow on
-  purple 5.3:1, and purple-300 on ink 6.6:1.
+- Passing pairs, each with its one use:
+  - ink on yellow 11.7:1 (buttons, yellow slides, the marker);
+  - ink on white 17.7:1 and white on ink 17.7:1 (text and the logo);
+  - yellow on ink 11.7:1 (the key phrase and links on dark);
+  - purple on white 8.0:1 (links on light);
+  - white on purple 8.0:1 (the active toggle on dark);
+  - yellow on purple 5.3:1 (the symbol on the cap).
 - Failing pairs: yellow on white is 1.5:1 and purple on ink is 2.2:1.
-  Never use yellow text, thin yellow lines or yellow icons on white. On
-  light grounds yellow is always a filled area with ink on top.
+  Never use yellow text, thin yellow lines or yellow icons on white, and
+  never purple text on dark. On light grounds yellow is always a filled
+  area with ink on top.
+- Text on a yellow fill is always ink, in both themes, never purple or
+  white.
 
 **Utility colours:** black #000000 for one-colour print only, and
 yellow-800 #7A5C00 for the Build & Break title shadow only.
@@ -268,8 +272,8 @@ yellow-800 #7A5C00 for the Build & Break title shadow only.
 **Wordmark "Wopee.io"** (Bungee W followed by "opee.io" in Rubik
 ExtraBold, W at cap height):
 
-- It is always one colour: ink on white or yellow, and white on ink,
-  purple or photos.
+- It is always one colour: ink on white or yellow, and white on ink or
+  dark photos. There is no purple ground for the logo.
 - Never colour the W or the dot. Never put the W in a tile inside the
   wordmark.
 - Write the name as "Wopee.io", never Wopee, WOPEE or Wopee IO. Use
@@ -284,9 +288,9 @@ ExtraBold, W at cap height):
 **Products:**
 
 - Commander and MCP use the wordmark plus the product name, in one
-  colour.
-- The product colour lives only in its symbol tile: purple for Commander,
-  ink for MCP.
+  colour. In running text write "Wopee.io Commander" or "Wopee.io MCP".
+- There is one symbol for the company and all products. Products have no
+  symbols or colours of their own.
 
 **Clear space and minimum size:**
 
@@ -299,9 +303,8 @@ ExtraBold, W at cap height):
 | Website header and footer, light | https://wopee.io/brand/svg/wopee-wordmark-mono-ink.svg | white |
 | Website header and footer, dark | https://wopee.io/brand/svg/wopee-wordmark-mono-white.svg | #111827 |
 | On yellow (slides, booth, roll-up) | https://wopee.io/brand/svg/wopee-wordmark-mono-ink.svg | #FFCC00 |
-| On purple or a photo | https://wopee.io/brand/svg/wopee-wordmark-mono-white.svg | #7030A0 or a dark photo |
+| On a dark photo | https://wopee.io/brand/svg/wopee-wordmark-mono-white.svg | a dark photo |
 | Favicon, avatar, app icon | https://wopee.io/brand/svg/wopee-symbol-color-light.svg | any |
-| Symbol on a yellow ground | https://wopee.io/brand/svg/wopee-symbol-on-yellow.svg | #FFCC00 |
 | Commander | https://wopee.io/brand/svg/wopee-wordmark-commander-mono-ink.svg (light), -mono-white.svg (dark) | |
 | MCP | https://wopee.io/brand/svg/wopee-wordmark-mcp-mono-ink.svg (light), -mono-white.svg (dark) | |
 | Booth, end cards, merch (monkey and logo) | https://wopee.io/brand/svg/wopee-logo-stacked-color-light.svg, -dark.svg | white or yellow, dark |
@@ -345,8 +348,8 @@ Everything is also in https://wopee.io/brand/wopee-brand-kit-2026.zip.
   empty states and event booths.
 - It wears a purple cap carrying the symbol (yellow tile, ink W), the same
   patch as the staff caps.
-- Place it on white or yellow. On dark or purple grounds, place it on its
-  yellow disc.
+- Place it on white or yellow. On dark grounds, place it on its yellow
+  disc.
 - Never use it in place of the logo or inside it, in a customer logo row
   or on a customer quote. Never redraw, recolour or crop it.
 
@@ -365,5 +368,7 @@ Everything is also in https://wopee.io/brand/wopee-brand-kit-2026.zip.
 - Don't use gradient frames, blue tints or vignettes on light grounds,
   and don't use gradients on yellow.
 - Don't use typefaces other than Rubik, or Bungee outside the W.
+- Don't put purple or white text on a yellow button or field; it is ink.
+- Don't set a key phrase in purple; on light it is ink on the marker.
 - Don't stretch, rotate or outline the logo, or use the light file on a
   dark ground.

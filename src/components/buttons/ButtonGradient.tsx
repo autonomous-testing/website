@@ -26,7 +26,7 @@ const ButtonGradient = ({
       </span>
       <span
         className={clsx(
-          "relative text-white dark:text-secondary-wopee text-center",
+          "relative text-white dark:text-gray-900 text-center",
           className
         )}
       >

@@ -162,7 +162,7 @@ const HomeHeroVibe = () => {
 
       <section className="relative z-10 flex flex-col items-center gap-2 md:gap-3 px-4">
         <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee" />
+          <span className="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-primary-wopee" />
           <span>
             Playwright-friendly · Self-healing · <strong className="font-semibold">Free to start</strong>
           </span>

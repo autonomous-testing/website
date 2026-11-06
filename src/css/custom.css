@@ -160,7 +160,7 @@ strong {
   --chart-5: 340 75% 55%;
 
   /* Docusaurus Style */
-  --nav-button-text-color: var(--ifm-color-secondary);
+  --nav-button-text-color: #111827; /* ink on the yellow button (DESIGN.md) */
   --ifm-color-primary: #ffcc00;
   --ifm-color-primary-dark: #ffb200;
   --ifm-color-primary-darker: #ffa000;
@@ -321,7 +321,20 @@ a.navbar__item:hover {
 }
 
 /* Headline key phrase (DESIGN.md, Typography): light theme sets ink text on a
-   yellow marker band, dark theme sets the phrase in yellow. One per screen. */
+   yellow marker band, dark theme sets the phrase in yellow. One per screen.
+   .key-phrase is the same treatment for section headings below the hero. */
+.key-phrase {
+  color: #111827;
+  background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
+  padding: 0 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+[data-theme="dark"] .key-phrase {
+  color: #ffcc00;
+  background-image: none;
+  padding: 0;
+}
 .hero-key {
   color: #111827;
   background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
