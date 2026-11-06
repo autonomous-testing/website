@@ -369,7 +369,7 @@ const HomeHeroVibe = () => {
                 onClick={() =>
                   setLoginDialogState({ isOpen: true, mode: "vibe" })
                 }
-                className="hero-cta w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-bold rounded-lg bg-primary-wopee hover:bg-primary-wopee/90 text-gray-900 shadow-lg shadow-yellow-600/25 dark:shadow-yellow-500/40 hover:shadow-yellow-600/40 dark:hover:shadow-yellow-500/60 transition-all"
+                className="hero-cta w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-bold rounded-lg bg-primary-wopee hover:bg-[#ffd633] dark:hover:bg-[#ffd633] text-gray-900 shadow-lg shadow-yellow-600/25 dark:shadow-yellow-500/40 hover:shadow-yellow-600/40 dark:hover:shadow-yellow-500/60 transition-all"
                 id="vibe-testing"
               >
                 <Sparkles className="w-5 h-5" />

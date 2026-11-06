@@ -116,9 +116,9 @@ const HomeCockpitSection = () => {
               key={title}
               className="flex items-start gap-3 py-4 border-b border-gray-200 last:border-b-0 dark:border-white/10 sm:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(2)]:border-b lg:last:border-b-0"
             >
-              <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-md bg-secondary-wopee/10 dark:bg-primary-wopee/10">
+              <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-[8px] bg-primary-wopee">
                 <Icon
-                  className="size-5 text-gray-900 dark:text-primary-wopee"
+                  className="size-5 text-gray-900"
                   aria-hidden="true"
                 />
               </span>

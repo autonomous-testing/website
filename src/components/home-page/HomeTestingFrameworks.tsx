@@ -43,7 +43,7 @@ const HomeTestingFrameworks = () => {
         {TOOLS.map(({ name, icon }) => (
           <li
             key={name}
-            className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+            className="flex items-center gap-3 text-gray-500 dark:text-gray-400"
           >
             {icon}
             <span className="text-lg md:text-xl font-semibold whitespace-nowrap">

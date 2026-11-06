@@ -46,8 +46,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
   const isSynot = testimonial.name === "Jakub Miakyš";
   const CardContent = (
     <div className="group relative rounded-xl transition-shadow h-full flex max-w-4xl w-full">
-      <div className="absolute inset-0 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 bg-gradient-to-br from-blue-500 to-secondary-wopee p-0.5"></div>
-      <div className="relative bg-white/70 dark:bg-black/40 border border-gray-200 dark:border-gray-800 rounded-xl p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-shadow h-full w-full backdrop-blur z-10 group-hover:border-transparent">
+      <div className="wp-hover-glow bg-white dark:bg-white/[0.03] border border-solid border-gray-200 dark:border-white/10 rounded-xl p-8 flex flex-col justify-between shadow-lg h-full w-full transition-colors group-hover:border-gray-900/30 dark:group-hover:border-white/25">
         <div className="flex-1 flex flex-col">
           <div className="mb-6">
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-900 dark:text-white leading-relaxed font-medium text-center">
@@ -91,7 +90,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
 
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-sm text-gray-600 dark:text-primary-wopee font-medium leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
                   {testimonial.about}
                 </p>
               </div>

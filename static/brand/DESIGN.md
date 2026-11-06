@@ -307,6 +307,21 @@ for buttons, 16 px for cards.
 - **Marker:** the key phrase of one headline per screen, usually the hero.
   Never in every section heading, never in body text, never on the logo.
 
+**States (hover).** One behaviour per element type, the same in both
+themes:
+
+- Primary button: a lighter yellow, #FFD633. On the yellow field the ink
+  button goes to gray-700.
+- Secondary button: the outline goes full ink (light) or full white
+  (dark) and a faint tint fills it (ink at 5 %, white at 10 %). The text
+  does not change colour; never invert, never turn purple or yellow.
+- Text link: turns the link colour (purple on light, yellow on dark).
+- Card that is a link (testimonial, case study): the purple glow of the
+  recommended card fades in (`.wp-hover-glow`) and the hairline darkens.
+  No lift, no scale, no other gradient.
+- Anything that is not a link (logos, lists, plain cards) has no hover.
+- Focus is always visible: a 2 px outline in the link colour.
+
 **Retired in November 2026** (do not bring back):
 
 - a purple main button;
@@ -318,6 +333,9 @@ for buttons, 16 px for cards.
 - a frame or gradient ring around media;
 - yellow-to-transparent fades and orange gradient number circles;
 - emoji in section headings;
+- hover effects that invert a button, turn it purple or yellow, or paint
+  a blue-to-purple gradient over a card;
+- amber and orange accents;
 - a purple card (in either theme), especially under a yellow button;
 - purple key phrases or headings on light;
 - a marker in every heading;

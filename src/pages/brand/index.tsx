@@ -580,19 +580,19 @@ const SPECS: { group: string; items: Spec[] }[] = [
     items: [
       {
         name: "Primary",
-        use: "The one main action in a view: Start for free, Generate my first test, Download. Yellow with ink text in both themes.",
+        use: "The one main action in a view: Start for free, Generate my first test, Download. Yellow with ink text in both themes. Hover: a lighter yellow.",
         light: <span className={btn} style={{ background: "#ffcc00", color: INK }}>Start for free</span>,
         dark: <span className={btn} style={{ background: "#ffcc00", color: INK }}>Start for free</span>,
       },
       {
         name: "Secondary",
-        use: "Every other action: Log in, Book a demo, See the logo. A neutral outline, never purple and never a gradient.",
+        use: "Every other action: Log in, Book a demo, See the logo. A neutral outline, never purple and never a gradient. Hover: the outline goes full ink or white with a faint tint; the text never changes colour.",
         light: <span className={clsx(btn, "border border-solid")} style={{ borderColor: INK, color: INK }}>Book a demo</span>,
         dark: <span className={clsx(btn, "border border-solid")} style={{ borderColor: "rgba(255,255,255,.3)", color: "#fff" }}>Book a demo</span>,
       },
       {
         name: "Text link",
-        use: "Inline links and low-priority actions. Purple on light, yellow on dark.",
+        use: "Inline links and low-priority actions. Purple on light, yellow on dark. Hover: underline.",
         light: <span className="text-sm font-semibold underline underline-offset-4" style={{ color: "#7030a0" }}>Read the docs</span>,
         dark: <span className="text-sm font-semibold underline underline-offset-4" style={{ color: "#ffcc00" }}>Read the docs</span>,
       },
@@ -636,7 +636,7 @@ const SPECS: { group: string; items: Spec[] }[] = [
     items: [
       {
         name: "Card",
-        use: "Grouping content that belongs together. A hairline and a soft shadow on light; on dark, a slightly lighter surface with a hairline.",
+        use: "Grouping content that belongs together. A hairline and a soft shadow on light; on dark, a slightly lighter surface with a hairline. A card that is a link lights up on hover with the recommended card's glow; other cards have no hover.",
         light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1px rgba(17,24,39,.1), 0 24px 50px rgba(76,29,149,.14)" }} />,
         dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "rgba(255,255,255,.03)", boxShadow: "0 0 0 1px rgba(255,255,255,.1)" }} />,
       },

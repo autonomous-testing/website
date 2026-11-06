@@ -24,7 +24,7 @@ const HomeEndingSection = () => {
             <ButtonPrimaryInverted
               id="cta-book-demo"
               href="/book-demo/"
-              className="w-60 h-[50px] !text-gray-900 !border-gray-900 hover:!bg-gray-900 hover:!text-white"
+              className="w-60 h-[50px] !text-gray-900 !border-gray-900 group-hover:!bg-gray-900/10 hover:!bg-gray-900/10"
             />
           </div>
           <div className="h-20">
@@ -32,7 +32,7 @@ const HomeEndingSection = () => {
               id="cta-start-testing"
               label="Start for free"
               href={`${cmdBaseUrl}/login`}
-              className="w-60 h-[50px] !bg-gray-900 !border-gray-900 !text-white"
+              className="w-60 h-[50px] !bg-gray-900 !border-gray-900 !text-white group-hover:!bg-gray-700"
             />
             <p className="text-center text-sm italic text-gray-900">
               No credit card required
