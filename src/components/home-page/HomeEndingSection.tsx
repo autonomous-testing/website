@@ -13,7 +13,7 @@ const HomeEndingSection = () => {
             Streamline Your Web App Testing
           </h2>
           <h3 className="text-gray-700 dark:text-white lg:text-3xl sm:text-2xl text-2xl">
-            Effortless <span className="font-bold key-phrase">Regression Testing</span>{" "}
+            Effortless <span className="font-bold">Regression Testing</span>{" "}
             with Advanced Automation.
           </h3>
         </div>

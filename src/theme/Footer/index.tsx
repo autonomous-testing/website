@@ -48,7 +48,7 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
       >
         {link.label}
         {link.badge && (
-          <span className="ml-1 rounded-full bg-secondary-wopee px-1.5 py-px text-[10px] font-bold uppercase leading-4 tracking-wide text-white dark:bg-primary-wopee dark:text-[#1b1b1d]">
+          <span className="ml-1 rounded-full bg-primary-wopee px-1.5 py-px text-[10px] font-bold uppercase leading-4 tracking-wide text-[#111827]">
             {link.badge}
           </span>
         )}

@@ -86,7 +86,7 @@ components:
     rounded: "{rounded.md}"
   button-secondary-dark:
     backgroundColor: "{colors.surface-dark}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.text-dark}"
     rounded: "{rounded.md}"
   toggle-active-light:
     backgroundColor: "{colors.white}"
@@ -96,6 +96,10 @@ components:
     backgroundColor: "{colors.secondary}"
     textColor: "{colors.white}"
     rounded: "{rounded.sm}"
+  badge:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
   marker-light:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.ink}"
@@ -188,9 +192,13 @@ competent and calm first, with one confident accent.
   - ink on white 17.7:1 and white on ink 17.7:1 (text and the logo);
   - yellow on ink 11.7:1 (the key phrase and links on dark);
   - purple on white 8.0:1 (links on light);
-  - white on purple 8.0:1 (the active toggle on dark);
-  - yellow on purple 5.3:1 (the symbol on the cap).
-- Failing pairs: yellow on white is 1.5:1 and purple on ink is 2.2:1.
+  - white on purple 8.0:1 (only the active toggle on dark).
+- Pairs that pass but are never used: yellow on purple and purple on
+  yellow (5.3:1). Yellow and purple never meet as text and ground. The cap
+  is the one exception, and there it is the symbol (a yellow tile with an
+  ink W) on purple fabric, not yellow type.
+- Failing pairs: yellow on white and white on yellow are 1.5:1, and purple
+  on ink is 2.2:1.
   Never use yellow text, thin yellow lines or yellow icons on white, and
   never purple text on dark. On light grounds yellow is always a filled
   area with ink on top.
@@ -259,13 +267,42 @@ yellow-800 #7A5C00 for the Build & Break title shadow only.
 
 ## Components
 
+These are the only components. Each has one look per theme; radius 8 px
+for buttons, 16 px for cards.
+
 - **Primary button:** yellow with ink text, in both themes. Use one
   primary action per view; the navbar "Start for free" is the same
-  action. "Log in" is a neutral outline (ink on light, yellow on dark).
+  action.
+- **Secondary button:** a neutral outline for every other action (Log in,
+  Book a demo): ink outline and ink text on light, white at 30 % and white
+  text on dark. Never purple, never a gradient.
+- **Text link:** purple on light, yellow on dark.
 - **Segmented toggle (for example "Your app / Demo app"):** the active
-  segment is white with a hairline on light and purple on dark.
-- **Marker:** use it for headlines only, never in body text and never on
-  the logo.
+  segment is white with a hairline on light and purple on dark. This is
+  the only control purple fills.
+- **Badge (New, Recommended):** yellow with ink text in both themes.
+- **Label:** neutral grey pill on light, a yellow tint on dark.
+- **Card:** white with a hairline and a soft shadow on light; a slightly
+  lighter surface with a hairline on dark.
+- **Highlighted frame:** the one most important card on a page (the
+  homepage form): plain on light, the purple-to-yellow ring on dark.
+- **Solid card:** a call-to-action block: ink on light, purple gradient on
+  dark, with the yellow primary button inside.
+- **Marker:** the key phrase of one headline per screen, usually the hero.
+  Never in every section heading, never in body text, never on the logo.
+
+**Retired in November 2026** (do not bring back):
+
+- a purple main button;
+- purple or white text on yellow;
+- a purple outline button;
+- a blue-to-purple gradient outline button;
+- gradient frames on light grounds;
+- a purple card on light grounds;
+- purple key phrases or headings on light;
+- a marker in every heading;
+- purple-tint pills with purple text;
+- the blurred-blob gradient button.
 
 ## Logo
 
@@ -364,7 +401,7 @@ Everything is also in https://wopee.io/brand/wopee-brand-kit-2026.zip.
   or put the W in a tile in front of "opee.io".
 - Don't use yellow text, thin yellow lines or yellow icons on white.
 - Don't place a purple button or toggle next to a yellow button on light
-  grounds.
+  grounds, and never set yellow on purple or purple on yellow as text.
 - Don't use gradient frames, blue tints or vignettes on light grounds,
   and don't use gradients on yellow.
 - Don't use typefaces other than Rubik, or Bungee outside the W.

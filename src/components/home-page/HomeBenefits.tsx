@@ -81,7 +81,7 @@ const HomeBenefits = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 px-2">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-950 dark:text-white mb-2">
-        Why teams use Wopee.io as their <span className="key-phrase">AI testing tool</span>.
+        Why teams use Wopee.io as their AI testing tool.
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10">
         Automated web testing powered by AI. Six ways Wopee.io removes

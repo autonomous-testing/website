@@ -186,7 +186,7 @@ strong {
   width: 8.5rem;
   cursor: pointer;
   padding: 9px 14px;
-  border-radius: 5px;
+  border-radius: 8px;
   align-items: center;
   display: inline-flex;
   text-decoration: none;
@@ -205,7 +205,7 @@ strong {
 #navbar-button {
   cursor: pointer;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   color: var(--nav-button-text-color);
   background-color: var(--ifm-color-primary);
@@ -233,6 +233,17 @@ html:not([data-theme="dark"]) #login-button {
 html:not([data-theme="dark"]) #login-button:hover {
   color: #111827;
   border-color: #111827;
+  background-color: transparent;
+}
+/* Dark theme: Log in is the same neutral outline, so only one yellow (the
+   primary button) sits in the header. */
+[data-theme="dark"] #login-button {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+[data-theme="dark"] #login-button:hover {
+  color: #ffffff;
+  border-color: #ffffff;
   background-color: transparent;
 }
 
@@ -322,7 +333,8 @@ a.navbar__item:hover {
 
 /* Headline key phrase (DESIGN.md, Typography): light theme sets ink text on a
    yellow marker band, dark theme sets the phrase in yellow. One per screen.
-   .key-phrase is the same treatment for section headings below the hero. */
+   .key-phrase is the same treatment for a single phrase outside the hero (for
+   example a dialog title). Section headings stay plain: one per screen. */
 .key-phrase {
   color: #111827;
   background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
@@ -740,13 +752,8 @@ a.navbar__item:hover {
   line-height: 1.4;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: #7030a0;
-  color: #fff;
-}
-
-[data-theme="dark"] .nav-new {
   background: #ffcc00;
-  color: #1b1b1d;
+  color: #111827;
 }
 
 .nav-rich-desc {

@@ -27,9 +27,7 @@ const HomeProblemSection = () => {
     <section className="w-full flex flex-col items-center px-4 py-14 sm:px-6 sm:py-20 lg:py-24 bg-gray-50/70 dark:bg-white/[0.025]">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-2 text-balance">
         AI writes your code 10x faster.{" "}
-        <span className="key-phrase">
-          Who tests it?
-        </span>
+        Who tests it?
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10 sm:mb-12 lg:mb-14 max-w-2xl text-balance">
         AI coding assistants made shipping faster than ever. Testing didn't get

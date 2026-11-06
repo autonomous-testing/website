@@ -185,7 +185,7 @@ const HomeSocialProof = () => {
     <section className="w-full flex flex-col items-center py-16 px-2">
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-950 dark:text-white mb-2">
-          Trusted by <span className="key-phrase">leading tech teams</span>
+          Trusted by leading tech teams
         </h2>
         <p className="text-lg text-gray-700 dark:text-white">
           Join the visionaries who chose Wopee.io to transform their testing.

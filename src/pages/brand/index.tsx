@@ -25,6 +25,7 @@ const NAV = [
   ["mascot", "Mascot"],
   ["colour", "Colour"],
   ["type", "Type"],
+  ["ui", "UI elements"],
   ["space", "Space and size"],
   ["surfaces", "Surfaces"],
   ["rules", "Do and don’t"],
@@ -384,17 +385,25 @@ const COLOURS = [
   { name: "White", hex: "#FFFFFF", rgb: "255 255 255", role: "The light ground, text and the logo on dark", fg: "#111827" },
 ];
 
-const CONTRAST = [
-  { pair: "Ink on yellow", use: "Buttons, yellow slides, the marker", fg: "#111827", bg: "#FFCC00", ratio: "11.7 : 1", ok: true },
-  { pair: "Ink on white", use: "Text and the logo on light", fg: "#111827", bg: "#FFFFFF", ratio: "17.7 : 1", ok: true },
-  { pair: "White on ink", use: "Text and the logo on dark", fg: "#FFFFFF", bg: "#111827", ratio: "17.7 : 1", ok: true },
-  { pair: "Yellow on ink", use: "The key phrase and links on dark", fg: "#FFCC00", bg: "#111827", ratio: "11.7 : 1", ok: true },
-  { pair: "Purple on white", use: "Links on light", fg: "#7030A0", bg: "#FFFFFF", ratio: "8.0 : 1", ok: true },
-  { pair: "White on purple", use: "The active toggle on dark", fg: "#FFFFFF", bg: "#7030A0", ratio: "8.0 : 1", ok: true },
-  { pair: "Yellow on purple", use: "The symbol on the cap", fg: "#FFCC00", bg: "#7030A0", ratio: "5.3 : 1", ok: true },
-  { pair: "Yellow on white", use: "Never: no yellow text or lines on white", fg: "#FFCC00", bg: "#FFFFFF", ratio: "1.5 : 1", ok: false },
-  { pair: "Purple on ink", use: "Never: no purple text on dark", fg: "#7030A0", bg: "#111827", ratio: "2.2 : 1", ok: false },
+type Verdict = "use" | "never" | "fail";
+const CONTRAST: { pair: string; use: string; fg: string; bg: string; ratio: string; v: Verdict }[] = [
+  { pair: "Ink on yellow", use: "Buttons, badges, yellow slides, the marker", fg: "#111827", bg: "#FFCC00", ratio: "11.7 : 1", v: "use" },
+  { pair: "Ink on white", use: "Text and the logo on light", fg: "#111827", bg: "#FFFFFF", ratio: "17.7 : 1", v: "use" },
+  { pair: "White on ink", use: "Text and the logo on dark", fg: "#FFFFFF", bg: "#111827", ratio: "17.7 : 1", v: "use" },
+  { pair: "Yellow on ink", use: "The key phrase and links on dark", fg: "#FFCC00", bg: "#111827", ratio: "11.7 : 1", v: "use" },
+  { pair: "Purple on white", use: "Links on light", fg: "#7030A0", bg: "#FFFFFF", ratio: "8.0 : 1", v: "use" },
+  { pair: "White on purple", use: "Only the active toggle on dark", fg: "#FFFFFF", bg: "#7030A0", ratio: "8.0 : 1", v: "use" },
+  { pair: "Yellow on purple", use: "Passes, but yellow and purple never meet as text and ground", fg: "#FFCC00", bg: "#7030A0", ratio: "5.3 : 1", v: "never" },
+  { pair: "Purple on yellow", use: "Passes, but text on yellow is always ink", fg: "#7030A0", bg: "#FFCC00", ratio: "5.3 : 1", v: "never" },
+  { pair: "White on yellow", use: "Unreadable: text on yellow is always ink", fg: "#FFFFFF", bg: "#FFCC00", ratio: "1.5 : 1", v: "fail" },
+  { pair: "Yellow on white", use: "No yellow text, lines or icons on white", fg: "#FFCC00", bg: "#FFFFFF", ratio: "1.5 : 1", v: "fail" },
+  { pair: "Purple on ink", use: "No purple text on dark", fg: "#7030A0", bg: "#111827", ratio: "2.2 : 1", v: "fail" },
 ];
+const VERDICT: Record<Verdict, { label: string; cls: string; title: string; note: string }> = {
+  use: { label: "Use", title: "Use these", note: "Each pair has one job. Use it for that job.", cls: "bg-emerald-100 text-emerald-800 dark:bg-emerald-400/15 dark:text-emerald-300" },
+  never: { label: "Not ours", title: "Pass the test, still not ours", note: "Readable, but off-brand: yellow and purple never sit together as text and ground. The cap is the one exception, and there it is the symbol (a yellow tile with an ink W) on purple fabric, not yellow type.", cls: "bg-amber-100 text-amber-900 dark:bg-amber-300/15 dark:text-amber-200" },
+  fail: { label: "Fail", title: "Fail the test", note: "Below WCAG AA for text. Never use them.", cls: "bg-rose-100 text-rose-800 dark:bg-rose-400/15 dark:text-rose-300" },
+};
 
 function CopyHex({ hex }: { hex: string }) {
   const [copied, setCopied] = useState(false);
@@ -453,37 +462,36 @@ function ColourSection() {
         ))}
       </div>
 
-      <h3 className="mb-2 mt-14 text-lg font-semibold">Contrast</h3>
-      <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
-        WCAG 2 ratios. Text needs 4.5 : 1 and graphics 3 : 1. Yellow on white and purple on ink fail: on light grounds
-        yellow is always a filled area with ink on top (a button, the marker, a field), never text or a thin line.
+      <h3 className="mb-2 mt-14 text-lg font-semibold">Text and ground pairs</h3>
+      <p className="mb-6 max-w-3xl text-slate-600 dark:text-slate-300">
+        Passing WCAG is not the same as being allowed. Text needs 4.5 : 1 and graphics 3 : 1, and on top of that each
+        pair below has a verdict: use it, never use it although it passes, or never use it because it fails.
       </p>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {CONTRAST.map((c, i) => (
-          <div key={c.pair} className={clsx(i === CONTRAST.length - 1 && "sm:col-span-2 lg:col-span-1", "flex items-center gap-4 rounded-xl border border-solid border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-white/[0.03]")}>
-            <span
-              className={clsx("flex h-12 w-16 shrink-0 items-center justify-center rounded-lg text-xl font-extrabold", c.bg === "#FFFFFF" && "ring-1 ring-inset ring-slate-200")}
-              style={{ background: c.bg, color: c.fg }}
-              aria-hidden="true"
-            >
-              Aa
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block text-sm font-semibold text-slate-900 dark:text-white">{c.pair}</span>
-              <span className="font-mono text-xs text-slate-500 dark:text-slate-400">{c.ratio}</span>
-              <span className="block text-xs text-slate-500 dark:text-slate-400">{c.use}</span>
-            </span>
-            <span
-              className={clsx(
-                "shrink-0 rounded-full px-2.5 py-1 text-xs font-bold",
-                c.ok ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-400/15 dark:text-emerald-300" : "bg-rose-100 text-rose-800 dark:bg-rose-400/15 dark:text-rose-300"
-              )}
-            >
-              {c.ok ? "Pass" : "Fail"}
-            </span>
+      {(["use", "never", "fail"] as const).map((v) => (
+        <div key={v} className="mb-8">
+          <h4 className="mb-1 text-base font-semibold">{VERDICT[v].title}</h4>
+          <p className="mb-3 max-w-3xl text-sm text-slate-600 dark:text-slate-300">{VERDICT[v].note}</p>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {CONTRAST.filter((c) => c.v === v).map((c) => (
+              <div key={c.pair} className="flex items-center gap-4 rounded-xl border border-solid border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-white/[0.03]">
+                <span
+                  className={clsx("flex h-12 w-16 shrink-0 items-center justify-center rounded-lg text-xl font-extrabold", c.bg === "#FFFFFF" && "ring-1 ring-inset ring-slate-200")}
+                  style={{ background: c.bg, color: c.fg }}
+                  aria-hidden="true"
+                >
+                  Aa
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-slate-900 dark:text-white">{c.pair}</span>
+                  <span className="font-mono text-xs text-slate-500 dark:text-slate-400">{c.ratio}</span>
+                  <span className="block text-xs text-slate-500 dark:text-slate-400">{c.use}</span>
+                </span>
+                <span className={clsx("shrink-0 rounded-full px-2.5 py-1 text-xs font-bold", VERDICT[v].cls)}>{VERDICT[v].label}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </Section>
   );
 }
@@ -560,7 +568,249 @@ function TypeSection() {
   );
 }
 
-// ---------- 07 clear space + size ----------
+// ---------- 07 UI elements ----------
+
+const INK = "#111827";
+const btn = "inline-flex h-10 items-center justify-center rounded-lg px-4 text-sm font-semibold";
+type Spec = { name: string; use: string; light: React.ReactNode; dark: React.ReactNode };
+
+const SPECS: { group: string; items: Spec[] }[] = [
+  {
+    group: "Buttons",
+    items: [
+      {
+        name: "Primary",
+        use: "The one main action in a view: Start for free, Generate my first test, Download. Yellow with ink text in both themes.",
+        light: <span className={btn} style={{ background: "#ffcc00", color: INK }}>Start for free</span>,
+        dark: <span className={btn} style={{ background: "#ffcc00", color: INK }}>Start for free</span>,
+      },
+      {
+        name: "Secondary",
+        use: "Every other action: Log in, Book a demo, See the logo. A neutral outline, never purple and never a gradient.",
+        light: <span className={clsx(btn, "border border-solid")} style={{ borderColor: INK, color: INK }}>Book a demo</span>,
+        dark: <span className={clsx(btn, "border border-solid")} style={{ borderColor: "rgba(255,255,255,.3)", color: "#fff" }}>Book a demo</span>,
+      },
+      {
+        name: "Text link",
+        use: "Inline links and low-priority actions. Purple on light, yellow on dark.",
+        light: <span className="text-sm font-semibold underline underline-offset-4" style={{ color: "#7030a0" }}>Read the docs</span>,
+        dark: <span className="text-sm font-semibold underline underline-offset-4" style={{ color: "#ffcc00" }}>Read the docs</span>,
+      },
+    ],
+  },
+  {
+    group: "Toggles and badges",
+    items: [
+      {
+        name: "Segmented toggle",
+        use: "Switching between options in a form. The active segment is white on light and purple on dark, the only place purple fills a control.",
+        light: (
+          <span className="inline-flex gap-0.5 whitespace-nowrap rounded-lg p-0.5 text-xs font-semibold" style={{ background: "rgba(17,24,39,.04)", boxShadow: "inset 0 0 0 1px rgba(17,24,39,.1)" }}>
+            <span className="rounded-md px-2.5 py-1.5 text-slate-600">Your app</span>
+            <span className="rounded-md bg-white px-2.5 py-1.5" style={{ color: INK, boxShadow: "0 0 0 1px rgba(17,24,39,.15), 0 1px 2px rgba(17,24,39,.1)" }}>Demo app</span>
+          </span>
+        ),
+        dark: (
+          <span className="inline-flex gap-0.5 whitespace-nowrap rounded-lg p-0.5 text-xs font-semibold" style={{ background: "rgba(255,255,255,.05)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.1)" }}>
+            <span className="rounded-md px-2.5 py-1.5" style={{ color: "rgba(255,255,255,.7)" }}>Your app</span>
+            <span className="rounded-md px-2.5 py-1.5 text-white" style={{ background: "#7030a0" }}>Demo app</span>
+          </span>
+        ),
+      },
+      {
+        name: "Badge",
+        use: "A short status next to a link or a plan: New, Recommended. Yellow with ink text in both themes.",
+        light: <span className="rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide" style={{ background: "#ffcc00", color: INK }}>New</span>,
+        dark: <span className="rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide" style={{ background: "#ffcc00", color: INK }}>New</span>,
+      },
+      {
+        name: "Label",
+        use: "A quiet tag above a headline or on a card. Neutral grey on light, a yellow tint on dark.",
+        light: <span className="rounded-full border border-solid border-slate-300 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Free to start</span>,
+        dark: <span className="rounded-full px-3 py-1 text-xs font-semibold" style={{ background: "rgba(255,204,0,.1)", color: "#ffcc00", boxShadow: "inset 0 0 0 1px rgba(255,204,0,.25)" }}>Free to start</span>,
+      },
+    ],
+  },
+  {
+    group: "Frames and cards",
+    items: [
+      {
+        name: "Card",
+        use: "Grouping content that belongs together. A hairline and a soft shadow on light; on dark, a slightly lighter surface with a hairline.",
+        light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1px rgba(17,24,39,.1), 0 24px 50px rgba(76,29,149,.14)" }} />,
+        dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "rgba(255,255,255,.03)", boxShadow: "0 0 0 1px rgba(255,255,255,.1)" }} />,
+      },
+      {
+        name: "Highlighted frame",
+        use: "The one card that matters most on a page, such as the homepage form. Plain on light; the purple-to-yellow ring is a dark-theme device only.",
+        light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1px rgba(17,24,39,.1), 0 24px 50px rgba(76,29,149,.14)" }} />,
+        dark: (
+          <span className="block rounded-2xl p-[1.5px]" style={{ background: "linear-gradient(135deg,#7030a0,#a855f7 50%,#ffcc00)", boxShadow: "0 24px 50px rgba(59,7,100,.5)" }}>
+            <span className="block h-16 w-40 rounded-[14px]" style={{ background: INK }} />
+          </span>
+        ),
+      },
+      {
+        name: "Solid card",
+        use: "A call-to-action block with a primary button inside. Ink on light, purple on dark.",
+        light: (
+          <span className="flex h-16 w-40 items-end rounded-2xl p-3" style={{ background: INK }}>
+            <span className="h-5 w-20 rounded-md" style={{ background: "#ffcc00" }} />
+          </span>
+        ),
+        dark: (
+          <span className="flex h-16 w-40 items-end rounded-2xl p-3" style={{ background: "linear-gradient(135deg,#7030a0,#6b21a8)" }}>
+            <span className="h-5 w-20 rounded-md" style={{ background: "#ffcc00" }} />
+          </span>
+        ),
+      },
+    ],
+  },
+];
+
+const RETIRED: { name: string; why: string; g: "light" | "dark"; art: React.ReactNode }[] = [
+  {
+    name: "Purple main button",
+    why: "The main action is yellow in both themes. A purple button made the brand colour flip between light and dark.",
+    g: "light",
+    art: <span className={btn} style={{ background: "#7030a0", color: "#fff" }}>Start for free</span>,
+  },
+  {
+    name: "Purple text on yellow",
+    why: "Text on yellow is always ink. Yellow and purple never meet as text and ground.",
+    g: "dark",
+    art: <span className={btn} style={{ background: "#ffcc00", color: "#7030a0" }}>Start for free</span>,
+  },
+  {
+    name: "Purple outline button",
+    why: "Secondary actions are a neutral outline, so the yellow primary is the only coloured action.",
+    g: "light",
+    art: <span className={clsx(btn, "border border-solid")} style={{ borderColor: "#7030a0", color: "#7030a0" }}>Book demo</span>,
+  },
+  {
+    name: "Gradient outline button",
+    why: "A blue-to-purple outline belongs to the 2023–25 template look and to no brand colour of ours.",
+    g: "light",
+    art: (
+      <span className="inline-flex rounded-lg p-0.5" style={{ background: "linear-gradient(135deg,#3b82f6,#7030a0)" }}>
+        <span className="rounded-md bg-white px-4 py-2 text-sm font-semibold" style={{ color: INK }}>Book demo</span>
+      </span>
+    ),
+  },
+  {
+    name: "Gradient frame on light",
+    why: "On light grounds frames are a hairline. The gradient ring is kept for dark, where it reads as light, not decoration.",
+    g: "light",
+    art: (
+      <span className="block rounded-2xl p-[1.5px]" style={{ background: "linear-gradient(135deg,#7030a0,#a855f7 50%,#ffcc00)" }}>
+        <span className="block h-14 w-36 rounded-[14px] bg-white" />
+      </span>
+    ),
+  },
+  {
+    name: "Purple card on light",
+    why: "A purple field beside a yellow button puts the two accents side by side. On light the solid card is ink.",
+    g: "light",
+    art: (
+      <span className="flex h-14 w-36 items-end rounded-2xl p-3" style={{ background: "linear-gradient(135deg,#7030a0,#6b21a8)" }}>
+        <span className="h-5 w-16 rounded-md" style={{ background: "#ffcc00" }} />
+      </span>
+    ),
+  },
+  {
+    name: "Purple key phrase",
+    why: "On light the key phrase is ink on the yellow marker; purple headings taught a second brand colour.",
+    g: "light",
+    art: <span className="text-xl font-bold" style={{ color: INK }}>AI Testing <span style={{ color: "#7030a0" }}>for Web Apps</span></span>,
+  },
+  {
+    name: "A highlight in every heading",
+    why: "One key phrase per screen. Marking a word in every section heading is a template habit and stops meaning anything.",
+    g: "light",
+    art: (
+      <span className="flex flex-col items-start gap-1 text-sm font-bold" style={{ color: INK }}>
+        {["Who tests it?", "testing stack", "supervise"].map((t) => (
+          <span key={t} style={{ backgroundImage: "linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%)" }}>{t}</span>
+        ))}
+      </span>
+    ),
+  },
+  {
+    name: "Purple tint pill",
+    why: "Labels are neutral on light. Purple text on a purple tint was a second accent competing with yellow.",
+    g: "light",
+    art: <span className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide" style={{ background: "rgba(112,48,160,.1)", color: "#7030a0" }}>2 months free</span>,
+  },
+];
+
+function SpecGround({ dark, children }: { dark?: boolean; children: React.ReactNode }) {
+  return (
+    <div className={clsx("flex h-28 items-center justify-center rounded-xl px-4", dark ? "ring-0 dark:ring-1 dark:ring-inset dark:ring-white/10" : "ring-1 ring-inset ring-slate-200 dark:ring-0")} style={{ background: dark ? INK : "#ffffff" }}>
+      {children}
+    </div>
+  );
+}
+
+function UISection() {
+  return (
+    <Section id="ui">
+      <SectionHead id="ui" n="07" title="UI elements">
+        The few components the website is built from, each shown on light and on dark. Use only these. Below them are
+        the ones we used before 5 November 2026 and have retired, so nobody brings them back.
+      </SectionHead>
+      <div className="flex flex-col gap-12">
+        {SPECS.map((g) => (
+          <div key={g.group}>
+            <h3 className="mb-4 text-lg font-semibold">{g.group}</h3>
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+              {g.items.map((it) => (
+                <figure key={it.name} className="m-0 flex flex-col rounded-2xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="grid grid-cols-2 gap-2">
+                    <SpecGround>{it.light}</SpecGround>
+                    <SpecGround dark>{it.dark}</SpecGround>
+                  </div>
+                  <figcaption className="px-3 pb-3 pt-3">
+                    <span className="block font-semibold text-slate-900 dark:text-white">{it.name}</span>
+                    <span className="mt-1 block text-sm text-slate-600 dark:text-slate-300">{it.use}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div>
+          <h3 className="mb-2 text-lg font-semibold">Retired</h3>
+          <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
+            Used on the website until November 2026, now out of the brand. If you find one, replace it with the element
+            above.
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {RETIRED.map((r) => (
+              <figure key={r.name} className="m-0 rounded-2xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
+                <SpecGround dark={r.g === "dark"}>{r.art}</SpecGround>
+                <figcaption className="flex gap-2.5 px-3 pb-3 pt-3.5 text-sm text-slate-700 dark:text-slate-300">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-600 text-white dark:bg-rose-400 dark:text-[#111827]">
+                    <X size={13} strokeWidth={3} aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="block font-semibold text-slate-900 dark:text-white">
+                      <span className="sr-only">Retired: </span>
+                      {r.name}
+                    </span>
+                    {r.why}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+// ---------- 08 clear space + size ----------
 
 const XMark = () => (
   <span className="rounded bg-white px-1 font-mono text-[10px] font-bold leading-4 sm:px-1.5 sm:text-xs sm:leading-5 text-slate-600 ring-1 ring-slate-400 dark:bg-[#1f1f22] dark:text-primary-wopee dark:ring-primary-wopee/40">x</span>
@@ -568,8 +818,8 @@ const XMark = () => (
 
 function SpaceSection() {
   return (
-    <Section id="space">
-      <SectionHead id="space" n="07" title="Clear space and minimum size">
+    <Section id="space" tint>
+      <SectionHead id="space" n="08" title="Clear space and minimum size">
         Keep one <em className="font-semibold not-italic">x</em> of empty space on every side, where x is the height of
         the “o”. Inside a nav bar, the bar’s padding counts.
       </SectionHead>
@@ -629,7 +879,7 @@ function SpaceSection() {
   );
 }
 
-// ---------- 08 surfaces ----------
+// ---------- 09 surfaces ----------
 
 const SURFACES = [
   {
@@ -653,8 +903,8 @@ const SURFACES = [
 
 function SurfacesSection() {
   return (
-    <Section id="surfaces" tint>
-      <SectionHead id="surfaces" n="08" title="Where it shows up">
+    <Section id="surfaces">
+      <SectionHead id="surfaces" n="09" title="Where it shows up">
         The website sets the two moods. The light theme is calm: white, a grid, one soft purple glow, the yellow marker
         and a yellow button. The dark theme is more playful: the purple and pink glow, a gradient frame around the
         form, the purple toggle. Social posts and slides follow the same two moods. Merch uses a purple cap with the
@@ -686,7 +936,7 @@ function SurfacesSection() {
   );
 }
 
-// ---------- 10 for AI agents ----------
+// ---------- 11 for AI agents ----------
 
 const AGENT_PROMPT = "Before you design anything for Wopee.io (a page, slides, a social post, a document), read https://wopee.io/brand/DESIGN.md and follow it. If something is not covered, ask.";
 
@@ -720,8 +970,8 @@ function CopyText({ text, label }: { text: string; label: string }) {
 
 function AgentsSection() {
   return (
-    <Section id="agents" tint>
-      <SectionHead id="agents" n="10" title="For AI agents">
+    <Section id="agents">
+      <SectionHead id="agents" n="11" title="For AI agents">
         Everything on this page is also in one Markdown file, written for AI agents and design tools: colour and type
         tokens, the logo files for each situation, the website, slide and social rules, and the don’ts. It follows the
         open DESIGN.md format. Point your agent at it before it makes anything with our name on it.
@@ -755,7 +1005,7 @@ function AgentsSection() {
   );
 }
 
-// ---------- 09 do and don't ----------
+// ---------- 10 do and don't ----------
 
 const L = SVG(INK_LOGO);
 const D = SVG(WHITE_LOGO);
@@ -806,8 +1056,8 @@ const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.Re
 
 function RulesSection() {
   return (
-    <Section id="rules">
-      <SectionHead id="rules" n="09" title="Do and don’t">
+    <Section id="rules" tint>
+      <SectionHead id="rules" n="10" title="Do and don’t">
         Use the files as they are. If a layout needs something that is not here, ask us.
       </SectionHead>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -837,7 +1087,7 @@ function RulesSection() {
   );
 }
 
-// ---------- 09 download + contact ----------
+// ---------- 12 download + contact ----------
 
 const KIT_CONTENTS = [
   "The logo in ink and white, SVG and PNG",
@@ -852,7 +1102,7 @@ function DownloadSection() {
     <Section id="download">
       <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
         <div className="relative overflow-hidden rounded-3xl bg-[#111827] p-7 text-white sm:p-10 dark:ring-1 dark:ring-inset dark:ring-white/10">
-          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-wopee">11 · Download</p>
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-wopee">12 · Download</p>
           <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">The brand kit</h2>
           <ul className="m-0 mt-6 list-none space-y-2.5 p-0">
             {KIT_CONTENTS.map((t) => (
@@ -994,6 +1244,7 @@ export default function BrandPage(): JSX.Element {
         <MascotSection />
         <ColourSection />
         <TypeSection />
+        <UISection />
         <SpaceSection />
         <SurfacesSection />
         <RulesSection />

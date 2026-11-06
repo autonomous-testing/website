@@ -102,9 +102,7 @@ const HomeCockpitSection = () => {
     <section className="w-full flex flex-col items-center px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-2 text-balance">
         Autonomy you can{" "}
-        <span className="key-phrase">
-          supervise
-        </span>
+        supervise
       </h2>
       <p className="text-lg text-gray-700 dark:text-white text-center mb-10 sm:mb-12 lg:mb-14 max-w-2xl text-balance">
         Autonomous doesn't mean out of control. The Interactive Cockpit keeps
