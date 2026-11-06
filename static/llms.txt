@@ -14,6 +14,8 @@
 - [MCP Server](https://wopee.io/mcp/): Wopee.io's Model Context Protocol server, connect Claude, Cursor, VS Code, Windsurf, or any MCP client and dispatch testing agents from natural-language conversation.
 - [About](https://wopee.io/about-us/): Team, mission, investors, and contact (help@wopee.io, wopee labs s.r.o., Prague).
 - [Book a demo](https://wopee.io/book-demo/): 30-minute call with the founders.
+- [Brand kit](https://wopee.io/brand/): Logo, symbol, colours, type and usage rules, with downloads.
+- [DESIGN.md](https://wopee.io/brand/DESIGN.md): The brand and design rules in one Markdown file for AI agents (tokens, logo files per situation, website, slide and social rules, don'ts). Read it before making anything with the Wopee.io name on it.
 
 ## Comparisons
 - [Compare AI testing tools](https://wopee.io/compare/): Date-stamped comparisons of Wopee.io with the tools teams evaluate most often, each with a "when to pick them" section.

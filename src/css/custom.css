@@ -215,6 +215,27 @@ strong {
   background-color: var(--ifm-color-primary-light);
 }
 
+/* Light theme: the primary action is yellow with ink text (DESIGN.md,
+   Components), Log in is a neutral outline. Links keep the purple
+   --ifm-color-primary; dark theme is unchanged. */
+html:not([data-theme="dark"]) #navbar-button {
+  background-color: #ffcc00;
+  color: #111827;
+}
+html:not([data-theme="dark"]) #navbar-button:hover {
+  background-color: #ffd633;
+  color: #111827;
+}
+html:not([data-theme="dark"]) #login-button {
+  color: #111827;
+  border-color: #d1d5db;
+}
+html:not([data-theme="dark"]) #login-button:hover {
+  color: #111827;
+  border-color: #111827;
+  background-color: transparent;
+}
+
 @media (min-width: 200px) and (max-width: 996px) {
   #login-button {
     width: 100%;
@@ -273,7 +294,7 @@ a.navbar__item:hover {
   color: var(--unexisting-color);
 }
 
-/* Navbar L1 lockup: light and dark files swap via navbar.logo.srcDark. */
+/* Navbar wordmark: one colour, ink (light) and white (dark) swap via navbar.logo.srcDark. */
 .navbar__brand {
   margin-left: var(--ifm-navbar-item-padding-horizontal);
   min-height: 44px;
@@ -298,16 +319,29 @@ a.navbar__item:hover {
   height: 30px;
   width: auto;
 }
-.navbar__logo img[src*="logo-horizontal"] {
-  height: 31.4px;
+
+/* Headline key phrase (DESIGN.md, Typography): light theme sets ink text on a
+   yellow marker band, dark theme sets the phrase in yellow. One per screen. */
+.hero-key {
+  color: #111827;
+  background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
+  padding: 0 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+[data-theme="dark"] .hero-key {
+  color: #ffcc00;
+  background-image: none;
+  padding: 0;
+  text-shadow: 0 0 40px rgba(112, 48, 160, 0.35), 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Hero primary CTA, slow pulsing glow when enabled, invites the click
    without ever animating loud enough to feel pushy. Disabled state stays
    still. Pulse colour matches the button fill in each theme. */
 @keyframes hero-cta-pulse-light {
-  0%, 100% { box-shadow: 0 4px 16px rgba(112, 48, 160, 0.35); }
-  50% { box-shadow: 0 6px 28px rgba(112, 48, 160, 0.55); }
+  0%, 100% { box-shadow: 0 4px 14px rgba(202, 138, 4, 0.28); }
+  50% { box-shadow: 0 6px 24px rgba(202, 138, 4, 0.45); }
 }
 @keyframes hero-cta-pulse-dark {
   0%, 100% { box-shadow: 0 4px 16px rgba(255, 204, 0, 0.35); }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import ThemedImage from "@theme/ThemedImage";
 import { Check, Copy, Download, Mail, X } from "lucide-react";
@@ -9,11 +10,13 @@ import WopeeIo from "@site/src/components/brand/WopeeIo";
 
 const KIT = {
   href: "/brand/wopee-brand-kit-2026.zip",
-  size: "ZIP, 890 KB",
+  size: "ZIP, 1.4 MB",
 };
 const SVG = (n: string) => `/brand/svg/wopee-${n}.svg`;
 const PNG = (n: string) => `/brand/png/wopee-${n}@2x.png`;
 const MASCOT_BADGE = SVG("mascot-head-color-dark");
+const DESIGN_MD = "/brand/DESIGN.md";
+const EX = (n: string) => `/brand/examples/${n}.png`;
 
 const NAV = [
   ["logo", "Logo"],
@@ -23,7 +26,9 @@ const NAV = [
   ["colour", "Colour"],
   ["type", "Type"],
   ["space", "Space and size"],
+  ["surfaces", "Surfaces"],
   ["rules", "Do and don’t"],
+  ["agents", "For AI agents"],
   ["download", "Download"],
 ] as const;
 
@@ -33,7 +38,7 @@ const btnBase =
   "inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 text-sm font-semibold no-underline transition-colors hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 const btnPrimary = clsx(
   btnBase,
-  "bg-secondary-wopee text-white hover:bg-[#5c2785] hover:text-white dark:bg-primary-wopee dark:text-[#111827] dark:hover:bg-[#e6b800] dark:hover:text-[#111827]"
+  "bg-primary-wopee text-[#111827] hover:bg-[#ffd633] hover:text-[#111827] dark:hover:bg-[#e6b800]"
 );
 const btnSecondary = clsx(
   btnBase,
@@ -102,32 +107,28 @@ function Ground({ g, className, children }: { g: keyof typeof GROUNDS; className
 
 // ---------- 01 logo ----------
 
-const LOCKUPS = [
-  { g: "light", file: "wordmark-color-light", title: "On light", note: "The default. Ink W and “opee.io”, purple dot." },
-  { g: "dark", file: "wordmark-color-dark", title: "On dark", note: "Yellow W, white “opee.io”." },
-  { g: "yellow", file: "logo-horizontal-on-yellow", title: "On yellow", note: "Ink square, yellow W." },
-  { g: "purple", file: "logo-horizontal-on-purple", title: "On purple", note: "Yellow square, white text, yellow dot." },
-] as const;
+const INK_LOGO = "wordmark-mono-ink";
+const WHITE_LOGO = "wordmark-mono-white";
 
-const MORE = [
-  { file: "wordmark-mono-ink", title: "One colour, ink", g: "light" },
-  { file: "wordmark-mono-white", title: "One colour, white", g: "dark" },
-  { file: "logo-horizontal-color-light", title: "Square on, light", g: "light" },
-  { file: "logo-horizontal-mono-ink", title: "Square on, one colour", g: "light" },
+const LOCKUPS = [
+  { g: "light", file: INK_LOGO, title: "On light", note: "The default. Ink, one colour." },
+  { g: "dark", file: WHITE_LOGO, title: "On dark", note: "White, one colour." },
+  { g: "yellow", file: INK_LOGO, title: "On yellow", note: "Ink. The same file as on light." },
+  { g: "purple", file: WHITE_LOGO, title: "On purple", note: "White. The same file as on dark." },
 ] as const;
 
 function LogoSection() {
   return (
     <Section id="logo">
-      <SectionHead id="logo" n="01" title="One W, square on or off">
-        The logo is the Bungee W followed by “opee.io” in Rubik ExtraBold. The W is the first letter of the name, so the
-        pair always reads <WopeeIo />. The primary logo uses the W on its own: ink on light grounds, yellow on dark.
-        On yellow and purple grounds the W sits in a square.
+      <SectionHead id="logo" n="01" title="One W, one colour">
+        The logo is the Bungee W followed by “opee.io” in Rubik ExtraBold, with the W at cap height, so the pair always
+        reads <WopeeIo />. It is always one colour: ink on white and yellow, white on ink and purple. The brand’s
+        yellow lives in the symbol, the headline key phrase and the main button, never in parts of the logo.
       </SectionHead>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {LOCKUPS.map((l) => (
-          <figure key={l.file} className="m-0 overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.03]">
+          <figure key={l.title} className="m-0 overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.03]">
             <Ground g={l.g} className="m-2 h-32 rounded-xl px-6 sm:h-56 sm:px-8">
               <img src={SVG(l.file)} alt={`Wopee.io logo, ${l.title.toLowerCase()}`} width={264} height={56} className="h-10 w-auto max-w-full sm:h-14" />
             </Ground>
@@ -142,28 +143,6 @@ function LogoSection() {
               </div>
             </figcaption>
           </figure>
-        ))}
-      </div>
-
-      <h3 className="mb-4 mt-12 text-lg font-semibold">More versions</h3>
-      <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
-        One-colour versions are for print, stamps and photo overlays. The square-on versions put the W in its tile,
-        for layouts that need a solid block, such as merch and event badges. The symbol keeps its tile everywhere.
-      </p>
-      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-        {MORE.map((m) => (
-          <div key={m.file} className="rounded-xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
-            <Ground g={m.g} className="h-20 px-3 sm:h-28 sm:px-6">
-              <img src={SVG(m.file)} alt={`Wopee.io ${m.title.toLowerCase()}`} width={160} height={34} className="h-6 w-auto max-w-full sm:h-8" />
-            </Ground>
-            <div className="flex flex-col gap-2.5 px-2 pb-1 pt-3">
-              <p className="text-sm font-semibold text-slate-900 dark:text-white">{m.title}</p>
-              <div className="flex flex-wrap gap-2">
-                <FileLink href={SVG(m.file)} label="SVG" name={m.title} />
-                <FileLink href={PNG(m.file)} label="PNG" name={m.title} />
-              </div>
-            </div>
-          </div>
         ))}
       </div>
 
@@ -210,9 +189,9 @@ function SymbolSection() {
   return (
     <Section id="symbol" tint>
       <SectionHead id="symbol" n="02" title="The symbol and favicons">
-        The W in its square, on its own. Use it where the full logo does not fit or the name is already on screen:
-        favicons, app icons, avatars. The 16&nbsp;px favicon is a separate hand-tuned drawing, so it stays sharp in a
-        browser tab.
+        The ink W in its yellow square: the one place where the logo carries colour. Use it where the full logo does
+        not fit or the name is already on screen: favicons, app icons, avatars, the cap. The 16&nbsp;px favicon is a
+        separate hand-tuned drawing, so it stays sharp in a browser tab.
       </SectionHead>
 
       <div className="grid gap-6 xl:grid-cols-[1.1fr_1fr]">
@@ -268,13 +247,13 @@ const PRODUCTS = [
     name: "Commander",
     key: "commander",
     where: "cmd.wopee.io, the app where your team reviews tests and runs.",
-    tile: "Ink W, purple dot and COMMANDER. On dark, the W, dot and name turn purple-300, so they never clash with the amber status colour.",
+    tile: "Its symbol tile is purple. The logo itself is one colour: ink on light, white on dark.",
   },
   {
     name: "MCP",
     key: "mcp",
     where: "wopee-mcp, the server that runs Wopee.io from Claude Code, Cursor and Copilot.",
-    tile: "Ink W and MCP, purple dot. On dark, a white W and a yellow dot.",
+    tile: "Its symbol tile is ink. The logo itself is one colour: ink on light, white on dark.",
   },
 ];
 
@@ -282,9 +261,8 @@ function ProductsSection() {
   return (
     <Section id="products">
       <SectionHead id="products" n="03" title="Products">
-        Every product is <WopeeIo /> plus its name, set in caps under “.io”, with the W on its own as in the main
-        logo. The colour of the name and of the symbol tile tells them apart: purple for Commander (purple-300 on
-        dark), ink for MCP (white on dark).
+        Every product is <WopeeIo /> plus its name, set in caps under “.io”, one colour like the main logo. Only
+        the symbol tile tells the products apart: yellow for <WopeeIo />, purple for Commander, ink for MCP.
       </SectionHead>
 
       <div className="grid gap-6 xl:grid-cols-2">
@@ -292,10 +270,10 @@ function ProductsSection() {
           <article key={p.key} className="flex flex-col rounded-2xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <Ground g="light" className="h-36 px-6">
-                <img src={SVG(`wordmark-${p.key}-color-light`)} alt={`Wopee.io ${p.name} logo on light`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
+                <img src={SVG(`wordmark-${p.key}-mono-ink`)} alt={`Wopee.io ${p.name} logo on light`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
               </Ground>
               <Ground g="dark" className="h-36 px-6">
-                <img src={SVG(`wordmark-${p.key}-color-dark`)} alt={`Wopee.io ${p.name} logo on dark`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
+                <img src={SVG(`wordmark-${p.key}-mono-white`)} alt={`Wopee.io ${p.name} logo on dark`} width={187} height={42} className="h-[42px] w-auto max-w-full" />
               </Ground>
             </div>
             <div className="flex flex-1 flex-col gap-4 px-4 pb-4 pt-5 sm:flex-row sm:items-stretch">
@@ -308,10 +286,10 @@ function ProductsSection() {
                 <p className="mt-1 text-slate-600 dark:text-slate-300">{p.where}</p>
                 <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{p.tile}</p>
                 <div className="mt-auto flex flex-wrap gap-2 pt-4">
-                  <FileLink href={SVG(`wordmark-${p.key}-color-light`)} label="Light SVG" name={`${p.name} logo`} />
-                  <FileLink href={PNG(`wordmark-${p.key}-color-light`)} label="Light PNG" name={`${p.name} logo`} />
-                  <FileLink href={SVG(`wordmark-${p.key}-color-dark`)} label="Dark SVG" name={`${p.name} logo`} />
-                  <FileLink href={PNG(`wordmark-${p.key}-color-dark`)} label="Dark PNG" name={`${p.name} logo`} />
+                  <FileLink href={SVG(`wordmark-${p.key}-mono-ink`)} label="Light SVG" name={`${p.name} logo`} />
+                  <FileLink href={PNG(`wordmark-${p.key}-mono-ink`)} label="Light PNG" name={`${p.name} logo`} />
+                  <FileLink href={SVG(`wordmark-${p.key}-mono-white`)} label="Dark SVG" name={`${p.name} logo`} />
+                  <FileLink href={PNG(`wordmark-${p.key}-mono-white`)} label="Dark PNG" name={`${p.name} logo`} />
                 </div>
               </div>
             </div>
@@ -341,11 +319,11 @@ function MascotSection() {
     <Section id="mascot" tint>
       <SectionHead id="mascot" n="04" title="The monkey">
         The monkey is our character, not our logo. It is the face on YouTube, LinkedIn and at events, and it signs
-        our emails. The cap is purple and carries the W from the logo.
+        our emails. The cap is purple and carries the symbol, the same patch as on our team caps.
       </SectionHead>
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-12 xl:grid-cols-[minmax(0,420px)_1fr] xl:gap-16">
         <div className="mx-auto w-full max-w-[240px] sm:max-w-[320px] lg:max-w-none">
-          <img src={MASCOT_BADGE} alt="The Wopee.io monkey: purple cap with the W, yellow-rimmed sunglasses and purple headphones, on a yellow disc" width={420} height={420} className="block aspect-square h-auto w-full" />
+          <img src={MASCOT_BADGE} alt="The Wopee.io monkey: purple cap with the yellow W symbol, yellow-rimmed sunglasses and purple headphones, on a yellow disc" width={420} height={420} className="block aspect-square h-auto w-full" />
         </div>
         <div>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -405,9 +383,9 @@ function MascotSection() {
 // ---------- 05 colour ----------
 
 const COLOURS = [
-  { name: "Yellow", hex: "#FFCC00", rgb: "255 204 0", role: "The W square, highlights, buttons on dark", fg: "#111827" },
-  { name: "Purple", hex: "#7030A0", rgb: "112 48 160", role: "The dot, Commander, buttons on light", fg: "#ffffff" },
-  { name: "Ink", hex: "#111827", rgb: "17 24 39", role: "Text, the dark ground, the MCP tile", fg: "#ffffff" },
+  { name: "Yellow", hex: "#FFCC00", rgb: "255 204 0", role: "The brand colour: the symbol, the key phrase, main buttons, slide fields", fg: "#111827" },
+  { name: "Purple", hex: "#7030A0", rgb: "112 48 160", role: "Atmosphere: the background glow, links on light, the cap, Commander", fg: "#ffffff" },
+  { name: "Ink", hex: "#111827", rgb: "17 24 39", role: "Text, the logo on light, the dark ground, the MCP tile", fg: "#ffffff" },
   { name: "White", hex: "#FFFFFF", rgb: "255 255 255", role: "The light ground", fg: "#111827" },
   { name: "Purple 300", hex: "#B98AE0", rgb: "185 138 224", role: "Commander on dark only", fg: "#111827" },
 ];
@@ -457,8 +435,8 @@ function ColourSection() {
   return (
     <Section id="colour">
       <SectionHead id="colour" n="05" title="Colour">
-        Yellow, purple and ink, with white. Purple 300 exists for one job: Commander on dark grounds. No other tints, no
-        gradients in the logo, and no red.
+        Yellow is the brand colour, purple sets the mood, ink does the work, white gives room. Purple 300 exists for one
+        job: Commander on dark grounds. No other tints, no gradients on yellow, and no red.
       </SectionHead>
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-6 lg:grid-cols-5">
@@ -483,8 +461,8 @@ function ColourSection() {
 
       <h3 className="mb-2 mt-14 text-lg font-semibold">Contrast</h3>
       <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
-        WCAG 2 ratios. Text needs 4.5 : 1 and graphics 3 : 1. Yellow on white and purple on ink fail, so the logo never
-        uses them: the dark version swaps purple for yellow.
+        WCAG 2 ratios. Text needs 4.5 : 1 and graphics 3 : 1. Yellow on white and purple on ink fail: on light grounds
+        yellow is always a filled area with ink on top (a button, the marker, a field), never text or a thin line.
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {CONTRAST.map((c, i) => (
@@ -554,9 +532,34 @@ function TypeSection() {
           <div className="flex flex-wrap gap-x-5 gap-y-1 text-slate-600 dark:text-slate-300">
             <span className="font-normal">Regular 400</span>
             <span className="font-semibold">Semibold 600</span>
+            <span className="font-bold">Bold 700</span>
             <span className="font-extrabold">ExtraBold 800</span>
           </div>
         </div>
+      </div>
+
+      <h3 className="mb-2 mt-14 text-lg font-semibold">The key phrase</h3>
+      <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">
+        One phrase per screen or slide carries the yellow, usually the second line of the headline. On light grounds it
+        is ink on a yellow marker band, on dark grounds it is yellow text, on yellow grounds it stays ink.
+      </p>
+      <div className="grid gap-4 md:grid-cols-3">
+        {(["light", "dark", "yellow"] as const).map((g) => (
+          <Ground key={g} g={g} className="h-36 flex-col !items-start px-6 sm:h-44 sm:px-8">
+            <p className={clsx("m-0 text-2xl font-bold leading-tight sm:text-3xl", g === "dark" ? "text-white" : "text-[#111827]")} aria-hidden="true">
+              AI Testing Agents
+              <br />
+              {g === "light" ? (
+                <span className="-ml-[0.1em] px-[0.1em]" style={{ backgroundImage: "linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%)" }}>
+                  for Web Apps
+                </span>
+              ) : (
+                <span className={g === "dark" ? "text-[#ffcc00]" : undefined}>for Web Apps</span>
+              )}
+            </p>
+            <span className={clsx("mt-3 font-mono text-xs", g === "dark" ? "text-slate-400" : "text-slate-600")}>On {g}</span>
+          </Ground>
+        ))}
       </div>
     </Section>
   );
@@ -581,7 +584,7 @@ function SpaceSection() {
           <div className="relative w-full max-w-[560px] rounded-lg bg-secondary-wopee/[0.06] p-[9.57%] ring-1 ring-inset ring-secondary-wopee/40 dark:bg-primary-wopee/[0.08] dark:ring-primary-wopee/40">
             <div className="bg-white ring-1 ring-secondary-wopee/40 dark:bg-[#1f1f22] dark:ring-primary-wopee/40">
               <ThemedImage
-                sources={{ light: SVG("wordmark-color-light"), dark: SVG("wordmark-color-dark") }}
+                sources={{ light: SVG(INK_LOGO), dark: SVG(WHITE_LOGO) }}
                 alt="Wopee.io logo inside its clear-space box"
                 width={433}
                 height={93}
@@ -604,8 +607,8 @@ function SpaceSection() {
         </div>
         <div className="grid grid-cols-1 content-center gap-4">
           {[
-            { what: "Logo", min: "80\u00a0px wide", print: "20\u00a0mm", demo: <img src={SVG("wordmark-color-light")} alt="Wopee.io logo at 80 pixels wide" width={80} height={17} style={{ width: 80, height: "auto" }} /> },
-            { what: "Commander, MCP", min: "41\u00a0px tall", print: "30\u00a0mm", wide: true, demo: <img src={SVG("wordmark-commander-color-light")} alt="Wopee.io Commander logo at 41 pixels tall" width={182} height={41} style={{ height: 41, width: "auto" }} /> },
+            { what: "Logo", min: "80\u00a0px wide", print: "20\u00a0mm", demo: <img src={SVG(INK_LOGO)} alt="Wopee.io logo at 80 pixels wide" width={80} height={17} style={{ width: 80, height: "auto" }} /> },
+            { what: "Commander, MCP", min: "41\u00a0px tall", print: "30\u00a0mm", wide: true, demo: <img src={SVG("wordmark-commander-mono-ink")} alt="Wopee.io Commander logo at 41 pixels tall" width={182} height={41} style={{ height: 41, width: "auto" }} /> },
             { what: "Symbol", min: "24\u00a0px", print: "6\u00a0mm", demo: <img src={SVG("symbol-color-light")} alt="Wopee.io symbol at 24 pixels" width={24} height={24} /> },
             { what: "Favicon", min: "16\u00a0px", print: "", demo: <img src="/img/favicon-16.svg" alt="Wopee.io favicon at 16 pixels" width={16} height={16} /> },
           ].map((r) => (
@@ -631,16 +634,145 @@ function SpaceSection() {
   );
 }
 
-// ---------- 08 do and don't ----------
+// ---------- 08 surfaces ----------
 
-const L = SVG("wordmark-color-light");
-const D = SVG("wordmark-color-dark");
+const SURFACES = [
+  {
+    title: "LinkedIn",
+    note: "Dark by default, light as the alternative, the same two moods as the website. One headline, no button in the image.",
+    items: [
+      { file: "linkedin-dark", label: "Default: dark", size: "1200 × 627" },
+      { file: "linkedin-light", label: "Alternative: light, with the marker", size: "1200 × 627" },
+    ],
+  },
+  {
+    title: "Slides",
+    note: "Three forms to pace a deck, each with the short bar above the headline. Dark opens formal meetings, white carries content and PDFs, the yellow field opens a section. Yellow is always flat.",
+    items: [
+      { file: "slide-dark", label: "Dark: the default cover", size: "1920 × 1080" },
+      { file: "slide-white", label: "White: content and documents", size: "1920 × 1080" },
+      { file: "slide-yellow", label: "Yellow: section openers", size: "1920 × 1080" },
+    ],
+  },
+];
+
+function SurfacesSection() {
+  return (
+    <Section id="surfaces" tint>
+      <SectionHead id="surfaces" n="08" title="Where it shows up">
+        The website sets the two moods. The light theme is calm: white, a grid, one soft purple glow, the yellow marker
+        and a yellow button. The dark theme is more playful: the purple and pink glow, a gradient frame around the
+        form, the purple toggle. Social posts and slides follow the same two moods. Merch uses a purple cap with the
+        symbol, the one place where purple leads. The booth is a full yellow wall with the ink logo and the monkey.
+      </SectionHead>
+      <div className="flex flex-col gap-12">
+        {SURFACES.map((g) => (
+          <div key={g.title}>
+            <h3 className="mb-2 text-lg font-semibold">{g.title}</h3>
+            <p className="mb-5 max-w-3xl text-slate-600 dark:text-slate-300">{g.note}</p>
+            <div className={clsx("grid grid-cols-1 gap-5", g.items.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2")}>
+              {g.items.map((i) => (
+                <figure key={i.file} className="m-0 overflow-hidden rounded-2xl border border-solid border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/[0.03]">
+                  <img src={EX(i.file)} alt={`Example: ${g.title}, ${i.label.toLowerCase()}`} width={1200} height={g.title === "Slides" ? 675 : 627} loading="lazy" className="block h-auto w-full rounded-xl ring-1 ring-inset ring-slate-200 dark:ring-white/10" />
+                  <figcaption className="flex items-end justify-between gap-3 px-3 pb-2 pt-3">
+                    <span>
+                      <span className="block text-sm font-semibold text-slate-900 dark:text-white">{i.label}</span>
+                      <span className="font-mono text-xs text-slate-500 dark:text-slate-400">{i.size}</span>
+                    </span>
+                    <FileLink href={EX(i.file)} label="PNG" name={`${g.title} example, ${i.label.toLowerCase()}`} />
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// ---------- 10 for AI agents ----------
+
+const AGENT_PROMPT = "Before you design anything for Wopee.io (a page, slides, a social post, a document), read https://wopee.io/brand/DESIGN.md and follow it. If something is not covered, ask.";
+
+function CopyText({ text, label }: { text: string; label: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard?.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    });
+  };
+  return (
+    <>
+      <button
+        type="button"
+        onClick={copy}
+        className={clsx(
+          "inline-flex min-h-11 cursor-pointer select-none items-center gap-1.5 rounded-md border border-solid border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 transition-colors hover:border-secondary-wopee hover:text-secondary-wopee dark:border-white/15 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline-offset-2",
+          focusRing
+        )}
+      >
+        {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+        {copied ? "Copied" : label}
+      </button>
+      <span className="sr-only" aria-live="polite">
+        {copied ? `${label}: copied` : ""}
+      </span>
+    </>
+  );
+}
+
+function AgentsSection() {
+  return (
+    <Section id="agents" tint>
+      <SectionHead id="agents" n="10" title="For AI agents">
+        Everything on this page is also in one Markdown file, written for AI agents and design tools: colour and type
+        tokens, the logo files for each situation, the website, slide and social rules, and the don’ts. It follows the
+        open DESIGN.md format. Point your agent at it before it makes anything with our name on it.
+      </SectionHead>
+      <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <div className="rounded-2xl border border-solid border-slate-200 bg-white p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.03]">
+          <p className="font-mono text-sm text-slate-900 dark:text-white">https://wopee.io/brand/DESIGN.md</p>
+          <p className="mt-3 text-slate-600 dark:text-slate-300">
+            Tokens in the front matter, rules in plain sections: Overview, Colors, Typography, Layout, Elevation, Shapes,
+            Components, Logo, Surfaces, Mascot, Do’s and Don’ts. When this page and the file differ, the file wins.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href={DESIGN_MD} className={clsx(btnPrimary, "h-11 px-5")}>
+              Open DESIGN.md
+            </a>
+            <a href={DESIGN_MD} download className={clsx(btnSecondary, "h-11 px-5")}>
+              <Download size={16} aria-hidden="true" />
+              Download
+            </a>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 rounded-2xl border border-solid border-slate-200 bg-white p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.03]">
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Prompt to paste</p>
+          <p className="m-0 rounded-lg bg-slate-50 p-4 font-mono text-sm leading-6 text-slate-800 dark:bg-white/[0.04] dark:text-slate-200">{AGENT_PROMPT}</p>
+          <div>
+            <CopyText text={AGENT_PROMPT} label="Copy the prompt" />
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+// ---------- 09 do and don't ----------
+
+const L = SVG(INK_LOGO);
+const D = SVG(WHITE_LOGO);
+// The old two-colour wordmark, kept on disk for existing links; shown here only as a don't.
+const OLD_TWO_COLOUR = SVG("wordmark-color-dark");
 const logoImg = (src: string, alt: string, style?: React.CSSProperties, className = "h-9 w-auto max-w-full") => <img src={src} alt={alt} width={180} height={38} className={className} style={style} />;
 
 const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.ReactNode }[] = [
-  { ok: true, text: "Use the light version on white and pale grounds.", g: "light", art: logoImg(L, "Correct: the light logo on white") },
-  { ok: true, text: "Use the dark version on ink and dark photos.", g: "dark", art: logoImg(D, "Correct: the dark logo on ink") },
-  { ok: true, text: "On yellow, the square turns ink.", g: "yellow", art: logoImg(SVG("logo-horizontal-on-yellow"), "Correct: the on-yellow logo on yellow") },
+  { ok: true, text: "Use the ink logo on white and pale grounds.", g: "light", art: logoImg(L, "Correct: the ink logo on white") },
+  { ok: true, text: "Use the white logo on ink, purple and dark photos.", g: "dark", art: logoImg(D, "Correct: the white logo on ink") },
+  { ok: true, text: "On yellow, the logo stays ink.", g: "yellow", art: logoImg(L, "Correct: the ink logo on yellow") },
+  { ok: false, text: "Don’t colour parts of the logo, such as a yellow W or a coloured dot.", g: "dark", art: logoImg(OLD_TWO_COLOUR, "Incorrect: the logo with a yellow W and a yellow dot") },
   {
     ok: false,
     text: "Don’t put the W in front of the full name. It reads “W Wopee.io”.",
@@ -653,9 +785,17 @@ const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.Re
     ),
   },
   { ok: false, text: "Don’t stretch, squash or rotate it.", g: "light", art: logoImg(L, "Incorrect: the logo stretched", { transform: "scaleX(1.35) scaleY(0.8)" }, "h-auto w-[170px] max-w-[72%]") },
-  { ok: false, text: "Don’t use the light version on dark. “opee.io” disappears.", g: "dark", art: logoImg(L, "Incorrect: the light logo on ink") },
-  { ok: false, text: "Don’t recolour it, or add shadows, glows or outlines.", g: "light", art: logoImg(SVG("logo-horizontal-mono-ink"), "Incorrect: the logo recoloured red with a shadow", { filter: "invert(27%) sepia(91%) saturate(2352%) hue-rotate(346deg) brightness(104%) drop-shadow(3px 3px 0 #0ea5e9)" }) },
-  { ok: false, text: "Don’t set yellow parts on white without the square.", g: "light", art: logoImg(D, "Incorrect: the dark logo on white") },
+  { ok: false, text: "Don’t recolour it, or add shadows, glows, outlines or a marker.", g: "light", art: logoImg(L, "Incorrect: the logo recoloured red with a shadow", { filter: "invert(27%) sepia(91%) saturate(2352%) hue-rotate(346deg) brightness(104%) drop-shadow(3px 3px 0 #0ea5e9)" }) },
+  {
+    ok: false,
+    text: "Don’t use yellow text or thin yellow lines on white.",
+    g: "light",
+    art: (
+      <span className="text-[30px] font-extrabold leading-none text-[#ffcc00]" aria-hidden="true">
+        for Web Apps
+      </span>
+    ),
+  },
   {
     ok: false,
     text: "Don’t use the monkey in place of the logo.",
@@ -671,8 +811,8 @@ const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.Re
 
 function RulesSection() {
   return (
-    <Section id="rules" tint>
-      <SectionHead id="rules" n="08" title="Do and don’t">
+    <Section id="rules">
+      <SectionHead id="rules" n="09" title="Do and don’t">
         Use the files as they are. If a layout needs something that is not here, ask us.
       </SectionHead>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -705,10 +845,11 @@ function RulesSection() {
 // ---------- 09 download + contact ----------
 
 const KIT_CONTENTS = [
-  "Logo in every colour version, SVG and PNG",
+  "The logo in ink and white, SVG and PNG",
   "Commander and MCP logos",
   "The symbol, favicons and app icons",
-  "The monkey",
+  "The monkey and the stacked logo",
+  "Slide and LinkedIn examples, and DESIGN.md",
 ];
 
 function DownloadSection() {
@@ -716,7 +857,7 @@ function DownloadSection() {
     <Section id="download">
       <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
         <div className="relative overflow-hidden rounded-3xl bg-[#111827] p-7 text-white sm:p-10 dark:ring-1 dark:ring-inset dark:ring-white/10">
-          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-wopee">09 · Download</p>
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-wopee">11 · Download</p>
           <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">The brand kit</h2>
           <ul className="m-0 mt-6 list-none space-y-2.5 p-0">
             {KIT_CONTENTS.map((t) => (
@@ -766,7 +907,7 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 dark:text-slate-300">
             Everything you need to show <WopeeIo /> in an article, a slide or a partner page, and the few rules that keep
-            it looking right.
+            it looking right. AI agents: read <a href={DESIGN_MD} className="font-semibold text-secondary-wopee dark:text-primary-wopee">DESIGN.md</a> first.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href={KIT.href} download className={clsx(btnPrimary, "h-12 px-6 text-base")}>
@@ -846,6 +987,9 @@ export default function BrandPage(): JSX.Element {
       description="Download the Wopee.io logo, symbol and favicons in SVG and PNG, with the brand colours, typefaces and the rules for using them."
     >
       <SocialCard permalink="/brand/" />
+      <Head>
+        <link rel="alternate" type="text/markdown" href={DESIGN_MD} title="Wopee.io design rules for AI agents (DESIGN.md)" />
+      </Head>
       <main className="overflow-x-clip">
         <Hero />
         <PageNav />
@@ -856,7 +1000,9 @@ export default function BrandPage(): JSX.Element {
         <ColourSection />
         <TypeSection />
         <SpaceSection />
+        <SurfacesSection />
         <RulesSection />
+        <AgentsSection />
         <DownloadSection />
       </main>
     </Layout>

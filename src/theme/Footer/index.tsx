@@ -30,7 +30,7 @@ const bottomLinkClass =
   "inline-flex min-h-11 lg:min-h-7 items-center text-gray-600 no-underline dark:text-gray-400 transition-colors hover:text-secondary-wopee hover:no-underline dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const primaryCtaClass =
-  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg bg-secondary-wopee px-4 sm:w-auto text-sm font-semibold text-white no-underline transition-colors hover:bg-purple-800 hover:text-white hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
+  "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg bg-primary-wopee px-4 sm:w-auto text-sm font-semibold text-[#111827] no-underline transition-colors hover:bg-yellow-300 hover:text-[#111827] hover:no-underline dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-yellow-300 dark:hover:text-secondary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
 
 const secondaryCtaClass =
   "inline-flex h-11 lg:h-10 w-full items-center justify-center rounded-lg border border-solid border-gray-300 px-4 sm:w-auto text-sm font-semibold text-gray-900 no-underline transition-colors hover:border-secondary-wopee hover:text-secondary-wopee hover:no-underline dark:border-white/15 dark:text-white dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee";
@@ -65,8 +65,8 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
 }
 
 export default function Footer(): JSX.Element {
-  const logoLight = useBaseUrl("brand/svg/wopee-logo-horizontal-color-light.svg");
-  const logoDark = useBaseUrl("brand/svg/wopee-wordmark-color-dark.svg");
+  const logoLight = useBaseUrl("brand/svg/wopee-wordmark-mono-ink.svg");
+  const logoDark = useBaseUrl("brand/svg/wopee-wordmark-mono-white.svg");
   const year = new Date().getFullYear();
 
   return (
@@ -92,9 +92,9 @@ export default function Footer(): JSX.Element {
               <ThemedImage
                 sources={{ light: logoLight, dark: logoDark }}
                 alt="Wopee.io"
-                width={164}
-                height={36}
-                className="block h-[34px] w-auto [&[src*='logo-horizontal']]:h-[35.6px]"
+                width={157}
+                height={34}
+                className="block h-[34px] w-auto"
               />
             </Link>
             <p className="mt-5 max-w-sm text-[15px] leading-7 dark:text-gray-300">

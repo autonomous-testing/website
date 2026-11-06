@@ -62,7 +62,7 @@ export default function FalsePassChecklistPage(): JSX.Element {
         <header>
           <div className={styles.brand}>
             <img
-              src="/brand/svg/wopee-wordmark-color-dark.svg"
+              src="/brand/svg/wopee-wordmark-mono-white.svg"
               alt="Wopee.io"
               width={110}
               height={24}

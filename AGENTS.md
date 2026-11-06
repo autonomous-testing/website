@@ -17,6 +17,10 @@ We maintain three repositories with a linear promotion flow:
 
 If a change does not require thorough testing, sync/deploy to both forks at once.
 
+## Brand and design rules
+
+`DESIGN.md` (repo root) is the brand's source of truth: tokens, logo files per situation, website, slide and social rules, and the don'ts. Read it before any visual change. It is also published as `static/brand/DESIGN.md` (https://wopee.io/brand/DESIGN.md) for outside agents, so **edit the root file and copy it over** (`cp DESIGN.md static/brand/DESIGN.md`); the two must stay identical. The human page `/brand` (`src/pages/brand/index.tsx`) must say the same thing.
+
 ## Styling gotchas (Docusaurus + Infima)
 
 Non-obvious dependency behaviour that repeatedly bites when styling custom components. None of this is visible from our own code, it comes from Infima (Docusaurus's CSS framework) and the Docusaurus runtime.
