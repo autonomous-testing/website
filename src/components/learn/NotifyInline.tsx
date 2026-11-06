@@ -206,7 +206,7 @@ export default function NotifyInline({
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
             dark
               ? "bg-primary-wopee text-secondary-wopee hover:bg-primary-wopee/90 focus-visible:outline-white"
-              : "bg-secondary-wopee text-white hover:bg-secondary-wopee/90 dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:bg-primary-wopee/90 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee",
+              : "bg-secondary-wopee text-white hover:bg-secondary-wopee/90 dark:bg-primary-wopee dark:text-gray-900 dark:hover:bg-primary-wopee/90 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee",
           )}
         >
           {state === "sending" ? "Sending…" : cta}

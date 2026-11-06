@@ -131,7 +131,7 @@ export default function PlanCard({
       padding="roomy"
       className={
         featured
-          ? "w-[340px] shadow-[0_0_60px_-15px_rgba(112,48,160,0.6)] dark:shadow-[0_0_80px_-15px_rgba(255,204,0,0.35)] transition-transform hover:-translate-y-1"
+          ? "w-[340px] transition-transform hover:-translate-y-1"
           : "w-[340px] transition-transform hover:-translate-y-1"
       }
       innerClassName="flex flex-col gap-5 relative overflow-hidden h-full"

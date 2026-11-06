@@ -204,7 +204,7 @@ const MigrationSteps = () => {
             key={s.step}
             className="rounded-2xl border border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-gray-900 p-6 flex flex-col gap-4"
           >
-            <span className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-secondary-wopee font-bold text-xl flex items-center justify-center">
+            <span className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-gray-900 font-bold text-xl flex items-center justify-center">
               {s.step}
             </span>
             <h3 className="text-xl font-bold m-0">{s.title}</h3>

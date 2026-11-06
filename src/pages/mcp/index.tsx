@@ -424,10 +424,10 @@ const HeroSection = () => (
 
 const ProblemSection = () => (
   <div className="bg-gradient-to-br from-secondary-wopee via-purple-600 to-secondary-wopee dark:from-primary-wopee dark:to-white text-balance flex flex-col gap-10 px-10 py-20">
-    <h2 className="text-4xl sm:text-5xl text-white dark:text-secondary-wopee font-bold text-center">
+    <h2 className="text-4xl sm:text-5xl text-white dark:text-gray-900 font-bold text-center">
       Your AI can code. But who tests the output?
     </h2>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-primary-wopee dark:text-secondary-wopee text-xl sm:text-2xl lg:text-3xl text-left items-center container">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-primary-wopee dark:text-gray-900 text-xl sm:text-2xl lg:text-3xl text-left items-center container">
       <div className="flex items-center">
         <div className="w-10 h-10 rounded-full bg-white/20 dark:bg-secondary-wopee/20 flex items-center justify-center mr-4 flex-shrink-0 text-xl font-bold">&#x2717;</div>
         <p>
@@ -458,7 +458,7 @@ const ProblemSection = () => (
       </div>
     </div>
     <div className="mt-10 pt-8 border-t border-white/20 dark:border-secondary-wopee/20 max-w-3xl mx-auto text-center">
-      <p className="text-2xl sm:text-3xl text-white dark:text-secondary-wopee font-bold">
+      <p className="text-2xl sm:text-3xl text-white dark:text-gray-900 font-bold">
         Wopee.io MCP bridges the gap. Test from where you code.
       </p>
     </div>
@@ -562,7 +562,7 @@ const HowItWorksSection = () => (
 
           <div className="flex-1 w-full lg:w-3/4 flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-secondary-wopee font-bold text-xl flex items-center justify-center shadow-lg shadow-secondary-wopee/30 dark:shadow-primary-wopee/30">
+              <span className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-gray-900 font-bold text-xl flex items-center justify-center shadow-lg shadow-secondary-wopee/30 dark:shadow-primary-wopee/30">
                 {step.step}
               </span>
               <h3 className="text-3xl lg:text-4xl font-bold">{step.title}</h3>
