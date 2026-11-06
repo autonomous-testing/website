@@ -46,7 +46,7 @@ const TestimonialCard = ({ testimonial, itemIndex, activeItemIndex }) => {
   const isSynot = testimonial.name === "Jakub Miakyš";
   const CardContent = (
     <div className="group relative rounded-xl transition-shadow h-full flex max-w-4xl w-full">
-      <div className="wp-hover-glow bg-white dark:bg-white/[0.03] border border-solid border-gray-200 dark:border-white/10 rounded-xl p-8 flex flex-col justify-between shadow-lg h-full w-full transition-colors group-hover:border-gray-900/30 dark:group-hover:border-white/25">
+      <div className="wp-hover-glow bg-white dark:bg-[#181f2e] border border-solid border-gray-200 dark:border-white/10 rounded-xl p-8 flex flex-col justify-between shadow-lg h-full w-full transition-colors group-hover:border-gray-900/30 dark:group-hover:border-white/25">
         <div className="flex-1 flex flex-col">
           <div className="mb-6">
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-900 dark:text-white leading-relaxed font-medium text-center">

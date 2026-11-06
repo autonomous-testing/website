@@ -26,7 +26,7 @@ const ButtonPrimary = ({
         >
           <button
             className={clsx(
-              "text-gray-900 border border-primary-wopee font-semibold bg-primary-wopee group-hover:bg-[#ffd633] hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
+              "text-gray-900 border border-solid border-primary-wopee font-semibold bg-primary-wopee group-hover:bg-[#ffd633] hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
               className
             )}
           >
@@ -36,7 +36,7 @@ const ButtonPrimary = ({
       ) : (
         <button
           className={clsx(
-            "text-gray-900 border border-primary-wopee font-semibold bg-primary-wopee hover:bg-[#ffd633] hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
+            "text-gray-900 border border-solid border-primary-wopee font-semibold bg-primary-wopee hover:bg-[#ffd633] hover:cursor-pointer rounded-lg text-sm md:text-base xl:text-lg px-5 py-2.5 text-center transition ease-out",
             className
           )}
           id={id}

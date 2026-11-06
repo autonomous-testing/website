@@ -65,14 +65,16 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
           "p-[1.5px] rounded-2xl",
           variant === "featured"
             ? "bg-gray-900 shadow-[0_24px_50px_rgba(76,29,149,0.18)] dark:bg-white/20 dark:shadow-[0_24px_60px_rgba(59,7,100,0.45)] xl:scale-105"
-            : "bg-gray-900/10 shadow-[0_24px_50px_rgba(76,29,149,0.10)] dark:bg-white/10 dark:shadow-none",
+            : "group bg-gray-900/10 shadow-[0_24px_50px_rgba(76,29,149,0.10)] transition-colors hover:bg-gray-900/30 dark:bg-white/10 dark:shadow-none dark:hover:bg-white/25",
           className
         )}
         {...rest}
       >
         <div
           className={cn(
-            "bg-white dark:bg-gray-900 rounded-[14px] h-full",
+            "bg-white dark:bg-[#181f2e] rounded-[14px] h-full",
+            // Same treatment as the testimonial: a raised surface, and the recommended card's glow on hover.
+            variant !== "featured" && "wp-hover-glow",
             variant === "featured" &&
               "[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.16),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.07),transparent_55%)] dark:[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.45),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.12),transparent_55%)]",
             PADDINGS[padding],

@@ -636,9 +636,9 @@ const SPECS: { group: string; items: Spec[] }[] = [
     items: [
       {
         name: "Card",
-        use: "Grouping content that belongs together. A hairline and a soft shadow on light; on dark, a slightly lighter surface with a hairline. A card that is a link lights up on hover with the recommended card's glow; other cards have no hover.",
+        use: "Grouping content that belongs together. A hairline and a soft shadow on light; on dark, a slightly lighter surface with a hairline. On hover the hairline darkens and the recommended card's glow fades in.",
         light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1px rgba(17,24,39,.1), 0 24px 50px rgba(76,29,149,.14)" }} />,
-        dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "rgba(255,255,255,.03)", boxShadow: "0 0 0 1px rgba(255,255,255,.1)" }} />,
+        dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "#181f2e", boxShadow: "0 0 0 1px rgba(255,255,255,.1)" }} />,
       },
       {
         name: "Highlighted frame",

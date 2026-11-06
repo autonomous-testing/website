@@ -37,7 +37,7 @@ const HomeProblemSection = () => {
         {pains.map(({ icon: Icon, title, description }) => (
           <div
             key={title}
-            className="h-full rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-gray-900/70 dark:shadow-none md:p-6 flex flex-col"
+            className="wp-hover-glow h-full rounded-xl border border-solid border-gray-200 bg-white p-5 shadow-sm transition-colors hover:border-gray-900/30 dark:border-white/10 dark:bg-[#181f2e] dark:shadow-none dark:hover:border-white/25 md:p-6 flex flex-col"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="inline-flex items-center justify-center size-9 rounded-[8px] bg-primary-wopee">

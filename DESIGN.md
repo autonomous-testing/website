@@ -269,7 +269,9 @@ yellow-800 #7A5C00 for the Build & Break title shadow only.
 ## Components
 
 These are the only components. Each has one look per theme; radius 8 px
-for buttons, 16 px for cards.
+for buttons, 16 px for cards. Buttons are flat: an even 1 px solid border,
+no bevel and no shadow. The only glow on a button is the slow pulse of the
+homepage hero's primary action.
 
 - **Primary button:** yellow with ink text, in both themes. Use one
   primary action per view; the navbar "Start for free" is the same
@@ -283,8 +285,10 @@ for buttons, 16 px for cards.
   the only control purple fills.
 - **Badge (New, Recommended):** yellow with ink text in both themes.
 - **Label:** neutral grey pill on light, a yellow tint on dark.
-- **Card:** white with a hairline and a soft shadow on light; a slightly
-  lighter surface with a hairline on dark.
+- **Card:** white with a hairline and a soft shadow on light; a raised
+  surface #181F2E with a hairline on dark. On hover the hairline darkens
+  and the recommended card's purple glow fades in (feature cards,
+  testimonials, plan cards).
 - **Highlighted frame:** only the homepage form, the one place you act:
   plain on light, the purple-to-yellow ring on dark. Never on cards in a
   grid or a comparison.
@@ -316,10 +320,10 @@ themes:
   (dark) and a faint tint fills it (ink at 5 %, white at 10 %). The text
   does not change colour; never invert, never turn purple or yellow.
 - Text link: turns the link colour (purple on light, yellow on dark).
-- Card that is a link (testimonial, case study): the purple glow of the
-  recommended card fades in (`.wp-hover-glow`) and the hairline darkens.
-  No lift, no scale, no other gradient.
-- Anything that is not a link (logos, lists, plain cards) has no hover.
+- Card: the purple glow of the recommended card fades in
+  (`.wp-hover-glow`) and the hairline darkens. No lift, no scale, no
+  other gradient.
+- Logos and plain lists have no hover.
 - Focus is always visible: a 2 px outline in the link colour.
 
 **Retired in November 2026** (do not bring back):
