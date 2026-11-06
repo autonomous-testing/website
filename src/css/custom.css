@@ -779,7 +779,7 @@ a.navbar__item:hover {
   }
 }
 
-/* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Green Is Not Correct" and episode tags. */
+/* /learn series wordmark: Bungee subset (A–Z, 0–9), only for "Lead the Agents" and episode tags. */
 @font-face {
   font-family: "Bungee";
   src: url("/fonts/bungee-subset.woff") format("woff");

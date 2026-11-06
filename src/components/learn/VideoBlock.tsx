@@ -87,13 +87,14 @@ const Placeholder = () => (
   <div
     className="absolute inset-0 flex flex-col items-center justify-center gap-4 sm:gap-6 bg-[#0d0d0d] px-6 text-center"
     role="img"
-    aria-label="Green Is Not Correct, video poster"
+    aria-label="Lead the Agents: Hands-on AI for testers, video poster"
   >
     <span
       style={{ fontFamily: 'Bungee, "Arial Black", sans-serif' }}
       className="text-3xl sm:text-5xl uppercase leading-none text-primary-wopee"
     >
-      Green is not correct
+      Lead the Agents
     </span>
+    <span className="text-base sm:text-xl font-semibold text-white">Hands-on AI for testers</span>
   </div>
 );
