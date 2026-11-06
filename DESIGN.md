@@ -117,6 +117,32 @@ components:
   slide-yellow:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.ink}"
+  text-light:
+    backgroundColor: "{colors.surface-light}"
+    textColor: "{colors.text-light}"
+    typography: "{typography.body}"
+  text-dark:
+    backgroundColor: "{colors.surface-dark}"
+    textColor: "{colors.text-dark}"
+    typography: "{typography.body}"
+  caption-light:
+    backgroundColor: "{colors.surface-light}"
+    textColor: "{colors.text-muted-light}"
+  caption-dark:
+    backgroundColor: "{colors.surface-dark}"
+    textColor: "{colors.text-muted-dark}"
+  link-light:
+    backgroundColor: "{colors.surface-light}"
+    textColor: "{colors.link-light}"
+  link-dark:
+    backgroundColor: "{colors.surface-dark}"
+    textColor: "{colors.link-dark}"
+  divider-light:
+    backgroundColor: "{colors.border-light}"
+    height: 1px
+  commander-accent-dark:
+    backgroundColor: "{colors.surface-dark}"
+    textColor: "{colors.purple-300}"
 ---
 
 # Wopee.io design system
