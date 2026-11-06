@@ -73,7 +73,7 @@ export default function Footer(): JSX.Element {
     <footer
       className={clsx(
         ThemeClassNames.layout.footer.container,
-        "relative overflow-hidden bg-gray-50 text-gray-600 dark:bg-[#0a0a0b] dark:text-gray-400"
+        "relative overflow-hidden bg-gray-50 text-gray-600 dark:bg-[#0b0f19] dark:text-gray-400"
       )}
     >
       <div

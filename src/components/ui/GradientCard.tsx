@@ -16,7 +16,7 @@ export interface GradientCardProps
   /**
    * default = hairline on light, gradient ring on dark (matches homepage hero)
    * featured = same ring with brighter shadow + xl:scale-105
-   * solid = single layer: ink surface on light, purple gradient on dark (for CTA cards)
+   * solid = single layer: ink surface, with the purple glow on dark (for CTA cards)
    */
   variant?: Variant;
   padding?: Padding;
@@ -41,9 +41,9 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
         <div
           ref={ref}
           className={cn(
-            // Light theme: ink surface (purple never sits beside a yellow button on light).
-            // Dark theme: the purple gradient surface.
-            "rounded-2xl bg-[#111827] dark:bg-gradient-to-br dark:from-secondary-wopee dark:to-purple-800 text-white shadow-2xl shadow-gray-900/30 dark:shadow-purple-900/50",
+            // Ink surface in both themes, so the yellow button never sits on purple.
+            // Dark theme adds the purple glow of the dark hero and a hairline.
+            "rounded-2xl bg-[#111827] text-white shadow-2xl shadow-gray-900/30 dark:shadow-purple-900/40 dark:ring-1 dark:ring-inset dark:ring-white/10 dark:[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.45),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.12),transparent_55%)]",
             PADDINGS[padding],
             className
           )}

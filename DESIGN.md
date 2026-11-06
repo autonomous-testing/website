@@ -175,13 +175,14 @@ competent and calm first, with one confident accent.
 
 | Role | Light theme | Dark theme |
 |---|---|---|
-| Page ground | white | #111827 |
+| Page ground | white | #111827 (header too; footer #0B0F19; menus #1F2937) |
 | Hero background | white, 40 px grid, one central purple glow | #111827, grid, purple and pink glow |
 | Text | ink | white |
 | Wordmark | ink, one colour | white, one colour |
 | Key phrase in a headline | ink text on a yellow marker | yellow text |
 | Primary button | yellow, ink text | yellow, ink text |
 | Active toggle segment | white with a hairline, ink text | purple, white text |
+| Neutral greys | Tailwind gray (gray-900 is ink); never slate or zinc | the same |
 | Hero form frame | 1 px ink hairline at 10 % and a soft shadow | purple-to-yellow gradient frame |
 | Links | purple | yellow |
 
@@ -286,8 +287,9 @@ for buttons, 16 px for cards.
   lighter surface with a hairline on dark.
 - **Highlighted frame:** the one most important card on a page (the
   homepage form): plain on light, the purple-to-yellow ring on dark.
-- **Solid card:** a call-to-action block: ink on light, purple gradient on
-  dark, with the yellow primary button inside.
+- **Solid card:** a call-to-action block with the yellow primary button
+  inside. Ink in both themes; on dark it carries the purple glow of the
+  dark hero and a hairline. Purple is never the card's fill.
 - **Marker:** the key phrase of one headline per screen, usually the hero.
   Never in every section heading, never in body text, never on the logo.
 
@@ -298,7 +300,7 @@ for buttons, 16 px for cards.
 - a purple outline button;
 - a blue-to-purple gradient outline button;
 - gradient frames on light grounds;
-- a purple card on light grounds;
+- a purple card (in either theme), especially under a yellow button;
 - purple key phrases or headings on light;
 - a marker in every heading;
 - purple-tint pills with purple text;

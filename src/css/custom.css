@@ -305,6 +305,19 @@ a.navbar__item:hover {
   color: var(--unexisting-color);
 }
 
+/* Brand grounds (DESIGN.md, Colors): the dark page is ink #111827, not
+   Docusaurus grey; raised surfaces (dropdowns, menus) are gray-800.
+   html[...] matches Infima's own selector, so these win. */
+html[data-theme="dark"] {
+  --ifm-background-color: #111827;
+  --ifm-background-surface-color: #1f2937;
+  --ifm-navbar-background-color: #111827;
+  --ifm-dropdown-background-color: #1f2937;
+}
+[data-theme="dark"] .navbar {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 /* Navbar wordmark: one colour, ink (light) and white (dark) swap via navbar.logo.srcDark. */
 .navbar__brand {
   margin-left: var(--ifm-navbar-item-padding-horizontal);
