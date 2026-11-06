@@ -652,9 +652,21 @@ const SPECS: { group: string; items: Spec[] }[] = [
       },
       {
         name: "Recommended option",
-        use: "In a comparison every option is the same card; the recommended one gets an ink hairline on light, the purple glow on dark, and a Recommended badge.",
-        light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1.5px #111827, 0 24px 50px rgba(76,29,149,.18)" }} />,
+        use: "In a comparison every option is the same card; the recommended one gets the purple glow (soft on light, full on dark), a stronger hairline and a Recommended badge.",
+        light: <span className="block h-16 w-40 rounded-2xl" style={{ background: "radial-gradient(circle at 15% 85%, rgba(112,48,160,.16), transparent 60%), radial-gradient(circle at 90% 10%, rgba(236,72,153,.07), transparent 55%), #ffffff", boxShadow: "0 0 0 1.5px #111827, 0 24px 50px rgba(76,29,149,.18)" }} />,
         dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "radial-gradient(circle at 15% 85%, rgba(112,48,160,.55), transparent 60%), #111827", boxShadow: "inset 0 0 0 1.5px rgba(255,255,255,.2)" }} />,
+      },
+      {
+        name: "Media",
+        use: "Videos, animations and product previews. No frame and no ring: a clean edge, a 12 px radius and a soft shadow on light.",
+        light: <span className="block h-16 w-40 rounded-xl" style={{ background: "linear-gradient(160deg,#1f2937,#111827)", boxShadow: "0 24px 50px rgba(17,24,39,.18)" }} />,
+        dark: <span className="block h-16 w-40 rounded-xl" style={{ background: "linear-gradient(160deg,#1f2937,#0b0f19)" }} />,
+      },
+      {
+        name: "Icon tile",
+        use: "A feature icon in a small yellow square with the symbol's corners, the icon in ink. No tag pill repeating the heading.",
+        light: <span className="inline-flex h-10 w-10 items-center justify-center rounded-[9px]" style={{ background: "#ffcc00" }}><Check size={20} strokeWidth={2.5} color={INK} aria-hidden="true" /></span>,
+        dark: <span className="inline-flex h-10 w-10 items-center justify-center rounded-[9px]" style={{ background: "#ffcc00" }}><Check size={20} strokeWidth={2.5} color={INK} aria-hidden="true" /></span>,
       },
       {
         name: "Solid card",

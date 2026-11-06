@@ -34,20 +34,17 @@ const HomeProblemSection = () => {
         the same upgrade. Until now.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
-        {pains.map(({ icon: Icon, title, description }, idx) => (
+        {pains.map(({ icon: Icon, title, description }) => (
           <div
             key={title}
             className="h-full rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-gray-900/70 dark:shadow-none md:p-6 flex flex-col"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="inline-flex items-center justify-center size-9 rounded-md bg-secondary-wopee/10 dark:bg-primary-wopee/10">
+              <span className="inline-flex items-center justify-center size-9 rounded-[8px] bg-primary-wopee">
                 <Icon
-                  className="size-5 text-gray-900 dark:text-primary-wopee"
+                  className="size-5 text-gray-900"
                   aria-hidden="true"
                 />
-              </span>
-              <span className="font-mono text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500">
-                0{idx + 1}
               </span>
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white m-0 mb-1.5">

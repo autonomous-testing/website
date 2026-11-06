@@ -15,7 +15,7 @@ export interface GradientCardProps
   extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * default = the plain card: a hairline in both themes (no gradient ring)
-   * featured = the recommended option in a comparison: ink hairline on light, purple glow on dark
+   * featured = the recommended option in a comparison: the purple glow (soft on light) and a stronger hairline
    * solid = single layer: ink surface, with the purple glow on dark (for CTA cards)
    */
   variant?: Variant;
@@ -74,7 +74,7 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
           className={cn(
             "bg-white dark:bg-gray-900 rounded-[14px] h-full",
             variant === "featured" &&
-              "dark:[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.45),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.12),transparent_55%)]",
+              "[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.16),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.07),transparent_55%)] dark:[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.45),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.12),transparent_55%)]",
             PADDINGS[padding],
             innerClassName
           )}

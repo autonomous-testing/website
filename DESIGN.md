@@ -289,12 +289,21 @@ for buttons, 16 px for cards.
   plain on light, the purple-to-yellow ring on dark. Never on cards in a
   grid or a comparison.
 - **Recommended option:** in a comparison (plans, deployment options)
-  every option is the same card; the recommended one gets an ink hairline
-  on light, the purple glow on dark, and a Recommended badge. One
-  emphasis per comparison.
+  every option is the same card; the recommended one gets the purple glow
+  (soft on light, full on dark), a stronger hairline and a Recommended
+  badge. One emphasis per comparison.
+- **Media (videos, animations, product previews):** no frame and no
+  ring; a clean edge with a 12 px radius and a soft shadow on light.
+- **Icon tile:** a feature icon sits in a small yellow rounded square
+  (the symbol's shape) with the icon in ink, in both themes. No tag pill
+  that repeats the heading, no decorative numbers.
 - **Solid card:** a call-to-action block with the yellow primary button
   inside. Ink in both themes; on dark it carries the purple glow of the
   dark hero and a hairline. Purple is never the card's fill.
+- **Brand moments:** a page gets at most two strong bands besides its
+  hero: an ink band with the dark hero's purple glow (in both themes), and
+  one flat yellow field for the closing call to action. On the yellow
+  field the type is ink and the primary button is ink with white text.
 - **Marker:** the key phrase of one headline per screen, usually the hero.
   Never in every section heading, never in body text, never on the logo.
 
@@ -306,6 +315,9 @@ for buttons, 16 px for cards.
 - a blue-to-purple gradient outline button;
 - gradient frames on light grounds;
 - a gradient ring on every card in a grid (dark theme);
+- a frame or gradient ring around media;
+- yellow-to-transparent fades and orange gradient number circles;
+- emoji in section headings;
 - a purple card (in either theme), especially under a yellow button;
 - purple key phrases or headings on light;
 - a marker in every heading;

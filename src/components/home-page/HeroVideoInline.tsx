@@ -40,11 +40,6 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
     <div
       className={`group relative rounded-xl shadow-md shadow-black/5 transition-shadow duration-500 hover:shadow-lg hover:shadow-purple-900/20 ${className}`}
     >
-      {/* gradient frame, faded in on hover */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      />
       <div
         ref={frameRef}
         role={onExpand ? "button" : undefined}
@@ -57,7 +52,7 @@ const HeroVideoInline: React.FC<HeroVideoInlineProps> = ({
           }
         }}
         aria-label={onExpand ? "Expand product demo video" : undefined}
-        className={`relative overflow-hidden rounded-xl ${aspectClassName} ${onExpand ? "cursor-pointer" : ""} border border-gray-200/70 dark:border-gray-700/50 transition-colors duration-500 group-hover:border-transparent`}
+        className={`relative overflow-hidden rounded-xl ${aspectClassName} ${onExpand ? "cursor-pointer" : ""}`}
       >
         <video
           ref={videoRef}

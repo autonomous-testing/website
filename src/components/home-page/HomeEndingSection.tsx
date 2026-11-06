@@ -6,13 +6,14 @@ import { cmdBaseUrl } from "../../../cmdBaseUrl";
 
 const HomeEndingSection = () => {
   return (
-    <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
-      <div className="container my-12 lg:my-16 h-[30vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
+    // The page's yellow field (DESIGN.md, Surfaces): flat yellow, ink type, an ink primary button.
+    <div className="bg-primary-wopee text-gray-900">
+      <div className="container py-16 lg:py-20 flex flex-col justify-center gap-5 lg:gap-10 text-center">
         <div className="text-balance px-2 lg:px-0">
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-4xl font-bold text-gray-900">
             Streamline Your Web App Testing
           </h2>
-          <h3 className="text-gray-700 dark:text-white lg:text-3xl sm:text-2xl text-2xl">
+          <h3 className="text-gray-900 lg:text-3xl sm:text-2xl text-2xl">
             Effortless <span className="font-bold">Regression Testing</span>{" "}
             with Advanced Automation.
           </h3>
@@ -23,7 +24,7 @@ const HomeEndingSection = () => {
             <ButtonPrimaryInverted
               id="cta-book-demo"
               href="/book-demo/"
-              className="w-60 h-[50px]"
+              className="w-60 h-[50px] !text-gray-900 !border-gray-900 hover:!bg-gray-900 hover:!text-white"
             />
           </div>
           <div className="h-20">
@@ -31,9 +32,9 @@ const HomeEndingSection = () => {
               id="cta-start-testing"
               label="Start for free"
               href={`${cmdBaseUrl}/login`}
-              className="w-60 h-[50px]"
+              className="w-60 h-[50px] !bg-gray-900 !border-gray-900 !text-white"
             />
-            <p className="text-center text-sm italic">
+            <p className="text-center text-sm italic text-gray-900">
               No credit card required
             </p>
           </div>
