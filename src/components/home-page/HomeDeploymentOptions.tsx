@@ -32,7 +32,7 @@ const DeploymentCard = ({
       )}
       <div>
         <div className="flex items-center gap-4 mb-6">
-          <div className="text-primary-wopee shrink-0">{icon}</div>
+          <div className="text-gray-900 dark:text-primary-wopee shrink-0">{icon}</div>
           <div>
             <h3 className="text-3xl font-bold leading-tight m-0">{title}</h3>
             <p className="text-sm font-medium uppercase tracking-wider opacity-70 mt-1 m-0">
@@ -49,9 +49,10 @@ const DeploymentCard = ({
   if (recommended) {
     return (
       <GradientCard
-        variant="solid"
+        variant="featured"
         padding="roomy"
-        className="relative flex flex-col justify-between w-full max-w-md h-full"
+        className="w-full max-w-md h-full xl:scale-100"
+        innerClassName="relative flex flex-col justify-between"
       >
         {body}
       </GradientCard>

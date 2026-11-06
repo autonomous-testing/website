@@ -642,13 +642,19 @@ const SPECS: { group: string; items: Spec[] }[] = [
       },
       {
         name: "Highlighted frame",
-        use: "The one card that matters most on a page, such as the homepage form. Plain on light; the purple-to-yellow ring is a dark-theme device only.",
+        use: "Only the homepage form, the one place you act. Plain on light, the purple-to-yellow ring on dark. Never on cards in a grid or a comparison.",
         light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1px rgba(17,24,39,.1), 0 24px 50px rgba(76,29,149,.14)" }} />,
         dark: (
           <span className="block rounded-2xl p-[1.5px]" style={{ background: "linear-gradient(135deg,#7030a0,#a855f7 50%,#ffcc00)", boxShadow: "0 24px 50px rgba(59,7,100,.5)" }}>
             <span className="block h-16 w-40 rounded-[14px]" style={{ background: INK }} />
           </span>
         ),
+      },
+      {
+        name: "Recommended option",
+        use: "In a comparison every option is the same card; the recommended one gets an ink hairline on light, the purple glow on dark, and a Recommended badge.",
+        light: <span className="block h-16 w-40 rounded-2xl bg-white" style={{ boxShadow: "0 0 0 1.5px #111827, 0 24px 50px rgba(76,29,149,.18)" }} />,
+        dark: <span className="block h-16 w-40 rounded-2xl" style={{ background: "radial-gradient(circle at 15% 85%, rgba(112,48,160,.55), transparent 60%), #111827", boxShadow: "inset 0 0 0 1.5px rgba(255,255,255,.2)" }} />,
       },
       {
         name: "Solid card",
@@ -704,6 +710,20 @@ const RETIRED: { name: string; why: string; g: "light" | "dark"; art: React.Reac
     art: (
       <span className="block rounded-2xl p-[1.5px]" style={{ background: "linear-gradient(135deg,#7030a0,#a855f7 50%,#ffcc00)" }}>
         <span className="block h-14 w-36 rounded-[14px] bg-white" />
+      </span>
+    ),
+  },
+  {
+    name: "A gradient ring on every card",
+    why: "When every card in a grid has the ring, nothing is highlighted and the ring is just decoration. Next to the glow card it looked like a different product.",
+    g: "dark",
+    art: (
+      <span className="flex gap-2">
+        {[0, 1].map((i) => (
+          <span key={i} className="block rounded-xl p-[1.5px]" style={{ background: "linear-gradient(135deg,#7030a0,#a855f7 50%,#ffcc00)" }}>
+            <span className="block h-12 w-16 rounded-[10px]" style={{ background: "#111827" }} />
+          </span>
+        ))}
       </span>
     ),
   },

@@ -14,8 +14,8 @@ const PADDINGS: Record<Padding, string> = {
 export interface GradientCardProps
   extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * default = hairline on light, gradient ring on dark (matches homepage hero)
-   * featured = same ring with brighter shadow + xl:scale-105
+   * default = the plain card: a hairline in both themes (no gradient ring)
+   * featured = the recommended option in a comparison: ink hairline on light, purple glow on dark
    * solid = single layer: ink surface, with the purple glow on dark (for CTA cards)
    */
   variant?: Variant;
@@ -58,12 +58,14 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
       <div
         ref={ref}
         className={cn(
-          // Light theme: a plain hairline and a soft shadow (DESIGN.md, Elevation).
-          // Dark theme: the purple-to-yellow gradient ring.
-          "p-[1.5px] rounded-2xl bg-gray-900/10 shadow-[0_24px_50px_rgba(76,29,149,0.14)] dark:bg-gradient-to-br dark:from-secondary-wopee dark:via-purple-500 dark:to-primary-wopee dark:shadow-2xl",
+          // One card family (DESIGN.md, Components): a hairline in both themes.
+          // The gradient ring is reserved for the homepage form; it is never on cards in a grid.
+          // featured = the recommended option in a comparison: an ink hairline on light,
+          // the purple glow of the dark hero on dark.
+          "p-[1.5px] rounded-2xl",
           variant === "featured"
-            ? "dark:shadow-purple-900/70 xl:scale-105"
-            : "dark:shadow-purple-900/50",
+            ? "bg-gray-900 shadow-[0_24px_50px_rgba(76,29,149,0.18)] dark:bg-white/20 dark:shadow-[0_24px_60px_rgba(59,7,100,0.45)] xl:scale-105"
+            : "bg-gray-900/10 shadow-[0_24px_50px_rgba(76,29,149,0.10)] dark:bg-white/10 dark:shadow-none",
           className
         )}
         {...rest}
@@ -71,6 +73,8 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
         <div
           className={cn(
             "bg-white dark:bg-gray-900 rounded-[14px] h-full",
+            variant === "featured" &&
+              "dark:[background-image:radial-gradient(circle_at_15%_85%,rgba(112,48,160,0.45),transparent_60%),radial-gradient(circle_at_90%_10%,rgba(236,72,153,0.12),transparent_55%)]",
             PADDINGS[padding],
             innerClassName
           )}

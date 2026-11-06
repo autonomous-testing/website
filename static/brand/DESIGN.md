@@ -285,8 +285,13 @@ for buttons, 16 px for cards.
 - **Label:** neutral grey pill on light, a yellow tint on dark.
 - **Card:** white with a hairline and a soft shadow on light; a slightly
   lighter surface with a hairline on dark.
-- **Highlighted frame:** the one most important card on a page (the
-  homepage form): plain on light, the purple-to-yellow ring on dark.
+- **Highlighted frame:** only the homepage form, the one place you act:
+  plain on light, the purple-to-yellow ring on dark. Never on cards in a
+  grid or a comparison.
+- **Recommended option:** in a comparison (plans, deployment options)
+  every option is the same card; the recommended one gets an ink hairline
+  on light, the purple glow on dark, and a Recommended badge. One
+  emphasis per comparison.
 - **Solid card:** a call-to-action block with the yellow primary button
   inside. Ink in both themes; on dark it carries the purple glow of the
   dark hero and a hairline. Purple is never the card's fill.
@@ -300,6 +305,7 @@ for buttons, 16 px for cards.
 - a purple outline button;
 - a blue-to-purple gradient outline button;
 - gradient frames on light grounds;
+- a gradient ring on every card in a grid (dark theme);
 - a purple card (in either theme), especially under a yellow button;
 - purple key phrases or headings on light;
 - a marker in every heading;
