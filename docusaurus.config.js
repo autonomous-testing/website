@@ -317,14 +317,15 @@ const config = {
         // respectPrefersColorScheme: false,
       },
       navbar: {
-        // L1 lockup from static/brand (synced from the masters): the W square on in
-        // light mode, off (yellow W) in dark mode. No `title`: the SVG is the name.
+        // The wordmark is always one colour (DESIGN.md, Logo): ink on light, white on
+        // dark. Yellow lives in the symbol, the headline marker and the button.
+        // No `title`: the SVG is the name.
         logo: {
           alt: "Wopee.io",
-          src: "brand/svg/wopee-logo-horizontal-color-light.svg",
-          srcDark: "brand/svg/wopee-wordmark-color-dark.svg",
-          width: 144,
-          height: 31,
+          src: "brand/svg/wopee-wordmark-mono-ink.svg",
+          srcDark: "brand/svg/wopee-wordmark-mono-white.svg",
+          width: 139,
+          height: 30,
           className: "navbar-brand-logo",
         },
         items: [

@@ -160,7 +160,7 @@ strong {
   --chart-5: 340 75% 55%;
 
   /* Docusaurus Style */
-  --nav-button-text-color: var(--ifm-color-secondary);
+  --nav-button-text-color: #111827; /* ink on the yellow button (DESIGN.md) */
   --ifm-color-primary: #ffcc00;
   --ifm-color-primary-dark: #ffb200;
   --ifm-color-primary-darker: #ffa000;
@@ -186,7 +186,7 @@ strong {
   width: 8.5rem;
   cursor: pointer;
   padding: 9px 14px;
-  border-radius: 5px;
+  border-radius: 8px;
   align-items: center;
   display: inline-flex;
   text-decoration: none;
@@ -205,14 +205,46 @@ strong {
 #navbar-button {
   cursor: pointer;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   color: var(--nav-button-text-color);
   background-color: var(--ifm-color-primary);
 }
 
 #navbar-button:hover {
-  background-color: var(--ifm-color-primary-light);
+  background-color: #ffd633;
+}
+
+/* Light theme: the primary action is yellow with ink text (DESIGN.md,
+   Components), Log in is a neutral outline. Links keep the purple
+   --ifm-color-primary; dark theme is unchanged. */
+html:not([data-theme="dark"]) #navbar-button {
+  background-color: #ffcc00;
+  color: #111827;
+}
+html:not([data-theme="dark"]) #navbar-button:hover {
+  background-color: #ffd633;
+  color: #111827;
+}
+html:not([data-theme="dark"]) #login-button {
+  color: #111827;
+  border-color: #d1d5db;
+}
+html:not([data-theme="dark"]) #login-button:hover {
+  color: #111827;
+  border-color: #111827;
+  background-color: rgba(17, 24, 39, 0.05);
+}
+/* Dark theme: Log in is the same neutral outline, so only one yellow (the
+   primary button) sits in the header. */
+[data-theme="dark"] #login-button {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+[data-theme="dark"] #login-button:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 200px) and (max-width: 996px) {
@@ -273,7 +305,20 @@ a.navbar__item:hover {
   color: var(--unexisting-color);
 }
 
-/* Navbar L1 lockup: light and dark files swap via navbar.logo.srcDark. */
+/* Brand grounds (DESIGN.md, Colors): the dark page is ink #111827, not
+   Docusaurus grey; raised surfaces (dropdowns, menus) are gray-800.
+   html[...] matches Infima's own selector, so these win. */
+html[data-theme="dark"] {
+  --ifm-background-color: #111827;
+  --ifm-background-surface-color: #1f2937;
+  --ifm-navbar-background-color: #111827;
+  --ifm-dropdown-background-color: #1f2937;
+}
+[data-theme="dark"] .navbar {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Navbar wordmark: one colour, ink (light) and white (dark) swap via navbar.logo.srcDark. */
 .navbar__brand {
   margin-left: var(--ifm-navbar-item-padding-horizontal);
   min-height: 44px;
@@ -298,16 +343,76 @@ a.navbar__item:hover {
   height: 30px;
   width: auto;
 }
-.navbar__logo img[src*="logo-horizontal"] {
-  height: 31.4px;
+
+/* Hover glow (DESIGN.md, Components > States): a card that is a link lights
+   up with the same purple glow as the recommended card. One class, both
+   themes, no lift. */
+.wp-hover-glow {
+  position: relative;
+  isolation: isolate;
+}
+.wp-hover-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-image: radial-gradient(circle at 15% 85%, rgba(112, 48, 160, 0.16), transparent 60%),
+    radial-gradient(circle at 90% 10%, rgba(236, 72, 153, 0.07), transparent 55%);
+}
+[data-theme="dark"] .wp-hover-glow::before {
+  background-image: radial-gradient(circle at 15% 85%, rgba(112, 48, 160, 0.45), transparent 60%),
+    radial-gradient(circle at 90% 10%, rgba(236, 72, 153, 0.12), transparent 55%);
+}
+.wp-hover-glow:hover::before,
+.group:hover > .wp-hover-glow::before {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-hover-glow::before {
+    transition: none;
+  }
+}
+
+/* Headline key phrase (DESIGN.md, Typography): light theme sets ink text on a
+   yellow marker band, dark theme sets the phrase in yellow. One per screen.
+   .key-phrase is the same treatment for a single phrase outside the hero (for
+   example a dialog title). Section headings stay plain: one per screen. */
+.key-phrase {
+  color: #111827;
+  background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
+  padding: 0 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+[data-theme="dark"] .key-phrase {
+  color: #ffcc00;
+  background-image: none;
+  padding: 0;
+}
+.hero-key {
+  color: #111827;
+  background-image: linear-gradient(transparent 58%, #ffcc00 58%, #ffcc00 92%, transparent 92%);
+  padding: 0 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+[data-theme="dark"] .hero-key {
+  color: #ffcc00;
+  background-image: none;
+  padding: 0;
+  text-shadow: 0 0 40px rgba(112, 48, 160, 0.35), 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Hero primary CTA, slow pulsing glow when enabled, invites the click
    without ever animating loud enough to feel pushy. Disabled state stays
    still. Pulse colour matches the button fill in each theme. */
 @keyframes hero-cta-pulse-light {
-  0%, 100% { box-shadow: 0 4px 16px rgba(112, 48, 160, 0.35); }
-  50% { box-shadow: 0 6px 28px rgba(112, 48, 160, 0.55); }
+  0%, 100% { box-shadow: 0 4px 14px rgba(202, 138, 4, 0.28); }
+  50% { box-shadow: 0 6px 24px rgba(202, 138, 4, 0.45); }
 }
 @keyframes hero-cta-pulse-dark {
   0%, 100% { box-shadow: 0 4px 16px rgba(255, 204, 0, 0.35); }
@@ -693,13 +798,8 @@ a.navbar__item:hover {
   line-height: 1.4;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: #7030a0;
-  color: #fff;
-}
-
-[data-theme="dark"] .nav-new {
   background: #ffcc00;
-  color: #1b1b1d;
+  color: #111827;
 }
 
 .nav-rich-desc {

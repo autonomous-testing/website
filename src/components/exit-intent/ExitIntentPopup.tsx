@@ -162,7 +162,7 @@ export default function ExitIntentPopup({ enabled }: { enabled: boolean }) {
               id="cta-exit-intent-trial"
               href={loginUrl}
               onClick={() => onCta("trial")}
-              className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-secondary-wopee text-base font-semibold text-white transition-opacity hover:text-white hover:no-underline hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:bg-primary-wopee dark:text-secondary-wopee dark:hover:text-secondary-wopee dark:focus-visible:outline-primary-wopee"
+              className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-secondary-wopee text-base font-semibold text-white transition-opacity hover:text-white hover:no-underline hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:bg-primary-wopee dark:text-gray-900 dark:hover:text-gray-900 dark:focus-visible:outline-primary-wopee"
             >
               Start for free
             </Link>
