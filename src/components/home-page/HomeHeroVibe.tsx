@@ -137,8 +137,21 @@ const HomeHeroVibe = () => {
 
   return (
     <div className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center gap-6 sm:gap-8 lg:gap-12 overflow-hidden py-8 sm:py-10 lg:py-14">
+      {/* Light theme (DESIGN.md, Colors): white with the 40 px grid and one
+          soft purple glow behind the headline that never reaches the edges. */}
       <div
-        className="pointer-events-none select-none absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 w-full h-full bg-white z-0 dark:hidden"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 620px 360px at 50% 30%, rgba(112, 48, 160, 0.13) 0%, rgba(112, 48, 160, 0.05) 55%, transparent 100%), linear-gradient(rgba(17,24,39,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(17,24,39,0.045) 1px, transparent 1px)",
+          backgroundSize: "100% 100%, 40px 40px, 40px 40px",
+        }}
+      />
+      {/* Dark theme: the playful purple and pink glow, unchanged. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 w-full h-full hidden dark:block dark:bg-gradient-to-br dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 z-0"
         style={{
           backgroundImage:
             "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.15) 100%), radial-gradient(circle at 15% 75%, rgba(112, 48, 160, 0.32) 0%, transparent 55%), radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.12) 0%, transparent 55%), linear-gradient(rgba(128,128,128,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(128,128,128,0.08) 1px, transparent 1px)",
@@ -149,26 +162,18 @@ const HomeHeroVibe = () => {
 
       <section className="relative z-10 flex flex-col items-center gap-2 md:gap-3 px-4">
         <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-900/5 dark:bg-white/5 backdrop-blur border border-gray-900/10 dark:border-white/15 text-gray-700 dark:text-gray-200">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary-wopee" />
+          <span className="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-primary-wopee" />
           <span>
             Playwright-friendly · Self-healing · <strong className="font-semibold">Free to start</strong>
           </span>
         </div>
         <h1
-          className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty leading-[1] tracking-tighter"
-          style={{ textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
+          className="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-pretty leading-[1] tracking-tighter dark:[text-shadow:0_4px_30px_rgba(0,0,0,0.25)]"
         >
           <span className="whitespace-nowrap">AI Testing Agents</span>
           <br />
-          <span
-            className="text-secondary-wopee dark:text-primary-wopee"
-            style={{
-              textShadow:
-                "0 0 40px rgba(112,48,160,0.35), 0 4px 30px rgba(0,0,0,0.15)",
-            }}
-          >
-            for Web Apps
-          </span>
+          {/* Key phrase: yellow marker on light, yellow text on dark (custom.css). */}
+          <span className="hero-key">for Web Apps</span>
         </h1>
         <p className="max-w-2xl text-center text-base sm:text-lg text-gray-700 dark:text-gray-300 text-balance leading-snug mt-1">
           Wopee.io agents run the whole pipeline: explore, generate, execute,
@@ -179,16 +184,17 @@ const HomeHeroVibe = () => {
       <div className="relative z-20 w-full max-w-6xl px-4 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
         {/* Left: the "start testing" form. */}
         <div className="w-full lg:w-[560px] flex-shrink-0 flex flex-col items-center gap-2">
-          <div className="relative w-full rounded-2xl shadow-2xl shadow-purple-900/40">
-            {/* Gradient border layer, animates out when the demo video is
-                hovered, mirroring the video's frame animating in. */}
+          <div className="relative w-full rounded-2xl shadow-[0_24px_50px_rgba(76,29,149,0.14)] dark:shadow-2xl dark:shadow-purple-900/40">
+            {/* Gradient border layer (dark theme only; light keeps a plain
+                hairline), animates out when the demo video is hovered,
+                mirroring the video's frame animating in. */}
             <span
               aria-hidden="true"
-              className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee transition-opacity duration-500 ${
+              className={`pointer-events-none absolute inset-0 rounded-2xl hidden dark:block bg-gradient-to-br from-secondary-wopee via-purple-500 to-primary-wopee transition-opacity duration-500 ${
                 videoHovered ? "opacity-0" : "opacity-100"
               }`}
             />
-          <div className="relative bg-white dark:bg-gray-900 rounded-[14px] m-[1.5px] p-4 sm:p-5 flex flex-col gap-3">
+          <div className="relative bg-white dark:bg-gray-900 rounded-[14px] m-[1.5px] ring-1 ring-gray-900/10 dark:ring-0 p-4 sm:p-5 flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <label className="text-[10px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400 font-semibold pl-1">
@@ -198,7 +204,7 @@ const HomeHeroVibe = () => {
                     "Demo app" switches to a demo and opens the picker so a
                     specific demo (Website / E-commerce / Banking) stays
                     selectable. */}
-                <div className="inline-flex items-center gap-0.5 max-sm:flex max-sm:w-full max-sm:gap-1 rounded-lg p-0.5 ring-1 ring-inset ring-secondary-wopee/20 dark:ring-white/10 bg-secondary-wopee/5 dark:bg-white/5">
+                <div className="inline-flex items-center gap-0.5 max-sm:flex max-sm:w-full max-sm:gap-1 rounded-lg p-0.5 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 bg-gray-900/[0.04] dark:bg-white/5">
                   <div
                     role="button"
                     tabIndex={0}
@@ -212,8 +218,8 @@ const HomeHeroVibe = () => {
                     }}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none max-sm:flex-1 max-sm:justify-center max-sm:min-h-[44px] max-sm:text-sm cursor-pointer select-none transition-all ${
                       appType === AppType.YOUR_APPLICATION
-                        ? "bg-secondary-wopee text-white shadow-sm"
-                        : "text-secondary-wopee/90 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
+                        ? "bg-white text-gray-900 shadow-sm ring-1 ring-gray-900/15 dark:ring-0 dark:bg-secondary-wopee dark:text-white"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-900/5 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
                     }`}
                   >
                     <AppWindow className="w-3.5 h-3.5" />
@@ -243,8 +249,8 @@ const HomeHeroVibe = () => {
                       }}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold leading-none max-sm:flex-1 max-sm:justify-center max-sm:min-h-[44px] max-sm:text-sm cursor-pointer select-none transition-all ${
                         DEMO_SCENARIOS.includes(appType)
-                          ? "bg-secondary-wopee text-white shadow-sm"
-                          : "text-secondary-wopee/90 hover:text-secondary-wopee hover:bg-secondary-wopee/10 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
+                          ? "bg-white text-gray-900 shadow-sm ring-1 ring-gray-900/15 dark:ring-0 dark:bg-secondary-wopee dark:text-white"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-900/5 dark:text-white/70 dark:hover:text-white dark:hover:bg-white/10"
                       }`}
                     >
                       <FlaskConical className="w-3.5 h-3.5" />
@@ -363,11 +369,11 @@ const HomeHeroVibe = () => {
                 onClick={() =>
                   setLoginDialogState({ isOpen: true, mode: "vibe" })
                 }
-                className="hero-cta w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-bold rounded-lg shadow-lg shadow-purple-500/40 dark:shadow-yellow-500/40 hover:shadow-purple-500/60 dark:hover:shadow-yellow-500/60 transition-all"
+                className="hero-cta w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-bold rounded-lg bg-primary-wopee hover:bg-[#ffd633] dark:hover:bg-[#ffd633] text-gray-900 shadow-lg shadow-yellow-600/25 dark:shadow-yellow-500/40 hover:shadow-yellow-600/40 dark:hover:shadow-yellow-500/60 transition-all"
                 id="vibe-testing"
               >
                 <Sparkles className="w-5 h-5" />
-                <span className="text-white dark:text-black font-bold">
+                <span className="text-gray-900 dark:text-black font-bold">
                   Generate my first test
                 </span>
               </Button>
