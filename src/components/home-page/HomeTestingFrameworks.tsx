@@ -37,15 +37,13 @@ const HomeTestingFrameworks = () => {
     <section className="w-full flex flex-col items-center py-16 px-4">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-[1.1] text-center text-gray-950 dark:text-white mb-12 text-balance">
         Plug Wopee.io into your{" "}
-        <span className="text-secondary-wopee dark:text-primary-wopee">
-          testing stack
-        </span>
+        testing stack
       </h2>
       <ul className="m-0 p-0 list-none flex flex-wrap items-center justify-center gap-x-12 gap-y-8 w-full max-w-6xl lg:flex-nowrap lg:justify-between lg:gap-x-6">
         {TOOLS.map(({ name, icon }) => (
           <li
             key={name}
-            className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-secondary-wopee dark:hover:text-primary-wopee transition-colors"
+            className="flex items-center gap-3 text-gray-500 dark:text-gray-400"
           >
             {icon}
             <span className="text-lg md:text-xl font-semibold whitespace-nowrap">

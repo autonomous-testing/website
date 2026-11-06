@@ -84,7 +84,7 @@ const LoginDialog = ({
               {isVibe ? (
                 <>
                   Start your{" "}
-                  <span className="text-secondary-wopee dark:text-primary-wopee">
+                  <span className="key-phrase">
                     free
                   </span>{" "}
                   AI testing
