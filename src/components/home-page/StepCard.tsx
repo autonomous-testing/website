@@ -40,13 +40,13 @@ export default function StepCard({
       {/* Content Section */}
       <div className={isLeftLayout ? "lg:order-2" : "lg:order-1"}>
         <div className="flex items-center mb-6">
-          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+          <div className="bg-primary-wopee text-gray-900 w-12 h-12 rounded-[11px] flex items-center justify-center text-xl font-bold mr-4">
             {stepNumber}
           </div>
           <h3 className="text-3xl font-bold text-white">{title}</h3>
         </div>
 
-        <h4 className="text-2xl font-bold text-yellow-400 mb-6">{subtitle}</h4>
+        <h4 className="text-2xl font-bold text-primary-wopee mb-6">{subtitle}</h4>
 
         <div className="mb-6">
           {bulletPointsTitle && (
