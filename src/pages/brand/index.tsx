@@ -10,7 +10,7 @@ import WopeeIo from "@site/src/components/brand/WopeeIo";
 
 const KIT = {
   href: "/brand/wopee-brand-kit-2026.zip",
-  size: "ZIP, 1.4 MB",
+  size: "ZIP, 1.5 MB",
 };
 const SVG = (n: string) => `/brand/svg/wopee-${n}.svg`;
 const PNG = (n: string) => `/brand/png/wopee-${n}@2x.png`;
@@ -1041,8 +1041,8 @@ function AgentsSection() {
 
 const L = SVG(INK_LOGO);
 const D = SVG(WHITE_LOGO);
-// The old two-colour wordmark, kept on disk for existing links; shown here only as a don't.
-const OLD_TWO_COLOUR = SVG("wordmark-color-dark");
+// The retired two-colour wordmark, shown here only as a don't (it is not in /brand/ or the kit).
+const OLD_TWO_COLOUR = "/img/brand/dont-two-colour-wordmark.svg";
 const logoImg = (src: string, alt: string, style?: React.CSSProperties, className = "h-9 w-auto max-w-full") => <img src={src} alt={alt} width={180} height={38} className={className} style={style} />;
 
 const RULES: { ok: boolean; text: string; g: keyof typeof GROUNDS; art: React.ReactNode }[] = [
