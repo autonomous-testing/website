@@ -5,8 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "generate:pseo": "node scripts/generate-pseo.js",
-    "start": "cp DESIGN.md static/brand/DESIGN.md && node scripts/generate-pseo.js && docusaurus start",
-    "build": "cp DESIGN.md static/brand/DESIGN.md && node scripts/generate-pseo.js && docusaurus build",
+    "brand:kit": "node scripts/brand-kit.cjs",
+    "start": "cp DESIGN.md static/brand/DESIGN.md && node scripts/brand-kit.cjs && node scripts/generate-pseo.js && docusaurus start",
+    "build": "cp DESIGN.md static/brand/DESIGN.md && node scripts/brand-kit.cjs && node scripts/generate-pseo.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

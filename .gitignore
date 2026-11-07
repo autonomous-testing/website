@@ -25,5 +25,6 @@ yarn-error.log*
 # playwright-cli session artifacts
 .playwright-cli/
 
-# Generated from the root DESIGN.md at start and build (package.json)
+# Generated at start and build (package.json): DESIGN.md from the root file, the kit by scripts/brand-kit.cjs
 /static/brand/DESIGN.md
+/static/brand/wopee-brand-kit-2026.zip

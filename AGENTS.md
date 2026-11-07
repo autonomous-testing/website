@@ -21,6 +21,8 @@ If a change does not require thorough testing, sync/deploy to both forks at once
 
 `DESIGN.md` (repo root) is the brand's source of truth: tokens, logo files per situation, website, slide and social rules, and the don'ts. Read it before any visual change. It is published at https://wopee.io/brand/DESIGN.md for outside agents: `yarn start` and `yarn build` copy it to `static/brand/DESIGN.md` (gitignored), so **edit only the root file**. The human page `/brand` (`src/pages/brand/index.tsx`) must say the same thing.
 
+Logo and monkey files live in `static/brand/svg` and `static/brand/png`; every file there must follow DESIGN.md. The brand kit `static/brand/wopee-brand-kit-2026.zip` is not committed: `yarn start` and `yarn build` pack it with `scripts/brand-kit.cjs` from those folders, `static/brand/examples`, the favicons in `static/img` and DESIGN.md, so a file added to `svg/` or `png/` is in the kit at the next build. The share cards (`scripts/og-cards`) load the logo and monkey straight from `static/brand/svg`.
+
 ## Styling gotchas (Docusaurus + Infima)
 
 Non-obvious dependency behaviour that repeatedly bites when styling custom components. None of this is visible from our own code, it comes from Infima (Docusaurus's CSS framework) and the Docusaurus runtime.

@@ -8,17 +8,12 @@
     });
   }
 
-  // The punchline as text, with "→" in the accent colour and a line break at each newline.
+  // The punchline as text, with a line break at each newline.
   function setPunchline(el, text) {
     el.textContent = "";
-    text.split(/(→|\n)/).forEach(function (part) {
-      if (part === "\n") el.appendChild(document.createElement("br"));
-      else if (part === "→") {
-        var s = document.createElement("span");
-        s.className = "arrow";
-        s.textContent = part;
-        el.appendChild(s);
-      } else if (part) el.appendChild(document.createTextNode(part));
+    text.split("\n").forEach(function (part, i) {
+      if (i) el.appendChild(document.createElement("br"));
+      if (part) el.appendChild(document.createTextNode(part));
     });
   }
 
