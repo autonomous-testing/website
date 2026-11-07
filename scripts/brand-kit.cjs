@@ -2,7 +2,6 @@
 // Builds static/brand/wopee-brand-kit-2026.zip (gitignored) at `yarn start` and `yarn build`:
 //   DESIGN.md, svg/ and png/ (static/brand), examples/ (static/brand/examples),
 //   favicons/ (the favicon and app-icon set from static/img).
-// Files in static/brand that break DESIGN.md stay on disk for existing links but are left out (LEGACY).
 // No dependencies and no system zip (Node 22 zlib); a fixed date, so the same files give the same bytes.
 "use strict";
 
@@ -14,19 +13,6 @@ const ROOT = path.join(__dirname, "..");
 const BRAND = path.join(ROOT, "static", "brand");
 const OUT = path.join(BRAND, "wopee-brand-kit-2026.zip");
 
-const LEGACY = new Set([
-  "wopee-logo-horizontal-color-light",
-  "wopee-logo-horizontal-mono-black",
-  "wopee-logo-horizontal-mono-ink",
-  "wopee-symbol-commander-color-light",
-  "wopee-symbol-mcp-color-light",
-  "wopee-symbol-on-yellow",
-  "wopee-wordmark-color-light",
-  "wopee-wordmark-commander-color-dark",
-  "wopee-wordmark-commander-color-light",
-  "wopee-wordmark-mcp-color-dark",
-  "wopee-wordmark-mcp-color-light",
-]);
 const FAVICONS = [
   "favicon.svg",
   "favicon-16.svg",
@@ -44,7 +30,7 @@ const FAVICONS = [
 const dirEntries = (dir, prefix) =>
   fs
     .readdirSync(dir)
-    .filter((f) => !f.startsWith(".") && !LEGACY.has(f.replace(/(@2x)?\.\w+$/, "")))
+    .filter((f) => !f.startsWith("."))
     .sort()
     .map((f) => [`${prefix}/${f}`, path.join(dir, f)]);
 
