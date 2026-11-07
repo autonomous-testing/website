@@ -34,7 +34,7 @@ const HomeProblemSection = () => {
         the same upgrade. Until now.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
-        {pains.map(({ icon: Icon, title, description }) => (
+        {pains.map(({ icon: Icon, title, description }, idx) => (
           <div
             key={title}
             className="wp-hover-glow h-full rounded-xl border border-solid border-gray-200 bg-white p-5 shadow-sm transition-colors hover:border-gray-900/30 dark:border-white/10 dark:bg-[#181f2e] dark:shadow-none dark:hover:border-white/25 md:p-6 flex flex-col"
@@ -45,6 +45,9 @@ const HomeProblemSection = () => {
                   className="size-5 text-gray-900"
                   aria-hidden="true"
                 />
+              </span>
+              <span className="font-mono text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500">
+                0{idx + 1}
               </span>
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white m-0 mb-1.5">

@@ -99,6 +99,9 @@ const HomeBenefits = () => {
                 <span className="inline-flex items-center justify-center w-10 h-10 bg-primary-wopee rounded-[9px]">
                   {benefit.icon}
                 </span>
+                <span className="ml-auto px-3 py-1 text-xs rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 font-semibold">
+                  {benefit.badge}
+                </span>
               </div>
               <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-1 min-h-[48px] flex items-center">
                 {benefit.title}
