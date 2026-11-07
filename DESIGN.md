@@ -228,6 +228,8 @@ yellow-800 #7A5C00 for the Build & Break title shadow only.
 
 - **Rubik** is used for all text. Headings use weight 700 with tight
   tracking, and letters must not touch. Body text uses weight 400.
+  The one exception: share-card headlines (the generated 1200 × 630 images) use
+  weight 900, so they stay legible in a 138 px feed thumbnail.
 - **Bungee** is used for the W of the logo only. The logo files are
   outlined, so no font is needed to use them. In display headings, the
   site's `WopeeIo` component may set the name with the Bungee W. Never
@@ -363,6 +365,7 @@ ExtraBold, W at cap height):
 - A yellow tile with an ink W. Use it for favicons, app icons, avatars,
   the cap and stickers.
 - Below 32 px use the dedicated 16 px drawing (`/img/favicon-16.svg`).
+- One-colour versions (`wopee-symbol-mono-ink`, `-mono-white`, `-mono-black`: the tile in one colour with the W knocked out) are for print, stamps and engraving, where yellow can't be reproduced.
 
 **Products:**
 
