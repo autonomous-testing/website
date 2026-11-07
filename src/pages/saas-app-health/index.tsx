@@ -795,7 +795,7 @@ function Timeline({ active }: { active: number[] }) {
           className={`relative m-0 rounded-full border border-solid px-1.5 py-0.5 text-[10px] font-medium leading-tight tabular-nums sm:px-2 sm:text-[11px] ${
             active.includes(i)
               ? "border-secondary-wopee bg-secondary-wopee text-white dark:border-primary-wopee dark:bg-primary-wopee dark:text-gray-900"
-              : "border-gray-300 bg-white text-gray-500 dark:border-white/20 dark:bg-[#1b1b1d] dark:text-gray-400"
+              : "border-gray-300 bg-white text-gray-500 dark:border-white/20 dark:bg-[#111827] dark:text-gray-400"
           }`}
         >
           {t}

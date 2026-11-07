@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import GradientCard from "./GradientCard";
+import { cn } from "@/lib/utils";
 import useDeferredInView from "@site/src/hooks/useDeferredInView";
 
 interface VideoCardProps {
@@ -67,11 +67,10 @@ export default function VideoCard({
   }, [shouldLoad, videoLoading]);
 
   return (
-    <GradientCard
+    // Media has no frame (DESIGN.md, Components): a clean edge and a soft shadow on light.
+    <div
       ref={cardRef}
-      padding="none"
-      className={className}
-      innerClassName="bg-[#1a1a2e] dark:bg-[#1a1a2e] p-1 relative group overflow-hidden"
+      className={cn("relative group overflow-hidden rounded-xl bg-[#111827] shadow-[0_24px_50px_rgba(17,24,39,0.18)] dark:shadow-none", className)}
     >
       {/* Video or Fallback Image */}
       {!videoError ? (
@@ -82,7 +81,7 @@ export default function VideoCard({
             muted
             loop
             playsInline
-            className="w-full h-auto rounded-lg block"
+            className="w-full h-auto block"
             style={{ maxHeight: maxHeight || "300px", objectFit: "cover" }}
             onError={handleVideoError}
             onLoadedData={handleVideoLoad}
@@ -113,7 +112,7 @@ export default function VideoCard({
           <img
             src={fallbackImageSrc}
             alt="Step demonstration"
-            className="w-full h-auto rounded-lg block"
+            className="w-full h-auto block"
             style={{ maxHeight: maxHeight || "300px", objectFit: "cover" }}
             loading="lazy"
           />
@@ -155,6 +154,6 @@ export default function VideoCard({
             </svg>
           </button>
       )}
-    </GradientCard>
+    </div>
   );
 }
