@@ -19,7 +19,7 @@ If a change does not require thorough testing, sync/deploy to both forks at once
 
 ## Brand and design rules
 
-`DESIGN.md` (repo root) is the brand's source of truth: tokens, logo files per situation, website, slide and social rules, and the don'ts. Read it before any visual change. It is also published as `static/brand/DESIGN.md` (https://wopee.io/brand/DESIGN.md) for outside agents, so **edit the root file and copy it over** (`cp DESIGN.md static/brand/DESIGN.md`); the two must stay identical. The human page `/brand` (`src/pages/brand/index.tsx`) must say the same thing.
+`DESIGN.md` (repo root) is the brand's source of truth: tokens, logo files per situation, website, slide and social rules, and the don'ts. Read it before any visual change. It is published at https://wopee.io/brand/DESIGN.md for outside agents: `yarn start` and `yarn build` copy it to `static/brand/DESIGN.md` (gitignored), so **edit only the root file**. The human page `/brand` (`src/pages/brand/index.tsx`) must say the same thing.
 
 ## Styling gotchas (Docusaurus + Infima)
 

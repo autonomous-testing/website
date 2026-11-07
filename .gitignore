@@ -24,3 +24,6 @@ yarn-error.log*
 
 # playwright-cli session artifacts
 .playwright-cli/
+
+# Generated from the root DESIGN.md at start and build (package.json)
+/static/brand/DESIGN.md
