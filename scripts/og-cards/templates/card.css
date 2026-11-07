@@ -2,15 +2,18 @@
    LinkedIn shows organic link posts on desktop as a ~138 px thumbnail (1/8.7 scale),
    so the card is one short punchline in huge type, the monkey (or a GIF frame) and the
    brand colour. The kicker and the logo are for the full-width 552 px card.
+   Colours follow DESIGN.md: pages are a flat yellow field with ink type and the ink wordmark;
+   blog and changelog are ink with white type, the white wordmark and yellow only in the kicker.
+   Logo and monkey files come straight from static/brand/svg; the monkey is never cropped.
    Safe area: key text sits inside x 64-1136, y 44-586. Only decoration may bleed. */
 @font-face { font-family: "Rubik"; font-weight: 900; src: url("assets/fonts/Rubik-w900.ttf") format("truetype"); }
-@font-face { font-family: "Bungee"; font-weight: 400; src: url("assets/fonts/Bungee-Regular.ttf") format("truetype"); }
 
 :root {
   --yellow: #ffcc00;
-  --purple: #7030a0;
   --ink: #111827;
   --white: #ffffff;
+  --gray-800: #1f2937;
+  --muted-dark: #d1d5db;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -25,20 +28,22 @@ body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: a
   color: var(--ink);
 }
 
+/* The kicker is a badge: Rubik, uppercase and tracked (Bungee is for the W of the logo only). */
 .kicker {
   position: absolute;
   left: 64px;
   top: 44px;
-  font-family: "Bungee", sans-serif;
-  font-size: 24px;
+  font-weight: 900;
+  font-size: 22px;
   line-height: 1;
-  letter-spacing: 0.02em;
-  padding: 10px 14px 8px;
-  border-radius: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 11px 18px 10px;
+  border-radius: 999px;
   white-space: nowrap;
   z-index: 3;
 }
-.logo { position: absolute; left: 64px; bottom: 44px; height: 50px; width: auto; display: block; z-index: 3; }
+.logo { position: absolute; left: 64px; bottom: 44px; height: 48px; width: auto; display: block; z-index: 3; }
 
 /* The punchline box: the text is fitted to it (render.js). */
 .punch {
@@ -59,22 +64,37 @@ body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: a
   overflow-wrap: normal;
   text-wrap: balance;
 }
-.punchline .arrow { color: var(--purple); }
 
-.monkey { position: absolute; display: block; z-index: 1; }
-.disc { position: absolute; border-radius: 50%; overflow: hidden; z-index: 1; }
-.disc img { position: absolute; left: 50%; transform: translateX(-50%); top: 9%; height: 96%; }
+.mascot, .sticker { position: absolute; display: block; z-index: 1; }
 
-/* ---------- (a) changelog: yellow ---------- */
-.t-changelog { background: var(--yellow); }
-.t-changelog .kicker { background: var(--ink); color: var(--yellow); }
+/* ---------- (c) site default and landing pages: yellow field ---------- */
+.t-page { background: var(--yellow); color: var(--ink); }
+.t-page .kicker { background: var(--ink); color: var(--white); }
+.t-page .punch { width: 700px; }
+/* The monkey stands on the yellow ground, whole, inside the safe area. */
+.t-page .mascot { right: 64px; top: 92px; height: 446px; }
 
-/* No GIF: the monkey, big, on the yellow ground. */
-.t-changelog.no-shot .punch { width: 720px; }
-.t-changelog.no-shot .monkey { left: 802px; top: 92px; height: 548px; }
+/* ---------- (b) blog and (a) changelog: ink ---------- */
+.t-blog, .t-changelog { background: var(--ink); color: var(--white); }
+.t-blog .kicker, .t-changelog .kicker { background: var(--yellow); color: var(--ink); }
+
+/* The monkey on its yellow disc, whole, inside the safe area. */
+.t-blog .punch, .t-changelog.no-shot .punch { width: 650px; }
+.t-blog .mascot, .t-changelog .mascot { left: 752px; top: 108px; width: 384px; height: 384px; }
+
+.author { position: absolute; right: 64px; bottom: 44px; display: flex; align-items: center; gap: 14px; z-index: 3; }
+.author .avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover; background: var(--gray-800);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 20px; color: var(--white);
+  flex: none;
+}
+.author .name { font-weight: 900; font-size: 22px; color: var(--muted-dark); }
 
 /* GIF: the frame in a browser window, bleeding off the right edge, with a monkey sticker. */
-.t-changelog.has-shot .punch { width: 690px; }
+.t-changelog.has-shot .punch { width: 670px; }
 .shot {
   position: absolute;
   left: 784px;
@@ -82,46 +102,14 @@ body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: a
   width: 500px;
   height: 430px;
   background: var(--white);
-  border: 6px solid var(--ink);
-  border-radius: 18px;
-  box-shadow: 14px 14px 0 var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   transform: rotate(3deg);
   transform-origin: 0 0;
   z-index: 1;
 }
-.shot .bar { height: 30px; background: var(--ink); display: flex; align-items: center; gap: 8px; padding-left: 14px; }
-.shot .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--yellow); display: block; }
-.shot .bar i:nth-child(2) { background: #b98ae0; }
-.shot .bar i:nth-child(3) { background: var(--white); }
+.shot .bar { height: 30px; background: var(--gray-800); display: flex; align-items: center; gap: 8px; padding-left: 14px; }
+.shot .bar i { width: 11px; height: 11px; border-radius: 50%; background: #6b7280; display: block; }
 .shot img { display: block; width: 100%; height: calc(100% - 30px); object-fit: cover; object-position: left top; }
-.sticker { left: 724px; top: 436px; width: 140px; height: 140px; background: var(--yellow); border: 6px solid var(--ink); z-index: 3; }
-
-/* ---------- (b) blog: ink ---------- */
-.t-blog { background: var(--ink); color: var(--white); }
-.t-blog .kicker { background: var(--yellow); color: var(--ink); }
-.t-blog .punch { width: 730px; }
-.t-blog .punchline { color: var(--yellow); }
-.t-blog .punchline .arrow { color: var(--white); }
-.t-blog .disc { left: 836px; top: 105px; width: 420px; height: 420px; background: var(--yellow); }
-.author { position: absolute; right: 64px; bottom: 44px; display: flex; align-items: center; gap: 14px; z-index: 3; }
-.author .avatar {
-  width: 52px; height: 52px; border-radius: 50%;
-  border: 3px solid var(--yellow);
-  object-fit: cover; background: var(--purple);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 20px; color: var(--white);
-  flex: none;
-}
-.author .name { font-weight: 900; font-size: 22px; color: #e5e7eb; }
-
-/* ---------- (c) site default and landing pages: purple ---------- */
-.t-page { background: var(--purple); color: var(--white); }
-.t-page .kicker { background: var(--yellow); color: var(--ink); }
-.t-page .punch { width: 730px; }
-.t-page .punchline { color: var(--white); }
-.t-page .punchline .arrow { color: var(--yellow); }
-.t-page .disc { left: 836px; top: 105px; width: 420px; height: 420px; background: var(--yellow); }
-/* pages.json "layout": "disc-inside": the whole disc inside the safe area (the /brand card, where the monkey is never cropped). */
-.t-page.l-disc-inside .punch { width: 620px; }
-.t-page.l-disc-inside .disc { left: 716px; }
+.sticker { left: 724px; top: 436px; width: 140px; height: 140px; border-radius: 50%; border: 6px solid var(--ink); z-index: 3; }

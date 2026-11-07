@@ -51,7 +51,8 @@ const sha = (...parts) => {
   return h.digest("hex").slice(0, 16);
 };
 
-// Every file in templates/ feeds every hash, so a design change re-renders all cards.
+// Every file in templates/ and every static/brand file a template loads (logo, monkey) feeds every
+// hash, so a design or logo change re-renders all cards.
 const templateHash = (() => {
   const files = [];
   const walk = (d) =>
@@ -60,8 +61,15 @@ const templateHash = (() => {
       e.isDirectory() ? walk(p) : files.push(p);
     });
   walk(TPL);
+  const brand = new Set();
+  for (const f of files.filter((x) => x.endsWith(".html"))) {
+    for (const [, ref] of fs.readFileSync(f, "utf8").matchAll(/src="((?:\.\.\/)+static\/brand\/[^"]+)"/g)) {
+      brand.add(path.resolve(path.dirname(f), ref));
+    }
+  }
   const h = crypto.createHash("sha1");
   files.sort().forEach((f) => h.update(f.slice(TPL.length)).update(fs.readFileSync(f)));
+  [...brand].sort().forEach((f) => h.update(path.basename(f)).update(fs.readFileSync(f)));
   h.update(fs.readFileSync(__filename));
   return h.digest("hex");
 })();
