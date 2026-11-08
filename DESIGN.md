@@ -362,8 +362,9 @@ ExtraBold, W at cap height):
 
 **Symbol:**
 
-- A yellow tile with an ink W. Use it for favicons, app icons, avatars,
-  the cap and stickers.
+- A yellow tile with an ink W. Use it for favicons, app icons, product
+  avatars (the app, integrations, bot accounts), the cap and stickers.
+  Social channel avatars (YouTube, LinkedIn, X) use the mascot instead.
 - Below 32 px use the dedicated 16 px drawing (`/img/favicon-16.svg`).
 - One-colour versions (`wopee-symbol-mono-ink`, `-mono-white`, `-mono-black`: the tile in one colour with the W knocked out) are for print, stamps and engraving, where yellow can't be reproduced.
 
@@ -386,7 +387,8 @@ ExtraBold, W at cap height):
 | Website header and footer, dark | https://wopee.io/brand/svg/wopee-wordmark-mono-white.svg | #111827 |
 | On yellow (slides, booth, roll-up) | https://wopee.io/brand/svg/wopee-wordmark-mono-ink.svg | #FFCC00 |
 | On a dark photo | https://wopee.io/brand/svg/wopee-wordmark-mono-white.svg | a dark photo |
-| Favicon, avatar, app icon | https://wopee.io/brand/svg/wopee-symbol-color-light.svg | any |
+| Favicon, product avatar, app icon | https://wopee.io/brand/svg/wopee-symbol-color-light.svg | any |
+| Social channel avatar (YouTube, LinkedIn, X) | https://wopee.io/brand/png/wopee-mascot-head-on-yellow-800.png | yellow, in the image |
 | Commander | https://wopee.io/brand/svg/wopee-wordmark-commander-mono-ink.svg (light), -mono-white.svg (dark) | |
 | MCP | https://wopee.io/brand/svg/wopee-wordmark-mcp-mono-ink.svg (light), -mono-white.svg (dark) | |
 | Booth, end cards, merch (monkey and logo) | https://wopee.io/brand/svg/wopee-logo-stacked-color-light.svg, -dark.svg | white or yellow, dark |
