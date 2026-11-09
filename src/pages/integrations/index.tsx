@@ -19,6 +19,7 @@ import Layout from "@theme/Layout";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
+import AgentSetupCard from "@site/src/components/agent-setup/AgentSetupCard";
 
 type IntegrationLink = { label: string; href: string };
 
@@ -340,6 +341,13 @@ const CategorySection = ({ category }: { category: Category }) => (
       </div>
       <p className="text-lg opacity-70 mb-0">{category.intro}</p>
     </div>
+    {category.id === "ai-coding-agents" && (
+      <AgentSetupCard
+        placement="integrations"
+        title="Set it up from your coding agent"
+        className="mb-6"
+      />
+    )}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {category.items.map((item) => (
         <IntegrationCard key={item.name} item={item} />

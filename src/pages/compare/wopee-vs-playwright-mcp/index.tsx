@@ -3,6 +3,8 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
+import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
+import AgentSetupCard from "@site/src/components/agent-setup/AgentSetupCard";
 import ComparisonTable from "@site/src/components/compare-page/ComparisonTable";
 import WhenToChoose from "@site/src/components/compare-page/WhenToChoose";
 import CompareFaq, {
@@ -131,7 +133,8 @@ const BetterTogether = () => {
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
           Your agent improvises. Wopee.io remembers.
         </p>
-        <ButtonPrimary
+        <AgentSetupCard placement="vs-pwmcp" primary className="mb-8" />
+        <ButtonPrimaryInverted
           label="Start for free"
           href={loginUrl}
           className="w-60 h-[50px]"

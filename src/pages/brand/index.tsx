@@ -7,6 +7,7 @@ import { Check, Copy, Download, Mail, X } from "lucide-react";
 
 import SocialCard from "@site/src/components/seo/SocialCard";
 import WopeeIo from "@site/src/components/brand/WopeeIo";
+import CopyPrompt from "@site/src/components/ui/CopyPrompt";
 
 const KIT = {
   href: "/brand/wopee-brand-kit-2026.zip",
@@ -972,34 +973,6 @@ function SurfacesSection() {
 
 const AGENT_PROMPT = "Before you design anything for Wopee.io (a page, slides, a social post, a document), read https://wopee.io/brand/DESIGN.md and follow it. If something is not covered, ask.";
 
-function CopyText({ text, label }: { text: string; label: string }) {
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    navigator.clipboard?.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    });
-  };
-  return (
-    <>
-      <button
-        type="button"
-        onClick={copy}
-        className={clsx(
-          "inline-flex min-h-11 cursor-pointer select-none items-center gap-1.5 rounded-md border border-solid border-gray-300 bg-white px-3 text-sm font-semibold text-gray-700 transition-colors hover:border-secondary-wopee hover:text-secondary-wopee dark:border-white/15 dark:bg-white/[0.04] dark:text-gray-200 dark:hover:border-primary-wopee dark:hover:text-primary-wopee focus-visible:outline-offset-2",
-          focusRing
-        )}
-      >
-        {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
-        {copied ? "Copied" : label}
-      </button>
-      <span className="sr-only" aria-live="polite">
-        {copied ? `${label}: copied` : ""}
-      </span>
-    </>
-  );
-}
-
 function AgentsSection() {
   return (
     <Section id="agents">
@@ -1026,11 +999,7 @@ function AgentsSection() {
           </div>
         </div>
         <div className="flex flex-col gap-4 rounded-2xl border border-solid border-gray-200 bg-white p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.03]">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">Prompt to paste</p>
-          <p className="m-0 rounded-lg bg-gray-50 p-4 font-mono text-sm leading-6 text-gray-800 dark:bg-white/[0.04] dark:text-gray-200">{AGENT_PROMPT}</p>
-          <div>
-            <CopyText text={AGENT_PROMPT} label="Copy the prompt" />
-          </div>
+          <CopyPrompt label="Prompt to paste" text={AGENT_PROMPT} buttonLabel="Copy the prompt" />
         </div>
       </div>
     </Section>
