@@ -112,6 +112,17 @@ const config = {
                 "@": path.join(__dirname, "src"),
               },
             },
+            module: {
+              // static/agent-setup/prompt.md is imported as plain text by /agent-setup/.
+              // An MDX-shaped rule with an include also keeps Docusaurus's MDX fallback loader off it.
+              rules: [
+                {
+                  test: /\.mdx?$/i,
+                  include: [path.join(__dirname, "static/agent-setup")],
+                  type: "asset/source",
+                },
+              ],
+            },
           };
         },
       };
