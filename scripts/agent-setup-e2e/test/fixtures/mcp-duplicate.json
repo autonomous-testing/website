@@ -1,0 +1,4 @@
+{ "mcpServers": {
+  "wopee": { "command": "npx", "args": ["-y", "wopee-mcp"], "env": { "WOPEE_API_KEY": "${WOPEE_API_KEY}", "WOPEE_PROJECT_UUID": "${WOPEE_PROJECT_UUID}" } },
+  "wopee-mcp": { "command": "npx", "args": ["-y", "wopee-mcp"], "env": { "WOPEE_API_KEY": "${WOPEE_API_KEY}", "WOPEE_PROJECT_UUID": "${WOPEE_PROJECT_UUID}" } }
+} }

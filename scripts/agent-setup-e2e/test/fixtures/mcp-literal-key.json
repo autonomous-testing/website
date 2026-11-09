@@ -1,0 +1,1 @@
+{ "mcpServers": { "wopee": { "command": "npx", "args": ["-y", "wopee-mcp"], "env": { "WOPEE_API_KEY": "wk_ci_SECRET_0123456789abcdef", "WOPEE_PROJECT_UUID": "${WOPEE_PROJECT_UUID}" } } } }

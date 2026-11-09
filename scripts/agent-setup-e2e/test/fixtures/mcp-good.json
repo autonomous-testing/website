@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "playwright": { "command": "npx", "args": ["@playwright/mcp"] },
+    "wopee": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "wopee-mcp"],
+      "env": { "WOPEE_API_KEY": "${WOPEE_API_KEY}", "WOPEE_PROJECT_UUID": "${WOPEE_PROJECT_UUID}", "WOPEE_API_URL": "${WOPEE_API_URL}" }
+    }
+  }
+}

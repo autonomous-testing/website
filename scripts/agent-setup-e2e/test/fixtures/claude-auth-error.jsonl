@@ -1,0 +1,4 @@
+{"type":"system","subtype":"init","model":"claude-sonnet-5","mcp_servers":[{"name":"wopee","status":"connected"}]}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"m1","name":"mcp__wopee__wopee_fetch_test_inventory","input":{}}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"m1","is_error":true,"content":"[AUTH_ERROR] WOPEE_API_KEY or WOPEE_AUTH_TOKEN must be set"}]}}
+{"type":"result","subtype":"success","is_error":false,"result":"The connection failed with [AUTH_ERROR].","permission_denials":[]}

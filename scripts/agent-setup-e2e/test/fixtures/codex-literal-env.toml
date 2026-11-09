@@ -1,0 +1,7 @@
+[mcp_servers.wopee]
+command = "npx"
+args = ["-y", "wopee-mcp"]
+
+[mcp_servers.wopee.env]
+WOPEE_API_KEY = "wk_ci_SECRET_0123456789abcdef"
+WOPEE_PROJECT_UUID = "11111111-2222-3333-4444-555555555555"

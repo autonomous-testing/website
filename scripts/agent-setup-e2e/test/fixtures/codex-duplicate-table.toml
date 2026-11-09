@@ -1,0 +1,8 @@
+[mcp_servers.wopee]
+command = "npx"
+args = ["-y", "wopee-mcp"]
+env_vars = ["WOPEE_API_KEY", "WOPEE_PROJECT_UUID"]
+
+[mcp_servers.wopee]
+command = "npx"
+args = ["-y", "wopee-mcp"]

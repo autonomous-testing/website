@@ -1,0 +1,182 @@
+name: Agent setup e2e
+
+# Runs the agent-setup copy line (static/agent-setup/prompt.md) in headless Claude Code and
+# Codex against a dedicated Wopee.io CI project and checks what the agent did. Harness and
+# checks: scripts/agent-setup-e2e/. Cells without their secrets are skipped with a notice,
+# so forks and a repo without the secrets stay green.
+
+on:
+  schedule:
+    - cron: "37 3 * * *"
+  workflow_dispatch:
+    inputs:
+      prompt_url:
+        description: Prompt to test (a preview build works too)
+        default: https://wopee.io/agent-setup/prompt.md
+      cells:
+        description: Agents to run
+        type: choice
+        options: [both, claude-code, codex]
+        default: both
+      wopee_api_url:
+        description: API of the instance the CI project lives on (empty = production)
+        default: https://api.dev.wopee.io
+  push:
+    branches: [main]
+    paths:
+      - static/agent-setup/**
+      - scripts/agent-setup-e2e/**
+      - .github/workflows/agent-setup-nightly.yml
+  pull_request:
+    paths:
+      - static/agent-setup/**
+      - scripts/agent-setup-e2e/**
+      - .github/workflows/agent-setup-nightly.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent-setup-e2e-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  unit:
+    name: Harness unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: node --test scripts/agent-setup-e2e/test/*.test.mjs
+
+  plan:
+    name: Plan cells
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      cells: ${{ steps.plan.outputs.cells }}
+      prompt_url: ${{ steps.plan.outputs.prompt_url }}
+      expect_file: ${{ steps.plan.outputs.expect_file }}
+      api_url: ${{ steps.plan.outputs.api_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_PROMPT_URL: ${{ inputs.prompt_url }}
+          INPUT_CELLS: ${{ inputs.cells }}
+          INPUT_API_URL: ${{ inputs.wopee_api_url }}
+          VAR_PROMPT_URL: ${{ vars.AGENT_SETUP_PROMPT_URL }}
+          VAR_API_URL: ${{ vars.WOPEE_CI_API_URL }}
+          HAS_WOPEE: ${{ secrets.WOPEE_CI_API_KEY != '' && secrets.WOPEE_CI_PROJECT_UUID != '' }}
+          HAS_ANTHROPIC: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+          HAS_OPENAI: ${{ secrets.OPENAI_API_KEY != '' }}
+        run: |
+          prompt_url="${VAR_PROMPT_URL:-https://wopee.io/agent-setup/prompt.md}"
+          api_url="${VAR_API_URL:-https://api.dev.wopee.io}"
+          expect_file=""
+          requested="both"
+          skip_all=""
+          case "$EVENT" in
+            workflow_dispatch)
+              prompt_url="${INPUT_PROMPT_URL:-$prompt_url}"
+              api_url="$INPUT_API_URL"
+              requested="${INPUT_CELLS:-both}"
+              ;;
+            push)
+              # Test what this repo just deployed, once the deploy serves the committed file.
+              case "$GITHUB_REPOSITORY" in
+                autonomous-testing/website-prod) host=wopee.io ;;
+                autonomous-testing/website-demo) host=demo.wopee.io ;;
+                *) host=$(tr -d '[:space:]' < CNAME) ;;
+              esac
+              prompt_url="https://$host/agent-setup/prompt.md"
+              if [ -f static/agent-setup/prompt.md ]; then expect_file=static/agent-setup/prompt.md; fi
+              ;;
+            pull_request)
+              skip_all="pull requests run the harness unit tests only"
+              ;;
+            schedule)
+              if [ "$GITHUB_REPOSITORY" != "autonomous-testing/website" ]; then skip_all="the nightly run belongs to autonomous-testing/website"; fi
+              ;;
+          esac
+
+          cells=()
+          for cell in claude-code codex; do
+            if [ "$requested" != both ] && [ "$requested" != "$cell" ]; then continue; fi
+            if [ -n "$skip_all" ]; then
+              echo "::notice title=Agent setup e2e: $cell skipped::$skip_all"
+              echo "- $cell skipped: $skip_all" >> "$GITHUB_STEP_SUMMARY"
+              continue
+            fi
+            missing=()
+            [ "$HAS_WOPEE" = true ] || missing+=(WOPEE_CI_API_KEY WOPEE_CI_PROJECT_UUID)
+            if [ "$cell" = claude-code ] && [ "$HAS_ANTHROPIC" != true ]; then missing+=(ANTHROPIC_API_KEY); fi
+            if [ "$cell" = codex ] && [ "$HAS_OPENAI" != true ]; then missing+=(OPENAI_API_KEY); fi
+            if [ ${#missing[@]} -gt 0 ]; then
+              echo "::notice title=Agent setup e2e: $cell skipped::missing repository secrets: ${missing[*]}"
+              echo "- $cell skipped: missing repository secrets ${missing[*]}" >> "$GITHUB_STEP_SUMMARY"
+              continue
+            fi
+            cells+=("\"$cell\"")
+          done
+          json="[$(IFS=,; echo "${cells[*]}")]"
+
+          {
+            echo "cells=$json"
+            echo "prompt_url=$prompt_url"
+            echo "expect_file=$expect_file"
+            echo "api_url=$api_url"
+          } >> "$GITHUB_OUTPUT"
+          {
+            echo "- prompt: $prompt_url${expect_file:+ (waits until it serves $expect_file)}"
+            echo "- Wopee.io API: ${api_url:-production}"
+            echo "- cells: $json"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  e2e:
+    name: ${{ matrix.cell }}
+    needs: plan
+    if: needs.plan.outputs.cells != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # TODO(backlog#5046): drop once the Codex cell has passed live (its ~/.codex write path is unverified).
+    continue-on-error: ${{ matrix.cell == 'codex' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ${{ fromJSON(needs.plan.outputs.cells) }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Run the copy line in ${{ matrix.cell }}
+        env:
+          AGENT_SETUP_PROMPT_URL: ${{ needs.plan.outputs.prompt_url }}
+          AGENT_SETUP_EXPECT_FILE: ${{ needs.plan.outputs.expect_file }}
+          WOPEE_API_URL: ${{ needs.plan.outputs.api_url }}
+          WOPEE_API_KEY: ${{ secrets.WOPEE_CI_API_KEY }}
+          WOPEE_PROJECT_UUID: ${{ secrets.WOPEE_CI_PROJECT_UUID }}
+          ANTHROPIC_API_KEY: ${{ matrix.cell == 'claude-code' && secrets.ANTHROPIC_API_KEY || '' }}
+          CODEX_API_KEY: ${{ matrix.cell == 'codex' && secrets.OPENAI_API_KEY || '' }}
+          OUT_DIR: ${{ runner.temp }}/agent-setup-e2e
+        run: node scripts/agent-setup-e2e/run.mjs --cell "${{ matrix.cell }}" --out "$OUT_DIR"
+      - name: Upload redacted transcripts and results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agent-setup-e2e-${{ matrix.cell }}
+          path: ${{ runner.temp }}/agent-setup-e2e
+          if-no-files-found: ignore
+          retention-days: 90

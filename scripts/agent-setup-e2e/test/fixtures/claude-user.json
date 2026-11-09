@@ -1,0 +1,10 @@
+{
+  "numStartups": 3,
+  "mcpServers": {},
+  "projects": {
+    "/tmp/agent-setup-e2e/project": {
+      "allowedTools": [],
+      "mcpServers": { "wopee": { "type": "stdio", "command": "npx", "args": ["-y", "wopee-mcp"], "env": { "WOPEE_API_KEY": "${WOPEE_API_KEY}", "WOPEE_PROJECT_UUID": "${WOPEE_PROJECT_UUID}" } } }
+    }
+  }
+}

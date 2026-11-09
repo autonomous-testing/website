@@ -1,0 +1,4 @@
+{"type":"system","subtype":"init","model":"claude-sonnet-5","claude_code_version":"2.1.319","tools":["Bash","mcp__wopee__wopee_fetch_test_inventory"],"mcp_servers":[{"name":"wopee","status":"connected"}]}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"m1","name":"mcp__wopee__wopee_fetch_test_inventory","input":{}}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"m1","content":[{"type":"text","text":"Analyses: 0, test cases: 0"}]}]}}
+{"type":"result","subtype":"success","is_error":false,"result":"Wopee.io setup\n- Changed: nothing, already set up\n- Verified: wopee_fetch_test_inventory -> 0 analyses, 0 tests","num_turns":2,"permission_denials":[]}

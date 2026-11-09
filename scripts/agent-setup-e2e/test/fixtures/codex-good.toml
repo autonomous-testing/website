@@ -1,0 +1,16 @@
+model = "gpt-5.5"
+
+# Wopee.io, added by the agent setup
+[mcp_servers.wopee]
+command = "npx"
+args = [
+  "-y",
+  "wopee-mcp", # the npm package
+]
+env_vars = ["WOPEE_API_KEY", "WOPEE_PROJECT_UUID", 'WOPEE_API_URL']
+startup_timeout_sec = 20
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp"]
+env = { DEBUG = "pw:*" }
