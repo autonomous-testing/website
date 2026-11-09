@@ -1,6 +1,6 @@
 # Wopee.io
 
-> Wopee.io builds autonomous AI testing agents for web applications. It is for QA engineers, SDETs, and engineering teams who want to stop hand-writing and babysitting test scripts. The agents explore an app, generate test cases, run them across browsers, self-heal when the UI changes, and surface visual and functional regressions. Available as cloud SaaS, on-premise deployment, and a Model Context Protocol (MCP) server that plugs into Claude, ChatGPT, Cursor, and other AI coding agents.
+> Wopee.io builds autonomous AI testing agents for web applications. It is for QA engineers, SDETs, and engineering teams who want to stop hand-writing and babysitting test scripts. The agents explore an app, generate test cases, run them across browsers, self-heal when the UI changes, and surface visual and functional regressions. Available as cloud SaaS, on-premise deployment, and a Model Context Protocol (MCP) server that plugs into Claude Code, GitHub Copilot, Cursor, OpenAI Codex, and other AI coding agents.
 
 ## Core pages
 - [Home](https://wopee.io/): What Wopee.io is, who uses it, headline benefits, and how it fits into a modern test stack.
@@ -10,8 +10,8 @@
 - [SaaS app health](https://wopee.io/saas-app-health/): Our latest research batch: we signed up for 28 SaaS products as strangers; 24 had a defect in sign-up. Eight recurring patterns and a starter list of 10 flows to check. Published 19 October 2026, n = 28, 363 of 381 findings held up after re-check; key figures as CSV: https://wopee.io/saas-app-health/saas-app-health-2026.csv
 - [AI Testing Agents](https://wopee.io/ai-testing-agents/): How the autonomous agents explore, generate, run, and maintain tests without manual scripting.
 - [Visual testing](https://wopee.io/visual-testing/): AI visual regression testing with native SDKs for Playwright, Cypress, WebdriverIO and Robot Framework; Selenium WebDriver, Appium, Puppeteer and any other framework that takes screenshots connect through the API.
-- [Integrations](https://wopee.io/integrations/): MCP clients (Claude Code, Cursor, VS Code, Windsurf), Slack and Teams, GitHub and GitHub Actions, test frameworks, and the GraphQL API.
-- [MCP Server](https://wopee.io/mcp/): Wopee.io's Model Context Protocol server, connect Claude, Cursor, VS Code, Windsurf, or any MCP client and dispatch testing agents from natural-language conversation.
+- [Integrations](https://wopee.io/integrations/): MCP clients (Claude Code, GitHub Copilot, Cursor, OpenAI Codex, Gemini CLI, Devin Desktop), Slack and Teams, GitHub and GitHub Actions, test frameworks, and the GraphQL API.
+- [MCP Server](https://wopee.io/mcp/): Wopee.io's Model Context Protocol server, connect Claude Code, GitHub Copilot, Cursor, OpenAI Codex, or any MCP client and dispatch testing agents from natural-language conversation.
 - [About](https://wopee.io/about-us/): Team, mission, investors, and contact (help@wopee.io, wopee labs s.r.o., Prague).
 - [Book a demo](https://wopee.io/book-demo/): 30-minute call with the founders.
 - [Brand kit](https://wopee.io/brand/): Logo, symbol, colours, type and usage rules, with downloads.
@@ -26,7 +26,7 @@
 
 ## Documentation
 - [Docs home](https://docs.wopee.io/): Setup, concepts, integrations, and reference for the Wopee.io platform.
-- [MCP guide](https://docs.wopee.io/guides/wopee-mcp/): Step-by-step integration of the Wopee.io MCP server with Claude Code, Claude Desktop, Cursor, VS Code, and Windsurf.
+- [MCP guide](https://docs.wopee.io/guides/wopee-mcp/): Step-by-step integration of the Wopee.io MCP server with Claude Code, GitHub Copilot (VS Code and Copilot CLI), Cursor, OpenAI Codex, OpenCode, Google Antigravity and Gemini CLI, JetBrains, Devin Desktop (formerly Windsurf), Visual Studio and other MCP clients. Needs Node.js 20.18 or newer.
 - [Tools and assertions](https://docs.wopee.io/concepts/tools-and-assertions/): The set of agent tools and assertion types used by autonomous tests.
 
 ## Key blog posts
