@@ -73,6 +73,15 @@ body { width: 1200px; height: 630px; overflow: hidden; -webkit-font-smoothing: a
 .t-page .punch { width: 700px; }
 /* The monkey stands on the yellow ground, whole, inside the safe area. */
 .t-page .mascot { right: 64px; top: 92px; height: 446px; }
+/* Person: the photo in an ink ring on the right, the monkey as a sticker at its lower right. */
+.photo { display: none; }
+.l-person .photo {
+  display: block; position: absolute; z-index: 1;
+  right: 72px; top: 85px; width: 460px; height: 460px;
+  border-radius: 50%; border: 10px solid var(--ink); object-fit: cover; box-sizing: border-box;
+}
+.l-person .punch { width: 590px; }
+.l-person .mascot { right: 36px; top: 392px; height: 190px; z-index: 2; }
 
 /* ---------- (b) blog and (a) changelog: ink ---------- */
 .t-blog, .t-changelog { background: var(--ink); color: var(--white); }

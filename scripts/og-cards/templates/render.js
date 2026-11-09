@@ -60,6 +60,8 @@
       if (!hasShot) document.querySelectorAll(".only-shot").forEach(function (e) { e.remove(); });
       else document.querySelectorAll(".only-pattern").forEach(function (e) { e.remove(); });
     }
+    var photo = document.querySelector("img.photo");
+    if (photo) await loadImg(photo, d.photo);
     var av = document.querySelector("img.avatar");
     if (av) {
       var ok = await loadImg(av, d.author && d.author.image);

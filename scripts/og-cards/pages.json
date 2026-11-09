@@ -71,5 +71,16 @@
     "title": "The False Pass Checklist",
     "punchline": "Trust the green?",
     "description": "Seven questions to ask any AI testing tool before you trust its green."
+  },
+  {
+    "id": "marcel",
+    "permalink": "/marcel/",
+    "kicker": "LET'S TALK",
+    "title": "Book a call with Marcel",
+    "punchline": "Book a call\nwith Marcel",
+    "layout": "person",
+    "photo": "static/img/team/marcel.jpg",
+    "alt": "Book a call with Marcel Veselka, CEO of Wopee.io",
+    "description": "Pick a time for a call about AI testing agents, a pilot or a partnership."
   }
 ]

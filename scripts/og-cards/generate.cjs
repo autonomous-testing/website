@@ -199,6 +199,7 @@ function pageJobs() {
     out: `pages/${pg.id}.png`,
     data: { kicker: pg.kicker, punchline: pg.punchline || derivePunchline(pg.title), layout: pg.layout },
     alt: pg.alt,
+    photo: pg.photo ? path.join(SITE, pg.photo) : null,
   }));
 }
 
@@ -259,9 +260,16 @@ async function avatarDataUrl(src) {
   return "data:image/jpeg;base64," + out.toString("base64");
 }
 
+// A person's photo for the "person" page layout: a square crop that keeps the face.
+async function photoDataUrl(file) {
+  if (!file || !fs.existsSync(file)) return null;
+  const out = await sharp(file).resize(480, 480, { fit: "cover", position: "attention" }).jpeg({ quality: 85 }).toBuffer();
+  return "data:image/jpeg;base64," + out.toString("base64");
+}
+
 function jobHash(job) {
   const avatarKey = job.avatar ? (job.avatar.file ? fileHash(job.avatar.file) : job.avatar.url) : "";
-  return sha(templateHash, job.type, job.data, job.alt ?? "", fileHash(job.gifPath), String(job.gifFrame ?? ""), avatarKey);
+  return sha(templateHash, job.type, job.data, job.alt ?? "", fileHash(job.gifPath), String(job.gifFrame ?? ""), avatarKey, fileHash(job.photo));
 }
 
 // ---------- render ----------
@@ -324,6 +332,7 @@ async function renderAll(jobs) {
       const data = JSON.parse(JSON.stringify(job.data));
       if (job.gifPath && fs.existsSync(job.gifPath)) data.shot = await shotDataUrl(job.gifPath, job.gifFrame);
       if (job.avatar && data.author) data.author.image = await avatarDataUrl(job.avatar);
+      if (job.photo) data.photo = await photoDataUrl(job.photo);
       t.push(Date.now());
       const info = await page.evaluate((d) => window.renderCard(d), data);
       t.push(Date.now());
