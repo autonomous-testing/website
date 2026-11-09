@@ -3,8 +3,7 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
-import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInverted";
-import AgentSetupCard from "@site/src/components/agent-setup/AgentSetupCard";
+import AgentSetupCard, { agentSetupLinkClass } from "@site/src/components/agent-setup/AgentSetupCard";
 import ComparisonTable from "@site/src/components/compare-page/ComparisonTable";
 import WhenToChoose from "@site/src/components/compare-page/WhenToChoose";
 import CompareFaq, {
@@ -133,14 +132,18 @@ const BetterTogether = () => {
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
           Your agent improvises. Wopee.io remembers.
         </p>
-        <AgentSetupCard placement="vs-pwmcp" primary className="mb-8" />
-        <ButtonPrimaryInverted
-          label="Start for free"
-          href={loginUrl}
-          className="w-60 h-[50px]"
-          id="cta-vs-pwmcp-together"
-        />
-        <p className="text-sm italic mt-2">No credit card required</p>
+        <AgentSetupCard placement="vs-pwmcp" primary className="mb-4" />
+        <p className="m-0 text-sm text-gray-600 dark:text-gray-400">
+          No coding agent?{" "}
+          <Link
+            href={loginUrl}
+            id="cta-vs-pwmcp-together"
+            className={agentSetupLinkClass}
+          >
+            Start for free in the browser &rarr;
+          </Link>{" "}
+          &middot; No credit card required
+        </p>
       </div>
     </section>
   );

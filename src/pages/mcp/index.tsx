@@ -7,6 +7,7 @@ import {
   mdiPuzzle,
   mdiGithub,
   mdiNpm,
+  mdiApplicationOutline,
   mdiFormatListChecks,
   mdiMagnifyScan,
   mdiBugOutline,
@@ -35,6 +36,8 @@ import clsx from "clsx";
 import AgentSetupCard, { agentSetupLinkClass } from "@site/src/components/agent-setup/AgentSetupCard";
 import { AGENT_SETUP_LINE } from "@site/src/data/agent-setup";
 import { ORG_REF } from "@site/src/data/organization";
+import { SiOpenai } from "@icons-pack/react-simple-icons";
+import { X } from "lucide-react";
 import SocialCard from "@site/src/components/seo/SocialCard";
 
 const CAPABILITIES = [
@@ -145,13 +148,11 @@ const CAPABILITIES = [
   },
 ];
 
-// Real brand marks (single-path SVGs; simple-icons: claude/cursor/windsurf
-// current set, visualstudiocode from v12.4.0 pre-trademark-purge). Rendered
-// white on the existing brand-gradient tiles.
+// Real brand marks (single-path SVGs; simple-icons: claude/cursor current set,
+// visualstudiocode from v12.4.0 pre-trademark-purge), in neutral tiles.
 const BRAND_PATHS: Record<string, string> = {
   claude: "m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z",
   cursor: "M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23",
-  windsurf: "M23.55 5.067c-1.2038-.002-2.1806.973-2.1806 2.1765v4.8676c0 .972-.8035 1.7594-1.7597 1.7594-.568 0-1.1352-.286-1.4718-.7659l-4.9713-7.1003c-.4125-.5896-1.0837-.941-1.8103-.941-1.1334 0-2.1533.9635-2.1533 2.153v4.8957c0 .972-.7969 1.7594-1.7596 1.7594-.57 0-1.1363-.286-1.4728-.7658L.4076 5.1598C.2822 4.9798 0 5.0688 0 5.2882v4.2452c0 .2147.0656.4228.1884.599l5.4748 7.8183c.3234.462.8006.8052 1.3509.9298 1.3771.313 2.6446-.747 2.6446-2.0977v-4.893c0-.972.7875-1.7593 1.7596-1.7593h.003a1.798 1.798 0 0 1 1.4718.7658l4.9723 7.0994c.4135.5905 1.05.941 1.8093.941 1.1587 0 2.1515-.9645 2.1515-2.153v-4.8948c0-.972.7875-1.7594 1.7596-1.7594h.194a.22.22 0 0 0 .2204-.2202v-4.622a.22.22 0 0 0-.2203-.2203Z",
   vscode: "M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z",
 };
 
@@ -166,31 +167,31 @@ const COMPATIBLE_TOOLS = [
     name: "Claude Code",
     description: "CLI agent by Anthropic",
     icon: <BrandMark id="claude" />,
-    gradient: "from-orange-500 to-amber-500",
-  },
-  {
-    name: "Claude Desktop",
-    description: "AI agent by Anthropic",
-    icon: <BrandMark id="claude" />,
-    gradient: "from-orange-400 to-yellow-500",
   },
   {
     name: "Cursor",
     description: "AI-first code editor",
     icon: <BrandMark id="cursor" />,
-    gradient: "from-blue-500 to-indigo-500",
   },
   {
     name: "VS Code",
-    description: "With Copilot or extensions",
+    description: "With GitHub Copilot",
     icon: <BrandMark id="vscode" />,
-    gradient: "from-sky-500 to-blue-600",
   },
   {
-    name: "Windsurf",
-    description: "AI-powered IDE",
-    icon: <BrandMark id="windsurf" />,
-    gradient: "from-teal-400 to-emerald-500",
+    name: "OpenAI Codex",
+    description: "CLI, IDE and ChatGPT app",
+    icon: <SiOpenai size={26} aria-hidden="true" />,
+  },
+  {
+    name: "Devin Desktop",
+    description: "Formerly Windsurf",
+    icon: <Icon path={mdiApplicationOutline} size={1.1} aria-hidden="true" />,
+  },
+  {
+    name: "Claude Desktop",
+    description: "AI agent by Anthropic",
+    icon: <BrandMark id="claude" />,
   },
 ];
 
@@ -262,10 +263,10 @@ const TerminalAnimation = () => {
           return (
             <div
               key={i}
-              className={`pl-4 border-l-2 border-purple-500/40 ${isFirst ? "pt-0" : ""} ${isLast ? "mb-3" : ""} py-0.5 animate-[fadeIn_0.3s_ease-in]`}
+              className={`pl-4 border-l-2 border-solid border-y-0 border-r-0 border-white/15 ${isFirst ? "pt-0" : ""} ${isLast ? "mb-3" : ""} py-0.5 animate-[fadeIn_0.3s_ease-in]`}
             >
-              <span className="text-purple-400">{line.name}</span>{" "}
-              <span className="text-gray-600">{line.text}</span>
+              <span className="text-primary-wopee">{line.name}</span>{" "}
+              <span className="text-gray-500">{line.text}</span>
             </div>
           );
         }
@@ -320,7 +321,7 @@ const InstallSnippet = () => {
           type="button"
           onClick={onCopy}
           aria-label={copied ? "Config copied" : "Copy config"}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent border-0 cursor-pointer p-0 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent border-0 cursor-pointer p-0 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee"
         >
           <Icon
             path={copied ? mdiCheck : mdiContentCopy}
@@ -342,21 +343,17 @@ const InstallSnippet = () => {
 const HeroSection = () => {
   const [showConfig, setShowConfig] = useState(false);
   return (
-    <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center relative">
+    <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-6 lg:px-10 container text-center relative">
       <div className="flex flex-col gap-6 max-w-4xl">
-        <div className="flex justify-center gap-3 items-center">
-          <span className="bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee text-sm font-semibold px-4 py-1.5 rounded-full border border-secondary-wopee/20 dark:border-primary-wopee/20">
-            MCP Server
-          </span>
-          <span className="bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-purple-500/20">
-            Available on npm
+        <div className="flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-solid border-gray-900/10 bg-gray-900/5 px-3 py-1.5 text-sm font-medium text-gray-700 dark:border-primary-wopee/20 dark:bg-primary-wopee/10 dark:text-primary-wopee">
+            <span className="h-1.5 w-1.5 rounded-full bg-gray-900 dark:bg-primary-wopee" aria-hidden="true" />
+            MCP Server · open source on npm
           </span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-tight">
-          <span className="text-secondary-wopee dark:text-primary-wopee">
-            Autonomous testing
-          </span>
+        <h1 className="text-[40px] sm:text-6xl lg:text-[64px] leading-tight">
+          <span className="hero-key">Autonomous testing</span>
           <br className="hidden sm:block" />
           {" "}in your AI coding agent
         </h1>
@@ -389,27 +386,17 @@ const HeroSection = () => {
           {showConfig && <InstallSnippet />}
         </AgentSetupCard>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-5 items-center">
-          <div className="flex flex-col items-center gap-1.5">
-            <ButtonPrimaryInverted
-              label="Start for free"
-              href={`${cmdBaseUrl}/login`}
-              className="w-64 h-[54px] text-lg"
-              id="cta-mcp-hero"
-            />
-            <span className="text-xs opacity-50">No credit card required</span>
-          </div>
+        <p className="m-0 text-sm opacity-80">
+          No coding agent?{" "}
           <Link
-            href="https://github.com/Wopee-io/wopee-mcp"
-            className="group inline-flex items-center gap-2 text-base font-medium hover:no-underline opacity-70 hover:opacity-100 transition-opacity"
+            href={`${cmdBaseUrl}/login`}
+            id="cta-mcp-hero"
+            className={agentSetupLinkClass}
           >
-            <Icon path={mdiGithub} size={1} />
-            View on GitHub
-            <span className="group-hover:translate-x-1 transition-transform">
-              &rarr;
-            </span>
-          </Link>
-        </div>
+            Start for free in the browser &rarr;
+          </Link>{" "}
+          &middot; No credit card required
+        </p>
 
         <div className="flex flex-wrap justify-center gap-3 text-sm opacity-60">
           <span>npm package</span>
@@ -420,8 +407,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-3xl mt-4 rounded-xl overflow-hidden shadow-2xl shadow-secondary-wopee/20 dark:shadow-primary-wopee/20 border border-secondary-wopee/30 dark:border-primary-wopee/30">
-        <div className="bg-gray-900 px-4 py-3 flex items-center justify-between">
+      <div className="w-full max-w-3xl mt-4 rounded-xl overflow-hidden text-left shadow-[0_24px_50px_rgba(76,29,149,0.14)] dark:shadow-none">
+        <div className="bg-gray-900 px-4 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <div className="flex items-center gap-2">
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -435,16 +422,12 @@ const HeroSection = () => {
           <span className="text-xs text-green-500 font-mono flex items-center gap-1"><span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>mcp connected</span>
         </div>
         <TerminalAnimation />
-        <Link
-          href="https://docs.wopee.io/guides/wopee-mcp/"
-          className="mt-4 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
-        >
+      </div>
+      <div className="-mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+        <Link href="https://docs.wopee.io/guides/wopee-mcp/" className={agentSetupLinkClass}>
           Read the docs &rarr;
         </Link>
-        <Link
-          to="/learn/"
-          className="mt-4 ml-6 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
-        >
+        <Link to="/learn/" className={agentSetupLinkClass}>
           New to MCP? Free tutorial &rarr;
         </Link>
       </div>
@@ -452,47 +435,46 @@ const HeroSection = () => {
   );
 };
 
+const PROBLEMS: [string, string][] = [
+  ["Your CI catches technical errors but", "misses broken user flows"],
+  ["Writing test scripts manually", "slows down every release"],
+  ["You leave your editor to", "open a separate testing dashboard"],
+  ["Testing dozens of user flows manually", "doesn't scale"],
+];
+
+// One of the page's two brand bands (DESIGN.md, Components): ink with the dark hero's glow, in both themes.
 const ProblemSection = () => (
-  <div className="bg-gradient-to-br from-secondary-wopee via-purple-600 to-secondary-wopee dark:from-primary-wopee dark:to-white text-balance flex flex-col gap-10 px-10 py-20">
-    <h2 className="text-4xl sm:text-5xl text-white dark:text-gray-900 font-bold text-center">
-      Your AI can code. But who tests the output?
-    </h2>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-primary-wopee dark:text-gray-900 text-xl sm:text-2xl lg:text-3xl text-left items-center container">
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-white/20 dark:bg-secondary-wopee/20 flex items-center justify-center mr-4 flex-shrink-0 text-xl font-bold">&#x2717;</div>
-        <p>
-          Your CI catches technical errors but{" "}
-          <span className="font-bold">misses broken user flows</span>
-        </p>
-      </div>
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-white/20 dark:bg-secondary-wopee/20 flex items-center justify-center mr-4 flex-shrink-0 text-xl font-bold">&#x2717;</div>
-        <p>
-          Writing test scripts manually{" "}
-          <span className="font-bold">slows down every release</span>
-        </p>
-      </div>
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-white/20 dark:bg-secondary-wopee/20 flex items-center justify-center mr-4 flex-shrink-0 text-xl font-bold">&#x2717;</div>
-        <p>
-          You leave your editor to{" "}
-          <span className="font-bold">open a separate testing dashboard</span>
-        </p>
-      </div>
-      <div className="flex items-center">
-        <div className="w-10 h-10 rounded-full bg-white/20 dark:bg-secondary-wopee/20 flex items-center justify-center mr-4 flex-shrink-0 text-xl font-bold">&#x2717;</div>
-        <p>
-          Testing dozens of user flows manually{" "}
-          <span className="font-bold">doesn't scale</span>
-        </p>
-      </div>
-    </div>
-    <div className="mt-10 pt-8 border-t border-white/20 dark:border-secondary-wopee/20 max-w-3xl mx-auto text-center">
-      <p className="text-2xl sm:text-3xl text-white dark:text-gray-900 font-bold">
+  <section
+    className="bg-[#111827] px-5 py-20 text-balance lg:px-10"
+    style={{
+      backgroundImage:
+        "radial-gradient(circle at 15% 30%, rgba(112, 48, 160, 0.30) 0%, transparent 45%), radial-gradient(circle at 85% 70%, rgba(236, 72, 153, 0.10) 0%, transparent 45%)",
+    }}
+  >
+    <div className="container flex flex-col gap-10">
+      <h2 className="m-0 text-center text-4xl font-bold text-white sm:text-5xl">
+        Your AI can code. But who tests the output?
+      </h2>
+      <ul className="m-0 mx-auto grid w-full max-w-5xl list-none grid-cols-1 gap-6 p-0 text-left text-xl text-white sm:text-2xl lg:grid-cols-2 lg:gap-x-12">
+        {PROBLEMS.map(([lead, key]) => (
+          <li key={key} className="flex items-center gap-4">
+            <span
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[8px] bg-primary-wopee text-[#111827]"
+              aria-hidden="true"
+            >
+              <X size={20} strokeWidth={3} />
+            </span>
+            <p className="m-0">
+              {lead} <span className="font-bold text-primary-wopee">{key}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p className="m-0 mx-auto max-w-3xl border-0 border-t border-solid border-white/15 pt-8 text-center text-2xl font-bold text-white sm:text-3xl">
         Wopee.io MCP bridges the gap. Test from where you code.
       </p>
     </div>
-  </div>
+  </section>
 );
 
 const CapabilitiesSection = () => (
@@ -509,21 +491,13 @@ const CapabilitiesSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {CAPABILITIES.map((cap) => (
-        <GradientCard
-          key={cap.title}
-          className="group transition-transform hover:-translate-y-1"
-        >
-          <div className="w-14 h-14 rounded-xl bg-secondary-wopee/15 dark:bg-primary-wopee/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <Icon
-              path={cap.icon}
-              size={1.5}
-              className="text-secondary-wopee dark:text-primary-wopee"
-            />
+        <GradientCard key={cap.title}>
+          {/* Icon tile (DESIGN.md): a yellow rounded square with the icon in ink, both themes. */}
+          <div className="w-12 h-12 rounded-[10px] bg-primary-wopee flex items-center justify-center mb-4">
+            <Icon path={cap.icon} size={1.2} className="text-[#111827]" />
           </div>
           <h3 className="text-xl font-bold mb-1">{cap.title}</h3>
-          <code className="text-xs text-secondary-wopee/60 dark:text-primary-wopee/60 mb-2 inline-block font-normal">
-            {cap.tool}
-          </code>
+          <p className="m-0 mb-2 font-mono text-xs text-gray-500 dark:text-gray-400">{cap.tool}</p>
           <p className="opacity-70 text-balance">{cap.description}</p>
         </GradientCard>
       ))}
@@ -538,7 +512,7 @@ const CapabilitiesSection = () => (
       />
       <Link
         href="https://docs.wopee.io/guides/wopee-mcp/"
-        className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg"
+        className="text-secondary-wopee dark:text-primary-wopee font-semibold hover:no-underline text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-wopee dark:focus-visible:outline-primary-wopee"
       >
         Read the docs &rarr;
       </Link>
@@ -550,10 +524,7 @@ const HowItWorksSection = () => (
   <div id="how-it-works" className="container my-16 lg:my-24 px-5 lg:px-10">
     <div className="text-center mb-12 lg:mb-16">
       <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-        Up and running in{" "}
-        <span className="text-secondary-wopee dark:text-primary-wopee">
-          3 minutes
-        </span>
+        Up and running in 3 minutes
       </h2>
       <p className="text-xl opacity-70 max-w-2xl mx-auto">
         Paste one line, add your API key, and start testing
@@ -569,7 +540,7 @@ const HowItWorksSection = () => (
           key={step.step}
         >
           <div className="flex-1 w-full">
-            <div className="bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-700">
+            <div className="bg-gray-900 rounded-xl overflow-hidden shadow-[0_24px_50px_rgba(76,29,149,0.14)] dark:shadow-none">
               <div className="px-4 py-2.5 flex items-center gap-2 bg-gray-800">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
@@ -588,12 +559,12 @@ const HowItWorksSection = () => (
 
           <div className="flex-1 w-full lg:w-3/4 flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-wopee dark:bg-primary-wopee text-white dark:text-gray-900 font-bold text-xl flex items-center justify-center shadow-lg shadow-secondary-wopee/30 dark:shadow-primary-wopee/30">
+              <span className="flex-shrink-0 w-12 h-12 rounded-[10px] bg-primary-wopee text-[#111827] font-bold text-xl flex items-center justify-center">
                 {step.step}
               </span>
               <h3 className="text-3xl lg:text-4xl font-bold">{step.title}</h3>
             </div>
-            <p className="text-secondary-wopee dark:text-primary-wopee text-2xl lg:text-3xl font-bold">
+            <p className="m-0 text-gray-900 dark:text-white text-2xl lg:text-3xl font-bold">
               {step.subtitle}
             </p>
             <p className="text-lg lg:text-xl opacity-70">{step.description}</p>
@@ -605,12 +576,12 @@ const HowItWorksSection = () => (
 );
 
 const CompatibleToolsSection = () => (
-  <div className="flex flex-col justify-center text-center text-balance gap-10 lg:my-16 py-20 bg-gradient-to-b from-transparent via-primary-wopee/30 dark:via-secondary-wopee/30 to-transparent">
-    <div className="px-2 lg:px-0">
+  <section className="container flex flex-col gap-10 px-5 py-16 text-center text-balance lg:px-10 lg:py-24">
+    <div>
       <h2 className="text-3xl lg:text-5xl font-bold mb-4">
         Plug into the AI tools you already use
       </h2>
-      <p className="text-xl opacity-70 max-w-2xl mx-auto">
+      <p className="m-0 text-xl opacity-70 max-w-2xl mx-auto">
         The{" "}
         <Link
           href="https://modelcontextprotocol.io"
@@ -623,41 +594,44 @@ const CompatibleToolsSection = () => (
       </p>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-6 container px-5">
+    <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
       {COMPATIBLE_TOOLS.map((tool) => (
-        <div
+        <li
           key={tool.name}
-          className="flex items-center gap-4 px-6 py-5 rounded-xl border border-solid border-gray-200 dark:border-gray-700 hover:border-secondary-wopee dark:hover:border-primary-wopee transition-all hover:shadow-lg min-w-[230px]"
+          className="flex items-center gap-4 rounded-2xl border border-solid border-gray-900/10 bg-white px-5 py-4 dark:border-white/10 dark:bg-[#181f2e]"
         >
-          <div
-            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md`}
-          >
+          <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[10px] bg-gray-100 text-gray-900 dark:bg-white/10 dark:text-white">
             {tool.icon}
-          </div>
-          <div className="text-left">
-            <p className="font-bold text-lg">{tool.name}</p>
-            <p className="text-sm opacity-60">{tool.description}</p>
-          </div>
-        </div>
+          </span>
+          <span className="text-left">
+            <span className="block text-lg font-bold">{tool.name}</span>
+            <span className="block text-sm opacity-70">{tool.description}</span>
+          </span>
+        </li>
       ))}
-      <div className="flex items-center gap-4 px-6 py-5 rounded-xl border border-dashed border-gray-300 dark:border-gray-600 min-w-[230px] hover:border-secondary-wopee dark:hover:border-primary-wopee transition-all">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md">+</div>
-        <div className="text-left">
-          <p className="font-bold text-lg">Any MCP client</p>
-          <p className="text-sm opacity-60">Open standard</p>
-        </div>
-      </div>
-    </div>
+      <li className="flex items-center gap-4 rounded-2xl border border-dashed border-gray-900/20 px-5 py-4 dark:border-white/20">
+        <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[10px] bg-gray-100 text-2xl font-bold text-gray-900 dark:bg-white/10 dark:text-white" aria-hidden="true">
+          +
+        </span>
+        <span className="text-left">
+          <span className="block text-lg font-bold">Any MCP client</span>
+          <span className="block text-sm opacity-70">Open standard</span>
+        </span>
+      </li>
+    </ul>
 
-    <div className="px-2 lg:px-0">
+    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
       <ButtonPrimary
-        label="Try it with your AI tool"
+        label="Start for free"
         href={`${cmdBaseUrl}/login`}
         id="cta-mcp-tools"
-        className="w-64 h-[50px]"
+        className="w-60 h-[50px]"
       />
+      <Link href="https://docs.wopee.io/guides/wopee-mcp/" className={agentSetupLinkClass}>
+        Setup guide for each client &rarr;
+      </Link>
     </div>
-  </div>
+  </section>
 );
 
 const TOOL_GROUPS = [
@@ -724,28 +698,28 @@ const OpenSourceSection = () => (
         <div className="flex flex-wrap gap-3">
           <Link
             href="https://github.com/Wopee-io/wopee-mcp"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gray-900 dark:bg-gray-700 text-white font-semibold hover:no-underline hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center gap-2 min-h-11 px-5 rounded-lg border border-solid border-white/30 bg-transparent text-white font-semibold no-underline hover:no-underline hover:text-white hover:border-white hover:bg-white/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee"
           >
             <Icon path={mdiGithub} size={0.9} />
             Star on GitHub
           </Link>
           <Link
             href="https://www.npmjs.com/package/wopee-mcp"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-red-600 text-white font-semibold hover:no-underline hover:bg-red-700 transition-colors"
+            className="inline-flex items-center gap-2 min-h-11 px-5 rounded-lg border border-solid border-white/30 bg-transparent text-white font-semibold no-underline hover:no-underline hover:text-white hover:border-white hover:bg-white/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee"
           >
             <Icon path={mdiNpm} size={0.9} />
-            npm
+            View on npm
           </Link>
         </div>
         <Link
           to="/learn/"
-          className="mt-4 inline-block font-semibold text-primary-wopee hover:text-primary-wopee hover:underline"
+          className="mt-4 inline-block font-semibold text-primary-wopee hover:text-primary-wopee hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee"
         >
           Free tutorial: MCP for testers &rarr;
         </Link>
       </div>
       <div className="flex-1 w-full">
-        <div className="rounded-xl overflow-hidden shadow-2xl shadow-black/30 border border-white/15">
+        <div className="rounded-xl overflow-hidden">
           <div className="bg-gray-900 px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
@@ -765,16 +739,16 @@ const OpenSourceSection = () => (
           <div className="bg-gray-950 px-5 py-4 font-mono text-sm leading-relaxed">
             {TOOL_GROUPS.map((group) => (
               <div key={group.label} className="mb-4 last:mb-0">
-                <p className="text-purple-300/80 text-xs mb-1.5 select-none">
+                <p className="text-gray-500 text-xs mb-1.5 select-none">
                   # {group.label.toLowerCase()}
                 </p>
                 <div>
                   {group.tools.map(([tool, desc]) => (
                     <div
                       key={tool}
-                      className="grid grid-cols-1 md:grid-cols-[minmax(0,16rem)_1fr] gap-x-4 px-2 py-1 -mx-2 rounded-md hover:bg-white/5 transition-colors"
+                      className="grid grid-cols-1 md:grid-cols-[minmax(0,16rem)_1fr] gap-x-4 py-1"
                     >
-                      <code className="!bg-transparent !border-0 !p-0 text-primary-wopee">
+                      <code className="!bg-transparent !border-0 !p-0 text-primary-wopee overflow-x-auto whitespace-nowrap">
                         {tool}
                       </code>
                       <span className="text-gray-400 text-xs md:text-sm self-center">
@@ -801,7 +775,7 @@ const JSONLD_MCP_APP = {
   operatingSystem: "Cross-platform (Node.js 20.18+)",
   url: "https://wopee.io/mcp/",
   description:
-    "Model Context Protocol server that connects Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and other MCP clients to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites from natural-language conversation.",
+    "Model Context Protocol server that connects Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Devin Desktop (formerly Windsurf), Claude Desktop, and other MCP clients to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites from natural-language conversation.",
   softwareRequirements: "Node.js 20.18+",
   downloadUrl: "https://www.npmjs.com/package/wopee-mcp",
   installUrl: "https://www.npmjs.com/package/wopee-mcp",
@@ -821,7 +795,7 @@ const JSONLD_MCP_SOURCE = {
   "@type": "SoftwareSourceCode",
   name: "wopee-mcp",
   description:
-    "Wopee.io's Model Context Protocol server for agentic testing. Compatible with Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and any MCP client.",
+    "Wopee.io's Model Context Protocol server for agentic testing. Compatible with Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Devin Desktop, Claude Desktop, and any MCP client.",
   codeRepository: "https://github.com/Wopee-io/wopee-mcp",
   programmingLanguage: "TypeScript",
   runtimePlatform: "Node.js",
@@ -847,48 +821,53 @@ const McpPage = () => {
       <HeroSection />
       <AnswerFirst
         question="Is there an MCP server for testing web apps?"
-        lastChecked="29 October 2026"
+        lastChecked="9 November 2026"
         className="pb-12"
       >
         Yes. Wopee.io's MCP server, wopee-mcp on npm, connects Claude Code,
-        Cursor, VS Code or Windsurf to Wopee.io's AI testing agents. From the
+        Cursor, GitHub Copilot, OpenAI Codex, Devin Desktop or any other MCP
+        client to Wopee.io's AI testing agents. From the
         chat, your coding agent can generate tests, start test runs against
         your web app, fetch the results and file GitHub issues. It is for
         testing your web app through MCP, not for testing an MCP server.
       </AnswerFirst>
       <ProblemSection />
-      <CapabilitiesSection />
       <HowItWorksSection />
-      <VideoCallout text="An AI QA agent in Cursor combines the Wopee.io, Playwright and Atlassian MCP servers to retest a Jira bug and post the report back." />
       <CompatibleToolsSection />
+      <CapabilitiesSection />
+      <VideoCallout text="An AI QA agent in Cursor combines the Wopee.io, Playwright and Atlassian MCP servers to retest a Jira bug and post the report back." />
       <OpenSourceSection />
       <TestimonialCarousel />
-      <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
-        <div className="container my-12 lg:my-16 h-[50vh] flex flex-col justify-center gap-5 lg:gap-10 text-center">
+      {/* The page's yellow field (DESIGN.md, Components): flat yellow, ink type, an ink primary button. */}
+      <section className="bg-primary-wopee text-gray-900">
+        <div className="container flex flex-col justify-center gap-6 py-16 text-center lg:gap-10 lg:py-20">
           <div className="text-balance px-2 lg:px-0">
-            <h2 className="lg:text-4xl text-3xl font-bold">
+            <h2 className="text-3xl font-bold text-gray-900 lg:text-4xl">
               Bring autonomous testing to your AI workflow
             </h2>
-            <h3 className="text-secondary-wopee dark:text-primary-wopee lg:text-4xl text-3xl font-bold">
+            <p className="m-0 text-2xl text-gray-900 lg:text-3xl">
               Set up in minutes, start testing immediately.
-            </h3>
+            </p>
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-2 items-center lg:gap-5">
+          <div className="flex flex-col items-center justify-center gap-2 sm:flex-row lg:gap-5">
             <div className="h-20">
               <ButtonPrimary
                 label="Start for free"
                 href={`${cmdBaseUrl}/login`}
-                className="w-60 h-[50px]"
+                className="w-60 h-[50px] !bg-gray-900 !border-gray-900 !text-white group-hover:!bg-gray-700 group-hover:!border-gray-700"
                 id="cta-mcp-footer"
               />
-              <p className="text-center text-sm italic">No credit card required</p>
+              <p className="text-center text-sm text-gray-900">No credit card required</p>
             </div>
             <div className="sm:h-20">
-              <ButtonPrimaryInverted href="/book-demo/" className="w-60 h-[50px]" />
+              <ButtonPrimaryInverted
+                href="/book-demo/"
+                className="w-60 h-[50px] !text-gray-900 !border-gray-900 group-hover:!bg-gray-900/10 hover:!bg-gray-900/10"
+              />
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
