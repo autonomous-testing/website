@@ -196,7 +196,7 @@ const STEPS = [
     step: "1",
     title: "Install",
     subtitle: "One npm package, instant setup",
-    code: "npm install -g wopee-mcp\n# or run directly\nnpx wopee-mcp",
+    code: "# Node.js 20.18 or newer\nnpx -y wopee-mcp",
     description:
       "Run instantly with npx, the server starts in seconds. No global install needed.",
   },
@@ -283,10 +283,11 @@ const TerminalAnimation = () => {
 const MCP_CONFIG_SNIPPET = `{
   "mcpServers": {
     "wopee": {
-      "command": "npx wopee-mcp",
+      "command": "npx",
+      "args": ["-y", "wopee-mcp"],
       "env": {
-        "WOPEE_PROJECT_UUID": "your-project-uuid-here",
-        "WOPEE_API_KEY": "your-api-key-here"
+        "WOPEE_API_KEY": "your-api-key-here",
+        "WOPEE_PROJECT_UUID": "your-project-uuid-here"
       }
     }
   }
@@ -385,7 +386,7 @@ const HeroSection = () => (
         <span>&#x2022;</span>
         <span>15 MCP tools</span>
         <span>&#x2022;</span>
-        <span>Node.js 18+</span>
+        <span>Node.js 20.18+</span>
       </div>
 
       <InstallSnippet />
@@ -772,11 +773,11 @@ const JSONLD_MCP_APP = {
   name: "Wopee.io MCP Server",
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "Test Automation",
-  operatingSystem: "Cross-platform (Node.js 18+)",
+  operatingSystem: "Cross-platform (Node.js 20.18+)",
   url: "https://wopee.io/mcp/",
   description:
     "Model Context Protocol server that connects Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and other MCP clients to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites from natural-language conversation.",
-  softwareRequirements: "Node.js 18+",
+  softwareRequirements: "Node.js 20.18+",
   downloadUrl: "https://www.npmjs.com/package/wopee-mcp",
   installUrl: "https://www.npmjs.com/package/wopee-mcp",
   publisher: ORG_REF,
