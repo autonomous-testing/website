@@ -133,7 +133,7 @@ const BetterTogether = () => {
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
           Your agent improvises. Wopee.io remembers.
         </p>
-        <AgentSetupCard primary className="mb-8" />
+        <AgentSetupCard placement="vs-pwmcp" primary className="mb-8" />
         <ButtonPrimaryInverted
           label="Start for free"
           href={loginUrl}

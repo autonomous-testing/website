@@ -343,6 +343,7 @@ const CategorySection = ({ category }: { category: Category }) => (
     </div>
     {category.id === "ai-coding-agents" && (
       <AgentSetupCard
+        placement="integrations"
         title="Set it up from your coding agent"
         className="mb-6"
       />

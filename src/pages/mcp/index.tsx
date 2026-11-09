@@ -368,6 +368,7 @@ const HeroSection = () => {
         </p>
 
         <AgentSetupCard
+          placement="mcp-hero"
           primary
           className="mt-4"
           extra={
