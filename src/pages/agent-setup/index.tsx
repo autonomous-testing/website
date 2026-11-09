@@ -59,7 +59,7 @@ const AgentSetupPage = () => (
           Paste one line into Claude Code, Cursor, GitHub Copilot or Codex. Your agent follows a public setup file, shows
           you the plan, and connects the Wopee.io MCP server after your yes.
         </p>
-        <AgentSetupCard title="Copy this line" primary explainHref="#what-it-does" className="mt-2" />
+        <AgentSetupCard placement="agent-setup" title="Copy this line" primary explainHref="#what-it-does" className="mt-2" />
         <p className="m-0 text-sm text-gray-600 dark:text-gray-300">
           Prefer to set it up by hand?{" "}
           <Link href="https://docs.wopee.io/guides/wopee-mcp/" className={agentSetupLinkClass}>

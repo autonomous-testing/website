@@ -153,6 +153,8 @@ Tell the user:
 
    https://cmd.wopee.io/signup?url=<app-url>
 
+   If the address you were given for this file ends in `?ref=<value>`, add `&ref=<value>` to this link.
+
    Sign-up creates the project and starts the free first crawl of the app. A crawl started later from this chat spends the plan's 50 free steps instead.
 
    **Already a user:** open your project in

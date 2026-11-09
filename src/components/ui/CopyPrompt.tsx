@@ -15,7 +15,8 @@ const BUTTON = {
 };
 
 type CopyButtonProps = {
-  text: string;
+  /** The copied text, or a function that returns it at the moment of the copy. */
+  text: string | (() => string);
   label: string;
   primary?: boolean;
   id?: string;
@@ -32,7 +33,7 @@ export function CopyButton({ text, label, primary = false, id, className, onCopy
       setTimeout(() => setState("idle"), next === "copied" ? 1600 : 4000);
     };
     if (!navigator.clipboard) return done("failed");
-    navigator.clipboard.writeText(text).then(
+    navigator.clipboard.writeText(typeof text === "function" ? text() : text).then(
       () => {
         done("copied");
         onCopy?.();
@@ -67,6 +68,8 @@ export function CopyButton({ text, label, primary = false, id, className, onCopy
 type CopyPromptProps = {
   /** The text that is shown and copied. */
   text: string;
+  /** Copied instead of `text`; a function is called at the moment of the copy. */
+  copyText?: string | (() => string);
   buttonLabel?: string;
   /** Small uppercase label above the text. */
   label?: string;
@@ -84,6 +87,7 @@ type CopyPromptProps = {
 /** A prompt in a mono box with a copy button (the /brand "Prompt to paste" card, shared). */
 export default function CopyPrompt({
   text,
+  copyText,
   buttonLabel = "Copy prompt",
   label,
   primary = false,
@@ -110,7 +114,7 @@ export default function CopyPrompt({
         </p>
         <div className={clsx(row && "flex sm:flex-col")}>
           <CopyButton
-            text={text}
+            text={copyText ?? text}
             label={buttonLabel}
             primary={primary}
             id={id}
