@@ -4,6 +4,7 @@ import Head from "@docusaurus/Head";
 
 import Layout from "@theme/Layout";
 import GoBack from "@site/src/components/demo/GoBack";
+import SocialCard from "@site/src/components/seo/SocialCard";
 
 export default function Home(): JSX.Element {
   return (
@@ -11,6 +12,7 @@ export default function Home(): JSX.Element {
       title="Book a Meeting with Marcel"
       description="Schedule a meeting with Marcel Veselka, co-founder of Wopee.io. Discuss AI test automation, partnerships, or product questions."
     >
+      <SocialCard permalink="/marcel/" />
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
