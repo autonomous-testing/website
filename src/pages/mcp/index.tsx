@@ -31,6 +31,9 @@ import ButtonPrimaryInverted from "@site/src/components/buttons/ButtonPrimaryInv
 import VideoCallout from "@site/src/components/ui/VideoCallout";
 import GradientCard from "@site/src/components/ui/GradientCard";
 import { cmdBaseUrl } from "../../../cmdBaseUrl";
+import clsx from "clsx";
+import AgentSetupCard, { agentSetupLinkClass } from "@site/src/components/agent-setup/AgentSetupCard";
+import { AGENT_SETUP_LINE } from "@site/src/data/agent-setup";
 import { ORG_REF } from "@site/src/data/organization";
 import SocialCard from "@site/src/components/seo/SocialCard";
 
@@ -194,24 +197,27 @@ const COMPATIBLE_TOOLS = [
 const STEPS = [
   {
     step: "1",
-    title: "Install",
-    subtitle: "One npm package, instant setup",
-    code: "npm install -g wopee-mcp\n# or run directly\nnpx wopee-mcp",
+    title: "Paste",
+    subtitle: "One line in your agent's chat",
+    label: "chat",
+    code: AGENT_SETUP_LINE,
     description:
-      "Run instantly with npx, the server starts in seconds. No global install needed.",
+      "Claude Code, Cursor, Copilot or Codex reads the public setup file, checks Node.js 20.18+, and shows you the plan. Nothing changes until you say yes.",
   },
   {
     step: "2",
     title: "Connect",
-    subtitle: "Works with any MCP client",
-    code: "// Copy the mcp-config.json snippet from the top of this page\n// and paste it into your AI tool's MCP config.",
+    subtitle: "Your key stays with you",
+    label: "terminal",
+    code: '# Commander: More › Settings › API Keys\nexport WOPEE_API_KEY="…"\nexport WOPEE_PROJECT_UUID="…"',
     description:
-      "Two values from your Wopee.io dashboard. Paste into your AI tool's MCP config, that's all you need.",
+      "Your agent adds one wopee server that reads the key from your environment or a git-ignored .env file. You type the key yourself; it never goes into the chat or a committed file.",
   },
   {
     step: "3",
     title: "Test",
     subtitle: "Natural language, real results",
+    label: "conversation",
     code: '"Generate stories for login and test them"\n\n  wopee_generate_artifact           3 user stories\n  wopee_dispatch_agent              running 8 cases\n  wopee_fetch_executed_test_cases   7 passed, 1 failed',
     description:
       "Ask your AI to test any flow. It generates stories, dispatches agents, and explains findings, all in natural language.",
@@ -283,10 +289,11 @@ const TerminalAnimation = () => {
 const MCP_CONFIG_SNIPPET = `{
   "mcpServers": {
     "wopee": {
-      "command": "npx wopee-mcp",
+      "command": "npx",
+      "args": ["-y", "wopee-mcp"],
       "env": {
-        "WOPEE_PROJECT_UUID": "your-project-uuid-here",
-        "WOPEE_API_KEY": "your-api-key-here"
+        "WOPEE_API_KEY": "your-api-key-here",
+        "WOPEE_PROJECT_UUID": "your-project-uuid-here"
       }
     }
   }
@@ -306,7 +313,7 @@ const InstallSnippet = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-4 rounded-xl overflow-hidden border border-gray-700 shadow-xl text-left">
+    <div id="mcp-config" className="w-full mt-5 rounded-xl overflow-hidden border border-solid border-gray-700 text-left">
       <div className="bg-gray-800 px-4 py-2.5 flex items-center justify-between">
         <span className="text-gray-400 text-xs font-mono">mcp-config.json</span>
         <button
@@ -332,95 +339,117 @@ const InstallSnippet = () => {
   );
 };
 
-const HeroSection = () => (
-  <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center relative">
-    <div className="flex flex-col gap-6 max-w-4xl">
-      <div className="flex justify-center gap-3 items-center">
-        <span className="bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee text-sm font-semibold px-4 py-1.5 rounded-full border border-secondary-wopee/20 dark:border-primary-wopee/20">
-          MCP Server
-        </span>
-        <span className="bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-purple-500/20">
-          Available on npm
-        </span>
+const HeroSection = () => {
+  const [showConfig, setShowConfig] = useState(false);
+  return (
+    <div className="flex flex-col justify-center items-center gap-8 my-12 lg:mt-16 lg:mb-8 px-5 lg:px-10 container text-center relative">
+      <div className="flex flex-col gap-6 max-w-4xl">
+        <div className="flex justify-center gap-3 items-center">
+          <span className="bg-secondary-wopee/10 dark:bg-primary-wopee/10 text-secondary-wopee dark:text-primary-wopee text-sm font-semibold px-4 py-1.5 rounded-full border border-secondary-wopee/20 dark:border-primary-wopee/20">
+            MCP Server
+          </span>
+          <span className="bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-purple-500/20">
+            Available on npm
+          </span>
+        </div>
+
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-tight">
+          <span className="text-secondary-wopee dark:text-primary-wopee">
+            Autonomous testing
+          </span>
+          <br className="hidden sm:block" />
+          {" "}in your AI coding agent
+        </h1>
+
+        <p className="text-xl sm:text-2xl opacity-80 max-w-2xl mx-auto text-balance">
+          Your coding agent runs the tests and files the bugs, straight into
+          GitHub. Connect Wopee.io to generate tests, dispatch testing agents,
+          and check results without leaving your editor.
+        </p>
+
+        <AgentSetupCard
+          primary
+          className="mt-4"
+          extra={
+            <button
+              type="button"
+              aria-expanded={showConfig}
+              aria-controls="mcp-config"
+              onClick={() => setShowConfig((v) => !v)}
+              className={clsx(
+                "cursor-pointer border-0 bg-transparent p-0 text-sm",
+                agentSetupLinkClass
+              )}
+            >
+              {showConfig ? "Hide the config" : "Show the config"}
+            </button>
+          }
+        >
+          {showConfig && <InstallSnippet />}
+        </AgentSetupCard>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-5 items-center">
+          <div className="flex flex-col items-center gap-1.5">
+            <ButtonPrimaryInverted
+              label="Start for free"
+              href={`${cmdBaseUrl}/login`}
+              className="w-64 h-[54px] text-lg"
+              id="cta-mcp-hero"
+            />
+            <span className="text-xs opacity-50">No credit card required</span>
+          </div>
+          <Link
+            href="https://github.com/Wopee-io/wopee-mcp"
+            className="group inline-flex items-center gap-2 text-base font-medium hover:no-underline opacity-70 hover:opacity-100 transition-opacity"
+          >
+            <Icon path={mdiGithub} size={1} />
+            View on GitHub
+            <span className="group-hover:translate-x-1 transition-transform">
+              &rarr;
+            </span>
+          </Link>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3 text-sm opacity-60">
+          <span>npm package</span>
+          <span>&#x2022;</span>
+          <span>15 MCP tools</span>
+          <span>&#x2022;</span>
+          <span>Node.js 20.18+</span>
+        </div>
       </div>
 
-      <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-tight">
-        <span className="text-secondary-wopee dark:text-primary-wopee">
-          Autonomous testing
-        </span>
-        <br className="hidden sm:block" />
-        {" "}in your AI coding agent
-      </h1>
-
-      <p className="text-xl sm:text-2xl opacity-80 max-w-2xl mx-auto text-balance">
-        Your coding agent runs the tests and files the bugs, straight into
-        GitHub. Connect Wopee.io to generate tests, dispatch testing agents,
-        and check results without leaving your editor.
-      </p>
-
-      <div className="flex flex-col sm:flex-row justify-center gap-5 items-center mt-6">
-        <div className="flex flex-col items-center gap-1.5">
-          <ButtonPrimary
-            label="Start for free"
-            href={`${cmdBaseUrl}/login`}
-            className="w-64 h-[54px] text-lg"
-            id="cta-mcp-hero"
-          />
-          <span className="text-xs opacity-50">No credit card required</span>
+      <div className="w-full max-w-3xl mt-4 rounded-xl overflow-hidden shadow-2xl shadow-secondary-wopee/20 dark:shadow-primary-wopee/20 border border-secondary-wopee/30 dark:border-primary-wopee/30">
+        <div className="bg-gray-900 px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <span className="text-gray-400 text-sm ml-2 font-mono">
+              AI Agent + Wopee.io MCP
+            </span>
+          </div>
+          <span className="text-xs text-green-500 font-mono flex items-center gap-1"><span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>mcp connected</span>
         </div>
+        <TerminalAnimation />
         <Link
-          href="https://github.com/Wopee-io/wopee-mcp"
-          className="group inline-flex items-center gap-2 text-base font-medium hover:no-underline opacity-70 hover:opacity-100 transition-opacity"
+          href="https://docs.wopee.io/guides/wopee-mcp/"
+          className="mt-4 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
         >
-          <Icon path={mdiGithub} size={1} />
-          View on GitHub
-          <span className="group-hover:translate-x-1 transition-transform">
-            &rarr;
-          </span>
+          Read the docs &rarr;
+        </Link>
+        <Link
+          to="/learn/"
+          className="mt-4 ml-6 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
+        >
+          New to MCP? Free tutorial &rarr;
         </Link>
       </div>
-
-      <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm opacity-60">
-        <span>npm package</span>
-        <span>&#x2022;</span>
-        <span>15 MCP tools</span>
-        <span>&#x2022;</span>
-        <span>Node.js 18+</span>
-      </div>
-
-      <InstallSnippet />
     </div>
-
-    <div className="w-full max-w-3xl mt-4 rounded-xl overflow-hidden shadow-2xl shadow-secondary-wopee/20 dark:shadow-primary-wopee/20 border border-secondary-wopee/30 dark:border-primary-wopee/30">
-      <div className="bg-gray-900 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-          </div>
-          <span className="text-gray-400 text-sm ml-2 font-mono">
-            AI Agent + Wopee.io MCP
-          </span>
-        </div>
-        <span className="text-xs text-green-500 font-mono flex items-center gap-1"><span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>mcp connected</span>
-      </div>
-      <TerminalAnimation />
-      <Link
-        href="https://docs.wopee.io/guides/wopee-mcp/"
-        className="mt-4 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
-      >
-        Read the docs &rarr;
-      </Link>
-      <Link
-        to="/learn/"
-        className="mt-4 ml-6 text-sm opacity-60 hover:opacity-100 transition-opacity hover:no-underline"
-      >
-        New to MCP? Free tutorial &rarr;
-      </Link>
-    </div>
-  </div>
-);
+  );
+};
 
 const ProblemSection = () => (
   <div className="bg-gradient-to-br from-secondary-wopee via-purple-600 to-secondary-wopee dark:from-primary-wopee dark:to-white text-balance flex flex-col gap-10 px-10 py-20">
@@ -526,7 +555,7 @@ const HowItWorksSection = () => (
         </span>
       </h2>
       <p className="text-xl opacity-70 max-w-2xl mx-auto">
-        Install the npm package, add it to your MCP config, and start testing
+        Paste one line, add your API key, and start testing
       </p>
     </div>
 
@@ -547,14 +576,10 @@ const HowItWorksSection = () => (
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
                 </div>
                 <span className="text-gray-500 text-xs font-mono ml-2">
-                  {index === 0
-                    ? "terminal"
-                    : index === 1
-                    ? "mcp-config.json"
-                    : "conversation"}
+                  {step.label}
                 </span>
               </div>
-              <pre className="!bg-transparent p-5 text-sm sm:text-base !text-gray-300 overflow-x-auto m-0">
+              <pre className="!bg-transparent p-5 text-sm sm:text-base !text-gray-300 overflow-x-auto m-0 whitespace-pre-wrap [overflow-wrap:anywhere]">
                 <code className="!bg-transparent !text-gray-300">{step.code}</code>
               </pre>
             </div>
@@ -772,11 +797,11 @@ const JSONLD_MCP_APP = {
   name: "Wopee.io MCP Server",
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "Test Automation",
-  operatingSystem: "Cross-platform (Node.js 18+)",
+  operatingSystem: "Cross-platform (Node.js 20.18+)",
   url: "https://wopee.io/mcp/",
   description:
     "Model Context Protocol server that connects Claude Code, Claude Desktop, Cursor, VS Code, Windsurf, and other MCP clients to Wopee.io. Dispatch autonomous testing agents, generate test artifacts, fetch execution results, and manage test suites from natural-language conversation.",
-  softwareRequirements: "Node.js 18+",
+  softwareRequirements: "Node.js 20.18+",
   downloadUrl: "https://www.npmjs.com/package/wopee-mcp",
   installUrl: "https://www.npmjs.com/package/wopee-mcp",
   publisher: ORG_REF,

@@ -16,6 +16,7 @@
 - [Book a demo](https://wopee.io/book-demo/): 30-minute call with the founders.
 - [Brand kit](https://wopee.io/brand/): Logo, symbol, colours, type and usage rules, with downloads.
 - [DESIGN.md](https://wopee.io/brand/DESIGN.md): The brand and design rules in one Markdown file for AI agents (tokens, logo files per situation, website, slide and social rules, don'ts). Read it before making anything with the Wopee.io name on it.
+- [Agent setup](https://wopee.io/agent-setup/prompt.md): Setup instructions for a coding agent (Claude Code, Cursor, GitHub Copilot, Codex). The agent shows the user a plan, adds the Wopee.io MCP server after a yes, and never handles the API key. Human version: https://wopee.io/agent-setup/
 
 ## Comparisons
 - [Compare AI testing tools](https://wopee.io/compare/): Date-stamped comparisons of Wopee.io with the tools teams evaluate most often, each with a "when to pick them" section.
