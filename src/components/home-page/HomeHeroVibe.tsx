@@ -11,7 +11,10 @@ import {
   Check,
 } from "lucide-react";
 
+import Link from "@docusaurus/Link";
+import clsx from "clsx";
 import { Button } from "@/components/ui/button";
+import { agentSetupLinkClass } from "@site/src/components/agent-setup/AgentSetupCard";
 
 import { AppType } from "./vibe/enums";
 import LoginDialog from "./vibe/LoginDialog";
@@ -381,6 +384,20 @@ const HomeHeroVibe = () => {
 
             <p className="text-center text-xs text-gray-500 dark:text-gray-400">
               No credit card required
+              <span aria-hidden="true" className="hidden sm:inline">
+                {" "}
+                &middot;{" "}
+              </span>
+              <Link
+                href="/mcp/"
+                id="cta-home-mcp"
+                className={clsx(
+                  agentSetupLinkClass,
+                  "mt-1 block whitespace-nowrap sm:mt-0 sm:inline",
+                )}
+              >
+                Onboard your coding agent (MCP) &rarr;
+              </Link>
             </p>
 
           </div>
