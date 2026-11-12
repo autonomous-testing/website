@@ -2,7 +2,7 @@
 slug: ai-written-playwright-tests-planted-bugs
 title: "100 AI-Written Playwright Tests vs 5 Planted Bugs: 94 Stayed Green"
 og_punchline: "94 stayed green"
-title_meta: "100 AI-Written Playwright Tests vs 5 Bugs: 94 Stayed Green"
+title_meta: "100 Playwright Tests vs 5 Bugs: 94 Stayed Green"
 description: "Claude Code wrote 100 Playwright tests. We shipped a refactor with 5 planted bugs: 94 tests stayed green and 2 bugs slipped. Here is why the tests lied."
 tags: [playwright, ai-testing, ai-testing-agents, test-automation, visual-testing, case-study]
 image: ./hero.webp
