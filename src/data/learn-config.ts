@@ -25,6 +25,16 @@ export const learnConfig = {
      * Also turns on everything hub.live does.
      */
     launched: false,
+    /** YouTube id of T1 part 1 ("Green is not correct", about 3 min). */
+    videoId: "",
+    /** YouTube ids of the lab clips. Empty = only the clip name before the step. */
+    clip2VideoId: "",
+    clip3VideoId: "",
+    clip4VideoId: "",
+    /** YouTube id of the "Where this breaks" clip after the lab. Empty = hidden. */
+    clip5VideoId: "",
+    /** HubSpot form for the certificate email gate. Empty = "opens at launch" note. */
+    certFormId: "",
   },
 };
 
