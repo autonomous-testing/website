@@ -20,11 +20,11 @@ const CompareCta = ({ heading, subheading, ctaId }: CompareCtaProps) => {
       ? []
       : COMPARISONS.filter((c) => !pathname.startsWith(c.href.slice(0, -1)));
   return (
-    <div className="bg-gradient-to-b from-transparent to-primary-wopee dark:to-secondary-wopee">
-      <div className="container my-12 lg:my-16 py-16 lg:py-24 flex flex-col justify-center gap-5 lg:gap-10 text-center">
+    <div className="bg-primary-wopee text-gray-900 mt-12 lg:mt-16">
+      <div className="container py-16 lg:py-20 flex flex-col justify-center gap-5 lg:gap-10 text-center">
         <div className="text-balance px-2 lg:px-0">
-          <h2 className="lg:text-4xl text-3xl font-bold">{heading}</h2>
-          <h3 className="text-secondary-wopee dark:text-primary-wopee lg:text-4xl text-3xl font-bold">
+          <h2 className="lg:text-4xl text-3xl font-bold text-gray-900">{heading}</h2>
+          <h3 className="text-gray-900 lg:text-4xl text-3xl font-bold">
             {subheading}
           </h3>
         </div>
@@ -33,31 +33,31 @@ const CompareCta = ({ heading, subheading, ctaId }: CompareCtaProps) => {
             <ButtonPrimary
               label="Start for free"
               href={loginUrl}
-              className="w-60 h-[50px]"
+              className="w-60 h-[50px] !bg-gray-900 !border-gray-900 !text-white group-hover:!bg-gray-700 group-hover:!border-gray-700"
               id={ctaId}
             />
-            <p className="text-center text-sm italic">
+            <p className="text-center text-sm text-gray-900">
               No credit card required
             </p>
           </div>
           <div className="sm:h-20">
             <ButtonPrimaryInverted
               href="/book-demo/"
-              className="w-60 h-[50px]"
+              className="w-60 h-[50px] !text-gray-900 !border-gray-900 group-hover:!bg-gray-900/10 hover:!bg-gray-900/10"
             />
           </div>
         </div>
         {related.length > 0 && (
           <nav
             aria-label="More comparisons"
-            className="flex flex-wrap justify-center gap-x-5 gap-y-2 px-2 text-sm"
+            className="flex flex-wrap justify-center gap-x-5 gap-y-2 px-2 text-sm text-gray-900"
           >
             <span className="font-semibold">More comparisons:</span>
             {related.map((c) => (
               <Link
                 key={c.href}
                 to={c.href}
-                className="text-secondary-wopee dark:text-primary-wopee underline"
+                className="text-gray-900 underline hover:text-gray-900"
               >
                 {c.title}
               </Link>

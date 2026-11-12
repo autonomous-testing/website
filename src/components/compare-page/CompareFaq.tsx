@@ -39,7 +39,7 @@ const CompareFaq = ({ title, faqs }: CompareFaqProps) => {
   };
 
   return (
-    <div className="py-16 lg:py-24 px-4 lg:px-8 text-slate-900 dark:text-white transition-colors duration-300">
+    <div className="py-16 lg:py-24 px-4 lg:px-8 text-gray-900 dark:text-white transition-colors duration-300">
       <Head>
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Head>
@@ -50,18 +50,18 @@ const CompareFaq = ({ title, faqs }: CompareFaqProps) => {
           {faqs.map((faq, index) => (
             <div
               key={faq.question}
-              className="border-b border-slate-200 dark:border-slate-800 last:border-b-0"
+              className="border-b border-solid border-gray-200 dark:border-gray-800 last:border-b-0"
             >
               <h3 className="m-0">
                 <button
-                  className="bg-transparent border-none w-full flex justify-between items-center py-4 text-left text-lg font-bold focus:outline-none focus:ring-0 group text-slate-900 dark:text-white"
+                  className="bg-transparent border-none w-full flex justify-between items-center py-4 text-left text-lg font-bold focus:outline-none focus:ring-0 group text-gray-900 dark:text-white"
                   onClick={() => toggleFaq(index)}
                 >
                   {faq.question}
                   <Icon
                     path={openIndices.includes(index) ? mdiMinus : mdiPlus}
                     size={1}
-                    className="flex-shrink-0 ml-4 text-slate-500 dark:text-slate-400"
+                    className="flex-shrink-0 ml-4 text-gray-500 dark:text-gray-400"
                   />
                 </button>
               </h3>
@@ -72,7 +72,7 @@ const CompareFaq = ({ title, faqs }: CompareFaqProps) => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="text-slate-600 dark:text-slate-400 m-0">
+                <p className="text-gray-600 dark:text-gray-400 m-0">
                   {faq.render ?? faq.answer}
                 </p>
               </div>
