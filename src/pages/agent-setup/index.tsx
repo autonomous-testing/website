@@ -12,24 +12,25 @@ const VERSION = PROMPT_MD.match(/^version:\s*(\S+)/m)?.[1];
 
 const STEPS: [string, string][] = [
   ["Checks your setup", "Detects your coding agent and OS, and checks Node.js 20.18 or newer. It never installs Node.js for you."],
-  ["Shows you the plan", "Lists the file it will change and waits for your yes. Your agent's own permission prompts stay on."],
-  ["Adds one MCP server", "One entry named wopee that runs npx -y wopee-mcp and reads your key from the environment or a git-ignored .env file."],
-  ["Sends you to Commander for the key", "New users sign up with their app's URL and get a free first crawl. You copy the project UUID and API key and type them in yourself."],
-  ["Checks the connection", "After a restart, one read-only call lists your analyses and tests."],
+  ["Shows you the plan", "Lists what will change and waits for your yes. Your agent's own permission prompts stay on."],
+  ["Runs one command", "npx -y @wopee-io/init prints a link and three pairing words. New users sign up with their app's URL first and get a free first crawl."],
+  ["You approve in Commander", "Check that the words match, pick the project and approve. A new, named API key goes straight to the command, encrypted. Your agent never sees it."],
+  ["Checks the connection", "After a restart, one read-only call reports your project, analyses and tests."],
   ["Offers a first run", "It asks before it starts a test run or an analysis, because runs count toward your plan."],
 ];
 
 const CHANGES = [
-  "One MCP server entry named wopee in your agent's config (.mcp.json, .cursor/mcp.json, .vscode/mcp.json or ~/.codex/config.toml)",
-  "With your OK: a .env file with empty WOPEE_API_KEY and WOPEE_PROJECT_UUID lines, and .env in .gitignore",
+  "WOPEE_API_KEY and WOPEE_PROJECT_UUID in a .env file, written by the command, and .env in .gitignore",
+  "One MCP server entry named wopee, with no key in it (.mcp.json, .cursor/mcp.json, .vscode/mcp.json, opencode.json or ~/.codex/config.toml)",
+  "A new key in Commander named wopee-init · <agent> · <machine> · <date>, which you can revoke at any time",
 ];
 
 const NEVER = [
-  "Asks for your API key in the chat or writes it into a committed file",
+  "Asks for your API key in the chat, reads your .env or writes the key into a committed file",
   "Uses sudo, global installs, curl | bash or edits your shell profile",
   "Turns off TLS or certificate checks",
   "Starts a test run or an analysis without your yes",
-  "Visits hosts other than wopee.io, docs.wopee.io, cmd.wopee.io and npm",
+  "Visits hosts other than wopee.io, docs.wopee.io, cmd.wopee.io, api.wopee.io and npm",
 ];
 
 const List = ({ items }: { items: string[] }) => (
