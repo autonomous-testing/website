@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Unit tests
+        run: yarn test
       - name: Check share cards are up to date
         run: node scripts/og-cards/generate.cjs --check
       - name: Test build website

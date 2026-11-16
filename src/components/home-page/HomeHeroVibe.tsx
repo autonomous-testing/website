@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { agentSetupLinkClass } from "@site/src/components/agent-setup/AgentSetupCard";
 
 import { AppType } from "./vibe/enums";
+import { OWN_APP_PROMPT, nextInstructions } from "./vibe/heroPrompt";
 import LoginDialog from "./vibe/LoginDialog";
 import HeroVideoInline from "./HeroVideoInline";
 import HeroTrustedByStrip from "./HeroTrustedByStrip";
@@ -51,13 +52,14 @@ Verify that the dashboard loads after submit.`,
     label: "Your app",
     icon: AppWindow,
     url: "",
-    instructions: "",
+    instructions: OWN_APP_PROMPT,
   },
 };
 const urlList = Object.entries(appTemplates).map(([key, value]) => ({
   url: value.url,
   type: key as AppType,
 }));
+const generatedPrompts = Object.values(appTemplates).map((t) => t.instructions);
 // Default to the E-commerce demo on landing, the hero arrives with a
 // working URL + instructions pre-filled so the CTA is immediately usable,
 // while visitors can still paste their own URL or pick another demo chip.
@@ -121,12 +123,14 @@ const HomeHeroVibe = () => {
     setDemoMenuOpen(false);
   };
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const found = urlList.find((url) => url.url === e.target.value);
-    if (found) {
-      setAppType(found.type);
-    } else {
-      setAppType(AppType.YOUR_APPLICATION);
-    }
+    const found = urlList.find(
+      (url) => url.url !== "" && url.url === e.target.value
+    );
+    const type = found ? found.type : AppType.YOUR_APPLICATION;
+    setAppType(type);
+    setTestingInstructions((current) =>
+      nextInstructions(current, generatedPrompts, appTemplates[type].instructions)
+    );
     setAppUrl(e.target.value);
   };
   const setIsOpenVibe = (isOpen: boolean) => {
