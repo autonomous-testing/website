@@ -43,6 +43,16 @@ export const videos: VideoEntry[] = [
     thumbnailAlt:
       "Video thumbnail: Vibe Testing Lab, four AI testing agents compared on one demo app",
   },
+  {
+    slug: "codex-mcp-testing-agent",
+    youtubeId: "I3E5c1pg1YY",
+    title: "Codex MCP for Testing: Add a Testing Agent",
+    summary:
+      "OpenAI Codex connects to the Wopee.io MCP server, writes a new end-to-end test, runs it in the cloud and reads the result, without leaving the terminal.",
+    duration: "5:07",
+    thumbnailAlt:
+      "Video thumbnail: OpenAI Codex using the Wopee.io MCP server to write and run a test",
+  },
 ];
 
 export const videoPath = (v: VideoEntry) => `/videos/${v.slug}/`;
