@@ -125,8 +125,8 @@ export default function CodexMcpTestingAgentVideo(): JSX.Element {
 
   return (
     <Layout
-      title="Codex MCP for Testing: Add a Testing Agent (Video)"
-      description="Watch OpenAI Codex use the Wopee.io MCP server: list your tests, write a new end-to-end test, run it in the cloud and read the result. Chapters and full transcript."
+      title="Codex MCP for Testing: Add a Testing Agent, Video"
+      description="Watch OpenAI Codex use the Wopee.io MCP server: list your tests, write a new end-to-end test, run it in the cloud and read the result. Chapters and transcript."
     >
       <SocialCard
         card={{
