@@ -47,6 +47,8 @@ const config = {
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.ico",
 
+  clientModules: [require.resolve("./src/clientModules/sharedConsent.mjs")],
+
   // Docusaurus `favicon` emits one icon link (the 16/32/48 .ico). The rest of the
   // set from the brand masters: SVG for sharp tabs, PNG sizes, the iOS icon and
   // the web app manifest (192/512, any + maskable).
