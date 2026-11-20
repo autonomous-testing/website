@@ -62,9 +62,11 @@ No hints about where the bugs were. No recorded steps. Then I started the agent 
 
 ## What it found, bug by bug
 
-**1. The promo code discounts the fees too.** TESENA10 should take 10% off the food. On a $12.95 burger the agent computed −$1.30 and a total of $16.14. The checkout said −$1.59 and $15.85. The order confirmation repeated $15.85. Both assertions failed, with every number on one screen.
+**1. The promo code discounts the fees too.** FOODIE10 should take 10% off the food. On a $12.95 burger the agent computed −$1.30 and a total of $16.14. The checkout said −$1.59 and $15.85. The order confirmation repeated $15.85. Both assertions failed, with every number on one screen.
 
-![Checkout order summary: subtotal $12.95, delivery fee $2.99, service fee $1.50, promo TESENA10 minus $1.59, total $15.85](./promo-code-checkout.webp)
+![Checkout order summary: subtotal $12.95, delivery fee $2.99, service fee $1.50, promo FOODIE10 minus $1.59, total $15.85](./promo-code-checkout.webp)
+
+_The demo app's promo code is shown as FOODIE10 in this post and blurred in the screenshot._
 
 **2. The promotion never applies.** One restaurant advertises "20% OFF orders over $25". The agent built a $25.90 cart and expected $25.21. It was charged $30.39. It also checked $24.98 (correctly no discount), so we know where the bug starts.
 
@@ -101,10 +103,10 @@ Then one chat prompt: "What else should a careful tester check in this shop befo
 The third part matters more than it looks. Agents assume. If you don't tell an agent when to fail, it will find a reason to pass. Here is the shape of one test the agent ran:
 
 ```text
-Goal:     TESENA10 discounts food only
+Goal:     FOODIE10 discounts food only
           and matches the confirmation total.
 Data:     1x Classic Beef Burger, guest checkout,
-          promo code TESENA10.
+          promo code FOODIE10.
 Pass if:  Discount = 10% of the food subtotal;
           checkout total = confirmation total.
 Fail if:  The discount includes delivery or

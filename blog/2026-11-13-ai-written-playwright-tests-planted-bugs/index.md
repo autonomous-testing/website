@@ -68,7 +68,7 @@ Scripted tests are consistent: 94 live, and 94 in every rehearsal run on the sam
 
 ## Bug by bug
 
-**A. The discount is shown, not taken** (caught, 3 red). The promo code TESENA10 shows −$1.30 on a $12.95 burger, but the total stays $17.44. It should be $16.14. Three tests check the total and failed. Three other promo tests check only the "−$1.30" line, and stayed green.
+**A. The discount is shown, not taken** (caught, 3 red). The promo code FOODIE10 shows −$1.30 on a $12.95 burger, but the total stays $17.44. It should be $16.14. Three tests check the total and failed. Three other promo tests check only the "−$1.30" line, and stayed green. (The demo app's promo code is shown as FOODIE10 in this post.)
 
 **B. The "−" button deletes the dish** (caught, 1 red). With 2 burgers in the cart, "−" should leave 1. The refactor empties the cart. Only one test of the 100 presses "−", and it came with the 5-case top-up. Without the top-up, this bug ships.
 
