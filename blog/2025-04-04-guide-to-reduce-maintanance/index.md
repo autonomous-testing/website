@@ -85,7 +85,7 @@ Consider integrating Wopee.io into your workflow if you regularly experience:
 
 - Frequent manual updates due to minor UI changes.
 - A need for deeper control and flexibility than what typical no-code solutions offer.
-- A desire to expand regression test coverage without heavy manual scripting or additional staffing.
+- A desire to expand [regression test coverage](/ai-regression-testing/) without heavy manual scripting or additional staffing.
 - Value tools that integrate with your existing technical ecosystem
 
 Wopee.io is crafted to enhance your existing processes, leveraging your current expertise and achievements, while also introducing innovative approaches (powered by [AI testing agents](/ai-testing-agents/)) to further improve your testing capabilities.
