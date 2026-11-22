@@ -67,7 +67,7 @@
         {"q": "Can Wopee.io help document what was tested before a release?", "a": "Yes. Every test run is recorded with visual diffs and pass/fail history in Wopee Commander, providing a reviewable record of what was tested before each release as QA evidence, not a regulatory compliance or certification artifact."},
         {"q": "Is test data secure for sensitive financial environments?", "a": "Wopee.io runs against your own staging environments and seeded accounts; you control the data the agent sees. Contact us via the demo form to discuss deployment and data-handling requirements."}
       ],
-      "related": ["ai-regression-testing", "ai-e2e-testing", "ai-testing-saas"]
+      "related": ["ai-regression-testing", "ai-testing-insurance", "ai-testing-healthcare"]
     },
     {
       "slug": "ai-regression-testing",
@@ -334,7 +334,7 @@
         {"q": "Can it cover the full checkout funnel including payment?", "a": "Yes. The agent drives complete purchase journeys end to end against your staging store and a sandbox payment method, covering cart, promo application, address, shipping, and confirmation in one flow."},
         {"q": "Will seasonal reskins and theme changes break my tests?", "a": "No. Wopee.io resolves elements by role and visual context and self-heals when the storefront is reskinned, so a seasonal campaign or theme upgrade updates locators automatically instead of breaking the suite."}
       ],
-      "related": ["ai-visual-testing", "ai-e2e-testing", "ai-testing-react"]
+      "related": ["ai-testing-media", "ai-testing-insurance", "ai-testing-react"]
     },
     {
       "slug": "ai-testing-saas",
@@ -404,6 +404,106 @@
         {"q": "Does it produce a record of what was tested?", "a": "Yes. Every test run is recorded with visual diffs and pass/fail history in Wopee Commander, giving operators reviewable test-run records of what was checked before each release. These are QA artifacts, not regulatory certification."}
       ],
       "related": ["ai-visual-testing", "ai-testing-finance", "ai-e2e-testing"]
+    },
+    {
+      "slug": "ai-testing-healthcare",
+      "category": "industry",
+      "subject": "Healthcare",
+      "keyword": "healthcare software testing",
+      "batch": 2,
+      "title": "Healthcare Software Testing with AI",
+      "description": "AI healthcare software testing with Wopee.io. Autonomous e2e and visual tests for patient portals, booking, and clinical web apps, run on synthetic data.",
+      "aioOpener": "AI healthcare software testing uses autonomous agents to generate and maintain end-to-end and visual tests for patient portals, appointment booking, telehealth, and clinical web applications, where a broken form or a mislabeled value reaches patients and clinicians directly. Healthcare apps serve several roles with different permissions, show dynamic clinical data, and often run behind strict network controls. Wopee.io drives the live app with test accounts and synthetic data, covers each role's journeys, separates expected data changes from real regressions, and keeps a reviewable record of every run.",
+      "problem": "Healthcare web apps are hard to test well for reasons that have little to do with the framework underneath. One product serves patients, clinicians, schedulers, and administrators, and each role sees different screens, so a change to a shared component can break a journey nobody on the team tests by hand. Data is sensitive, so tests cannot run on real patient records and test data has to be seeded and controlled. Screens are full of values that legitimately change between runs, appointment slots, lab results, timestamps, medication lists, which makes naive screenshot comparison fail constantly. Booking flows depend on dates, time zones, and availability, intake forms are long and conditional, and security settings such as short session timeouts end long scripted tests early. Many systems are reachable only inside a private network. The result is thin automated coverage of exactly the journeys where an error matters most.",
+      "solution": "Wopee.io gives healthcare teams broad coverage without exposing real data. The AI agent runs against your staging environment with test accounts you provide for each role, so it covers patient, clinician, and admin journeys separately: registering, booking and rescheduling appointments, completing intake forms, uploading documents, and reviewing results. You control what the agent sees, and synthetic records keep protected health information out of testing. AI visual diffing treats dynamic values such as appointment times, results, and timestamps as expected change and flags layout and content regressions instead, the same approach used for balances and rates in [AI testing for finance](/ai-testing-finance/). Self-healing locators absorb redesigns of shared components, and every run in Wopee Commander keeps the steps, screenshots, and verdict as a reviewable record of what was tested before a release. For apps inside a private network, Wopee.io connects through IP allowlisting, a secure tunnel, or a self-hosted runner. Coverage feeds into broader [AI regression testing](/ai-regression-testing/) and [AI end-to-end testing](/ai-e2e-testing/), and insurers serving patients can apply the same approach to claims ([AI testing for insurance](/ai-testing-insurance/)).",
+      "steps": [
+        "Connect Wopee.io to a staging environment seeded with synthetic patients, providers, and appointment slots.",
+        "Add test accounts for each role (patient, clinician, scheduler, admin) so the AI agent can cover every permission level.",
+        "Let the agent generate end-to-end tests for registration, booking, intake forms, document upload, and results review.",
+        "Mark dynamic regions (appointment times, results, timestamps) so visual diffing ignores expected change, then approve baselines.",
+        "Run the suite on a schedule and in your release pipeline, and keep the run history in Wopee Commander as release evidence."
+      ],
+      "comparison": {
+        "header": ["Approach", "Role-based journeys", "Dynamic clinical data", "Survives UI redesigns", "Run evidence"],
+        "rows": [
+          ["Manual regression", "Partial, per release", "Tester judgement", "Re-done by hand", "Ad-hoc screenshots"],
+          ["Scripted E2E (Selenium/Cypress/Playwright)", "Scripted per role, high upkeep", "Hard-coded assertions", "Selectors break on refactor", "CI logs"],
+          ["Wopee.io (AI testing)", "AI-generated per test account", "AI ignores expected value changes", "Self-healing locators", "Steps, screenshots, verdict per run"]
+        ]
+      },
+      "faqs": [
+        {"q": "Does Wopee.io need access to real patient data?", "a": "No, and it should not have it. Run Wopee.io against a staging environment with synthetic records and test accounts you create. The agent only sees what those accounts can see."},
+        {"q": "Is Wopee.io a HIPAA compliance or certification tool?", "a": "No. Wopee.io records what was tested in each run, with steps, screenshots, and verdicts, which teams use as QA evidence. It is not a compliance certification. Contact us via the demo form to discuss deployment and data-handling requirements."},
+        {"q": "Can it test an app that is only reachable inside our network?", "a": "Yes. Wopee.io can reach internal apps through IP allowlisting, and the Enterprise plan adds a secure tunnel or a self-hosted runner that runs the agents inside your network."}
+      ],
+      "related": ["ai-testing-finance", "ai-testing-insurance", "ai-regression-testing"]
+    },
+    {
+      "slug": "ai-testing-insurance",
+      "category": "industry",
+      "subject": "Insurance",
+      "keyword": "insurance software testing",
+      "batch": 2,
+      "title": "Insurance Software Testing with AI",
+      "description": "AI insurance software testing with Wopee.io. Autonomous e2e and visual tests for quote-and-buy, policy servicing, claims and broker portals, without scripts.",
+      "aioOpener": "AI insurance software testing uses autonomous agents to generate and maintain end-to-end and visual tests for quote-and-buy funnels, policy servicing, claims submission, and broker portals. Insurance journeys are long, conditional, and driven by rating rules that change often, so the same product behaves differently for each customer profile, region, and channel. Wopee.io drives the live application through those journeys with seeded test data, checks that premiums, documents, and confirmations appear as expected, and self-heals as forms and products are reworked.",
+      "problem": "Insurance software packs a lot of logic behind a few screens. A quote journey asks conditional questions that depend on earlier answers, so the number of paths explodes with every product variant, region, and add-on. Premiums are calculated from rating rules that change with each pricing update, which makes hard-coded assertions on amounts fragile and screenshot comparison noisy. After the sale come policy changes, renewals, cancellations, claims with photos and documents, and generated policy PDFs, often across a customer portal, a broker or agent portal, and an internal back office that release on different schedules. Manual regression cannot walk every path before each release, and scripted suites built on selectors break whenever a form is redesigned, leaving the revenue journey and the claims journey under-tested at the same time.",
+      "solution": "Wopee.io covers insurance journeys end to end without hand-written scripts. The AI agent fills multi-step quote forms with the seeded profiles you define, follows conditional branches, and continues through purchase in a sandbox payment flow, much like the checkout coverage in [AI testing for e-commerce](/ai-testing-ecommerce/). For premiums and reference numbers that legitimately change, tests assert on format and presence instead of literal values, and AI visual diffing treats those regions as dynamic while flagging real layout and content regressions. Claims journeys are covered too: the agent uploads test files from your project's data folder, and it can check that a document download such as a policy PDF completes. Separate test accounts let it cover the customer, broker, and back-office views of the same policy. Self-healing locators absorb form redesigns and product launches, and every run in Wopee Commander keeps a reviewable record of what was tested, the same evidence trail used in [AI testing for finance](/ai-testing-finance/). Results feed into broader [AI regression testing](/ai-regression-testing/), and carriers working with providers can reuse the approach for [healthcare portals](/ai-testing-healthcare/).",
+      "steps": [
+        "Connect Wopee.io to a staging environment with seeded customer profiles, products, and a sandbox payment method.",
+        "Describe the journeys that matter (quote, buy, change, renew, claim) and add test accounts for customer, broker, and back-office roles.",
+        "Let the AI agent generate end-to-end tests across those journeys, including file uploads for claims and policy document downloads.",
+        "Mark dynamic regions (premiums, policy numbers, dates) so visual diffing ignores expected change, then approve baselines.",
+        "Add the Wopee.io gate to your release pipeline and rerun the suite after every pricing or product update."
+      ],
+      "comparison": {
+        "header": ["Approach", "Conditional quote paths", "Changing premiums", "Claims and documents", "Maintenance per release"],
+        "rows": [
+          ["Manual regression", "A few happy paths", "Checked by eye", "Manual uploads", "Repeated by hand"],
+          ["Scripted E2E (Selenium/Cypress/Playwright)", "One script per path", "Hard-coded amounts break", "Scripted file handling", "Breaks on form redesigns"],
+          ["Wopee.io (AI testing)", "AI follows branches from seeded profiles", "Format checks, AI ignores expected change", "Uploads from repo data, download checks", "Self-heals on UI changes"]
+        ]
+      },
+      "faqs": [
+        {"q": "How do tests cope with premiums that change after a pricing update?", "a": "Assert on what must hold, for example that a premium in the right currency format is shown, rather than on a literal amount, and let AI visual diffing treat the premium region as dynamic. A pricing update then does not fail the suite, while a missing or broken quote does."},
+        {"q": "Can Wopee.io test claims with photos and documents?", "a": "Yes. Test files are stored in the data folder of your project's repository, and the agent attaches them to upload fields during the run. It can also check that a document download, such as a policy PDF, completes and is not empty."},
+        {"q": "We have a customer portal, a broker portal, and a back office. Can one suite cover all three?", "a": "Yes. Give the agent a test account for each role. It can create a policy in one view and verify it in another, so cross-channel journeys are tested the way they are used."}
+      ],
+      "related": ["ai-testing-finance", "ai-testing-healthcare", "ai-e2e-testing"]
+    },
+    {
+      "slug": "ai-testing-media",
+      "category": "industry",
+      "subject": "Media",
+      "keyword": "media website testing",
+      "batch": 2,
+      "title": "Media Website Testing with AI",
+      "description": "AI media website testing with Wopee.io. Visual and e2e tests for news, sports and streaming sites that ignore changing headlines, ads and live data.",
+      "aioOpener": "AI media website testing uses autonomous agents to check that news, sports, and streaming sites render and work correctly while their content changes by the minute. Headlines, scores, ads, and recommendations are different on every visit, so classic screenshot tests fail constantly and teams stop trusting them. Wopee.io combines visual checks that tolerate expected content change with end-to-end tests of the journeys that matter, such as article pages, sign-up, subscriptions, and video playback, across browsers and viewports.",
+      "problem": "Media sites break the assumptions most test tools make. The homepage of a news or sports site is never the same twice: headlines rotate, live scores tick, ad slots load different creatives, and personalised recommendations differ per visitor, so a pixel-exact comparison fails on every run. Consent banners, paywall prompts, and newsletter overlays cover the page in different combinations depending on region and visit count. Templates are shared across thousands of articles, so one CSS change in the CMS can break the layout everywhere at once, and the breakage often shows only at one breakpoint or in one browser. Traffic peaks around live events leave no time for manual checks, and subscription, registration, and video journeys change with every product experiment.",
+      "solution": "Wopee.io lets media teams test layout and journeys without fighting their own content. Visual checks are built for changing pages: draw ignore areas over regions that are meant to vary, such as tickers, ad slots, and recommendation rails, or let AI visual diffing treat them as dynamic and flag structural regressions like overlapping elements, broken grids, or a missing headline block. Natural-language visual assertions check what a page must show, for example that an article page has a headline, a byline, and a lead image, regardless of which story is live. The AI agent dismisses consent banners automatically and drives end-to-end journeys such as registration, subscription checkout in a sandbox, and opening a video, while tests run across browsers and viewport sizes to catch breakpoint-specific breakage. Livesport, the team behind Flashscore, uses Wopee.io for visual testing on its high-traffic sports platform ([read the case study](/blog/livesport-visual-testing-w-wopee-io/)). The same dynamic-content handling powers [AI testing for e-commerce](/ai-testing-ecommerce/), and it is explained in depth in [AI visual testing](/ai-visual-testing/).",
+      "steps": [
+        "Point Wopee.io at a staging or production-like build and capture visual baselines for your key templates: home, section, article, video, and account pages.",
+        "Draw ignore areas or mark dynamic regions (headlines, scores, ad slots, recommendations) so only structural changes are flagged.",
+        "Add natural-language visual assertions for what every template must show, such as a headline, byline, and lead image.",
+        "Let the AI agent generate end-to-end tests for registration, subscription, and video journeys across browsers and viewports.",
+        "Run the suite on every CMS or front-end release and on a schedule, and review flagged diffs in Wopee Commander."
+      ],
+      "comparison": {
+        "header": ["Approach", "Changing headlines and ads", "Template-wide layout breaks", "Breakpoints and browsers", "Journeys (sign-up, paywall, video)"],
+        "rows": [
+          ["Manual spot checks", "Judged by eye", "Caught if someone looks", "A few devices", "Tested occasionally"],
+          ["Pixel-exact screenshot tests", "Fail on every run", "Caught, buried in noise", "Re-baseline per viewport", "Not covered"],
+          ["Scripted E2E (Cypress/Playwright/Selenium)", "Assertions break on content", "Not checked", "Setup per browser", "Scripted, brittle selectors"],
+          ["Wopee.io (AI testing)", "Ignore areas and AI diff", "AI visual diff per template", "Runs across browsers and viewports", "AI-generated, self-healing"]
+        ]
+      },
+      "faqs": [
+        {"q": "How do visual tests work when the content changes every minute?", "a": "Draw ignore areas over regions that are supposed to change, or mark them as dynamic so AI visual diffing expects variation there. Checks then fail on structural problems such as a broken grid or a missing block, not on a new headline."},
+        {"q": "Will consent banners and overlays block the tests?", "a": "No. The agent detects and dismisses consent banners automatically, with accept-button patterns in more than 15 languages, and you can add steps for paywall or newsletter prompts your site shows."},
+        {"q": "Does any media company use Wopee.io?", "a": "Yes. Livesport, known for Flashscore, uses Wopee.io for visual testing across its high-traffic sports data platform. Their story is in our Livesport case study on the blog."}
+      ],
+      "related": ["ai-testing-ecommerce", "ai-visual-testing", "ai-testing-saas"]
     },
     {
       "slug": "ai-visual-testing",
