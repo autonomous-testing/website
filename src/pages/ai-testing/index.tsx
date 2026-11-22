@@ -55,6 +55,11 @@ export default function AiTestingHub() {
             app, no brittle selectors, no manual baselines. Pick your framework, industry, or the
             testing job you need below.
           </p>
+          <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg">
+            New to AI testing? Start with{" "}
+            <Link href="/ai-regression-testing/">AI regression testing</Link>: how the agent keeps a
+            test suite working and trustworthy, release after release.
+          </p>
           <div className="mt-8 flex justify-center">
             <ButtonPrimary href={loginUrl} label="Start for free" />
           </div>

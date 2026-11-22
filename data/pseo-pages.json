@@ -393,7 +393,7 @@
         {"q": "Do I need to add test IDs to every React component?", "a": "No. Wopee.io resolves elements by role, label, and visual context, so it does not depend on data-testid attributes. Adding them can improve precision but is optional."},
         {"q": "Can it catch visual regressions in a component library or design system?", "a": "Yes. AI visual diffing captures component- and page-level baselines and flags meaningful pixel changes while ignoring noise like anti-aliasing, so a design-system update surfaces real regressions instead of hundreds of false positives."}
       ],
-      "related": ["ai-visual-testing", "ai-testing-nextjs", "ai-e2e-testing"]
+      "related": ["ai-regression-testing", "ai-testing-nextjs", "ai-e2e-testing"]
     },
     {
       "slug": "ai-testing-finance",
@@ -435,34 +435,37 @@
       "subject": "Regression Testing",
       "keyword": "ai regression testing",
       "batch": 1,
-      "title": "AI Regression Testing Without Test Maintenance",
-      "description": "AI regression testing with Wopee.io. Autonomous agents generate and self-heal functional + visual regression suites, so coverage survives every refactor.",
-      "aioOpener": "AI regression testing uses autonomous agents to detect when a code change breaks previously working behavior, without the manual upkeep of a traditional regression suite. Instead of maintaining hundreds of brittle scripted checks, Wopee.io generates functional and visual regression tests from your running app, self-heals them when the UI changes, and runs them on every release to flag genuine regressions while suppressing the noise that makes conventional suites flaky.",
+      "title": "AI Regression Testing: Suites You Can Trust",
+      "description": "AI regression testing with Wopee.io: scheduled and CI runs, self-healing tests, visual baselines per branch, and a pass that needs proof from the run.",
+      "aioOpener": "AI regression testing answers one question after every change: does everything that worked yesterday still work today? Wopee.io keeps a regression suite answering it honestly. An AI agent generates the tests from your running app, replays them on a schedule or from CI, heals locators when the UI moves but never heals an assertion, compares every step's screenshot with an approved baseline for your branch, and marks a pass as Incomplete when the run did not prove it. You get a suite that keeps up with the product instead of one that slowly stops meaning anything.",
       "shortAnswer": {"q": "Which AI testing tools run regression tests in CI?", "a": "Wopee.io runs AI regression tests from your CI: a pipeline step starts the agent on your saved suite, and each test reports a pass, a fail or Incomplete, with screenshots. The tests come from the agent exploring your app and adapt when the UI changes. Other options include mabl, Momentic, and Playwright with its Test Agents.", "lastChecked": "29 October 2026"},
-      "problem": "Regression suites decay. The more coverage a team adds with scripted Playwright, [Cypress](/compare/wopee-vs-cypress/), or [Selenium](/compare/wopee-vs-selenium/) tests, the more maintenance they inherit: selectors break on refactors, baselines drift, and flaky tests train everyone to ignore red builds. Pixel-exact visual regression makes it worse by failing on anti-aliasing and dynamic content. The outcome is the opposite of the intent, large suites that are expensive to maintain yet still miss real regressions because nobody trusts the results.",
-      "solution": "Wopee.io shifts regression testing from scripted maintenance to autonomous coverage. The AI agent generates functional regression tests by exploring real user flows and creates visual baselines for each screen. When the UI legitimately changes, self-healing locators re-resolve targets and AI visual diffing separates intended changes from regressions, so a refactor does not produce a wall of false failures. You review meaningful diffs in Wopee Commander and approve new baselines in one click, keeping the suite trustworthy as the product evolves.",
+      "problem": "Regression suites rarely fail all at once; they decay. Each release adds tests, and each UI change breaks a few of them, so the team spends its time fixing locators instead of finding regressions. Runs get slower and are moved to nightly, then weekly. When a run is red, nobody can tell quickly whether the app broke, the test broke, or the test environment had a bad day, so failures are rerun until they pass and the suite trains everyone to ignore it. The quieter failure is worse: a test that clicks through a flow but asserts nothing meaningful stays green while the feature is broken, and pass rates look healthy right up to the incident. Visual changes add their own noise, because baselines approved on a feature branch and on main drift apart. Scripted Playwright, [Cypress](/compare/wopee-vs-cypress/), and [Selenium](/compare/wopee-vs-selenium/) suites all hit this, and record-and-replay tools hit it sooner.",
+      "solution": "Wopee.io is built around the parts of regression testing that make a suite trustworthy over time. Tests come from the agent exploring your app and from plain-language test cases you write, and passing runs can save their steps so later runs replay them; tests you leave intent-driven are worked out fresh on each run. Group them into Test Plans and run them by hand, from CI, or on a schedule: every hour, day, week, month, or a custom cron expression. When the UI changes, self-healing finds the same element by role and accessible name, falls back to test ids or a screen position, and records what it changed, but it never heals an assertion, so a real regression still fails. Every test returns Passed, Failed, or Incomplete, and with verdict enforcement on, a pass the run did not prove becomes Incomplete and counts with the failures, so pass rates cannot drift upward on unproven greens. Test-environment problems, such as a lost browser session, are listed apart from app issues, which makes triage of a red run fast. Each step's screenshot is compared with its approved baseline, baselines are kept per branch, and approved baselines can be merged in Commander when a branch is merged. Tests live in your project's GitHub repository, where every change is a commit. The same suite covers [AI end-to-end testing](/ai-e2e-testing/) journeys and [AI visual testing](/ai-visual-testing/) checks, and stack guides such as [AI testing for Angular](/ai-testing-angular/) show how it applies to your framework.",
       "steps": [
-        "Connect Wopee.io to a running build and let the AI agent generate functional and visual regression coverage of core flows.",
-        "Approve the initial baselines for the screens and journeys you care about.",
-        "Add the Wopee.io check to CI so every pull request runs the regression suite automatically.",
-        "When a change lands, review only the flagged diffs, accept intended changes as new baselines, reject real regressions.",
-        "Let self-healing keep locators current so coverage compounds instead of decaying."
+        "Point Wopee.io at a running build and let the AI agent explore it and generate tests for your core flows, or write the flows you care about as plain-language tests.",
+        "Run the tests once, read each verdict, and approve the screenshots that should become baselines.",
+        "Group the tests into Test Plans, for example a short smoke plan and a full regression plan, and put the full plan on a nightly or hourly schedule.",
+        "Start the regression tests from CI on every pull request, so a change is checked before it merges.",
+        "Turn on verdict enforcement once the suite is stable, so a pass without evidence is reported as Incomplete instead of green.",
+        "When a run is red, read the report: it separates app failures from test-environment problems and shows the self-healing changes and visual diffs to approve or reject."
       ],
       "comparison": {
-        "header": ["Approach", "Test creation", "Maintenance when UI changes", "Flakiness handling", "Review of changes"],
+        "header": ["Approach", "Upkeep after a UI change", "What a green run proves", "Triage of a red run", "Runs between releases"],
         "rows": [
-          ["Manual regression", "Human re-runs steps", "Re-learn flows each release", "Human-dependent", "Tester judgement"],
-          ["Scripted (Playwright/Cypress/Selenium)", "Engineer codes each test", "Manual locator fixes", "Auto-wait helps, still brittle", "Code review + CI logs"],
-          ["Record-and-replay", "Record clicks once", "Re-record on UI change", "Fragile recorded selectors", "Replay results only"],
-          ["Wopee.io (AI testing)", "AI generates from running app", "Self-heals locators, flags for review", "Role/visual resolution reduces flakiness", "Commander dashboard review"]
+          ["Manual regression", "Testers relearn flows", "What the tester remembered to check", "Tester judgement", "Only when scheduled by people"],
+          ["Scripted suites (Playwright/Cypress/Selenium)", "Manual locator fixes", "Only the assertions someone wrote", "CI logs, rerun to see if it is flaky", "Nightly job, if maintained"],
+          ["Record-and-replay", "Re-record the flow", "That the recording replayed", "Replay output only", "Tool-dependent"],
+          ["Wopee.io (AI testing)", "Self-heals locators, never assertions", "Passed only with evidence, else Incomplete", "App issues and environment problems listed apart", "Scheduled Test Plans and CI"]
         ]
       },
       "faqs": [
-        {"q": "How is AI regression testing different from recording tests?", "a": "Recorded tests replay fixed steps and break when the DOM shifts. Wopee.io's agent resolves elements by role and visual context and self-heals when the UI changes, so coverage survives refactors instead of needing re-recording."},
-        {"q": "Will it replace my existing Playwright or Cypress suite?", "a": "It can run alongside or replace it. Many teams keep a few critical scripted tests and let Wopee.io own broad regression and visual coverage, which is where maintenance cost is highest."},
-        {"q": "How do I stop intended UI changes from failing the build?", "a": "Flagged visual changes are reviewed in Wopee Commander; approving one promotes it to the new baseline, so deliberate redesigns do not register as regressions on the next run."}
+        {"q": "How is AI regression testing different from AI end-to-end testing?", "a": "End-to-end testing is about covering a complete user journey once. Regression testing is about running the whole suite again after every change and trusting the result. Wopee.io uses the same tests for both; the regression side adds schedules, CI runs, per-branch visual baselines, and verdicts that need proof."},
+        {"q": "Can self-healing hide a real regression?", "a": "No. Self-healing only applies to finding and interacting with elements. Assertions are never healed: if an expected value or state is wrong, the step fails with screenshots and logs. A healed locator is accepted only when it matches the original element or the step's intent."},
+        {"q": "What does Incomplete mean in a regression run?", "a": "Incomplete means the run did not establish the result it claimed, or could not finish, for example because the browser connection was lost. It is not a defect in your app, and it is counted with the failures, so it never raises a pass rate."},
+        {"q": "How do I stop intended UI changes from failing the build?", "a": "Review the flagged visual differences in Wopee Commander. Approving one makes it the new baseline for that branch, so a deliberate redesign does not register as a regression on the next run, and baselines can be merged into main when the branch is merged."},
+        {"q": "Will it replace my existing Playwright or Cypress suite?", "a": "It can run alongside or replace it. Many teams keep a few critical scripted tests and let Wopee.io own broad regression and visual coverage, where maintenance cost is highest. Existing Playwright, Cypress, WebdriverIO, and Robot Framework tests can also send screenshots to Wopee.io for visual review."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-testing-saas"]
+      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-smoke-testing"]
     },
     {
       "slug": "ai-testing-angular",
@@ -528,7 +531,7 @@
         {"q": "Does it depend on scoped-style data-v attributes?", "a": "No. Vue injects generated data-v attributes for scoped CSS, but Wopee.io resolves elements by role, label, and visual context, so those build-time attributes changing has no effect on your tests."},
         {"q": "Will tests survive a migration from the Options API to the Composition API?", "a": "Yes. Wopee.io tests the rendered output, not the component's internal structure, so refactoring a single-file component or moving to the Composition API does not break coverage; self-healing handles any locator shifts."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-testing-nextjs"]
+      "related": ["ai-e2e-testing", "ai-regression-testing", "ai-testing-nextjs"]
     },
     {
       "slug": "ai-testing-nextjs",
@@ -561,7 +564,7 @@
         {"q": "Does it work with both the App Router and the Pages Router?", "a": "Yes. Wopee.io tests the rendered, hydrated output in a real browser, so it is agnostic to routing strategy, Server vs Client Components, and whether a route is static, server-rendered, or revalidated on demand."},
         {"q": "Can it cover server actions and route handlers?", "a": "Yes. Server actions and route handlers are exercised end to end through the real UI flow that triggers them, so you validate the full server round-trip the way a user experiences it, not just the client code."}
       ],
-      "related": ["ai-testing-react", "ai-e2e-testing", "ai-visual-testing"]
+      "related": ["ai-testing-react", "ai-regression-testing", "ai-visual-testing"]
     },
     {
       "slug": "ai-testing-svelte",
@@ -594,7 +597,7 @@
         {"q": "Will compile-time scoped class hashes break my tests?", "a": "No. Svelte's scoped styles produce hashed classes like svelte-1a2b3c that change on rebuilds, but Wopee.io resolves elements by role, label, and visual context, so those hashes have no effect on your suite."},
         {"q": "Does it support SvelteKit server rendering and form actions?", "a": "Yes. Wopee.io drives the running SvelteKit app end to end, following server-rendered pages, client-side navigation, and progressively enhanced form actions exactly as a user would."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-testing-vue"]
+      "related": ["ai-regression-testing", "ai-visual-testing", "ai-testing-vue"]
     },
     {
       "slug": "ai-testing-django",
@@ -768,8 +771,8 @@
       "subject": "E-commerce",
       "keyword": "ecommerce testing",
       "batch": 1,
-      "title": "E-commerce Testing with AI: Cart & Checkout",
-      "description": "AI ecommerce testing with Wopee.io. Autonomous e2e and visual coverage for cart, checkout, promos, and product pages across browsers and viewports.",
+      "title": "Ecommerce Testing: Automate Checkout QA",
+      "description": "Ecommerce testing for the flows that earn money: cart, promo codes and checkout, checked every release by an AI agent, with no brittle scripts to maintain.",
       "aioOpener": "AI ecommerce testing uses autonomous agents to generate and maintain end-to-end and visual tests across the flows that directly drive revenue: product discovery, cart, promotions, and checkout. Storefronts change constantly, prices, inventory, and recommendations are dynamic, promos come and go, and a broken checkout step means lost sales the moment it ships. Wopee.io drives the live store through full purchase journeys, distinguishes expected dynamic data from real regressions, and self-heals as the storefront evolves, so high-value flows stay covered every release.",
       "problem": "E-commerce combines the highest revenue stakes with the most volatile UI. The checkout funnel spans many steps, cart, address, shipping, payment, confirmation, and a defect at any step silently drops conversion. Prices, stock levels, recommendations, and promo banners are dynamic, so pixel-exact visual tools fire endless false positives on content that is supposed to change. Cart and discount logic has countless edge cases (coupon stacking, free-shipping thresholds, tax by region, sold-out variants), and storefronts are reskinned for seasonal campaigns. Manual regression cannot retest every flow on every deploy, and selector-based suites break with each theme change, leaving the money-making path under-tested exactly when it changes most.",
       "solution": "Wopee.io provides autonomous coverage tuned for storefronts. The AI agent generates [AI end-to-end testing](/ai-e2e-testing/) for full purchase journeys, add to cart, apply a promo, check out, confirm, and runs them on every release. Built-in [AI visual testing](/ai-visual-testing/) classifies dynamic regions like prices, stock counts, and recommendation carousels as expected change, so it flags genuine layout and content regressions instead of drowning teams in false positives. Self-healing locators absorb seasonal reskins and theme upgrades without rework, and tests run across browsers and viewports to catch mobile checkout breakage. You review meaningful diffs in Wopee Commander and approve new baselines in one click before a campaign goes live. The same coverage extends to headless and platform storefronts. Shopify, Magento, or a custom React front end (see AI testing for React), because the agent tests the rendered store, not the framework underneath.",

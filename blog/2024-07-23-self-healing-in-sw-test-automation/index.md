@@ -464,7 +464,7 @@ Don't let unstable tests and constant maintenance slow down your development cyc
 - Train your team on best practices and emerging trends in test automation
 - Provide ongoing support and optimization to ensure your testing processes stay ahead of the curve
 
-If you want to skip the build phase, our [AI testing agents](/ai-testing-agents/) ship self-healing out of the box, see [pricing](/pricing/) for plan details. We'd love to help you unlock its benefits for your organization. Whether you're just starting your automation journey or looking to enhance your existing processes, we have the expertise to guide you every step of the way.
+If you want to skip the build phase, our [AI testing agents](/ai-testing-agents/) ship self-healing out of the box, and [AI regression testing](/ai-regression-testing/) shows what that means for a suite you run every release. See [pricing](/pricing/) for plan details. We'd love to help you unlock its benefits for your organization. Whether you're just starting your automation journey or looking to enhance your existing processes, we have the expertise to guide you every step of the way.
 
 Contact us for a consultation and discover how we can help you achieve unprecedented levels of testing efficiency and software quality. Let's work together to build a more robust, reliable, and agile testing ecosystem for your organization.
 
