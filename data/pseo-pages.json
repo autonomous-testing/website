@@ -135,7 +135,7 @@
         {"q": "We migrated off Protractor, can Wopee.io replace it?", "a": "Yes. Protractor is deprecated and unmaintained. Wopee.io provides autonomous end-to-end coverage without rewriting page objects, and it self-heals as your Angular app changes, so you are not trading one maintenance burden for another."},
         {"q": "Can it interact with Angular Material dialogs and CDK overlays?", "a": "Yes. Because overlays and portals render in the DOM at runtime, the AI agent finds and drives them by role and visual context just as a user would, even though they live outside the component's template tree."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-regression-testing"]
+      "related": ["ai-testing-dotnet", "ai-testing-spring", "ai-regression-testing"]
     },
     {
       "slug": "ai-testing-vue",
@@ -267,7 +267,7 @@
         {"q": "Does Wopee.io handle CSRF tokens and login sessions?", "a": "Yes. The agent logs in through the real login form and carries the session, and because it submits forms through the rendered page, valid CSRF tokens are included automatically, no manual token handling required."},
         {"q": "Can it test the Django admin?", "a": "Yes. The admin is just another set of server-rendered pages and forms, so Wopee.io can cover custom admin actions and critical admin workflows end to end, which Selenium-based suites often skip because of the maintenance cost."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-testing-saas"]
+      "related": ["ai-testing-laravel", "ai-testing-spring", "ai-testing-saas"]
     },
     {
       "slug": "ai-testing-rails",
@@ -300,7 +300,107 @@
         {"q": "How is this different from Rails system tests?", "a": "Rails system tests rely on Capybara and Selenium with hand-written selectors and manual waits, which are brittle and slow. Wopee.io generates the coverage autonomously, waits on real Turbo updates, and self-heals when views change, so the suite stays green across refactors."},
         {"q": "Can it test Stimulus-driven interactions?", "a": "Yes. Stimulus enhances the rendered HTML with behavior, and Wopee.io drives that behavior through the real UI exactly as a user would, so progressively enhanced interactions are covered end to end."}
       ],
-      "related": ["ai-e2e-testing", "ai-visual-testing", "ai-regression-testing"]
+      "related": ["ai-testing-laravel", "ai-testing-django", "ai-regression-testing"]
+    },
+    {
+      "slug": "ai-testing-laravel",
+      "category": "framework",
+      "subject": "Laravel",
+      "keyword": "laravel testing automation",
+      "batch": 2,
+      "title": "Laravel Testing Automation: AI E2E Tests",
+      "description": "Laravel testing automation with AI. Wopee.io generates and self-heals e2e and visual tests for Blade views, Livewire components, Inertia pages and forms.",
+      "aioOpener": "Laravel testing automation with AI uses autonomous agents to generate, run, and maintain end-to-end and visual tests for Laravel applications, whether the UI is built with Blade, Livewire, or Inertia with Vue or React. Laravel's feature tests send requests to your routes and assert on the response, but they never render the page in a browser, and Livewire updates the DOM through server round-trips that scripted browser tests struggle to wait for. Wopee.io drives the running Laravel app in a real browser, waits for those updates to land, and self-heals locators when views change.",
+      "problem": "Laravel gives teams excellent request-level testing and leaves the browser layer to them. Pest and PHPUnit feature tests call routes with `$this->get()` and `$this->post()` and assert on status codes, JSON, and rendered strings, but they never execute JavaScript, so a broken Alpine.js dropdown, a Livewire component that never re-renders, or a Vite build that ships the wrong CSS passes every test. Laravel Dusk fills the gap with ChromeDriver, yet Dusk suites inherit the usual costs: `dusk` attributes or CSS selectors sprinkled through Blade templates, explicit `waitFor` calls around every Livewire round-trip, and failures whenever a component is restructured. Inertia apps add a second front end, with Vue or React pages rendered from Laravel controllers, so the same journey now spans two codebases that change independently.",
+      "solution": "Wopee.io adds browser-level coverage that follows how a Laravel app actually behaves. The AI agent logs in through your real authentication pages (Breeze, Jetstream, or your own), carries the session, and submits forms through the rendered page, so the `@csrf` token is included without any test plumbing. When a Livewire component sends its request and morphs the DOM, the agent waits for the UI to settle before it acts or asserts, which removes the timing flakiness that makes Dusk suites slow and fragile. Elements are resolved by role, label, and visual context instead of `dusk` attributes, and self-healing re-resolves anything that moves when a Blade partial or component is refactored. Inertia pages are just rendered Vue or React in the browser, so the same agent covers them (see [AI testing for Vue](/ai-testing-vue/) and [AI testing for React](/ai-testing-react/)). Laravel teams coming from [Rails](/ai-testing-rails/) or [Django](/ai-testing-django/) will recognise the pattern: server-rendered views tested as a user sees them, as part of broad [AI end-to-end testing](/ai-e2e-testing/), with [AI visual testing](/ai-visual-testing/) catching Blade and Tailwind layout regressions that feature tests cannot see.",
+      "steps": [
+        "Point Wopee.io at a running Laravel app (php artisan serve, Laravel Sail, a Docker build, or staging) seeded with test data.",
+        "Add a test account so the AI agent can log in through your real authentication pages and cover authenticated flows.",
+        "Let the agent explore your routes, Livewire components, and Inertia pages, and review the end-to-end and visual checks it generates.",
+        "Add the Wopee.io check to CI so every pull request runs browser-level functional and visual regression against your Laravel app.",
+        "On a failure, review the self-healing suggestion and AI visual diff in Wopee Commander and approve or reject in one click."
+      ],
+      "comparison": {
+        "header": ["Approach", "Runs JavaScript (Livewire, Alpine)", "Scope", "Test maintenance", "Visual regression"],
+        "rows": [
+          ["Feature tests (Pest / PHPUnit)", "No, request-level only", "Routes, responses, database", "Update asserts by hand", "None"],
+          ["Laravel Dusk", "Yes (ChromeDriver)", "Full UI flows", "Selectors and waits by hand", "Not built in"],
+          ["Wopee.io (AI testing)", "Yes, real browser", "E2E + visual", "Self-healing locators", "Built-in AI visual diff"]
+        ]
+      },
+      "faqs": [
+        {"q": "Does Wopee.io replace Pest or PHPUnit feature tests?", "a": "No. Feature tests are fast and precise for routes, validation, and database logic, so keep them. Wopee.io adds the browser layer on top: rendered Blade views, Livewire and Alpine behaviour, and visual regressions that request-level tests never see."},
+        {"q": "How does it handle Livewire round-trips?", "a": "A Livewire interaction sends a request and then updates the DOM. The agent waits for the UI to settle after that update before it continues, so you do not write waitFor calls around each component the way Dusk tests usually need."},
+        {"q": "Can it test an Inertia app with Vue or React pages?", "a": "Yes. Inertia renders Vue or React components in the browser from Laravel routes, and Wopee.io tests the rendered page, so the same agent covers Laravel routing, authentication, and the JavaScript front end in one journey."}
+      ],
+      "related": ["ai-testing-django", "ai-testing-rails", "ai-regression-testing"]
+    },
+    {
+      "slug": "ai-testing-dotnet",
+      "category": "framework",
+      "subject": ".NET",
+      "keyword": "dotnet testing automation",
+      "batch": 2,
+      "title": "AI Testing for .NET: ASP.NET Core & Blazor",
+      "description": ".NET testing automation with AI. Wopee.io generates and self-heals e2e and visual tests for ASP.NET Core MVC, Razor Pages, and Blazor apps in a real browser.",
+      "aioOpener": "AI testing for .NET uses autonomous agents to generate, run, and maintain end-to-end and visual tests for web applications built on ASP.NET Core, including MVC, Razor Pages, and Blazor. .NET teams usually have solid unit and integration tests that run in memory, but those never open a browser, and Blazor Server updates the page over a live SignalR connection that scripted browser tests have to wait for explicitly. Wopee.io drives the running app in a real browser, waits on the actual UI state, and self-heals locators when Razor components change.",
+      "problem": "The .NET testing stack is strong below the browser and thin above it. xUnit, NUnit, and MSTest cover business logic, and `WebApplicationFactory` spins up the app in memory for integration tests, but nothing in that pipeline renders a Razor view or runs a Blazor component the way a user's browser does. Teams add Selenium WebDriver or Playwright for .NET and then maintain C# page objects full of selectors. Blazor makes those selectors harder to keep stable: CSS isolation adds generated `b-` scope attributes, Blazor Server pushes UI diffs over a SignalR circuit so the DOM changes without a navigation, and Blazor WebAssembly has to download the runtime before anything is interactive. Antiforgery tokens on forms, ASP.NET Core Identity login, and role-based screens add setup to every scripted test, so end-to-end coverage stays small while the UI keeps changing.",
+      "solution": "Wopee.io covers the browser layer of a .NET web app without C# page objects. The AI agent logs in through your real ASP.NET Core Identity or custom login page, carries the authentication cookie, and submits forms through the rendered page, so the `__RequestVerificationToken` antiforgery field is posted like it is for a real user. For Blazor, the agent waits for the UI to settle after each interaction instead of waiting for a page load that never comes, which handles both SignalR-driven Blazor Server updates and the initial load of Blazor WebAssembly. Elements are resolved by role, label, and visual context rather than generated scope attributes, and self-healing re-resolves targets when a component or Razor partial is restructured. Many ASP.NET Core back ends serve a SPA front end, and the same agent covers it (see [AI testing for Angular](/ai-testing-angular/) and [AI testing for React](/ai-testing-react/)); teams running Java services alongside .NET can use the same approach for [Spring Boot](/ai-testing-spring/). Coverage feeds into broad [AI regression testing](/ai-regression-testing/), and built-in [AI visual testing](/ai-visual-testing/) catches layout regressions in Razor views and component libraries.",
+      "steps": [
+        "Point Wopee.io at a running ASP.NET Core app (dotnet run, a container, an Azure App Service slot, or staging) with seeded data.",
+        "Add a test account so the AI agent can sign in through your Identity or custom login page and reach role-based screens.",
+        "Let the agent explore your MVC views, Razor Pages, and Blazor components, and review the end-to-end and visual checks it generates.",
+        "Add the Wopee.io check to your pipeline (GitHub Actions, Azure DevOps, or any CI) so every pull request runs functional and visual regression.",
+        "On a failure, review the self-healing suggestion and AI visual diff in Wopee Commander and approve or reject in one click."
+      ],
+      "comparison": {
+        "header": ["Approach", "Renders in a real browser", "Blazor interactivity", "Test maintenance", "Visual regression"],
+        "rows": [
+          ["Integration tests (WebApplicationFactory)", "No, in-memory HTTP", "Not exercised", "Update asserts by hand", "None"],
+          ["Component tests (bUnit)", "No, test renderer", "Single component", "Update markup asserts", "None"],
+          ["Selenium / Playwright for .NET", "Yes", "Manual waits for SignalR updates", "C# page objects and selectors", "Add-on, pixel-exact"],
+          ["Wopee.io (AI testing)", "Yes", "Waits for the UI to settle", "Self-healing locators", "Built-in AI visual diff"]
+        ]
+      },
+      "faqs": [
+        {"q": "Do I need to write C# test code to use Wopee.io?", "a": "No. The agent explores the running app and generates the end-to-end tests itself, and you review them as plain-language test cases in Wopee Commander. Your existing xUnit, NUnit, or MSTest suites keep running alongside."},
+        {"q": "Does it work with Blazor Server and Blazor WebAssembly?", "a": "Yes. Both render in the browser, so the agent tests what the user sees. It waits for the page to settle after each interaction, which covers SignalR-driven updates in Blazor Server and the initial runtime load in Blazor WebAssembly."},
+        {"q": "How does it handle antiforgery tokens and Identity login?", "a": "The agent signs in through the real login form and submits every form through the rendered page, so the authentication cookie and the antiforgery token are sent the same way a browser sends them, with no test-side token handling."}
+      ],
+      "related": ["ai-testing-angular", "ai-testing-spring", "ai-regression-testing"]
+    },
+    {
+      "slug": "ai-testing-spring",
+      "category": "framework",
+      "subject": "Spring Boot",
+      "keyword": "spring boot testing",
+      "batch": 2,
+      "title": "Spring Boot Testing with AI: E2E & Visual",
+      "description": "Spring Boot testing with AI. Wopee.io generates and self-heals e2e and visual tests for Thymeleaf views, Spring Security login, forms, and SPA front ends.",
+      "aioOpener": "Spring Boot testing with AI uses autonomous agents to generate, run, and maintain end-to-end and visual tests for Spring Boot web applications, from server-rendered Thymeleaf views to SPA front ends served by Spring REST APIs. Spring's test support covers controllers and services thoroughly with MockMvc and `@SpringBootTest`, but it stops before the browser, where Spring Security's login form, CSRF protection, and JavaScript behaviour meet the user. Wopee.io drives the running application in a real browser, logs in through the real login flow, and self-heals locators as templates and front ends change.",
+      "problem": "Spring Boot projects tend to be well tested at the service and controller level and under-tested where users actually click. MockMvc exercises request mappings and model attributes without starting a server, and `@SpringBootTest` with a random port proves the context starts, but neither renders a Thymeleaf template in a browser or runs the JavaScript on it. Browser coverage usually means Selenium or Selenide with Java page objects, which have to handle Spring Security's form login, the `_csrf` hidden field that is enabled by default, session cookies, and role-specific menus. Each change to a Thymeleaf fragment or a CSS framework breaks selectors, and when the front end is a separate Angular or React app talking to Spring REST endpoints, the end-to-end journey crosses two repositories with two release cadences and nobody owns the tests that span them.",
+      "solution": "Wopee.io tests the Spring Boot app the way a user meets it. The AI agent signs in through your real Spring Security login page, carries the session, and submits forms through the rendered page, so the `_csrf` token travels with each request exactly as in production and no security configuration has to be relaxed for testing. Elements are resolved by role, label, and visual context rather than ids generated in Thymeleaf fragments, and self-healing re-resolves targets when templates are reorganised or a CSS framework is upgraded. When the UI is a separate SPA, the agent covers the full journey across the front end and the Spring API it calls (see [AI testing for Angular](/ai-testing-angular/) and [AI testing for React](/ai-testing-react/)), and server-rendered Spring apps get the same browser-level layer that [Django](/ai-testing-django/) and [.NET](/ai-testing-dotnet/) teams add on top of their framework test clients. Every run is part of broad [AI end-to-end testing](/ai-e2e-testing/), and built-in [AI visual testing](/ai-visual-testing/) catches template and layout regressions that MockMvc assertions on model attributes cannot see.",
+      "steps": [
+        "Point Wopee.io at a running Spring Boot app (mvn spring-boot:run, a container image, or staging) with seeded test data.",
+        "Add test accounts for the roles you need so the AI agent can sign in through Spring Security and reach role-specific screens.",
+        "Let the agent explore your Thymeleaf views or SPA front end, and review the end-to-end and visual checks it generates.",
+        "Add the Wopee.io check to CI (GitHub Actions, GitLab CI, Jenkins, or any other) so every pull request runs browser-level regression.",
+        "On a failure, review the self-healing suggestion and AI visual diff in Wopee Commander and approve or reject in one click."
+      ],
+      "comparison": {
+        "header": ["Approach", "Renders in a real browser", "Spring Security login and CSRF", "Test maintenance", "Visual regression"],
+        "rows": [
+          ["MockMvc / @WebMvcTest", "No, mocked servlet layer", "Simulated with test helpers", "Update asserts by hand", "None"],
+          ["Selenium / Selenide (Java)", "Yes", "Scripted per test", "Page objects and selectors", "Add-on, pixel-exact"],
+          ["Wopee.io (AI testing)", "Yes", "Real login form, token sent by the page", "Self-healing locators", "Built-in AI visual diff"]
+        ]
+      },
+      "faqs": [
+        {"q": "Do I have to disable CSRF or change Spring Security to test with Wopee.io?", "a": "No. The agent logs in through the real login page and submits forms through the rendered UI, so Spring Security's CSRF token and session cookie are sent the same way a browser sends them. Your security configuration stays as it is in production."},
+        {"q": "Does it replace MockMvc and @SpringBootTest tests?", "a": "No. Keep them for controllers, services, and data access, where they are fast and precise. Wopee.io adds the browser-level end-to-end and visual layer that those tests do not reach."},
+        {"q": "Our front end is a separate Angular or React app. Does that work?", "a": "Yes. Wopee.io tests the deployed application in a browser, so a journey that starts in the SPA and calls your Spring REST API is covered end to end, regardless of which repository each part lives in."}
+      ],
+      "related": ["ai-testing-angular", "ai-testing-dotnet", "ai-testing-django"]
     },
     {
       "slug": "ai-testing-ecommerce",
