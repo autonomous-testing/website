@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
+import CodeBlock from "@theme/CodeBlock";
 import ButtonPrimary from "@site/src/components/buttons/ButtonPrimary";
 import PseoFaq from "@site/src/components/pseo/PseoFaq";
 import PseoCard from "@site/src/components/pseo/PseoCard";
@@ -10,10 +11,15 @@ import ComparisonJourney from "@site/src/components/pseo/ComparisonJourney";
 import { useCmdLoginUrl } from "@site/src/components/pseo/useCmdLoginUrl";
 import AnswerFirst from "@site/src/components/ui/AnswerFirst";
 
+type Category = "framework" | "industry" | "use-case" | "visual-stack";
+
 export type PseoData = {
   slug: string;
-  category: "framework" | "industry" | "use-case";
+  category: Category;
   subject: string;
+  // visual-stack pages: the test tool the visual checks are added to, and an example test.
+  tool?: string;
+  code?: { language: string; title: string; snippet: string };
   keyword: string;
   title: string;
   description: string;
@@ -24,11 +30,44 @@ export type PseoData = {
   steps: string[];
   comparison: { header: string[]; rows: string[][] };
   faqs: { q: string; a: string }[];
-  related: { slug: string; label: string; category: "framework" | "industry" | "use-case"; description: string }[];
+  related: { slug: string; label: string; category: Category; description: string }[];
+  // framework pages: the visual-stack pages for that framework.
+  toolGuides?: { slug: string; label: string }[];
 };
 
-const eyebrowFor = (c: PseoData["category"]) =>
-  c === "framework" ? "AI Testing · Framework" : c === "industry" ? "AI Testing · Industry" : "AI Testing · Use case";
+const EYEBROW: Record<Category, string> = {
+  framework: "AI Testing · Framework",
+  industry: "AI Testing · Industry",
+  "use-case": "AI Testing · Use case",
+  "visual-stack": "Visual Testing · Stack",
+};
+
+function headings(data: PseoData) {
+  const s = data.subject;
+  if (data.category === "visual-stack") {
+    return {
+      h1: `Visual Testing for ${s} with ${data.tool}`,
+      pain: `Why visual testing ${s} with ${data.tool} is hard`,
+      solution: `How Wopee.io adds visual checks to ${data.tool}`,
+      cta: `Add visual checks to your ${data.tool} tests`,
+    };
+  }
+  if (data.category === "use-case") {
+    const lower = s.charAt(0).toLowerCase() + s.slice(1);
+    return {
+      h1: `AI ${s}`,
+      pain: `Why ${lower} is hard`,
+      solution: `How Wopee.io approaches ${lower}`,
+      cta: `Start ${lower} with Wopee.io`,
+    };
+  }
+  return {
+    h1: `AI Testing for ${s}`,
+    pain: `Why testing ${s} is hard`,
+    solution: `How Wopee.io tests ${s}`,
+    cta: `Start testing ${s} with AI`,
+  };
+}
 
 // Render `inline code` and [markdown](/links) inside otherwise-plain copy, so the
 // data file can use backticks (e.g. `css-1a2b3c`) and in-body cross-links.
@@ -72,12 +111,7 @@ function CtaButtons() {
 }
 
 export default function ProgrammaticPage({ data }: { data: PseoData }) {
-  const isUseCase = data.category === "use-case";
-  const subjLower = data.subject.charAt(0).toLowerCase() + data.subject.slice(1);
-  const h1 = isUseCase ? `AI ${data.subject}` : `AI Testing for ${data.subject}`;
-  const painHeading = isUseCase ? `Why ${subjLower} is hard` : `Why testing ${data.subject} is hard`;
-  const solutionHeading = isUseCase ? `How Wopee.io approaches ${subjLower}` : `How Wopee.io tests ${data.subject}`;
-  const ctaHeading = isUseCase ? `Start ${subjLower} with Wopee.io` : `Start testing ${data.subject} with AI`;
+  const { h1, pain: painHeading, solution: solutionHeading, cta: ctaHeading } = headings(data);
 
   const faqLd = {
     "@context": "https://schema.org",
@@ -100,7 +134,7 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         {/* Hero */}
         <header className="text-center">
           <span className="inline-block rounded-full border border-secondary-wopee/40 bg-secondary-wopee/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-secondary-wopee dark:border-primary-wopee/40 dark:bg-primary-wopee/10 dark:text-primary-wopee">
-            {eyebrowFor(data.category)}
+            {EYEBROW[data.category]}
           </span>
           <h1 className="mt-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">{h1}</h1>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg">
@@ -135,6 +169,22 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
           <p className="mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg">
             <RichText>{data.solution}</RichText>
           </p>
+          {data.toolGuides && data.toolGuides.length > 0 && (
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Visual testing with your test tool:
+              </span>
+              {data.toolGuides.map((g) => (
+                <Link
+                  key={g.slug}
+                  to={`/${g.slug}/`}
+                  className="inline-flex rounded-lg border border-solid border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 hover:border-secondary-wopee hover:text-secondary-wopee hover:no-underline dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-200 dark:hover:border-primary-wopee dark:hover:text-primary-wopee"
+                >
+                  {g.label}
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Steps */}
@@ -152,13 +202,25 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
                 <span className="z-10 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-secondary-wopee text-base font-bold text-white shadow-sm dark:bg-primary-wopee dark:text-black">
                   {i + 1}
                 </span>
-                <div className="flex-1 rounded-xl border border-gray-200 bg-gray-50/60 p-4 text-base leading-relaxed text-gray-700 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-200">
+                <div className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-gray-50/60 p-4 [overflow-wrap:anywhere] text-base leading-relaxed text-gray-700 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-200">
                   <RichText>{step}</RichText>
                 </div>
               </li>
             ))}
           </ol>
         </section>
+
+        {/* Example test (visual-stack pages) */}
+        {data.code && (
+          <section className="mt-14">
+            <h2 className="text-2xl font-bold sm:text-3xl">Example: a {data.tool} test with visual checks</h2>
+            <div className="mt-6 text-sm">
+              <CodeBlock language={data.code.language} title={data.code.title}>
+                {data.code.snippet}
+              </CodeBlock>
+            </div>
+          </section>
+        )}
 
         {/* Comparison */}
         <ComparisonJourney comparison={data.comparison} />
@@ -167,7 +229,9 @@ export default function ProgrammaticPage({ data }: { data: PseoData }) {
         <section className="mt-16 rounded-2xl bg-gradient-to-br from-secondary-wopee to-[#451f6b] px-6 py-10 text-center text-white">
           <h2 className="text-2xl font-bold sm:text-3xl">{ctaHeading}</h2>
           <p className="mx-auto mt-3 max-w-2xl text-white/80">
-            Generate your first autonomous tests in minutes, no brittle selectors, no manual baselines.
+            {data.category === "visual-stack"
+              ? "Keep your tests, add a few track calls, and review every visual change in one place."
+              : "Generate your first autonomous tests in minutes, no brittle selectors, no manual baselines."}
           </p>
           <div className="mt-7">
             <CtaButtons />

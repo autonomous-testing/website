@@ -21,10 +21,17 @@ const ROOT = path.join(__dirname, "..");
 const DATA = path.join(ROOT, "data", "pseo-pages.json");
 const OUT = path.join(ROOT, "generated", "pseo");
 
+// "visual-stack" pages (Phase 3) pair a framework with a test tool, e.g. Angular +
+// Playwright. They carry `tool`, `framework` (the slug of the framework page they
+// belong to) and `code` (an example test using the Wopee.io SDK for that tool).
 const labelFor = (page) =>
-  page.category === "use-case" ? `AI ${page.subject}` : `AI Testing for ${page.subject}`;
+  page.category === "visual-stack"
+    ? `Visual Testing for ${page.subject} with ${page.tool}`
+    : page.category === "use-case"
+      ? `AI ${page.subject}`
+      : `AI Testing for ${page.subject}`;
 
-function renderPage(page, bySlug) {
+function renderPage(page, bySlug, pages) {
   // Only link to related pages that actually exist in the dataset, so we never
   // ship broken internal links while a batch is partial.
   const related = (page.related || [])
@@ -36,10 +43,17 @@ function renderPage(page, bySlug) {
       description: bySlug[slug].description,
     }));
 
+  // A framework page links to its visual-stack pages, so each one is reachable
+  // from the framework guide it extends.
+  const toolGuides = pages
+    .filter((p) => p.category === "visual-stack" && p.framework === page.slug)
+    .map((p) => ({ slug: p.slug, label: `${p.subject} with ${p.tool}` }));
+
   const data = {
     slug: page.slug,
     category: page.category,
     subject: page.subject,
+    ...(page.tool ? { tool: page.tool } : {}),
     keyword: page.keyword,
     title: page.title,
     description: page.description,
@@ -48,9 +62,11 @@ function renderPage(page, bySlug) {
     problem: page.problem,
     solution: page.solution,
     steps: page.steps,
+    ...(page.code ? { code: page.code } : {}),
     comparison: page.comparison,
     faqs: page.faqs,
     related,
+    ...(toolGuides.length ? { toolGuides } : {}),
   };
 
   // JSON is a valid JS object literal, so it embeds directly in the .tsx.
@@ -80,7 +96,7 @@ function main() {
   fs.mkdirSync(OUT, { recursive: true });
 
   for (const page of pages) {
-    fs.writeFileSync(path.join(OUT, `${page.slug}.tsx`), renderPage(page, bySlug));
+    fs.writeFileSync(path.join(OUT, `${page.slug}.tsx`), renderPage(page, bySlug, pages));
   }
 
   console.log(`[pseo] generated ${pages.length} page(s) into generated/pseo/`);
