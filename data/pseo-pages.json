@@ -438,7 +438,108 @@
         {"q": "How do I keep dynamic content from failing every visual check?", "a": "Draw ignore areas over regions like dates, prices, and live data in classic comparison, or mark them as dynamic so AI diffing treats their change as expected, so a check fails only on genuine regressions."},
         {"q": "Can I assert specific things in a screenshot?", "a": "Yes. Beyond baseline comparison, you can write natural-language prompts (for example, 'the cart shows three items and a total') and Wopee.io evaluates the screenshot against them."}
       ],
-      "related": ["ai-regression-testing", "ai-e2e-testing", "ai-testing-ecommerce"]
+      "related": ["ai-regression-testing", "ai-accessibility-testing", "ai-testing-ecommerce"]
+    },
+    {
+      "slug": "ai-smoke-testing",
+      "category": "use-case",
+      "subject": "Smoke Testing",
+      "keyword": "automated smoke testing",
+      "batch": 2,
+      "title": "Automated Smoke Testing with AI Agents",
+      "description": "Automated smoke testing with Wopee.io. An AI agent checks your critical paths after every deploy and on a schedule, with a verdict and screenshots per test.",
+      "aioOpener": "Automated smoke testing runs a small set of fast checks right after a build or deploy to answer one question: is the application basically working, or should the release stop here? With Wopee.io, an AI agent runs your critical paths, such as login, search, add to cart, and checkout, in a real browser after every deploy and on a schedule. Each test returns Passed, Failed, or Incomplete with step screenshots, so a broken release is caught in minutes instead of by your users.",
+      "problem": "Smoke tests are meant to be the cheapest, most trusted tests a team has, and in practice they are often neither. Scripted smoke suites break on the same selector and timing problems as every other UI test, so the deploy gate turns red for reasons that have nothing to do with the release, and teams learn to rerun it until it goes green. The opposite failure is worse: a smoke test that clicks through the app but checks nothing meaningful stays green while the checkout is broken. Smoke checks also tend to run only in one place, a CI job after merge, while the outages that hurt happen later, after a configuration change, an expired certificate, or a third-party script update, when no pipeline is running. Keeping a separate smoke suite in sync with a fast-changing UI is one more maintenance job nobody owns.",
+      "solution": "Wopee.io turns smoke testing into a short list of critical journeys that an AI agent runs and keeps working. The agent explores your app and generates tests; you pick the handful that define a working release and group them into a Test Plan, for example one called Smoke Test. Start those tests from your pipeline after each deploy, run the plan by hand, or put it on a schedule: every hour, day, week, month, or a custom cron expression, so the same checks also catch failures between releases. Because the agent resolves elements by role, label, and visual context and self-heals when the UI changes, a redesign does not turn the gate red on its own. Every test returns a verdict with step screenshots, and with verdict enforcement on, a pass that the run did not prove is reported as Incomplete and counted with the failures, so a smoke run cannot go green without evidence. Problems in the test environment, such as a lost browser session, are listed apart from app issues. When the smoke plan passes, the broader [AI regression testing](/ai-regression-testing/) and [AI end-to-end testing](/ai-e2e-testing/) suites take over.",
+      "steps": [
+        "Point Wopee.io at your app and let the AI agent generate tests, or describe your critical paths in plain language as new tests.",
+        "Pick the five to ten journeys that define a working release (login, search, cart, checkout, account) and group them into a Test Plan named Smoke Test.",
+        "Start the smoke tests from your pipeline right after each deploy to staging or production, using a test account whose actions nobody acts on.",
+        "Schedule the same plan hourly or daily so it also catches failures caused by configuration or third-party changes between releases.",
+        "When a run fails, open the report in Wopee Commander: it shows the failing step, its screenshot, and whether the cause was the app or the test environment."
+      ],
+      "comparison": {
+        "header": ["Approach", "Time to verdict", "Maintenance on UI change", "Runs between releases", "Proof behind a pass"],
+        "rows": [
+          ["Manual smoke check", "Minutes to hours, per deploy", "None, but repeated by hand", "Rarely", "Tester notes"],
+          ["Scripted smoke suite (Playwright/Cypress/Selenium)", "Minutes", "Selector and wait fixes", "If someone adds a cron job", "Assertions someone remembered to write"],
+          ["Uptime / HTTP monitors", "Seconds", "Low", "Yes", "Status code only, no user journey"],
+          ["Wopee.io (AI testing)", "Minutes", "Self-healing locators", "Scheduled Test Plans", "Verdict with step screenshots, Incomplete when unproven"]
+        ]
+      },
+      "faqs": [
+        {"q": "What is the difference between smoke testing and regression testing?", "a": "Smoke testing is a small, fast set of checks that decides whether a build is worth testing further or safe to keep live. Regression testing is the broader suite that confirms existing behaviour still works after a change. With Wopee.io both are Test Plans built from the same AI-generated tests, one short and one broad."},
+        {"q": "Can I run smoke tests against production?", "a": "Yes, with care. Use a dedicated test account whose orders, messages, and payments nobody acts on, and keep the smoke plan to read-mostly journeys. Many teams run the same plan on staging before the deploy and on production right after it."},
+        {"q": "How do I schedule smoke tests?", "a": "Group the tests into a Test Plan in Wopee Commander and set a schedule: every hour, day, week, month, or a custom cron expression. You can also run the plan by hand or start the tests from your CI pipeline after a deploy."}
+      ],
+      "related": ["ai-regression-testing", "ai-e2e-testing", "ai-api-testing"]
+    },
+    {
+      "slug": "ai-api-testing",
+      "category": "use-case",
+      "subject": "API Testing",
+      "keyword": "ai api testing tool",
+      "batch": 2,
+      "title": "AI API Testing Inside Your UI Tests",
+      "description": "AI API testing with Wopee.io: call REST endpoints from plain-language test steps to seed data, check backend state, and compare the UI with the API response.",
+      "aioOpener": "AI API testing with Wopee.io means calling your APIs from inside AI-generated end-to-end tests, written as plain-language steps. A test can create data with a POST request, drive the UI with it, and then confirm with a GET request that the backend recorded what the user did. Wopee.io is not a replacement for a dedicated API test suite or load testing tool; it is the place where UI and API checks meet in one flow, so you catch the bugs that live between the front end and the back end.",
+      "problem": "API tests and UI tests usually live in different worlds. API suites in Postman collections or code check endpoints in isolation and stay green while the front end sends the wrong field, shows a stale value, or never calls the endpoint at all. UI suites click through the app but have no direct way to confirm what the backend stored, so they assert on whatever the screen shows and miss data that was saved incorrectly. Setting up test data through the UI is slow and fragile: a test that needs a customer with three orders spends most of its time creating them by clicking. Teams end up writing glue code, a request fixture here, a database helper there, that has to be maintained alongside both suites, and the journeys that span UI and API are tested by neither.",
+      "solution": "Wopee.io puts API calls into the same test as the UI journey. The HTTP request tool sends GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS requests from a plain-language step, for example \"Send POST request to /api/customers with body {...}\", with the headers, bearer tokens, API keys, or cookies the endpoint needs. Steps can then check the response status and fields, such as \"Verify response status is 200\" or \"Verify response field status is placed\". Typical patterns: seed test data through the API before the UI part starts, verify backend state after the user submits a form, compare what the page displays with what the API returns, and check error handling such as a 404 for a missing record. The AI agent drives the UI parts of the same test with self-healing locators, and the whole flow runs as part of [AI end-to-end testing](/ai-e2e-testing/) and [AI regression testing](/ai-regression-testing/), reviewed in Wopee Commander. A quick API status check also makes a useful first step in an [AI smoke testing](/ai-smoke-testing/) plan. For contract testing, load testing, or large API-only suites, keep your dedicated API tools.",
+      "steps": [
+        "Store the API base URL and credentials (token or API key) as environment variables in your Wopee.io project.",
+        "Add API steps to a test in plain language, for example a POST request that creates the customer the UI test will use.",
+        "Let the AI agent drive the UI part of the journey with that data, as it does for any end-to-end test.",
+        "Finish with a GET request that verifies the backend state, and assert on the response status and the fields that matter.",
+        "Start the test from CI or add it to a scheduled Test Plan, so UI and API regressions show up in the same report."
+      ],
+      "comparison": {
+        "header": ["Approach", "API calls", "UI journey", "UI and backend consistency", "Authoring"],
+        "rows": [
+          ["Manual (browser + API client)", "By hand in an API client", "By hand", "Compared by eye", "None, repeated each time"],
+          ["API-only suites (Postman, code)", "Yes, in depth", "No", "Not checked", "Collections or code"],
+          ["Scripted E2E with request helpers", "Yes, via code fixtures", "Yes, brittle selectors", "Possible, extra glue code", "Engineer writes code"],
+          ["Wopee.io (AI testing)", "Plain-language HTTP request steps", "AI-driven, self-healing", "Same test checks both", "AI-generated plus plain-language steps"]
+        ]
+      },
+      "faqs": [
+        {"q": "Is Wopee.io a replacement for Postman or a dedicated API testing tool?", "a": "No. Wopee.io is built for web app testing, and its HTTP request tool is for API calls inside those tests: seeding data, verifying backend state, and checking that the UI and the API agree. For contract tests, load tests, or large API-only suites, keep a dedicated tool."},
+        {"q": "Which HTTP methods and authentication does the HTTP request tool support?", "a": "GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS. Requests follow the standard fetch RequestInit options, so you can set headers, JSON or form bodies, bearer tokens, API keys, and cookie credentials."},
+        {"q": "Can a test compare what the page shows with what the API returns?", "a": "Yes. Make a GET request in one step, then navigate to the page and verify that the displayed values match the response. This catches the bugs that neither an API suite nor a UI suite finds on its own."}
+      ],
+      "related": ["ai-e2e-testing", "ai-regression-testing", "ai-smoke-testing"]
+    },
+    {
+      "slug": "ai-accessibility-testing",
+      "category": "use-case",
+      "subject": "Accessibility Testing",
+      "keyword": "accessibility testing",
+      "batch": 2,
+      "title": "Accessibility Testing with an AI Agent",
+      "description": "Accessibility testing with Wopee.io: keyboard-only journeys, reflow checks at narrow widths, and accessible-name signals from an AI agent, next to your scanner.",
+      "aioOpener": "Accessibility testing checks that people can use your app with a keyboard, a screen reader, zoom, or other assistive technology. Rule-based scanners catch what can be read from the markup; they cannot tell whether a journey can actually be completed. Wopee.io is not a WCAG scanner or an audit, but its AI agent works through the page's accessibility tree on every step, and you can write tests that complete journeys with the keyboard only, check layouts at narrow widths, and rerun those checks on every release.",
+      "problem": "Most teams test accessibility in two ways, and both leave gaps. Automated rule engines such as axe-core and Lighthouse are fast and belong in every pipeline, but they check markup rules one page at a time: they can flag a missing alt text or a low-contrast label, not whether a user can reach the Pay button with the Tab key, whether focus returns to the right place after a dialog closes, or whether the checkout still works at 320 CSS pixels wide, as the WCAG reflow criterion asks. Manual audits with assistive technology find those problems, but they happen once or twice a year, and the next sprint can quietly undo the fixes. With the European Accessibility Act applying since June 2025, more teams need checks that run continuously between audits, and few have a way to run journey-level accessibility checks automatically.",
+      "solution": "Wopee.io adds journey-level checks between your scanner and your audit. First, the agent locates elements through the accessibility tree, by role and accessible name, before it falls back to test ids, CSS, or a screen position, and every step's locator is shown in the run. A step that had to fall back is a hint that the control may lack a usable role or name, which is worth checking with your scanner or by hand. Second, you can write keyboard-only tests in plain language with the press tool, for example \"Press Tab until the Checkout button is focused, press Enter, then press Escape to close the dialog\", and assert the outcome, so a keyboard trap shows up as a failing test. Third, the resize viewport tool sets a narrow viewport such as 320 pixels wide mid-test, and natural-language visual assertions check what must be visible, such as a focus outline on the active button or a form with no cut-off labels; each visual assertion reports a confidence score and what the agent observed. These tests run in CI and on a schedule like any other, alongside [AI visual testing](/ai-visual-testing/) and [AI end-to-end testing](/ai-e2e-testing/), so a fixed issue stays fixed through [AI regression testing](/ai-regression-testing/). Wopee.io does not calculate contrast ratios, inspect screen reader output, or certify WCAG conformance: keep a rule scanner in CI and audits with real assistive technology.",
+      "steps": [
+        "Keep an automated rule scanner such as axe-core or Lighthouse in your pipeline for markup-level checks.",
+        "Let the Wopee.io agent generate tests for your key journeys, then review the step locators and note steps that fell back from role and name to test ids, CSS, or a screen position.",
+        "Write keyboard-only versions of the critical journeys in plain language, using Tab, Enter, Space, and Escape key presses and an assertion on the result.",
+        "Add steps that resize the viewport to a narrow width and visual assertions for what must stay visible, such as focus outlines and form labels.",
+        "Run these tests in CI and on a schedule, and keep manual audits with assistive technology for what automation cannot judge."
+      ],
+      "comparison": {
+        "header": ["Approach", "Markup rules (alt text, contrast, ARIA)", "Keyboard-only journeys", "Reflow at narrow widths", "How often it runs"],
+        "rows": [
+          ["Manual audit with assistive technology", "Yes", "Yes", "Yes", "Once or twice a year"],
+          ["Rule scanners (axe-core, Lighthouse)", "Yes, rule-based", "No", "No", "Every build"],
+          ["Wopee.io (AI testing)", "No, pair with a scanner", "Yes, plain-language key presses", "Yes, resize viewport and visual assertions", "Every build and on a schedule"]
+        ]
+      },
+      "faqs": [
+        {"q": "Is Wopee.io a WCAG compliance or audit tool?", "a": "No. Wopee.io does not certify WCAG conformance, calculate contrast ratios, or inspect screen reader output. It adds automated journey-level checks, such as keyboard-only flows and narrow-viewport layouts, between a rule scanner in CI and periodic manual audits."},
+        {"q": "How does the agent's use of the accessibility tree help?", "a": "The agent prefers role and accessible-name locators taken from the accessibility tree and falls back to test ids, CSS, or screen positions only when it has to. Each step's locator is visible in the run, so steps that needed a fallback point to controls that may be missing a usable role or name."},
+        {"q": "Can Wopee.io test keyboard navigation?", "a": "Yes. Write the journey with key presses such as Tab, Enter, Space, and Escape instead of clicks, and assert the result, for example that the dialog closed and the order was placed. If a user would get stuck, the test fails."}
+      ],
+      "related": ["ai-visual-testing", "ai-e2e-testing", "ai-smoke-testing"]
     },
     {
       "slug": "ai-e2e-testing",
@@ -473,7 +574,7 @@
         {"q": "Can it handle authentication and state that carries across pages?", "a": "Yes. The agent logs in, carries session state, and drives journeys whose later steps depend on earlier ones (a populated cart, a created record, a multi-page form) so it covers the realistic flows where the costliest bugs hide."},
         {"q": "Does each journey also check how the app looks?", "a": "Yes. AI visual diffing runs alongside the functional path, so a single end-to-end run validates both that the journey works and that each screen renders correctly, all reviewed together in Wopee Commander."}
       ],
-      "related": ["ai-regression-testing", "ai-testing-react", "ai-testing-finance"]
+      "related": ["ai-regression-testing", "ai-api-testing", "ai-smoke-testing"]
     }
   ]
 }
