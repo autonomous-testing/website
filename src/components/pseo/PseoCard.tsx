@@ -41,12 +41,14 @@ const PILL_LABEL: Record<string, string> = {
   framework: "Framework",
   industry: "Industry",
   "use-case": "Use case",
+  "visual-stack": "Visual testing",
 };
 
 const CATEGORY_ICON: Record<string, IconCmp> = {
   framework: Code2,
   industry: Building2,
   "use-case": Target,
+  "visual-stack": Eye,
 };
 
 // Real brand logos (simple-icons) for frameworks; rendered in currentColor so they
@@ -88,7 +90,7 @@ export default function PseoCard({
   description,
 }: {
   href: string;
-  category?: "framework" | "industry" | "use-case";
+  category?: "framework" | "industry" | "use-case" | "visual-stack";
   title: string;
   description?: string;
 }) {

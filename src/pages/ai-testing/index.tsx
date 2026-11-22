@@ -9,18 +9,28 @@ import pseoData from "@site/data/pseo-pages.json";
 
 type Page = {
   slug: string;
-  category: "framework" | "industry" | "use-case";
+  category: "framework" | "industry" | "use-case" | "visual-stack";
   subject: string;
+  tool?: string;
   description: string;
 };
 
 const labelFor = (p: Page) =>
-  p.category === "use-case" ? `AI ${p.subject}` : `AI Testing for ${p.subject}`;
+  p.category === "visual-stack"
+    ? `Visual Testing for ${p.subject} with ${p.tool}`
+    : p.category === "use-case"
+      ? `AI ${p.subject}`
+      : `AI Testing for ${p.subject}`;
 
 const GROUPS: { key: Page["category"]; title: string; blurb: string }[] = [
   { key: "use-case", title: "By use case", blurb: "Pick the testing job. Wopee.io generates and self-heals the coverage." },
   { key: "industry", title: "By industry", blurb: "Coverage shaped around your domain's risk, dynamic data, and compliance." },
   { key: "framework", title: "By framework", blurb: "Autonomous testing tuned to how your stack actually renders and changes." },
+  {
+    key: "visual-stack",
+    title: "Visual testing by stack",
+    blurb: "Add Wopee.io visual checks to the Playwright, Cypress, WebdriverIO, or Robot Framework tests you already run.",
+  },
 ];
 
 export default function AiTestingHub() {

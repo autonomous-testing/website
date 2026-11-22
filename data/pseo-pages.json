@@ -3,6 +3,366 @@
   "_comment": "Structured data for programmatic SEO pages (#98). Each entry generates one .mdx landing page via scripts/generate-pseo.js. Quality bar: >=500 unique words, >=30% differentiation per page. Do NOT add keyword-swap clones, every field below must be genuinely specific to the page subject.",
   "pages": [
     {
+      "slug": "ai-visual-testing-angular-playwright",
+      "category": "visual-stack",
+      "subject": "Angular",
+      "tool": "Playwright",
+      "framework": "ai-testing-angular",
+      "keyword": "visual testing angular playwright",
+      "batch": 3,
+      "title": "Visual Testing for Angular with Playwright",
+      "description": "Visual testing for Angular with Playwright: add Wopee.io checks to your Playwright tests, keep baselines out of the repo, and review every diff in one place.",
+      "aioOpener": "Visual testing for Angular with Playwright means taking screenshots at chosen points in your Playwright tests and comparing them with approved baselines, so a broken Material theme, a shifted layout, or a dialog that renders off-screen fails review even when every functional assertion passes. With the `@wopee-io/wopee.pw` package, each `trackFullPage`, `trackViewport`, or `trackElement` call sends the screenshot to Wopee.io, which compares it with the baseline for your branch and puts every difference up for approval in Wopee Commander.",
+      "problem": "Angular apps are easy to screenshot and hard to screenshot reliably. Rendering finishes a tick after the event that caused it, Angular Material animates ripples, expansion panels, and dialogs, and web fonts such as Roboto and Material Icons load after the first paint, so a screenshot taken too early captures a half-drawn page. Material dialogs, menus, and date pickers render in the CDK overlay container at the end of the document body, outside the component that opened them, so an element screenshot of the component misses the overlay entirely. Playwright's built-in `toHaveScreenshot` solves the comparison but stores baseline PNG files in the repository, one per browser and operating system, so baselines made on a Mac do not match a Linux CI runner, a theme change produces a pull request full of binary images, and reviewing a diff means opening each HTML report.",
+      "solution": "Wopee.io keeps your Playwright tests as they are and moves the baselines and the review out of the repository. You add the Wopee.io reporter to `playwright.config.ts`, start a suite and a scenario in the test hooks, and call `trackFullPage` where the page is settled, for example after a heading or table you expect is visible. For Material dialogs and menus, use `trackFullPage` or `trackViewport` rather than `trackElement` on the host component, because the overlay lives outside it. Baselines are stored in Wopee.io per branch and per browser, OS, and viewport label, and `WOPEE_BASELINE_BRANCH_NAME` lets a feature branch compare against master until it has its own. Differences show up in Commander with a highlight overlay; you approve an intended change or reject a bug, and ignore areas drawn there keep timestamps and live values out of the comparison. A difference does not fail the test unless you check the returned status. If you want the tests themselves written for you, the Wopee.io agent can also generate Playwright tests from your running Angular app, see [AI testing for Angular](/ai-testing-angular/). Setup details are in the [Playwright guide](https://docs.wopee.io/playwright-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Playwright and copy WOPEE_API_URL, WOPEE_PROJECT_UUID, and a new WOPEE_API_KEY into a .env file.",
+        "Install the package with npm i -D @wopee-io/wopee.pw and add '@wopee-io/wopee.pw/wopee-reporter' to the reporter list in playwright.config.ts, with baseURL pointing at ng serve (http://localhost:4200) or your preview build.",
+        "In the spec, start a suite in beforeAll, start a scenario with the test title in beforeEach, and stop it in afterEach.",
+        "Call wopee.trackFullPage after the content you want to capture is visible; for Material dialogs and menus, capture the full page or the viewport.",
+        "Run npx playwright test, approve the first screenshots as baselines in Commander, and on later runs approve or reject each unresolved step."
+      ],
+      "code": {"language": "typescript", "title": "e2e/settings.visual.spec.ts", "snippet": "import { test } from '@playwright/test';\nimport { Wopee } from '@wopee-io/wopee.pw';\n\nconst wopee = new Wopee();\n\ntest.beforeAll(async () => {\n  await wopee.startSuite(`Angular visual ${new Date().toISOString().slice(0, 16)}`);\n});\ntest.beforeEach(async ({}, testInfo) => {\n  await wopee.startScenario(testInfo.title, testInfo);\n});\ntest.afterEach(async () => {\n  await wopee.stopScenario();\n});\n\ntest('Settings and edit profile dialog', async ({ page }) => {\n  await page.goto('/settings');\n  await page.getByRole('heading', { name: 'Settings' }).waitFor();\n  await wopee.trackFullPage({ page, stepName: 'Settings page' });\n\n  await page.getByRole('button', { name: 'Edit profile' }).click();\n  // Material dialogs render in the CDK overlay container, outside the component.\n  await page.getByRole('dialog').waitFor();\n  await wopee.trackViewport({ page, stepName: 'Edit profile dialog' });\n});"},
+      "comparison": {
+        "header": ["Approach", "Where baselines live", "Material overlays", "Review of differences", "Branches"],
+        "rows": [
+          ["Manual check before release", "In the tester's memory", "Checked if someone opens them", "By eye", "None"],
+          ["Playwright toHaveScreenshot", "PNG files in the repo, per browser and OS", "Full-page or viewport snapshots", "HTML report per run", "Whatever is committed on the branch"],
+          ["Wopee.io (@wopee-io/wopee.pw)", "Wopee.io, per branch and environment label", "trackFullPage or trackViewport", "Approve or reject per step in Commander", "Per branch, with a baseline branch fallback"]
+        ]
+      },
+      "faqs": [
+        {"q": "Do I have to rewrite my Angular Playwright tests?", "a": "No. You add the Wopee.io reporter to the config, a few lines in the test hooks to start and stop the suite and scenario, and a track call at each point you want to check. Your locators and assertions stay as they are."},
+        {"q": "Will a visual difference fail my CI run?", "a": "Not by default: the test passes and the step waits for review in Wopee Commander. To fail the test as well, check the status the track call returns, for example expect(result?.status).not.toBe('unresolved')."},
+        {"q": "How do I keep Material animations from causing differences?", "a": "Wait for the element you want to capture before each track call, and consider providing the no-op animations module in the build you test against. Ignore areas drawn in Commander cover regions that change on purpose, such as timestamps."}
+      ],
+      "related": ["ai-testing-angular", "ai-visual-testing-angular-cypress", "ai-visual-testing"]
+    },
+    {
+      "slug": "ai-visual-testing-angular-cypress",
+      "category": "visual-stack",
+      "subject": "Angular",
+      "tool": "Cypress",
+      "framework": "ai-testing-angular",
+      "keyword": "visual testing angular cypress",
+      "batch": 3,
+      "title": "Visual Testing for Angular with Cypress",
+      "description": "Visual testing for Angular with Cypress: the Wopee.io plugin adds cy.wopeeTrack to your specs, waits for fonts and icons, and sends every diff for review.",
+      "aioOpener": "Visual testing for Angular with Cypress adds screenshot comparisons to the Cypress specs you already run, so styling and layout regressions in your Angular app are caught next to the functional checks. Cypress has no visual comparison of its own; the `@wopee-io/wopee.cy` plugin adds `cy.wopeeTrack()`, which waits for the page's web fonts and images, takes the screenshot, and compares it with the approved baseline in Wopee.io, where you approve or reject each difference.",
+      "problem": "Angular and Cypress work well together for functional tests, but screenshots expose details functional tests never see. Angular Material uses the Material Icons font, which renders icon names as plain text until the font has loaded, so an early screenshot shows the word close where an X should be. Roboto and other web fonts swap in late, Material components animate on open, and dialogs and snack bars render in the CDK overlay container at the end of the page. Cypress itself does not compare screenshots: teams pick a community snapshot plugin, store baseline images in the repository, and handle differences between local machines and CI by hand. When an Angular Material upgrade restyles every button, the result is hundreds of failed snapshots and a large binary diff in the pull request.",
+      "solution": "The Wopee.io Cypress plugin is built for exactly this. You register `addWopeePlugin(on, config)` in `cypress.config.js`, call `addWopeeCommands()` in the support file, and map your API key and project into the `wopee` object in `env`. In a spec, `cy.wopeeStartSuite` and `cy.wopeeStartScenario` group the screenshots, and `cy.wopeeTrack({ stepName })` waits for web fonts and images (up to five seconds by default, from plugin 4.13.4) before it captures the full page, which removes the Material Icons ligature problem. Chain it after `cy.get()` to capture one element, and pass `ignoreAreas` with CSS selectors for regions that change on purpose, such as a last-updated time; a selector that matches nothing is skipped. Baselines live in Wopee.io per branch, so a Material upgrade becomes one review session in Wopee Commander where you approve the intended restyle in bulk and reject the real regressions. By default a difference leaves the run green; set `enableSoftAssert: false` to fail the test instead. The plugin supports Cypress 13 to 16. For coverage beyond your own specs, see [AI testing for Angular](/ai-testing-angular/), and for all options the [Cypress plugin reference](https://docs.wopee.io/cypress/03-install-plugin/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Cypress and copy WOPEE_PROJECT_UUID and a new WOPEE_API_KEY into a .env file.",
+        "Install with npm install -D @wopee-io/wopee.cy dotenv, register addWopeePlugin in setupNodeEvents, and map apiKey and projectUuid into env.wopee in cypress.config.js.",
+        "Add addWopeeCommands() to cypress/support/e2e.js so cy.wopeeTrack and the suite and scenario commands exist.",
+        "In each spec, start the suite in before, the scenario in beforeEach, and call cy.wopeeTrack where the Angular view has rendered, adding ignoreAreas for live values.",
+        "Run npx cypress run, approve the first screenshots in Commander, and review unresolved steps on every later run."
+      ],
+      "code": {"language": "javascript", "title": "cypress/e2e/orders.cy.js", "snippet": "/// <reference types=\"cypress\" />\n/// <reference types=\"@wopee-io/wopee.cy\" />\n\nconst suiteName = `Angular orders ${new Date().toISOString().slice(0, 16)}`;\n\ndescribe(suiteName, () => {\n  before(() => cy.wopeeStartSuite(suiteName));\n  beforeEach(() => cy.wopeeStartScenario('Orders: list and details'));\n  afterEach(() => cy.wopeeStopScenario());\n\n  it('orders list and details', () => {\n    cy.visit('/orders');\n    cy.get('table').should('be.visible');\n    // Waits for Roboto and Material Icons before the screenshot.\n    cy.wopeeTrack({ stepName: 'Orders list', ignoreAreas: ['.last-updated'] });\n\n    cy.contains('tr', 'Order 1001').click();\n    cy.get('mat-dialog-container').should('be.visible');\n    cy.get('mat-dialog-container').wopeeTrack({ stepName: 'Order details dialog' });\n  });\n});"},
+      "comparison": {
+        "header": ["Approach", "Visual comparison", "Fonts and icon fonts", "Dynamic regions", "Fail on difference"],
+        "rows": [
+          ["Manual check before release", "By eye", "Noticed if someone looks", "Judged by eye", "No"],
+          ["Community snapshot plugins", "Local image diff, baselines in repo", "Wait written by hand", "Masking per plugin", "Usually fails at once"],
+          ["Wopee.io (@wopee-io/wopee.cy)", "Baselines in Wopee.io, review in Commander", "Waits for fonts and images (4.13.4+)", "ignoreAreas by CSS selector or rectangle", "Opt in with enableSoftAssert: false"]
+        ]
+      },
+      "faqs": [
+        {"q": "Which Cypress versions does the Wopee.io plugin support?", "a": "Cypress 13 to 16 with @wopee-io/wopee.cy 4.13.4 or newer. Cypress 16 needs Node.js 22 or 24. Older plugin versions, 4.12.2 and below, only work with Cypress 13 and 14."},
+        {"q": "Why do my Angular Material icons show as text in screenshots?", "a": "Material Icons is a font that renders icon names as text until it loads. From version 4.13.4, cy.wopeeTrack waits for the page's web fonts and images before taking the screenshot, so the icons are drawn. On slow pages raise waitForAssetsTimeout."},
+        {"q": "Can I capture just a dialog instead of the whole page?", "a": "Yes. Chain cy.wopeeTrack after cy.get, for example on mat-dialog-container, to capture one element. Wait until it is visible first, so the opening animation has finished."}
+      ],
+      "related": ["ai-testing-angular", "ai-visual-testing-angular-playwright", "ai-visual-testing-angular-webdriverio"]
+    },
+    {
+      "slug": "ai-visual-testing-angular-webdriverio",
+      "category": "visual-stack",
+      "subject": "Angular",
+      "tool": "WebdriverIO",
+      "framework": "ai-testing-angular",
+      "keyword": "visual testing angular webdriverio",
+      "batch": 3,
+      "title": "Visual Testing for Angular with WebdriverIO",
+      "description": "Visual testing for Angular with WebdriverIO: the Wopee.io service adds browser.trackScreen to your specs and keeps baselines and reviews in one place.",
+      "aioOpener": "Visual testing for Angular with WebdriverIO adds screenshot comparisons to the WebdriverIO specs many Angular teams adopted after Protractor was deprecated. The `@wopee-io/wopee.wdio` service adds commands such as `browser.trackScreen()` and `browser.trackFullPageScreen()`, sends each screenshot to Wopee.io, and compares it with the approved baseline for your branch, so you review layout and styling changes in Wopee Commander instead of in local image folders.",
+      "problem": "Many Angular teams moved their end-to-end suites from Protractor to WebdriverIO, kept the page objects, and now want visual coverage on top. The obvious option, WebdriverIO's own visual service, compares against baseline images stored on disk, which means deciding where those folders live, keeping them in sync between developers and CI, and reviewing differences as files. Angular adds its own timing problems: views finish rendering after change detection, Material components animate, and web fonts swap in after the first paint, so screenshots taken right after a click are unstable. Desktop screenshots also need care, because a setting meant for mobile devices can crop the image, and dialogs rendered in the CDK overlay container are not part of the component an element screenshot targets.",
+      "solution": "The Wopee.io service plugs into `wdio.conf.ts` like any other WebdriverIO service. Connection settings go inside `screenshotValidation` (API key and project UUID, plus `branchName` and `baselineBranchName` from your CI), and `isLandscape: false` sits next to it for desktop browsers, because the default is meant for mobile devices in landscape. In a spec, `browser.startSuite` and `browser.startScenario` group the screenshots; `browser.trackScreen` captures the visible part of the page, `browser.trackFullPageScreen` scrolls and stitches the whole page, and `browser.trackElement` captures one element, which in WebdriverIO 9 takes `await $(selector).getElement()`. Wait for the Angular view and its fonts before each call, for example with `waitForDisplayed` and a `browser.execute` that awaits `document.fonts.ready`. `imageProcessing` can mask or crop fixed screen edges on every screenshot, and `pixelToPixelDiffTolerance` absorbs tiny rendering noise. Baselines and the review live in Wopee Commander per branch; each track command returns a status you can assert on if a difference should fail the run. For broader coverage, see [AI testing for Angular](/ai-testing-angular/) and the [WebdriverIO guide](https://docs.wopee.io/webdriverio-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to WebdriverIO and copy WOPEE_PROJECT_UUID and a new WOPEE_API_KEY into a .env file.",
+        "Install with npm install --save-dev @wopee-io/wopee.wdio dotenv and add the service to wdio.conf.ts with screenshotValidation settings and isLandscape: false.",
+        "Add @wopee-io/wopee.wdio to the types in tsconfig.json so browser.trackScreen and the other commands are typed.",
+        "In each spec, start the suite once in before, start a scenario per test, and call a track command after the Angular view and its fonts have settled.",
+        "Run npx wdio run wdio.conf.ts, approve the first screenshots in Commander, and review unresolved steps on later runs."
+      ],
+      "code": {"language": "typescript", "title": "test/specs/dashboard.visual.ts", "snippet": "import { browser, $ } from '@wdio/globals';\n\ndescribe('Angular dashboard', () => {\n  before(async () => {\n    await browser.startSuite(`Angular WDIO ${new Date().toISOString().slice(0, 16)}`);\n  });\n\n  it('shows the dashboard and the filter menu', async () => {\n    await browser.startScenario('Dashboard: overview and filter menu');\n\n    await browser.url('http://localhost:4200/dashboard');\n    await $('h1=Dashboard').waitForDisplayed();\n    await browser.execute(async () => {\n      await document.fonts.ready;\n    });\n    const overview = await browser.trackFullPageScreen({ stepName: 'Dashboard' });\n    console.log('Dashboard:', overview.screenshotValidationResult?.status);\n\n    await $('button[aria-label=\"Filter\"]').click();\n    await $('.cdk-overlay-pane').waitForDisplayed();\n    await browser.trackScreen({ stepName: 'Filter menu open' });\n\n    await browser.stopScenario();\n  });\n});"},
+      "comparison": {
+        "header": ["Approach", "Where baselines live", "Desktop and mobile", "Review of differences", "Branches in CI"],
+        "rows": [
+          ["Manual check before release", "In the tester's memory", "Devices at hand", "By eye", "None"],
+          ["WebdriverIO visual service", "Image folders on disk", "Configured per capability", "Diff images as files", "Handled with your own folder strategy"],
+          ["Wopee.io (@wopee-io/wopee.wdio)", "Wopee.io, per branch and labels", "isLandscape: false for desktop", "Approve or reject per step in Commander", "branchName and baselineBranchName in config"]
+        ]
+      },
+      "faqs": [
+        {"q": "Does the Wopee.io service read WOPEE_ environment variables by itself?", "a": "No. Pass every value through screenshotValidation in wdio.conf.ts, for example apiKey: process.env.WOPEE_API_KEY, after loading .env with dotenv."},
+        {"q": "Why are my desktop screenshots cropped?", "a": "The isLandscape option defaults to true, which is meant for mobile devices in landscape orientation. Set isLandscape: false next to screenshotValidation for desktop browsers."},
+        {"q": "Can a visual difference fail the WebdriverIO test?", "a": "Yes, if you want it to. Each track command returns screenshotValidationResult with a status; assert that it is not unresolved. By default the test passes and the step waits for review in Wopee Commander."}
+      ],
+      "related": ["ai-testing-angular", "ai-visual-testing-angular-playwright", "ai-visual-testing"]
+    },
+    {
+      "slug": "ai-visual-testing-react-playwright",
+      "category": "visual-stack",
+      "subject": "React",
+      "tool": "Playwright",
+      "framework": "ai-testing-react",
+      "keyword": "visual testing react playwright",
+      "batch": 3,
+      "title": "Visual Testing for React with Playwright",
+      "description": "Visual testing for React with Playwright: add Wopee.io track calls to your Playwright tests and review every visual change per branch, outside your repo.",
+      "aioOpener": "Visual testing for React with Playwright compares screenshots of your rendered React app with approved baselines at the points your Playwright tests choose, so a broken component library update, a CSS-in-JS change, or a misaligned grid is caught even when the test still passes. The `@wopee-io/wopee.pw` package sends each screenshot to Wopee.io, which compares it with the baseline for your branch and lists every difference in Wopee Commander for approval.",
+      "problem": "React apps change appearance more often than behaviour. A component library upgrade, a theme token, or a refactor of a styled component can shift spacing across every screen without breaking a single functional assertion. Storybook-based visual testing covers components in isolation, but not the composed page with real data, routing, and layout. Page screenshots bring their own instability: `React.lazy` and Suspense show skeletons and spinners until data arrives, images load late, and CSS-in-JS libraries generate hashed class names such as `css-1a2b3c` that make element selectors brittle. Playwright's built-in `toHaveScreenshot` handles the comparison, but its baselines are PNG files in the repository, one per browser and operating system, so a design refresh turns into a pull request of binary images that nobody reviews properly.",
+      "solution": "With Wopee.io, the React tests stay in Playwright and the visual review moves to a place built for it. You add the Wopee.io reporter to `playwright.config.ts`, start a suite and scenario in the hooks, and call `trackFullPage`, `trackViewport`, or `trackElement` after the content you care about has rendered, for example after `getByRole('table')` is visible, so Suspense fallbacks never become baselines. `trackElement` takes any Playwright locator, so role-based locators such as `getByRole('navigation')` capture a component without depending on hashed class names. Baselines are kept per branch and per environment label (browser, OS, viewport, device), and the review happens in Wopee Commander: approve an intended redesign in bulk, reject a regression, and draw ignore areas over regions that change on purpose. A difference leaves the test green unless you assert on the returned status. If you would rather not write the tests at all, the Wopee.io agent generates Playwright tests from your running React app, covered in [AI testing for React](/ai-testing-react/); Next.js teams can follow [visual testing for Next.js with Playwright](/ai-visual-testing-nextjs-playwright/). Full setup is in the [Playwright guide](https://docs.wopee.io/playwright-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Playwright and put WOPEE_API_URL, WOPEE_PROJECT_UUID, and WOPEE_API_KEY in a .env file next to playwright.config.ts.",
+        "Install @wopee-io/wopee.pw and add '@wopee-io/wopee.pw/wopee-reporter' to the reporters, with baseURL pointing at your dev server (for Vite, http://localhost:5173) or a preview deploy.",
+        "Start a suite in beforeAll and a scenario per test in beforeEach, passing testInfo, and stop the scenario in afterEach.",
+        "Track the full page or a component locator after real content has replaced Suspense fallbacks and skeletons.",
+        "Run npx playwright test, approve the first screenshots in Commander, then review unresolved steps on each later run."
+      ],
+      "code": {"language": "typescript", "title": "tests/checkout.visual.spec.ts", "snippet": "import { test, expect } from '@playwright/test';\nimport { Wopee } from '@wopee-io/wopee.pw';\n\nconst wopee = new Wopee();\n\ntest.beforeAll(async () => {\n  await wopee.startSuite(`React visual ${new Date().toISOString().slice(0, 16)}`);\n});\ntest.beforeEach(async ({}, testInfo) => {\n  await wopee.startScenario(testInfo.title, testInfo);\n});\ntest.afterEach(async () => {\n  await wopee.stopScenario();\n});\n\ntest('Cart and checkout', async ({ page }) => {\n  await page.goto('/cart');\n  // Wait for real data, not the Suspense skeleton.\n  await page.getByRole('table', { name: 'Cart items' }).waitFor();\n  await wopee.trackFullPage({ page, stepName: 'Cart' });\n\n  await page.getByRole('button', { name: 'Checkout' }).click();\n  const form = page.getByRole('form', { name: 'Shipping address' });\n  await form.waitFor();\n  const result = await wopee.trackElement({ locator: form, stepName: 'Shipping form' });\n  expect(result?.status).not.toBe('unresolved');\n});"},
+      "comparison": {
+        "header": ["Approach", "Scope", "Where baselines live", "Hashed CSS-in-JS classes", "Review"],
+        "rows": [
+          ["Storybook visual snapshots", "Isolated components", "Snapshot service or repo", "Not relevant, component level", "Per story"],
+          ["Playwright toHaveScreenshot", "Composed pages", "PNG files in the repo, per browser and OS", "Use role locators yourself", "HTML report per run"],
+          ["Wopee.io (@wopee-io/wopee.pw)", "Composed pages and elements", "Wopee.io, per branch and labels", "trackElement takes any locator, e.g. getByRole", "Approve or reject per step in Commander"]
+        ]
+      },
+      "faqs": [
+        {"q": "Should I use this instead of Storybook visual tests?", "a": "They cover different layers. Storybook snapshots check components in isolation; Wopee.io checks the composed pages your Playwright tests reach, with real routing, data, and layout. Many teams keep both."},
+        {"q": "How do I avoid capturing loading skeletons?", "a": "Wait for the content that replaces the Suspense fallback before the track call, for example await page.getByRole('table').waitFor(). The same applies to late images and web fonts."},
+        {"q": "Can a visual difference fail the Playwright test?", "a": "Yes. Each track call returns a status; assert that it is not unresolved, as in the example. Without that check the test passes and the step waits for review in Wopee Commander."}
+      ],
+      "related": ["ai-testing-react", "ai-visual-testing-nextjs-playwright", "ai-visual-testing-react-cypress"]
+    },
+    {
+      "slug": "ai-visual-testing-react-cypress",
+      "category": "visual-stack",
+      "subject": "React",
+      "tool": "Cypress",
+      "framework": "ai-testing-react",
+      "keyword": "visual testing react cypress",
+      "batch": 3,
+      "title": "Visual Testing for React with Cypress",
+      "description": "Visual testing for React with Cypress: add cy.wopeeTrack to your specs, ignore live regions by selector, and review every React UI change in Wopee.io.",
+      "aioOpener": "Visual testing for React with Cypress adds screenshot comparisons to the Cypress end-to-end specs that many React teams already rely on. Cypress does not compare screenshots itself; the `@wopee-io/wopee.cy` plugin adds `cy.wopeeTrack()`, which waits for fonts and images, captures the page or a single element, and compares it with the approved baseline in Wopee.io, where every difference is approved or rejected.",
+      "problem": "React teams often have strong Cypress coverage of behaviour and almost none of appearance. A shared component change, a new design token, or a CSS refactor can break the layout of pages the specs click through every day, and Cypress reports green because the buttons are still clickable. Adding visual checks usually means choosing a community snapshot plugin, storing baseline images in the repository, and fighting noise from content that changes on every run: relative timestamps, avatars, prices, notification counts, and charts. Lazy-loaded images and late web fonts add more flakiness, and when a test fails on the first difference, an intended redesign blocks every pull request until someone updates dozens of image files.",
+      "solution": "The Wopee.io plugin gives a Cypress suite a visual layer without changing how the specs work. Register `addWopeePlugin` in `cypress.config.js` and `addWopeeCommands()` in the support file, then start a suite and scenario in the hooks. `cy.wopeeTrack({ stepName })` waits for web fonts and images before the screenshot (from plugin 4.13.4), and chaining it after `cy.get()` captures one component, such as a product card or a navigation bar. `ignoreAreas` takes CSS selectors or pixel rectangles for live regions, for example `[data-test=relative-time]`, set once in the config for every step or per call, and a selector that matches nothing on a page is skipped instead of failing. A response callback receives each step's status if you want to log or branch on it, and `enableSoftAssert: false` turns an unresolved step into a failed test. Baselines and the review live in Wopee Commander per branch, so a redesign is approved once instead of rewritten in the repo. Vue teams on Cypress can follow [visual testing for Vue with Cypress](/ai-visual-testing-vue-cypress/), and agent-generated coverage for React is in [AI testing for React](/ai-testing-react/). All options: [Cypress plugin reference](https://docs.wopee.io/cypress/03-install-plugin/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Cypress and copy WOPEE_PROJECT_UUID and a new WOPEE_API_KEY into .env.",
+        "Install @wopee-io/wopee.cy and dotenv, call addWopeePlugin(on, config) in setupNodeEvents, and map the key and project UUID into env.wopee.",
+        "Add addWopeeCommands() to cypress/support/e2e.js and set ignoreAreas in env.wopee for live regions every page shares.",
+        "In each spec, start the suite and scenario in the hooks and call cy.wopeeTrack for pages, or chain it after cy.get for single components.",
+        "Run npx cypress run, approve the first screenshots in Commander, and decide whether differences should fail the run with enableSoftAssert."
+      ],
+      "code": {"language": "javascript", "title": "cypress/e2e/catalog.cy.js", "snippet": "/// <reference types=\"cypress\" />\n/// <reference types=\"@wopee-io/wopee.cy\" />\n\nconst suiteName = `React catalog ${new Date().toISOString().slice(0, 16)}`;\n\ndescribe(suiteName, () => {\n  before(() => cy.wopeeStartSuite(suiteName));\n  beforeEach(() => cy.wopeeStartScenario('Catalog: grid and product card'));\n  afterEach(() => cy.wopeeStopScenario());\n\n  it('catalog grid and product card', () => {\n    cy.visit('/catalog');\n    cy.get('[data-test=product-grid]').should('be.visible');\n    cy.wopeeTrack(\n      { stepName: 'Catalog grid', ignoreAreas: ['[data-test=relative-time]'] },\n      (result) => cy.log(`${result.stepName}: ${result.status}`),\n    );\n\n    cy.get('[data-test=product-card]').first().wopeeTrack({ stepName: 'Product card' });\n  });\n});"},
+      "comparison": {
+        "header": ["Approach", "Visual comparison", "Live regions (times, counts)", "Single components", "Intended redesigns"],
+        "rows": [
+          ["Manual check before release", "By eye", "Ignored by eye", "If someone looks", "No action needed, no protection"],
+          ["Community snapshot plugins", "Local image diff, baselines in repo", "Masking per plugin", "Screenshot an element", "Update image files in a PR"],
+          ["Wopee.io (@wopee-io/wopee.cy)", "Baselines in Wopee.io per branch", "ignoreAreas by selector or rectangle", "Chain cy.wopeeTrack after cy.get", "Approve in bulk in Commander"]
+        ]
+      },
+      "faqs": [
+        {"q": "Does the plugin read my WOPEE_ environment variables directly?", "a": "No. The plugin reads only the wopee object in the env section of the Cypress config, so map process.env.WOPEE_API_KEY and process.env.WOPEE_PROJECT_UUID into it after loading .env."},
+        {"q": "How do I keep relative times and counters out of the comparison?", "a": "Add their CSS selectors to ignoreAreas, either in env.wopee for every step or in a single cy.wopeeTrack call. Ignore areas drawn in the Commander comparison view apply on top."},
+        {"q": "Does it work with Cypress component testing?", "a": "The guides cover end-to-end specs, where cy.wopeeTrack captures the rendered app. For component-level snapshots of React components in isolation, keep a tool built for that, and use Wopee.io for the composed pages."}
+      ],
+      "related": ["ai-testing-react", "ai-visual-testing-react-playwright", "ai-visual-testing-vue-cypress"]
+    },
+    {
+      "slug": "ai-visual-testing-nextjs-playwright",
+      "category": "visual-stack",
+      "subject": "Next.js",
+      "tool": "Playwright",
+      "framework": "ai-testing-nextjs",
+      "keyword": "visual testing nextjs playwright",
+      "batch": 3,
+      "title": "Visual Testing for Next.js with Playwright",
+      "description": "Visual testing for Next.js with Playwright: check preview deploys against main's baselines with Wopee.io and review every visual change before it merges.",
+      "aioOpener": "Visual testing for Next.js with Playwright compares screenshots of your rendered pages, including preview deployments, with approved baselines at the points your Playwright tests choose. The `@wopee-io/wopee.pw` package sends each screenshot to Wopee.io, and with the branch settings a pull request's preview deploy is compared with the baselines approved on main, so layout regressions are reviewed before they merge.",
+      "problem": "Next.js gives every pull request a realistic environment, often a preview deployment with its own URL, which is ideal for visual checks and awkward for the usual tools. Playwright's `toHaveScreenshot` keeps baselines as files in the repository, per browser and OS, so comparing a preview against main means checking out main's images and keeping them in sync. Next.js rendering adds timing traps: `next/font` uses `font-display: swap` by default, so text can repaint after the first frame, `next/image` lazy-loads images below the fold, and App Router routes stream their content behind `loading.tsx` boundaries, so a screenshot taken at the first paint captures a loading state. Middleware, redirects, and locale routing change what a URL shows, and server components mean the same component can render differently with different data.",
+      "solution": "Wopee.io fits the preview workflow. Point Playwright's `baseURL` at the preview URL your pipeline provides, set `WOPEE_BRANCH_NAME` to the pull request's branch and `WOPEE_BASELINE_BRANCH_NAME` to main, and every screenshot from the preview is compared with main's approved baselines until the branch has its own. In the test, wait for the content that replaces the `loading.tsx` fallback and make sure fonts and images have finished, then call `trackFullPage` or `trackViewport`. Use `WOPEE_VIEWPORT` and `WOPEE_DEVICE` labels when you run the same test on desktop and mobile projects, because labels are part of the baseline identity. Differences show up in Wopee Commander next to the baseline with a highlight overlay; approve an intended change, reject a regression, and merge the branch's baselines into main after the pull request lands. Nothing is written to the repository, and a difference fails the test only if you assert on the returned status. Plain React apps follow the same pattern ([visual testing for React with Playwright](/ai-visual-testing-react-playwright/)), and agent-generated Next.js coverage is in [AI testing for Next.js](/ai-testing-nextjs/). Setup: [Playwright guide](https://docs.wopee.io/playwright-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Playwright and store WOPEE_API_KEY and WOPEE_PROJECT_UUID as CI secrets.",
+        "Install @wopee-io/wopee.pw, add '@wopee-io/wopee.pw/wopee-reporter' to the reporters, and read baseURL from the preview URL your pipeline provides.",
+        "In CI, set WOPEE_BRANCH_NAME to the pull request branch and WOPEE_BASELINE_BRANCH_NAME to main.",
+        "In each test, wait for streamed content, fonts, and lazy images before calling trackFullPage or trackViewport.",
+        "Approve or reject differences in Commander, and merge the branch's baselines into main in More › Baselines after the pull request merges."
+      ],
+      "code": {"language": "typescript", "title": "tests/pricing.visual.spec.ts", "snippet": "import { test } from '@playwright/test';\nimport { Wopee } from '@wopee-io/wopee.pw';\n\n// CI sets BASE_URL to the preview deploy, WOPEE_BRANCH_NAME to the PR branch\n// and WOPEE_BASELINE_BRANCH_NAME=main.\ntest.use({ baseURL: process.env.BASE_URL ?? 'http://localhost:3000' });\n\nconst wopee = new Wopee();\n\ntest.beforeAll(async () => {\n  await wopee.startSuite(`Next.js preview ${process.env.GITHUB_RUN_NUMBER ?? 'local'}`);\n});\ntest.beforeEach(async ({}, testInfo) => {\n  await wopee.startScenario(testInfo.title, testInfo);\n});\ntest.afterEach(async () => {\n  await wopee.stopScenario();\n});\n\ntest('Pricing page', async ({ page }) => {\n  await page.goto('/pricing');\n  // Wait for the streamed content behind loading.tsx, then fonts and images.\n  await page.getByRole('heading', { name: 'Pricing' }).waitFor();\n  await page.evaluate(async () => {\n    await Promise.all([\n      ...[...document.fonts].map((font) => font.load()),\n      ...[...document.images].map((img) => img.decode().catch(() => {})),\n    ]);\n  });\n  await wopee.trackFullPage({ page, stepName: 'Pricing' });\n});"},
+      "comparison": {
+        "header": ["Approach", "Preview deploys", "Where baselines live", "Fonts, images, streaming", "After merge"],
+        "rows": [
+          ["Manual check of the preview", "Clicked through by a reviewer", "None", "Judged by eye", "Nothing to update"],
+          ["Playwright toHaveScreenshot", "Compare against images on the branch", "PNG files in the repo, per browser and OS", "Waits written by hand", "Commit updated images"],
+          ["Wopee.io (@wopee-io/wopee.pw)", "Compared with main via WOPEE_BASELINE_BRANCH_NAME", "Wopee.io, per branch and labels", "Wait, then track", "Merge branch baselines in Commander"]
+        ]
+      },
+      "faqs": [
+        {"q": "Can I run the visual checks against a Vercel or other preview deployment?", "a": "Yes. Wopee.io compares whatever page your Playwright test opens, so set baseURL to the preview URL. Set WOPEE_BRANCH_NAME to the branch and WOPEE_BASELINE_BRANCH_NAME to main so the preview is compared with main's baselines."},
+        {"q": "Why does text look different between runs?", "a": "Web fonts, including those from next/font, can swap in after the first paint. Load every font face and decode images before the track call, as in the example, so the screenshot shows the final text."},
+        {"q": "Do server components or the App Router need anything special?", "a": "No special setup, because Wopee.io compares the rendered page. Wait for the content that replaces loading.tsx fallbacks before tracking, so the baseline is the finished page and not a loading state."}
+      ],
+      "related": ["ai-testing-nextjs", "ai-visual-testing-react-playwright", "ai-visual-testing"]
+    },
+    {
+      "slug": "ai-visual-testing-vue-cypress",
+      "category": "visual-stack",
+      "subject": "Vue",
+      "tool": "Cypress",
+      "framework": "ai-testing-vue",
+      "keyword": "visual testing vue cypress",
+      "batch": 3,
+      "title": "Visual Testing for Vue with Cypress",
+      "description": "Visual testing for Vue with Cypress: add cy.wopeeTrack to the Cypress specs create-vue set up, wait out transitions, and review UI changes in Wopee.io.",
+      "aioOpener": "Visual testing for Vue with Cypress adds screenshot comparisons to the Cypress specs that many Vue projects start with, since create-vue offers Cypress as an end-to-end option. The `@wopee-io/wopee.cy` plugin adds `cy.wopeeTrack()`, which waits for fonts and images, captures the page or one element, and compares it with the approved baseline in Wopee.io, where you approve or reject each change.",
+      "problem": "Vue makes it easy to build polished interfaces, and that polish is what screenshots trip over. `<Transition>` and `<TransitionGroup>` animate elements in and out, so a screenshot taken mid-animation captures a half-faded list. Component libraries such as Vuetify, PrimeVue, or Element Plus restyle many screens at once with a single upgrade, and `v-if` blocks that appear after data loads change the layout seconds after navigation. Scoped styles add `data-v-` attributes that change with the build, which matters for element selectors. Cypress catches the behaviour but not the look, and its screenshots have no comparison built in, so teams either skip visual checks or keep a folder of baseline images in the repository and fight it on every library upgrade.",
+      "solution": "With the Wopee.io plugin, visual checks become one more command in the Vue specs you already have. Register `addWopeePlugin(on, config)` in `cypress.config.js`, add `addWopeeCommands()` to the support file, and start a suite and scenario in the hooks. Before each `cy.wopeeTrack`, wait for the state the user sees after transitions finish, for example `cy.get('[data-test=todo-list] li').should('have.length', 3)`, then capture; the command itself waits for web fonts and images (plugin 4.13.4 and newer). Chain it after `cy.get()` to capture a single component such as a Vuetify card, using `data-test` attributes rather than generated `data-v-` attributes. Live regions go into `ignoreAreas` by selector. When a component library upgrade restyles the app, the review is a single session in Wopee Commander, where intended changes are approved in bulk and regressions rejected; set `enableSoftAssert: false` if an unresolved step should fail the run. If you are choosing between tools, [visual testing for Vue with Playwright](/ai-visual-testing-vue-playwright/) covers the other create-vue option, and [AI testing for Vue](/ai-testing-vue/) covers agent-generated tests. Setup: [Cypress guide](https://docs.wopee.io/cypress/01-getting-started/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Cypress and copy WOPEE_PROJECT_UUID and a new WOPEE_API_KEY into .env.",
+        "Install @wopee-io/wopee.cy and dotenv in the Vue project, register addWopeePlugin in setupNodeEvents, and map the key and project into env.wopee.",
+        "Add addWopeeCommands() to cypress/support/e2e.js (or e2e.ts in a TypeScript project).",
+        "In each spec, wait for the post-transition state with a Cypress assertion, then call cy.wopeeTrack on the page or a single component.",
+        "Run npx cypress run against the Vite dev server or a preview build, approve the first screenshots in Commander, and review later differences."
+      ],
+      "code": {"language": "javascript", "title": "cypress/e2e/todos.cy.js", "snippet": "/// <reference types=\"cypress\" />\n/// <reference types=\"@wopee-io/wopee.cy\" />\n\nconst suiteName = `Vue todos ${new Date().toISOString().slice(0, 16)}`;\n\ndescribe(suiteName, () => {\n  before(() => cy.wopeeStartSuite(suiteName));\n  beforeEach(() => cy.wopeeStartScenario('Todos: list and edit card'));\n  afterEach(() => cy.wopeeStopScenario());\n\n  it('todo list and edit card', () => {\n    cy.visit('/todos');\n    // Wait until <TransitionGroup> has finished adding the items.\n    cy.get('[data-test=todo-list] li').should('have.length', 3);\n    cy.wopeeTrack({ stepName: 'Todo list' });\n\n    cy.contains('[data-test=todo-list] li', 'Buy milk').click();\n    cy.get('[data-test=edit-card]').should('be.visible').wopeeTrack({ stepName: 'Edit card' });\n  });\n});"},
+      "comparison": {
+        "header": ["Approach", "Transitions and late v-if blocks", "Component library upgrades", "Element capture", "Fail on difference"],
+        "rows": [
+          ["Manual check before release", "Judged by eye", "Spot checks", "If someone looks", "No"],
+          ["Community snapshot plugins", "Waits written by hand", "Update many image files in the repo", "Screenshot an element", "Usually fails at once"],
+          ["Wopee.io (@wopee-io/wopee.cy)", "Cypress assertion, then cy.wopeeTrack", "Approve intended changes in bulk in Commander", "Chain after cy.get on data-test attributes", "Opt in with enableSoftAssert: false"]
+        ]
+      },
+      "faqs": [
+        {"q": "Does it work with a Vue project created by create-vue?", "a": "Yes. If you chose Cypress during setup, install @wopee-io/wopee.cy, register the plugin in cypress.config, and add the commands to the support file. Nothing in the Vue app changes."},
+        {"q": "How do I stop transitions from causing differences?", "a": "Assert on the final state before tracking, for example the number of list items or a visible element, so Cypress waits until the transition is done. cy.wopeeTrack then waits for fonts and images before the screenshot."},
+        {"q": "Should I select components by data-v attributes?", "a": "No. Scoped-style attributes are generated by the build and can change. Use data-test attributes or text and roles to select the component you chain cy.wopeeTrack after."}
+      ],
+      "related": ["ai-testing-vue", "ai-visual-testing-vue-playwright", "ai-visual-testing-react-cypress"]
+    },
+    {
+      "slug": "ai-visual-testing-vue-playwright",
+      "category": "visual-stack",
+      "subject": "Vue",
+      "tool": "Playwright",
+      "framework": "ai-testing-vue",
+      "keyword": "visual testing vue playwright",
+      "batch": 3,
+      "title": "Visual Testing for Vue with Playwright",
+      "description": "Visual testing for Vue with Playwright: track pages per locale and viewport with Wopee.io labels and review every visual change per branch in Commander.",
+      "aioOpener": "Visual testing for Vue with Playwright compares screenshots of your Vue app with approved baselines at the points your Playwright tests choose, the end-to-end option create-vue offers next to Cypress. The `@wopee-io/wopee.pw` package sends each screenshot to Wopee.io, and labels such as viewport and custom tags keep separate baselines for each locale, theme, or screen size, so one test can cover all of them.",
+      "problem": "Vue apps rarely look one way. A single view often ships in several languages with vue-i18n, in light and dark themes, and at desktop and mobile widths, and each combination can break on its own: a German label overflows a button, a dark theme loses contrast on a card, a mobile menu overlaps the header. Covering that with Playwright's built-in `toHaveScreenshot` multiplies PNG files in the repository by every browser, OS, locale, and theme, and keeping them current after a design change is a chore nobody wants. On top of that, Vue Router lazy-loads route components, transitions animate content in, and data-driven `v-if` blocks appear after navigation, so screenshots need to wait for the finished view.",
+      "solution": "Wopee.io handles the combinations with labels instead of file names. Every screenshot's baseline is identified by scenario and step name plus the branch and the optional OS, browser, viewport, device, and custom tags labels, so passing `customTags: 'de'` or `viewport: '390x844'` to a track call keeps a separate baseline for each locale or screen size without separate tests. Set the same labels for a whole run with `WOPEE_CUSTOM_TAGS` and `WOPEE_VIEWPORT` when a CI job runs one locale. In the test, wait for the routed view and its data, then call `trackFullPage`, `trackViewport`, or `trackElement` with a role-based locator. Differences appear in Wopee Commander per step, where you approve intended changes and reject regressions; nothing is written to the repository, and the Playwright test fails on a difference only if you assert on the returned status. For Cypress users, [visual testing for Vue with Cypress](/ai-visual-testing-vue-cypress/) covers the plugin; SvelteKit teams can follow [visual testing for Svelte with Playwright](/ai-visual-testing-svelte-playwright/); and agent-generated Vue coverage is in [AI testing for Vue](/ai-testing-vue/). Setup: [Playwright guide](https://docs.wopee.io/playwright-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Playwright and put WOPEE_API_URL, WOPEE_PROJECT_UUID, and WOPEE_API_KEY in .env.",
+        "Install @wopee-io/wopee.pw and add '@wopee-io/wopee.pw/wopee-reporter' to the reporters in playwright.config.ts, with baseURL pointing at the Vite dev server or a preview build.",
+        "Start a suite in beforeAll and a scenario per test in beforeEach, passing testInfo, and stop it in afterEach.",
+        "Pass customTags or viewport to each track call, or set WOPEE_CUSTOM_TAGS and WOPEE_VIEWPORT per CI job, so every locale and screen size has its own baseline.",
+        "Run npx playwright test, approve the first screenshots in Commander, and review unresolved steps on later runs."
+      ],
+      "code": {"language": "typescript", "title": "tests/account.visual.spec.ts", "snippet": "import { test } from '@playwright/test';\nimport { Wopee } from '@wopee-io/wopee.pw';\n\nconst wopee = new Wopee();\nconst locales = ['en', 'de'];\n\ntest.beforeAll(async () => {\n  await wopee.startSuite(`Vue visual ${new Date().toISOString().slice(0, 16)}`);\n});\ntest.beforeEach(async ({}, testInfo) => {\n  await wopee.startScenario(testInfo.title, testInfo);\n});\ntest.afterEach(async () => {\n  await wopee.stopScenario();\n});\n\nfor (const locale of locales) {\n  test(`Account page (${locale})`, async ({ page }) => {\n    await page.goto(`/${locale}/account`);\n    await page.getByRole('main').getByRole('heading', { level: 1 }).waitFor();\n    // customTags is part of the baseline identity: one baseline per locale.\n    await wopee.trackFullPage({ page, stepName: 'Account', customTags: locale });\n  });\n}"},
+      "comparison": {
+        "header": ["Approach", "Locales and themes", "Screen sizes", "Where baselines live", "Review"],
+        "rows": [
+          ["Manual check before release", "A few spot checks", "Devices at hand", "None", "By eye"],
+          ["Playwright toHaveScreenshot", "One PNG per combination in the repo", "Per Playwright project", "Repo, per browser and OS", "HTML report per run"],
+          ["Wopee.io (@wopee-io/wopee.pw)", "customTags label per locale or theme", "viewport and device labels", "Wopee.io, per branch and labels", "Approve or reject per step in Commander"]
+        ]
+      },
+      "faqs": [
+        {"q": "How do I keep separate baselines for each language?", "a": "Pass customTags with the locale to the track call, or set WOPEE_CUSTOM_TAGS for the whole run. Custom tags are part of the baseline identity, so each locale is compared only with its own approved screenshot."},
+        {"q": "Do I need to change my Vue app?", "a": "No. Wopee.io works from the Playwright test: add the reporter, start and stop the suite and scenario in the hooks, and add track calls where the view has finished rendering."},
+        {"q": "Will a difference fail the Playwright run?", "a": "Only if you check the returned status, for example expect(result?.status).not.toBe('unresolved'). Otherwise the test passes and the step waits for review in Wopee Commander."}
+      ],
+      "related": ["ai-testing-vue", "ai-visual-testing-vue-cypress", "ai-visual-testing-svelte-playwright"]
+    },
+    {
+      "slug": "ai-visual-testing-svelte-playwright",
+      "category": "visual-stack",
+      "subject": "Svelte",
+      "tool": "Playwright",
+      "framework": "ai-testing-svelte",
+      "keyword": "visual testing svelte playwright",
+      "batch": 3,
+      "title": "Visual Testing for Svelte with Playwright",
+      "description": "Visual testing for Svelte with Playwright: add Wopee.io checks to the Playwright tests SvelteKit set up and review every visual change per branch.",
+      "aioOpener": "Visual testing for Svelte with Playwright adds screenshot comparisons to the Playwright tests that SvelteKit projects can set up from the start. The `@wopee-io/wopee.pw` package sends a screenshot to Wopee.io at each point you choose, compares it with the approved baseline for your branch, and lists every difference in Wopee Commander, so layout and styling regressions in a Svelte app are reviewed rather than discovered by users.",
+      "problem": "Svelte apps are small and fast, and their visual regressions are easy to miss for the same reason: there is little code between a style change and the page. Component styles are scoped with generated `svelte-` class hashes, so a selector copied from the DOM breaks on the next build. Built-in transitions such as `transition:fade` and `animate:flip` move content after a state change, and SvelteKit renders on the server and then hydrates, so the first paint and the interactive page can differ, especially where content depends on client-only data. Many SvelteKit projects test against a production build served by `vite preview`, which is the right target, but Playwright's built-in `toHaveScreenshot` then keeps baselines as PNG files in the repository, one per browser and OS, and every design tweak becomes an image diff in the pull request.",
+      "solution": "Wopee.io keeps the SvelteKit Playwright setup and moves visual baselines and review out of the repo. Keep the `webServer` block that builds the app and serves it with `npm run preview`, add the Wopee.io reporter, and start a suite and scenario in the hooks. In the test, wait for the hydrated, finished state, for example a list that only renders on the client, and for transitions to complete, then call `trackFullPage`, `trackViewport`, or `trackElement` with a role-based locator instead of a `svelte-` class. Baselines are stored per branch and per environment label; run the same test at several widths with the `viewport` option and each width keeps its own baseline. Wopee Commander shows each difference next to its baseline with a highlight overlay, and ignore areas drawn there cover regions that are supposed to change. A difference leaves the test green unless you assert on the returned status, so you can start in review-only mode and enforce later. The same approach for Vue is in [visual testing for Vue with Playwright](/ai-visual-testing-vue-playwright/), and agent-generated Svelte tests are covered in [AI testing for Svelte](/ai-testing-svelte/). Setup: [Playwright guide](https://docs.wopee.io/playwright-visual-testing/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Playwright and put WOPEE_API_URL, WOPEE_PROJECT_UUID, and WOPEE_API_KEY in .env.",
+        "Install @wopee-io/wopee.pw and add '@wopee-io/wopee.pw/wopee-reporter' to the reporters, keeping the webServer block that builds and previews the SvelteKit app.",
+        "Start a suite in beforeAll and a scenario per test in beforeEach, passing testInfo, and stop it in afterEach.",
+        "Wait for hydrated content and finished transitions, then track the page or a role-based locator, passing viewport when you test several widths.",
+        "Run npx playwright test, approve the first screenshots in Commander, and review unresolved steps on later runs."
+      ],
+      "code": {"language": "typescript", "title": "tests/products.visual.test.ts", "snippet": "import { test } from '@playwright/test';\nimport { Wopee } from '@wopee-io/wopee.pw';\n\nconst wopee = new Wopee();\n\ntest.beforeAll(async () => {\n  await wopee.startSuite(`SvelteKit visual ${new Date().toISOString().slice(0, 16)}`);\n});\ntest.beforeEach(async ({}, testInfo) => {\n  await wopee.startScenario(testInfo.title, testInfo);\n});\ntest.afterEach(async () => {\n  await wopee.stopScenario();\n});\n\nfor (const size of [{ width: 1280, height: 800 }, { width: 390, height: 844 }]) {\n  test(`Products at ${size.width}px`, async ({ page }) => {\n    await page.setViewportSize(size);\n    await page.goto('/products');\n    // The list renders after hydration; wait for it, not the server HTML.\n    await page.getByRole('list', { name: 'Products' }).getByRole('listitem').first().waitFor();\n    await wopee.trackFullPage({\n      page,\n      stepName: 'Products',\n      viewport: `${size.width}x${size.height}`,\n    });\n  });\n}"},
+      "comparison": {
+        "header": ["Approach", "SSR and hydration", "Scoped svelte- classes", "Where baselines live", "Several widths"],
+        "rows": [
+          ["Manual check before release", "Judged by eye", "Not relevant", "None", "Devices at hand"],
+          ["Playwright toHaveScreenshot", "Waits written by hand", "Use role locators yourself", "PNG files in the repo, per browser and OS", "One file per project and size"],
+          ["Wopee.io (@wopee-io/wopee.pw)", "Wait for hydrated content, then track", "trackElement takes any locator", "Wopee.io, per branch and labels", "viewport label per baseline"]
+        ]
+      },
+      "faqs": [
+        {"q": "Should I test against the dev server or a preview build?", "a": "A production build served with npm run preview is closer to what users get, and it is what SvelteKit's Playwright setup uses by default. Wopee.io works with either, because it compares whatever page the test opens."},
+        {"q": "How do I keep separate baselines for mobile and desktop?", "a": "Pass a viewport label to the track call, or set WOPEE_VIEWPORT for the run. The viewport label is part of the baseline identity, so each width is compared with its own approved screenshot."},
+        {"q": "Can I start without failing builds?", "a": "Yes. By default a visual difference does not fail the test; it waits for review in Wopee Commander. When you trust the baselines, assert that the returned status is not unresolved."}
+      ],
+      "related": ["ai-testing-svelte", "ai-visual-testing-vue-playwright", "ai-visual-testing"]
+    },
+    {
+      "slug": "ai-visual-testing-django-robot-framework",
+      "category": "visual-stack",
+      "subject": "Django",
+      "tool": "Robot Framework",
+      "framework": "ai-testing-django",
+      "keyword": "visual testing django robot framework",
+      "batch": 3,
+      "title": "Visual Testing for Django with Robot Framework",
+      "description": "Visual testing for Django with Robot Framework: wopee_rf adds Track keywords or a listener to your Browser or Selenium tests and sends diffs for review.",
+      "aioOpener": "Visual testing for Django with Robot Framework adds screenshot comparisons to the acceptance tests Python teams already write in Robot Framework, with either the Browser library or SeleniumLibrary. The `wopee_rf` library adds keywords such as `Track Fullpage`, or a listener that takes screenshots after chosen keywords without changing the tests, and Wopee.io compares each screenshot with the approved baseline so you review template and layout changes in Wopee Commander.",
+      "problem": "Django teams that test in Python often choose Robot Framework for browser-level acceptance tests, because the keyword syntax is readable for testers and the libraries cover both Playwright-based Browser and Selenium. Neither library compares screenshots: `Take Screenshot` and `Capture Page Screenshot` save images into the log for debugging, and spotting a regression still means opening them by eye. Django apps make that painful at scale, since many pages extend one `base.html`, so a change to a shared block, a static CSS file, or the admin theme alters dozens of pages at once. Generated documents add another blind spot: invoices or reports rendered as PDF are checked by opening them, if at all. Adding visual checks to a large suite by editing every test is rarely approved.",
+      "solution": "`wopee_rf` gives Robot Framework suites two ways in. With keywords, import `wopee_rf.Standalone` after your browser library and add `Start Suite`, `Start Scenario`, `Track Fullpage` or `Track Viewport`, and `Stop Scenario` in the teardown; every argument is named, such as `step_name=Dashboard`. With the listener, run the existing suite unchanged with `--listener wopee_rf.Listener` and list the keywords to screenshot after in `WOPEE_TRACKED_KEYWORDS`, for example `Browser.Wait For Elements State`. Both work with the Browser library and SeleniumLibrary; set `WOPEE_DRIVER_LIBRARY` to match and `WOPEE_SCREENSHOT_VALIDATION_ENABLED=true`, or nothing is sent. The `Track` keyword compares any PNG you pass in as base64, so a PDF rendered to an image can be checked too. A visual difference leaves the test green unless you set `WOPEE_ENABLE_SOFT_ASSERT=false`, and `WOPEE_PIXEL_TO_PIXEL_DIFF_TOLERANCE=0.1` absorbs font-smoothing noise. When a `base.html` change shifts every page, the review is one session in Wopee Commander. For coverage beyond your own suites, see [AI testing for Django](/ai-testing-django/) and [AI regression testing](/ai-regression-testing/). Setup: [Robot Framework guide](https://docs.wopee.io/robot-framework/01-getting-started/) and [configuration and listener](https://docs.wopee.io/robot-framework/02-manual-setup/).",
+      "steps": [
+        "Create a Wopee.io project with the test framework set to Robot Framework and copy WOPEE_API_URL, WOPEE_PROJECT_UUID, and a new WOPEE_API_KEY into .env.",
+        "Install with pip install \"wopee_rf>=2.7.2\" robotframework robotframework-browser (or robotframework-seleniumlibrary) on Python 3.11 or newer.",
+        "Add WOPEE_SCREENSHOT_VALIDATION_ENABLED=true and WOPEE_DRIVER_LIBRARY=BrowserLibrary (or SeleniumLibrary) to .env.",
+        "Either add Start Suite, Start Scenario, Track Fullpage, and Stop Scenario keywords to your tests, or run the suite with --listener wopee_rf.Listener and WOPEE_TRACKED_KEYWORDS.",
+        "Run robot against runserver or staging, approve the first screenshots in Commander, and review unresolved steps on later runs."
+      ],
+      "code": {"language": "text", "title": "tests/admin_visual.robot", "snippet": "*** Settings ***\nLibrary     Browser\nLibrary     wopee_rf.Standalone    dot_env_path=.env\n\nTest Setup       New Page    http://localhost:8000/admin/login/\nTest Teardown    Stop Scenario\n\n*** Variables ***\n${SUITE}    Django admin ${{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}}\n\n*** Test Cases ***\nAdmin Login And Order List\n    Start Scenario    scenario_name=Django admin: login and orders    suite_name=${SUITE}\n    ${login}=    Track Fullpage    step_name=Admin login\n\n    Fill Text    id=id_username    %{ADMIN_USER}\n    Fill Text    id=id_password    %{ADMIN_PASSWORD}\n    Click        css=input[type=submit]\n    Go To        http://localhost:8000/admin/shop/order/\n    Wait For Elements State    id=result_list    visible\n\n    ${orders}=    Track Fullpage    step_name=Order list\n    Log To Console    \\nLogin: ${login.status} | Orders: ${orders.status}"},
+      "comparison": {
+        "header": ["Approach", "Visual comparison", "Changes to existing tests", "Browser and Selenium", "Generated PDFs"],
+        "rows": [
+          ["Screenshots in the Robot log", "Opened by eye", "Screenshot keywords added by hand", "Both", "Opened by hand"],
+          ["Community image-compare libraries", "Local comparison, baselines on disk", "Keywords added to each test", "Depends on the library", "Some support documents"],
+          ["Wopee.io (wopee_rf)", "Baselines in Wopee.io, review in Commander", "None with the listener, or Track keywords", "Browser library and SeleniumLibrary", "Track keyword compares any PNG"]
+        ]
+      },
+      "faqs": [
+        {"q": "Can I add visual checks without editing my Robot tests?", "a": "Yes. Run the suite with --listener wopee_rf.Listener and set WOPEE_TRACKED_KEYWORDS to the keywords after which a screenshot should be taken, written as Library.Keyword and separated by semicolons without spaces."},
+        {"q": "Why does nothing appear in Commander even though the test passes?", "a": "Usually WOPEE_SCREENSHOT_VALIDATION_ENABLED=true or WOPEE_DRIVER_LIBRARY is missing, or robot runs from a folder where .env is not found. The track keywords then return None and send nothing."},
+        {"q": "Does it work with SeleniumLibrary as well as the Browser library?", "a": "Yes. Set WOPEE_DRIVER_LIBRARY=SeleniumLibrary and import SeleniumLibrary instead of Browser. The Wopee.io keywords and the listener work the same way with both."}
+      ],
+      "related": ["ai-testing-django", "ai-visual-testing", "ai-regression-testing"]
+    },
+    {
       "slug": "ai-testing-react",
       "category": "framework",
       "subject": "React",
