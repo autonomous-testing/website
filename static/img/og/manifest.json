@@ -335,6 +335,20 @@
     "alt": "Bug found, code kept",
     "hash": "454efb23495dc7a0"
   },
+  "/changelog/commander-fits-your-phone/": {
+    "image": "/img/og/changelog/commander-fits-your-phone.png?v=ca6bbd24",
+    "width": 1200,
+    "height": 630,
+    "alt": "Fits your phone",
+    "hash": "ca6bbd24f08dac79"
+  },
+  "/changelog/connect-to-wopee-io-mcp-with-a-sign-in/": {
+    "image": "/img/og/changelog/connect-to-wopee-io-mcp-with-a-sign-in.png?v=f3ef7ab5",
+    "width": 1200,
+    "height": 630,
+    "alt": "Sign in, no key",
+    "hash": "f3ef7ab5f8300842"
+  },
   "/changelog/crawls-flag-what-they-never-saw/": {
     "image": "/img/og/changelog/crawls-flag-what-they-never-saw.png?v=a1a3cce1",
     "width": 1200,
@@ -419,6 +433,13 @@
     "alt": "Log in via your API",
     "hash": "061bbd0e3528c51f"
   },
+  "/changelog/logins-stay-out-of-your-test-steps/": {
+    "image": "/img/og/changelog/logins-stay-out-of-your-test-steps.png?v=7c657743",
+    "width": 1200,
+    "height": 630,
+    "alt": "Passwords stay variables",
+    "hash": "7c657743533722ad"
+  },
   "/changelog/mcp-chat-and-bug-filing/": {
     "image": "/img/og/changelog/mcp-chat-and-bug-filing.png?v=ee412016",
     "width": 1200,
@@ -475,6 +496,13 @@
     "alt": "A month on us",
     "hash": "4664b3650af0da42"
   },
+  "/changelog/read-what-the-agent-did-in-each-step/": {
+    "image": "/img/og/changelog/read-what-the-agent-did-in-each-step.png?v=dbd00548",
+    "width": 1200,
+    "height": 630,
+    "alt": "Steps you can read",
+    "hash": "dbd0054898bb950f"
+  },
   "/changelog/reasoning-effort-per-model/": {
     "image": "/img/og/changelog/reasoning-effort-per-model.png?v=04aa24bd",
     "width": 1200,
@@ -503,6 +531,13 @@
     "alt": "Bug reports with proof",
     "hash": "7edec35cd9418985"
   },
+  "/changelog/run-these-tests-from-your-coding-agent/": {
+    "image": "/img/og/changelog/run-these-tests-from-your-coding-agent.png?v=dfb387e0",
+    "width": 1200,
+    "height": 630,
+    "alt": "Tests, from your agent",
+    "hash": "dfb387e0f9ca882e"
+  },
   "/changelog/saved-locators-stay-true/": {
     "image": "/img/og/changelog/saved-locators-stay-true.png?v=5dafe834",
     "width": 1200,
@@ -510,12 +545,26 @@
     "alt": "Heals to the right button",
     "hash": "5dafe834cbd1ea82"
   },
+  "/changelog/see-how-your-tests-stand/": {
+    "image": "/img/og/changelog/see-how-your-tests-stand.png?v=3a5b7c34",
+    "width": 1200,
+    "height": 630,
+    "alt": "Where tests stand",
+    "hash": "3a5b7c34adae68e6"
+  },
   "/changelog/see-why-a-run-failed/": {
     "image": "/img/og/changelog/see-why-a-run-failed.png?v=2aca2b71",
     "width": 1200,
     "height": 630,
     "alt": "See why it failed",
     "hash": "2aca2b714fb041c8"
+  },
+  "/changelog/set-up-your-coding-agent-with-one-prompt/": {
+    "image": "/img/og/changelog/set-up-your-coding-agent-with-one-prompt.png?v=bad3a05b",
+    "width": 1200,
+    "height": 630,
+    "alt": "One prompt, connected",
+    "hash": "bad3a05b980ac00b"
   },
   "/changelog/show-the-chat-a-screenshot/": {
     "image": "/img/og/changelog/show-the-chat-a-screenshot.png?v=a6312316",
@@ -538,6 +587,13 @@
     "alt": "Fresh data every run",
     "hash": "9efb7c781bb813b6"
   },
+  "/changelog/take-control-and-the-agent-waits/": {
+    "image": "/img/og/changelog/take-control-and-the-agent-waits.png?v=1523fb07",
+    "width": 1200,
+    "height": 630,
+    "alt": "Your turn, agent waits",
+    "hash": "1523fb07bf259125"
+  },
   "/changelog/test-apps-behind-windows-sso/": {
     "image": "/img/og/changelog/test-apps-behind-windows-sso.png?v=26b18d77",
     "width": 1200,
@@ -558,6 +614,13 @@
     "height": 630,
     "alt": "Tests already ran",
     "hash": "c37ee2663c2738d2"
+  },
+  "/changelog/the-assistant-opens-beside-every-page/": {
+    "image": "/img/og/changelog/the-assistant-opens-beside-every-page.png?v=91701a0d",
+    "width": 1200,
+    "height": 630,
+    "alt": "Chat beside your work",
+    "hash": "91701a0debac2949"
   },
   "/changelog/the-chat-asks-before-replacing-tests/": {
     "image": "/img/og/changelog/the-chat-asks-before-replacing-tests.png?v=177c941e",
