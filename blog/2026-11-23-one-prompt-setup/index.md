@@ -7,7 +7,6 @@ description: "Paste one line into Claude Code or another coding agent. It runs o
 tags: [ai-testing, ai-testing-agents, mcp, claude-code, test-automation, getting-started]
 image: ./hero.webp
 authors: marcel
-draft: true
 ---
 
 import { SetupLine } from "@site/src/components/blog/one-prompt-setup";
