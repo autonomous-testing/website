@@ -39,7 +39,7 @@ export const PlanCards: PlanCardT[] = [
     monthlyPrice: 19,
     annualPrice: 190,
     stepsPerSession: "150 steps per 5 h session",
-    testRuns: "≈ 6–15 test runs",
+    testRuns: "≈ 15–30 test runs",
     bestFor: "Solo devs & side projects",
     features: [
       "Up to 10 active projects",
@@ -58,7 +58,7 @@ export const PlanCards: PlanCardT[] = [
     monthlyPrice: 79,
     annualPrice: 790,
     stepsPerSession: "500 steps per 5 h session",
-    testRuns: "≈ 20–50 test runs",
+    testRuns: "≈ 50–100 test runs",
     bestFor: "Growing product teams",
     features: [
       "Up to 100 active projects",
@@ -78,7 +78,7 @@ export const PlanCards: PlanCardT[] = [
     monthlyPrice: 179,
     annualPrice: 1790,
     stepsPerSession: "1,000 steps per 5 h session",
-    testRuns: "≈ 40–100 test runs",
+    testRuns: "≈ 100–200 test runs",
     bestFor: "High-velocity engineering orgs",
     features: [
       "Unlimited projects",

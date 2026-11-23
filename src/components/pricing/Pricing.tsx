@@ -107,7 +107,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "What counts as a 'test step'?",
-    a: "A test step is a single interaction the AI agent performs, clicking a button, filling a field, asserting a result. A typical autonomous test consumes around 15 steps; a visual check around 3.",
+    a: "A test step is a single interaction the AI agent performs, clicking a button, filling a field, asserting a result. A typical autonomous test run uses 5–10 steps; a visual check around 3.",
   },
   {
     q: "What happens when I hit my limit?",
