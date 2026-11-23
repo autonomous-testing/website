@@ -33,6 +33,19 @@ const NEVER = [
   "Visits hosts other than wopee.io, docs.wopee.io, cmd.wopee.io, api.wopee.io and npm",
 ];
 
+const FALLBACKS: [string, string, string][] = [
+  [
+    "Paste a key yourself",
+    "npx -y @wopee-io/init@latest --manual",
+    "For an instance without pairing, or if you prefer it. Run it in your own terminal: it asks for the project UUID and a key from the API Keys page in Commander, in a hidden prompt, and writes the same files.",
+  ],
+  [
+    "In CI",
+    "WOPEE_API_KEY and WOPEE_PROJECT_UUID",
+    "The command never pairs in CI. Set both as secrets, with a key from the API Keys page in Commander.",
+  ],
+];
+
 const List = ({ items }: { items: string[] }) => (
   <ul className="m-0 flex list-disc flex-col gap-2 pl-5 text-gray-700 dark:text-gray-300">
     {items.map((item) => (
@@ -94,6 +107,28 @@ const AgentSetupPage = () => (
           <h2 className="m-0 mb-4 text-2xl font-bold">What it never does</h2>
           <List items={NEVER} />
         </GradientCard>
+      </section>
+
+      <section aria-labelledby="without-pairing" className="flex flex-col gap-6">
+        <h2 id="without-pairing" className="m-0 text-3xl font-bold lg:text-4xl">
+          Without pairing
+        </h2>
+        <ul className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2">
+          {FALLBACKS.map(([title, code, text]) => (
+            <li key={title} className="rounded-2xl border border-solid border-gray-200 p-5 dark:border-white/10">
+              <p className="m-0 font-bold text-gray-900 dark:text-white">{title}</p>
+              <code className="mt-2 inline-block">
+                {code.split(" ").map((word, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && " "}
+                    <span className="whitespace-nowrap">{word}</span>
+                  </React.Fragment>
+                ))}
+              </code>
+              <p className="m-0 mt-2 text-gray-600 dark:text-gray-300">{text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section aria-labelledby="full-text" className="flex flex-col gap-4">
