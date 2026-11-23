@@ -29,10 +29,10 @@ const rows: Row[] = [
   },
   {
     feature: "Executed tests / session*",
-    free: "2–5",
-    starter: "6–15",
-    basic: "20–50",
-    premium: "40–100",
+    free: "5–10",
+    starter: "15–30",
+    basic: "50–100",
+    premium: "100–200",
     enterprise: "Unlimited",
   },
   {
@@ -278,7 +278,7 @@ const PlanComparison = ({ billing }: { billing: Billing }) => {
 
       <p className="mt-6 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
         <span className="text-secondary-wopee dark:text-primary-wopee">*</span>{" "}
-        Estimated based on roughly 10–25 steps per test run. Actual numbers
+        Estimated based on roughly 5–10 steps per test run. Actual numbers
         depend on test complexity.
       </p>
       <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">

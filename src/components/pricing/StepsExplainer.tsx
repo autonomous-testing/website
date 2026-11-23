@@ -3,10 +3,10 @@ import React from "react";
 const stepActions = ["Click a button", "Fill a field", "Assert a result"];
 
 const planBudgets = [
-  { plan: "Free", steps: "50 steps", note: "≈ 2–5 executed tests" },
-  { plan: "Starter", steps: "150 steps", note: "≈ 6–15 test runs" },
-  { plan: "Basic", steps: "500 steps", note: "≈ 20–50 test runs" },
-  { plan: "Premium", steps: "1,000 steps", note: "≈ 40–100 test runs" },
+  { plan: "Free", steps: "50 steps", note: "≈ 5–10 test runs" },
+  { plan: "Starter", steps: "150 steps", note: "≈ 15–30 test runs" },
+  { plan: "Basic", steps: "500 steps", note: "≈ 50–100 test runs" },
+  { plan: "Premium", steps: "1,000 steps", note: "≈ 100–200 test runs" },
 ];
 
 const CheckIcon = () => (
@@ -60,7 +60,7 @@ const StepsExplainer = () => {
             A typical autonomous test
           </div>
           <div className="text-3xl font-extrabold bg-gradient-to-br from-secondary-wopee to-purple-700 dark:from-primary-wopee dark:to-yellow-300 bg-clip-text text-transparent tracking-tight">
-            ≈ 15 steps
+            ≈ 6 steps
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300 leading-snug m-0 mt-3">
             Simple checks use fewer steps. Complex flows use more.
