@@ -160,6 +160,13 @@
     "alt": "Livesport's visual tests",
     "hash": "5f57f2aafc8eec9e"
   },
+  "/blog/one-prompt-setup/": {
+    "image": "/img/og/blog/one-prompt-setup.png?v=aa69b99f",
+    "width": 1200,
+    "height": 630,
+    "alt": "One prompt. One approval.",
+    "hash": "aa69b99f8b00d08d"
+  },
   "/blog/playwright-bot-ai-powered-test-automation/": {
     "image": "/img/og/blog/playwright-bot-ai-powered-test-automation.png?v=fc19c6c4",
     "width": 1200,
