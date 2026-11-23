@@ -83,6 +83,8 @@ module.exports = function blogRelatedPlugin(context) {
         if (!fs.existsSync(indexPath)) continue;
         const raw = fs.readFileSync(indexPath, "utf8");
         const fm = parseFrontmatter(raw) || {};
+        // Docusaurus leaves draft posts out of production builds; linking them breaks the build.
+        if (fm.draft === "true" && process.env.NODE_ENV === "production") continue;
         const slug = slugFromFrontmatter(fm, entry.name);
         if (!slug) continue;
         const date = fm.date || dateFromDirName(entry.name) || "";
