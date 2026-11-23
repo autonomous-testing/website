@@ -3,11 +3,10 @@ slug: one-prompt-setup
 title: "Your Coding Agent Can Now Set Up Its Own Tester"
 og_punchline: "One prompt. One approval."
 title_meta: "Set Up Wopee.io Testing From One Prompt"
-description: "Paste one line into Claude Code or another coding agent. It runs one command, you approve once in Commander, and the API key never passes through the agent's chat or sits in an MCP config."
+description: "Paste one line into Claude Code or another coding agent. It runs one command, you approve once in Commander, and the API key never passes through the chat."
 tags: [ai-testing, ai-testing-agents, mcp, claude-code, test-automation, getting-started]
 image: ./hero.webp
 authors: marcel
-draft: true
 ---
 
 import { SetupLine } from "@site/src/components/blog/one-prompt-setup";
