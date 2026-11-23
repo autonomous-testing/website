@@ -207,12 +207,12 @@ const STEPS = [
   },
   {
     step: "2",
-    title: "Connect",
-    subtitle: "Your key stays with you",
+    title: "Approve",
+    subtitle: "Nobody copies the key",
     label: "terminal",
-    code: '# Commander: More › Settings › API Keys\nexport WOPEE_API_KEY="…"\nexport WOPEE_PROJECT_UUID="…"',
+    code: "npx -y @wopee-io/init@latest\n\n  words      brave-otter-42\n  approved   in Commander\n  wrote      .env, .mcp.json",
     description:
-      "Your agent adds one wopee server that reads the key from your environment or a git-ignored .env file. You type the key yourself; it never goes into the chat or a committed file.",
+      "Your agent runs npx -y @wopee-io/init and shows you a link and three words. Check that Commander shows the same words, pick the project and approve. A new key goes straight to a git-ignored .env, and the wopee server entry holds none. No pairing on your instance? Run init --manual yourself. In CI, set WOPEE_API_KEY and WOPEE_PROJECT_UUID as secrets.",
   },
   {
     step: "3",
@@ -291,11 +291,7 @@ const MCP_CONFIG_SNIPPET = `{
   "mcpServers": {
     "wopee": {
       "command": "npx",
-      "args": ["-y", "wopee-mcp"],
-      "env": {
-        "WOPEE_API_KEY": "your-api-key-here",
-        "WOPEE_PROJECT_UUID": "your-project-uuid-here"
-      }
+      "args": ["-y", "wopee-mcp@latest"]
     }
   }
 }`;
@@ -336,6 +332,10 @@ const InstallSnippet = () => {
           {MCP_CONFIG_SNIPPET}
         </code>
       </pre>
+      <p className="m-0 bg-gray-900 px-4 pb-4 text-xs text-gray-400">
+        No key in the config: the server reads WOPEE_API_KEY and WOPEE_PROJECT_UUID from your repository's git-ignored
+        .env.
+      </p>
     </div>
   );
 };
@@ -527,7 +527,7 @@ const HowItWorksSection = () => (
         Up and running in 3 minutes
       </h2>
       <p className="text-xl opacity-70 max-w-2xl mx-auto">
-        Paste one line, add your API key, and start testing
+        Paste one line, approve in Commander, and start testing
       </p>
     </div>
 
