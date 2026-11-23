@@ -47,7 +47,10 @@ const config = {
     "Boost your testing team. Elevate your quality & speed up release pace.",
   favicon: "img/favicon.ico",
 
-  clientModules: [require.resolve("./src/clientModules/sharedConsent.mjs")],
+  clientModules: [
+    require.resolve("./src/clientModules/sharedConsent.mjs"),
+    require.resolve("./src/clientModules/hubspotConsent.mjs"),
+  ],
 
   // Docusaurus `favicon` emits one icon link (the 16/32/48 .ico). The rest of the
   // set from the brand masters: SVG for sharp tabs, PNG sizes, the iOS icon and
@@ -172,13 +175,6 @@ const config = {
                   as: "style",
                   onload: "this.onload=null;this.rel='stylesheet'",
                 },
-              },
-            ],
-            // HubSpot tracking loads after the load event, once the page is idle.
-            postBodyTags: [
-              {
-                tagName: "script",
-                innerHTML: `(function(){function a(){if(document.getElementById("hs-script-loader"))return;var s=document.createElement("script");s.id="hs-script-loader";s.async=true;s.defer=true;s.src="//js-eu1.hs-scripts.com/139620033.js";document.body.appendChild(s)}function i(){"requestIdleCallback"in window?requestIdleCallback(a,{timeout:3000}):setTimeout(a,1500)}document.readyState==="complete"?i():window.addEventListener("load",i,{once:true})})();`,
               },
             ],
           };
