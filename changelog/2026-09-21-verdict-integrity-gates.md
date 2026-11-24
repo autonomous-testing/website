@@ -9,7 +9,7 @@ Every run now passes through integrity gates: a defined assertion that never exe
 
 {/* changelog-clip:start */}
 <figure className="changelog-clip">
-  <img src="/img/changelog/verdict-integrity-gates.gif" alt="A passed test card marked verdict gate disagreed with a half green, half amber dot, then a run report scrolling to its Verdict Integrity section" width="960" height="539" decoding="async" />
+  <img src="/img/changelog/verdict-integrity-gates.webp" alt="A passed test card marked verdict gate disagreed with a half green, half amber dot, then a run report scrolling to its Verdict Integrity section" width="960" height="539" decoding="async" />
   <figcaption>{"A pass the gates disagree with turns half amber, and the report adds a Verdict Integrity section."}</figcaption>
 </figure>
 {/* changelog-clip:end */}

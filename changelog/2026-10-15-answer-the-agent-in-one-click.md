@@ -9,7 +9,7 @@ When the agent asks you something during a run, the question card marks one reco
 
 {/* changelog-clip:start */}
 <figure className="changelog-clip">
-  <img src="/img/changelog/answer-the-agent-in-one-click.gif" alt="The agent asks which area to explore, marks one option as recommended and counts down, and the answer ends up in the run report" width="960" height="727" decoding="async" />
+  <img src="/img/changelog/answer-the-agent-in-one-click.webp" alt="The agent asks which area to explore, marks one option as recommended and counts down, and the answer ends up in the run report" width="960" height="727" decoding="async" />
   <figcaption>{"One option is recommended, a countdown runs, and the report lists the question and the answer."}</figcaption>
 </figure>
 {/* changelog-clip:end */}
