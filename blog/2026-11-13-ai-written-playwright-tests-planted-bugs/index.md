@@ -200,7 +200,7 @@ An independent verdict on the same screen from a check that doesn't share the te
 
 There will be a Build & Break #3, with the same rules: results published as measured, misses included. Subscribe to [Wopee.io on YouTube](https://www.youtube.com/@wopee?sub_confirmation=1) to get the date.
 
-Want to try the second opinion on your own app? Paste a URL into [Wopee.io](https://cmd.wopee.io/) and the agent starts exploring. The Free plan is enough for a first crawl and its tests. Connecting your coding agent takes one config file: [Wopee.io MCP](/mcp/).
+Want to try the second opinion on your own app? Paste a URL into [Wopee.io](https://cmd.wopee.io/login) and the agent starts exploring. The Free plan is enough for a first crawl and its tests. Connecting your coding agent takes one config file: [Wopee.io MCP](/mcp/).
 
 More reading: [AI agent vs a vibe-coded app: 5 of 5 bugs](/blog/ai-agent-vs-vibe-coded-app/) · [AI testing agents: hype, reality and 5 tools compared](/blog/ai-testing-agents/) · [Flaky tests: the complete guide](/blog/flaky-tests-complete-guide/) · [Wopee.io vs Playwright MCP](/compare/wopee-vs-playwright-mcp/) · [Vibe Testing Lab: 4 AI testing agents on one app](/videos/vibe-testing-lab-ai-testing-agents/)
 

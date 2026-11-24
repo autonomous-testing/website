@@ -94,7 +94,7 @@ const HomeDeploymentOptions = () => {
                 id="cta-deploy-cloud"
                 className="w-full font-semibold rounded-lg px-8 py-4 text-lg !bg-primary-wopee !text-gray-900"
                 label="Start for free"
-                href={cmdBaseUrl}
+                href={`${cmdBaseUrl}/login`}
               />
             }
           />

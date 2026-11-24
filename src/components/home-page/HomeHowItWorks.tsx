@@ -53,7 +53,7 @@ export default function HomeHowItWorks(): JSX.Element {
         <ButtonPrimary
           id="cta-how-it-works-trial"
           label="Start for free"
-          href={cmdBaseUrl}
+          href={`${cmdBaseUrl}/login`}
           className="w-60 h-[50px]"
         />
         <p className="text-sm italic text-gray-300">No credit card required</p>
