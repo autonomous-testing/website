@@ -10,7 +10,7 @@ Your coding agent can now connect itself to Wopee.io with one prompt. It shows y
 
 {/* changelog-clip:start */}
 <figure className="changelog-clip">
-  <img src="/img/changelog/set-up-your-coding-agent-with-one-prompt.gif" alt="Claude Code gets the Wopee.io setup line, shows its plan, prints the words mellow-turtle-53; Commander shows the same words, the project is approved, and a read-only connection check passes" width="960" height="720" decoding="async" />
+  <img src="/img/changelog/set-up-your-coding-agent-with-one-prompt.webp" alt="Claude Code gets the Wopee.io setup line, shows its plan, prints the words mellow-turtle-53; Commander shows the same words, the project is approved, and a read-only connection check passes" width="960" height="720" decoding="async" />
   <figcaption>{"Paste one line, check the same words in your terminal and in Commander, approve, and the agent is connected."}</figcaption>
 </figure>
 {/* changelog-clip:end */}

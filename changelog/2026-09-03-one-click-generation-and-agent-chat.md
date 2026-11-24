@@ -9,7 +9,7 @@ The generation picker now holds scopes, not actions. "Every user story" is prese
 
 {/* changelog-clip:start */}
 <figure className="changelog-clip">
-  <img src="/img/changelog/one-click-generation-and-agent-chat.gif" alt="The Generate scenarios panel with Every user story preselected and a line saying it writes scenarios for 3 stories in about 1 to 2 minutes" width="960" height="667" decoding="async" />
+  <img src="/img/changelog/one-click-generation-and-agent-chat.webp" alt="The Generate scenarios panel with Every user story preselected and a line saying it writes scenarios for 3 stories in about 1 to 2 minutes" width="960" height="667" decoding="async" />
   <figcaption>{"Every user story is preselected, and the line above the button says what is in scope and how long it takes."}</figcaption>
 </figure>
 {/* changelog-clip:end */}
