@@ -296,12 +296,23 @@ const MCP_CONFIG_SNIPPET = `{
   }
 }`;
 
-const InstallSnippet = () => {
+const REMOTE_MCP_COMMAND =
+  "claude mcp add --transport http wopee https://mcp.wopee.io/mcp";
+
+const CopyBlock = ({
+  label,
+  text,
+  note,
+}: {
+  label: string;
+  text: string;
+  note: string;
+}) => {
   const [copied, setCopied] = useState(false);
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(MCP_CONFIG_SNIPPET);
+      await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -310,13 +321,13 @@ const InstallSnippet = () => {
   };
 
   return (
-    <div id="mcp-config" className="w-full mt-5 rounded-xl overflow-hidden border border-solid border-gray-700 text-left">
+    <div className="w-full rounded-xl overflow-hidden border border-solid border-gray-700 text-left">
       <div className="bg-gray-800 px-4 py-2.5 flex items-center justify-between">
-        <span className="text-gray-400 text-xs font-mono">mcp-config.json</span>
+        <span className="text-gray-400 text-xs font-mono">{label}</span>
         <button
           type="button"
           onClick={onCopy}
-          aria-label={copied ? "Config copied" : "Copy config"}
+          aria-label={copied ? `${label} copied` : `Copy ${label}`}
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent border-0 cursor-pointer p-0 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-wopee"
         >
           <Icon
@@ -328,17 +339,27 @@ const InstallSnippet = () => {
         </button>
       </div>
       <pre className="!bg-gray-900 !m-0 !rounded-none p-4 text-xs sm:text-sm overflow-x-auto">
-        <code className="!bg-transparent !text-gray-300">
-          {MCP_CONFIG_SNIPPET}
-        </code>
+        <code className="!bg-transparent !text-gray-300">{text}</code>
       </pre>
-      <p className="m-0 bg-gray-900 px-4 pb-4 text-xs text-gray-400">
-        No key in the config: the server reads WOPEE_API_KEY and WOPEE_PROJECT_UUID from your repository's git-ignored
-        .env.
-      </p>
+      <p className="m-0 bg-gray-900 px-4 pb-4 text-xs text-gray-400">{note}</p>
     </div>
   );
 };
+
+const InstallSnippet = () => (
+  <div id="mcp-config" className="w-full mt-5 flex flex-col gap-4">
+    <CopyBlock
+      label="Claude Code, remote server"
+      text={REMOTE_MCP_COMMAND}
+      note="No key stored anywhere: Claude Code signs in through your browser, where you pick the project and whether it may change anything. Disconnect it any time in the project's settings."
+    />
+    <CopyBlock
+      label="mcp-config.json"
+      text={MCP_CONFIG_SNIPPET}
+      note="Any agent, local server. No key in the config: the server reads WOPEE_API_KEY and WOPEE_PROJECT_UUID from your repository's git-ignored .env."
+    />
+  </div>
+);
 
 const HeroSection = () => {
   const [showConfig, setShowConfig] = useState(false);
