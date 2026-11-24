@@ -318,7 +318,7 @@ Install Playwright and Wopee.io by using npm. Here are the steps below:
 @wopee-io:registry=https://npm.pkg.github.com
 ```
 
-- Get your `WOPEE_API_KEY` from [Wopee.io commander](https://cmd.wopee.io/projects) (Navigate to your project > Project Settings > API KEYS tab > Create new key).
+- Get your `WOPEE_API_KEY` from [Wopee.io commander](https://cmd.wopee.io/login) (Navigate to your project > Project Settings > API KEYS tab > Create new key).
 - Install node packages:
 
 Playwright:
