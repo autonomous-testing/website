@@ -33,7 +33,7 @@ Your first AI test, from a URL to a verdict, in about six minutes. No code, no s
 
 ## Step by step
 
-1. **Sign in** at [cmd.wopee.io](https://cmd.wopee.io) with GitHub, Google or GitLab. You land on the projects dashboard.
+1. **Sign in** at [cmd.wopee.io](https://cmd.wopee.io/login) with GitHub, Google or GitLab. You land on the projects dashboard.
 2. **Click New project.** Paste the URL of your app, or pick a demo (the E-shop demo comes with test instructions already filled in). Write what matters to you in plain English, for example "log in, buy a product, check the thank-you message". Then click **Create project and generate tests**.
 3. **Accept the GitHub invitation.** Every project gets its own GitHub repository. Open the menu under your avatar, click **GH Invitation**, and join the organization so you can open the repository.
 4. **Watch the agent explore.** The first Analysis starts right away. You see the agent's browser live: it logs in, clicks through the pages and checks what it sees.
@@ -53,6 +53,6 @@ The free plan gives you 50 agent steps every 5 hours and 2 projects. Need more? 
 
 :::tip Get started 🔥
 
-[Start free at cmd.wopee.io](https://cmd.wopee.io), or [book a free 15-minute setup call](https://wopee.io/marcel) and we set it up with you on your own app.
+[Start free at cmd.wopee.io](https://cmd.wopee.io/login), or [book a free 15-minute setup call](https://wopee.io/marcel/) and we set it up with you on your own app.
 
 :::

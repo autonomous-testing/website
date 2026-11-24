@@ -85,7 +85,7 @@ Below, you’ll see how this tool can shift your testing from tedious to effortl
 
 ## Why Automating Test Creation Matters
 
-Scaling QA efforts is impossible without automation, but creating and maintaining tests is often a massive drain on time and resources. If you're new to the platform, watch the [Wopee.io quick start](/blog/wopee-io-quick-start). With Playwright Bot, you can automate test generation with minimal manual effort, cutting down the tedious work while boosting efficiency.
+Scaling QA efforts is impossible without automation, but creating and maintaining tests is often a massive drain on time and resources. If you're new to the platform, watch the [Wopee.io quick start](/blog/wopee-io-quick-start/). With Playwright Bot, you can automate test generation with minimal manual effort, cutting down the tedious work while boosting efficiency.
 
 :::info Updated October 2026
 
@@ -127,7 +127,7 @@ _Want to be part of the action?_ Join the Playwright Bot testing group and help 
 
 Playwright Bot is reshaping the landscape of automated testing, bringing AI-powered capabilities that streamline test creation and maintenance. Whether you need to save time, reduce errors, or scale your test suite, Playwright Bot offers a smart and practical solution for modern testing challenges.
 
-Watch the [quick start](/blog/wopee-io-quick-start), try our autonomous [testing bot](/ai-testing-agents/) for free, or explore more at [Wopee.io](https://wopee.io).
+Watch the [quick start](/blog/wopee-io-quick-start/), try our autonomous [testing bot](/ai-testing-agents/) for free, or explore more at [Wopee.io](https://wopee.io).
 
 :::tip
 

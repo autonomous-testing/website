@@ -163,7 +163,7 @@ No. It did the arithmetic and the repetition. I wrote the rules, chose the metho
 
 This show tested an app. The next one tested the tests. A coding agent wrote 100 Playwright tests for the same demo app, all green. On 10 Nov 2026 we shipped a refactor with 5 planted bugs: 94 of the 100 stayed green, and 2 bugs got past every test. The recap: [100 AI-written Playwright tests vs 5 planted bugs](/blog/ai-written-playwright-tests-planted-bugs/). The replay: [youtu.be/oT34ko0m3Hc](https://youtu.be/oT34ko0m3Hc).
 
-Want to try it on your own app? Paste a URL into [Wopee.io](https://cmd.wopee.io/) and the agent starts exploring. The Free plan is enough for a first crawl and its tests. [Pricing](/pricing/).
+Want to try it on your own app? Paste a URL into [Wopee.io](https://cmd.wopee.io/login) and the agent starts exploring. The Free plan is enough for a first crawl and its tests. [Pricing](/pricing/).
 
 More reading: [AI testing agents: hype, reality and 5 tools compared](/blog/ai-testing-agents/) · [Vibe coding, vibe testing and vibe engineering](/blog/vibe-testing-coding-engineering/) · [Test design techniques for web apps](/blog/test-design-techniques/) · [How to start with AI in QA](/blog/how-to-start-with-ai-in-qa/) · [Vibe Testing Lab: 4 AI testing agents on one app](/videos/vibe-testing-lab-ai-testing-agents/)
 

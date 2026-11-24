@@ -10,7 +10,7 @@ image: ./wopee-io-3-pillars.png
 
 :::info Updated October 2026
 
-Wopee.io has changed a lot since this post. For the current product, watch the [6-minute quick start](/blog/wopee-io-quick-start), which walks through every step on today's app.
+Wopee.io has changed a lot since this post. For the current product, watch the [6-minute quick start](/blog/wopee-io-quick-start/), which walks through every step on today's app.
 
 :::
 
@@ -35,7 +35,7 @@ Over the past two decades, testing has evolved significantly. Manual testing can
 
 If any of these challenges resonate with you, Wopee.io’s autonomous testing bots are designed to tackle them, making testing faster, easier, and more accessible to teams with limited technical resources.
 
-The updated walkthrough is in the [quick start](/blog/wopee-io-quick-start).
+The updated walkthrough is in the [quick start](/blog/wopee-io-quick-start/).
 
 ## Autonomous Testing Bots: A New Era of Test Automation
 
@@ -50,9 +50,9 @@ Our autonomous testing bot revolutionizes the testing lifecycle by automating th
 
 ## Step-by-Step: How to Get Started with Wopee.io
 
-Here’s the current flow (see the [quick start](/blog/wopee-io-quick-start) for the video):
+Here’s the current flow (see the [quick start](/blog/wopee-io-quick-start/) for the video):
 
-1. **Sign in:** go to [cmd.wopee.io](https://cmd.wopee.io) and sign in with GitHub, Google or GitLab.
+1. **Sign in:** go to [cmd.wopee.io](https://cmd.wopee.io/login) and sign in with GitHub, Google or GitLab.
 2. **Create a project:** click **New project**, paste your app's URL (or pick a demo), describe what to test in plain English, and click **Create project and generate tests**.
 3. **Watch the first Analysis:** the agent explores your app live, then writes the application description, user flows and test scenarios, and runs every scenario.
 4. **Read the verdicts:** each run ends with a report of every step, what was expected and what was verified.
@@ -72,13 +72,13 @@ Wopee.io is more than just a testing tool. It’s a fresh approach to automated 
 
 ![Wopee.io](./wopee-io-3-pillars.png)
 
-Want to learn more? Watch the [6-minute quick start](/blog/wopee-io-quick-start), or [start free](https://cmd.wopee.io) to experience Wopee.io firsthand.
+Want to learn more? Watch the [6-minute quick start](/blog/wopee-io-quick-start/), or [start free](https://cmd.wopee.io/login) to experience Wopee.io firsthand.
 
 :::tip Get Started Today 🔥
 
 Interested in trying out Wopee.io?
 
-Head over to [https://wopee.io](https://wopee.io) to [start free](https://cmd.wopee.io) or [book a demo](https://wopee.io/book-demo/) with us.
+Head over to [https://wopee.io](https://wopee.io) to [start free](https://cmd.wopee.io/login) or [book a demo](https://wopee.io/book-demo/) with us.
 
 :::
 
