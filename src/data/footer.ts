@@ -26,6 +26,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Pricing", to: "/pricing/" },
       { label: "Security & Trust", to: "/security/" },
       { label: "About us", to: "/about-us/" },
+      { label: "Brand kit", to: "/brand/" },
       { label: "Book a demo", to: "/book-demo/" },
     ],
   },
